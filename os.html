@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Operating Systems — CodeMaster</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</head>
+<body class="bg-slate-50">
+  <div class="container mx-auto py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <aside class="lg:col-span-1">
+      <div class="p-6 bg-white rounded-xl shadow sticky top-24">
+        <h3 class="font-bold text-lg">OS Contents</h3>
+        <ol class="mt-3 text-sm text-slate-700 space-y-1">
+          <li><a href="#proc" class="underline">Processes & Threads</a></li>
+          <li><a href="#sched" class="underline">Scheduling Algorithms</a></li>
+          <li><a href="#mem" class="underline">Virtual Memory & Paging</a></li>
+          <li><a href="#fs" class="underline">Filesystems & I/O</a></li>
+          <li><a href="#sync" class="underline">Synchronization & Deadlock</a></li>
+          <li><a href="#kernel" class="underline">Kernel Architecture</a></li>
+          <li><a href="#exercises-os" class="underline">Exercises</a></li>
+        </ol>
+      </div>
+    </aside>
+
+    <article class="lg:col-span-3 space-y-8">
+      <section id="proc" class="p-6 bg-white rounded-xl shadow">
+        <h1 class="text-3xl font-bold">Processes & Threads</h1>
+        <p class="mt-3 text-slate-700">A process is an address space with resources. Threads are schedulable entities within a process. We'll explore context switching, process creation (fork/exec model on Unix), and lightweight threads (user-level vs kernel-level).</p>
+      </section>
+
+      <section id="sched" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Scheduling Algorithms</h2>
+        <p class="text-slate-700">Round-robin, priority scheduling, multi-level feedback queue (MLFQ), CFS (Completely Fair Scheduler) in Linux. We'll quantify fairness, latency, throughput, and starvation.</p>
+      </section>
+
+      <section id="mem" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Virtual Memory & Paging</h2>
+        <p class="text-slate-700">Address translation, page tables (multi-level), TLBs, page replacement algorithms (LRU approximations), and working set model. We'll explain swap, thrashing, and memory-mapped I/O.</p>
+      </section>
+
+      <section id="fs" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Filesystems & Storage Stack</h2>
+        <p class="text-slate-700">Filesystem layout, inodes, journaling, copy-on-write filesystems (Btrfs, ZFS), and block device layers. We'll examine durability models and metadata performance.</p>
+      </section>
+
+      <section id="sync" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Synchronization & Deadlock</h2>
+        <p class="text-slate-700">Mutexes, spinlocks, semaphores, condition variables, read-write locks. Deadlock detection and prevention strategies; banker's algorithm for theoretical treatment.</p>
+      </section>
+
+      <section id="kernel" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Kernel Architecture</h2>
+        <p class="text-slate-700">Monolithic vs microkernel designs. Device driver model, system call dispatch, and kernel modules. We'll analyze Linux's VFS, loadable kernel modules, and user-space drivers (FUSE).</p>
+      </section>
+
+      <section id="exercises-os" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Exercises</h2>
+        <ol class="list-decimal pl-6 mt-3 text-slate-700 space-y-3">
+          <li>Simulate scheduling using different algorithms and compare average turnaround time.</li>
+          <li>Implement a simple page replacement simulator and measure hit rates.</li>
+          <li>Sketch the steps the kernel takes during process creation and termination.</li>
+        </ol>
+      </section>
+
+    </article>
+  </div>
+</body>
+</html>

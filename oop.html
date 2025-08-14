@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Object-Oriented Programming — CodeMaster</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+  <style>
+    body {
+      font-family: Inter, system-ui, Segoe UI, Roboto;
+      background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+    .toc { position: sticky; top: 4rem; }
+    .section-header {
+      background: linear-gradient(90deg, #3b82f6, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mx-auto py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <!-- Sidebar Table of Contents -->
+    <aside class="lg:col-span-1">
+      <div class="toc p-6 bg-white/80 backdrop-blur rounded-xl shadow-lg border border-slate-200">
+        <h3 class="font-bold text-lg text-sky-700">📑 Contents</h3>
+        <ul class="mt-3 space-y-2 text-sm text-slate-700">
+          <li><a href="#overview" class="hover:text-sky-600 underline">Overview & History</a></li>
+          <li><a href="#principles" class="hover:text-sky-600 underline">Core Principles</a></li>
+          <li><a href="#design" class="hover:text-sky-600 underline">Design Principles & SOLID</a></li>
+          <li><a href="#memory" class="hover:text-sky-600 underline">Memory & Object Layout</a></li>
+          <li><a href="#dispatch" class="hover:text-sky-600 underline">Dynamic Dispatch</a></li>
+          <li><a href="#patterns" class="hover:text-sky-600 underline">Design Patterns</a></li>
+          <li><a href="#advanced" class="hover:text-sky-600 underline">Advanced Topics</a></li>
+          <li><a href="#exercises" class="hover:text-sky-600 underline">Exercises</a></li>
+          <li><a href="#references" class="hover:text-sky-600 underline">References</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <article class="lg:col-span-3 space-y-8">
+      
+      <!-- Overview Section -->
+      <section id="overview" class="p-6 bg-white rounded-xl shadow-lg border border-slate-200">
+        <h1 class="text-3xl font-extrabold section-header">Object-Oriented Programming</h1>
+        
+        <p class="mt-4 text-slate-700 leading-relaxed">
+          Object-Oriented Programming (OOP) is a style of programming that organizes software design
+          around <strong>objects</strong> — reusable bundles of <em>data</em> (attributes) and <em>behaviors</em> (methods).
+          Think of objects like real-world things: a <code>Car</code> has properties (color, speed) and actions (drive, brake).
+        </p>
+        
+        <div class="mt-4 p-4 bg-sky-50 border-l-4 border-sky-400 rounded">
+          <p class="text-slate-800"><strong>Beginner Tip:</strong> If you’ve only used procedural programming (functions & variables),
+            imagine OOP as putting the variables <em>inside</em> the thing they belong to, along with the functions that operate on them.</p>
+        </div>
+        
+        <h2 class="mt-6 text-2xl font-bold text-sky-700">Historical Context</h2>
+        <p class="text-slate-700 leading-relaxed">
+          In the 1960s, as programs grew bigger, procedural approaches became messy — changes in one part
+          often broke others. <strong>Simula</strong> (1967) introduced <em>classes</em> to group data and behavior.
+          <strong>Smalltalk</strong> (1970s) took this further with a pure OOP model.
+          <strong>C++</strong> (1980s) combined OOP with high-performance features.
+          <strong>Java</strong> (1995) brought OOP to the web era with built-in memory management.
+          Modern languages (Python, C#, Kotlin) mix OOP with functional programming features.
+        </p>
+      </section>
+
+      <!-- Core Principles -->
+      <section id="principles" class="p-6 bg-white rounded-xl shadow-lg border border-slate-200">
+        <h2 class="text-2xl font-bold text-sky-700">Core Principles of OOP</h2>
+        <p class="mt-3 text-slate-700 leading-relaxed">
+          Four main ideas — often called the <em>pillars of OOP</em> — help developers write cleaner, reusable, and more maintainable code.
+        </p>
+
+        <div class="mt-4 space-y-6">
+          <div>
+            <h3 class="text-lg font-semibold text-emerald-600">1. Encapsulation</h3>
+            <p class="text-slate-700 leading-relaxed">
+              Encapsulation means bundling an object’s data and its methods together, and hiding
+              the internal details from the outside world. You interact with the object through a
+              well-defined interface.
+            </p>
+            <div class="bg-emerald-50 border-l-4 border-emerald-400 p-3 rounded mt-2 text-sm">
+              Example: You drive a car without knowing the exact engineering of the engine.
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-pink-600">2. Inheritance</h3>
+            <p class="text-slate-700 leading-relaxed">
+              Inheritance allows you to create new classes based on existing ones.
+              This lets you reuse code, but overusing it can lead to tightly-coupled designs.
+            </p>
+            <div class="bg-pink-50 border-l-4 border-pink-400 p-3 rounded mt-2 text-sm">
+              Example: <code>ElectricCar</code> can inherit from <code>Car</code> and gain all its features.
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-indigo-600">3. Polymorphism</h3>
+            <p class="text-slate-700 leading-relaxed">
+              Polymorphism allows different classes to be treated through the same interface,
+              while each provides its own implementation.
+            </p>
+            <div class="bg-indigo-50 border-l-4 border-indigo-400 p-3 rounded mt-2 text-sm">
+              Example: Both <code>Dog</code> and <code>Cat</code> can have a <code>makeSound()</code> method, but they bark or meow differently.
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-orange-600">4. Abstraction</h3>
+            <p class="text-slate-700 leading-relaxed">
+              Abstraction focuses on exposing only what’s necessary and hiding the complexity.
+            </p>
+            <div class="bg-orange-50 border-l-4 border-orange-400 p-3 rounded mt-2 text-sm">
+              Example: A TV remote lets you change channels without understanding the electronics inside.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+  </div>
+</body>
+</html>

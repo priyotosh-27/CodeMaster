@@ -1,0 +1,5258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Tutorial - CodeMaster</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Prism.js for code highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+  
+  <style>
+    .rainbow-text {
+      background: linear-gradient(90deg, #6c5ce7, #00b894, #fdcb6e, #fd79a8, #00b894, #6c5ce7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: rainbow 5s linear infinite;
+      background-size: 200% 200%;
+    }
+    @keyframes rainbow {
+      0% {background-position: 0% 50%;}
+      100% {background-position: 100% 50%;}
+    }
+    .sidebar {
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+      background: linear-gradient(135deg, #6c5ce7 60%, #fdcb6e 100%);
+      color: #fff;
+      border-radius: 1.5rem;
+      padding: 2rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.10);
+    }
+    .sidebar a {
+      display: block;
+      padding: 0.6rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 9999px;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .sidebar a.active, .sidebar a:hover {
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+    }
+    .topic-section {
+      margin-bottom: 3.5rem; /* Increased spacing */
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.10);
+      background: #fff;
+      padding: 2rem;
+      border-top: 6px solid;
+    }
+    .topic-section h2 {
+      margin-bottom: 1rem;
+    }
+    .code-tabs {
+      margin-top: 1rem;
+      margin-bottom: 1.5rem; /* More space after code tabs */
+    }
+    .tab-btn {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      margin-right: 0.5rem;
+      border-radius: 9999px;
+      background: #f3f4f6;
+      color: #333;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: background 0.2s;
+    }
+    .tab-btn.active {
+      background: #6c5ce7;
+      color: #fff;
+    }
+    pre {
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem; /* More space after code blocks */
+    }
+    .topic-section table {
+      background: #f8fafc;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 8px 0 rgba(99,102,241,0.06);
+      margin-bottom: 1.5rem; /* More space after tables */
+    }
+    .topic-section h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 1024px) {
+      .sidebar {
+        position: static;
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+
+</head>
+<body class="min-h-screen section-bg">
+
+  <!-- Navbar -->
+  <nav class="gradient-bg text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-code text-2xl"></i>
+        <span class="text-xl font-bold">CodeMaster</span>
+      </div>
+      <a href="Platform.html" class="hover:text-gray-200 font-semibold flex items-center">
+        <i class="fas fa-arrow-left mr-2"></i>Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <header class="py-12 bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 text-white shadow-xl">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-extrabold mb-4 rainbow-text">DSA Mastery Guide</h1>
+      <p class="text-xl mb-6 font-medium">In-depth notes and code for every DSA topic.<br>Java, C++, and Python included!</p>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar w-full lg:w-1/4">
+      <div class="mb-4 text-xl font-bold">Topics</div>
+      <a href="#arrays" class="sidebar-link"><i class="fas fa-th-large mr-2"></i>Arrays</a>
+      <a href="#linkedlists" class="sidebar-link"><i class="fas fa-link mr-2"></i>Linked Lists</a>
+      <a href="#stacks" class="sidebar-link"><i class="fas fa-layer-group mr-2"></i>Stacks</a>
+      <a href="#queues" class="sidebar-link"><i class="fas fa-stream mr-2"></i>Queues</a>
+      <a href="#trees" class="sidebar-link"><i class="fas fa-tree mr-2"></i>Trees</a>
+      <a href="#graphs" class="sidebar-link"><i class="fas fa-project-diagram mr-2"></i>Graphs</a>
+      <a href="#searching" class="sidebar-link"><i class="fas fa-search mr-2"></i>Searching</a>
+      <a href="#sorting" class="sidebar-link"><i class="fas fa-sort-amount-up-alt mr-2"></i>Sorting</a>
+      <a href="#recursion" class="sidebar-link"><i class="fas fa-undo-alt mr-2"></i>Recursion & Backtracking</a>
+      <a href="#dp" class="sidebar-link"><i class="fas fa-brain mr-2"></i>Dynamic Programming</a>
+      <a href="#greedy" class="sidebar-link"><i class="fas fa-coins mr-2"></i>Greedy Algorithms</a>
+      <a href="#advancedtrees" class="sidebar-link"><i class="fas fa-sitemap mr-2"></i>Advanced Trees</a>
+      <a href="#dsu" class="sidebar-link"><i class="fas fa-object-group mr-2"></i>Disjoint Set</a>
+      <a href="#hashing" class="sidebar-link"><i class="fas fa-hashtag mr-2"></i>Hashing</a>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="flex-1">
+      <section class="topic-section border-indigo-500" id="arrays">
+  <h2 class="text-3xl font-bold text-indigo-700 flex items-center mb-2"><i class="fas fa-th-large mr-2"></i>Arrays</h2>
+  
+  <p class="mb-3 text-gray-700">
+    An <strong>Array</strong> is a fixed-size, contiguous memory block that stores multiple elements of the <strong>same data type</strong>.
+    Each element is stored in a sequential memory location and can be accessed using an index (starting from 0).
+    Arrays provide <strong>O(1)</strong> time complexity for element access, making them one of the most widely used data structures in programming.
+  </p>
+
+  <ul class="list-disc ml-6 mb-3 text-gray-700">
+    <li><strong>Access:</strong> O(1) for any index</li>
+    <li><strong>Search:</strong> O(n) in unsorted arrays, O(log n) in sorted arrays (binary search)</li>
+    <li><strong>Insertion / Deletion:</strong> O(n) (because elements may need to be shifted)</li>
+    <li><strong>Applications:</strong> Lookup tables, matrices, heaps, stacks, queues, buffers, image processing, and more</li>
+  </ul>
+
+  <div class="font-semibold mb-2">Example: Reverse an Array</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Given an array, reverse the elements in-place.</p>
+  <p class="text-gray-700"><strong>Input:</strong> arr = [1, 2, 3, 4, 5] <br><strong>Output:</strong> [5, 4, 3, 2, 1]</p>
+  <p class="text-gray-700"><strong>Explanation:</strong> Swap the first element with the last, second with second last, and so on.</p>
+
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="array-java">Java</button>
+    <button class="tab-btn" data-tab="array-cpp">C++</button>
+    <button class="tab-btn" data-tab="array-python">Python</button>
+  </div>
+  <div class="tab-content" id="array-java">
+    <pre><code class="language-java">// Java: Reverse an Array
+int[] arr = {1, 2, 3, 4, 5};
+int n = arr.length;
+for (int i = 0; i < n / 2; i++) { // iterate halfway
+    int temp = arr[i]; // store first element
+    arr[i] = arr[n - i - 1]; // swap with last
+    arr[n - i - 1] = temp; // place stored value
+}
+// Output: 5 4 3 2 1
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="array-cpp">
+    <pre><code class="language-cpp">// C++: Reverse an Array
+int arr[] = {1, 2, 3, 4, 5};
+int n = 5;
+for (int i = 0; i < n / 2; i++) {
+    int temp = arr[i];
+    arr[i] = arr[n - i - 1];
+    arr[n - i - 1] = temp;
+}
+// Output: 5 4 3 2 1
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="array-python">
+    <pre><code class="language-python"># Python: Reverse an Array
+arr = [1, 2, 3, 4, 5]
+arr.reverse()  # in-place reversal
+# Output: [5, 4, 3, 2, 1]
+</code></pre>
+  </div>
+
+  <hr class="my-4">
+
+  <h3 class="text-2xl font-bold text-indigo-600 mb-2">Top 3 Most Important Array Questions</h3>
+
+  <!-- 1. Find Maximum and Minimum in an Array -->
+  <div class="font-semibold mb-2">1. Find the Maximum and Minimum in an Array</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Given an array, find the largest and smallest numbers.</p>
+  <p class="text-gray-700"><strong>Input:</strong> [3, 1, 4, 1, 5, 9] <br><strong>Output:</strong> Max: 9, Min: 1</p>
+  <p class="text-gray-700"><strong>Explanation:</strong> Iterate and compare each element to track max and min.</p>
+
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="maxmin-java">Java</button>
+    <button class="tab-btn" data-tab="maxmin-cpp">C++</button>
+    <button class="tab-btn" data-tab="maxmin-python">Python</button>
+  </div>
+  <div class="tab-content" id="maxmin-java">
+    <pre><code class="language-java">// Java
+int[] arr = {3, 1, 4, 1, 5, 9};
+int max = arr[0], min = arr[0];
+for (int val : arr) { // loop through array
+    if (val > max) max = val; // update max
+    if (val < min) min = val; // update min
+}
+System.out.println("Max: " + max + ", Min: " + min);
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="maxmin-cpp">
+    <pre><code class="language-cpp">// C++
+int arr[] = {3, 1, 4, 1, 5, 9};
+int n = 6;
+int max = arr[0], min = arr[0];
+for (int i = 0; i < n; i++) {
+    if (arr[i] > max) max = arr[i];
+    if (arr[i] < min) min = arr[i];
+}
+cout << "Max: " << max << ", Min: " << min;
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="maxmin-python">
+    <pre><code class="language-python"># Python
+arr = [3, 1, 4, 1, 5, 9]
+print("Max:", max(arr), ", Min:", min(arr))
+</code></pre>
+  </div>
+
+  <!-- 2. Rotate an Array by K Positions -->
+  <div class="font-semibold mt-4 mb-2">2. Rotate an Array by K Positions</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Rotate array elements to the right by k steps.</p>
+  <p class="text-gray-700"><strong>Input:</strong> [1, 2, 3, 4, 5], k=2 <br><strong>Output:</strong> [4, 5, 1, 2, 3]</p>
+  <p class="text-gray-700"><strong>Explanation:</strong> Last k elements move to front, rest shift right.</p>
+
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="rotate-java">Java</button>
+    <button class="tab-btn" data-tab="rotate-cpp">C++</button>
+    <button class="tab-btn" data-tab="rotate-python">Python</button>
+  </div>
+  <div class="tab-content" id="rotate-java">
+    <pre><code class="language-java">// Java: Rotate right by k
+int[] arr = {1, 2, 3, 4, 5};
+int k = 2;
+k = k % arr.length; // handle k > length
+int[] rotated = new int[arr.length];
+for (int i = 0; i < arr.length; i++) {
+    rotated[(i + k) % arr.length] = arr[i]; // shift position
+}
+System.out.println(Arrays.toString(rotated));
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="rotate-cpp">
+    <pre><code class="language-cpp">// C++
+int arr[] = {1, 2, 3, 4, 5};
+int n = 5, k = 2;
+k = k % n;
+int rotated[5];
+for (int i = 0; i < n; i++) {
+    rotated[(i + k) % n] = arr[i];
+}
+for (int x : rotated) cout << x << " ";
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="rotate-python">
+    <pre><code class="language-python"># Python
+arr = [1, 2, 3, 4, 5]
+k = 2 % len(arr)
+rotated = arr[-k:] + arr[:-k]  # slicing trick
+print(rotated)
+</code></pre>
+  </div>
+
+  <!-- 3. Find the Second Largest Element -->
+  <div class="font-semibold mt-4 mb-2">3. Find the Second Largest Element</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Find the second largest unique number in the array.</p>
+  <p class="text-gray-700"><strong>Input:</strong> [10, 20, 4, 45, 99] <br><strong>Output:</strong> 45</p>
+  <p class="text-gray-700"><strong>Explanation:</strong> Track largest and second largest while iterating.</p>
+
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="second-java">Java</button>
+    <button class="tab-btn" data-tab="second-cpp">C++</button>
+    <button class="tab-btn" data-tab="second-python">Python</button>
+  </div>
+  <div class="tab-content" id="second-java">
+    <pre><code class="language-java">// Java
+int[] arr = {10, 20, 4, 45, 99};
+int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
+for (int num : arr) {
+    if (num > first) { // update both
+        second = first;
+        first = num;
+    } else if (num > second && num != first) {
+        second = num;
+    }
+}
+System.out.println("Second Largest: " + second);
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="second-cpp">
+    <pre><code class="language-cpp">// C++
+int arr[] = {10, 20, 4, 45, 99};
+int n = 5;
+int first = INT_MIN, second = INT_MIN;
+for (int i = 0; i < n; i++) {
+    if (arr[i] > first) {
+        second = first;
+        first = arr[i];
+    } else if (arr[i] > second && arr[i] != first) {
+        second = arr[i];
+    }
+}
+cout << "Second Largest: " << second;
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="second-python">
+    <pre><code class="language-python"># Python
+arr = [10, 20, 4, 45, 99]
+unique_sorted = sorted(set(arr), reverse=True)
+print("Second Largest:", unique_sorted[1])
+</code></pre>
+  </div>
+
+  <hr class="my-4">
+
+  <h3 class="text-2xl font-bold text-indigo-600 mb-2">5 Important Interview-Only Array Questions</h3>
+  <ul class="list-decimal ml-6 mb-3 text-gray-700">
+    <li>Find the missing number in an array from 1 to n — 
+      <a href="https://leetcode.com/problems/missing-number/" target="_blank" class="text-indigo-500 underline">LeetCode</a> | 
+      <a href="https://www.geeksforgeeks.org/find-the-missing-number/" target="_blank" class="text-indigo-500 underline">GFG</a>
+    </li>
+    <li>Find the subarray with the maximum sum (Kadane’s Algorithm) — 
+      <a href="https://leetcode.com/problems/maximum-subarray/" target="_blank" class="text-indigo-500 underline">LeetCode</a> | 
+      <a href="https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/" target="_blank" class="text-indigo-500 underline">GFG</a>
+    </li>
+    <li>Find the intersection of two sorted arrays — 
+      <a href="https://leetcode.com/problems/intersection-of-two-arrays-ii/" target="_blank" class="text-indigo-500 underline">LeetCode</a> | 
+      <a href="https://www.geeksforgeeks.org/intersection-of-two-sorted-arrays/" target="_blank" class="text-indigo-500 underline">GFG</a>
+    </li>
+    <li>Move all zeros to the end without changing the order of non-zero elements — 
+      <a href="https://leetcode.com/problems/move-zeroes/" target="_blank" class="text-indigo-500 underline">LeetCode</a> | 
+      <a href="https://www.geeksforgeeks.org/move-zeroes-end-array/" target="_blank" class="text-indigo-500 underline">GFG</a>
+    </li>
+    <li>Check if an array contains duplicate elements within k distance — 
+      <a href="https://leetcode.com/problems/contains-duplicate-ii/" target="_blank" class="text-indigo-500 underline">LeetCode</a> | 
+      <a href="https://www.geeksforgeeks.org/check-given-array-contains-duplicate-elements-within-k-distance/" target="_blank" class="text-indigo-500 underline">GFG</a>
+    </li>
+  </ul>
+
+  <div class="mt-2 text-sm text-gray-600">
+    Arrays are the foundation of most algorithms. Mastering them helps in understanding advanced data structures like linked lists, stacks, queues, heaps, and hash tables.
+  </div>
+</section>
+
+<section class="topic-section border-indigo-500" id="linkedlists">
+  <h2 class="text-3xl font-bold text-indigo-700 flex items-center mb-4">
+    <i class="fas fa-link mr-2"></i>Linked Lists
+  </h2>
+  <p class="mb-4 text-gray-700">
+    A <strong>Linked List</strong> is a linear data structure where elements (nodes) are connected using pointers. Each node contains data and a reference (or link) to the next (and/or previous) node. Linked lists are dynamic in size and allow efficient insertions/deletions.
+  </p>
+
+  <!-- Navigation for subtypes -->
+  <div class="mb-6">
+    <a href="#singly" class="text-indigo-600 hover:underline mr-4">Singly Linked List</a>
+    <a href="#doubly" class="text-indigo-600 hover:underline mr-4">Doubly Linked List</a>
+    <a href="#circular-singly" class="text-indigo-600 hover:underline mr-4">Circular Singly</a>
+    <a href="#circular-doubly" class="text-indigo-600 hover:underline">Circular Doubly</a>
+  </div>
+
+  <!-- ===== 1. Singly Linked List ===== -->
+  <div id="singly" class="mb-10">
+    <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Singly Linked List</h3>
+    <p class="mb-3 text-gray-700">
+      Each node contains data and a pointer to the next node. The last node points to <code>NULL</code>.
+    </p>
+    <pre class="bg-gray-100 p-3 rounded mb-4 overflow-x-auto">
+[Head] → [Data|Next] → [Data|Next] → NULL
+    </pre>
+    <table class="table-auto border-collapse border border-gray-400 mb-4">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-400 px-4 py-2">Operation</th>
+          <th class="border border-gray-400 px-4 py-2">Time Complexity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Insert at head</td>
+          <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Insert at end</td>
+          <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Search</td>
+          <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="sll-java">Java</button>
+      <button class="tab-btn" data-tab="sll-cpp">C++</button>
+      <button class="tab-btn" data-tab="sll-python">Python</button>
+    </div>
+    <div class="tab-content" id="sll-java">
+      <pre><code class="language-java">// Java - Insert at Head
+class Node {
+    int data;
+    Node next;
+    Node(int data) { this.data = data; }
+}
+class LinkedList {
+    Node head;
+    void insertAtHead(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="sll-cpp">
+      <pre><code class="language-cpp">// C++ - Insert at Head
+struct Node {
+    int data;
+    Node* next;
+    Node(int val) : data(val), next(nullptr) {}
+};
+class LinkedList {
+    Node* head = nullptr;
+public:
+    void insertAtHead(int data) {
+        Node* newNode = new Node(data);
+        newNode->next = head;
+        head = newNode;
+    }
+};
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="sll-python">
+      <pre><code class="language-python"># Python - Insert at Head
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    def insert_at_head(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+</code></pre>
+    </div>
+    <button onclick="toggleDryRun('sll-dryrun')" class="mt-3 px-4 py-2 bg-blue-200 rounded">Dry Run</button>
+    <div id="sll-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+      Insert 10, then 20:<br>
+      Step 1: Create Node(10) → head = 10<br>
+      Step 2: Create Node(20) → next = head → head = 20
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Used in stacks, adjacency lists, and memory management.</div>
+  </div>
+
+  <!-- ===== 2. Doubly Linked List ===== -->
+  <div id="doubly" class="mb-10">
+    <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Doubly Linked List</h3>
+    <p class="mb-3 text-gray-700">
+      Each node contains data, a pointer to the next node, and a pointer to the previous node. Allows traversal in both directions.
+    </p>
+    <pre class="bg-gray-100 p-3 rounded mb-4 overflow-x-auto">
+NULL &lt;- [Prev|Data|Next] &lt;-&gt; [Prev|Data|Next] &lt;-&gt; [Prev|Data|Next] -&gt; NULL
+    </pre>
+    <table class="table-auto border-collapse border border-gray-400 mb-4">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-400 px-4 py-2">Operation</th>
+          <th class="border border-gray-400 px-4 py-2">Time Complexity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Insert/Delete at head/tail</td>
+          <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Search</td>
+          <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="dll-java">Java</button>
+      <button class="tab-btn" data-tab="dll-cpp">C++</button>
+      <button class="tab-btn" data-tab="dll-python">Python</button>
+    </div>
+    <div class="tab-content" id="dll-java">
+      <pre><code class="language-java">// Java - Insert at Head
+class Node {
+    int data;
+    Node prev, next;
+    Node(int data) { this.data = data; }
+}
+class DoublyLinkedList {
+    Node head;
+    void insertAtHead(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        if (head != null) head.prev = newNode;
+        head = newNode;
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="dll-cpp">
+      <pre><code class="language-cpp">// C++ - Insert at Head
+struct Node {
+    int data;
+    Node* prev;
+    Node* next;
+    Node(int val) : data(val), prev(nullptr), next(nullptr) {}
+};
+class DoublyLinkedList {
+    Node* head = nullptr;
+public:
+    void insertAtHead(int data) {
+        Node* newNode = new Node(data);
+        newNode->next = head;
+        if (head) head->prev = newNode;
+        head = newNode;
+    }
+};
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="dll-python">
+      <pre><code class="language-python"># Python - Insert at Head
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.prev = None
+        self.next = None
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+    def insert_at_head(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        if self.head:
+            self.head.prev = new_node
+        self.head = new_node
+</code></pre>
+    </div>
+    <button onclick="toggleDryRun('dll-dryrun')" class="mt-3 px-4 py-2 bg-blue-200 rounded">Dry Run</button>
+    <div id="dll-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+      Insert 10, then 20:<br>
+      Step 1: Create Node(10) → head = 10<br>
+      Step 2: Create Node(20) → next = head, head.prev = newNode → head = 20
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Used in browser history, LRU cache, and undo-redo features.</div>
+  </div>
+
+  <!-- ===== 3. Circular Singly Linked List ===== -->
+  <div id="circular-singly" class="mb-10">
+    <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Circular Singly Linked List</h3>
+    <p class="mb-3 text-gray-700">
+      Like a singly linked list, but the last node points back to the head, forming a circle. No node points to <code>NULL</code>.
+    </p>
+    <pre class="bg-gray-100 p-3 rounded mb-4 overflow-x-auto">
+[Head] → [Data|Next] → [Data|Next] → ... → [Data|Next] --+
+        ^-----------------------------------------------+
+    </pre>
+    <table class="table-auto border-collapse border border-gray-400 mb-4">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-400 px-4 py-2">Operation</th>
+          <th class="border border-gray-400 px-4 py-2">Time Complexity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Insert at head/tail</td>
+          <td class="border border-gray-400 px-4 py-2">O(1) (with tail pointer)</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Search</td>
+          <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="csl-java">Java</button>
+      <button class="tab-btn" data-tab="csl-cpp">C++</button>
+      <button class="tab-btn" data-tab="csl-python">Python</button>
+    </div>
+    <div class="tab-content" id="csl-java">
+      <pre><code class="language-java">// Java - Insert at End (with tail pointer)
+class Node {
+    int data;
+    Node next;
+    Node(int data) { this.data = data; }
+}
+class CircularSinglyLinkedList {
+    Node tail = null;
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+        if (tail == null) {
+            tail = newNode;
+            tail.next = tail;
+        } else {
+            newNode.next = tail.next;
+            tail.next = newNode;
+            tail = newNode;
+        }
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="csl-cpp">
+      <pre><code class="language-cpp">// C++ - Insert at End (with tail pointer)
+struct Node {
+    int data;
+    Node* next;
+    Node(int val) : data(val), next(nullptr) {}
+};
+class CircularSinglyLinkedList {
+    Node* tail = nullptr;
+public:
+    void insertAtEnd(int data) {
+        Node* newNode = new Node(data);
+        if (!tail) {
+            tail = newNode;
+            tail->next = tail;
+        } else {
+            newNode->next = tail->next;
+            tail->next = newNode;
+            tail = newNode;
+        }
+    }
+};
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="csl-python">
+      <pre><code class="language-python"># Python - Insert at End (with tail pointer)
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class CircularSinglyLinkedList:
+    def __init__(self):
+        self.tail = None
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        if not self.tail:
+            self.tail = new_node
+            self.tail.next = self.tail
+        else:
+            new_node.next = self.tail.next
+            self.tail.next = new_node
+            self.tail = new_node
+</code></pre>
+    </div>
+    <button onclick="toggleDryRun('csl-dryrun')" class="mt-3 px-4 py-2 bg-blue-200 rounded">Dry Run</button>
+    <div id="csl-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+      Insert 10, then 20:<br>
+      Step 1: Create Node(10) → tail = 10, tail.next = tail<br>
+      Step 2: Create Node(20) → newNode.next = tail.next, tail.next = newNode, tail = newNode
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Used in round-robin scheduling, multiplayer games, and circular buffers.</div>
+  </div>
+
+  <!-- ===== 4. Circular Doubly Linked List ===== -->
+  <div id="circular-doubly" class="mb-10">
+    <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Circular Doubly Linked List</h3>
+    <p class="mb-3 text-gray-700">
+      Each node has pointers to both next and previous nodes, and the last node points back to the head (and vice versa).
+    </p>
+    <pre class="bg-gray-100 p-3 rounded mb-4 overflow-x-auto">
+&lt;--&gt; [Prev|Data|Next] &lt;--&gt; [Prev|Data|Next] &lt;--&gt; ... &lt;--&gt; [Prev|Data|Next] &lt;--&gt;
+^-----------------------------------------------------------------------^
+    </pre>
+    <table class="table-auto border-collapse border border-gray-400 mb-4">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-400 px-4 py-2">Operation</th>
+          <th class="border border-gray-400 px-4 py-2">Time Complexity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Insert/Delete at head/tail</td>
+          <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Search</td>
+          <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="cdll-java">Java</button>
+      <button class="tab-btn" data-tab="cdll-cpp">C++</button>
+      <button class="tab-btn" data-tab="cdll-python">Python</button>
+    </div>
+    <div class="tab-content" id="cdll-java">
+      <pre><code class="language-java">// Java - Insert at End (with tail pointer)
+class Node {
+    int data;
+    Node prev, next;
+    Node(int data) { this.data = data; }
+}
+class CircularDoublyLinkedList {
+    Node tail = null;
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+        if (tail == null) {
+            tail = newNode;
+            tail.next = tail;
+            tail.prev = tail;
+        } else {
+            newNode.next = tail.next;
+            newNode.prev = tail;
+            tail.next.prev = newNode;
+            tail.next = newNode;
+            tail = newNode;
+        }
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="cdll-cpp">
+      <pre><code class="language-cpp">// C++ - Insert at End (with tail pointer)
+struct Node {
+    int data;
+    Node* prev;
+    Node* next;
+    Node(int val) : data(val), prev(nullptr), next(nullptr) {}
+};
+class CircularDoublyLinkedList {
+    Node* tail = nullptr;
+public:
+    void insertAtEnd(int data) {
+        Node* newNode = new Node(data);
+        if (!tail) {
+            tail = newNode;
+            tail->next = tail;
+            tail->prev = tail;
+        } else {
+            newNode->next = tail->next;
+            newNode->prev = tail;
+            tail->next->prev = newNode;
+            tail->next = newNode;
+            tail = newNode;
+        }
+    }
+};
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="cdll-python">
+      <pre><code class="language-python"># Python - Insert at End (with tail pointer)
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.prev = None
+        self.next = None
+
+class CircularDoublyLinkedList:
+    def __init__(self):
+        self.tail = None
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        if not self.tail:
+            self.tail = new_node
+            self.tail.next = self.tail
+            self.tail.prev = self.tail
+        else:
+            new_node.next = self.tail.next
+            new_node.prev = self.tail
+            self.tail.next.prev = new_node
+            self.tail.next = new_node
+            self.tail = new_node
+</code></pre>
+    </div>
+    <button onclick="toggleDryRun('cdll-dryrun')" class="mt-3 px-4 py-2 bg-blue-200 rounded">Dry Run</button>
+    <div id="cdll-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+      Insert 10, then 20:<br>
+      Step 1: Create Node(10) → tail = 10, tail.next = tail, tail.prev = tail<br>
+      Step 2: Create Node(20) → newNode.next = tail.next, newNode.prev = tail, tail.next.prev = newNode, tail.next = newNode, tail = newNode
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Used in music/video playlists, navigation systems, and advanced caches.</div>
+  </div>
+
+  <!-- Important Questions -->
+  <div class="mt-8">
+    <h4 class="text-xl font-semibold text-indigo-700">Important Linked List Questions</h4>
+    <ul class="list-disc list-inside text-gray-700">
+      <li><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" class="text-indigo-600 hover:underline">Reverse a Linked List</a></li>
+      <li><a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank" class="text-indigo-600 hover:underline">Merge Two Sorted Lists</a></li>
+      <li><a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank" class="text-indigo-600 hover:underline">Detect Cycle in a Linked List</a></li>
+      <li><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank" class="text-indigo-600 hover:underline">Remove Nth Node from End</a></li>
+      <li><a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank" class="text-indigo-600 hover:underline">Check if Linked List is Palindrome</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- STACKS -->
+
+<section class="topic-section border-yellow-400" id="stacks">
+  <h2 class="text-3xl font-bold text-yellow-500 flex items-center mb-4">
+    <i class="fas fa-layer-group mr-2"></i>Stacks
+  </h2>
+  <p class="mb-4 text-gray-700">
+    A <strong>Stack</strong> is a linear data structure that follows the <strong>LIFO (Last-In-First-Out)</strong> principle. The last element inserted is the first one to be removed. Stacks are used for function call management, undo operations, expression evaluation, and more.
+  </p>
+  <pre class="bg-gray-100 p-3 rounded mb-4 overflow-x-auto">
+Top
+ ↑
+[ 30 ] ← push/pop
+[ 20 ]
+[ 10 ] ← Bottom
+  </pre>
+  <table class="table-auto border-collapse border border-gray-400 mb-4">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="border border-gray-400 px-4 py-2">Operation</th>
+        <th class="border border-gray-400 px-4 py-2">Time Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Push</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Pop</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Peek/Top</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Array-based Stack -->
+  <h3 class="text-xl font-semibold text-yellow-600 mt-6 mb-2">Stack Using Array (from scratch)</h3>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="stackarr-java">Java</button>
+    <button class="tab-btn" data-tab="stackarr-cpp">C++</button>
+    <button class="tab-btn" data-tab="stackarr-python">Python</button>
+  </div>
+  <div class="tab-content" id="stackarr-java">
+    <pre><code class="language-java">// Java: Stack using Array
+class Stack {
+    int max = 1000;
+    int[] arr = new int[max];
+    int top = -1;
+    void push(int x) {
+        if (top == max - 1) System.out.println("Overflow");
+        else arr[++top] = x;
+    }
+    int pop() {
+        if (top == -1) { System.out.println("Underflow"); return -1; }
+        return arr[top--];
+    }
+    int peek() {
+        if (top == -1) { System.out.println("Empty"); return -1; }
+        return arr[top];
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="stackarr-cpp">
+    <pre><code class="language-cpp">// C++: Stack using Array
+class Stack {
+    int arr[1000];
+    int top;
+public:
+    Stack() { top = -1; }
+    void push(int x) {
+        if (top == 999) std::cout << "Overflow\n";
+        else arr[++top] = x;
+    }
+    int pop() {
+        if (top == -1) { std::cout << "Underflow\n"; return -1; }
+        return arr[top--];
+    }
+    int peek() {
+        if (top == -1) { std::cout << "Empty\n"; return -1; }
+        return arr[top];
+    }
+};
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="stackarr-python">
+    <pre><code class="language-python"># Python: Stack using List (Array)
+class Stack:
+    def __init__(self):
+        self.arr = []
+    def push(self, x):
+        self.arr.append(x)
+    def pop(self):
+        if not self.arr:
+            print("Underflow")
+            return None
+        return self.arr.pop()
+    def peek(self):
+        if not self.arr:
+            print("Empty")
+            return None
+        return self.arr[-1]
+</code></pre>
+  </div>
+  <button onclick="toggleDryRun('stackarr-dryrun')" class="mt-3 px-4 py-2 bg-yellow-200 rounded">Dry Run</button>
+  <div id="stackarr-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+    <strong>Push 10, 20, 30:</strong><br>
+    Stack: [10]<br>
+    Stack: [10, 20]<br>
+    Stack: [10, 20, 30]<br>
+    <strong>Pop:</strong><br>
+    Stack: [10, 20] (30 removed)
+  </div>
+
+  <!-- Linked List-based Stack -->
+  <h3 class="text-xl font-semibold text-yellow-600 mt-8 mb-2">Stack Using Linked List (from scratch)</h3>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="stackll-java">Java</button>
+    <button class="tab-btn" data-tab="stackll-cpp">C++</button>
+    <button class="tab-btn" data-tab="stackll-python">Python</button>
+  </div>
+  <div class="tab-content" id="stackll-java">
+    <pre><code class="language-java">// Java: Stack using Linked List
+class Node {
+    int data;
+    Node next;
+    Node(int d) { data = d; }
+}
+class Stack {
+    Node top;
+    void push(int x) {
+        Node n = new Node(x);
+        n.next = top;
+        top = n;
+    }
+    int pop() {
+        if (top == null) { System.out.println("Underflow"); return -1; }
+        int val = top.data;
+        top = top.next;
+        return val;
+    }
+    int peek() {
+        if (top == null) { System.out.println("Empty"); return -1; }
+        return top.data;
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="stackll-cpp">
+    <pre><code class="language-cpp">// C++: Stack using Linked List
+struct Node {
+    int data;
+    Node* next;
+    Node(int d) : data(d), next(nullptr) {}
+};
+class Stack {
+    Node* top;
+public:
+    Stack() { top = nullptr; }
+    void push(int x) {
+        Node* n = new Node(x);
+        n->next = top;
+        top = n;
+    }
+    int pop() {
+        if (!top) { std::cout << "Underflow\n"; return -1; }
+        int val = top->data;
+        Node* temp = top;
+        top = top->next;
+        delete temp;
+        return val;
+    }
+    int peek() {
+        if (!top) { std::cout << "Empty\n"; return -1; }
+        return top->data;
+    }
+};
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="stackll-python">
+    <pre><code class="language-python"># Python: Stack using Linked List
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+class Stack:
+    def __init__(self):
+        self.top = None
+    def push(self, x):
+        n = Node(x)
+        n.next = self.top
+        self.top = n
+    def pop(self):
+        if not self.top:
+            print("Underflow")
+            return None
+        val = self.top.data
+        self.top = self.top.next
+        return val
+    def peek(self):
+        if not self.top:
+            print("Empty")
+            return None
+        return self.top.data
+</code></pre>
+  </div>
+  <button onclick="toggleDryRun('stackll-dryrun')" class="mt-3 px-4 py-2 bg-yellow-200 rounded">Dry Run</button>
+  <div id="stackll-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+    <strong>Push 10, 20, 30:</strong><br>
+    Top → 30 → 20 → 10<br>
+    <strong>Pop:</strong><br>
+    Top → 20 → 10 (30 removed)
+  </div>
+
+  <div class="mt-2 text-sm text-gray-600">
+    <strong>Applications:</strong> Function call stack, undo/redo, syntax parsing, expression evaluation (postfix/infix), backtracking.
+  </div>
+  <div class="mt-4">
+    <h4 class="text-xl font-semibold text-yellow-700">Important Stack Questions</h4>
+    <ul class="list-disc list-inside text-gray-700">
+      <li><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" class="text-yellow-600 hover:underline">Valid Parentheses</a></li>
+      <li><a href="https://leetcode.com/problems/min-stack/" target="_blank" class="text-yellow-600 hover:underline">Min Stack</a></li>
+      <li><a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" class="text-yellow-600 hover:underline">Largest Rectangle in Histogram</a></li>
+      <li><a href="https://leetcode.com/problems/daily-temperatures/" target="_blank" class="text-yellow-600 hover:underline">Daily Temperatures</a></li>
+      <li><a href="https://leetcode.com/problems/implement-queue-using-stacks/" target="_blank" class="text-yellow-600 hover:underline">Queue Using Stacks</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- QUEUES -->
+
+<section class="topic-section border-green-400" id="queues">
+  <h2 class="text-3xl font-bold text-green-600 flex items-center mb-4">
+    <i class="fas fa-stream mr-2"></i>Queues
+  </h2>
+  <p class="mb-4 text-gray-700">
+    A <strong>Queue</strong> is a linear data structure that follows the <strong>FIFO (First-In-First-Out)</strong> principle. The first element inserted is the first one to be removed. Queues are used in scheduling, buffering, and breadth-first search.
+  </p>
+  <pre class="bg-gray-100 p-3 rounded mb-4 overflow-x-auto">
+Front                Rear
+ ↓                    ↓
+[ 10 ] [ 20 ] [ 30 ] [   ]
+  </pre>
+  <table class="table-auto border-collapse border border-gray-400 mb-4">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="border border-gray-400 px-4 py-2">Operation</th>
+        <th class="border border-gray-400 px-4 py-2">Time Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Enqueue (push)</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Dequeue (pop)</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Peek (front)</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Array-based Queue -->
+  <h3 class="text-xl font-semibold text-green-600 mt-6 mb-2">Queue Using Array (from scratch)</h3>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="queuearr-java">Java</button>
+    <button class="tab-btn" data-tab="queuearr-cpp">C++</button>
+    <button class="tab-btn" data-tab="queuearr-python">Python</button>
+  </div>
+  <div class="tab-content" id="queuearr-java">
+    <pre><code class="language-java">// Java: Queue using Array (circular)
+class Queue {
+    int max = 1000;
+    int[] arr = new int[max];
+    int front = 0, rear = 0, size = 0;
+    void enqueue(int x) {
+        if (size == max) System.out.println("Overflow");
+        else {
+            arr[rear] = x;
+            rear = (rear + 1) % max;
+            size++;
+        }
+    }
+    int dequeue() {
+        if (size == 0) { System.out.println("Underflow"); return -1; }
+        int val = arr[front];
+        front = (front + 1) % max;
+        size--;
+        return val;
+    }
+    int peek() {
+        if (size == 0) { System.out.println("Empty"); return -1; }
+        return arr[front];
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="queuearr-cpp">
+    <pre><code class="language-cpp">// C++: Queue using Array (circular)
+class Queue {
+    int arr[1000];
+    int front, rear, size;
+public:
+    Queue() { front = rear = size = 0; }
+    void enqueue(int x) {
+        if (size == 1000) std::cout << "Overflow\n";
+        else {
+            arr[rear] = x;
+            rear = (rear + 1) % 1000;
+            size++;
+        }
+    }
+    int dequeue() {
+        if (size == 0) { std::cout << "Underflow\n"; return -1; }
+        int val = arr[front];
+        front = (front + 1) % 1000;
+        size--;
+        return val;
+    }
+    int peek() {
+        if (size == 0) { std::cout << "Empty\n"; return -1; }
+        return arr[front];
+    }
+};
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="queuearr-python">
+    <pre><code class="language-python"># Python: Queue using List (circular)
+class Queue:
+    def __init__(self, max_size=1000):
+        self.arr = [None]*max_size
+        self.front = 0
+        self.rear = 0
+        self.size = 0
+        self.max = max_size
+    def enqueue(self, x):
+        if self.size == self.max:
+            print("Overflow")
+        else:
+            self.arr[self.rear] = x
+            self.rear = (self.rear + 1) % self.max
+            self.size += 1
+    def dequeue(self):
+        if self.size == 0:
+            print("Underflow")
+            return None
+        val = self.arr[self.front]
+        self.front = (self.front + 1) % self.max
+        self.size -= 1
+        return val
+    def peek(self):
+        if self.size == 0:
+            print("Empty")
+            return None
+        return self.arr[self.front]
+</code></pre>
+  </div>
+  <button onclick="toggleDryRun('queuearr-dryrun')" class="mt-3 px-4 py-2 bg-green-200 rounded">Dry Run</button>
+  <div id="queuearr-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+    <strong>Enqueue 10, 20, 30:</strong><br>
+    Queue: [10]<br>
+    Queue: [10, 20]<br>
+    Queue: [10, 20, 30]<br>
+    <strong>Dequeue:</strong><br>
+    Queue: [20, 30] (10 removed)
+  </div>
+
+  <!-- Linked List-based Queue -->
+  <h3 class="text-xl font-semibold text-green-600 mt-8 mb-2">Queue Using Linked List (from scratch)</h3>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="queuell-java">Java</button>
+    <button class="tab-btn" data-tab="queuell-cpp">C++</button>
+    <button class="tab-btn" data-tab="queuell-python">Python</button>
+  </div>
+  <div class="tab-content" id="queuell-java">
+    <pre><code class="language-java">// Java: Queue using Linked List
+class Node {
+    int data;
+    Node next;
+    Node(int d) { data = d; }
+}
+class Queue {
+    Node front, rear;
+    void enqueue(int x) {
+        Node n = new Node(x);
+        if (rear == null) front = rear = n;
+        else {
+            rear.next = n;
+            rear = n;
+        }
+    }
+    int dequeue() {
+        if (front == null) { System.out.println("Underflow"); return -1; }
+        int val = front.data;
+        front = front.next;
+        if (front == null) rear = null;
+        return val;
+    }
+    int peek() {
+        if (front == null) { System.out.println("Empty"); return -1; }
+        return front.data;
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="queuell-cpp">
+    <pre><code class="language-cpp">// C++: Queue using Linked List
+struct Node {
+    int data;
+    Node* next;
+    Node(int d) : data(d), next(nullptr) {}
+};
+class Queue {
+    Node* front;
+    Node* rear;
+public:
+    Queue() { front = rear = nullptr; }
+    void enqueue(int x) {
+        Node* n = new Node(x);
+        if (!rear) front = rear = n;
+        else {
+            rear->next = n;
+            rear = n;
+        }
+    }
+    int dequeue() {
+        if (!front) { std::cout << "Underflow\n"; return -1; }
+        int val = front->data;
+        Node* temp = front;
+        front = front->next;
+        if (!front) rear = nullptr;
+        delete temp;
+        return val;
+    }
+    int peek() {
+        if (!front) { std::cout << "Empty\n"; return -1; }
+        return front->data;
+    }
+};
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="queuell-python">
+    <pre><code class="language-python"># Python: Queue using Linked List
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+class Queue:
+    def __init__(self):
+        self.front = self.rear = None
+    def enqueue(self, x):
+        n = Node(x)
+        if not self.rear:
+            self.front = self.rear = n
+        else:
+            self.rear.next = n
+            self.rear = n
+    def dequeue(self):
+        if not self.front:
+            print("Underflow")
+            return None
+        val = self.front.data
+        self.front = self.front.next
+        if not self.front:
+            self.rear = None
+        return val
+    def peek(self):
+        if not self.front:
+            print("Empty")
+            return None
+        return self.front.data
+</code></pre>
+  </div>
+  <button onclick="toggleDryRun('queuell-dryrun')" class="mt-3 px-4 py-2 bg-green-200 rounded">Dry Run</button>
+  <div id="queuell-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+    <strong>Enqueue 10, 20, 30:</strong><br>
+    Front → 10 → 20 → 30 ← Rear<br>
+    <strong>Dequeue:</strong><br>
+    Front → 20 → 30 ← Rear (10 removed)
+  </div>
+
+  <div class="mt-2 text-sm text-gray-600">
+    <strong>Applications:</strong> CPU scheduling, BFS, data buffering, printer queue, asynchronous data transfer.
+  </div>
+  <div class="mt-4">
+    <h4 class="text-xl font-semibold text-green-700">Important Queue Questions</h4>
+    <ul class="list-disc list-inside text-gray-700">
+      <li><a href="https://leetcode.com/problems/implement-queue-using-stacks/" target="_blank" class="text-green-600 hover:underline">Queue Using Stacks</a></li>
+      <li><a href="https://leetcode.com/problems/number-of-islands/" target="_blank" class="text-green-600 hover:underline">Number of Islands (BFS)</a></li>
+      <li><a href="https://leetcode.com/problems/rotting-oranges/" target="_blank" class="text-green-600 hover:underline">Rotting Oranges</a></li>
+      <li><a href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank" class="text-green-600 hover:underline">Sliding Window Maximum</a></li>
+      <li><a href="https://leetcode.com/problems/design-circular-queue/" target="_blank" class="text-green-600 hover:underline">Design Circular Queue</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- TREES -->
+
+<section class="topic-section border-green-600" id="trees">
+  <h2 class="text-3xl font-bold text-green-700 flex items-center mb-4">
+    <i class="fas fa-tree mr-2"></i>Trees
+  </h2>
+  <p class="mb-4 text-gray-700">
+    A <strong>Tree</strong> is a hierarchical data structure with a root node and zero or more child nodes. Trees are used for representing hierarchical relationships, efficient searching, and sorting.
+  </p>
+  <div class="mb-6">
+    <a href="#binary-tree" class="text-green-600 hover:underline mr-4">Binary Tree</a>
+    <a href="#bst" class="text-green-600 hover:underline mr-4">Binary Search Tree</a>
+    <a href="#avl" class="text-green-600 hover:underline mr-4">AVL Tree</a>
+    <a href="#heap" class="text-green-600 hover:underline mr-4">Heap</a>
+    <a href="#trie" class="text-green-600 hover:underline">Trie</a>
+  </div>
+
+ 
+  <!-- 1. Binary Tree -->
+  <div id="binary-tree" class="mb-10">
+    <h3 class="text-2xl font-semibold text-green-700 mb-2">Binary Tree</h3>
+    <p class="mb-3 text-gray-700">
+      A <strong>Binary Tree</strong> is a tree in which each node has at most two children (left and right). Used as the basis for many other tree structures.
+    </p>
+    <pre class="bg-gray-100 p-3 rounded mb-4 overflow-x-auto">
+        1
+       / \
+      2   3
+     / \
+    4   5
+    </pre>
+    <table class="table-auto border-collapse border border-gray-400 mb-4">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-400 px-4 py-2">Operation</th>
+          <th class="border border-gray-400 px-4 py-2">Time Complexity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Insert/Search</td>
+          <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Traversal</td>
+          <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="font-semibold mb-2">Example: Inorder, Preorder, and Postorder Traversal (Recursive)</div>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="btree-java">Java</button>
+      <button class="tab-btn" data-tab="btree-cpp">C++</button>
+      <button class="tab-btn" data-tab="btree-python">Python</button>
+    </div>
+    <div class="tab-content" id="btree-java">
+      <pre><code class="language-java">// Java: Inorder Traversal
+void inorder(Node root) {
+    if (root == null) return;
+    inorder(root.left);
+    System.out.print(root.data + " ");
+    inorder(root.right);
+}
+
+// Java: Preorder Traversal
+void preorder(Node root) {
+    if (root == null) return;
+    System.out.print(root.data + " ");
+    preorder(root.left);
+    preorder(root.right);
+}
+
+// Java: Postorder Traversal
+void postorder(Node root) {
+    if (root == null) return;
+    postorder(root.left);
+    postorder(root.right);
+    System.out.print(root.data + " ");
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="btree-cpp">
+      <pre><code class="language-cpp">// C++: Inorder Traversal
+void inorder(Node* root) {
+    if (!root) return;
+    inorder(root->left);
+    std::cout << root->data << " ";
+    inorder(root->right);
+}
+
+// C++: Preorder Traversal
+void preorder(Node* root) {
+    if (!root) return;
+    std::cout << root->data << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
+
+// C++: Postorder Traversal
+void postorder(Node* root) {
+    if (!root) return;
+    postorder(root->left);
+    postorder(root->right);
+    std::cout << root->data << " ";
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="btree-python">
+      <pre><code class="language-python"># Python: Inorder Traversal
+def inorder(root):
+    if not root: return
+    inorder(root.left)
+    print(root.data, end=" ")
+    inorder(root.right)
+
+# Python: Preorder Traversal
+def preorder(root):
+    if not root: return
+    print(root.data, end=" ")
+    preorder(root.left)
+    preorder(root.right)
+
+# Python: Postorder Traversal
+def postorder(root):
+    if not root: return
+    postorder(root.left)
+    postorder(root.right)
+    print(root.data, end=" ")
+</code></pre>
+    </div>
+    <button onclick="toggleDryRun('btree-dryrun')" class="mt-3 px-4 py-2 bg-green-200 rounded">Dry Run</button>
+    <div id="btree-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+      <strong>Inorder Traversal:</strong><br>
+      Visit left subtree → root → right subtree.<br>
+      For above tree: <b>4 2 5 1 3</b><br><br>
+      <strong>Preorder Traversal:</strong><br>
+      Visit root → left subtree → right subtree.<br>
+      For above tree: <b>1 2 4 5 3</b><br><br>
+      <strong>Postorder Traversal:</strong><br>
+      Visit left subtree → right subtree → root.<br>
+      For above tree: <b>4 5 2 3 1</b>
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Used in expression trees, file systems, and as the basis for BSTs and heaps.</div>
+  </div>
+
+  <!-- 2. Binary Search Tree -->
+  <div id="bst" class="mb-10">
+    <h3 class="text-2xl font-semibold text-green-700 mb-2">Binary Search Tree (BST)</h3>
+    <p class="mb-3 text-gray-700">
+      A <strong>BST</strong> is a binary tree where for each node, left child &lt; node &lt; right child. Enables efficient search, insert, and delete.
+    </p>
+    <pre class="bg-gray-100 p-3 rounded mb-4 overflow-x-auto">
+        8
+       / \
+      3   10
+     / \    \
+    1   6    14
+    </pre>
+    <table class="table-auto border-collapse border border-gray-400 mb-4">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-400 px-4 py-2">Operation</th>
+          <th class="border border-gray-400 px-4 py-2">Average</th>
+          <th class="border border-gray-400 px-4 py-2">Worst</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Search/Insert/Delete</td>
+          <td class="border border-gray-400 px-4 py-2">O(log n)</td>
+          <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="font-semibold mb-2">Example: Insert in BST</div>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="bst-java">Java</button>
+      <button class="tab-btn" data-tab="bst-cpp">C++</button>
+      <button class="tab-btn" data-tab="bst-python">Python</button>
+    </div>
+    <div class="tab-content" id="bst-java">
+      <pre><code class="language-java">// Java: Insert in BST
+Node insert(Node root, int key) {
+    if (root == null) return new Node(key);
+    if (key < root.data) root.left = insert(root.left, key);
+    else root.right = insert(root.right, key);
+    return root;
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="bst-cpp">
+      <pre><code class="language-cpp">// C++: Insert in BST
+Node* insert(Node* root, int key) {
+    if (!root) return new Node(key);
+    if (key < root->data) root->left = insert(root->left, key);
+    else root->right = insert(root->right, key);
+    return root;
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="bst-python">
+      <pre><code class="language-python"># Python: Insert in BST
+def insert(root, key):
+    if not root: return Node(key)
+    if key < root.data:
+        root.left = insert(root.left, key)
+    else:
+        root.right = insert(root.right, key)
+    return root
+</code></pre>
+    </div>
+    <button onclick="toggleDryRun('bst-dryrun')" class="mt-3 px-4 py-2 bg-green-200 rounded">Dry Run</button>
+    <div id="bst-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+      <strong>Insert 6 into BST:</strong><br>
+      8 → 3 → 6 (inserted as right child of 3)
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Used in databases, searching, and range queries.</div>
+  </div>
+
+  <!-- 3. AVL Tree -->
+  <div id="avl" class="mb-10">
+    <h3 class="text-2xl font-semibold text-green-700 mb-2">AVL Tree</h3>
+    <p class="mb-3 text-gray-700">
+      An <strong>AVL Tree</strong> is a self-balancing BST where the heights of left and right subtrees differ by at most 1 for every node. Rotations are used to maintain balance.
+    </p>
+    <pre class="bg-gray-100 p-3 rounded mb-4 overflow-x-auto">
+        30
+       /  \
+     20    40
+    /         \
+   10         50
+    </pre>
+    <table class="table-auto border-collapse border border-gray-400 mb-4">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-400 px-4 py-2">Operation</th>
+          <th class="border border-gray-400 px-4 py-2">Time Complexity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Search/Insert/Delete</td>
+          <td class="border border-gray-400 px-4 py-2">O(log n)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="font-semibold mb-2">Example: AVL Node Structure</div>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="avl-java">Java</button>
+      <button class="tab-btn" data-tab="avl-cpp">C++</button>
+      <button class="tab-btn" data-tab="avl-python">Python</button>
+    </div>
+    <div class="tab-content" id="avl-java">
+      <pre><code class="language-java">// Java: AVL Node
+class Node {
+    int data, height;
+    Node left, right;
+    Node(int d) { data = d; height = 1; }
+}
+// Rotations are needed for balancing (see GFG for full code)
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="avl-cpp">
+      <pre><code class="language-cpp">// C++: AVL Node
+struct Node {
+    int data, height;
+    Node *left, *right;
+    Node(int d) : data(d), height(1), left(nullptr), right(nullptr) {}
+};
+// Rotations are needed for balancing (see GFG for full code)
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="avl-python">
+      <pre><code class="language-python"># Python: AVL Node
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+        self.height = 1
+# Rotations are needed for balancing (see GFG for full code)
+</code></pre>
+    </div>
+    <button onclick="toggleDryRun('avl-dryrun')" class="mt-3 px-4 py-2 bg-green-200 rounded">Dry Run</button>
+    <div id="avl-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+      <strong>Insert 50:</strong><br>
+      Causes imbalance at 40, so left rotation is performed.
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Used in databases and memory management where balanced search is needed.</div>
+  </div>
+
+  <!-- 4. Heap -->
+  <div id="heap" class="mb-10">
+    <h3 class="text-2xl font-semibold text-green-700 mb-2">Heap (Min/Max)</h3>
+    <p class="mb-3 text-gray-700">
+      A <strong>Heap</strong> is a complete binary tree where each node is greater (max-heap) or smaller (min-heap) than its children. Used for priority queues and heap sort.
+    </p>
+    <pre class="bg-gray-100 p-3 rounded mb-4 overflow-x-auto">
+      Max-Heap:
+        50
+       /  \
+     30    40
+    /  \
+   10  20
+    </pre>
+    <table class="table-auto border-collapse border border-gray-400 mb-4">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-400 px-4 py-2">Operation</th>
+          <th class="border border-gray-400 px-4 py-2">Time Complexity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Insert/Delete</td>
+          <td class="border border-gray-400 px-4 py-2">O(log n)</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Get Max/Min</td>
+          <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="font-semibold mb-2">Example: Insert in Max-Heap (Array Representation)</div>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="heap-java">Java</button>
+      <button class="tab-btn" data-tab="heap-cpp">C++</button>
+      <button class="tab-btn" data-tab="heap-python">Python</button>
+    </div>
+    <div class="tab-content" id="heap-java">
+      <pre><code class="language-java">// Java: Max-Heap using PriorityQueue
+import java.util.PriorityQueue;
+PriorityQueue&lt;Integer&gt; maxHeap = new PriorityQueue&lt;&gt;(Collections.reverseOrder());
+maxHeap.add(10); maxHeap.add(20); maxHeap.add(5);
+System.out.println(maxHeap.peek()); // 20
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="heap-cpp">
+      <pre><code class="language-cpp">// C++: Max-Heap using priority_queue
+#include &lt;queue&gt;
+std::priority_queue&lt;int&gt; maxHeap;
+maxHeap.push(10); maxHeap.push(20); maxHeap.push(5);
+std::cout << maxHeap.top(); // 20
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="heap-python">
+      <pre><code class="language-python"># Python: Max-Heap using heapq (invert sign)
+import heapq
+maxHeap = []
+heapq.heappush(maxHeap, -10)
+heapq.heappush(maxHeap, -20)
+heapq.heappush(maxHeap, -5)
+print(-maxHeap[0]) # 20
+</code></pre>
+    </div>
+    <button onclick="toggleDryRun('heap-dryrun')" class="mt-3 px-4 py-2 bg-green-200 rounded">Dry Run</button>
+    <div id="heap-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+      <strong>Insert 20:</strong><br>
+      20 is placed at next available spot, then swapped up to maintain heap property.
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Used in priority queues, scheduling, and heap sort.</div>
+  </div>
+
+  <!-- 5. Trie -->
+  <div id="trie" class="mb-10">
+    <h3 class="text-2xl font-semibold text-green-700 mb-2">Trie (Prefix Tree)</h3>
+    <p class="mb-3 text-gray-700">
+      A <strong>Trie</strong> is a tree-like data structure used to store strings efficiently for prefix-based searching.
+    </p>
+    <pre class="bg-gray-100 p-3 rounded mb-4 overflow-x-auto">
+Root
+ |
+ 'c'
+  |
+ 'a'
+  |
+ 't' (end)
+    </pre>
+    <table class="table-auto border-collapse border border-gray-400 mb-4">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-400 px-4 py-2">Operation</th>
+          <th class="border border-gray-400 px-4 py-2">Time Complexity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">Insert/Search</td>
+          <td class="border border-gray-400 px-4 py-2">O(L) (L = word length)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="font-semibold mb-2">Example: Insert in Trie</div>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="trie-java">Java</button>
+      <button class="tab-btn" data-tab="trie-cpp">C++</button>
+      <button class="tab-btn" data-tab="trie-python">Python</button>
+    </div>
+    <div class="tab-content" id="trie-java">
+      <pre><code class="language-java">// Java: Trie Node and Insert
+class TrieNode {
+    TrieNode[] children = new TrieNode[26];
+    boolean isEnd = false;
+}
+void insert(TrieNode root, String word) {
+    TrieNode node = root;
+    for (char c : word.toCharArray()) {
+        int idx = c - 'a';
+        if (node.children[idx] == null)
+            node.children[idx] = new TrieNode();
+        node = node.children[idx];
+    }
+    node.isEnd = true;
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="trie-cpp">
+      <pre><code class="language-cpp">// C++: Trie Node and Insert
+struct TrieNode {
+    TrieNode* children[26];
+    bool isEnd;
+    TrieNode() : isEnd(false) {
+        for (int i = 0; i < 26; i++) children[i] = nullptr;
+    }
+};
+void insert(TrieNode* root, string word) {
+    TrieNode* node = root;
+    for (char c : word) {
+        int idx = c - 'a';
+        if (!node->children[idx])
+            node->children[idx] = new TrieNode();
+        node = node->children[idx];
+    }
+    node->isEnd = true;
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="trie-python">
+      <pre><code class="language-python"># Python: Trie Node and Insert
+class TrieNode:
+    def __init__(self):
+        self.children = [None]*26
+        self.isEnd = False
+def insert(root, word):
+    node = root
+    for c in word:
+        idx = ord(c) - ord('a')
+        if not node.children[idx]:
+            node.children[idx] = TrieNode()
+        node = node.children[idx]
+    node.isEnd = True
+</code></pre>
+    </div>
+    <button onclick="toggleDryRun('trie-dryrun')" class="mt-3 px-4 py-2 bg-green-200 rounded">Dry Run</button>
+    <div id="trie-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+      <strong>Insert "cat":</strong><br>
+      Create nodes for 'c', 'a', 't' and mark end at 't'.
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Used in autocomplete, spell-check, and IP routing.</div>
+  </div>
+
+  <!-- Important Questions -->
+  <div class="mt-8">
+    <h4 class="text-xl font-semibold text-green-700">Important Tree Questions</h4>
+    <ul class="list-disc list-inside text-gray-700">
+      <li><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/" target="_blank" class="text-green-600 hover:underline">Binary Tree Inorder Traversal</a></li>
+      <li><a href="https://leetcode.com/problems/validate-binary-search-tree/" target="_blank" class="text-green-600 hover:underline">Validate BST</a></li>
+      <li><a href="https://leetcode.com/problems/balanced-binary-tree/" target="_blank" class="text-green-600 hover:underline">Check Balanced Tree</a></li>
+      <li><a href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/" target="_blank" class="text-green-600 hover:underline">Sorted Array to BST</a></li>
+      <li><a href="https://leetcode.com/problems/implement-trie-prefix-tree/" target="_blank" class="text-green-600 hover:underline">Implement Trie</a></li>
+      <li><a href="https://leetcode.com/problems/serialize-and-deserialize-binary-tree/" target="_blank" class="text-green-600 hover:underline">Serialize and Deserialize Binary Tree</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- GRAPH -->
+
+<section class="topic-section border-blue-500" id="graphs">
+  <h2 class="text-3xl font-bold text-blue-600 flex items-center mb-4">
+    <i class="fas fa-project-diagram mr-2"></i>Graphs
+  </h2>
+  <p class="mb-4 text-gray-700">
+    A <strong>Graph</strong> is a collection of nodes (vertices) and edges (connections). Graphs can be <b>directed</b> or <b>undirected</b>, <b>weighted</b> or <b>unweighted</b>, <b>cyclic</b> or <b>acyclic</b>, <b>connected</b> or <b>disconnected</b>.
+  </p>
+  <div class="mb-6">
+    <a href="#graph-types" class="text-blue-600 hover:underline mr-4">Types</a>
+    <a href="#graph-representation" class="text-blue-600 hover:underline mr-4">Representation</a>
+    <a href="#bfs" class="text-blue-600 hover:underline mr-4">BFS</a>
+    <a href="#dfs" class="text-blue-600 hover:underline mr-4">DFS</a>
+    <a href="#dijkstra" class="text-blue-600 hover:underline mr-4">Dijkstra</a>
+    <a href="#bellman-ford" class="text-blue-600 hover:underline mr-4">Bellman-Ford</a>
+    <a href="#floyd-warshall" class="text-blue-600 hover:underline mr-4">Floyd-Warshall</a>
+    <a href="#mst" class="text-blue-600 hover:underline mr-4">MST</a>
+    <a href="#toposort" class="text-blue-600 hover:underline">Topological Sort</a>
+  </div>
+
+  <!-- Graph Types -->
+  <div id="graph-types" class="mb-10">
+    <h3 class="text-2xl font-semibold text-blue-700 mb-2">Types of Graphs</h3>
+    <ul class="list-disc ml-6 text-gray-700 mb-2">
+      <li><b>Directed</b> vs <b>Undirected</b></li>
+      <li><b>Weighted</b> vs <b>Unweighted</b></li>
+      <li><b>Cyclic</b> vs <b>Acyclic</b></li>
+      <li><b>Connected</b> vs <b>Disconnected</b></li>
+    </ul>
+    <pre class="bg-gray-100 p-3 rounded mb-2 overflow-x-auto">
+Undirected:   1---2
+               \ /
+                3
+
+Directed:    1 → 2
+               ↘
+                 3
+    </pre>
+    <div class="mt-2 text-sm text-gray-600">Graphs model networks, maps, dependencies, and more.</div>
+  </div>
+
+  <!-- Graph Representation -->
+  <div id="graph-representation" class="mb-10">
+    <h3 class="text-2xl font-semibold text-blue-700 mb-2">Graph Representation</h3>
+    <ul class="list-disc ml-6 text-gray-700 mb-2">
+      <li><b>Adjacency Matrix:</b> 2D array, O(1) edge check, O(n²) space</li>
+      <li><b>Adjacency List:</b> Array of lists, O(V+E) space, efficient for sparse graphs</li>
+    </ul>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="graphrep-java">Java</button>
+      <button class="tab-btn" data-tab="graphrep-cpp">C++</button>
+      <button class="tab-btn" data-tab="graphrep-python">Python</button>
+    </div>
+    <div class="tab-content" id="graphrep-java">
+      <pre><code class="language-java">// Java: Adjacency List
+ArrayList&lt;ArrayList&lt;Integer&gt;&gt; adj = new ArrayList&lt;&gt;();
+for (int i = 0; i &lt; n; i++) adj.add(new ArrayList&lt;&gt;());
+adj.get(0).add(1); // edge 0-1
+adj.get(1).add(2); // edge 1-2
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="graphrep-cpp">
+      <pre><code class="language-cpp">// C++: Adjacency List
+vector&lt;vector&lt;int&gt;&gt; adj(n);
+adj[0].push_back(1); // edge 0-1
+adj[1].push_back(2); // edge 1-2
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="graphrep-python">
+      <pre><code class="language-python"># Python: Adjacency List
+adj = [[] for _ in range(n)]
+adj[0].append(1) # edge 0-1
+adj[1].append(2) # edge 1-2
+</code></pre>
+    </div>
+  </div>
+
+  <!-- BFS -->
+  <div id="bfs" class="mb-10">
+    <h3 class="text-2xl font-semibold text-blue-700 mb-2">Breadth-First Search (BFS)</h3>
+    <p class="mb-2 text-gray-700">BFS explores the graph level by level using a queue. Used for shortest path in unweighted graphs, connected components, etc.</p>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="bfs-java">Java</button>
+      <button class="tab-btn" data-tab="bfs-cpp">C++</button>
+      <button class="tab-btn" data-tab="bfs-python">Python</button>
+    </div>
+    <div class="tab-content" id="bfs-java">
+      <pre><code class="language-java">// Java: BFS
+Queue&lt;Integer&gt; q = new LinkedList&lt;&gt;();
+boolean[] vis = new boolean[n];
+q.add(0); vis[0] = true;
+while (!q.isEmpty()) {
+    int node = q.poll();
+    for (int nei : adj.get(node)) {
+        if (!vis[nei]) {
+            q.add(nei);
+            vis[nei] = true;
+        }
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="bfs-cpp">
+      <pre><code class="language-cpp">// C++: BFS
+queue&lt;int&gt; q;
+vector&lt;bool&gt; vis(n, false);
+q.push(0); vis[0] = true;
+while (!q.empty()) {
+    int node = q.front(); q.pop();
+    for (int nei : adj[node]) {
+        if (!vis[nei]) {
+            q.push(nei);
+            vis[nei] = true;
+        }
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="bfs-python">
+      <pre><code class="language-python"># Python: BFS
+from collections import deque
+q = deque([0])
+vis = [False]*n
+vis[0] = True
+while q:
+    node = q.popleft()
+    for nei in adj[node]:
+        if not vis[nei]:
+            q.append(nei)
+            vis[nei] = True
+</code></pre>
+    </div>
+    <button onclick="toggleDryRun('bfs-dryrun')" class="mt-3 px-4 py-2 bg-blue-200 rounded">Dry Run</button>
+    <div id="bfs-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+      <strong>Order for 0-1-2-3:</strong> 0, 1, 2, 3 (level order)
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Applications: Shortest path (unweighted), connected components, bipartite check.</div>
+  </div>
+
+  <!-- DFS -->
+  <div id="dfs" class="mb-10">
+    <h3 class="text-2xl font-semibold text-blue-700 mb-2">Depth-First Search (DFS)</h3>
+    <p class="mb-2 text-gray-700">DFS explores as far as possible along each branch before backtracking. Used for cycle detection, topological sort, connected components.</p>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="dfs-java">Java</button>
+      <button class="tab-btn" data-tab="dfs-cpp">C++</button>
+      <button class="tab-btn" data-tab="dfs-python">Python</button>
+    </div>
+    <div class="tab-content" id="dfs-java">
+      <pre><code class="language-java">// Java: DFS
+void dfs(int node, boolean[] vis, ArrayList&lt;ArrayList&lt;Integer&gt;&gt; adj) {
+    vis[node] = true;
+    for (int nei : adj.get(node)) {
+        if (!vis[nei]) dfs(nei, vis, adj);
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="dfs-cpp">
+      <pre><code class="language-cpp">// C++: DFS
+void dfs(int node, vector&lt;bool&gt;& vis, vector&lt;vector&lt;int&gt;&gt;& adj) {
+    vis[node] = true;
+    for (int nei : adj[node]) {
+        if (!vis[nei]) dfs(nei, vis, adj);
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="dfs-python">
+      <pre><code class="language-python"># Python: DFS
+def dfs(node, vis, adj):
+    vis[node] = True
+    for nei in adj[node]:
+        if not vis[nei]:
+            dfs(nei, vis, adj)
+</code></pre>
+    </div>
+    <button onclick="toggleDryRun('dfs-dryrun')" class="mt-3 px-4 py-2 bg-blue-200 rounded">Dry Run</button>
+    <div id="dfs-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+      <strong>Order for 0-1-2-3:</strong> 0, 1, 2, 3 (deepest path first)
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Applications: Cycle detection, topological sort, connected components.</div>
+  </div>
+
+  <!-- Dijkstra -->
+  <div id="dijkstra" class="mb-10">
+    <h3 class="text-2xl font-semibold text-blue-700 mb-2">Dijkstra's Algorithm</h3>
+    <p class="mb-2 text-gray-700">Finds shortest path from a source to all nodes in a weighted graph with non-negative weights.</p>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="dijkstra-java">Java</button>
+      <button class="tab-btn" data-tab="dijkstra-cpp">C++</button>
+      <button class="tab-btn" data-tab="dijkstra-python">Python</button>
+    </div>
+    <div class="tab-content" id="dijkstra-java">
+      <pre><code class="language-java">// Java: Dijkstra (adjacency list)
+PriorityQueue&lt;int[]&gt; pq = new PriorityQueue&lt;&gt;((a,b) -> a[1]-b[1]);
+int[] dist = new int[n];
+Arrays.fill(dist, Integer.MAX_VALUE);
+dist[src] = 0;
+pq.add(new int[]{src, 0});
+while (!pq.isEmpty()) {
+    int[] cur = pq.poll();
+    int u = cur[0], d = cur[1];
+    if (d > dist[u]) continue;
+    for (int[] edge : adj.get(u)) {
+        int v = edge[0], w = edge[1];
+        if (dist[v] > d + w) {
+            dist[v] = d + w;
+            pq.add(new int[]{v, dist[v]});
+        }
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="dijkstra-cpp">
+      <pre><code class="language-cpp">// C++: Dijkstra (adjacency list)
+priority_queue&lt;pair&lt;int,int&gt;, vector&lt;pair&lt;int,int&gt;&gt;, greater&lt;pair&lt;int,int&gt;&gt;&gt; pq;
+vector&lt;int&gt; dist(n, INT_MAX);
+dist[src] = 0;
+pq.push({0, src});
+while (!pq.empty()) {
+    int d = pq.top().first, u = pq.top().second; pq.pop();
+    if (d > dist[u]) continue;
+    for (auto& edge : adj[u]) {
+        int v = edge.first, w = edge.second;
+        if (dist[v] > d + w) {
+            dist[v] = d + w;
+            pq.push({dist[v], v});
+        }
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="dijkstra-python">
+      <pre><code class="language-python"># Python: Dijkstra (adjacency list)
+import heapq
+dist = [float('inf')]*n
+dist[src] = 0
+pq = [(0, src)]
+while pq:
+    d, u = heapq.heappop(pq)
+    if d > dist[u]: continue
+    for v, w in adj[u]:
+        if dist[v] > d + w:
+            dist[v] = d + w
+            heapq.heappush(pq, (dist[v], v))
+</code></pre>
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Applications: Shortest path in maps, routing, navigation.</div>
+  </div>
+
+  <!-- Bellman-Ford -->
+  <div id="bellman-ford" class="mb-10">
+    <h3 class="text-2xl font-semibold text-blue-700 mb-2">Bellman-Ford Algorithm</h3>
+    <p class="mb-2 text-gray-700">Finds shortest path from a source to all nodes, works with negative weights and detects negative cycles.</p>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="bellman-java">Java</button>
+      <button class="tab-btn" data-tab="bellman-cpp">C++</button>
+      <button class="tab-btn" data-tab="bellman-python">Python</button>
+    </div>
+    <div class="tab-content" id="bellman-java">
+      <pre><code class="language-java">// Java: Bellman-Ford
+int[] dist = new int[n];
+Arrays.fill(dist, Integer.MAX_VALUE);
+dist[src] = 0;
+for (int i = 0; i < n-1; i++) {
+    for (int[] edge : edges) {
+        int u = edge[0], v = edge[1], w = edge[2];
+        if (dist[u] != Integer.MAX_VALUE && dist[v] > dist[u] + w)
+            dist[v] = dist[u] + w;
+    }
+}
+// Check for negative cycle
+for (int[] edge : edges) {
+    int u = edge[0], v = edge[1], w = edge[2];
+    if (dist[u] != Integer.MAX_VALUE && dist[v] > dist[u] + w)
+        System.out.println("Negative cycle detected");
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="bellman-cpp">
+      <pre><code class="language-cpp">// C++: Bellman-Ford
+vector&lt;int&gt; dist(n, INT_MAX);
+dist[src] = 0;
+for (int i = 0; i &lt; n-1; i++) {
+    for (auto& edge : edges) {
+        int u = edge[0], v = edge[1], w = edge[2];
+        if (dist[u] != INT_MAX && dist[v] > dist[u] + w)
+            dist[v] = dist[u] + w;
+    }
+}
+// Check for negative cycle
+for (auto& edge : edges) {
+    int u = edge[0], v = edge[1], w = edge[2];
+    if (dist[u] != INT_MAX && dist[v] > dist[u] + w)
+        cout << "Negative cycle detected\n";
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="bellman-python">
+      <pre><code class="language-python"># Python: Bellman-Ford
+dist = [float('inf')]*n
+dist[src] = 0
+for _ in range(n-1):
+    for u, v, w in edges:
+        if dist[u] != float('inf') and dist[v] > dist[u] + w:
+            dist[v] = dist[u] + w
+# Check for negative cycle
+for u, v, w in edges:
+    if dist[u] != float('inf') and dist[v] > dist[u] + w:
+        print("Negative cycle detected")
+</code></pre>
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Applications: Shortest path with negative weights, currency arbitrage.</div>
+  </div>
+
+  <!-- Floyd-Warshall -->
+  <div id="floyd-warshall" class="mb-10">
+    <h3 class="text-2xl font-semibold text-blue-700 mb-2">Floyd-Warshall Algorithm</h3>
+    <p class="mb-2 text-gray-700">Finds shortest paths between all pairs of nodes. Works with negative weights (no negative cycles).</p>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="fw-java">Java</button>
+      <button class="tab-btn" data-tab="fw-cpp">C++</button>
+      <button class="tab-btn" data-tab="fw-python">Python</button>
+    </div>
+    <div class="tab-content" id="fw-java">
+      <pre><code class="language-java">// Java: Floyd-Warshall
+for (int k = 0; k < n; k++)
+  for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+      if (dist[i][k] + dist[k][j] < dist[i][j])
+        dist[i][j] = dist[i][k] + dist[k][j];
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="fw-cpp">
+      <pre><code class="language-cpp">// C++: Floyd-Warshall
+for (int k = 0; k < n; k++)
+  for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+      if (dist[i][k] + dist[k][j] < dist[i][j])
+        dist[i][j] = dist[i][k] + dist[k][j];
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="fw-python">
+      <pre><code class="language-python"># Python: Floyd-Warshall
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            if dist[i][k] + dist[k][j] < dist[i][j]:
+                dist[i][j] = dist[i][k] + dist[k][j]
+</code></pre>
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Applications: All-pairs shortest path, transitive closure.</div>
+  </div>
+
+  <!-- MST -->
+  <div id="mst" class="mb-10">
+    <h3 class="text-2xl font-semibold text-blue-700 mb-2">Minimum Spanning Tree (MST)</h3>
+    <p class="mb-2 text-gray-700">A spanning tree connects all vertices with minimum total edge weight. Algorithms: Prim’s, Kruskal’s.</p>
+    <div class="font-semibold mb-2">Prim's Algorithm (using Min-Heap)</div>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="prim-java">Java</button>
+      <button class="tab-btn" data-tab="prim-cpp">C++</button>
+      <button class="tab-btn" data-tab="prim-python">Python</button>
+    </div>
+    <div class="tab-content" id="prim-java">
+      <pre><code class="language-java">// Java: Prim's Algorithm
+PriorityQueue&lt;int[]&gt; pq = new PriorityQueue&lt;&gt;((a,b) -> a[1]-b[1]);
+boolean[] vis = new boolean[n];
+pq.add(new int[]{0, 0});
+int cost = 0;
+while (!pq.isEmpty()) {
+    int[] cur = pq.poll();
+    int u = cur[0], w = cur[1];
+    if (vis[u]) continue;
+    vis[u] = true; cost += w;
+    for (int[] edge : adj.get(u)) {
+        int v = edge[0], wt = edge[1];
+        if (!vis[v]) pq.add(new int[]{v, wt});
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="prim-cpp">
+      <pre><code class="language-cpp">// C++: Prim's Algorithm
+priority_queue&lt;pair&lt;int,int&gt;, vector&lt;pair&lt;int,int&gt;&gt;, greater&lt;pair&lt;int,int&gt;&gt;&gt; pq;
+vector&lt;bool&gt; vis(n, false);
+pq.push({0, 0});
+int cost = 0;
+while (!pq.empty()) {
+    int u = pq.top().first, w = pq.top().second; pq.pop();
+    if (vis[u]) continue;
+    vis[u] = true; cost += w;
+    for (auto& edge : adj[u]) {
+        int v = edge.first, wt = edge.second;
+        if (!vis[v]) pq.push({v, wt});
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="prim-python">
+      <pre><code class="language-python"># Python: Prim's Algorithm
+import heapq
+vis = [False]*n
+pq = [(0, 0)]
+cost = 0
+while pq:
+    w, u = heapq.heappop(pq)
+    if vis[u]: continue
+    vis[u] = True; cost += w
+    for v, wt in adj[u]:
+        if not vis[v]:
+            heapq.heappush(pq, (wt, v))
+</code></pre>
+    </div>
+    <div class="font-semibold mb-2 mt-4">Kruskal's Algorithm (using Disjoint Set)</div>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="kruskal-java">Java</button>
+      <button class="tab-btn" data-tab="kruskal-cpp">C++</button>
+      <button class="tab-btn" data-tab="kruskal-python">Python</button>
+    </div>
+    <div class="tab-content" id="kruskal-java">
+      <pre><code class="language-java">// Java: Kruskal's Algorithm
+Arrays.sort(edges, (a,b) -> a[2]-b[2]);
+DSU dsu = new DSU(n);
+int cost = 0;
+for (int[] e : edges) {
+    int u = e[0], v = e[1], w = e[2];
+    if (dsu.find(u) != dsu.find(v)) {
+        dsu.union(u, v);
+        cost += w;
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="kruskal-cpp">
+      <pre><code class="language-cpp">// C++: Kruskal's Algorithm
+sort(edges.begin(), edges.end(), [](auto& a, auto& b){ return a[2] < b[2]; });
+DSU dsu(n);
+int cost = 0;
+for (auto& e : edges) {
+    int u = e[0], v = e[1], w = e[2];
+    if (dsu.find(u) != dsu.find(v)) {
+        dsu.unite(u, v);
+        cost += w;
+    }
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="kruskal-python">
+      <pre><code class="language-python"># Python: Kruskal's Algorithm
+edges.sort(key=lambda x: x[2])
+dsu = DSU(n)
+cost = 0
+for u, v, w in edges:
+    if dsu.find(u) != dsu.find(v):
+        dsu.union(u, v)
+        cost += w
+</code></pre>
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Applications: Network design, clustering, circuit design.</div>
+  </div>
+
+  <!-- Topological Sort -->
+  <div id="toposort" class="mb-10">
+    <h3 class="text-2xl font-semibold text-blue-700 mb-2">Topological Sort</h3>
+    <p class="mb-2 text-gray-700">Ordering of vertices in a Directed Acyclic Graph (DAG) such that for every directed edge u→v, u comes before v.</p>
+    <div class="code-tabs">
+      <button class="tab-btn active" data-tab="topo-java">Java</button>
+      <button class="tab-btn" data-tab="topo-cpp">C++</button>
+      <button class="tab-btn" data-tab="topo-python">Python</button>
+    </div>
+    <div class="tab-content" id="topo-java">
+      <pre><code class="language-java">// Java: Topological Sort (DFS)
+void topo(int u, boolean[] vis, Stack&lt;Integer&gt; st, ArrayList&lt;ArrayList&lt;Integer&gt;&gt; adj) {
+    vis[u] = true;
+    for (int v : adj.get(u))
+        if (!vis[v]) topo(v, vis, st, adj);
+    st.push(u);
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="topo-cpp">
+      <pre><code class="language-cpp">// C++: Topological Sort (DFS)
+void topo(int u, vector&lt;bool&gt;& vis, stack&lt;int&gt;& st, vector&lt;vector&lt;int&gt;&gt;& adj) {
+    vis[u] = true;
+    for (int v : adj[u])
+        if (!vis[v]) topo(v, vis, st, adj);
+    st.push(u);
+}
+</code></pre>
+    </div>
+    <div class="tab-content hidden" id="topo-python">
+      <pre><code class="language-python"># Python: Topological Sort (DFS)
+def topo(u, vis, st, adj):
+    vis[u] = True
+    for v in adj[u]:
+        if not vis[v]:
+            topo(v, vis, st, adj)
+    st.append(u)
+</code></pre>
+    </div>
+    <div class="mt-2 text-sm text-gray-600">Applications: Task scheduling, build systems, course prerequisites.</div>
+  </div>
+
+  <!-- Important Questions -->
+  <div class="mt-8">
+    <h4 class="text-xl font-semibold text-blue-700">Important Graph Questions</h4>
+    <ul class="list-disc list-inside text-gray-700">
+      <li><a href="https://leetcode.com/problems/number-of-islands/" target="_blank" class="text-blue-600 hover:underline">Number of Islands (BFS/DFS)</a></li>
+      <li><a href="https://leetcode.com/problems/course-schedule/" target="_blank" class="text-blue-600 hover:underline">Course Schedule (Topological Sort)</a></li>
+      <li><a href="https://leetcode.com/problems/network-delay-time/" target="_blank" class="text-blue-600 hover:underline">Network Delay Time (Dijkstra)</a></li>
+      <li><a href="https://leetcode.com/problems/minimum-cost-to-connect-sticks/" target="_blank" class="text-blue-600 hover:underline">Minimum Spanning Tree</a></li>
+      <li><a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/" target="_blank" class="text-blue-600 hover:underline">Cheapest Flights Within K Stops (Bellman-Ford)</a></li>
+      <li><a href="https://leetcode.com/problems/find-eventual-safe-states/" target="_blank" class="text-blue-600 hover:underline">Eventual Safe States (DFS/Topo)</a></li>
+    </ul>
+  </div>
+</section>
+
+<!--Searching Algorithm-->
+
+<section class="topic-section border-pink-500" id="searching">
+  <h2 class="text-3xl font-bold text-pink-600 flex items-center mb-4">
+    <i class="fas fa-search mr-2"></i>Searching Algorithms
+  </h2>
+  <p class="mb-4 text-gray-700">
+    <strong>Searching</strong> is the process of finding the position of a target value within a data structure. Efficient searching is fundamental to many algorithms and applications.
+  </p>
+  <table class="table-auto border-collapse border border-gray-400 mb-4">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="border border-gray-400 px-4 py-2">Algorithm</th>
+        <th class="border border-gray-400 px-4 py-2">Best</th>
+        <th class="border border-gray-400 px-4 py-2">Average</th>
+        <th class="border border-gray-400 px-4 py-2">Worst</th>
+        <th class="border border-gray-400 px-4 py-2">Data Structure</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Linear Search</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        <td class="border border-gray-400 px-4 py-2">Array/List</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Binary Search</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        <td class="border border-gray-400 px-4 py-2">O(log n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(log n)</td>
+        <td class="border border-gray-400 px-4 py-2">Sorted Array</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Jump Search</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        <td class="border border-gray-400 px-4 py-2">O(√n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(√n)</td>
+        <td class="border border-gray-400 px-4 py-2">Sorted Array</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Interpolation Search</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        <td class="border border-gray-400 px-4 py-2">O(log log n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        <td class="border border-gray-400 px-4 py-2">Sorted, Uniform Array</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Exponential Search</td>
+        <td class="border border-gray-400 px-4 py-2">O(log i)</td>
+        <td class="border border-gray-400 px-4 py-2">O(log i)</td>
+        <td class="border border-gray-400 px-4 py-2">O(log i)</td>
+        <td class="border border-gray-400 px-4 py-2">Sorted Array</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Ternary Search</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        <td class="border border-gray-400 px-4 py-2">O(log₃ n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(log₃ n)</td>
+        <td class="border border-gray-400 px-4 py-2">Sorted Array</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Hashing</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        <td class="border border-gray-400 px-4 py-2">Hash Table</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Linear Search -->
+  <h3 class="text-xl font-semibold text-pink-600 mt-6 mb-2">Linear Search</h3>
+  <p class="mb-2 text-gray-700">Check each element one by one until the target is found or end is reached.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="linear-java">Java</button>
+    <button class="tab-btn" data-tab="linear-cpp">C++</button>
+    <button class="tab-btn" data-tab="linear-python">Python</button>
+  </div>
+  <div class="tab-content" id="linear-java">
+    <pre><code class="language-java">// Java: Linear Search
+int linearSearch(int[] arr, int target) {
+    for (int i = 0; i < arr.length; i++)
+        if (arr[i] == target) return i;
+    return -1;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="linear-cpp">
+    <pre><code class="language-cpp">// C++: Linear Search
+int linearSearch(int arr[], int n, int target) {
+    for (int i = 0; i < n; i++)
+        if (arr[i] == target) return i;
+    return -1;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="linear-python">
+    <pre><code class="language-python"># Python: Linear Search
+def linear_search(arr, target):
+    for i, val in enumerate(arr):
+        if val == target:
+            return i
+    return -1
+</code></pre>
+  </div>
+  <button onclick="toggleDryRun('linear-dryrun')" class="mt-3 px-4 py-2 bg-pink-200 rounded">Dry Run</button>
+  <div id="linear-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+    <strong>arr = [2, 4, 7, 9], target = 7</strong><br>
+    Check 2, 4, <b>7 (found at index 2)</b>
+  </div>
+
+  <!-- Binary Search -->
+  <h3 class="text-xl font-semibold text-pink-600 mt-8 mb-2">Binary Search</h3>
+  <p class="mb-2 text-gray-700">Efficiently search a <b>sorted</b> array by repeatedly dividing the search interval in half.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="binary-java">Java</button>
+    <button class="tab-btn" data-tab="binary-cpp">C++</button>
+    <button class="tab-btn" data-tab="binary-python">Python</button>
+  </div>
+  <div class="tab-content" id="binary-java">
+    <pre><code class="language-java">// Java: Binary Search
+int binarySearch(int[] arr, int target) {
+    int l = 0, r = arr.length - 1;
+    while (l <= r) {
+        int m = l + (r - l) / 2;
+        if (arr[m] == target) return m;
+        if (arr[m] < target) l = m + 1;
+        else r = m - 1;
+    }
+    return -1;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="binary-cpp">
+    <pre><code class="language-cpp">// C++: Binary Search
+int binarySearch(int arr[], int n, int target) {
+    int l = 0, r = n - 1;
+    while (l <= r) {
+        int m = l + (r - l) / 2;
+        if (arr[m] == target) return m;
+        if (arr[m] < target) l = m + 1;
+        else r = m - 1;
+    }
+    return -1;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="binary-python">
+    <pre><code class="language-python"># Python: Binary Search
+def binary_search(arr, target):
+    l, r = 0, len(arr) - 1
+    while l <= r:
+        m = (l + r) // 2
+        if arr[m] == target:
+            return m
+        if arr[m] < target:
+            l = m + 1
+        else:
+            r = m - 1
+    return -1
+</code></pre>
+  </div>
+  <button onclick="toggleDryRun('binary-dryrun')" class="mt-3 px-4 py-2 bg-pink-200 rounded">Dry Run</button>
+  <div id="binary-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+    <strong>arr = [2, 4, 7, 9, 12], target = 9</strong><br>
+    mid=2 arr[2]=7 → right<br>
+    mid=3 arr[3]=9 <b>(found at index 3)</b>
+  </div>
+
+  <!-- Jump Search -->
+  <h3 class="text-xl font-semibold text-pink-600 mt-8 mb-2">Jump Search</h3>
+  <p class="mb-2 text-gray-700">Searches sorted arrays by jumping ahead by fixed steps and then performing linear search in a block.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="jump-java">Java</button>
+    <button class="tab-btn" data-tab="jump-cpp">C++</button>
+    <button class="tab-btn" data-tab="jump-python">Python</button>
+  </div>
+  <div class="tab-content" id="jump-java">
+    <pre><code class="language-java">// Java: Jump Search
+int jumpSearch(int[] arr, int target) {
+    int n = arr.length;
+    int step = (int)Math.sqrt(n);
+    int prev = 0;
+    while (arr[Math.min(step, n)-1] < target) {
+        prev = step;
+        step += (int)Math.sqrt(n);
+        if (prev >= n) return -1;
+    }
+    for (int i = prev; i < Math.min(step, n); i++)
+        if (arr[i] == target) return i;
+    return -1;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="jump-cpp">
+    <pre><code class="language-cpp">// C++: Jump Search
+int jumpSearch(int arr[], int n, int target) {
+    int step = sqrt(n), prev = 0;
+    while (arr[min(step, n)-1] < target) {
+        prev = step;
+        step += sqrt(n);
+        if (prev >= n) return -1;
+    }
+    for (int i = prev; i < min(step, n); i++)
+        if (arr[i] == target) return i;
+    return -1;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="jump-python">
+    <pre><code class="language-python"># Python: Jump Search
+import math
+def jump_search(arr, target):
+    n = len(arr)
+    step = int(math.sqrt(n))
+    prev = 0
+    while prev < n and arr[min(step, n)-1] < target:
+        prev = step
+        step += int(math.sqrt(n))
+        if prev >= n:
+            return -1
+    for i in range(prev, min(step, n)):
+        if arr[i] == target:
+            return i
+    return -1
+</code></pre>
+  </div>
+
+  <!-- Interpolation Search -->
+  <h3 class="text-xl font-semibold text-pink-600 mt-8 mb-2">Interpolation Search</h3>
+  <p class="mb-2 text-gray-700">Improves binary search for uniformly distributed sorted arrays by estimating the position.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="interp-java">Java</button>
+    <button class="tab-btn" data-tab="interp-cpp">C++</button>
+    <button class="tab-btn" data-tab="interp-python">Python</button>
+  </div>
+  <div class="tab-content" id="interp-java">
+    <pre><code class="language-java">// Java: Interpolation Search
+int interpolationSearch(int[] arr, int target) {
+    int low = 0, high = arr.length - 1;
+    while (low <= high && target >= arr[low] && target <= arr[high]) {
+        int pos = low + ((target - arr[low]) * (high - low)) / (arr[high] - arr[low]);
+        if (arr[pos] == target) return pos;
+        if (arr[pos] < target) low = pos + 1;
+        else high = pos - 1;
+    }
+    return -1;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="interp-cpp">
+    <pre><code class="language-cpp">// C++: Interpolation Search
+int interpolationSearch(int arr[], int n, int target) {
+    int low = 0, high = n - 1;
+    while (low <= high && target >= arr[low] && target <= arr[high]) {
+        int pos = low + ((target - arr[low]) * (high - low)) / (arr[high] - arr[low]);
+        if (arr[pos] == target) return pos;
+        if (arr[pos] < target) low = pos + 1;
+        else high = pos - 1;
+    }
+    return -1;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="interp-python">
+    <pre><code class="language-python"># Python: Interpolation Search
+def interpolation_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high and arr[low] <= target <= arr[high]:
+        pos = low + ((target - arr[low]) * (high - low)) // (arr[high] - arr[low])
+        if arr[pos] == target:
+            return pos
+        if arr[pos] < target:
+            low = pos + 1
+        else:
+            high = pos - 1
+    return -1
+</code></pre>
+  </div>
+
+  <!-- Exponential Search -->
+  <h3 class="text-xl font-semibold text-pink-600 mt-8 mb-2">Exponential Search</h3>
+  <p class="mb-2 text-gray-700">Finds range where target may exist, then uses binary search. Good for unbounded/infinite lists.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="expo-java">Java</button>
+    <button class="tab-btn" data-tab="expo-cpp">C++</button>
+    <button class="tab-btn" data-tab="expo-python">Python</button>
+  </div>
+  <div class="tab-content" id="expo-java">
+    <pre><code class="language-java">// Java: Exponential Search
+int exponentialSearch(int[] arr, int target) {
+    if (arr[0] == target) return 0;
+    int i = 1;
+    while (i < arr.length && arr[i] <= target)
+        i *= 2;
+    return Arrays.binarySearch(arr, i/2, Math.min(i, arr.length), target);
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="expo-cpp">
+    <pre><code class="language-cpp">// C++: Exponential Search
+int exponentialSearch(int arr[], int n, int target) {
+    if (arr[0] == target) return 0;
+    int i = 1;
+    while (i < n && arr[i] <= target)
+        i *= 2;
+    int l = i/2, r = min(i, n-1);
+    while (l <= r) {
+        int m = l + (r-l)/2;
+        if (arr[m] == target) return m;
+        if (arr[m] < target) l = m+1;
+        else r = m-1;
+    }
+    return -1;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="expo-python">
+    <pre><code class="language-python"># Python: Exponential Search
+def exponential_search(arr, target):
+    if arr[0] == target:
+        return 0
+    i = 1
+    while i < len(arr) and arr[i] <= target:
+        i *= 2
+    l, r = i//2, min(i, len(arr)-1)
+    while l <= r:
+        m = (l + r) // 2
+        if arr[m] == target:
+            return m
+        if arr[m] < target:
+            l = m + 1
+        else:
+            r = m - 1
+    return -1
+</code></pre>
+  </div>
+
+  <!-- Ternary Search -->
+  <h3 class="text-xl font-semibold text-pink-600 mt-8 mb-2">Ternary Search</h3>
+  <p class="mb-2 text-gray-700">Divides the array into three parts. Used for unimodal functions (single peak/minimum).</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="ternary-java">Java</button>
+    <button class="tab-btn" data-tab="ternary-cpp">C++</button>
+    <button class="tab-btn" data-tab="ternary-python">Python</button>
+  </div>
+  <div class="tab-content" id="ternary-java">
+    <pre><code class="language-java">// Java: Ternary Search
+int ternarySearch(int[] arr, int target) {
+    int l = 0, r = arr.length - 1;
+    while (l <= r) {
+        int mid1 = l + (r - l) / 3;
+        int mid2 = r - (r - l) / 3;
+        if (arr[mid1] == target) return mid1;
+        if (arr[mid2] == target) return mid2;
+        if (target < arr[mid1]) r = mid1 - 1;
+        else if (target > arr[mid2]) l = mid2 + 1;
+        else { l = mid1 + 1; r = mid2 - 1; }
+    }
+    return -1;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="ternary-cpp">
+    <pre><code class="language-cpp">// C++: Ternary Search
+int ternarySearch(int arr[], int n, int target) {
+    int l = 0, r = n - 1;
+    while (l <= r) {
+        int mid1 = l + (r - l) / 3;
+        int mid2 = r - (r - l) / 3;
+        if (arr[mid1] == target) return mid1;
+        if (arr[mid2] == target) return mid2;
+        if (target < arr[mid1]) r = mid1 - 1;
+        else if (target > arr[mid2]) l = mid2 + 1;
+        else { l = mid1 + 1; r = mid2 - 1; }
+    }
+    return -1;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="ternary-python">
+    <pre><code class="language-python"># Python: Ternary Search
+def ternary_search(arr, target):
+    l, r = 0, len(arr) - 1
+    while l <= r:
+        mid1 = l + (r - l) // 3
+        mid2 = r - (r - l) // 3
+        if arr[mid1] == target:
+            return mid1
+        if arr[mid2] == target:
+            return mid2
+        if target < arr[mid1]:
+            r = mid1 - 1
+        elif target > arr[mid2]:
+            l = mid2 + 1
+        else:
+            l = mid1 + 1
+            r = mid2 - 1
+    return -1
+</code></pre>
+  </div>
+
+  <!-- Hashing Search -->
+  <h3 class="text-xl font-semibold text-pink-600 mt-8 mb-2">Hashing (Hash Table Search)</h3>
+  <p class="mb-2 text-gray-700">Uses a hash function to map keys to indices for O(1) average search time.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="hash-java">Java</button>
+    <button class="tab-btn" data-tab="hash-cpp">C++</button>
+    <button class="tab-btn" data-tab="hash-python">Python</button>
+  </div>
+  <div class="tab-content" id="hash-java">
+    <pre><code class="language-java">// Java: Hash Table Search
+HashMap&lt;Integer, String&gt; map = new HashMap&lt;&gt;();
+map.put(1, "A");
+if (map.containsKey(1)) System.out.println("Found");
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="hash-cpp">
+    <pre><code class="language-cpp">// C++: Hash Table Search
+unordered_map&lt;int, string&gt; map;
+map[1] = "A";
+if (map.count(1)) cout << "Found";
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="hash-python">
+    <pre><code class="language-python"># Python: Hash Table Search
+map = {1: "A"}
+if 1 in map:
+    print("Found")
+</code></pre>
+  </div>
+
+  <div class="mt-4 text-sm text-gray-600">
+    <strong>Applications:</strong> Database lookups, search engines, spell-check, caching, symbol tables, etc.
+  </div>
+  <div class="mt-4">
+    <h4 class="text-xl font-semibold text-pink-700">Important Searching Questions</h4>
+    <ul class="list-disc list-inside text-gray-700">
+      <li><a href="https://leetcode.com/problems/binary-search/" target="_blank" class="text-pink-600 hover:underline">Binary Search</a></li>
+      <li><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" class="text-pink-600 hover:underline">Search in Rotated Sorted Array</a></li>
+      <li><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" class="text-pink-600 hover:underline">First and Last Position in Sorted Array</a></li>
+      <li><a href="https://leetcode.com/problems/intersection-of-two-arrays/" target="_blank" class="text-pink-600 hover:underline">Intersection of Two Arrays</a></li>
+      <li><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank" class="text-pink-600 hover:underline">Find Minimum in Rotated Sorted Array</a></li>
+      <li><a href="https://leetcode.com/problems/search-a-2d-matrix/" target="_blank" class="text-pink-600 hover:underline">Search a 2D Matrix</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Sorting Algorithm-->
+
+<section class="topic-section border-yellow-500" id="sorting">
+  <h2 class="text-3xl font-bold text-yellow-700 flex items-center mb-4">
+    <i class="fas fa-sort-amount-up mr-2"></i>Sorting Algorithms
+  </h2>
+  <p class="mb-4 text-gray-700">
+    <strong>Sorting</strong> is the process of arranging data in a particular order (ascending or descending). Efficient sorting is crucial for optimizing search and many other algorithms.
+  </p>
+  <table class="table-auto border-collapse border border-gray-400 mb-4">
+    <thead>
+      <tr class="bg-yellow-100">
+        <th class="border border-gray-400 px-4 py-2">Algorithm</th>
+        <th class="border border-gray-400 px-4 py-2">Best</th>
+        <th class="border border-gray-400 px-4 py-2">Average</th>
+        <th class="border border-gray-400 px-4 py-2">Worst</th>
+        <th class="border border-gray-400 px-4 py-2">Space</th>
+        <th class="border border-gray-400 px-4 py-2">Stable?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Bubble Sort</td>
+        <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n²)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n²)</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        <td class="border border-gray-400 px-4 py-2">Yes</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Selection Sort</td>
+        <td class="border border-gray-400 px-4 py-2">O(n²)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n²)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n²)</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        <td class="border border-gray-400 px-4 py-2">No</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Insertion Sort</td>
+        <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n²)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n²)</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        <td class="border border-gray-400 px-4 py-2">Yes</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Merge Sort</td>
+        <td class="border border-gray-400 px-4 py-2">O(n log n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n log n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n log n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n)</td>
+        <td class="border border-gray-400 px-4 py-2">Yes</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Quick Sort</td>
+        <td class="border border-gray-400 px-4 py-2">O(n log n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n log n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n²)</td>
+        <td class="border border-gray-400 px-4 py-2">O(log n)</td>
+        <td class="border border-gray-400 px-4 py-2">No</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Heap Sort</td>
+        <td class="border border-gray-400 px-4 py-2">O(n log n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n log n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n log n)</td>
+        <td class="border border-gray-400 px-4 py-2">O(1)</td>
+        <td class="border border-gray-400 px-4 py-2">No</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Counting Sort</td>
+        <td class="border border-gray-400 px-4 py-2">O(n+k)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n+k)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n+k)</td>
+        <td class="border border-gray-400 px-4 py-2">O(k)</td>
+        <td class="border border-gray-400 px-4 py-2">Yes</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-400 px-4 py-2">Radix Sort</td>
+        <td class="border border-gray-400 px-4 py-2">O(nk)</td>
+        <td class="border border-gray-400 px-4 py-2">O(nk)</td>
+        <td class="border border-gray-400 px-4 py-2">O(nk)</td>
+        <td class="border border-gray-400 px-4 py-2">O(n+k)</td>
+        <td class="border border-gray-400 px-4 py-2">Yes</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Bubble Sort -->
+  <h3 class="text-xl font-semibold text-yellow-600 mt-6 mb-2">Bubble Sort</h3>
+  <p class="mb-2 text-gray-700">Repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="bubble-java">Java</button>
+    <button class="tab-btn" data-tab="bubble-cpp">C++</button>
+    <button class="tab-btn" data-tab="bubble-python">Python</button>
+  </div>
+  <div class="tab-content" id="bubble-java">
+    <pre><code class="language-java">// Java: Bubble Sort
+void bubbleSort(int[] arr) {
+    int n = arr.length;
+    for (int i = 0; i < n-1; i++)
+        for (int j = 0; j < n-i-1; j++)
+            if (arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="bubble-cpp">
+    <pre><code class="language-cpp">// C++: Bubble Sort
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++)
+        for (int j = 0; j < n-i-1; j++)
+            if (arr[j] > arr[j+1])
+                swap(arr[j], arr[j+1]);
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="bubble-python">
+    <pre><code class="language-python"># Python: Bubble Sort
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n-1):
+        for j in range(n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+</code></pre>
+  </div>
+  <button onclick="toggleDryRun('bubble-dryrun')" class="mt-3 px-4 py-2 bg-yellow-200 rounded">Dry Run</button>
+  <div id="bubble-dryrun" class="hidden mt-2 bg-gray-50 p-3 rounded">
+    <strong>arr = [5, 3, 1]</strong><br>
+    Pass 1: [3, 1, 5]<br>
+    Pass 2: [1, 3, 5]
+  </div>
+
+  <!-- Selection Sort -->
+  <h3 class="text-xl font-semibold text-yellow-600 mt-8 mb-2">Selection Sort</h3>
+  <p class="mb-2 text-gray-700">Finds the minimum element and puts it at the beginning, then repeats for the rest.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="selection-java">Java</button>
+    <button class="tab-btn" data-tab="selection-cpp">C++</button>
+    <button class="tab-btn" data-tab="selection-python">Python</button>
+  </div>
+  <div class="tab-content" id="selection-java">
+    <pre><code class="language-java">// Java: Selection Sort
+void selectionSort(int[] arr) {
+    int n = arr.length;
+    for (int i = 0; i < n-1; i++) {
+        int minIdx = i;
+        for (int j = i+1; j < n; j++)
+            if (arr[j] < arr[minIdx])
+                minIdx = j;
+        int temp = arr[minIdx];
+        arr[minIdx] = arr[i];
+        arr[i] = temp;
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="selection-cpp">
+    <pre><code class="language-cpp">// C++: Selection Sort
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        int minIdx = i;
+        for (int j = i+1; j < n; j++)
+            if (arr[j] < arr[minIdx])
+                minIdx = j;
+        swap(arr[minIdx], arr[i]);
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="selection-python">
+    <pre><code class="language-python"># Python: Selection Sort
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n-1):
+        min_idx = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+</code></pre>
+  </div>
+
+  <!-- Insertion Sort -->
+  <h3 class="text-xl font-semibold text-yellow-600 mt-8 mb-2">Insertion Sort</h3>
+  <p class="mb-2 text-gray-700">Builds the sorted array one item at a time by inserting elements into their correct position.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="insertion-java">Java</button>
+    <button class="tab-btn" data-tab="insertion-cpp">C++</button>
+    <button class="tab-btn" data-tab="insertion-python">Python</button>
+  </div>
+  <div class="tab-content" id="insertion-java">
+    <pre><code class="language-java">// Java: Insertion Sort
+void insertionSort(int[] arr) {
+    int n = arr.length;
+    for (int i = 1; i < n; i++) {
+        int key = arr[i], j = i-1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j+1] = arr[j];
+            j--;
+        }
+        arr[j+1] = key;
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="insertion-cpp">
+    <pre><code class="language-cpp">// C++: Insertion Sort
+void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i], j = i-1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j+1] = arr[j];
+            j--;
+        }
+        arr[j+1] = key;
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="insertion-python">
+    <pre><code class="language-python"># Python: Insertion Sort
+def insertion_sort(arr):
+    n = len(arr)
+    for i in range(1, n):
+        key = arr[i]
+        j = i-1
+        while j >= 0 and arr[j] > key:
+            arr[j+1] = arr[j]
+            j -= 1
+        arr[j+1] = key
+</code></pre>
+  </div>
+
+  <!-- Merge Sort -->
+  <h3 class="text-xl font-semibold text-yellow-600 mt-8 mb-2">Merge Sort</h3>
+  <p class="mb-2 text-gray-700">Divide and conquer algorithm that splits the array, sorts each half, and merges them.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="merge-java">Java</button>
+    <button class="tab-btn" data-tab="merge-cpp">C++</button>
+    <button class="tab-btn" data-tab="merge-python">Python</button>
+  </div>
+  <div class="tab-content" id="merge-java">
+    <pre><code class="language-java">// Java: Merge Sort
+void mergeSort(int[] arr, int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
+}
+void merge(int[] arr, int l, int m, int r) {
+    int n1 = m - l + 1, n2 = r - m;
+    int[] L = new int[n1], R = new int[n2];
+    for (int i = 0; i < n1; i++) L[i] = arr[l + i];
+    for (int j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
+    int i = 0, j = 0, k = l;
+    while (i < n1 && j < n2)
+        arr[k++] = (L[i] <= R[j]) ? L[i++] : R[j++];
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="merge-cpp">
+    <!-- C++: Merge Sort -->
+<pre><code class="language-cpp">
+// C++: Merge Sort
+#include &lt;vector&gt;
+using namespace std;
+
+void merge(int arr[], int l, int m, int r) {
+    int n1 = m - l + 1, n2 = r - m;
+    vector<int> L(n1), R(n2);
+    for (int i = 0; i < n1; i++) L[i] = arr[l + i];
+    for (int j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
+    int i = 0, j = 0, k = l;
+    while (i < n1 && j < n2)
+        arr[k++] = (L[i] <= R[j]) ? L[i++] : R[j++];
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+}
+
+void mergeSort(int arr[], int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
+}
+</code></pre>
+</div>
+  <div class="tab-content hidden" id="merge-python">
+    <pre><code class="language-python"># Python: Merge Sort
+def merge_sort(arr):
+    if len(arr) > 1:
+        m = len(arr)//2
+        L = arr[:m]
+        R = arr[m:]
+        merge_sort(L)
+        merge_sort(R)
+        i = j = k = 0
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+</code></pre>
+  </div>
+
+  <!-- Quick Sort -->
+  <h3 class="text-xl font-semibold text-yellow-600 mt-8 mb-2">Quick Sort</h3>
+  <p class="mb-2 text-gray-700">Divide and conquer algorithm that picks a pivot and partitions the array around the pivot.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="quick-java">Java</button>
+    <button class="tab-btn" data-tab="quick-cpp">C++</button>
+    <button class="tab-btn" data-tab="quick-python">Python</button>
+  </div>
+  <div class="tab-content" id="quick-java">
+    <pre><code class="language-java">// Java: Quick Sort
+void quickSort(int[] arr, int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi-1);
+        quickSort(arr, pi+1, high);
+    }
+}
+int partition(int[] arr, int low, int high) {
+    int pivot = arr[high], i = low-1;
+    for (int j=low; j< high; j++)
+        if (arr[j] < pivot)
+            swap(arr, ++i, j);
+    swap(arr, i+1, high);
+    return i+1;
+}
+void swap(int[] arr, int i, int j) {
+    int t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="quick-cpp">
+    <pre><code class="language-cpp">// C++: Quick Sort
+void swap(int &a, int &b) { int t=a; a=b; b=t; }
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high], i = low-1;
+    for (int j=low; j< high; j++)
+        if (arr[j] < pivot)
+            swap(arr[++i], arr[j]);
+    swap(arr[i+1], arr[high]);
+    return i+1;
+}
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi-1);
+        quickSort(arr, pi+1, high);
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="quick-python">
+    <pre><code class="language-python"># Python: Quick Sort
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[-1]
+    left = [x for x in arr[:-1] if x < pivot]
+    right = [x for x in arr[:-1] if x >= pivot]
+    return quick_sort(left) + [pivot] + quick_sort(right)
+</code></pre>
+  </div>
+
+  <!-- Heap Sort -->
+  <h3 class="text-xl font-semibold text-yellow-600 mt-8 mb-2">Heap Sort</h3>
+  <p class="mb-2 text-gray-700">Builds a heap and repeatedly extracts the maximum/minimum element.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="heap-java-sort">Java</button>
+    <button class="tab-btn" data-tab="heap-cpp-sort">C++</button>
+    <button class="tab-btn" data-tab="heap-python-sort">Python</button>
+  </div>
+  <div class="tab-content" id="heap-java-sort">
+    <pre><code class="language-java">// Java: Heap Sort
+void heapify(int[] arr, int n, int i) {
+    int largest = i, l = 2*i+1, r = 2*i+2;
+    if (l < n && arr[l] > arr[largest]) largest = l;
+    if (r < n && arr[r] > arr[largest]) largest = r;
+    if (largest != i) {
+        int t = arr[i]; arr[i] = arr[largest]; arr[largest] = t;
+        heapify(arr, n, largest);
+    }
+}
+void heapSort(int[] arr) {
+    int n = arr.length;
+    for (int i = n/2-1; i >= 0; i--) heapify(arr, n, i);
+    for (int i = n-1; i > 0; i--) {
+        int t = arr[0]; arr[0] = arr[i]; arr[i] = t;
+        heapify(arr, i, 0);
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="heap-cpp-sort">
+    <pre><code class="language-cpp">// C++: Heap Sort
+void heapify(int arr[], int n, int i) {
+    int largest = i, l = 2*i+1, r = 2*i+2;
+    if (l < n && arr[l] > arr[largest]) largest = l;
+    if (r < n && arr[r] > arr[largest]) largest = r;
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+        heapify(arr, n, largest);
+    }
+}
+void heapSort(int arr[], int n) {
+    for (int i = n/2-1; i >= 0; i--) heapify(arr, n, i);
+    for (int i = n-1; i > 0; i--) {
+        swap(arr[0], arr[i]);
+        heapify(arr, i, 0);
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="heap-python-sort">
+    <pre><code class="language-python"># Python: Heap Sort
+def heapify(arr, n, i):
+    largest = i
+    l, r = 2*i+1, 2*i+2
+    if l < n and arr[l] > arr[largest]: largest = l
+    if r < n and arr[r] > arr[largest]: largest = r
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+def heap_sort(arr):
+    n = len(arr)
+    for i in range(n//2-1, -1, -1): heapify(arr, n, i)
+    for i in range(n-1, 0, -1):
+        arr[0], arr[i] = arr[i], arr[0]
+        heapify(arr, i, 0)
+</code></pre>
+  </div>
+
+  <!-- Counting Sort -->
+  <h3 class="text-xl font-semibold text-yellow-600 mt-8 mb-2">Counting Sort</h3>
+  <p class="mb-2 text-gray-700">Counts the number of occurrences of each value and calculates positions.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="counting-java">Java</button>
+    <button class="tab-btn" data-tab="counting-cpp">C++</button>
+    <button class="tab-btn" data-tab="counting-python">Python</button>
+  </div>
+  <div class="tab-content" id="counting-java">
+    <pre><code class="language-java">// Java: Counting Sort
+void countingSort(int[] arr) {
+    int max = Arrays.stream(arr).max().getAsInt();
+    int[] count = new int[max+1];
+    for (int num : arr) count[num]++;
+    int idx = 0;
+    for (int i = 0; i <= max; i++)
+        while (count[i]-- > 0)
+            arr[idx++] = i;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="counting-cpp">
+    <pre><code class="language-cpp">// C++: Counting Sort
+void countingSort(int arr[], int n) {
+    int max = *max_element(arr, arr+n);
+    vector<int> count(max+1, 0);
+    for (int i = 0; i < n; i++) count[arr[i]]++;
+    int idx = 0;
+    for (int i = 0; i <= max; i++)
+        while (count[i]-- > 0)
+            arr[idx++] = i;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="counting-python">
+    <pre><code class="language-python"># Python: Counting Sort
+def counting_sort(arr):
+    if not arr: return
+    max_val = max(arr)
+    count = [0] * (max_val+1)
+    for num in arr:
+        count[num] += 1
+    idx = 0
+    for i, c in enumerate(count):
+        for _ in range(c):
+            arr[idx] = i
+            idx += 1
+</code></pre>
+  </div>
+
+  <!-- Radix Sort -->
+  <h3 class="text-xl font-semibold text-yellow-600 mt-8 mb-2">Radix Sort</h3>
+  <p class="mb-2 text-gray-700">Sorts numbers digit by digit using a stable sort (like counting sort) as a subroutine.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="radix-java">Java</button>
+    <button class="tab-btn" data-tab="radix-cpp">C++</button>
+    <button class="tab-btn" data-tab="radix-python">Python</button>
+  </div>
+  <div class="tab-content" id="radix-java">
+    <pre><code class="language-java">// Java: Radix Sort
+void countingSort(int[] arr, int exp) {
+    int n = arr.length;
+    int[] output = new int[n], count = new int[10];
+    for (int i = 0; i < n; i++) count[(arr[i]/exp)%10]++;
+    for (int i = 1; i < 10; i++) count[i] += count[i-1];
+    for (int i = n-1; i >= 0; i--) {
+        output[count[(arr[i]/exp)%10]-1] = arr[i];
+        count[(arr[i]/exp)%10]--;
+    }
+    for (int i = 0; i < n; i++) arr[i] = output[i];
+}
+void radixSort(int[] arr) {
+    int max = Arrays.stream(arr).max().getAsInt();
+    for (int exp = 1; max/exp > 0; exp *= 10)
+        countingSort(arr, exp);
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="radix-cpp">
+    <pre><code class="language-cpp">// C++: Radix Sort
+void countingSort(int arr[], int n, int exp) {
+    int output[n], count[10] = {0};
+    for (int i = 0; i < n; i++) count[(arr[i]/exp)%10]++;
+    for (int i = 1; i < 10; i++) count[i] += count[i-1];
+    for (int i = n-1; i >= 0; i--) {
+        output[count[(arr[i]/exp)%10]-1] = arr[i];
+        count[(arr[i]/exp)%10]--;
+    }
+    for (int i = 0; i < n; i++) arr[i] = output[i];
+}
+void radixSort(int arr[], int n) {
+    int max = *max_element(arr, arr+n);
+    for (int exp = 1; max/exp > 0; exp *= 10)
+        countingSort(arr, n, exp);
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="radix-python">
+    <pre><code class="language-python"># Python: Radix Sort
+def counting_sort(arr, exp):
+    n = len(arr)
+    output = [0]*n
+    count = [0]*10
+    for num in arr:
+        idx = (num//exp)%10
+        count[idx] += 1
+    for i in range(1, 10):
+        count[i] += count[i-1]
+    for i in range(n-1, -1, -1):
+        idx = (arr[i]//exp)%10
+        output[count[idx]-1] = arr[i]
+        count[idx] -= 1
+    for i in range(n):
+        arr[i] = output[i]
+def radix_sort(arr):
+    if not arr: return
+    max_val = max(arr)
+    exp = 1
+    while max_val//exp > 0:
+        counting_sort(arr, exp)
+        exp *= 10
+</code></pre>
+  </div>
+
+  <div class="mt-4 text-sm text-gray-600">
+    <strong>Applications:</strong> Data processing, searching, ranking, scheduling, and more.
+  </div>
+  <div class="mt-4">
+    <h4 class="text-xl font-semibold text-yellow-700">Important Sorting Questions</h4>
+    <ul class="list-disc list-inside text-gray-700">
+      <li><a href="https://leetcode.com/problems/sort-colors/" target="_blank" class="text-yellow-600 hover:underline">Sort Colors (Dutch National Flag)</a></li>
+      <li><a href="https://leetcode.com/problems/merge-intervals/" target="_blank" class="text-yellow-600 hover:underline">Merge Intervals</a></li>
+      <li><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" class="text-yellow-600 hover:underline">Kth Largest Element</a></li>
+      <li><a href="https://leetcode.com/problems/largest-number/" target="_blank" class="text-yellow-600 hover:underline">Largest Number</a></li>
+      <li><a href="https://leetcode.com/problems/wiggle-sort-ii/" target="_blank" class="text-yellow-600 hover:underline">Wiggle Sort II</a></li>
+    </ul>
+  </div>
+</section>
+
+<!--RECURSION AND BACKTRACKING-->
+
+<section class="topic-section border-indigo-500" id="recursion">
+  <h2 class="text-3xl font-bold text-indigo-700 flex items-center mb-2">
+    <i class="fas fa-redo mr-2"></i>Recursion
+  </h2>
+  
+  <p class="mb-3 text-gray-700">
+    <strong>Recursion</strong> is a technique where a function calls itself to solve smaller instances of the same problem.
+    Each recursive solution needs a <strong>base case</strong> (to stop recursion) and a <strong>recursive case</strong>.
+    Recursion uses the call stack and is ideal for problems that can be broken into similar subproblems.
+  </p>
+
+  <ul class="list-disc ml-6 mb-3 text-gray-700">
+    <li><strong>Base case:</strong> condition to stop recursion</li>
+    <li><strong>Recursive case:</strong> reduces problem size and calls itself</li>
+    <li><strong>Call stack:</strong> each recursive call pushes a frame (watch out for stack overflow)</li>
+    <li><strong>When to use:</strong> tree traversals, divide & conquer, combinatorics, DP (top-down)</li>
+  </ul>
+
+  <div class="font-semibold mb-2">Example: Factorial (Recursive)</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Compute n! using recursion.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="fact-java">Java</button>
+    <button class="tab-btn" data-tab="fact-cpp">C++</button>
+    <button class="tab-btn" data-tab="fact-python">Python</button>
+  </div>
+  <div class="tab-content" id="fact-java">
+    <pre><code class="language-java">// Java: Factorial (recursive)
+int factorial(int n) {
+    if (n <= 1) return 1; // base case
+    return n * factorial(n - 1); // recursive case
+}
+// Example: factorial(5) -> 120
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="fact-cpp">
+    <pre><code class="language-cpp">// C++: Factorial (recursive)
+int factorial(int n) {
+    if (n <= 1) return 1;
+    return n * factorial(n - 1);
+}
+// Example: factorial(5) -> 120
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="fact-python">
+    <pre><code class="language-python"># Python: Factorial (recursive)
+def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
+# Example: factorial(5) -> 120
+</code></pre>
+  </div>
+
+  <hr class="my-4">
+
+  <h3 class="text-2xl font-bold text-indigo-600 mb-2">Top 3 Most Important Recursion Questions</h3>
+
+  <!-- 1. Tower of Hanoi -->
+  <div class="font-semibold mb-2">1. Tower of Hanoi</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Move n disks from peg A to C using B as auxiliary, only one disk at a time and never place larger disk on smaller.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="hanoi-java">Java</button>
+    <button class="tab-btn" data-tab="hanoi-cpp">C++</button>
+    <button class="tab-btn" data-tab="hanoi-python">Python</button>
+  </div>
+  <div class="tab-content" id="hanoi-java">
+    <pre><code class="language-java">// Java: Tower of Hanoi
+void towerOfHanoi(int n, char from, char to, char aux) {
+    if (n == 0) return;
+    towerOfHanoi(n - 1, from, aux, to);
+    System.out.println("Move disk " + n + " from " + from + " to " + to);
+    towerOfHanoi(n - 1, aux, to, from);
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="hanoi-cpp">
+    <pre><code class="language-cpp">// C++: Tower of Hanoi
+#include <iostream>
+using namespace std;
+
+void towerOfHanoi(int n, char from, char to, char aux) {
+    if (n == 0) return;
+    towerOfHanoi(n - 1, from, aux, to);
+    cout << "Move disk " << n << " from " << from << " to " << to << endl;
+    towerOfHanoi(n - 1, aux, to, from);
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="hanoi-python">
+    <pre><code class="language-python"># Python: Tower of Hanoi
+def tower_of_hanoi(n, source, target, aux):
+    if n == 0:
+        return
+    tower_of_hanoi(n-1, source, aux, target)
+    print(f"Move disk {n} from {source} to {target}")
+    tower_of_hanoi(n-1, aux, target, source)
+</code></pre>
+  </div>
+
+  <!-- 2. Fibonacci with memoization -->
+  <div class="font-semibold mt-4 mb-2">2. Fibonacci (with memoization)</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Compute the nth Fibonacci efficiently using recursion + memoization.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="fib-java">Java</button>
+    <button class="tab-btn" data-tab="fib-cpp">C++</button>
+    <button class="tab-btn" data-tab="fib-python">Python</button>
+  </div>
+  <div class="tab-content" id="fib-java">
+    <pre><code class="language-java">// Java: Fibonacci with memoization
+int fib(int n, int[] memo) {
+    if (n <= 1) return n;
+    if (memo[n] != -1) return memo[n];
+    memo[n] = fib(n-1, memo) + fib(n-2, memo);
+    return memo[n];
+}
+// Usage: int[] memo = new int[n+1]; Arrays.fill(memo, -1); fib(n, memo);
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="fib-cpp">
+    <pre><code class="language-cpp">// C++: Fibonacci with memoization
+#include <vector>
+using namespace std;
+
+int fib(int n, vector<int> &memo) {
+    if (n <= 1) return n;
+    if (memo[n] != -1) return memo[n];
+    memo[n] = fib(n-1, memo) + fib(n-2, memo);
+    return memo[n];
+}
+// Usage: vector<int> memo(n+1, -1); fib(n, memo);
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="fib-python">
+    <pre><code class="language-python"># Python: Fibonacci with memoization
+def fib(n, memo=None):
+    if memo is None:
+        memo = {}
+    if n <= 1:
+        return n
+    if n in memo:
+        return memo[n]
+    memo[n] = fib(n-1, memo) + fib(n-2, memo)
+    return memo[n]
+</code></pre>
+  </div>
+
+  <!-- 3. Power set (generate subsets) -->
+  <div class="font-semibold mt-4 mb-2">3. Generate Power Set (Subsets)</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Generate all subsets (power set) of a given array using recursion.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="ps-java">Java</button>
+    <button class="tab-btn" data-tab="ps-cpp">C++</button>
+    <button class="tab-btn" data-tab="ps-python">Python</button>
+  </div>
+  <div class="tab-content" id="ps-java">
+    <pre><code class="language-java">// Java: Generate subsets (recursion)
+void generateSubsets(int[] arr, int idx, List<Integer> current, List<List &lt; Integer &gt; > res) {
+    if (idx == arr.length) {
+        res.add(new ArrayList<>(current));
+        return;
+    }
+    // Exclude
+    generateSubsets(arr, idx+1, current, res);
+    // Include
+    current.add(arr[idx]);
+    generateSubsets(arr, idx+1, current, res);
+    current.remove(current.size()-1);
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="ps-cpp">
+    <pre><code class="language-cpp">// C++: Generate subsets (recursion)
+#include <vector>
+using namespace std;
+
+void generateSubsets(vector<int>& arr, int idx, vector<int>& cur, vector<vector &lt; int &gt; > res) {
+    if (idx == arr.size()) {
+        res.push_back(cur);
+        return;
+    }
+    // Exclude
+    generateSubsets(arr, idx+1, cur, res);
+    // Include
+    cur.push_back(arr[idx]);
+    generateSubsets(arr, idx+1, cur, res);
+    cur.pop_back();
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="ps-python">
+    <pre><code class="language-python"># Python: Generate subsets (recursion)
+def generate_subsets(arr, idx=0, cur=None, res=None):
+    if res is None: res = []
+    if cur is None: cur = []
+    if idx == len(arr):
+        res.append(cur.copy())
+        return res
+    # exclude
+    generate_subsets(arr, idx+1, cur, res)
+    # include
+    cur.append(arr[idx])
+    generate_subsets(arr, idx+1, cur, res)
+    cur.pop()
+    return res
+</code></pre>
+  </div>
+
+  <hr class="my-4">
+
+  <h3 class="text-2xl font-bold text-indigo-600 mb-2">5 Important Interview-Only Recursion Questions</h3>
+  <ul class="list-decimal ml-6 mb-3 text-gray-700">
+    <li>Generate Parentheses — <a href="https://leetcode.com/problems/generate-parentheses/" target="_blank" class="text-indigo-500 underline">LeetCode 22</a> | <a href="https://www.geeksforgeeks.org/generate-all-possible-valid-parentheses/" target="_blank" class="text-indigo-500 underline">GFG</a></li>
+    <li>N-Queens — <a href="https://leetcode.com/problems/n-queens/" target="_blank" class="text-indigo-500 underline">LeetCode 51</a> | <a href="https://www.geeksforgeeks.org/n-queen-problem-backtracking-3/" target="_blank" class="text-indigo-500 underline">GFG</a></li>
+    <li>Permutation generation — <a href="https://leetcode.com/problems/permutations/" target="_blank" class="text-indigo-500 underline">LeetCode 46</a> | <a href="https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/" target="_blank" class="text-indigo-500 underline">GFG</a></li>
+    <li>Subset / Power set — <a href="https://leetcode.com/problems/subsets/" target="_blank" class="text-indigo-500 underline">LeetCode 78</a> | <a href="https://www.geeksforgeeks.org/power-set/" target="_blank" class="text-indigo-500 underline">GFG</a></li>
+    <li>Combination Sum — <a href="https://leetcode.com/problems/combination-sum/" target="_blank" class="text-indigo-500 underline">LeetCode 39</a> | <a href="https://www.geeksforgeeks.org/combination-sum/" target="_blank" class="text-indigo-500 underline">GFG</a></li>
+  </ul>
+
+  <div class="mt-2 text-sm text-gray-600">
+    Recursion lays the foundation for many divide-and-conquer and backtracking approaches — master base cases, visualize the call stack, and add memoization when overlapping subproblems appear.
+  </div>
+</section>
+
+<section class="topic-section border-indigo-500" id="backtracking">
+  <h2 class="text-3xl font-bold text-indigo-700 flex items-center mb-2">
+    <i class="fas fa-brain mr-2"></i>Backtracking
+  </h2>
+  <p class="mb-3 text-gray-700">
+    <strong>Backtracking</strong> is a refinement of recursion used to build solutions incrementally and abandon (backtrack) when a partial solution cannot lead to a valid full solution.
+    It's commonly used for constraint-satisfaction problems and combinatorial search.
+  </p>
+
+  <ul class="list-disc ml-6 mb-3 text-gray-700">
+    <li><strong>Approach:</strong> try choices one-by-one, recurse, undo (backtrack) the choice</li>
+    <li><strong>Use-cases:</strong> permutations, combinations, N-Queens, Sudoku, word search</li>
+    <li><strong>Complexity:</strong> often exponential — prune with constraints where possible</li>
+  </ul>
+
+  <div class="font-semibold mb-2">Example: Generate Permutations (Backtracking)</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Generate all permutations of an array.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="perm-java">Java</button>
+    <button class="tab-btn" data-tab="perm-cpp">C++</button>
+    <button class="tab-btn" data-tab="perm-python">Python</button>
+  </div>
+  <div class="tab-content" id="perm-java">
+    <pre><code class="language-java">// Java: Permutations (backtracking)
+void permute(int[] arr, int l, List<List &lt; Integer &gt; > res) {
+    if (l == arr.length) {
+        List<Integer> r = new ArrayList<>();
+        for (int x : arr) r.add(x);
+        res.add(r);
+        return;
+    }
+    for (int i = l; i < arr.length; i++) {
+        swap(arr, l, i);
+        permute(arr, l+1, res);
+        swap(arr, l, i); // backtrack
+    }
+}
+void swap(int[] a, int i, int j) {
+    int t = a[i]; a[i] = a[j]; a[j] = t;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="perm-cpp">
+    <pre><code class="language-cpp">// C++: Permutations (backtracking)
+#include <vector>
+using namespace std;
+
+void swap_vec(vector<int>& a, int i, int j) {
+    int t = a[i]; a[i] = a[j]; a[j] = t;
+}
+
+void permute(vector<int>& a, int l, vector<vector &lt; int &gt; >& res) {
+    if (l == a.size()) {
+        res.push_back(a);
+        return;
+    }
+    for (int i = l; i < a.size(); i++) {
+        swap_vec(a, l, i);
+        permute(a, l+1, res);
+        swap_vec(a, l, i); // backtrack
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="perm-python">
+    <pre><code class="language-python"># Python: Permutations (backtracking)
+def permute(a, l=0, res=None):
+    if res is None: res = []
+    if l == len(a):
+        res.append(a.copy())
+        return res
+    for i in range(l, len(a)):
+        a[l], a[i] = a[i], a[l]
+        permute(a, l+1, res)
+        a[l], a[i] = a[i], a[l]  # backtrack
+    return res
+</code></pre>
+  </div>
+
+  <hr class="my-4">
+
+  <h3 class="text-2xl font-bold text-indigo-600 mb-2">Top 3 Most Important Backtracking Questions</h3>
+
+  <!-- 1. N-Queens -->
+  <div class="font-semibold mb-2">1. N-Queens</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Place N queens on an N×N chessboard so that no two queens attack each other.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="nq-java">Java</button>
+    <button class="tab-btn" data-tab="nq-cpp">C++</button>
+    <button class="tab-btn" data-tab="nq-python">Python</button>
+  </div>
+  <div class="tab-content" id="nq-java">
+    <pre><code class="language-java">// Java: N-Queens (sketch)
+boolean isSafe(char[][] board, int row, int col, int n) {
+    for (int i = 0; i &lt; col; i++)
+        if (board[row][i] == 'Q') return false;
+    for (int i=row, j=col; i>=0 && j>=0; i--, j--)
+        if (board[i][j] == 'Q') return false;
+    for (int i=row, j=col; i<n && j>=0; i++, j--)
+        if (board[i][j] == 'Q') return false;
+    return true;
+}
+
+void solveNQ(char[][] board, int col, List<List &lt; String &gt; > res, int n) {
+    if (col == n) {
+        List<String> cur = new ArrayList &lt; &gt;();
+        for (char[] r : board) cur.add(new String(r));
+        res.add(cur);
+        return;
+    }
+    for (int i = 0; i &lt; n; i++) {
+        if (isSafe(board, i, col, n)) {
+            board[i][col] = 'Q';
+            solveNQ(board, col+1, res, n);
+            board[i][col] = '.'; // backtrack
+        }
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="nq-cpp">
+    <pre><code class="language-cpp">// C++: N-Queens (sketch)
+#include &lt; vector &gt;
+using namespace std;
+
+bool isSafe(vector &lt; string &gt; & board, int row, int col, int n) {
+    for (int i=0; i < col;i++) if (board[row][i] == 'Q') return false;
+    for (int i=row, j=col; i>=0 && j>=0; i--, j--) if (board[i][j]=='Q') return false;
+    for (int i=row, j=col; i<n && j >= 0; i++, j--) if (board[i][j]=='Q') return false;
+    return true;
+}
+
+void solveNQ(vector<string>& board, int col, vector<vector &lt; string &gt; >& res, int n) {
+    if (col == n) { res.push_back(board); return; }
+    for (int i=0;i< n;i++) {
+        if (isSafe(board, i, col, n)) {
+            board[i][col] = 'Q';
+            solveNQ(board, col+1, res, n);
+            board[i][col] = '.'; 
+        }
+    }
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="nq-python">
+    <pre><code class="language-python"># Python: N-Queens (sketch)
+def is_safe(board, r, c, n):
+    for i in range(c):
+        if board[r][i] == 'Q': return False
+    i, j = r, c
+    while i >= 0 and j >= 0:
+        if board[i][j] == 'Q': return False
+        i -= 1; j -= 1
+    i, j = r, c
+    while i < n and j >= 0:
+        if board[i][j] == 'Q': return False
+        i += 1; j -= 1
+    return True
+
+def solve_nq(board, col, res, n):
+    if col == n:
+        res.append([''.join(r) for r in board])
+        return
+    for i in range(n):
+        if is_safe(board, i, col, n):
+            board[i][col] = 'Q'
+            solve_nq(board, col+1, res, n)
+            board[i][col] = '.'  # backtrack
+</code></pre>
+  </div>
+
+  <!-- 2. Combination Sum -->
+  <div class="font-semibold mt-4 mb-2">2. Combination Sum</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Find all unique combinations where numbers sum to a target (allow reuse of elements).</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="cs-java">Java</button>
+    <button class="tab-btn" data-tab="cs-cpp">C++</button>
+    <button class="tab-btn" data-tab="cs-python">Python</button>
+  </div>
+  <div class="tab-content" id="cs-java">
+    <pre><code class="language-java">// Java: Combination Sum (sketch)
+void combinationSumHelper(int[] candidates, int idx, int target, List<Integer> cur, List<List<Integer>> res) {
+    if (target == 0) { res.add(new ArrayList<>(cur)); return; }
+    if (target < 0 || idx == candidates.length) return;
+    // choose
+    cur.add(candidates[idx]);
+    combinationSumHelper(candidates, idx, target - candidates[idx], cur, res);
+    cur.remove(cur.size()-1);
+    // skip
+    combinationSumHelper(candidates, idx+1, target, cur, res);
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="cs-cpp">
+    <pre><code class="language-cpp">// C++: Combination Sum (sketch)
+#include <vector>
+using namespace std;
+
+void combSum(vector<int>& cand, int idx, int target, vector<int>& cur, vector<vector &lt; int &gt; >& res) {
+    if (target == 0) { res.push_back(cur); return; }
+    if (target < 0 || idx == cand.size()) return;
+    cur.push_back(cand[idx]);
+    combSum(cand, idx, target - cand[idx], cur, res);
+    cur.pop_back();
+    combSum(cand, idx+1, target, cur, res);
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="cs-python">
+    <pre><code class="language-python"># Python: Combination Sum (sketch)
+def comb_sum(candidates, idx, target, cur, res):
+    if target == 0:
+        res.append(cur.copy()); return
+    if target < 0 or idx == len(candidates): return
+    # choose current
+    cur.append(candidates[idx])
+    comb_sum(candidates, idx, target - candidates[idx], cur, res)
+    cur.pop()
+    # skip current
+    comb_sum(candidates, idx+1, target, cur, res)
+</code></pre>
+  </div>
+
+  <!-- 3. Word Search (backtracking grid search) -->
+  <div class="font-semibold mt-4 mb-2">3. Word Search (grid DFS/backtracking)</div>
+  <p class="text-gray-700"><strong>Problem:</strong> Given a grid of letters, check if a word exists by moving horizontally or vertically without revisiting a cell.</p>
+  <div class="code-tabs">
+    <button class="tab-btn active" data-tab="ws-java">Java</button>
+    <button class="tab-btn" data-tab="ws-cpp">C++</button>
+    <button class="tab-btn" data-tab="ws-python">Python</button>
+  </div>
+  <div class="tab-content" id="ws-java">
+    <pre><code class="language-java">// Java: Word Search (sketch)
+boolean dfs(char[][] board, String word, int i, int j, int idx) {
+    if (idx == word.length()) return true;
+    if (i<0 || j< 0 || i>=board.length || j>=board[0].length || board[i][j] != word.charAt(idx)) return false;
+    char temp = board[i][j];
+    board[i][j] = '#';
+    boolean found = dfs(board, word, i+1, j, idx+1) ||
+                    dfs(board, word, i-1, j, idx+1) ||
+                    dfs(board, word, i, j+1, idx+1) ||
+                    dfs(board, word, i, j-1, idx+1);
+    board[i][j] = temp;
+    return found;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="ws-cpp">
+    <pre><code class="language-cpp">// C++: Word Search (sketch)
+#include <vector>
+using namespace std;
+
+bool dfs(vector<vector &lt; char  &gt; > & b, string& w, int i, int j, int idx) {
+    if (idx == w.size()) return true;
+    if (i<0||j < 0||i>=b.size()||j>=b[0].size()||b[i][j]!=w[idx]) return false;
+    char tmp = b[i][j]; b[i][j] = '#';
+    bool found = dfs(b, w, i+1, j, idx+1) || dfs(b, w, i-1, j, idx+1) ||
+                 dfs(b, w, i, j+1, idx+1) || dfs(b, w, i, j-1, idx+1);
+    b[i][j] = tmp;
+    return found;
+}
+</code></pre>
+  </div>
+  <div class="tab-content hidden" id="ws-python">
+    <pre><code class="language-python"># Python: Word Search (sketch)
+def dfs(board, word, i, j, idx):
+    if idx == len(word): return True
+    if i<0 or j < 0 or i>=len(board) or j>=len(board[0]) or board[i][j] != word[idx]:
+        return False
+    tmp = board[i][j]; board[i][j] = '#'
+    found = (dfs(board, word, i+1, j, idx+1) or dfs(board, word, i-1, j, idx+1) or
+             dfs(board, word, i, j+1, idx+1) or dfs(board, word, i, j-1, idx+1))
+    board[i][j] = tmp
+    return found
+</code></pre>
+  </div>
+
+  <hr class="my-4">
+
+  <h3 class="text-2xl font-bold text-indigo-600 mb-2">5 Important Interview-Only Backtracking Questions</h3>
+  <ul class="list-decimal ml-6 mb-3 text-gray-700">
+    <li>N-Queens — <a href="https://leetcode.com/problems/n-queens/" target="_blank" class="text-indigo-500 underline">LeetCode 51</a> | <a href="https://www.geeksforgeeks.org/n-queen-problem-backtracking-3/" target="_blank" class="text-indigo-500 underline">GFG</a></li>
+    <li>Generate Parentheses — <a href="https://leetcode.com/problems/generate-parentheses/" target="_blank" class="text-indigo-500 underline">LeetCode 22</a> | <a href="https://www.geeksforgeeks.org/generate-parentheses/" target="_blank" class="text-indigo-500 underline">GFG</a></li>
+    <li>Word Search — <a href="https://leetcode.com/problems/word-search/" target="_blank" class="text-indigo-500 underline">LeetCode 79</a> | <a href="https://www.geeksforgeeks.org/word-search-from-a-given-2d-board-of-characters/" target="_blank" class="text-indigo-500 underline">GFG</a></li>
+    <li>Combination Sum — <a href="https://leetcode.com/problems/combination-sum/" target="_blank" class="text-indigo-500 underline">LeetCode 39</a> | <a href="https://www.geeksforgeeks.org/combination-sum/" target="_blank" class="text-indigo-500 underline">GFG</a></li>
+    <li>Palindromic Partitioning — <a href="https://leetcode.com/problems/palindrome-partitioning/" target="_blank" class="text-indigo-500 underline">LeetCode 131</a> | <a href="https://www.geeksforgeeks.org/palindromic-partitioning-dp-17/" target="_blank" class="text-indigo-500 underline">GFG</a></li>
+  </ul>
+
+  <div class="mt-2 text-sm text-gray-600">
+    Backtracking is recursion + pruning. Practice common patterns: choose/explore/unchoose, track used/state arrays, and try to reduce branching with constraints.
+  </div>
+</section>
+
+<!--DYNAMIC PROGRAMMING-->
+
+<section class="topic-section border-purple-500" id="dp">
+  <h2 class="text-3xl font-bold text-purple-700 flex items-center mb-2">
+    <i class="fas fa-project-diagram mr-2"></i>D y n a m i c &nbsp; P r o g r a m m i n g
+  </h2>
+  <p class="mb-3 text-gray-700">
+    Dynamic Programming (DP) is a method for solving problems by breaking them down into overlapping subproblems and storing the results of these subproblems to avoid redundant computations.  
+    It is mainly used for optimization problems where results of smaller subproblems are reused.
+  </p>
+
+  <h3 class="text-xl font-semibold text-purple-600 mb-2">Key Points</h3>
+  <ul class="list-disc list-inside mb-3 text-gray-700">
+    <li>Stores results of subproblems to avoid recalculating.</li>
+    <li>Two main types: Top-down (Memoization) and Bottom-up (Tabulation).</li>
+    <li>Helps in optimizing recursive algorithms.</li>
+    <li>Common in problems involving counting, paths, sequences, and optimization.</li>
+  </ul>
+
+  <h3 class="text-xl font-semibold text-purple-600 mb-2">Example (Fibonacci Numbers)</h3>
+
+  <!-- Toggle buttons -->
+  <div class="mb-3 flex space-x-2">
+    <button onclick="showDPCode('java')" class="bg-purple-500 text-white px-3 py-1 rounded">Java</button>
+    <button onclick="showDPCode('python')" class="bg-purple-500 text-white px-3 py-1 rounded">Python</button>
+    <button onclick="showDPCode('cpp')" class="bg-purple-500 text-white px-3 py-1 rounded">C++</button>
+  </div>
+
+  <!-- Java code -->
+  <div id="dp-java" class="dp-code-block">
+<pre class="bg-gray-900 text-green-400 p-3 rounded-lg overflow-x-auto"><code>
+class Fibonacci {
+    static int fib(int n) {
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
+        for (int i = 2; i &lt;= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+    public static void main(String[] args) {
+        System.out.println(fib(10));
+    }
+}
+</code></pre>
+  </div>
+
+  <!-- Python code -->
+  <div id="dp-python" class="dp-code-block hidden">
+<pre class="bg-gray-900 text-yellow-300 p-3 rounded-lg overflow-x-auto"><code>
+def fib(n):
+    dp = [0] * (n + 1)
+    dp[0] = 0
+    dp[1] = 1
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
+    return dp[n]
+
+print(fib(10))
+</code></pre>
+  </div>
+
+  <!-- C++ code -->
+  <div id="dp-cpp" class="dp-code-block hidden">
+<pre class="bg-gray-900 text-blue-300 p-3 rounded-lg overflow-x-auto"><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+int fib(int n) {
+    int dp[n + 1];
+    dp[0] = 0;
+    dp[1] = 1;
+    for (int i = 2; i &lt;= n; i++) {
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+    return dp[n];
+}
+
+int main() {
+    cout &lt;&lt; fib(10);
+}
+</code></pre>
+  </div>
+
+  <h3 class="text-xl font-semibold text-purple-600 mb-2">Important DP Questions</h3>
+  <ul class="list-decimal list-inside text-gray-700">
+    <li><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" class="text-purple-500 hover:underline">Climbing Stairs</a></li>
+    <li><a href="https://leetcode.com/problems/coin-change/" target="_blank" class="text-purple-500 hover:underline">Coin Change</a></li>
+    <li><a href="https://leetcode.com/problems/longest-increasing-subsequence/" target="_blank" class="text-purple-500 hover:underline">Longest Increasing Subsequence</a></li>
+    <li><a href="https://leetcode.com/problems/unique-paths/" target="_blank" class="text-purple-500 hover:underline">Unique Paths</a></li>
+    <li><a href="https://leetcode.com/problems/edit-distance/" target="_blank" class="text-purple-500 hover:underline">Edit Distance</a></li>
+  </ul>
+</section>
+
+<script>
+function showDPCode(lang) {
+  document.querySelectorAll('.dp-code-block').forEach(block => block.classList.add('hidden'));
+  document.getElementById(`dp-${lang}`).classList.remove('hidden');
+}
+</script>
+
+<!--GREEDY APPROACH-->
+
+<section class="topic-section border-yellow-500" id="greedy">
+  <h2 class="text-3xl font-bold text-yellow-700 flex items-center mb-2">
+    <i class="fas fa-coins mr-2"></i>Greedy Algorithm
+  </h2>
+  <p class="mb-3 text-gray-700">
+    A Greedy Algorithm builds up a solution step-by-step, always choosing the next step that offers the most immediate benefit.
+    It works best for problems where a global optimum can be reached through locally optimal steps.
+  </p>
+
+  <h3 class="text-xl font-semibold text-yellow-600">Steps to Solve a Problem Using Greedy Algorithm</h3>
+  <ul class="list-disc list-inside mb-3 text-gray-700">
+    <li>Identify if local optimal choices lead to a global optimal solution.</li>
+    <li>At each step, choose the option that looks best at the moment.</li>
+    <li>Repeat until the problem is solved.</li>
+    <li>Verify if the solution is indeed optimal.</li>
+  </ul>
+
+  <h3 class="text-xl font-semibold text-yellow-600">Example: Coin Change (Minimum Coins)</h3>
+
+  <!-- Toggle Buttons -->
+  <div class="tabs mb-3">
+    <button class="tab-button bg-yellow-500 text-white px-4 py-1 rounded-t" onclick="showCode(this, 'coin-java')">Java</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'coin-python')">Python</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'coin-cpp')">C++</button>
+  </div>
+
+  <!-- Java Code -->
+  <div id="coin-java" class="tab-content bg-gray-100 p-3 rounded-b">
+<pre><code class="language-java">
+import java.util.*;
+
+public class GreedyCoinChange {
+    public static void main(String[] args) {
+        int[] coins = {25, 10, 5, 1};
+        int amount = 63;
+        Arrays.sort(coins);
+        for (int i = coins.length - 1; i >= 0; i--) {
+            int count = amount / coins[i];
+            if (count != 0) {
+                System.out.println(coins[i] + "¢: " + count);
+                amount %= coins[i];
+            }
+        }
+    }
+}
+</code></pre>
+  </div>
+
+  <!-- Python Code -->
+  <div id="coin-python" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-python">
+coins = [25, 10, 5, 1]
+amount = 63
+for coin in coins:
+    count = amount // coin
+    if count != 0:
+        print(f"{coin}¢: {count}")
+        amount %= coin
+</code></pre>
+  </div>
+
+  <!-- C++ Code -->
+  <div id="coin-cpp" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() {
+    vector<int> coins = {25, 10, 5, 1};
+    int amount = 63;
+    for (int coin : coins) {
+        int count = amount / coin;
+        if (count != 0) {
+            cout &lt;&lt; coin &lt;&lt; "¢: " &lt;&lt; count &lt;&lt; endl;
+            amount %= coin;
+        }
+    }
+}
+</code></pre>
+  </div>
+
+  <h3 class="text-xl font-semibold text-yellow-600 mt-4">5 Important Greedy Algorithm Interview Problems</h3>
+  <ol class="list-decimal list-inside mb-3 text-gray-700">
+    <li>Activity Selection Problem</li>
+    <li>Fractional Knapsack</li>
+    <li>Job Sequencing with Deadlines</li>
+    <li>Huffman Coding</li>
+    <li>Minimum Spanning Tree (Kruskal's Algorithm)</li>
+  </ol>
+</section>
+
+<script>
+function showCode(button, id) {
+  document.querySelectorAll('.tab-button').forEach(btn => {
+    btn.classList.remove('bg-yellow-500', 'text-white');
+    btn.classList.add('bg-gray-300', 'text-black');
+  });
+  button.classList.remove('bg-gray-300', 'text-black');
+  button.classList.add('bg-yellow-500', 'text-white');
+
+  document.querySelectorAll('.tab-content').forEach(content => {
+    content.classList.add('hidden');
+  });
+  document.getElementById(id).classList.remove('hidden');
+}
+</script>
+
+<!--ADVANCED TREES-->
+
+<section class="topic-section border-indigo-500" id="advancedtrees">
+  <h2 class="text-3xl font-bold text-indigo-700 flex items-center mb-2">
+    <i class="fas fa-tree mr-2"></i> A d v a n c e d &nbsp; T r e e s
+  </h2>
+  <p class="mb-3 text-gray-700">
+    Advanced Trees include specialized tree data structures and algorithms used to solve complex problems efficiently.  
+    These include AVL trees, Red-Black trees, Segment Trees, Fenwick Trees (Binary Indexed Trees), and Trie structures.  
+    They optimize dynamic data operations like searching, updating, and range queries.
+  </p>
+
+  <h3 class="text-xl font-semibold text-indigo-600 mb-2">Key Points</h3>
+  <ul class="list-disc list-inside mb-3 text-gray-700">
+    <li>Balanced trees maintain height to optimize search and update times.</li>
+    <li>Segment Trees and Fenwick Trees enable efficient range queries and updates.</li>
+    <li>Tries are used for efficient string prefix searches.</li>
+    <li>Red-Black and AVL trees self-balance after insertions/deletions.</li>
+  </ul>
+
+  <h3 class="text-xl font-semibold text-indigo-600 mb-2">Example 1: AVL Tree Insertion (Java)</h3>
+  <div class="tabs mb-3">
+    <button class="tab-button bg-indigo-500 text-white px-4 py-1 rounded-t" onclick="showCode(this, 'avl-java')">Java</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'avl-python')">Python</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'avl-cpp')">C++</button>
+  </div>
+  <div id="avl-java" class="tab-content bg-gray-100 p-3 rounded-b">
+<pre><code class="language-java">
+class Node {
+    int key, height;
+    Node left, right;
+    Node(int d) { key = d; height = 1; }
+}
+
+class AVLTree {
+    Node root;
+
+    int height(Node N) {
+        if (N == null) return 0;
+        return N.height;
+    }
+
+    int max(int a, int b) {
+        return (a > b) ? a : b;
+    }
+
+    Node rightRotate(Node y) {
+        Node x = y.left;
+        Node T2 = x.right;
+
+        x.right = y;
+        y.left = T2;
+
+        y.height = max(height(y.left), height(y.right)) + 1;
+        x.height = max(height(x.left), height(x.right)) + 1;
+
+        return x;
+    }
+
+    Node leftRotate(Node x) {
+        Node y = x.right;
+        Node T2 = y.left;
+
+        y.left = x;
+        x.right = T2;
+
+        x.height = max(height(x.left), height(x.right)) + 1;
+        y.height = max(height(y.left), height(y.right)) + 1;
+
+        return y;
+    }
+
+    int getBalance(Node N) {
+        if (N == null) return 0;
+        return height(N.left) - height(N.right);
+    }
+
+    Node insert(Node node, int key) {
+        if (node == null) return new Node(key);
+
+        if (key < node.key)
+            node.left = insert(node.left, key);
+        else if (key > node.key)
+            node.right = insert(node.right, key);
+        else
+            return node;
+
+        node.height = 1 + max(height(node.left), height(node.right));
+
+        int balance = getBalance(node);
+
+        // Left Left Case
+        if (balance > 1 && key < node.left.key)
+            return rightRotate(node);
+
+        // Right Right Case
+        if (balance < -1 && key > node.right.key)
+            return leftRotate(node);
+
+        // Left Right Case
+        if (balance > 1 && key > node.left.key) {
+            node.left = leftRotate(node.left);
+            return rightRotate(node);
+        }
+
+        // Right Left Case
+        if (balance < -1 && key < node.right.key) {
+            node.right = rightRotate(node.right);
+            return leftRotate(node);
+        }
+
+        return node;
+    }
+}
+
+// Runnable main class for AVLTree
+public class AVLTreeDemo {
+    public static void main(String[] args) {
+        AVLTree tree = new AVLTree();
+        tree.root = tree.insert(tree.root, 10);
+        tree.root = tree.insert(tree.root, 20);
+        tree.root = tree.insert(tree.root, 30);
+        tree.root = tree.insert(tree.root, 40);
+        tree.root = tree.insert(tree.root, 50);
+        tree.root = tree.insert(tree.root, 25);
+
+        System.out.println("Preorder traversal of constructed AVL tree is:");
+        preorder(tree.root);
+    }
+
+    static void preorder(Node node) {
+        if (node != null) {
+            System.out.print(node.key + " ");
+            preorder(node.left);
+            preorder(node.right);
+        }
+    }
+}
+</code></pre>
+  </div>
+  <div id="avl-python" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-python">
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+        self.height = 1
+
+class AVLTree:
+    def height(self, root):
+        if not root:
+            return 0
+        return root.height
+
+    def rightRotate(self, y):
+        x = y.left
+        T2 = x.right
+
+        x.right = y
+        y.left = T2
+
+        y.height = 1 + max(self.height(y.left), self.height(y.right))
+        x.height = 1 + max(self.height(x.left), self.height(x.right))
+
+        return x
+
+    def leftRotate(self, x):
+        y = x.right
+        T2 = y.left
+
+        y.left = x
+        x.right = T2
+
+        x.height = 1 + max(self.height(x.left), self.height(x.right))
+        y.height = 1 + max(self.height(y.left), self.height(y.right))
+
+        return y
+
+    def getBalance(self, root):
+        if not root:
+            return 0
+        return self.height(root.left) - self.height(root.right)
+
+    def insert(self, root, key):
+        if not root:
+            return Node(key)
+
+        if key < root.key:
+            root.left = self.insert(root.left, key)
+        elif key > root.key:
+            root.right = self.insert(root.right, key)
+        else:
+            return root
+
+        root.height = 1 + max(self.height(root.left), self.height(root.right))
+
+        balance = self.getBalance(root)
+
+        # Left Left Case
+        if balance > 1 and key < root.left.key:
+            return self.rightRotate(root)
+
+        # Right Right Case
+        if balance < -1 and key > root.right.key:
+            return self.leftRotate(root)
+
+        # Left Right Case
+        if balance > 1 and key > root.left.key:
+            root.left = self.leftRotate(root.left)
+            return self.rightRotate(root)
+
+        # Right Left Case
+        if balance < -1 and key < root.right.key:
+            root.right = self.rightRotate(root.right)
+            return self.leftRotate(root)
+
+        return root
+
+# Example usage:
+if __name__ == "__main__":
+    tree = AVLTree()
+    root = None
+    keys = [10, 20, 30, 40, 50, 25]
+    for key in keys:
+        root = tree.insert(root, key)
+
+    def preorder(node):
+        if node:
+            print(node.key, end=" ")
+            preorder(node.left)
+            preorder(node.right)
+
+    print("Preorder traversal of constructed AVL tree is:")
+    preorder(root)
+</code></pre>
+  </div>
+  <div id="avl-cpp" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+using namespace std;
+
+struct Node {
+    int key, height;
+    Node* left;
+    Node* right;
+    Node(int k) : key(k), height(1), left(nullptr), right(nullptr) {}
+};
+
+int height(Node* N) {
+    if (N == nullptr) return 0;
+    return N->height;
+}
+
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+Node* rightRotate(Node* y) {
+    Node* x = y->left;
+    Node* T2 = x->right;
+
+    x->right = y;
+    y->left = T2;
+
+    y->height = max(height(y->left), height(y->right)) + 1;
+    x->height = max(height(x->left), height(x->right)) + 1;
+
+    return x;
+}
+
+Node* leftRotate(Node* x) {
+    Node* y = x->right;
+    Node* T2 = y->left;
+
+    y->left = x;
+    x->right = T2;
+
+    x->height = max(height(x->left), height(x->right)) + 1;
+    y->height = max(height(y->left), height(y->right)) + 1;
+
+    return y;
+}
+
+int getBalance(Node* N) {
+    if (N == nullptr) return 0;
+    return height(N->left) - height(N->right);
+}
+
+Node* insert(Node* node, int key) {
+    if (node == nullptr)
+        return new Node(key);
+
+    if (key < node->key)
+        node->left = insert(node->left, key);
+    else if (key > node->key)
+        node->right = insert(node->right, key);
+    else
+        return node;
+
+    node->height = 1 + max(height(node->left), height(node->right));
+
+    int balance = getBalance(node);
+
+    if (balance > 1 && key < node->left->key)
+        return rightRotate(node);
+
+    if (balance < -1 && key > node->right->key)
+        return leftRotate(node);
+
+    if (balance > 1 && key > node->left->key) {
+        node->left = leftRotate(node->left);
+        return rightRotate(node);
+    }
+
+    if (balance < -1 && key < node->right->key) {
+        node->right = rightRotate(node->right);
+        return leftRotate(node);
+    }
+
+    return node;
+}
+
+// Helper to print preorder traversal
+void preorder(Node* root) {
+    if (root != nullptr) {
+        cout << root->key << " ";
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+
+int main() {
+    Node* root = nullptr;
+    int keys[] = {10, 20, 30, 40, 50, 25};
+    for (int key : keys)
+        root = insert(root, key);
+
+    cout << "Preorder traversal of constructed AVL tree is:\n";
+    preorder(root);
+    cout << "\n";
+    return 0;
+}
+</code></pre>
+  </div>
+
+  <h3 class="text-xl font-semibold text-indigo-600 mb-2">Example 2: Segment Tree for Range Sum Query (Java)</h3>
+  <div class="tabs mb-3">
+    <button class="tab-button bg-indigo-500 text-white px-4 py-1 rounded-t" onclick="showCode(this, 'seg-java')">Java</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'seg-python')">Python</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'seg-cpp')">C++</button>
+  </div>
+  <div id="seg-java" class="tab-content bg-gray-100 p-3 rounded-b">
+<pre><code class="language-java">
+class SegmentTree {
+    int[] tree;
+    int n;
+
+    SegmentTree(int[] arr) {
+        n = arr.length;
+        tree = new int[4 * n];
+        build(arr, 1, 0, n - 1);
+    }
+
+    void build(int[] arr, int node, int start, int end) {
+        if (start == end) {
+            tree[node] = arr[start];
+            return;
+        }
+        int mid = (start + end) / 2;
+        build(arr, 2 * node, start, mid);
+        build(arr, 2 * node + 1, mid + 1, end);
+        tree[node] = tree[2 * node] + tree[2 * node + 1];
+    }
+
+    int query(int node, int start, int end, int l, int r) {
+        if (r < start || l > end) return 0;
+        if (l <= start && end <= r) return tree[node];
+        int mid = (start + end) / 2;
+        return query(2 * node, start, mid, l, r) + query(2 * node + 1, mid + 1, end, l, r);
+    }
+}
+</code></pre>
+  </div>
+  <div id="seg-python" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-python">
+class SegmentTree:
+    def __init__(self, arr):
+        self.n = len(arr)
+        self.tree = [0] * (4 * self.n)
+        self.build(arr, 1, 0, self.n - 1)
+
+    def build(self, arr, node, start, end):
+        if start == end:
+            self.tree[node] = arr[start]
+            return
+        mid = (start + end) // 2
+        self.build(arr, 2 * node, start, mid)
+        self.build(arr, 2 * node + 1, mid + 1, end)
+        self.tree[node] = self.tree[2 * node] + self.tree[2 * node + 1]
+
+    def query(self, node, start, end, l, r):
+        if r < start or l > end:
+            return 0
+        if l <= start and end <= r:
+            return self.tree[node]
+        mid = (start + end) // 2
+        return self.query(2 * node, start, mid, l, r) + self.query(2 * node + 1, mid + 1, end, l, r)
+</code></pre>
+  </div>
+  <div id="seg-cpp" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class SegmentTree {
+    vector&lt;int&gt; tree;
+    int n;
+
+public:
+    SegmentTree(vector&lt;int&gt;& arr) {
+        n = arr.size();
+        tree.resize(4 * n);
+        build(arr, 1, 0, n - 1);
+    }
+
+    void build(vector&lt;int&gt;& arr, int node, int start, int end) {
+        if (start == end) {
+            tree[node] = arr[start];
+            return;
+        }
+        int mid = (start + end) / 2;
+        build(arr, 2 * node, start, mid);
+        build(arr, 2 * node + 1, mid + 1, end);
+        tree[node] = tree[2 * node] + tree[2 * node + 1];
+    }
+
+    int query(int node, int start, int end, int l, int r) {
+        if (r < start || l > end)
+            return 0;
+        if (l <= start && end <= r)
+            return tree[node];
+        int mid = (start + end) / 2;
+        return query(2 * node, start, mid, l, r) + query(2 * node + 1, mid + 1, end, l, r);
+    }
+};
+</code></pre>
+  </div>
+
+  <h3 class="text-xl font-semibold text-indigo-600 mb-2">Example 3: Trie (Prefix Tree) Insert and Search (Java)</h3>
+  <div class="tabs mb-3">
+    <button class="tab-button bg-indigo-500 text-white px-4 py-1 rounded-t" onclick="showCode(this, 'trie-java')">Java</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'trie-python')">Python</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'trie-cpp')">C++</button>
+  </div>
+  <div id="trie-java" class="tab-content bg-gray-100 p-3 rounded-b">
+<pre><code class="language-java">
+class TrieNode {
+    TrieNode[] children = new TrieNode[26];
+    boolean isEndOfWord;
+}
+
+public class Trie {
+    TrieNode root;
+
+    public Trie() {
+        root = new TrieNode();
+    }
+
+    public void insert(String key) {
+        TrieNode node = root;
+        for (char c : key.toCharArray()) {
+            int index = c - 'a';
+            if (node.children[index] == null)
+                node.children[index] = new TrieNode();
+            node = node.children[index];
+        }
+        node.isEndOfWord = true;
+    }
+
+    public boolean search(String key) {
+        TrieNode node = root;
+        for (char c : key.toCharArray()) {
+            int index = c - 'a';
+            if (node.children[index] == null)
+                return false;
+            node = node.children[index];
+        }
+        return node.isEndOfWord;
+    }
+}
+
+// Runnable main class for Trie
+public class TrieDemo {
+    public static void main(String[] args) {
+        Trie trie = new Trie();
+        trie.insert("apple");
+        trie.insert("app");
+        System.out.println("Search 'apple': " + trie.search("apple")); // true
+        System.out.println("Search 'app': " + trie.search("app"));     // true
+        System.out.println("Search 'appl': " + trie.search("appl"));   // false
+        System.out.println("Search 'banana': " + trie.search("banana"));// false
+    }
+}
+</code></pre>
+  </div>
+  <div id="trie-python" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-python">
+class TrieNode:
+    def __init__(self):
+        self.children = [None]*26
+        self.isEndOfWord = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, key):
+        node = self.root
+        for char in key:
+            index = ord(char) - ord('a')
+            if not node.children[index]:
+                node.children[index] = TrieNode()
+            node = node.children[index]
+        node.isEndOfWord = True
+
+    def search(self, key):
+        node = self.root
+        for char in key:
+            index = ord(char) - ord('a')
+            if not node.children[index]:
+                return False
+            node = node.children[index]
+        return node.isEndOfWord
+
+# Example usage
+if __name__ == "__main__":
+    trie = Trie()
+    trie.insert("apple")
+    trie.insert("app")
+    print("Search 'apple':", trie.search("apple"))   # True
+    print("Search 'app':", trie.search("app"))       # True
+    print("Search 'appl':", trie.search("appl"))     # False
+    print("Search 'banana':", trie.search("banana")) # False
+</code></pre>
+  </div>
+  <div id="trie-cpp" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+using namespace std;
+
+struct TrieNode {
+    TrieNode* children[26];
+    bool isEndOfWord;
+    TrieNode() {
+        for (int i = 0; i &lt; 26; i++)
+            children[i] = nullptr;
+        isEndOfWord = false;
+    }
+};
+
+class Trie {
+    TrieNode* root;
+public:
+    Trie() { root = new TrieNode(); }
+
+    void insert(string key) {
+        TrieNode* node = root;
+        for (char c : key) {
+            int index = c - 'a';
+            if (!node->children[index])
+                node->children[index] = new TrieNode();
+            node = node->children[index];
+        }
+        node->isEndOfWord = true;
+    }
+
+    bool search(string key) {
+        TrieNode* node = root;
+        for (char c : key) {
+            int index = c - 'a';
+            if (!node->children[index])
+                return false;
+            node = node->children[index];
+        }
+        return node->isEndOfWord;
+    }
+};
+
+// Runnable main for Trie
+int main() {
+    Trie trie;
+    trie.insert("apple");
+    trie.insert("app");
+
+    cout << "Search 'apple': " << trie.search("apple") << "\n";   // 1 (true)
+    cout << "Search 'app': " << trie.search("app") << "\n";       // 1 (true)
+    cout << "Search 'appl': " << trie.search("appl") << "\n";     // 0 (false)
+    cout << "Search 'banana': " << trie.search("banana") << "\n"; // 0 (false)
+
+    return 0;
+}
+</code></pre>
+  </div>
+
+  <h3 class="text-xl font-semibold text-indigo-600 mt-4">5 Important Advanced Tree Interview Problems</h3>
+  <ol class="list-decimal list-inside text-gray-700 mb-4">
+    <li><a href="https://leetcode.com/problems/implement-trie-prefix-tree/" target="_blank" class="text-indigo-600 hover:underline">Implement Trie (Prefix Tree)</a></li>
+    <li><a href="https://leetcode.com/problems/range-sum-query-mutable/" target="_blank" class="text-indigo-600 hover:underline">Range Sum Query - Mutable (Segment Tree)</a></li>
+    <li><a href="https://leetcode.com/problems/insert-delete-getrandom-o1/" target="_blank" class="text-indigo-600 hover:underline">Insert Delete GetRandom O(1)</a></li>
+    <li><a href="https://leetcode.com/problems/maximum-depth-of-n-ary-tree/" target="_blank" class="text-indigo-600 hover:underline">Maximum Depth of N-ary Tree</a></li>
+    <li><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank" class="text-indigo-600 hover:underline">Lowest Common Ancestor of Binary Tree</a></li>
+  </ol>
+</section>
+
+<!--DISJOINT SET-->
+
+<section class="topic-section border-indigo-500" id="dsu">
+  <h2 class="text-3xl font-bold text-indigo-700 flex items-center mb-2">
+    <i class="fas fa-network-wired mr-2"></i> D i s j o i n t &nbsp; S e t &nbsp; (Union-Find)
+  </h2>
+  <p class="mb-3 text-gray-700">
+    Disjoint Set (Union-Find) is a data structure that keeps track of a set of elements partitioned into disjoint (non-overlapping) subsets.  
+    It supports two useful operations efficiently: <strong>Find</strong> (which subset an element belongs to) and <strong>Union</strong> (join two subsets).  
+    Widely used in network connectivity, Kruskal’s MST algorithm, and more.
+  </p>
+
+  <h3 class="text-xl font-semibold text-indigo-600 mb-2">Key Operations</h3>
+  <ul class="list-disc list-inside mb-3 text-gray-700">
+    <li><strong>Find:</strong> Returns representative (root) of the set containing an element.</li>
+    <li><strong>Union:</strong> Merges two subsets into a single subset.</li>
+    <li>Optimizations: <em>Path compression</em> and <em>Union by rank/size</em> improve efficiency.</li>
+  </ul>
+
+  <h3 class="text-xl font-semibold text-indigo-600 mb-2">Java Implementation</h3>
+  <div class="tabs mb-3">
+    <button class="tab-button bg-indigo-500 text-white px-4 py-1 rounded-t" onclick="showCode(this, 'ds-java')">Java</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'ds-python')">Python</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'ds-cpp')">C++</button>
+  </div>
+
+  <div id="ds-java" class="tab-content bg-gray-100 p-3 rounded-b">
+<pre><code class="language-java">
+public class DisjointSet {
+    private int[] parent, rank;
+
+    public DisjointSet(int n) {
+        parent = new int[n];
+        rank = new int[n];
+        for (int i = 0; i &lt; n; i++) {
+            parent[i] = i;
+            rank[i] = 0;
+        }
+    }
+
+    public int find(int x) {
+        if (parent[x] != x)
+            parent[x] = find(parent[x]);  // Path compression
+        return parent[x];
+    }
+
+    public void union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX == rootY) return;
+
+        // Union by rank
+        if (rank[rootX] &lt; rank[rootY]) {
+            parent[rootX] = rootY;
+        } else if (rank[rootX] &gt; rank[rootY]) {
+            parent[rootY] = rootX;
+        } else {
+            parent[rootY] = rootX;
+            rank[rootX]++;
+        }
+    }
+
+    // Example usage
+    public static void main(String[] args) {
+        DisjointSet ds = new DisjointSet(5);
+        ds.union(0, 2);
+        ds.union(4, 2);
+        ds.union(3, 1);
+
+        System.out.println(ds.find(4) == ds.find(0));  // true
+        System.out.println(ds.find(1) == ds.find(0));  // false
+    }
+}
+</code></pre>
+  </div>
+
+  <div id="ds-python" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-python">
+class DisjointSet:
+    def __init__(self, n):
+        self.parent = list(range(n))
+        self.rank = [0] * n
+
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])  # Path compression
+        return self.parent[x]
+
+    def union(self, x, y):
+        rootX = self.find(x)
+        rootY = self.find(y)
+        if rootX == rootY:
+            return
+
+        # Union by rank
+        if self.rank[rootX] &lt; self.rank[rootY]:
+            self.parent[rootX] = rootY
+        elif self.rank[rootX] &gt; self.rank[rootY]:
+            self.parent[rootY] = rootX
+        else:
+            self.parent[rootY] = rootX
+            self.rank[rootX] += 1
+
+# Example usage
+if __name__ == "__main__":
+    ds = DisjointSet(5)
+    ds.union(0, 2)
+    ds.union(4, 2)
+    ds.union(3, 1)
+
+    print(ds.find(4) == ds.find(0))  # True
+    print(ds.find(1) == ds.find(0))  # False
+</code></pre>
+  </div>
+
+  <div id="ds-cpp" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class DisjointSet {
+    vector&lt;int&gt; parent, rank;
+
+public:
+    DisjointSet(int n) {
+        parent.resize(n);
+        rank.resize(n, 0);
+        for (int i = 0; i &lt; n; i++)
+            parent[i] = i;
+    }
+
+    int find(int x) {
+        if (parent[x] != x)
+            parent[x] = find(parent[x]); // Path compression
+        return parent[x];
+    }
+
+    void unionSets(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX == rootY)
+            return;
+
+        if (rank[rootX] &lt; rank[rootY])
+            parent[rootX] = rootY;
+        else if (rank[rootX] &gt; rank[rootY])
+            parent[rootY] = rootX;
+        else {
+            parent[rootY] = rootX;
+            rank[rootX]++;
+        }
+    }
+};
+
+int main() {
+    DisjointSet ds(5);
+    ds.unionSets(0, 2);
+    ds.unionSets(4, 2);
+    ds.unionSets(3, 1);
+
+    cout &lt;&lt; (ds.find(4) == ds.find(0)) &lt;&lt; endl; // 1 (true)
+    cout &lt;&lt; (ds.find(1) == ds.find(0)) &lt;&lt; endl; // 0 (false)
+
+    return 0;
+}
+</code></pre>
+  </div>
+
+  <h3 class="text-xl font-semibold text-indigo-600 mt-4">5 Important Disjoint Set Interview Problems</h3>
+  <ol class="list-decimal list-inside text-gray-700 mb-4">
+    <li><a href="https://leetcode.com/problems/number-of-provinces/" target="_blank" class="text-indigo-600 hover:underline">Number of Provinces (Connected Components)</a></li>
+    <li><a href="https://leetcode.com/problems/graph-valid-tree/" target="_blank" class="text-indigo-600 hover:underline">Graph Valid Tree</a></li>
+    <li><a href="https://leetcode.com/problems/satisfiability-of-equality-equations/" target="_blank" class="text-indigo-600 hover:underline">Satisfiability of Equality Equations</a></li>
+    <li><a href="https://leetcode.com/problems/redundant-connection/" target="_blank" class="text-indigo-600 hover:underline">Redundant Connection</a></li>
+    <li><a href="https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/" target="_blank" class="text-indigo-600 hover:underline">Number of Connected Components in an Undirected Graph</a></li>
+  </ol>
+</section>
+
+
+<!--HASHING-->
+
+<section class="topic-section border-indigo-500" id="hashing">
+  <h2 class="text-3xl font-bold text-indigo-700 flex items-center mb-2">
+    <i class="fas fa-hashtag mr-2"></i> H a s h i n g
+  </h2>
+  <p class="mb-3 text-gray-700">
+    Hashing is a technique to map data of arbitrary size to fixed-size values called hash codes, used for fast data retrieval.  
+    Hash tables provide average O(1) time complexity for insert, delete, and search operations.  
+    Common collision resolution techniques include chaining and open addressing.
+  </p>
+
+  <h3 class="text-xl font-semibold text-indigo-600 mb-2">Key Concepts</h3>
+  <ul class="list-disc list-inside mb-3 text-gray-700">
+    <li><strong>Hash Function:</strong> Converts input data to an index in hash table.</li>
+    <li><strong>Collision:</strong> When two inputs map to the same index.</li>
+    <li><strong>Collision Resolution:</strong> Techniques like chaining (linked lists) and open addressing (probing).</li>
+    <li><strong>Load Factor:</strong> Ratio of number of elements to the table size, impacts performance.</li>
+  </ul>
+
+  <h3 class="text-xl font-semibold text-indigo-600 mb-2">Example: Simple Hash Table with Chaining (Java)</h3>
+  <div class="tabs mb-3">
+    <button class="tab-button bg-indigo-500 text-white px-4 py-1 rounded-t" onclick="showCode(this, 'hash-java')">Java</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'hash-python')">Python</button>
+    <button class="tab-button bg-gray-300 text-black px-4 py-1 rounded-t" onclick="showCode(this, 'hash-cpp')">C++</button>
+  </div>
+
+  <div id="hash-java" class="tab-content bg-gray-100 p-3 rounded-b">
+<pre><code class="language-java">
+import java.util.LinkedList;
+
+class HashNode {
+    String key;
+    int value;
+
+    HashNode(String key, int value) {
+        this.key = key;
+        this.value = value;
+    }
+}
+
+public class HashTable {
+    private LinkedList<HashNode>[] table;
+    private int capacity;
+
+    @SuppressWarnings("unchecked")
+    public HashTable(int capacity) {
+        this.capacity = capacity;
+        table = new LinkedList[capacity];
+        for (int i = 0; i &lt; capacity; i++) {
+            table[i] = new LinkedList<>();
+        }
+    }
+
+    private int hash(String key) {
+        return Math.abs(key.hashCode()) % capacity;
+    }
+
+    public void put(String key, int value) {
+        int index = hash(key);
+        for (HashNode node : table[index]) {
+            if (node.key.equals(key)) {
+                node.value = value; // Update existing
+                return;
+            }
+        }
+        table[index].add(new HashNode(key, value)); // Insert new
+    }
+
+    public Integer get(String key) {
+        int index = hash(key);
+        for (HashNode node : table[index]) {
+            if (node.key.equals(key)) {
+                return node.value;
+            }
+        }
+        return null; // Not found
+    }
+
+    public boolean remove(String key) {
+        int index = hash(key);
+        for (HashNode node : table[index]) {
+            if (node.key.equals(key)) {
+                table[index].remove(node);
+                return true;
+            }
+        }
+        return false; // Not found
+    }
+
+    public static void main(String[] args) {
+        HashTable ht = new HashTable(10);
+        ht.put("apple", 10);
+        ht.put("banana", 20);
+        ht.put("orange", 30);
+        System.out.println("Value for apple: " + ht.get("apple"));
+        ht.remove("banana");
+        System.out.println("Value for banana: " + ht.get("banana")); // Should be null
+    }
+}
+</code></pre>
+  </div>
+
+  <div id="hash-python" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-python">
+class HashNode:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+
+class HashTable:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.table = [[] for _ in range(capacity)]
+
+    def _hash(self, key):
+        return hash(key) % self.capacity
+
+    def put(self, key, value):
+        index = self._hash(key)
+        for node in self.table[index]:
+            if node.key == key:
+                node.value = value  # Update
+                return
+        self.table[index].append(HashNode(key, value))  # Insert
+
+    def get(self, key):
+        index = self._hash(key)
+        for node in self.table[index]:
+            if node.key == key:
+                return node.value
+        return None  # Not found
+
+    def remove(self, key):
+        index = self._hash(key)
+        for i, node in enumerate(self.table[index]):
+            if node.key == key:
+                self.table[index].pop(i)
+                return True
+        return False  # Not found
+
+# Example usage
+if __name__ == "__main__":
+    ht = HashTable(10)
+    ht.put("apple", 10)
+    ht.put("banana", 20)
+    ht.put("orange", 30)
+    print("Value for apple:", ht.get("apple"))
+    ht.remove("banana")
+    print("Value for banana:", ht.get("banana"))  # Should print None
+</code></pre>
+  </div>
+
+  <div id="hash-cpp" class="tab-content bg-gray-100 p-3 rounded-b hidden">
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct HashNode {
+    string key;
+    int value;
+    HashNode(string k, int v) : key(k), value(v) {}
+};
+
+class HashTable {
+    vector&lt;list&lt;HashNode&gt;&gt; table;
+    int capacity;
+
+    int hash(const string &key) {
+        size_t hashVal = 0;
+        for (char c : key)
+            hashVal = 31 * hashVal + c;
+        return hashVal % capacity;
+    }
+
+public:
+    HashTable(int cap) : capacity(cap) {
+        table.resize(capacity);
+    }
+
+    void put(const string &key, int value) {
+        int index = hash(key);
+        for (auto &node : table[index]) {
+            if (node.key == key) {
+                node.value = value; // Update
+                return;
+            }
+        }
+        table[index].emplace_back(key, value); // Insert
+    }
+
+    int* get(const string &key) {
+        int index = hash(key);
+        for (auto &node : table[index]) {
+            if (node.key == key) {
+                return &node.value;
+            }
+        }
+        return nullptr; // Not found
+    }
+
+    bool remove(const string &key) {
+        int index = hash(key);
+        for (auto it = table[index].begin(); it != table[index].end(); ++it) {
+            if (it->key == key) {
+                table[index].erase(it);
+                return true;
+            }
+        }
+        return false; // Not found
+    }
+};
+
+int main() {
+    HashTable ht(10);
+    ht.put("apple", 10);
+    ht.put("banana", 20);
+    ht.put("orange", 30);
+
+    int* val = ht.get("apple");
+    if (val) cout &lt;&lt; "Value for apple: " &lt;&lt; *val &lt;&lt; endl;
+
+    ht.remove("banana");
+    val = ht.get("banana");
+    if (val) cout &lt;&lt; "Value for banana: " &lt;&lt; *val &lt;&lt; endl;
+    else cout &lt;&lt; "Value for banana: None" &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+  </div>
+
+  <h3 class="text-xl font-semibold text-indigo-600 mt-4">5 Important Hashing Interview Problems</h3>
+  <ol class="list-decimal list-inside text-gray-700 mb-4">
+    <li><a href="https://leetcode.com/problems/two-sum/" target="_blank" class="text-indigo-600 hover:underline">Two Sum</a></li>
+    <li><a href="https://leetcode.com/problems/group-anagrams/" target="_blank" class="text-indigo-600 hover:underline">Group Anagrams</a></li>
+    <li><a href="https://leetcode.com/problems/valid-anagram/" target="_blank" class="text-indigo-600 hover:underline">Valid Anagram</a></li>
+    <li><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" class="text-indigo-600 hover:underline">Longest Substring Without Repeating Characters</a></li>
+    <li><a href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank" class="text-indigo-600 hover:underline">Subarray Sum Equals K</a></li>
+  </ol>
+</section>
+
+<script>
+  function showCode(button, id) {
+    // Hide all tab contents within the parent section
+    const section = button.closest('section');
+    const allTabs = section.querySelectorAll('.tab-content');
+    allTabs.forEach(tab => tab.classList.add('hidden'));
+
+    // Remove active styling from all buttons in this tab group
+    const btns = button.parentElement.querySelectorAll('.tab-button');
+    btns.forEach(btn => {
+      btn.classList.remove('bg-indigo-500', 'text-white');
+      btn.classList.add('bg-gray-300', 'text-black');
+    });
+
+    // Show the selected tab content
+    section.querySelector('#' + id).classList.remove('hidden');
+
+    // Set clicked button active style
+    button.classList.add('bg-indigo-500', 'text-white');
+    button.classList.remove('bg-gray-300', 'text-black');
+  }
+</script>
+
+
+
+      
+      <!-- Roadmap and Footer -->
+      <div class="mt-16 text-center">
+        <h3 class="text-2xl font-bold mb-2 rainbow-text">Recommended DSA Roadmap</h3>
+        <ol class="list-decimal inline-block text-left mx-auto text-lg text-gray-800 mb-4 pl-6">
+          <li>Arrays & Strings</li>
+          <li>Linked Lists</li>
+          <li>Stacks & Queues</li>
+          <li>Trees & Binary Trees</li>
+          <li>Graphs</li>
+          <li>Searching & Sorting</li>
+          <li>Recursion & Backtracking</li>
+          <li>Dynamic Programming</li>
+          <li>Greedy Algorithms</li>
+          <li>Advanced Trees & Disjoint Set</li>
+          <li>Hashing</li>
+        </ol>
+        <div class="mt-4">
+          <a href="https://www.geeksforgeeks.org/data-structures/" target="_blank" class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-indigo-700 transition">Explore More on GeeksforGeeks</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="gradient-bg text-white py-8 mt-12">
+    <div class="container mx-auto px-4 text-center">
+      <div class="mb-2 text-lg font-bold">CodeMaster</div>
+      <div>Master coding skills with comprehensive tests and colorful study notes.</div>
+      <div class="mt-2 text-sm opacity-80">© 2025 CodeMaster. All rights reserved.</div>
+    </div>
+  </footer>
+
+
+  <script>
+    // Tab switching for code samples
+    document.querySelectorAll('.code-tabs').forEach(tabGroup => {
+      const btns = tabGroup.querySelectorAll('.tab-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const tabId = btn.getAttribute('data-tab');
+          tabGroup.parentElement.querySelectorAll('.tab-content').forEach(tc => {
+            tc.classList.add('hidden');
+          });
+          tabGroup.parentElement.querySelector('#' + tabId).classList.remove('hidden');
+        });
+      });
+    });
+
+    // Sidebar active link highlight
+    function setActiveSidebarLink() {
+      const links = document.querySelectorAll('.sidebar a');
+      let fromTop = window.scrollY + 120;
+      let currentId = '';
+      document.querySelectorAll('.topic-section').forEach(section => {
+        if (section.offsetTop <= fromTop) {
+          currentId = section.id;
+        }
+      });
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + currentId) {
+          link.classList.add('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', setActiveSidebarLink);
+    window.addEventListener('DOMContentLoaded', setActiveSidebarLink);
+
+    // Dry run toggling function
+    function toggleDryRun(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>

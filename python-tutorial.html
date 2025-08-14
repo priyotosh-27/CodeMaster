@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Mastery Guide - CodeMaster</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Prism.js for code highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+  <style>
+    /* --- Utilities used by this page (kept minimal) --- */
+    .gradient-bg { background: linear-gradient(135deg, #2b6cb0 0%, #4fd1c5 35%, #f6ad55 70%, #f687b3 100%); }
+    .section-bg { background: linear-gradient(180deg, #fbfdff 0%, #fff 100%); }
+    .rainbow-text { background: linear-gradient(90deg, #2b6cb0, #16a085, #f6ad55, #f687b3, #16a085, #2b6cb0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: rainbow 6s linear infinite; background-size: 200% 200%; }
+    @keyframes rainbow { 0% {background-position: 0% 50%;} 100% {background-position: 100% 50%;} }
+
+    .sidebar { position: sticky; top: 2rem; height: fit-content; background: linear-gradient(135deg, #2b6cb0 60%, #4fd1c5 100%); color: #fff; border-radius: 1.5rem; padding: 2rem 1.5rem; margin-bottom: 2rem; box-shadow: 0 8px 32px 0 rgba(43,108,176,0.12); }
+    .sidebar a { display: block; padding: 0.6rem 1rem; margin-bottom: 0.5rem; border-radius: 9999px; color: #fff; font-weight: 600; text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .sidebar a.active, .sidebar a:hover { background: rgba(255,255,255,0.14); color: #fff; }
+
+    .topic-section { margin-bottom: 3.5rem; border-radius: 1.5rem; box-shadow: 0 8px 32px 0 rgba(43,108,176,0.06); background: #fff; padding: 2rem; border-top: 6px solid; }
+    .topic-section h2 { margin-bottom: 1rem; }
+
+    .code-tabs { margin-top: 1rem; margin-bottom: 1.25rem; }
+    .tab-btn { display: inline-block; padding: 0.5rem 1.2rem; margin-right: 0.5rem; border-radius: 9999px; background: #f3f4f6; color: #333; font-weight: 600; cursor: pointer; border: none; outline: none; transition: background 0.2s; }
+    .tab-btn.active { background: #2b6cb0; color: #fff; }
+
+    pre { border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1rem; }
+    .topic-section table { background: #f8fafc; border-radius: 0.75rem; box-shadow: 0 2px 8px 0 rgba(43,108,176,0.04); margin-bottom: 1rem; }
+    .topic-section h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .note { background: #ebf8ff; border-left: 4px solid #3182ce; padding: 0.75rem 1rem; border-radius: 0.5rem; }
+    .pro { background: #ecfeff; border-left: 4px solid #06b6d4; padding: 0.75rem 1rem; border-radius: 0.5rem; }
+    .warn { background: #fff7ed; border-left: 4px solid #f59e0b; padding: 0.75rem 1rem; border-radius: 0.5rem; }
+    .ok { background: #ecfdf5; border-left: 4px solid #10b981; padding: 0.75rem 1rem; border-radius: 0.5rem; }
+    .chip { display:inline-block; padding: .25rem .6rem; border-radius:999px; background:#f3f4f6; margin-right:.4rem; font-weight:600; font-size:.8rem; }
+
+    @media (max-width: 1024px) { .sidebar { position: static; margin-bottom: 2rem; } }
+  </style>
+</head>
+<body class="min-h-screen section-bg">
+
+  <!-- Navbar -->
+  <nav class="gradient-bg text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-python text-2xl"></i>
+        <span class="text-xl font-bold">CodeMaster</span>
+      </div>
+      <a href="Platform.html" class="hover:text-gray-200 font-semibold flex items-center">
+        <i class="fas fa-arrow-left mr-2"></i>Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <header class="py-12 bg-gradient-to-r from-blue-600 via-teal-400 to-pink-400 text-white shadow-xl">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-extrabold mb-4 rainbow-text">Python Mastery Guide</h1>
+      <p class="text-xl mb-6 font-medium">In-depth, modern Python — from clean syntax and idioms to CPython internals, async I/O, data engineering, web backends, and performance tuning.</p>
+      <div class="flex flex-wrap gap-2 justify-center">
+        <span class="chip">Python 3.8 → 3.12+</span>
+        <span class="chip">Idiomatic Python</span>
+        <span class="chip">Typing & Mypy</span>
+        <span class="chip">Asyncio</span>
+        <span class="chip">Concurrency & GIL</span>
+        <span class="chip">Packaging</span>
+        <span class="chip">C Extensions</span>
+        <span class="chip">Data Science</span>
+        <span class="chip">Web (FastAPI)</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar w-full lg:w-1/4">
+      <div class="mb-4 text-xl font-bold">Topics</div>
+      <a href="#intro" class="sidebar-link"><i class="fas fa-lightbulb mr-2"></i>Intro & Tooling</a>
+      <a href="#setup" class="sidebar-link"><i class="fas fa-download mr-2"></i>Setup & Versions</a>
+      <a href="#syntax" class="sidebar-link"><i class="fas fa-code mr-2"></i>Syntax & Idioms</a>
+      <a href="#types" class="sidebar-link"><i class="fas fa-layer-group mr-2"></i>Built-in Types</a>
+      <a href="#control" class="sidebar-link"><i class="fas fa-equals mr-2"></i>Control Flow</a>
+      <a href="#functions" class="sidebar-link"><i class="fas fa-cubes mr-2"></i>Functions & Closures</a>
+      <a href="#oop" class="sidebar-link"><i class="fas fa-diagram-project mr-2"></i>OOP & Data Classes</a>
+      <a href="#typing" class="sidebar-link"><i class="fas fa-code-branch mr-2"></i>Typing & Protocols</a>
+      <a href="#modules" class="sidebar-link"><i class="fas fa-boxes mr-2"></i>Modules & Packaging</a>
+      <a href="#virtualenv" class="sidebar-link"><i class="fas fa-layer-minus mr-2"></i>Virtualenv & Pyenv</a>
+      <a href="#async" class="sidebar-link"><i class="fas fa-bolt mr-2"></i>Asyncio & Concurrency</a>
+      <a href="#memory" class="sidebar-link"><i class="fas fa-memory mr-2"></i>Memory & GIL</a>
+      <a href="#perf" class="sidebar-link"><i class="fas fa-gauge-high mr-2"></i>Performance & Profiling</a>
+      <a href="#c-ext" class="sidebar-link"><i class="fas fa-microchip mr-2"></i>C Extensions & Rust</a>
+      <a href="#testing" class="sidebar-link"><i class="fas fa-vial mr-2"></i>Testing (pytest)</a>
+      <a href="#web" class="sidebar-link"><i class="fas fa-network-wired mr-2"></i>Web: FastAPI & WSGI</a>
+      <a href="#data" class="sidebar-link"><i class="fas fa-database mr-2"></i>Data & NumPy/Pandas</a>
+      <a href="#tools" class="sidebar-link"><i class="fas fa-tools mr-2"></i>Tooling & CI</a>
+      <a href="#security" class="sidebar-link"><i class="fas fa-shield-halved mr-2"></i>Security & Best Practices</a>
+      <a href="#cheats" class="sidebar-link"><i class="fas fa-list-check mr-2"></i>Cheat Sheets</a>
+    </aside>
+
+    <!-- Content -->
+    <section class="w-full lg:w-3/4">
+
+      <!-- INTRO -->
+      <div id="intro" class="topic-section" style="border-top-color:#2b6cb0">
+        <h2 class="text-3xl font-bold">Intro & Tooling</h2>
+        <p class="text-gray-700">Python is a high-level, interpreted language emphasizing readability and developer productivity. Its ecosystem spans web servers, data science, scripting, automation, and embedded systems. CPython is the reference implementation; there are alternatives (PyPy, Jython, IronPython) that are useful in specific contexts.</p>
+        <div class="grid md:grid-cols-2 gap-4 mt-4">
+          <div class="ok">
+            <strong>Install:</strong> Use official installers or package managers. For multiple versions prefer <code>pyenv</code> or system packages. Verify with <code>python --version</code> or <code>python3 --version</code>.
+          </div>
+          <div class="pro">
+            <strong>IDE:</strong> VS Code, PyCharm, or NeoVim. Enable type checking, formatting (Black), linting (Flake8), and test integration.
+          </div>
+        </div>
+        <h3 class="text-2xl font-semibold">Your First Script</h3>
+        <div class="code-tabs">
+          <button class="tab-btn active" data-tab="intro-py">Python</button>
+        </div>
+        <pre id="intro-py" class="tab-content language-python"><code class="language-python"># hello.py
+if __name__ == "__main__":
+    print("Hello, Python!")
+
+# Run: python hello.py</code></pre>
+        <div class="note">Python scripts can be executed directly. For larger apps, use packages and entry points (<code>setup.cfg</code> / <code>pyproject.toml</code>).</div>
+      </div>
+
+      <!-- SETUP -->
+      <div id="setup" class="topic-section" style="border-top-color:#16a085">
+        <h2 class="text-3xl font-bold">Setup & Versions</h2>
+        <p>Python 3.8+ is recommended for modern features (assignment expressions, positional-only params, typing improvements). Know how to manage multiple versions with <code>pyenv</code> and environment isolation with <code>venv</code> or <code>virtualenv</code>. Use <code>pipx</code> for installing CLI tools globally without polluting interpreter site-packages.</p>
+        <h3>Essential Tools</h3>
+        <ul class="list-disc pl-6 text-gray-700">
+          <li><code>pyenv</code> — manage interpreter versions.</li>
+          <li><code>python -m venv .venv</code> — create local virtual env.</li>
+          <li><code>pip</code> / <code>pip-tools</code> / <code>pipx</code> — package management.</li>
+          <li><code>poetry</code> or <code>flit</code> — modern packaging & publishing.</li>
+        </ul>
+      </div>
+
+      <!-- SYNTAX -->
+      <div id="syntax" class="topic-section" style="border-top-color:#3182ce">
+        <h2 class="text-3xl font-bold">Syntax & Idioms</h2>
+        <p>Python's syntax is intentionally clear: indentation defines blocks, and there is one obvious way to do many things. Embrace comprehension, context managers, and EAFP (Easier to Ask Forgiveness than Permission) instead of LBYL (Look Before You Leap).</p>
+        <pre class="language-python"><code># List comprehension
+squares = [x*x for x in range(10) if x % 2 == 0]
+
+# Context manager
+with open('data.txt') as f:
+    first = f.readline().strip()
+
+# EAFP
+try:
+    value = data['key']
+except KeyError:
+    value = default
+</code></pre>
+        <div class="note">Follow PEP 8 for style and PEP 257 for docstrings. Use Black for formatting — deterministic and widely adopted.</div>
+      </div>
+
+      <!-- TYPES -->
+      <div id="types" class="topic-section" style="border-top-color:#805ad5">
+        <h2 class="text-3xl font-bold">Built-in Types</h2>
+        <p>Python has simple built-ins (int, float, bool, str) and powerful containers (list, tuple, dict, set). Strings are immutable and sequence types offer common protocols (iterable, sequence, mapping).</p>
+        <h3>Quick Reference</h3>
+        <table class="w-full text-left">
+          <thead><tr class="bg-gray-100"><th class="p-2">Type</th><th class="p-2">Mutable?</th><th class="p-2">Use</th></tr></thead>
+          <tbody>
+            <tr><td class="p-2">int/float/complex</td><td class="p-2">No</td><td class="p-2">Numbers, arithmetic</td></tr>
+            <tr><td class="p-2">str</td><td class="p-2">No</td><td class="p-2">Text</td></tr>
+            <tr><td class="p-2">list</td><td class="p-2">Yes</td><td class="p-2">Ordered sequence (mutable)</td></tr>
+            <tr><td class="p-2">tuple</td><td class="p-2">No</td><td class="p-2">Ordered sequence (immutable)</td></tr>
+            <tr><td class="p-2">dict</td><td class="p-2">Yes</td><td class="p-2">Key → value mapping</td></tr>
+            <tr><td class="p-2">set / frozenset</td><td class="p-2">set: Yes, frozenset: No</td><td class="p-2">Membership, uniqueness</td></tr>
+          </tbody>
+        </table>
+        <div class="warn">Prefer tuples for heterogeneous fixed-size groups and lists for homogeneous sequences. Use <code>collections.deque</code> for efficient FIFO operations.</div>
+      </div>
+
+      <!-- CONTROL FLOW -->
+      <div id="control" class="topic-section" style="border-top-color:#ed8936">
+        <h2 class="text-3xl font-bold">Control Flow</h2>
+        <p>Use loops, comprehensions, generator expressions, and concise conditionals. Python supports <code>for</code>, <code>while</code>, <code>if/elif/else</code>, and <code>match</code> (structural pattern matching, Python 3.10+).</p>
+        <pre class="language-python"><code># match (PEP 634)
+point = (0, 0)
+match point:
+    case (0, 0):
+        origin = True
+    case (x, 0):
+        on_x = True
+    case _:
+        pass
+
+# generator expression
+s = sum(x*x for x in range(1000))
+</code></pre>
+      </div>
+
+      <!-- FUNCTIONS -->
+      <div id="functions" class="topic-section" style="border-top-color:#38b2ac">
+        <h2 class="text-3xl font-bold">Functions & Closures</h2>
+        <p>Functions are first-class: pass them, return them, and create closures. Use keyword-only arguments and <code>*args</code>/<code>**kwargs</code> judiciously.</p>
+        <pre class="language-python"><code>def add(a: int, b: int = 0) -> int:
+    return a + b
+
+# closure
+def make_multiplier(n):
+    def mul(x):
+        return x * n
+    return mul
+
+times3 = make_multiplier(3)
+print(times3(5))  # 15
+</code></pre>
+        <div class="note">Annotate with types for clarity and tooling support; they are not enforced at runtime unless using runtime checkers.</div>
+      </div>
+
+      <!-- OOP -->
+      <div id="oop" class="topic-section" style="border-top-color:#6b46c1">
+        <h2 class="text-3xl font-bold">OOP & Data Classes</h2>
+        <p>Python supports object-oriented programming with classes, inheritance, descriptors, and metaclasses. For value-like classes prefer <code>@dataclass</code> (Python 3.7+).</p>
+        <pre class="language-python"><code>from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class Point:
+    x: float
+    y: float
+
+p = Point(3, 4)
+print(p.x)
+</code></pre>
+        <div class="warn">Avoid deep inheritance hierarchies; prefer composition. Use slots if you need to reduce memory per-instance: <code>__slots__</code>.</div>
+      </div>
+
+      <!-- TYPING -->
+      <div id="typing" class="topic-section" style="border-top-color:#2c7a7b">
+        <h2 class="text-3xl font-bold">Typing, Protocols & Gradual Typing</h2>
+        <p>Python has gradual typing via the typing module and tools like Mypy. Use types for maintenance, refactoring, and editor support. Familiarize with <code>TypedDict</code>, <code>Protocol</code>, <code>Union</code>, and <code>Optional</code>.</p>
+        <pre class="language-python"><code>from typing import Protocol, Iterable
+
+class SupportsLen(Protocol):
+    def __len__(self) -> int: ...
+
+def needs_len(x: SupportsLen):
+    return len(x)
+</code></pre>
+        <div class="note">Types are optional — adopt incrementally. Use <code>pyright</code> or <code>mypy</code> in CI to enforce contracts.</div>
+      </div>
+
+      <!-- MODULES & PACKAGING -->
+      <div id="modules" class="topic-section" style="border-top-color:#4c51bf">
+        <h2 class="text-3xl font-bold">Modules, Packages & Packaging</h2>
+        <p>Structure projects with packages (directories + <code>__init__.py</code>) and keep public API surface small. For packaging prefer <code>pyproject.toml</code> (PEP 621) and tools like Poetry or Flit to build and publish wheels.</p>
+        <pre class="language-python"><code># package structure
+myapp/
+  pyproject.toml
+  src/
+    myapp/
+      __init__.py
+      main.py
+
+# entry point in pyproject.toml
+[project.scripts]
+myapp = "myapp.main:cli"
+</code></pre>
+        <div class="warn">Avoid relative imports outside packages; tests should import from installed package (use editable install <code>pip install -e .</code>).</div>
+      </div>
+
+      <!-- VENV -->
+      <div id="virtualenv" class="topic-section" style="border-top-color:#38b2ac">
+        <h2 class="text-3xl font-bold">Virtual Environments & pyenv</h2>
+        <p>Isolate dependencies per-project. Use <code>python -m venv .venv</code>, activate script, and keep <code>.venv</code> out of VCS. For per-user interpreters use <code>pyenv</code> and for global CLI tools use <code>pipx</code>.</p>
+        <pre class="language-bash"><code>python -m venv .venv
+source .venv/bin/activate
+pip install -U pip setuptools wheel
+</code></pre>
+      </div>
+
+      <!-- ASYNCIO -->
+      <div id="async" class="topic-section" style="border-top-color:#ed64a6">
+        <h2 class="text-3xl font-bold">Asyncio & Concurrency</h2>
+        <p>Asyncio provides cooperative concurrency via event loop and coroutines. Use <code>async/await</code> for high-concurrency IO-bound tasks. Understand where threads/processes are still valuable.</p>
+        <pre class="language-python"><code>import asyncio
+
+async def fetch(i):
+    await asyncio.sleep(0.1)
+    return i * i
+
+async def main():
+    res = await asyncio.gather(*(fetch(i) for i in range(10)))
+    print(res)
+
+asyncio.run(main())
+</code></pre>
+        <div class="note">Use <code>anyio</code> or libraries like <code>httpx</code> and <code>asyncpg</code> for async networking and DB access. Prefer FastAPI for async web backends.</div>
+      </div>
+
+      <!-- MEMORY & GIL -->
+      <div id="memory" class="topic-section" style="border-top-color:#e53e3e">
+        <h2 class="text-3xl font-bold">Memory Management & the GIL</h2>
+        <p>CPython uses reference counting + cyclic GC. Understand reference cycles and weakrefs. The Global Interpreter Lock (GIL) prevents multiple native threads from executing Python bytecode simultaneously — limiting CPU-bound multi-threaded scaling on CPython.</p>
+        <pre class="language-python"><code>import weakref
+
+class Node:
+    def __init__(self):
+        self.ref = None
+
+n = Node()
+w = weakref.ref(n)
+print(w())
+</code></pre>
+        <div class="warn">For CPU-bound parallelism use multiprocessing, C extensions, or run worker processes. For IO-bound concurrency prefer asyncio or threads.</div>
+      </div>
+
+      <!-- PERFORMANCE -->
+      <div id="perf" class="topic-section" style="border-top-color:#2f855a">
+        <h2 class="text-3xl font-bold">Performance & Profiling</h2>
+        <ul class="list-disc pl-6 text-gray-700">
+          <li>Measure with <code>cProfile</code>, <code>pyinstrument</code>, or <code>perf</code>. Visualize with SnakeViz or speedscope.</li>
+          <li>Optimize hotspots: algorithmic improvements, reduce allocations, and avoid costly operations in tight loops.</li>
+          <li>Consider PyPy for long-running workloads with many Python-level allocations; use C/Rust extensions for hot CPU code.</li>
+        </ul>
+        <pre class="language-bash"><code>python -m cProfile -o out.prof myapp.py
+snakeviz out.prof
+</code></pre>
+      </div>
+
+      <!-- C EXTENSIONS -->
+      <div id="c-ext" class="topic-section" style="border-top-color:#d69e2e">
+        <h2 class="text-3xl font-bold">C Extensions, Cython & Rust</h2>
+        <p>When Python is not fast enough, implement critical code in C (CPython API), Cython, or Rust (pyo3/maturin). Build wheels for distribution to avoid requiring users to compile native code.</p>
+        <pre class="language-python"><code># Example Cython snippet (pyx)
+# cdef int add(int a, int b):
+#     return a + b
+</code></pre>
+        <div class="note">C extensions bypass the GIL if written carefully and can deliver huge speedups for tight loops or numeric work.</div>
+      </div>
+
+      <!-- TESTING -->
+      <div id="testing" class="topic-section" style="border-top-color:#718096">
+        <h2 class="text-3xl font-bold">Testing with pytest</h2>
+        <p>Use pytest for readable tests, fixtures, and parametric testing. Aim for unit tests, integration tests, and end-to-end tests. Use coverage tools to measure testing gaps.</p>
+        <pre class="language-python"><code>def add(a, b):
+    return a + b
+
+def test_add():
+    assert add(2, 3) == 5
+</code></pre>
+        <div class="ok">Mock external I/O (requests, DB) using <code>pytest-mock</code> or <code>MonkeyPatch</code>. Run tests in CI with fast, reproducible environments.</div>
+      </div>
+
+      <!-- WEB -->
+      <div id="web" class="topic-section" style="border-top-color:#2b6cb0">
+        <h2 class="text-3xl font-bold">Web Backends: FastAPI & WSGI</h2>
+        <p>FastAPI + Uvicorn is the modern async stack: fast, type-friendly, and excellent for building APIs. For traditional WSGI apps, Flask and Django remain solid choices.</p>
+        <pre class="language-python"><code>from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/hello")
+async def hello(name: str = "World"):
+    return {"msg": f"Hello, {name}"}
+</code></pre>
+        <div class="note">Run with <code>uvicorn myapp:app --workers 4</code>. Use Gunicorn+Uvicorn worker class for process workers. Always configure timeouts, limits, and graceful shutdowns.</div>
+      </div>
+
+      <!-- DATA -->
+      <div id="data" class="topic-section" style="border-top-color:#dd6b20">
+        <h2 class="text-3xl font-bold">Data Science: NumPy, Pandas & ML</h2>
+        <p>Python dominates data science. Learn NumPy for vectorized ops, Pandas for tabular data, and libraries like scikit-learn, TensorFlow, and PyTorch for ML. Use environments (conda) for complex native deps.</p>
+        <pre class="language-python"><code>import numpy as np
+import pandas as pd
+
+a = np.arange(10)
+df = pd.DataFrame({'x': a, 'y': a**2})
+print(df.describe())
+</code></pre>
+        <div class="warn">Avoid using Pandas in tight loops—vectorize. Be conscious of memory when working with large datasets; consider chunked processing or Dask.</div>
+      </div>
+
+      <!-- TOOLS -->
+      <div id="tools" class="topic-section" style="border-top-color:#38b2ac">
+        <h2 class="text-3xl font-bold">Tooling: Linting, Formatting, Debugging & CI</h2>
+        <ul class="list-disc pl-6 text-gray-700">
+          <li>Format with <code>black</code>, lint with <code>ruff</code> or <code>flake8</code>.</li>
+          <li>Type-check with <code>mypy</code> or <code>pyright</code>.</li>
+          <li>Debug with <code>pdb</code>, <code>ipdb</code>, or IDE debuggers.</li>
+          <li>CI: run tests, linters, and type checks in GitHub Actions/GitLab CI.</li>
+        </ul>
+        <pre class="language-yaml"><code># Example GitHub Actions snippet
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -U pip
+      - run: pip install -r requirements.txt
+      - run: pytest -q
+</code></pre>
+      </div>
+
+      <!-- SECURITY -->
+      <div id="security" class="topic-section" style="border-top-color:#c05621">
+        <h2 class="text-3xl font-bold">Security & Best Practices</h2>
+        <p>Sanitize inputs, use prepared statements/ORM parameterization, validate and escape data when rendering, and use secure defaults. Keep dependencies up to date and scan for vulnerabilities (Safety, Dependabot).</p>
+        <ul class="list-disc pl-6 text-gray-700">
+          <li>Never store plaintext secrets in code—use environment variables and secret stores.</li>
+          <li>Use HTTPS, proper cookie flags, and CSRF protection for web apps.</li>
+          <li>Limit user-supplied file uploads and validate file types.</li>
+        </ul>
+      </div>
+
+      <!-- CHEAT SHEETS -->
+      <div id="cheats" class="topic-section" style="border-top-color:#f56565">
+        <h2 class="text-3xl font-bold">Cheat Sheets & Quick Tips</h2>
+        <h3>Common Built-ins</h3>
+        <p><code>len, range, enumerate, zip, map, filter, sorted, reversed, any, all, sum</code></p>
+        <h3>Virtualenv Shortcuts</h3>
+        <p><code>python -m venv .venv</code>, <code>source .venv/bin/activate</code>, <code>pip install -r requirements.txt</code></p>
+        <h3>Testing Tips</h3>
+        <ul class="list-disc pl-6 text-gray-700">
+          <li>Keep tests small and deterministic.</li>
+          <li>Use fixtures for setup/teardown.</li>
+          <li>Mock external services during unit tests.</li>
+        </ul>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="gradient-bg text-white py-8 mt-12">
+    <div class="container mx-auto px-4 text-center">
+      <div class="mb-2 text-lg font-bold">CodeMaster</div>
+      <div>Master Python with comprehensive, practical content and production-ready examples.</div>
+      <div class="mt-2 text-sm opacity-80">© 2025 CodeMaster. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Tab switching for code samples
+    document.querySelectorAll('.code-tabs').forEach(tabGroup => {
+      const btns = tabGroup.querySelectorAll('.tab-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const tabId = btn.getAttribute('data-tab');
+          tabGroup.parentElement.querySelectorAll('.tab-content').forEach(tc => {
+            tc.classList.add('hidden');
+          });
+          const target = tabGroup.parentElement.querySelector('#' + tabId);
+          if (target) target.classList.remove('hidden');
+        });
+      });
+    });
+
+    // Sidebar active link highlight
+    function setActiveSidebarLink() {
+      const links = document.querySelectorAll('.sidebar a');
+      let fromTop = window.scrollY + 120;
+      let currentId = '';
+      document.querySelectorAll('.topic-section').forEach(section => {
+        if (section.offsetTop <= fromTop) {
+          currentId = section.id;
+        }
+      });
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + currentId) {
+          link.classList.add('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', setActiveSidebarLink);
+    window.addEventListener('DOMContentLoaded', setActiveSidebarLink);
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Database Management Systems — CodeMaster</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+</head>
+<body class="bg-slate-50">
+  <div class="container mx-auto py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <aside class="lg:col-span-1">
+      <div class="p-6 bg-white rounded-xl shadow sticky top-24">
+        <h3 class="font-bold text-lg">DBMS Contents</h3>
+        <ol class="mt-3 text-sm text-slate-700 space-y-1">
+          <li><a href="#relational" class="underline">Relational Model & Theory</a></li>
+          <li><a href="#sql" class="underline">SQL Deep Dive</a></li>
+          <li><a href="#indexing" class="underline">Indexing & Storage</a></li>
+          <li><a href="#transactions" class="underline">Transactions & Concurrency Control</a></li>
+          <li><a href="#query" class="underline">Query Optimization & Execution</a></li>
+          <li><a href="#internals" class="underline">Postgres Internals Case Study</a></li>
+          <li><a href="#nosql" class="underline">NoSQL & Modern Systems</a></li>
+          <li><a href="#exercises-db" class="underline">Exercises</a></li>
+        </ol>
+      </div>
+    </aside>
+
+    <article class="lg:col-span-3 space-y-8">
+      <section id="relational" class="p-6 bg-white rounded-xl shadow">
+        <h1 class="text-3xl font-bold">Relational Model & Theory</h1>
+        <p class="mt-3 text-slate-700">Relational model formalizes data as relations (tables) with well-defined schemas; operations are expressed in relational algebra. Set semantics, keys, and normalization are foundational.</p>
+        <h2 class="mt-4 font-semibold">Normal Forms</h2>
+        <p class="text-slate-700">1NF, 2NF, 3NF, BCNF — normalization reduces redundancy and update anomalies. We'll discuss trade-offs: normalization vs. performance and when to denormalize.</p>
+      </section>
+
+      <section id="sql" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">SQL Deep Dive</h2>
+        <h3 class="mt-3 font-semibold">Advanced Queries</h3>
+        <pre class="language-sql"><code>-- Window functions
+SELECT user_id, event_time, ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY event_time) AS seq
+FROM events;
+
+-- Recursive CTE (hierarchy)
+WITH RECURSIVE deps AS (
+  SELECT id, parent_id FROM pkg WHERE id = 1
+  UNION ALL
+  SELECT p.id, p.parent_id FROM pkg p JOIN deps d ON p.parent_id = d.id
+)
+SELECT * FROM deps;
+</code></pre>
+        <h3 class="mt-3 font-semibold">Transactions & Isolation levels</h3>
+        <p class="text-slate-700">ACID properties: Atomicity, Consistency, Isolation, Durability. Isolation levels (Read Uncommitted, Read Committed, Repeatable Read, Serializable) trade correctness vs. concurrency.</p>
+      </section>
+
+      <section id="indexing" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Indexing & Physical Storage</h2>
+        <p class="text-slate-700">B-Trees, LSM-Trees, hashing. Index design, covering indexes, composite indexes, and index-only scans impact performance drastically.</p>
+        <h3 class="mt-3 font-semibold">B-Tree fundamentals</h3>
+        <p class="text-slate-700">Balanced tree, node fanout, page fills, and cost model for range vs point queries.</p>
+      </section>
+
+      <section id="transactions" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Transactions & Concurrency Control</h2>
+        <p class="text-slate-700">Two-phase locking (2PL), optimistic concurrency control, multiversion concurrency control (MVCC). We'll explain how MVCC gives snapshot isolation and the implications for write skew.</p>
+      </section>
+
+      <section id="query" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Query Optimization & Execution</h2>
+        <p class="text-slate-700">Query planner, cost estimation, join algorithms (nested-loop, hash join, merge join), and physical operator pipelines.</p>
+        <h3 class="mt-3 font-semibold">Explain analyze walkthrough</h3>
+        <p class="text-slate-700">We dissect sample plans and show how to improve them using indexes, statistics, and query rewrites.</p>
+      </section>
+
+      <section id="internals" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Postgres Internals (Case Study)</h2>
+        <p class="text-slate-700">Background writer, WAL (write-ahead log), buffer manager, and checkpointer. We'll show how Postgres ensures durability and crash recovery.</p>
+      </section>
+
+      <section id="nosql" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">NoSQL & Modern Systems</h2>
+        <p class="text-slate-700">Document stores, key-value stores, wide-column stores, and graph databases — their data models and when to choose them. Discuss CAP theorem, consistency models, and practical tradeoffs.</p>
+      </section>
+
+      <section id="exercises-db" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Exercises</h2>
+        <ol class="list-decimal pl-6 mt-3 text-slate-700 space-y-3">
+          <li>Design a normalized schema for an e-commerce product catalog and justify indexes.</li>
+          <li>Explain why MVCC helps reads while writes still require careful conflict handling.</li>
+          <li>Given a slow query, outline steps to optimize it (explain analyze, add index, rewrite, partition).</li>
+        </ol>
+      </section>
+
+    </article>
+  </div>
+</body>
+</html>

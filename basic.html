@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Coding Challenges</title>
+  <link rel="stylesheet" href="basic.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-left highlighted">
+      <span class="logo">🧠 CodeMaster</span>
+    </div>
+    <div class="header-center">
+      <h1>🚀 Elite Coding Challenges</h1>
+      <p>Level up your skills. Track your progress. Conquer the code.</p>
+    </div>
+    <div class="header-right">
+      <button id="themeToggle">🌙</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-category="Basic">Basic</button>
+    <button class="tab" data-category="DSA">DSA</button>
+    <button class="tab" data-category="Java">Java</button>
+    <button class="tab" data-category="General">General</button>
+  </nav>
+
+  <section class="filters">
+    <select id="difficultyFilter">
+      <option value="">All</option>
+      <option value="Easy">Easy</option>
+      <option value="Medium">Medium</option>
+      <option value="Hard">Hard</option>
+    </select>
+  </section>
+
+  <section id="challengeGrid" class="grid"></section>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <textarea id="codeEditor" placeholder="Write your code here..."></textarea>
+      <button onclick="runCode()">Run</button>
+      <pre id="output"></pre>
+    </div>
+  </div>
+
+  <script src="basic.js"></script>
+</body>
+</html>

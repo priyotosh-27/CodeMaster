@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Computer Networking — CodeMaster</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</head>
+<body class="bg-slate-50">
+  <div class="container mx-auto py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <aside class="lg:col-span-1">
+      <div class="p-6 bg-white rounded-xl shadow sticky top-24">
+        <h3 class="font-bold text-lg">Networking Contents</h3>
+        <ol class="mt-3 text-sm text-slate-700 space-y-1">
+          <li><a href="#models" class="underline">OSI & TCP/IP Models</a></li>
+          <li><a href="#link" class="underline">Link Layer & Ethernet</a></li>
+          <li><a href="#ip" class="underline">IP, Addressing, Subnetting</a></li>
+          <li><a href="#transport" class="underline">Transport Layer (TCP/UDP)</a></li>
+          <li><a href="#routing" class="underline">Routing Protocols</a></li>
+          <li><a href="#apps" class="underline">Application Layer Protocols & Security</a></li>
+          <li><a href="#exercises-net" class="underline">Exercises</a></li>
+        </ol>
+      </div>
+    </aside>
+
+    <article class="lg:col-span-3 space-y-8">
+      <section id="models" class="p-6 bg-white rounded-xl shadow">
+        <h1 class="text-3xl font-bold">OSI & TCP/IP Models</h1>
+        <p class="mt-3 text-slate-700">Layered models separate concerns: application, transport, network, link, and physical. We'll map protocols to layers and explain encapsulation/decapsulation at boundaries.</p>
+      </section>
+
+      <section id="link" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Link Layer & Ethernet</h2>
+        <p class="text-slate-700">Ethernet framing, MAC addresses, ARP, switching, VLANs. We'll show frame formats and switching tables, and how learning switches avoid broadcasts.</p>
+      </section>
+
+      <section id="ip" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">IP, Addressing & Subnetting</h2>
+        <p class="text-slate-700">IPv4/IPv6 addressing, CIDR notation, subnet masks, NAT, and address allocation. We'll include worked examples of subnet math and prefix aggregation.</p>
+      </section>
+
+      <section id="transport" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Transport Layer — TCP & UDP</h2>
+        <p class="text-slate-700">TCP handshake, state machine, retransmission, flow control, congestion control (AIMD, slow start, fast recovery). UDP for connectionless protocols and QUIC as modern transport over UDP.</p>
+      </section>
+
+      <section id="routing" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Routing Protocols</h2>
+        <p class="text-slate-700">Distance-vector (RIP) vs link-state (OSPF) and path-vector (BGP). We'll outline route convergence, metrics, and BGP policy controls used by ISPs.</p>
+      </section>
+
+      <section id="apps" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Application Layer & Security</h2>
+        <p class="text-slate-700">HTTP/2, HTTP/3, TLS handshake, certificates, DNS resolution and security extensions (DNSSEC). We'll discuss DDoS mitigation, rate limiting, and secure deployment patterns.</p>
+      </section>
+
+      <section id="exercises-net" class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-2xl font-bold">Exercises</h2>
+        <ol class="list-decimal pl-6 mt-3 text-slate-700 space-y-3">
+          <li>Calculate subnets for given address space and host requirements.</li>
+          <li>Trace a TCP connection's packet sequence with handshake, data, and teardown.</li>
+          <li>Compare link-state and distance-vector in a small topology for convergence time.</li>
+        </ol>
+      </section>
+
+    </article>
+  </div>
+</body>
+</html>

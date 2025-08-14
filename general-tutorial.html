@@ -1,0 +1,70 @@
+<!-- Core Concepts Multi-Page Mini-Site
+  Files included (concatenated for convenience):
+  - index.html
+  - oop.html
+  - dbms.html
+  - os.html
+  - network.html
+  Each page is structured, styled with Tailwind CDN and Prism for code blocks.
+  NOTE: This single textdoc bundles multiple HTML pages separated by comments so you can split them into files.
+-->
+
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Core Concepts — CodeMaster</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <style>
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
+    .hero{background:linear-gradient(90deg,#0ea5a4,#6366f1);color:white}
+    .card{background:white;border-radius:.75rem;box-shadow:0 8px 30px rgba(2,6,23,.08)}
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50">
+  <nav class="p-6 hero">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-2xl font-bold">CodeMaster — Core Concepts</div>
+      <a href="Platform.html" class="hover:text-gray-200 font-semibold flex items-center">
+        <i class="fas fa-arrow-left mr-2"></i> <- Back to Home
+      </a>
+    </div>
+  </nav>
+  <main class="container mx-auto py-12">
+    <h1 class="text-4xl font-extrabold mb-6">Core Computer Science Concepts — Deep Dives</h1>
+    <p class="mb-6 text-lg">Four detailed pages: Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networking. Each page contains deep theoretical explanations, diagrams (SVG), code samples, worked examples, exercises, and references.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <a href="oop.html" class="card p-6 hover:shadow-lg">
+        <h2 class="text-2xl font-bold">Object-Oriented Programming</h2>
+        <p class="mt-2 text-sm text-slate-600">Principles, design patterns, SOLID, memory model, runtime dispatch, advanced polymorphism, case studies.</p>
+      </a>
+      <a href="dbms.html" class="card p-6 hover:shadow-lg">
+        <h2 class="text-2xl font-bold">Database Management Systems</h2>
+        <p class="mt-2 text-sm text-slate-600">Relational theory, indexing, transaction management, concurrency control, query optimization, internals of Postgres/MySQL.</p>
+      </a>
+      <a href="os.html" class="card p-6 hover:shadow-lg">
+        <h2 class="text-2xl font-bold">Operating Systems</h2>
+        <p class="mt-2 text-sm text-slate-600">Processes, threads, scheduling, virtual memory, filesystems, kernel design, synchronization primitives.</p>
+      </a>
+      <a href="network.html" class="card p-6 hover:shadow-lg">
+        <h2 class="text-2xl font-bold">Computer Networking</h2>
+        <p class="mt-2 text-sm text-slate-600">OSI/TCP-IP, routing, switching, transport protocols, congestion control, secure networking, practical packet walkthroughs.</p>
+      </a>
+    </div>
+    <section class="mt-10">
+      <h3 class="text-xl font-semibold">How to use these pages</h3>
+      <ul class="list-disc pl-6 mt-2 text-slate-700">
+        <li>Each subject page is designed as a standalone mini-book.</li>
+        <li>Search within page (browser) for specific terms.</li>
+        <li>Exercises are provided with hints and solutions.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="py-8 text-center text-sm text-slate-500">© 2025 CodeMaster. All rights reserved.</footer>
+</body>
+</html>
+

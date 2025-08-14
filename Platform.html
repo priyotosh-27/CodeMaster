@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeMaster — Coding Test Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-100 text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-white/30 backdrop-blur-xl shadow-lg border-b border-indigo-100">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2 text-indigo-700">
+        <i class="fas fa-code text-2xl"></i>
+        <span class="text-xl font-bold tracking-wide">CodeMaster</span>
+      </div>
+      <div class="hidden md:flex items-center space-x-6 text-indigo-600 font-medium">
+        <a href="#home" class="hover:text-purple-600 transition">Home</a>
+        <a href="#tests" class="hover:text-purple-600 transition">Tests</a>
+        <a href="#code-challenge" class="hover:text-purple-600 transition">Coding Challenge</a>
+        <a href="#resources" class="hover:text-purple-600 transition">Resources</a>
+      </div>
+      <div class="flex gap-4 items-center">
+  <button id="loginBtn" class="px-4 py-2 rounded-lg bg-white text-indigo-700 font-medium hover:bg-gray-100">Login</button>
+  <button id="registerBtn" class="px-4 py-2 rounded-lg bg-transparent border-2 border-white font-medium hover:bg-white hover:text-indigo-700">Register</button>
+</div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-700 via-indigo-600 to-blue-500 opacity-90 z-0"></div>
+    <div class="container mx-auto px-4 py-20 relative z-10 text-white">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+            Master Coding Skills<br><span class="text-pink-300">with Real Tests</span>
+          </h1>
+          <p class="text-xl mb-8 opacity-90">
+            Practice coding, DSA, OOP, DBMS, CN and more with our comprehensive test platform.
+          </p>
+          <a href="#tests">
+            <button class="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-xl font-bold shadow-lg hover:from-pink-600 hover:to-purple-700 transition duration-300 ring-2 ring-pink-400/50 hover:ring-purple-500/50">
+              🚀 Start Testing Now
+            </button>
+          </a>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <img src="Coding_test.jpeg" alt="developer illustration" class="rounded-2xl shadow-2xl hover:scale-105 transition duration-500">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Test Categories -->
+  <section id="tests" class="py-20 bg-gradient-to-br from-[#fdfbfb] via-[#ebedee] to-[#dfe9f3]">
+    <div class="container mx-auto px-4">
+      <h2 class="text-5xl font-extrabold text-center text-indigo-700 mb-16 tracking-tight">🚀 Explore Test Categories</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <a href="programming-test.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-indigo-200 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105 block">
+          <div class="flex justify-center mb-6">
+            <div class="w-20 h-20 rounded-full bg-indigo-100 flex items-center justify-center shadow-md">
+              <i class="fas fa-laptop-code text-indigo-600 text-3xl"></i>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-indigo-800 mb-3">Programming</h3>
+          <p class="text-center text-gray-700">Syntax, output prediction, coding problems.</p>
+        </a>
+        <a href="java-test.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-blue-200 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105 block">
+          <div class="flex justify-center mb-6">
+            <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center shadow-md">
+              <i class="fab fa-java text-blue-600 text-3xl"></i>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-blue-800 mb-3">Java</h3>
+          <p class="text-center text-gray-700">OOP, output prediction, code snippets.</p>
+        </a>
+        <a href="dsa-test.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-pink-200 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105 block">
+          <div class="flex justify-center mb-6">
+            <div class="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center shadow-md">
+              <i class="fas fa-project-diagram text-pink-600 text-3xl"></i>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-pink-800 mb-3">DSA</h3>
+          <p class="text-center text-gray-700">Conceptual and practical challenges.</p>
+        </a>
+        <a href="general-test.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-purple-200 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105 block">
+          <div class="flex justify-center mb-6">
+            <div class="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center shadow-md">
+              <i class="fas fa-brain text-purple-600 text-3xl"></i>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-purple-800 mb-3">General CS</h3>
+          <p class="text-center text-gray-700">DBMS, Networking, OS, System Design.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coding Challenges -->
+  <section id="code-challenge" class="py-20 bg-gradient-to-br from-[#fceabb] via-[#f8b500] to-[#f6e27a]">
+    <div class="container mx-auto px-4">
+      <h2 class="text-5xl font-extrabold text-center text-yellow-900 mb-16 tracking-tight">💻 Coding Challenges</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <a href="basic.html" class="block bg-white/70 backdrop-blur-xl p-8 rounded-3xl shadow-xl hover:shadow-2xl transition hover:scale-105">
+          <h3 class="text-2xl font-bold text-indigo-700 mb-3">📘 Basic to Advanced</h3>
+          <p class="text-gray-700">Structured learning from fundamentals to expert-level problems.</p>
+        </a>
+        <a href="challenges/interview-questions.html" class="block bg-white/70 backdrop-blur-xl p-8 rounded-3xl shadow-xl hover:shadow-2xl transition hover:scale-105">
+          <h3 class="text-2xl font-bold text-pink-700 mb-3">🎯 Interview Questions</h3>
+          <p class="text-gray-700">Real-world questions from top tech interviews.</p>
+        </a>
+                <a href="challenges/company-specific.html" class="block bg-white/70 backdrop-blur-xl p-8 rounded-3xl shadow-xl hover:shadow-2xl transition hover:scale-105">
+          <h3 class="text-2xl font-bold text-purple-700 mb-3">🏢 Company Specific</h3>
+          <p class="text-gray-700">Problems tagged by Amazon, Google, Meta, and more.</p>
+        </a>
+        
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Study Notes -->
+  <section id="resources" class="py-20 bg-gradient-to-br from-[#e0c3fc] via-[#8ec5fc] to-[#a9c9ff]">
+    <div class="container mx-auto px-4">
+      <h2 class="text-5xl font-extrabold text-center text-blue-900 mb-16 tracking-tight">📚 Study Notes</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <a href="python-tutorial.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-indigo-200 shadow-xl hover:shadow-2xl transition hover:scale-105 cursor-pointer block">
+          <div class="flex justify-center mb-6">
+            <div class="w-20 h-20 rounded-full bg-indigo-100 flex items-center justify-center shadow-md">
+              <i class="fab fa-python text-indigo-600 text-3xl"></i>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-indigo-800 mb-3">Python Notes</h3>
+          <p class="text-center text-gray-700">Comprehensive notes on Python syntax and features.</p>
+        </a>
+
+        <a href="java-tutorial.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-blue-200 shadow-xl hover:shadow-2xl transition hover:scale-105 cursor-pointer block">
+          <div class="flex justify-center mb-6">
+            <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center shadow-md">
+              <i class="fab fa-java text-blue-600 text-3xl"></i>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-blue-800 mb-3">Java Notes</h3>
+          <p class="text-center text-gray-700">Key concepts and OOP principles in Java.</p>
+        </a>
+
+        <a href="dsa-tutorial.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-pink-200 shadow-xl hover:shadow-2xl transition hover:scale-105 cursor-pointer block">
+          <div class="flex justify-center mb-6">
+            <div class="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center shadow-md">
+              <i class="fas fa-project-diagram text-pink-600 text-3xl"></i>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-pink-800 mb-3">DSA Notes</h3>
+          <p class="text-center text-gray-700">Data structures and algorithms explained clearly.</p>
+        </a>
+
+        <a href="general-tutorial.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-purple-200 shadow-xl hover:shadow-2xl transition hover:scale-105 cursor-pointer block">
+          <div class="flex justify-center mb-6">
+            <div class="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center shadow-md">
+              <i class="fas fa-brain text-purple-600 text-3xl"></i>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-purple-800 mb-3">General CS Notes</h3>
+          <p class="text-center text-gray-700">DBMS, Networking, OS, and system design basics.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white pt-16 pb-12 mt-24 overflow-hidden">
+    <div class="absolute inset-0 bg-white/10 backdrop-blur-sm z-0"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+        <div>
+          <h3 class="text-2xl font-extrabold mb-3 tracking-wide text-pink-300">CodeMaster</h3>
+          <p class="text-sm text-gray-300 max-w-sm leading-relaxed">
+            Master coding skills with curated tests, challenges, and resources designed for future developers.
+          </p>
+        </div>
+        <!-- Static Social Icons -->
+<div class="mt-10 flex justify-center space-x-6">
+  <!-- GitHub -->
+  <a href="https://github.com/priyotosh-27" target="_blank" class="group flex flex-col items-center">
+    <div class="bg-white p-3 rounded-full shadow-md hover:scale-110 transition duration-300">
+      <i class="fab fa-github text-xl text-gray-800"></i>
+    </div>
+    <span class="text-sm text-gray-300 mt-2 group-hover:text-white transition">GitHub</span>
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/in/priyotosh-roy-81833228a/" target="_blank" class="group flex flex-col items-center">
+    <div class="bg-white p-3 rounded-full shadow-md hover:scale-110 transition duration-300">
+      <i class="fab fa-linkedin-in text-xl text-blue-700"></i>
+    </div>
+    <span class="text-sm text-gray-300 mt-2 group-hover:text-white transition">LinkedIn</span>
+  </a>
+
+  <!-- Portfolio -->
+  <a href="https://priyotosh-27.github.io/Portfolio_Website/" target="_blank" class="group flex flex-col items-center">
+    <div class="bg-white p-3 rounded-full shadow-md hover:scale-110 transition duration-300">
+      <i class="fas fa-user-circle text-xl text-purple-600"></i>
+    </div>
+    <span class="text-sm text-gray-300 mt-2 group-hover:text-white transition">Portfolio</span>
+  </a>
+</div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-sm">
+          <div>
+            <h4 class="font-semibold mb-3 text-indigo-300 uppercase tracking-wide">Tests</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="tests/programming.html" class="hover:text-pink-400 transition duration-200">Programming</a></li>
+              <li><a href="tests/dsa.html" class="hover:text-pink-400 transition duration-200">DSA</a></li>
+              <li><a href="tests/dbms.html" class="hover:text-pink-400 transition duration-200">DBMS</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-3 text-indigo-300 uppercase tracking-wide">Resources</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="notes/tutorials.html" class="hover:text-pink-400 transition duration-200">Tutorials</a></li>
+              <li><a href="notes/practice.html" class="hover:text-pink-400 transition duration-200">Practice Problems</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-3 text-indigo-300 uppercase tracking-wide">Contact</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="mailto:priyotoshr501@gmail.com" class="hover:text-pink-400 transition duration-200">priyotoshr501@gmail.com</a></li>
+              <li><a href="https://www.linkedin.com/in/priyotosh-roy-81833228a/" target="_blank" class="hover:text-pink-400 transition duration-200">LinkedIn</a></li>
+              <li><a href="https://priyotosh-27.github.io/Portfolio_Website/" target="_blank" class="hover:text-pink-400 transition duration-200">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+      <div class="mt-12 border-t border-pink-400/30 pt-6 text-center text-sm text-gray-400">
+        © 2025 <span class="text-pink-300 font-semibold">CodeMaster</span>. All rights reserved.
+      </div>
+    </div>
+    <!-- AI Assistant Toggle Button -->
+<button id="toggleAssistant" class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-pink-500 to-purple-600 text-white p-3 rounded-full shadow-lg hover:scale-110 transition duration-300">
+  <i class="fas fa-robot text-xl"></i>
+</button>
+
+<!-- Assistant Chat Box -->
+<div id="assistantBox" class="fixed bottom-24 right-6 w-80 bg-white/10 backdrop-blur-lg text-white rounded-xl shadow-xl p-4 hidden z-50">
+  <h4 class="text-lg font-bold mb-2 text-pink-300">CodeMaster Assistant</h4>
+  <div id="chatLog" class="text-sm text-gray-200 mb-4 h-40 overflow-y-auto space-y-2">
+    <div class="text-pink-400">👋 Hi! What can I help you with today?</div>
+  </div>
+  <textarea id="userInput" class="w-full p-2 rounded bg-white/20 text-white placeholder-gray-300 resize-none" rows="3" placeholder="Ask me anything..."></textarea>
+  <button id="sendBtn" class="mt-3 w-full bg-pink-500 hover:bg-pink-600 text-white py-2 rounded transition">Send</button>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('toggleAssistant');
+  const assistantBox = document.getElementById('assistantBox');
+  const sendBtn = document.getElementById('sendBtn');
+  const userInput = document.getElementById('userInput');
+  const chatLog = document.getElementById('chatLog');
+
+  toggleBtn.addEventListener('click', () => {
+    assistantBox.classList.toggle('hidden');
+  });
+
+  sendBtn.addEventListener('click', async () => {
+    const message = userInput.value.trim();
+    if (!message) return;
+
+    // Show user message
+    chatLog.innerHTML += `<div class="text-white">🧑‍💻 ${message}</div>`;
+    userInput.value = '';
+
+    // Call AI API
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer YOUR_OPENAI_API_KEY" // Replace with your key
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: message }]
+      })
+    });
+
+    const data = await response.json();
+    const reply = data.choices?.[0]?.message?.content || "Sorry, I couldn't understand that.";
+
+    // Show AI reply
+    chatLog.innerHTML += `<div class="text-pink-400">🤖 ${reply}</div>`;
+    chatLog.scrollTop = chatLog.scrollHeight;
+  });
+</script>
+  </footer>
+  <!-- 🔐 Auth Modal -->
+<div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
+    <button id="closeAuth" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl font-bold">&times;</button>
+    <h2 id="authTitle" class="text-2xl font-semibold text-indigo-700 mb-4 text-center">Login</h2>
+
+    <form id="authForm" class="space-y-4">
+      <input type="hidden" id="authMode" value="login" />
+
+      <!-- Full Name (only for register) -->
+      <div id="nameField" class="hidden">
+        <label for="authName" class="block text-sm font-medium text-gray-700">Full Name</label>
+        <input type="text" id="authName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="authEmail" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" id="authEmail" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label for="authPassword" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="authPassword" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium">Submit</button>
+    </form>
+
+    <!-- Switch Mode -->
+    <p class="mt-4 text-center text-sm text-gray-600">
+      <button id="switchAuth" class="text-indigo-600 hover:underline font-medium">Don't have an account? Register</button>
+    </p>
+  </div>
+</div>
+  <script src="main.js"></script>
+</body>
+</html>
