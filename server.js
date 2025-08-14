@@ -1,12 +1,12 @@
-// /api/chat.js (or inside your Express route file)
 import express from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
 
 dotenv.config();
-const router = express.Router();
+const app = express();
+app.use(express.json());
 
-router.post("/chat", async (req, res) => {
+app.post("/api/chat", async (req, res) => {
     const { message, provider = "openai" } = req.body;
 
     if (!message) {
@@ -20,17 +20,17 @@ router.post("/chat", async (req, res) => {
         headers = {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-            "HTTP-Referer": "https://codemaster.com", // required by OpenRouter
+            "HTTP-Referer": "https://codemaster.com",
             "X-Title": "CodeMaster Assistant"
         };
-        model = "openrouter/anthropic/claude-3-haiku"; // You can change this
+        model = "openrouter/anthropic/claude-3-haiku";
     } else {
         apiUrl = "https://api.openai.com/v1/chat/completions";
         headers = {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
         };
-        model = "gpt-3.5-turbo"; // Or "gpt-4" if available
+        model = "gpt-3.5-turbo";
     }
 
     try {
@@ -44,16 +44,13 @@ router.post("/chat", async (req, res) => {
         });
 
         const data = await response.json();
-
-        if (!data.choices || !data.choices[0]?.message?.content) {
-            return res.status(500).json({ error: "No response from AI." });
-        }
-
-        res.json({ reply: data.choices[0].message.content });
-    } catch (error) {
-        console.error("AI Error:", error);
-        res.status(500).json({ error: "Something went wrong." });
+        const reply = data.choices?.[0]?.message?.content || "No response.";
+        res.json({ reply });
+    } catch (err) {
+        console.error("AI error:", err);
+        res.status(500).json({ error: "Something went wrong" });
     }
 });
 
-export default router;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
