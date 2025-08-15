@@ -1,65 +1,23 @@
 import express from "express";
-import fetch from "node-fetch";
 import dotenv from "dotenv";
+import chatRouter from "./api/chat.js"; // ✅ Correct path
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 
-app.post("/api/chat", async (req, res) => {
-    const { message, provider = "openai" } = req.body;
+// ✅ Optional: Log incoming requests
+app.use((req, res, next) => {
+    console.log(`📩 ${req.method} ${req.url}`);
+    next();
+});
 
-    if (!message) {
-        return res.status(400).json({ error: "Message is required." });
-    }
+// ✅ Use modular chat router
+app.use("/api", chatRouter);
 
-    let apiUrl, headers, model;
-
-    if (provider === "openrouter") {
-        apiUrl = "https://openrouter.ai/api/v1/chat/completions";
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-            "HTTP-Referer": "https://coding-platform-mu.vercel.app", // ✅ your deployed domain
-            "X-Title": "CodeMaster Assistant"
-        };
-        model = "anthropic/claude-3-haiku"; // ✅ Correct model name
-    } else {
-        apiUrl = "https://api.openai.com/v1/chat/completions";
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
-        };
-        model = "gpt-3.5-turbo";
-    }
-
-    try {
-        const response = await fetch(apiUrl, {
-            method: "POST",
-            headers,
-            body: JSON.stringify({
-                model,
-                messages: [{ role: "user", content: message }],
-                temperature: 0.7 // optional but recommended
-            })
-        });
-
-        const raw = await response.text();
-        console.log("Raw AI response:", raw);
-
-        const data = JSON.parse(raw);
-
-        if (data.error) {
-            console.error("AI API error:", data.error);
-            return res.status(500).json({ error: data.error.message });
-        }
-
-        const reply = data.choices?.[0]?.message?.content || "No response from AI.";
-        res.json({ reply });
-    } catch (err) {
-        console.error("AI error:", err);
-        res.status(500).json({ error: "Something went wrong", details: err.message });
-    }
+// ✅ Health check
+app.get("/", (req, res) => {
+    res.send("✅ Server is working!");
 });
 
 const PORT = process.env.PORT || 3000;

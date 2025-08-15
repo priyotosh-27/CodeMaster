@@ -3,9 +3,11 @@ const app = express();
 app.use(express.json());
 
 app.post('/api/chat', (req, res) => {
-    const { message } = req.body;
-    console.log("Received:", message);
-    res.json({ reply: `Echo: ${message}` });
+  const { message } = req.body;
+  console.log("Received:", message);
+  res.json({ reply: `Echo: ${message}` });
 });
-
+app.get("/", (req, res) => {
+  res.send("✅ Test server is working!");
+});
 app.listen(3000, () => console.log("✅ Test server running on http://localhost:3000"));
