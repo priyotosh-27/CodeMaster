@@ -1,0 +1,35 @@
+{
+    "name": "codemaster",
+    "version": "1.0.0",
+    "description": "CodeMaster – A student-focused coding platform with AI assistant and compiler integration.",
+    "type": "module",
+    "scripts": {
+        "dev": "vercel dev",
+        "build": "echo \"No build step required\"",
+        "start": "vercel dev"
+    },
+    "keywords": [
+        "coding",
+        "platform",
+        "AI",
+        "compiler",
+        "education"
+    ],
+    "author": "Priyotosh",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/priyotosh-27/CodeMaster.git"
+    },
+    "bugs": {
+        "url": "https://github.com/priyotosh-27/CodeMaster/issues"
+    },
+    "homepage": "https://github.com/priyotosh-27/CodeMaster#readme",
+    "private": true,
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "dependencies": {
+        "node-fetch": "^2.7.0"
+    }
+}
