@@ -20,10 +20,10 @@ app.post("/api/chat", async (req, res) => {
         headers = {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-            "HTTP-Referer": "https://codemaster.com",
+            "HTTP-Referer": "https://coding-platform-mu.vercel.app", // ✅ your deployed domain
             "X-Title": "CodeMaster Assistant"
         };
-        model = "openrouter/anthropic/claude-3-haiku";
+        model = "anthropic/claude-3-haiku"; // ✅ Correct model name
     } else {
         apiUrl = "https://api.openai.com/v1/chat/completions";
         headers = {
@@ -39,18 +39,28 @@ app.post("/api/chat", async (req, res) => {
             headers,
             body: JSON.stringify({
                 model,
-                messages: [{ role: "user", content: message }]
+                messages: [{ role: "user", content: message }],
+                temperature: 0.7 // optional but recommended
             })
         });
 
-        const data = await response.json();
-        const reply = data.choices?.[0]?.message?.content || "No response.";
+        const raw = await response.text();
+        console.log("Raw AI response:", raw);
+
+        const data = JSON.parse(raw);
+
+        if (data.error) {
+            console.error("AI API error:", data.error);
+            return res.status(500).json({ error: data.error.message });
+        }
+
+        const reply = data.choices?.[0]?.message?.content || "No response from AI.";
         res.json({ reply });
     } catch (err) {
         console.error("AI error:", err);
-        res.status(500).json({ error: "Something went wrong" });
+        res.status(500).json({ error: "Something went wrong", details: err.message });
     }
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

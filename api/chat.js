@@ -1,4 +1,3 @@
-// /api/chat.js (or inside your Express route file)
 import express from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
@@ -20,17 +19,17 @@ router.post("/chat", async (req, res) => {
         headers = {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-            "HTTP-Referer": "https://codemaster.com", // required by OpenRouter
+            "HTTP-Referer": "https://coding-platform-mu.vercel.app", // ✅ must match your deployed domain
             "X-Title": "CodeMaster Assistant"
         };
-        model = "openrouter/anthropic/claude-3-haiku"; // You can change this
+        model = "anthropic/claude-3-haiku"; // ✅ Correct model name
     } else {
         apiUrl = "https://api.openai.com/v1/chat/completions";
         headers = {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
         };
-        model = "gpt-3.5-turbo"; // Or "gpt-4" if available
+        model = "gpt-3.5-turbo";
     }
 
     try {
@@ -39,20 +38,26 @@ router.post("/chat", async (req, res) => {
             headers,
             body: JSON.stringify({
                 model,
-                messages: [{ role: "user", content: message }]
+                messages: [{ role: "user", content: message }],
+                temperature: 0.7 // ✅ optional but recommended
             })
         });
 
-        const data = await response.json();
+        const raw = await response.text();
+        console.log("Raw AI response:", raw);
 
-        if (!data.choices || !data.choices[0]?.message?.content) {
-            return res.status(500).json({ error: "No response from AI." });
+        const data = JSON.parse(raw);
+
+        if (data.error) {
+            console.error("AI API error:", data.error);
+            return res.status(500).json({ error: data.error.message });
         }
 
-        res.json({ reply: data.choices[0].message.content });
-    } catch (error) {
-        console.error("AI Error:", error);
-        res.status(500).json({ error: "Something went wrong." });
+        const reply = data.choices?.[0]?.message?.content || "No response from AI.";
+        res.json({ reply });
+    } catch (err) {
+        console.error("AI error:", err);
+        res.status(500).json({ error: "Something went wrong", details: err.message });
     }
 });
 
