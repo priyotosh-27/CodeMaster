@@ -2,6 +2,9 @@
 import fetch from "node-fetch";
 
 export default async function handler(req, res) {
+  // Optional: CORS support if frontend is separate
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -10,6 +13,11 @@ export default async function handler(req, res) {
 
   if (!message) {
     return res.status(400).json({ error: "Message is required." });
+  }
+
+  const validProviders = ["openai", "openrouter"];
+  if (!validProviders.includes(provider)) {
+    return res.status(400).json({ error: "Invalid provider selected." });
   }
 
   let apiUrl, headers, model;
@@ -43,7 +51,10 @@ export default async function handler(req, res) {
       })
     });
 
-    const data = await response.json();
+    const raw = await response.text();
+    console.log("🔍 Raw AI response:", raw); // Optional: Debugging
+
+    const data = JSON.parse(raw);
 
     if (data.error) {
       return res.status(500).json({ error: data.error.message });
