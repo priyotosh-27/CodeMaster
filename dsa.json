@@ -1,0 +1,1642 @@
+[
+    {
+        "title": "DSA Test - 1",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which data structure works on FIFO principle?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Tree",
+                    "Graph"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "q": "What is the time complexity of accessing an element in an array?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "q": "Pseudo-code: print the output\n\narr = [1,2,3]\nfor i in arr:\n   print(i*2)\n",
+                "options": [
+                    "1 2 3",
+                    "2 4 6",
+                    "3 6 9",
+                    "Error"
+                ],
+                "answer": "2 4 6"
+            },
+            {
+                "q": "Which of the following is a linear data structure?",
+                "options": [
+                    "Graph",
+                    "Tree",
+                    "Stack",
+                    "Heap"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "q": "Which of the following allows both LIFO and FIFO?",
+                "options": [
+                    "Deque",
+                    "Stack",
+                    "Queue",
+                    "Array"
+                ],
+                "answer": "Deque"
+            },
+            {
+                "q": "Pseudo-code: predict the output\n\nx = 5\ny = 3\nprint(x % y)\n",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "0"
+                ],
+                "answer": "2"
+            },
+            {
+                "q": "Which sorting algorithm is best for nearly sorted data?",
+                "options": [
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Insertion Sort",
+                    "Heap Sort"
+                ],
+                "answer": "Insertion Sort"
+            },
+            {
+                "q": "Full form of DSA?",
+                "options": [
+                    "Data Structure and Applications",
+                    "Data System Algorithm",
+                    "Data Structures and Algorithms",
+                    "Digital Structure Algorithm"
+                ],
+                "answer": "Data Structures and Algorithms"
+            },
+            {
+                "q": "Which operation is not possible in O(1) in a stack implemented using arrays?",
+                "options": [
+                    "Push",
+                    "Pop",
+                    "Peek",
+                    "Search"
+                ],
+                "answer": "Search"
+            },
+            {
+                "q": "What is the worst case time complexity of Linear Search?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 2",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which data structure works on LIFO principle?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Graph",
+                    "Tree"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = [10,20,30]\nprint(x[1])\n",
+                "options": [
+                    "10",
+                    "20",
+                    "30",
+                    "Error"
+                ],
+                "answer": "20"
+            },
+            {
+                "q": "Which searching algorithm is efficient for sorted arrays?",
+                "options": [
+                    "Linear Search",
+                    "Binary Search",
+                    "Jump Search",
+                    "Exponential Search"
+                ],
+                "answer": "Binary Search"
+            },
+            {
+                "q": "What is the time complexity of binary search?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "q": "Which of the following is a non-linear data structure?",
+                "options": [
+                    "Array",
+                    "Stack",
+                    "Graph",
+                    "Queue"
+                ],
+                "answer": "Graph"
+            },
+            {
+                "q": "Pseudo-code output:\n\ni = 1\nwhile i <= 3:\n   print(i)\n   i += 1\n",
+                "options": [
+                    "1 2",
+                    "1 2 3",
+                    "0 1 2",
+                    "Infinite loop"
+                ],
+                "answer": "1 2 3"
+            },
+            {
+                "q": "Which sorting algorithm has worst case O(n^2)?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Bubble Sort",
+                    "Heap Sort"
+                ],
+                "answer": "Bubble Sort"
+            },
+            {
+                "q": "Which data structure uses pointers and nodes?",
+                "options": [
+                    "Array",
+                    "Linked List",
+                    "Queue",
+                    "Stack"
+                ],
+                "answer": "Linked List"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = 4\ny = 2\nprint(x**y)\n",
+                "options": [
+                    "6",
+                    "8",
+                    "16",
+                    "Error"
+                ],
+                "answer": "16"
+            },
+            {
+                "q": "Which data structure is used for implementing recursion?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Array",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 3",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which data structure is best suited for implementing a priority system?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Array"
+                ],
+                "answer": "Heap"
+            },
+            {
+                "q": "Pseudo-code output:\n\narr = [5,10,15]\nprint(len(arr))\n",
+                "options": [
+                    "2",
+                    "3",
+                    "5",
+                    "Error"
+                ],
+                "answer": "3"
+            },
+            {
+                "q": "Which traversal is used to get sorted order in a Binary Search Tree?",
+                "options": [
+                    "Preorder",
+                    "Postorder",
+                    "Inorder",
+                    "Level order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "q": "What is the worst-case time complexity of Quick Sort?",
+                "options": [
+                    "O(n)",
+                    "O(n log n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n^2)"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = 10\ny = 0\nprint(x//(y+1))\n",
+                "options": [
+                    "10",
+                    "0",
+                    "Error",
+                    "1"
+                ],
+                "answer": "10"
+            },
+            {
+                "q": "Which of the following is not a stable sorting algorithm?",
+                "options": [
+                    "Merge Sort",
+                    "Bubble Sort",
+                    "Quick Sort",
+                    "Insertion Sort"
+                ],
+                "answer": "Quick Sort"
+            },
+            {
+                "q": "Which data structure is used for BFS traversal of a graph?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Array",
+                    "Heap"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "q": "Pseudo-code output:\n\nfor i in range(3):\n   for j in range(2):\n       print(i+j)\n",
+                "options": [
+                    "0 1 1 2 2 3",
+                    "0 1 2 3 4",
+                    "0 1 2 3 4 5",
+                    "Error"
+                ],
+                "answer": "0 1 1 2 2 3"
+            },
+            {
+                "q": "Which of the following is an application of Stack?",
+                "options": [
+                    "Undo operation",
+                    "Shortest Path",
+                    "Scheduling",
+                    "Searching"
+                ],
+                "answer": "Undo operation"
+            },
+            {
+                "q": "Which hashing technique handles collision using linked lists?",
+                "options": [
+                    "Open Addressing",
+                    "Separate Chaining",
+                    "Rehashing",
+                    "Double Hashing"
+                ],
+                "answer": "Separate Chaining"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 4",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which traversal of a binary tree visits root first, then left, then right?",
+                "options": [
+                    "Preorder",
+                    "Inorder",
+                    "Postorder",
+                    "Level order"
+                ],
+                "answer": "Preorder"
+            },
+            {
+                "q": "Pseudo-code output:\n\nstack = []\nstack.append(1)\nstack.append(2)\nprint(stack.pop())\n",
+                "options": [
+                    "1",
+                    "2",
+                    "Error",
+                    "None"
+                ],
+                "answer": "2"
+            },
+            {
+                "q": "Which of the following is not a divide-and-conquer algorithm?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Binary Search",
+                    "Bubble Sort"
+                ],
+                "answer": "Bubble Sort"
+            },
+            {
+                "q": "Which searching algorithm is best for unstructured data?",
+                "options": [
+                    "Binary Search",
+                    "Jump Search",
+                    "Linear Search",
+                    "Interpolation Search"
+                ],
+                "answer": "Linear Search"
+            },
+            {
+                "q": "Pseudo-code output:\n\nqueue = [1,2,3]\nqueue.pop(0)\nprint(queue)\n",
+                "options": [
+                    "[1,2]",
+                    "[2,3]",
+                    "[3]",
+                    "Error"
+                ],
+                "answer": "[2,3]"
+            },
+            {
+                "q": "Which of the following trees is always balanced?",
+                "options": [
+                    "AVL Tree",
+                    "Binary Tree",
+                    "Heap",
+                    "B-Tree"
+                ],
+                "answer": "AVL Tree"
+            },
+            {
+                "q": "What is the maximum number of edges in a simple undirected graph with n vertices?",
+                "options": [
+                    "n",
+                    "n^2",
+                    "n(n-1)/2",
+                    "n(n+1)/2"
+                ],
+                "answer": "n(n-1)/2"
+            },
+            {
+                "q": "Pseudo-code output:\n\nfor i in range(1,4):\n   print(i,end=' ')\n",
+                "options": [
+                    "0 1 2",
+                    "1 2 3",
+                    "1 2 3 4",
+                    "Error"
+                ],
+                "answer": "1 2 3"
+            },
+            {
+                "q": "Which of the following is a greedy algorithm?",
+                "options": [
+                    "Kruskal’s Algorithm",
+                    "Merge Sort",
+                    "Binary Search",
+                    "DFS"
+                ],
+                "answer": "Kruskal’s Algorithm"
+            },
+            {
+                "q": "Which data structure is best for implementing undo/redo?",
+                "options": [
+                    "Queue",
+                    "Heap",
+                    "Stack",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 5",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which traversal of a graph uses recursion or stack?",
+                "options": [
+                    "BFS",
+                    "DFS",
+                    "Level order",
+                    "Inorder"
+                ],
+                "answer": "DFS"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = [1,2,3]\nprint(sum(x))\n",
+                "options": [
+                    "3",
+                    "5",
+                    "6",
+                    "Error"
+                ],
+                "answer": "6"
+            },
+            {
+                "q": "Which data structure is used for implementing BFS?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Array"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "q": "What is the space complexity of Merge Sort?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(n)"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = 3\nprint(x*(x-1))\n",
+                "options": [
+                    "3",
+                    "6",
+                    "2",
+                    "Error"
+                ],
+                "answer": "6"
+            },
+            {
+                "q": "Which of the following is not an application of Queue?",
+                "options": [
+                    "CPU Scheduling",
+                    "Order Processing",
+                    "Undo Operation",
+                    "Call Center"
+                ],
+                "answer": "Undo Operation"
+            },
+            {
+                "q": "Which graph traversal guarantees shortest path in unweighted graphs?",
+                "options": [
+                    "DFS",
+                    "BFS",
+                    "Dijkstra",
+                    "Bellman-Ford"
+                ],
+                "answer": "BFS"
+            },
+            {
+                "q": "Pseudo-code output:\n\nfor i in range(2):\n   for j in range(2):\n       print(i,j)\n",
+                "options": [
+                    "(0,0)(0,1)(1,0)(1,1)",
+                    "(0,0)(1,0)(0,1)(1,1)",
+                    "Error",
+                    "None"
+                ],
+                "answer": "(0,0)(0,1)(1,0)(1,1)"
+            },
+            {
+                "q": "Which of the following is used in backtracking?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Array"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "q": "What is the maximum number of nodes in a binary tree of height h?",
+                "options": [
+                    "2^h",
+                    "2^(h+1)-1",
+                    "h^2",
+                    "h(h+1)/2"
+                ],
+                "answer": "2^(h+1)-1"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 6",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which data structure is best for checking balanced parentheses?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Array",
+                    "Heap"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = [2,4,6]\nprint(x[0] + x[2])\n",
+                "options": [
+                    "6",
+                    "8",
+                    "10",
+                    "Error"
+                ],
+                "answer": "8"
+            },
+            {
+                "q": "Which data structure is used to implement BFS traversal?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Array"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "q": "Which traversal of binary tree visits left → root → right?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "q": "Pseudo-code output:\n\nfor i in range(3):\n   print(i,end=' ')\n",
+                "options": [
+                    "0 1 2",
+                    "1 2 3",
+                    "0 1 2 3",
+                    "Error"
+                ],
+                "answer": "0 1 2"
+            },
+            {
+                "q": "Which data structure is best for priority-based scheduling?",
+                "options": [
+                    "Heap",
+                    "Stack",
+                    "Array",
+                    "Queue"
+                ],
+                "answer": "Heap"
+            },
+            {
+                "q": "Which searching algorithm requires data to be sorted?",
+                "options": [
+                    "Linear Search",
+                    "Binary Search",
+                    "Hashing",
+                    "DFS"
+                ],
+                "answer": "Binary Search"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = 7\ny = 3\nprint(x//y)\n",
+                "options": [
+                    "2",
+                    "3",
+                    "1",
+                    "Error"
+                ],
+                "answer": "2"
+            },
+            {
+                "q": "Which data structure is used in undo operations?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Array"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "q": "What is the maximum number of children in a binary tree node?",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "Unlimited"
+                ],
+                "answer": "2"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 7",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which traversal prints nodes level by level in a binary tree?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level order"
+                ],
+                "answer": "Level order"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = 5\nprint(x*(x+1))\n",
+                "options": [
+                    "10",
+                    "15",
+                    "20",
+                    "30"
+                ],
+                "answer": "30"
+            },
+            {
+                "q": "Which data structure is best for recursion implementation?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Array",
+                    "Heap"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "q": "Which sorting algorithm is stable?",
+                "options": [
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Heap Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "q": "Pseudo-code output:\n\nfor i in range(1,4):\n   print(i*i)\n",
+                "options": [
+                    "1 4 9",
+                    "1 2 3",
+                    "2 4 6",
+                    "Error"
+                ],
+                "answer": "1 4 9"
+            },
+            {
+                "q": "Which data structure uses hashing?",
+                "options": [
+                    "Dictionary/HashMap",
+                    "Stack",
+                    "Queue",
+                    "Array"
+                ],
+                "answer": "Dictionary/HashMap"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = [1,2,3]\nx.append(4)\nprint(len(x))\n",
+                "options": [
+                    "3",
+                    "4",
+                    "5",
+                    "Error"
+                ],
+                "answer": "4"
+            },
+            {
+                "q": "Which traversal is used in Depth First Search (DFS)?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Any order"
+                ],
+                "answer": "Any order"
+            },
+            {
+                "q": "What is the maximum number of nodes in a binary tree of height 3?",
+                "options": [
+                    "7",
+                    "8",
+                    "15",
+                    "16"
+                ],
+                "answer": "15"
+            },
+            {
+                "q": "Which operation of queue is O(1)?",
+                "options": [
+                    "Enqueue",
+                    "Dequeue",
+                    "Peek",
+                    "All of these"
+                ],
+                "answer": "All of these"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 8",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which of the following is not a linear data structure?",
+                "options": [
+                    "Array",
+                    "Stack",
+                    "Tree",
+                    "Queue"
+                ],
+                "answer": "Tree"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = 2\nfor i in range(3):\n   x += i\nprint(x)\n",
+                "options": [
+                    "2",
+                    "3",
+                    "5",
+                    "6"
+                ],
+                "answer": "5"
+            },
+            {
+                "q": "Which traversal prints root last?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level order"
+                ],
+                "answer": "Postorder"
+            },
+            {
+                "q": "Which data structure is best for implementing cache?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Linked HashMap",
+                    "Array"
+                ],
+                "answer": "Linked HashMap"
+            },
+            {
+                "q": "Pseudo-code output:\n\nprint(10%3)\n",
+                "options": [
+                    "0",
+                    "1",
+                    "2",
+                    "3"
+                ],
+                "answer": "1"
+            },
+            {
+                "q": "Which data structure is used in graph cycle detection?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Set",
+                    "Heap"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "q": "Pseudo-code output:\n\narr = [2,4]\narr.insert(1,3)\nprint(arr)\n",
+                "options": [
+                    "[2,3,4]",
+                    "[2,4,3]",
+                    "[3,2,4]",
+                    "Error"
+                ],
+                "answer": "[2,3,4]"
+            },
+            {
+                "q": "Which searching technique uses divide-and-conquer?",
+                "options": [
+                    "Linear Search",
+                    "Binary Search",
+                    "Hashing",
+                    "BFS"
+                ],
+                "answer": "Binary Search"
+            },
+            {
+                "q": "Which data structure is best for undo/redo operations?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Array"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "q": "Which is the height of a single node tree?",
+                "options": [
+                    "-1",
+                    "0",
+                    "1",
+                    "2"
+                ],
+                "answer": "0"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 9",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which sorting algorithm is best for small datasets?",
+                "options": [
+                    "Merge Sort",
+                    "Heap Sort",
+                    "Insertion Sort",
+                    "Quick Sort"
+                ],
+                "answer": "Insertion Sort"
+            },
+            {
+                "q": "Pseudo-code output:\n\nfor i in range(2):\n   for j in range(2):\n       print(i+j)\n",
+                "options": [
+                    "0 1 1 2",
+                    "0 1 2 3",
+                    "0 0 1 1",
+                    "Error"
+                ],
+                "answer": "0 1 1 2"
+            },
+            {
+                "q": "Which data structure is best for storing hierarchical data?",
+                "options": [
+                    "Array",
+                    "Stack",
+                    "Tree",
+                    "Queue"
+                ],
+                "answer": "Tree"
+            },
+            {
+                "q": "Which traversal is DFS of graph similar to?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "All of these"
+                ],
+                "answer": "All of these"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = 9\nprint(x//2)\n",
+                "options": [
+                    "4",
+                    "4.5",
+                    "5",
+                    "Error"
+                ],
+                "answer": "4"
+            },
+            {
+                "q": "Which data structure ensures unique elements?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Set",
+                    "Array"
+                ],
+                "answer": "Set"
+            },
+            {
+                "q": "Pseudo-code output:\n\narr = [1,2]\narr.extend([3,4])\nprint(arr)\n",
+                "options": [
+                    "[1,2,3,4]",
+                    "[1,2,[3,4]]",
+                    "[3,4,1,2]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,4]"
+            },
+            {
+                "q": "Which traversal visits root → right → left?",
+                "options": [
+                    "Preorder",
+                    "Reverse Preorder",
+                    "Postorder",
+                    "Level order"
+                ],
+                "answer": "Reverse Preorder"
+            },
+            {
+                "q": "Which data structure is most efficient for search, insert, delete in O(1)?",
+                "options": [
+                    "Array",
+                    "Stack",
+                    "Queue",
+                    "Hash Table"
+                ],
+                "answer": "Hash Table"
+            },
+            {
+                "q": "What is the degree of a leaf node?",
+                "options": [
+                    "0",
+                    "1",
+                    "2",
+                    "n"
+                ],
+                "answer": "0"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 10",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which data structure is used in function call management?",
+                "options": [
+                    "Queue",
+                    "Heap",
+                    "Stack",
+                    "Array"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "q": "Pseudo-code output:\n\nprint(len([1,[2,3],4]))\n",
+                "options": [
+                    "3",
+                    "4",
+                    "5",
+                    "Error"
+                ],
+                "answer": "3"
+            },
+            {
+                "q": "Which data structure is suitable for implementing undo in text editors?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Array",
+                    "Heap"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "q": "Pseudo-code output:\n\nfor i in range(1,5,2):\n   print(i)\n",
+                "options": [
+                    "1 2 3 4",
+                    "1 3",
+                    "2 4",
+                    "Error"
+                ],
+                "answer": "1 3"
+            },
+            {
+                "q": "Which traversal gives sorted output of BST?",
+                "options": [
+                    "Preorder",
+                    "Inorder",
+                    "Postorder",
+                    "Level order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = [1,2,3]\nprint(x[-1])\n",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "Error"
+                ],
+                "answer": "3"
+            },
+            {
+                "q": "Which data structure is used in job scheduling?",
+                "options": [
+                    "Heap",
+                    "Stack",
+                    "Array",
+                    "Graph"
+                ],
+                "answer": "Heap"
+            },
+            {
+                "q": "Pseudo-code output:\n\nx = 'DSA'\nprint(x*2)\n",
+                "options": [
+                    "DSA2",
+                    "DSADSA",
+                    "Error",
+                    "DSA*2"
+                ],
+                "answer": "DSADSA"
+            },
+            {
+                "q": "Which sorting algorithm is not comparison based?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Counting Sort",
+                    "Heap Sort"
+                ],
+                "answer": "Counting Sort"
+            },
+            {
+                "q": "What is the minimum number of edges in a connected graph with n vertices?",
+                "options": [
+                    "n-1",
+                    "n",
+                    "n+1",
+                    "n^2"
+                ],
+                "answer": "n-1"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 11",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which sorting algorithm has the best average-case time complexity?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Bubble Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 2,
+                "question": "What is the time complexity of searching in a balanced Binary Search Tree (BST)?",
+                "options": [
+                    "O(1)",
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "In a max heap, where is the largest element stored?",
+                "options": [
+                    "Leftmost leaf",
+                    "Root",
+                    "Rightmost leaf",
+                    "Middle node"
+                ],
+                "answer": "Root"
+            },
+            {
+                "id": 4,
+                "question": "Output of the following:\narr = [1,2,3,4]\narr.insert(2, 5)\nprint(arr)",
+                "options": [
+                    "[1,2,5,3,4]",
+                    "[1,5,2,3,4]",
+                    "[1,2,3,5,4]",
+                    "Error"
+                ],
+                "answer": "[1,2,5,3,4]"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm is used for finding the shortest path in a graph with negative weights?",
+                "options": [
+                    "Dijkstra",
+                    "Floyd Warshall",
+                    "Bellman-Ford",
+                    "Prim's"
+                ],
+                "answer": "Bellman-Ford"
+            },
+            {
+                "id": 6,
+                "question": "What is the space complexity of recursive DFS in a graph with n nodes?",
+                "options": [
+                    "O(1)",
+                    "O(log n)",
+                    "O(n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n)"
+            },
+            {
+                "id": 7,
+                "question": "Which traversal technique uses a queue?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Breadth First Search (BFS)",
+                    "Depth First Search (DFS)"
+                ],
+                "answer": "Breadth First Search (BFS)"
+            },
+            {
+                "id": 8,
+                "question": "What is the time complexity of heap sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 9,
+                "question": "Which data structure is most suitable for implementing recursion?",
+                "options": [
+                    "Queue",
+                    "Array",
+                    "Stack",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 10,
+                "question": "In a B-Tree of order m, what is the maximum number of children a node can have?",
+                "options": [
+                    "m-1",
+                    "m/2",
+                    "m",
+                    "2m"
+                ],
+                "answer": "m"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 12",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used to detect cycles in a directed graph?",
+                "options": [
+                    "BFS",
+                    "DFS",
+                    "Dijkstra",
+                    "Prim's"
+                ],
+                "answer": "DFS"
+            },
+            {
+                "id": 2,
+                "question": "What is the auxiliary space complexity of merge sort?",
+                "options": [
+                    "O(1)",
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(n)"
+            },
+            {
+                "id": 3,
+                "question": "What is the best case time complexity of quicksort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n^2)",
+                    "O(log n)",
+                    "O(n)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 4,
+                "question": "Output of the following:\nstack = []\nstack.append(10)\nstack.append(20)\nstack.pop()\nprint(stack)",
+                "options": [
+                    "[10]",
+                    "[20]",
+                    "[10,20]",
+                    "[]"
+                ],
+                "answer": "[10]"
+            },
+            {
+                "id": 5,
+                "question": "Which tree traversal method is used in expression trees to obtain the postfix expression?",
+                "options": [
+                    "Preorder",
+                    "Inorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Postorder"
+            },
+            {
+                "id": 6,
+                "question": "What is the time complexity of building a heap from n elements?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n)"
+            },
+            {
+                "id": 7,
+                "question": "Which data structure is used in topological sorting?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Priority Queue"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 8,
+                "question": "Which of the following is NOT a self-balancing tree?",
+                "options": [
+                    "AVL Tree",
+                    "Red-Black Tree",
+                    "Binary Search Tree",
+                    "Splay Tree"
+                ],
+                "answer": "Binary Search Tree"
+            },
+            {
+                "id": 9,
+                "question": "Which hashing technique resolves collision by using linked lists?",
+                "options": [
+                    "Open Addressing",
+                    "Chaining",
+                    "Double Hashing",
+                    "Quadratic Probing"
+                ],
+                "answer": "Chaining"
+            },
+            {
+                "id": 10,
+                "question": "What is the worst case time complexity of searching in a hash table?",
+                "options": [
+                    "O(1)",
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(n)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 13",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which of the following is not stable sorting algorithm?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Insertion Sort",
+                    "Bubble Sort"
+                ],
+                "answer": "Quick Sort"
+            },
+            {
+                "id": 2,
+                "question": "Which traversal is used to copy a binary tree?",
+                "options": [
+                    "Preorder",
+                    "Inorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Preorder"
+            },
+            {
+                "id": 3,
+                "question": "What is the best case time complexity of insertion sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n)"
+            },
+            {
+                "id": 4,
+                "question": "Output of the following:\nqueue = []\nqueue.append(1)\nqueue.append(2)\nqueue.pop(0)\nprint(queue)",
+                "options": [
+                    "[2]",
+                    "[1]",
+                    "[1,2]",
+                    "[]"
+                ],
+                "answer": "[2]"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm is best for finding Minimum Spanning Tree?",
+                "options": [
+                    "Dijkstra",
+                    "Prim’s",
+                    "Floyd Warshall",
+                    "Bellman-Ford"
+                ],
+                "answer": "Prim’s"
+            },
+            {
+                "id": 6,
+                "question": "What is the height of a complete binary tree with n nodes?",
+                "options": [
+                    "log n",
+                    "n/2",
+                    "n",
+                    "sqrt(n)"
+                ],
+                "answer": "log n"
+            },
+            {
+                "id": 7,
+                "question": "Which data structure is used in DFS?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Priority Queue"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 8,
+                "question": "Which of the following is used for pattern matching?",
+                "options": [
+                    "KMP",
+                    "DFS",
+                    "BFS",
+                    "Prim's"
+                ],
+                "answer": "KMP"
+            },
+            {
+                "id": 9,
+                "question": "Which property does a red-black tree follow?",
+                "options": [
+                    "Every node is red or black",
+                    "Root is always black",
+                    "Every leaf is black",
+                    "All of the above"
+                ],
+                "answer": "All of the above"
+            },
+            {
+                "id": 10,
+                "question": "What is the worst case time complexity of bubble sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n^2)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 14",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which traversal of BST results in a sorted list?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 2,
+                "question": "What is the auxiliary space complexity of quicksort (recursive)?",
+                "options": [
+                    "O(1)",
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm is NOT a greedy algorithm?",
+                "options": [
+                    "Prim’s",
+                    "Kruskal’s",
+                    "Dijkstra",
+                    "Floyd Warshall"
+                ],
+                "answer": "Floyd Warshall"
+            },
+            {
+                "id": 4,
+                "question": "Output of the following:\nnums = [5,3,8,6]\nnums.sort()\nprint(nums)",
+                "options": [
+                    "[3,5,6,8]",
+                    "[8,6,5,3]",
+                    "[5,3,8,6]",
+                    "Error"
+                ],
+                "answer": "[3,5,6,8]"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm is used for cycle detection in union-find?",
+                "options": [
+                    "DFS",
+                    "Union by Rank",
+                    "BFS",
+                    "Prim’s"
+                ],
+                "answer": "Union by Rank"
+            },
+            {
+                "id": 6,
+                "question": "What is the maximum number of nodes in a binary tree of height h?",
+                "options": [
+                    "2^h",
+                    "2^(h+1)-1",
+                    "h^2",
+                    "h log h"
+                ],
+                "answer": "2^(h+1)-1"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm uses dynamic programming?",
+                "options": [
+                    "Floyd Warshall",
+                    "Dijkstra",
+                    "Prim’s",
+                    "DFS"
+                ],
+                "answer": "Floyd Warshall"
+            },
+            {
+                "id": 8,
+                "question": "Which heap is used in priority queues?",
+                "options": [
+                    "Min Heap",
+                    "Max Heap",
+                    "Both",
+                    "None"
+                ],
+                "answer": "Both"
+            },
+            {
+                "id": 9,
+                "question": "What is the worst case time complexity of linear search?",
+                "options": [
+                    "O(1)",
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(n)"
+            },
+            {
+                "id": 10,
+                "question": "Which of the following is an amortized O(1) operation in dynamic arrays?",
+                "options": [
+                    "Insertion at end",
+                    "Insertion at beginning",
+                    "Deletion at beginning",
+                    "Sorting"
+                ],
+                "answer": "Insertion at end"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 15",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for detecting articulation points in a graph?",
+                "options": [
+                    "Tarjan’s Algorithm",
+                    "Prim’s",
+                    "Kruskal’s",
+                    "Dijkstra"
+                ],
+                "answer": "Tarjan’s Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "What is the time complexity of searching in a B-Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Which is the most efficient algorithm for finding strongly connected components?",
+                "options": [
+                    "Kruskal’s",
+                    "Kosaraju’s",
+                    "Dijkstra",
+                    "Prim’s"
+                ],
+                "answer": "Kosaraju’s"
+            },
+            {
+                "id": 4,
+                "question": "Output of the following:\nnums = [1,2,3]\nnums.reverse()\nprint(nums)",
+                "options": [
+                    "[3,2,1]",
+                    "[1,2,3]",
+                    "Error",
+                    "[2,3,1]"
+                ],
+                "answer": "[3,2,1]"
+            },
+            {
+                "id": 5,
+                "question": "Which traversal is used in BFS?",
+                "options": [
+                    "Level Order",
+                    "Inorder",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "Level Order"
+            },
+            {
+                "id": 6,
+                "question": "Which searching algorithm works on sorted arrays?",
+                "options": [
+                    "Linear Search",
+                    "Binary Search",
+                    "DFS",
+                    "BFS"
+                ],
+                "answer": "Binary Search"
+            },
+            {
+                "id": 7,
+                "question": "What is the worst case time complexity of merge sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm is used for shortest path in weighted graphs without negative weights?",
+                "options": [
+                    "Bellman-Ford",
+                    "Dijkstra",
+                    "Floyd Warshall",
+                    "Prim’s"
+                ],
+                "answer": "Dijkstra"
+            },
+            {
+                "id": 9,
+                "question": "Which of the following data structures uses LIFO?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 10,
+                "question": "What is the height of an AVL Tree with n nodes?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            }
+        ]
+    }
+]

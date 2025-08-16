@@ -1,0 +1,3485 @@
+[
+    {
+        "title": "General CS Test - 1",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "What will be the output of the following Python code?\n\nprint(type({1,2,3}))",
+                "options": [
+                    "<class 'list'>",
+                    "<class 'tuple'>",
+                    "<class 'dict'>",
+                    "<class 'set'>"
+                ],
+                "answer": "<class 'set'>"
+            },
+            {
+                "id": 2,
+                "question": "Which of the following is not a valid HTTP method?",
+                "options": [
+                    "GET",
+                    "POST",
+                    "SEND",
+                    "PUT"
+                ],
+                "answer": "SEND"
+            },
+            {
+                "id": 3,
+                "question": "What is the worst-case time complexity of QuickSort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n^2)",
+                    "O(n)",
+                    "O(log n)"
+                ],
+                "answer": "O(n^2)"
+            },
+            {
+                "id": 4,
+                "question": "Which of the following is a mutable data type in Python?",
+                "options": [
+                    "tuple",
+                    "list",
+                    "str",
+                    "frozenset"
+                ],
+                "answer": "list"
+            },
+            {
+                "id": 5,
+                "question": "In Java, which of these is not a wrapper class?",
+                "options": [
+                    "Integer",
+                    "Float",
+                    "String",
+                    "Character"
+                ],
+                "answer": "String"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used to implement function call stack?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Linked List",
+                    "Tree"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 7,
+                "question": "What is the output of the following C code?\n\nint a = 5;\nprintf(\"%d\", a++);",
+                "options": [
+                    "4",
+                    "5",
+                    "6",
+                    "Error"
+                ],
+                "answer": "5"
+            },
+            {
+                "id": 8,
+                "question": "Which SQL keyword is used to remove duplicate records?",
+                "options": [
+                    "UNIQUE",
+                    "DISTINCT",
+                    "DELETE",
+                    "PRIMARY"
+                ],
+                "answer": "DISTINCT"
+            },
+            {
+                "id": 9,
+                "question": "Which algorithm uses the concept of divide and conquer?",
+                "options": [
+                    "Bubble Sort",
+                    "Merge Sort",
+                    "Insertion Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 10,
+                "question": "Which of the following is NOT a type of OS?",
+                "options": [
+                    "Batch OS",
+                    "Distributed OS",
+                    "Time-sharing OS",
+                    "Compiler OS"
+                ],
+                "answer": "Compiler OS"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 2",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which of the following has constant time complexity for search in average case?",
+                "options": [
+                    "Array",
+                    "Linked List",
+                    "Hash Table",
+                    "Binary Tree"
+                ],
+                "answer": "Hash Table"
+            },
+            {
+                "id": 2,
+                "question": "What is the output of Python code?\n\nprint('Hello' * 3)",
+                "options": [
+                    "Hello",
+                    "HelloHelloHello",
+                    "Error",
+                    "3Hello"
+                ],
+                "answer": "HelloHelloHello"
+            },
+            {
+                "id": 3,
+                "question": "In C++, which feature allows a function to have multiple definitions with different parameters?",
+                "options": [
+                    "Encapsulation",
+                    "Polymorphism",
+                    "Abstraction",
+                    "Overloading"
+                ],
+                "answer": "Overloading"
+            },
+            {
+                "id": 4,
+                "question": "Which data structure is best suited for implementing LRU cache?",
+                "options": [
+                    "Array",
+                    "Linked List",
+                    "Hash Map + Doubly Linked List",
+                    "Stack"
+                ],
+                "answer": "Hash Map + Doubly Linked List"
+            },
+            {
+                "id": 5,
+                "question": "What will be the output of this C code?\n\nint x = 10;\nprintf(\"%d\", ++x);",
+                "options": [
+                    "9",
+                    "10",
+                    "11",
+                    "Error"
+                ],
+                "answer": "11"
+            },
+            {
+                "id": 6,
+                "question": "Which of the following is not an interpreted language?",
+                "options": [
+                    "Python",
+                    "JavaScript",
+                    "C",
+                    "Ruby"
+                ],
+                "answer": "C"
+            },
+            {
+                "id": 7,
+                "question": "In SQL, which keyword is used to sort the results?",
+                "options": [
+                    "SORT",
+                    "ORDER BY",
+                    "GROUP BY",
+                    "RANK"
+                ],
+                "answer": "ORDER BY"
+            },
+            {
+                "id": 8,
+                "question": "Which of the following is not a NoSQL database?",
+                "options": [
+                    "MongoDB",
+                    "Redis",
+                    "OracleDB",
+                    "Cassandra"
+                ],
+                "answer": "OracleDB"
+            },
+            {
+                "id": 9,
+                "question": "Which searching algorithm is used in a sorted array?",
+                "options": [
+                    "Linear Search",
+                    "Binary Search",
+                    "Jump Search",
+                    "DFS"
+                ],
+                "answer": "Binary Search"
+            },
+            {
+                "id": 10,
+                "question": "In C, sizeof(char) is always:",
+                "options": [
+                    "1 byte",
+                    "2 bytes",
+                    "4 bytes",
+                    "Depends on system"
+                ],
+                "answer": "1 byte"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 3",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "What will be the output of Python code?\n\nprint(bool(\"\"), bool(\"False\"))",
+                "options": [
+                    "False False",
+                    "True False",
+                    "False True",
+                    "False True"
+                ],
+                "answer": "False True"
+            },
+            {
+                "id": 2,
+                "question": "Which algorithm is used in finding Minimum Spanning Tree?",
+                "options": [
+                    "Kruskal's",
+                    "Dijkstra's",
+                    "Floyd-Warshall",
+                    "Bellman-Ford"
+                ],
+                "answer": "Kruskal's"
+            },
+            {
+                "id": 3,
+                "question": "Which of the following is not a relational database?",
+                "options": [
+                    "MySQL",
+                    "PostgreSQL",
+                    "MongoDB",
+                    "SQLite"
+                ],
+                "answer": "MongoDB"
+            },
+            {
+                "id": 4,
+                "question": "Which Java keyword is used for exception handling?",
+                "options": [
+                    "catch",
+                    "error",
+                    "finalize",
+                    "throw"
+                ],
+                "answer": "throw"
+            },
+            {
+                "id": 5,
+                "question": "Which sorting algorithm is stable?",
+                "options": [
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Merge Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 6,
+                "question": "In Python, what is the output?\n\nprint([i for i in range(3)])",
+                "options": [
+                    "0,1,2",
+                    "[0,1,2]",
+                    "(0,1,2)",
+                    "Error"
+                ],
+                "answer": "[0, 1, 2]"
+            },
+            {
+                "id": 7,
+                "question": "Which data structure is used in BFS traversal of graph?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Tree",
+                    "Heap"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 8,
+                "question": "Which is not a type of computer network?",
+                "options": [
+                    "LAN",
+                    "WAN",
+                    "PAN",
+                    "CAN-BUS"
+                ],
+                "answer": "CAN-BUS"
+            },
+            {
+                "id": 9,
+                "question": "In OS, page replacement algorithms are used in:",
+                "options": [
+                    "CPU scheduling",
+                    "Deadlock handling",
+                    "Virtual memory management",
+                    "Disk management"
+                ],
+                "answer": "Virtual memory management"
+            },
+            {
+                "id": 10,
+                "question": "Which of these is not a primitive type in Java?",
+                "options": [
+                    "int",
+                    "boolean",
+                    "String",
+                    "float"
+                ],
+                "answer": "String"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 4",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which data structure is used in depth-first search (DFS)?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Array",
+                    "Hash Table"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 2,
+                "question": "What will be the output in Java?\n\nSystem.out.println(100/0);",
+                "options": [
+                    "Infinity",
+                    "0",
+                    "Exception",
+                    "NaN"
+                ],
+                "answer": "Exception"
+            },
+            {
+                "id": 3,
+                "question": "Which of these is not a type of join in SQL?",
+                "options": [
+                    "INNER JOIN",
+                    "LEFT JOIN",
+                    "OUTER JOIN",
+                    "TOP JOIN"
+                ],
+                "answer": "TOP JOIN"
+            },
+            {
+                "id": 4,
+                "question": "Which company developed the C programming language?",
+                "options": [
+                    "Microsoft",
+                    "AT&T Bell Labs",
+                    "IBM",
+                    "Google"
+                ],
+                "answer": "AT&T Bell Labs"
+            },
+            {
+                "id": 5,
+                "question": "What is the output in C?\n\nprintf(\"%d\", 5==5);",
+                "options": [
+                    "true",
+                    "false",
+                    "1",
+                    "0"
+                ],
+                "answer": "1"
+            },
+            {
+                "id": 6,
+                "question": "In Python, what is the output?\n\nprint(type({}))",
+                "options": [
+                    "<class 'set'>",
+                    "<class 'dict'>",
+                    "<class 'list'>",
+                    "<class 'tuple'>"
+                ],
+                "answer": "<class 'dict'>"
+            },
+            {
+                "id": 7,
+                "question": "Which is not a valid programming paradigm?",
+                "options": [
+                    "Functional",
+                    "Procedural",
+                    "Object-Oriented",
+                    "Declarative-Oriented"
+                ],
+                "answer": "Declarative-Oriented"
+            },
+            {
+                "id": 8,
+                "question": "Which OS is open source?",
+                "options": [
+                    "Windows",
+                    "Linux",
+                    "MacOS",
+                    "MS-DOS"
+                ],
+                "answer": "Linux"
+            },
+            {
+                "id": 9,
+                "question": "Which algorithm is used in shortest path finding?",
+                "options": [
+                    "Kruskal",
+                    "Prim",
+                    "Dijkstra",
+                    "DFS"
+                ],
+                "answer": "Dijkstra"
+            },
+            {
+                "id": 10,
+                "question": "Which one is not an interpreted language?",
+                "options": [
+                    "Python",
+                    "Ruby",
+                    "C",
+                    "JavaScript"
+                ],
+                "answer": "C"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 5",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which is the first search engine in the internet?",
+                "options": [
+                    "Google",
+                    "Yahoo",
+                    "Archie",
+                    "AltaVista"
+                ],
+                "answer": "Archie"
+            },
+            {
+                "id": 2,
+                "question": "Which algorithm is not a comparison-based sort?",
+                "options": [
+                    "Counting Sort",
+                    "Merge Sort",
+                    "Heap Sort",
+                    "Quick Sort"
+                ],
+                "answer": "Counting Sort"
+            },
+            {
+                "id": 3,
+                "question": "In Java, which keyword prevents inheritance?",
+                "options": [
+                    "private",
+                    "final",
+                    "static",
+                    "const"
+                ],
+                "answer": "final"
+            },
+            {
+                "id": 4,
+                "question": "What will be the output in Python?\n\nprint(10//3)",
+                "options": [
+                    "3.33",
+                    "3",
+                    "3.0",
+                    "Error"
+                ],
+                "answer": "3"
+            },
+            {
+                "id": 5,
+                "question": "Which is not a real-time OS?",
+                "options": [
+                    "RTLinux",
+                    "VxWorks",
+                    "Windows XP",
+                    "QNX"
+                ],
+                "answer": "Windows XP"
+            },
+            {
+                "id": 6,
+                "question": "In computer networks, which device forwards packets based on IP address?",
+                "options": [
+                    "Switch",
+                    "Router",
+                    "Hub",
+                    "Bridge"
+                ],
+                "answer": "Router"
+            },
+            {
+                "id": 7,
+                "question": "Which scheduling algorithm may lead to starvation?",
+                "options": [
+                    "FCFS",
+                    "SJF",
+                    "Round Robin",
+                    "Priority Scheduling"
+                ],
+                "answer": "Priority Scheduling"
+            },
+            {
+                "id": 8,
+                "question": "Which SQL statement is used to extract data?",
+                "options": [
+                    "EXTRACT",
+                    "FIND",
+                    "SELECT",
+                    "GET"
+                ],
+                "answer": "SELECT"
+            },
+            {
+                "id": 9,
+                "question": "Which type of memory is volatile?",
+                "options": [
+                    "ROM",
+                    "Hard Disk",
+                    "RAM",
+                    "Flash"
+                ],
+                "answer": "RAM"
+            },
+            {
+                "id": 10,
+                "question": "What will be the output of the following in C?\n\nprintf(\"%d\", 2<<2);",
+                "options": [
+                    "2",
+                    "4",
+                    "8",
+                    "16"
+                ],
+                "answer": "8"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 6",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which of the following is not an OOP principle?",
+                "options": [
+                    "Encapsulation",
+                    "Polymorphism",
+                    "Abstraction",
+                    "Compilation"
+                ],
+                "answer": "Compilation"
+            },
+            {
+                "id": 2,
+                "question": "What is the output in Python?\n\nprint(2**3**2)",
+                "options": [
+                    "64",
+                    "512",
+                    "16",
+                    "Error"
+                ],
+                "answer": "512"
+            },
+            {
+                "id": 3,
+                "question": "Which of these is not a NoSQL database?",
+                "options": [
+                    "MongoDB",
+                    "Redis",
+                    "Cassandra",
+                    "MySQL"
+                ],
+                "answer": "MySQL"
+            },
+            {
+                "id": 4,
+                "question": "Which layer of OSI model ensures reliable transmission?",
+                "options": [
+                    "Application",
+                    "Transport",
+                    "Network",
+                    "Data Link"
+                ],
+                "answer": "Transport"
+            },
+            {
+                "id": 5,
+                "question": "In C, what will be the output?\n\nint a = 5, b = 2;\nprintf(\"%f\", (float)a/b);",
+                "options": [
+                    "2",
+                    "2.0",
+                    "2.5",
+                    "Error"
+                ],
+                "answer": "2.5"
+            },
+            {
+                "id": 6,
+                "question": "Which Java keyword is used to inherit a class?",
+                "options": [
+                    "this",
+                    "extends",
+                    "implements",
+                    "inherits"
+                ],
+                "answer": "extends"
+            },
+            {
+                "id": 7,
+                "question": "Which scheduling algorithm is preemptive?",
+                "options": [
+                    "FCFS",
+                    "SJF (non-preemptive)",
+                    "Round Robin",
+                    "Priority (non-preemptive)"
+                ],
+                "answer": "Round Robin"
+            },
+            {
+                "id": 8,
+                "question": "Which of these is a symmetric encryption algorithm?",
+                "options": [
+                    "RSA",
+                    "AES",
+                    "DSA",
+                    "Diffie-Hellman"
+                ],
+                "answer": "AES"
+            },
+            {
+                "id": 9,
+                "question": "What is the default access modifier in Java?",
+                "options": [
+                    "private",
+                    "protected",
+                    "public",
+                    "package-private"
+                ],
+                "answer": "package-private"
+            },
+            {
+                "id": 10,
+                "question": "Which SQL function is used to count rows?",
+                "options": [
+                    "SUM()",
+                    "COUNT()",
+                    "ROWNUM()",
+                    "TOTAL()"
+                ],
+                "answer": "COUNT()"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 7",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which of these is not a stable sorting algorithm?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Bubble Sort",
+                    "Insertion Sort"
+                ],
+                "answer": "Quick Sort"
+            },
+            {
+                "id": 2,
+                "question": "What will be the output in Python?\n\nprint(list(range(2,10,2)))",
+                "options": [
+                    "[2,4,6,8]",
+                    "[2,3,4,5,6,7,8,9]",
+                    "[2,10]",
+                    "Error"
+                ],
+                "answer": "[2, 4, 6, 8]"
+            },
+            {
+                "id": 3,
+                "question": "Which keyword is used to define an interface in Java?",
+                "options": [
+                    "class",
+                    "struct",
+                    "interface",
+                    "implements"
+                ],
+                "answer": "interface"
+            },
+            {
+                "id": 4,
+                "question": "Which data structure is used for recursion?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Tree",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 5,
+                "question": "Which SQL clause is used with aggregate functions?",
+                "options": [
+                    "WHERE",
+                    "HAVING",
+                    "GROUP BY",
+                    "ORDER BY"
+                ],
+                "answer": "HAVING"
+            },
+            {
+                "id": 6,
+                "question": "What is the worst-case complexity of Binary Search?",
+                "options": [
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 7,
+                "question": "Which of these is an example of non-volatile memory?",
+                "options": [
+                    "RAM",
+                    "Cache",
+                    "ROM",
+                    "Registers"
+                ],
+                "answer": "ROM"
+            },
+            {
+                "id": 8,
+                "question": "Which company developed Java?",
+                "options": [
+                    "Microsoft",
+                    "Sun Microsystems",
+                    "Oracle",
+                    "IBM"
+                ],
+                "answer": "Sun Microsystems"
+            },
+            {
+                "id": 9,
+                "question": "What is the output of C code?\n\nprintf(\"%d\", sizeof(int));",
+                "options": [
+                    "2",
+                    "4",
+                    "Depends on compiler",
+                    "Error"
+                ],
+                "answer": "Depends on compiler"
+            },
+            {
+                "id": 10,
+                "question": "Which OS scheduling is designed for time-sharing systems?",
+                "options": [
+                    "SJF",
+                    "FCFS",
+                    "Round Robin",
+                    "Priority"
+                ],
+                "answer": "Round Robin"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 8",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "In Python, what is the output?\n\nprint('A' < 'a')",
+                "options": [
+                    "True",
+                    "False",
+                    "Error",
+                    "Depends"
+                ],
+                "answer": "True"
+            },
+            {
+                "id": 2,
+                "question": "Which of the following is not part of ACID properties?",
+                "options": [
+                    "Atomicity",
+                    "Consistency",
+                    "Isolation",
+                    "Durability",
+                    "Scalability"
+                ],
+                "answer": "Scalability"
+            },
+            {
+                "id": 3,
+                "question": "In Java, which collection allows duplicates?",
+                "options": [
+                    "Set",
+                    "Map",
+                    "List",
+                    "HashSet"
+                ],
+                "answer": "List"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used in heap data structure?",
+                "options": [
+                    "Heap Sort",
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Radix Sort"
+                ],
+                "answer": "Heap Sort"
+            },
+            {
+                "id": 5,
+                "question": "Which of these is a non-primitive data type in Java?",
+                "options": [
+                    "int",
+                    "float",
+                    "char",
+                    "String"
+                ],
+                "answer": "String"
+            },
+            {
+                "id": 6,
+                "question": "Which network topology has a single point of failure?",
+                "options": [
+                    "Bus",
+                    "Star",
+                    "Ring",
+                    "Mesh"
+                ],
+                "answer": "Star"
+            },
+            {
+                "id": 7,
+                "question": "What is the default port of HTTP?",
+                "options": [
+                    "21",
+                    "25",
+                    "80",
+                    "443"
+                ],
+                "answer": "80"
+            },
+            {
+                "id": 8,
+                "question": "Which of these is not a type of cloud service model?",
+                "options": [
+                    "IaaS",
+                    "PaaS",
+                    "SaaS",
+                    "CaaS"
+                ],
+                "answer": "CaaS"
+            },
+            {
+                "id": 9,
+                "question": "In C, what will be the output?\n\nint i=0; if(i=5) printf(\"Yes\"); else printf(\"No\");",
+                "options": [
+                    "Yes",
+                    "No",
+                    "Error",
+                    "Garbage"
+                ],
+                "answer": "Yes"
+            },
+            {
+                "id": 10,
+                "question": "Which searching algorithm is best for unstructured data?",
+                "options": [
+                    "Binary Search",
+                    "DFS",
+                    "Linear Search",
+                    "BFS"
+                ],
+                "answer": "Linear Search"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 9",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which sorting has best average case performance?",
+                "options": [
+                    "Bubble Sort",
+                    "Insertion Sort",
+                    "Quick Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Quick Sort"
+            },
+            {
+                "id": 2,
+                "question": "In Python, what is the output?\n\nprint(len(set([1,2,2,3,4])))",
+                "options": [
+                    "5",
+                    "4",
+                    "3",
+                    "Error"
+                ],
+                "answer": "4"
+            },
+            {
+                "id": 3,
+                "question": "Which of these is a relational operator in C?",
+                "options": [
+                    "=",
+                    "==",
+                    "===",
+                    "!="
+                ],
+                "answer": "=="
+            },
+            {
+                "id": 4,
+                "question": "Which is the default protocol used by web browsers?",
+                "options": [
+                    "FTP",
+                    "HTTP",
+                    "SMTP",
+                    "TCP"
+                ],
+                "answer": "HTTP"
+            },
+            {
+                "id": 5,
+                "question": "In Java, which of these is a checked exception?",
+                "options": [
+                    "NullPointerException",
+                    "IOException",
+                    "ArithmeticException",
+                    "ArrayIndexOutOfBoundsException"
+                ],
+                "answer": "IOException"
+            },
+            {
+                "id": 6,
+                "question": "Which scheduling ensures fairness?",
+                "options": [
+                    "FCFS",
+                    "Round Robin",
+                    "Priority",
+                    "SJF"
+                ],
+                "answer": "Round Robin"
+            },
+            {
+                "id": 7,
+                "question": "Which of these is not an operating system?",
+                "options": [
+                    "Ubuntu",
+                    "Fedora",
+                    "C",
+                    "Windows"
+                ],
+                "answer": "C"
+            },
+            {
+                "id": 8,
+                "question": "Which of these is a Python immutable type?",
+                "options": [
+                    "List",
+                    "Set",
+                    "Dict",
+                    "Tuple"
+                ],
+                "answer": "Tuple"
+            },
+            {
+                "id": 9,
+                "question": "Which SQL command is used to remove a table?",
+                "options": [
+                    "DROP",
+                    "DELETE",
+                    "REMOVE",
+                    "CLEAR"
+                ],
+                "answer": "DROP"
+            },
+            {
+                "id": 10,
+                "question": "Which type of memory is cache?",
+                "options": [
+                    "Volatile",
+                    "Non-volatile",
+                    "Secondary",
+                    "Virtual"
+                ],
+                "answer": "Volatile"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 10",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "In C, which operator has the highest precedence?",
+                "options": [
+                    "++",
+                    "*",
+                    "()",
+                    "&&"
+                ],
+                "answer": "()"
+            },
+            {
+                "id": 2,
+                "question": "Which of these is a non-linear data structure?",
+                "options": [
+                    "Array",
+                    "Linked List",
+                    "Stack",
+                    "Graph"
+                ],
+                "answer": "Graph"
+            },
+            {
+                "id": 3,
+                "question": "In Python, what will be the output?\n\nprint(type(lambda x: x+1))",
+                "options": [
+                    "<class 'function'>",
+                    "<class 'lambda'>",
+                    "<class 'object'>",
+                    "Error"
+                ],
+                "answer": "<class 'function'>"
+            },
+            {
+                "id": 4,
+                "question": "Which SQL command is used to update data?",
+                "options": [
+                    "MODIFY",
+                    "UPDATE",
+                    "CHANGE",
+                    "ALTER"
+                ],
+                "answer": "UPDATE"
+            },
+            {
+                "id": 5,
+                "question": "Which of these is not a Java access modifier?",
+                "options": [
+                    "private",
+                    "public",
+                    "protected",
+                    "internal"
+                ],
+                "answer": "internal"
+            },
+            {
+                "id": 6,
+                "question": "Which of these is not a DBMS?",
+                "options": [
+                    "MySQL",
+                    "Oracle",
+                    "PostgreSQL",
+                    "Git"
+                ],
+                "answer": "Git"
+            },
+            {
+                "id": 7,
+                "question": "In computer networks, which protocol is connection-oriented?",
+                "options": [
+                    "UDP",
+                    "TCP",
+                    "ICMP",
+                    "HTTP"
+                ],
+                "answer": "TCP"
+            },
+            {
+                "id": 8,
+                "question": "Which searching algorithm is used in Binary Search Tree?",
+                "options": [
+                    "BFS",
+                    "DFS",
+                    "Binary Search",
+                    "Linear Search"
+                ],
+                "answer": "DFS"
+            },
+            {
+                "id": 9,
+                "question": "What will be the output in C?\n\nprintf(\"%d\", 10%3);",
+                "options": [
+                    "0",
+                    "1",
+                    "2",
+                    "3"
+                ],
+                "answer": "1"
+            },
+            {
+                "id": 10,
+                "question": "Which is not a web framework?",
+                "options": [
+                    "Django",
+                    "Spring",
+                    "Flask",
+                    "MySQL"
+                ],
+                "answer": "MySQL"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 11",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "In C, what is the size of an empty structure?",
+                "options": [
+                    "0",
+                    "1",
+                    "2",
+                    "Depends on compiler"
+                ],
+                "answer": "1"
+            },
+            {
+                "id": 2,
+                "question": "Which of these algorithms is used in public key cryptography?",
+                "options": [
+                    "AES",
+                    "RSA",
+                    "DES",
+                    "MD5"
+                ],
+                "answer": "RSA"
+            },
+            {
+                "id": 3,
+                "question": "Which Java keyword is used to implement multiple inheritance?",
+                "options": [
+                    "extends",
+                    "interface",
+                    "implements",
+                    "super"
+                ],
+                "answer": "implements"
+            },
+            {
+                "id": 4,
+                "question": "Which of the following is not a type of SQL constraint?",
+                "options": [
+                    "PRIMARY KEY",
+                    "FOREIGN KEY",
+                    "CHECK",
+                    "CROSS"
+                ],
+                "answer": "CROSS"
+            },
+            {
+                "id": 5,
+                "question": "What will be the output in Python?\n\nprint(0.1 + 0.2 == 0.3)",
+                "options": [
+                    "True",
+                    "False",
+                    "Error",
+                    "Depends on version"
+                ],
+                "answer": "False"
+            },
+            {
+                "id": 6,
+                "question": "Which OS scheduling algorithm gives minimum average waiting time?",
+                "options": [
+                    "SJF",
+                    "FCFS",
+                    "Round Robin",
+                    "Priority"
+                ],
+                "answer": "SJF"
+            },
+            {
+                "id": 7,
+                "question": "Which of the following is not a type of polymorphism?",
+                "options": [
+                    "Compile-time",
+                    "Run-time",
+                    "Operator",
+                    "Constructor"
+                ],
+                "answer": "Constructor"
+            },
+            {
+                "id": 8,
+                "question": "Which bitwise operator is used to set a particular bit?",
+                "options": [
+                    "&",
+                    "|",
+                    "^",
+                    "~"
+                ],
+                "answer": "|"
+            },
+            {
+                "id": 9,
+                "question": "Which of these protocols is used for email transmission?",
+                "options": [
+                    "SMTP",
+                    "HTTP",
+                    "FTP",
+                    "SNMP"
+                ],
+                "answer": "SMTP"
+            },
+            {
+                "id": 10,
+                "question": "Which of the following is non-volatile storage?",
+                "options": [
+                    "RAM",
+                    "Cache",
+                    "Registers",
+                    "Hard Disk"
+                ],
+                "answer": "Hard Disk"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 12",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which of these is not a searching algorithm?",
+                "options": [
+                    "Binary Search",
+                    "Jump Search",
+                    "Merge Sort",
+                    "Linear Search"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 2,
+                "question": "What will be the output in Java?\n\nSystem.out.println(2 + 3 + \"Hello\");",
+                "options": [
+                    "23Hello",
+                    "5Hello",
+                    "Hello5",
+                    "Error"
+                ],
+                "answer": "5Hello"
+            },
+            {
+                "id": 3,
+                "question": "Which SQL keyword is used to combine results of two queries?",
+                "options": [
+                    "JOIN",
+                    "UNION",
+                    "INTERSECT",
+                    "MERGE"
+                ],
+                "answer": "UNION"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used in Google Maps for shortest path?",
+                "options": [
+                    "DFS",
+                    "BFS",
+                    "Dijkstra",
+                    "Kruskal"
+                ],
+                "answer": "Dijkstra"
+            },
+            {
+                "id": 5,
+                "question": "Which C operator is used for conditional execution?",
+                "options": [
+                    "&&",
+                    "||",
+                    "?:",
+                    "->"
+                ],
+                "answer": "?:"
+            },
+            {
+                "id": 6,
+                "question": "Which of these is not a Java feature?",
+                "options": [
+                    "Platform-independent",
+                    "Object-Oriented",
+                    "Pointer arithmetic",
+                    "Robust"
+                ],
+                "answer": "Pointer arithmetic"
+            },
+            {
+                "id": 7,
+                "question": "Which Python keyword is used to handle exceptions?",
+                "options": [
+                    "error",
+                    "throw",
+                    "catch",
+                    "try"
+                ],
+                "answer": "try"
+            },
+            {
+                "id": 8,
+                "question": "Which topology is most fault tolerant?",
+                "options": [
+                    "Bus",
+                    "Star",
+                    "Mesh",
+                    "Ring"
+                ],
+                "answer": "Mesh"
+            },
+            {
+                "id": 9,
+                "question": "Which type of memory has highest access speed?",
+                "options": [
+                    "RAM",
+                    "Cache",
+                    "Registers",
+                    "Hard Disk"
+                ],
+                "answer": "Registers"
+            },
+            {
+                "id": 10,
+                "question": "Which sorting algorithm is used in TimSort?",
+                "options": [
+                    "Quick Sort + Heap Sort",
+                    "Merge Sort + Insertion Sort",
+                    "Counting Sort + Merge Sort",
+                    "Radix Sort"
+                ],
+                "answer": "Merge Sort + Insertion Sort"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 13",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which is not a type of database model?",
+                "options": [
+                    "Hierarchical",
+                    "Network",
+                    "Relational",
+                    "Sequential"
+                ],
+                "answer": "Sequential"
+            },
+            {
+                "id": 2,
+                "question": "Which of these is a lossless compression technique?",
+                "options": [
+                    "JPEG",
+                    "PNG",
+                    "MP3",
+                    "MPEG"
+                ],
+                "answer": "PNG"
+            },
+            {
+                "id": 3,
+                "question": "Which OS component handles process scheduling?",
+                "options": [
+                    "Memory Manager",
+                    "File Manager",
+                    "CPU Scheduler",
+                    "Device Manager"
+                ],
+                "answer": "CPU Scheduler"
+            },
+            {
+                "id": 4,
+                "question": "In Python, what is the output?\n\nprint(5//2, 5/2)",
+                "options": [
+                    "2 2.0",
+                    "2 2.5",
+                    "2 2",
+                    "Error"
+                ],
+                "answer": "2 2.5"
+            },
+            {
+                "id": 5,
+                "question": "Which of these is not an example of DBMS?",
+                "options": [
+                    "Oracle",
+                    "MongoDB",
+                    "MySQL",
+                    "Linux"
+                ],
+                "answer": "Linux"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used for priority queue?",
+                "options": [
+                    "Array",
+                    "Heap",
+                    "Stack",
+                    "Linked List"
+                ],
+                "answer": "Heap"
+            },
+            {
+                "id": 7,
+                "question": "Which of these is a functional programming language?",
+                "options": [
+                    "Java",
+                    "Python",
+                    "Haskell",
+                    "C++"
+                ],
+                "answer": "Haskell"
+            },
+            {
+                "id": 8,
+                "question": "Which type of memory is virtual memory?",
+                "options": [
+                    "Physical memory",
+                    "Secondary storage",
+                    "Cache",
+                    "Registers"
+                ],
+                "answer": "Secondary storage"
+            },
+            {
+                "id": 9,
+                "question": "Which SQL keyword is used to rename a column?",
+                "options": [
+                    "AS",
+                    "RENAME",
+                    "ALIAS",
+                    "MODIFY"
+                ],
+                "answer": "AS"
+            },
+            {
+                "id": 10,
+                "question": "Which of these is a divide and conquer algorithm?",
+                "options": [
+                    "Quick Sort",
+                    "Counting Sort",
+                    "Radix Sort",
+                    "Bucket Sort"
+                ],
+                "answer": "Quick Sort"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 14",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "What will be the output in C?\n\nprintf(\"%d\", 3*0.5);",
+                "options": [
+                    "1",
+                    "1.5",
+                    "0",
+                    "Error"
+                ],
+                "answer": "1"
+            },
+            {
+                "id": 2,
+                "question": "Which scheduling algorithm is also called 'Shortest Next CPU Burst'?",
+                "options": [
+                    "FCFS",
+                    "SJF",
+                    "Round Robin",
+                    "Priority"
+                ],
+                "answer": "SJF"
+            },
+            {
+                "id": 3,
+                "question": "Which of these is not a web browser?",
+                "options": [
+                    "Chrome",
+                    "Firefox",
+                    "Edge",
+                    "Linux"
+                ],
+                "answer": "Linux"
+            },
+            {
+                "id": 4,
+                "question": "In Python, what is the output?\n\nprint(''.join(['a','b','c']))",
+                "options": [
+                    "abc",
+                    "['a','b','c']",
+                    "a b c",
+                    "Error"
+                ],
+                "answer": "abc"
+            },
+            {
+                "id": 5,
+                "question": "Which network device works at Data Link Layer?",
+                "options": [
+                    "Router",
+                    "Switch",
+                    "Hub",
+                    "Repeater"
+                ],
+                "answer": "Switch"
+            },
+            {
+                "id": 6,
+                "question": "Which of these is not a hashing technique?",
+                "options": [
+                    "Linear Probing",
+                    "Quadratic Probing",
+                    "Double Hashing",
+                    "Radix Hashing"
+                ],
+                "answer": "Radix Hashing"
+            },
+            {
+                "id": 7,
+                "question": "Which SQL command removes all rows from a table but keeps structure?",
+                "options": [
+                    "DELETE",
+                    "DROP",
+                    "TRUNCATE",
+                    "REMOVE"
+                ],
+                "answer": "TRUNCATE"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm is used in memory page replacement?",
+                "options": [
+                    "FIFO",
+                    "LRU",
+                    "Optimal",
+                    "All of the above"
+                ],
+                "answer": "All of the above"
+            },
+            {
+                "id": 9,
+                "question": "Which type of machine learning is classification?",
+                "options": [
+                    "Supervised",
+                    "Unsupervised",
+                    "Reinforcement",
+                    "None"
+                ],
+                "answer": "Supervised"
+            },
+            {
+                "id": 10,
+                "question": "Which Java collection does not allow duplicates?",
+                "options": [
+                    "List",
+                    "Set",
+                    "ArrayList",
+                    "LinkedList"
+                ],
+                "answer": "Set"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 15",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which sorting algorithm is used in C++ STL sort()?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "IntroSort",
+                    "Heap Sort"
+                ],
+                "answer": "IntroSort"
+            },
+            {
+                "id": 2,
+                "question": "In Python, what is the output?\n\nprint(bool([]), bool([0]))",
+                "options": [
+                    "False False",
+                    "True False",
+                    "False True",
+                    "True True"
+                ],
+                "answer": "False True"
+            },
+            {
+                "id": 3,
+                "question": "Which of these is not a Java loop?",
+                "options": [
+                    "for",
+                    "while",
+                    "do-while",
+                    "foreach"
+                ],
+                "answer": "foreach"
+            },
+            {
+                "id": 4,
+                "question": "Which protocol is used for secure communication over web?",
+                "options": [
+                    "HTTP",
+                    "HTTPS",
+                    "FTP",
+                    "SMTP"
+                ],
+                "answer": "HTTPS"
+            },
+            {
+                "id": 5,
+                "question": "Which of these is not a valid identifier in C?",
+                "options": [
+                    "_value",
+                    "9num",
+                    "tempVar",
+                    "var_name"
+                ],
+                "answer": "9num"
+            },
+            {
+                "id": 6,
+                "question": "Which type of scheduling is used in real-time systems?",
+                "options": [
+                    "Round Robin",
+                    "FCFS",
+                    "Priority",
+                    "Preemptive"
+                ],
+                "answer": "Preemptive"
+            },
+            {
+                "id": 7,
+                "question": "Which SQL keyword is used to filter rows?",
+                "options": [
+                    "WHERE",
+                    "HAVING",
+                    "ORDER BY",
+                    "SELECT"
+                ],
+                "answer": "WHERE"
+            },
+            {
+                "id": 8,
+                "question": "Which OS was developed by Microsoft?",
+                "options": [
+                    "Linux",
+                    "MacOS",
+                    "Windows",
+                    "Unix"
+                ],
+                "answer": "Windows"
+            },
+            {
+                "id": 9,
+                "question": "Which Python function converts string to integer?",
+                "options": [
+                    "str()",
+                    "int()",
+                    "float()",
+                    "parseInt()"
+                ],
+                "answer": "int()"
+            },
+            {
+                "id": 10,
+                "question": "Which network protocol is used for file transfer?",
+                "options": [
+                    "SMTP",
+                    "FTP",
+                    "HTTP",
+                    "SNMP"
+                ],
+                "answer": "FTP"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 16",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which of the following is an example of an operating system?",
+                "options": [
+                    "Oracle",
+                    "Linux",
+                    "MySQL",
+                    "MongoDB"
+                ],
+                "answer": "Linux"
+            },
+            {
+                "id": 2,
+                "question": "In computer memory hierarchy, which is the fastest?",
+                "options": [
+                    "Cache",
+                    "RAM",
+                    "Hard Disk",
+                    "SSD"
+                ],
+                "answer": "Cache"
+            },
+            {
+                "id": 3,
+                "question": "Which protocol is used for sending emails?",
+                "options": [
+                    "HTTP",
+                    "SMTP",
+                    "FTP",
+                    "IMAP"
+                ],
+                "answer": "SMTP"
+            },
+            {
+                "id": 4,
+                "question": "Which of the following is a NoSQL database?",
+                "options": [
+                    "MySQL",
+                    "PostgreSQL",
+                    "MongoDB",
+                    "Oracle"
+                ],
+                "answer": "MongoDB"
+            },
+            {
+                "id": 5,
+                "question": "Which one is an example of application software?",
+                "options": [
+                    "Compiler",
+                    "MS Word",
+                    "Device Driver",
+                    "Kernel"
+                ],
+                "answer": "MS Word"
+            },
+            {
+                "id": 6,
+                "question": "What does GUI stand for?",
+                "options": [
+                    "Graphical User Interaction",
+                    "Graphical User Interface",
+                    "General User Input",
+                    "Global User Interface"
+                ],
+                "answer": "Graphical User Interface"
+            },
+            {
+                "id": 7,
+                "question": "Which of the following is an example of cloud service model?",
+                "options": [
+                    "IaaS",
+                    "HTTP",
+                    "SMTP",
+                    "JSON"
+                ],
+                "answer": "IaaS"
+            },
+            {
+                "id": 8,
+                "question": "Which of the following is a primary key property in DBMS?",
+                "options": [
+                    "Can be null",
+                    "Must be unique",
+                    "Can be duplicate",
+                    "Always auto-increment"
+                ],
+                "answer": "Must be unique"
+            },
+            {
+                "id": 9,
+                "question": "Which company developed the Windows operating system?",
+                "options": [
+                    "Apple",
+                    "Google",
+                    "Microsoft",
+                    "IBM"
+                ],
+                "answer": "Microsoft"
+            },
+            {
+                "id": 10,
+                "question": "Which of the following is a volatile memory?",
+                "options": [
+                    "SSD",
+                    "Hard Disk",
+                    "RAM",
+                    "CD-ROM"
+                ],
+                "answer": "RAM"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 17",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "What is the full form of URL?",
+                "options": [
+                    "Uniform Resource Locator",
+                    "Universal Reference Link",
+                    "Uniform Reference Locator",
+                    "Universal Resource Link"
+                ],
+                "answer": "Uniform Resource Locator"
+            },
+            {
+                "id": 2,
+                "question": "Which of the following is not an example of an input device?",
+                "options": [
+                    "Mouse",
+                    "Keyboard",
+                    "Monitor",
+                    "Scanner"
+                ],
+                "answer": "Monitor"
+            },
+            {
+                "id": 3,
+                "question": "Which data structure works on FIFO principle?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Tree",
+                    "Graph"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 4,
+                "question": "Which of the following is used to uniquely identify a record in a table?",
+                "options": [
+                    "Foreign Key",
+                    "Primary Key",
+                    "Candidate Key",
+                    "Composite Key"
+                ],
+                "answer": "Primary Key"
+            },
+            {
+                "id": 5,
+                "question": "Which among the following is not a programming paradigm?",
+                "options": [
+                    "Object-Oriented",
+                    "Procedural",
+                    "Functional",
+                    "Typographical"
+                ],
+                "answer": "Typographical"
+            },
+            {
+                "id": 6,
+                "question": "Which OS is open source?",
+                "options": [
+                    "Linux",
+                    "Windows",
+                    "macOS",
+                    "iOS"
+                ],
+                "answer": "Linux"
+            },
+            {
+                "id": 7,
+                "question": "Which of these is an example of malicious software?",
+                "options": [
+                    "Compiler",
+                    "Antivirus",
+                    "Trojan Horse",
+                    "Firewall"
+                ],
+                "answer": "Trojan Horse"
+            },
+            {
+                "id": 8,
+                "question": "What does IP in IP address stand for?",
+                "options": [
+                    "Internet Protocol",
+                    "Internal Process",
+                    "Interface Program",
+                    "Internet Procedure"
+                ],
+                "answer": "Internet Protocol"
+            },
+            {
+                "id": 9,
+                "question": "Which of the following is an example of an open-source RDBMS?",
+                "options": [
+                    "MySQL",
+                    "Oracle",
+                    "SQL Server",
+                    "DB2"
+                ],
+                "answer": "MySQL"
+            },
+            {
+                "id": 10,
+                "question": "What does DNS stand for?",
+                "options": [
+                    "Domain Name Server",
+                    "Dynamic Network System",
+                    "Domain Name System",
+                    "Data Numbering System"
+                ],
+                "answer": "Domain Name System"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 18",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which of the following is a secondary storage device?",
+                "options": [
+                    "Cache",
+                    "Registers",
+                    "Hard Disk",
+                    "RAM"
+                ],
+                "answer": "Hard Disk"
+            },
+            {
+                "id": 2,
+                "question": "Which one is not an example of web browser?",
+                "options": [
+                    "Chrome",
+                    "Firefox",
+                    "Edge",
+                    "Linux"
+                ],
+                "answer": "Linux"
+            },
+            {
+                "id": 3,
+                "question": "Which type of network covers the largest area?",
+                "options": [
+                    "LAN",
+                    "WAN",
+                    "MAN",
+                    "PAN"
+                ],
+                "answer": "WAN"
+            },
+            {
+                "id": 4,
+                "question": "Which language is used for Artificial Intelligence?",
+                "options": [
+                    "Python",
+                    "C",
+                    "Assembly",
+                    "COBOL"
+                ],
+                "answer": "Python"
+            },
+            {
+                "id": 5,
+                "question": "Which symbol is used for comments in SQL?",
+                "options": [
+                    "#",
+                    "//",
+                    "--",
+                    "/* */"
+                ],
+                "answer": "--"
+            },
+            {
+                "id": 6,
+                "question": "Which one is a real-time operating system?",
+                "options": [
+                    "Windows",
+                    "Linux",
+                    "VxWorks",
+                    "macOS"
+                ],
+                "answer": "VxWorks"
+            },
+            {
+                "id": 7,
+                "question": "Which company developed the C programming language?",
+                "options": [
+                    "Microsoft",
+                    "AT&T Bell Labs",
+                    "Apple",
+                    "IBM"
+                ],
+                "answer": "AT&T Bell Labs"
+            },
+            {
+                "id": 8,
+                "question": "Which cloud model provides software applications over the internet?",
+                "options": [
+                    "PaaS",
+                    "IaaS",
+                    "SaaS",
+                    "NaaS"
+                ],
+                "answer": "SaaS"
+            },
+            {
+                "id": 9,
+                "question": "Which database uses collection of tables, rows, and columns?",
+                "options": [
+                    "Relational DB",
+                    "NoSQL DB",
+                    "Object-Oriented DB",
+                    "Hierarchical DB"
+                ],
+                "answer": "Relational DB"
+            },
+            {
+                "id": 10,
+                "question": "Which unit is used to measure the speed of CPU?",
+                "options": [
+                    "Hertz",
+                    "Joules",
+                    "Bytes",
+                    "Ohms"
+                ],
+                "answer": "Hertz"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 19",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which of the following is not a type of computer network?",
+                "options": [
+                    "LAN",
+                    "WAN",
+                    "MAN",
+                    "SAN",
+                    "CAN"
+                ],
+                "answer": "CAN"
+            },
+            {
+                "id": 2,
+                "question": "Which of the following is a non-volatile memory?",
+                "options": [
+                    "RAM",
+                    "Cache",
+                    "ROM",
+                    "Registers"
+                ],
+                "answer": "ROM"
+            },
+            {
+                "id": 3,
+                "question": "Which is used to protect a computer from unauthorized access?",
+                "options": [
+                    "Firewall",
+                    "Compiler",
+                    "Assembler",
+                    "Loader"
+                ],
+                "answer": "Firewall"
+            },
+            {
+                "id": 4,
+                "question": "Which part of the computer performs arithmetic operations?",
+                "options": [
+                    "CU",
+                    "ALU",
+                    "MU",
+                    "IOU"
+                ],
+                "answer": "ALU"
+            },
+            {
+                "id": 5,
+                "question": "Which one is a high-level programming language?",
+                "options": [
+                    "Assembly",
+                    "Machine Language",
+                    "Python",
+                    "Binary"
+                ],
+                "answer": "Python"
+            },
+            {
+                "id": 6,
+                "question": "Which database command is used to remove a table?",
+                "options": [
+                    "DELETE",
+                    "DROP",
+                    "REMOVE",
+                    "TRUNCATE"
+                ],
+                "answer": "DROP"
+            },
+            {
+                "id": 7,
+                "question": "Which technology is used in blockchain?",
+                "options": [
+                    "Distributed Ledger",
+                    "Centralized Database",
+                    "Cloud Hosting",
+                    "Relational Tables"
+                ],
+                "answer": "Distributed Ledger"
+            },
+            {
+                "id": 8,
+                "question": "Which IP version uses 128-bit address?",
+                "options": [
+                    "IPv4",
+                    "IPv6",
+                    "IPX",
+                    "IPv5"
+                ],
+                "answer": "IPv6"
+            },
+            {
+                "id": 9,
+                "question": "Which of the following is an open-source operating system?",
+                "options": [
+                    "Windows",
+                    "Linux",
+                    "macOS",
+                    "Solaris"
+                ],
+                "answer": "Linux"
+            },
+            {
+                "id": 10,
+                "question": "Which of these is not a type of malware?",
+                "options": [
+                    "Virus",
+                    "Worm",
+                    "Phishing",
+                    "Trojan"
+                ],
+                "answer": "Phishing"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 20",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which of the following is a markup language?",
+                "options": [
+                    "HTML",
+                    "Python",
+                    "Java",
+                    "C++"
+                ],
+                "answer": "HTML"
+            },
+            {
+                "id": 2,
+                "question": "Which device connects multiple networks together?",
+                "options": [
+                    "Switch",
+                    "Router",
+                    "Hub",
+                    "Bridge"
+                ],
+                "answer": "Router"
+            },
+            {
+                "id": 3,
+                "question": "Which is an example of biometric authentication?",
+                "options": [
+                    "Password",
+                    "PIN",
+                    "Fingerprint",
+                    "Captcha"
+                ],
+                "answer": "Fingerprint"
+            },
+            {
+                "id": 4,
+                "question": "Which of the following is not an operating system?",
+                "options": [
+                    "Unix",
+                    "Windows",
+                    "Photoshop",
+                    "Linux"
+                ],
+                "answer": "Photoshop"
+            },
+            {
+                "id": 5,
+                "question": "Which company developed Java?",
+                "options": [
+                    "Microsoft",
+                    "Sun Microsystems",
+                    "Google",
+                    "Oracle"
+                ],
+                "answer": "Sun Microsystems"
+            },
+            {
+                "id": 6,
+                "question": "Which scheduling algorithm is used in most operating systems?",
+                "options": [
+                    "FCFS",
+                    "SJF",
+                    "Round Robin",
+                    "Priority Scheduling"
+                ],
+                "answer": "Round Robin"
+            },
+            {
+                "id": 7,
+                "question": "Which of the following is an example of cloud storage?",
+                "options": [
+                    "Google Drive",
+                    "MySQL",
+                    "Ubuntu",
+                    "Wireshark"
+                ],
+                "answer": "Google Drive"
+            },
+            {
+                "id": 8,
+                "question": "Which device is used for permanent data storage?",
+                "options": [
+                    "RAM",
+                    "ROM",
+                    "Cache",
+                    "Registers"
+                ],
+                "answer": "ROM"
+            },
+            {
+                "id": 9,
+                "question": "Which company developed the Android operating system?",
+                "options": [
+                    "Microsoft",
+                    "Google",
+                    "Apple",
+                    "IBM"
+                ],
+                "answer": "Google"
+            },
+            {
+                "id": 10,
+                "question": "Which of the following is a version control system?",
+                "options": [
+                    "Git",
+                    "Linux",
+                    "MySQL",
+                    "Java"
+                ],
+                "answer": "Git"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 21",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "In Operating Systems, what is 'thrashing'?",
+                "options": [
+                    "Excessive swapping of processes between main memory and disk",
+                    "A CPU scheduling technique",
+                    "A method of preventing deadlock",
+                    "A network congestion control mechanism"
+                ],
+                "answer": "Excessive swapping of processes between main memory and disk"
+            },
+            {
+                "id": 2,
+                "question": "Which of the following is a characteristic of NP-Complete problems?",
+                "options": [
+                    "They can be solved in polynomial time",
+                    "They can be verified in polynomial time",
+                    "They cannot be verified in polynomial time",
+                    "They are undecidable"
+                ],
+                "answer": "They can be verified in polynomial time"
+            },
+            {
+                "id": 3,
+                "question": "In distributed systems, what does 'CAP theorem' stand for?",
+                "options": [
+                    "Consistency, Availability, Partition Tolerance",
+                    "Correctness, Accuracy, Performance",
+                    "Communication, Abstraction, Portability",
+                    "Control, Access, Privacy"
+                ],
+                "answer": "Consistency, Availability, Partition Tolerance"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used for shortest path in graphs with negative edge weights but no negative cycles?",
+                "options": [
+                    "Dijkstra’s Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim’s Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "What is the main purpose of 'two-phase commit protocol' in databases?",
+                "options": [
+                    "Deadlock prevention",
+                    "Concurrency control",
+                    "Ensuring atomic distributed transactions",
+                    "Index optimization"
+                ],
+                "answer": "Ensuring atomic distributed transactions"
+            },
+            {
+                "id": 6,
+                "question": "In machine learning, what is 'overfitting'?",
+                "options": [
+                    "Model generalizes well",
+                    "Model performs poorly on training data",
+                    "Model fits training data too closely and fails on new data",
+                    "Model ignores training data"
+                ],
+                "answer": "Model fits training data too closely and fails on new data"
+            },
+            {
+                "id": 7,
+                "question": "Which of the following is NOT a property of cryptographic hash functions?",
+                "options": [
+                    "Determinism",
+                    "Collision resistance",
+                    "Reversibility",
+                    "Fixed output length"
+                ],
+                "answer": "Reversibility"
+            },
+            {
+                "id": 8,
+                "question": "What is the time complexity of matrix multiplication using Strassen’s algorithm?",
+                "options": [
+                    "O(n^2)",
+                    "O(n^3)",
+                    "O(n^2.81)",
+                    "O(n log n)"
+                ],
+                "answer": "O(n^2.81)"
+            },
+            {
+                "id": 9,
+                "question": "In networking, what is the main purpose of BGP (Border Gateway Protocol)?",
+                "options": [
+                    "Routing within an autonomous system",
+                    "Routing between autonomous systems",
+                    "Error detection",
+                    "Congestion control"
+                ],
+                "answer": "Routing between autonomous systems"
+            },
+            {
+                "id": 10,
+                "question": "What does 'Byzantine fault tolerance' refer to?",
+                "options": [
+                    "Tolerance against memory leaks",
+                    "System reliability under arbitrary or malicious faults",
+                    "Error correction in disk storage",
+                    "Network congestion recovery"
+                ],
+                "answer": "System reliability under arbitrary or malicious faults"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 22",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which scheduling algorithm may lead to starvation in Operating Systems?",
+                "options": [
+                    "First-Come First-Served",
+                    "Round Robin",
+                    "Shortest Job Next",
+                    "Priority Scheduling"
+                ],
+                "answer": "Priority Scheduling"
+            },
+            {
+                "id": 2,
+                "question": "In databases, what is a 'phantom read'?",
+                "options": [
+                    "Reading uncommitted data",
+                    "Two identical queries yielding different results due to inserts/deletes",
+                    "Reading stale cached data",
+                    "Duplicate row retrieval"
+                ],
+                "answer": "Two identical queries yielding different results due to inserts/deletes"
+            },
+            {
+                "id": 3,
+                "question": "In automata theory, which of the following is more powerful?",
+                "options": [
+                    "Finite Automata",
+                    "Pushdown Automata",
+                    "Regular Expressions",
+                    "Context-Free Grammar"
+                ],
+                "answer": "Pushdown Automata"
+            },
+            {
+                "id": 4,
+                "question": "What is the worst-case time complexity of QuickSort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n^2)",
+                    "O(log n)",
+                    "O(n)"
+                ],
+                "answer": "O(n^2)"
+            },
+            {
+                "id": 5,
+                "question": "Which of these is NOT a component of Hadoop ecosystem?",
+                "options": [
+                    "HDFS",
+                    "MapReduce",
+                    "YARN",
+                    "TensorFlow"
+                ],
+                "answer": "TensorFlow"
+            },
+            {
+                "id": 6,
+                "question": "Which memory allocation strategy suffers most from external fragmentation?",
+                "options": [
+                    "Paging",
+                    "Segmentation",
+                    "Buddy System",
+                    "Virtual Memory"
+                ],
+                "answer": "Segmentation"
+            },
+            {
+                "id": 7,
+                "question": "In compiler design, which phase performs lexical analysis?",
+                "options": [
+                    "Syntax Analyzer",
+                    "Code Generator",
+                    "Scanner",
+                    "Optimizer"
+                ],
+                "answer": "Scanner"
+            },
+            {
+                "id": 8,
+                "question": "Which of the following is a self-stabilizing distributed system example?",
+                "options": [
+                    "Spanning Tree Algorithm",
+                    "Two-Phase Commit",
+                    "Paxos Consensus",
+                    "Lamport Clocks"
+                ],
+                "answer": "Spanning Tree Algorithm"
+            },
+            {
+                "id": 9,
+                "question": "Which type of memory is used in cache?",
+                "options": [
+                    "DRAM",
+                    "SRAM",
+                    "EPROM",
+                    "Flash"
+                ],
+                "answer": "SRAM"
+            },
+            {
+                "id": 10,
+                "question": "In blockchain, what is a 'Merkle tree' used for?",
+                "options": [
+                    "Transaction encryption",
+                    "Efficient data verification",
+                    "Consensus mechanism",
+                    "Mining optimization"
+                ],
+                "answer": "Efficient data verification"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 23",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which type of grammar is accepted by a Turing Machine?",
+                "options": [
+                    "Regular Grammar",
+                    "Context-Free Grammar",
+                    "Context-Sensitive Grammar",
+                    "Recursively Enumerable Grammar"
+                ],
+                "answer": "Recursively Enumerable Grammar"
+            },
+            {
+                "id": 2,
+                "question": "What is the principle of 'locality of reference' in computer architecture?",
+                "options": [
+                    "Frequently used instructions are stored on disk",
+                    "Programs tend to access a small portion of memory repeatedly",
+                    "Data is always accessed sequentially",
+                    "All variables are stored in registers"
+                ],
+                "answer": "Programs tend to access a small portion of memory repeatedly"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm is commonly used for deadlock detection?",
+                "options": [
+                    "Banker’s Algorithm",
+                    "DFS Cycle Detection",
+                    "LRU Algorithm",
+                    "Floyd-Warshall"
+                ],
+                "answer": "DFS Cycle Detection"
+            },
+            {
+                "id": 4,
+                "question": "Which of the following problems is undecidable?",
+                "options": [
+                    "Sorting an array",
+                    "Finding shortest path",
+                    "Halting Problem",
+                    "Evaluating polynomial"
+                ],
+                "answer": "Halting Problem"
+            },
+            {
+                "id": 5,
+                "question": "In networking, which protocol uses a three-way handshake?",
+                "options": [
+                    "UDP",
+                    "TCP",
+                    "HTTP",
+                    "ICMP"
+                ],
+                "answer": "TCP"
+            },
+            {
+                "id": 6,
+                "question": "Which of the following is a strongly consistent distributed database?",
+                "options": [
+                    "Cassandra",
+                    "MongoDB",
+                    "CockroachDB",
+                    "Redis"
+                ],
+                "answer": "CockroachDB"
+            },
+            {
+                "id": 7,
+                "question": "In AI, which search strategy is complete but not always optimal?",
+                "options": [
+                    "Breadth-First Search",
+                    "Depth-First Search",
+                    "Uniform Cost Search",
+                    "A* Search"
+                ],
+                "answer": "Breadth-First Search"
+            },
+            {
+                "id": 8,
+                "question": "Which type of scheduling is used by modern CPUs for instruction-level parallelism?",
+                "options": [
+                    "Round Robin",
+                    "Out-of-Order Execution",
+                    "FIFO",
+                    "Priority Scheduling"
+                ],
+                "answer": "Out-of-Order Execution"
+            },
+            {
+                "id": 9,
+                "question": "In information retrieval, what does TF-IDF measure?",
+                "options": [
+                    "Frequency of a term adjusted for document rarity",
+                    "Inverse of page rank",
+                    "Document similarity score",
+                    "Cache hit ratio"
+                ],
+                "answer": "Frequency of a term adjusted for document rarity"
+            },
+            {
+                "id": 10,
+                "question": "Which blockchain consensus algorithm is energy-efficient compared to Proof of Work?",
+                "options": [
+                    "Proof of Stake",
+                    "Proof of Authority",
+                    "Proof of Burn",
+                    "Proof of Capacity"
+                ],
+                "answer": "Proof of Stake"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 24",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which memory consistency model is the strongest?",
+                "options": [
+                    "Sequential Consistency",
+                    "Weak Consistency",
+                    "Eventual Consistency",
+                    "Causal Consistency"
+                ],
+                "answer": "Sequential Consistency"
+            },
+            {
+                "id": 2,
+                "question": "In graph theory, what is the chromatic number of a complete graph with n vertices?",
+                "options": [
+                    "n",
+                    "n-1",
+                    "2",
+                    "log n"
+                ],
+                "answer": "n"
+            },
+            {
+                "id": 3,
+                "question": "Which type of join in databases can return more rows than the original tables?",
+                "options": [
+                    "Inner Join",
+                    "Left Join",
+                    "Cross Join",
+                    "Natural Join"
+                ],
+                "answer": "Cross Join"
+            },
+            {
+                "id": 4,
+                "question": "In cryptography, RSA algorithm relies on difficulty of:",
+                "options": [
+                    "Discrete logarithm problem",
+                    "Integer factorization",
+                    "Matrix inversion",
+                    "Hash collisions"
+                ],
+                "answer": "Integer factorization"
+            },
+            {
+                "id": 5,
+                "question": "Which protocol is commonly used for secure communication over the Internet?",
+                "options": [
+                    "HTTP",
+                    "FTP",
+                    "TLS/SSL",
+                    "SMTP"
+                ],
+                "answer": "TLS/SSL"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used in LRU cache implementation?",
+                "options": [
+                    "Heap + Linked List",
+                    "Stack + Queue",
+                    "HashMap + Doubly Linked List",
+                    "Trie"
+                ],
+                "answer": "HashMap + Doubly Linked List"
+            },
+            {
+                "id": 7,
+                "question": "In cloud computing, what is 'multi-tenancy'?",
+                "options": [
+                    "Running multiple apps on a single VM",
+                    "Multiple customers sharing the same resources securely",
+                    "Using multiple clouds simultaneously",
+                    "Hosting multiple databases on one server"
+                ],
+                "answer": "Multiple customers sharing the same resources securely"
+            },
+            {
+                "id": 8,
+                "question": "Which file system is primarily used in Linux?",
+                "options": [
+                    "NTFS",
+                    "EXT4",
+                    "FAT32",
+                    "APFS"
+                ],
+                "answer": "EXT4"
+            },
+            {
+                "id": 9,
+                "question": "Which consensus algorithm is used in Hyperledger Fabric?",
+                "options": [
+                    "Raft",
+                    "PBFT",
+                    "Proof of Stake",
+                    "Proof of Authority"
+                ],
+                "answer": "PBFT"
+            },
+            {
+                "id": 10,
+                "question": "In computer graphics, which algorithm is used for hidden surface removal?",
+                "options": [
+                    "Dijkstra",
+                    "Z-buffer",
+                    "Flood fill",
+                    "Bresenham’s"
+                ],
+                "answer": "Z-buffer"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 25",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which machine learning technique is used for dimensionality reduction?",
+                "options": [
+                    "Naive Bayes",
+                    "PCA (Principal Component Analysis)",
+                    "KNN",
+                    "Gradient Descent"
+                ],
+                "answer": "PCA (Principal Component Analysis)"
+            },
+            {
+                "id": 2,
+                "question": "In operating systems, which data structure is used for process scheduling?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Graph",
+                    "Heap"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 3,
+                "question": "Which of these is a non-relational database?",
+                "options": [
+                    "PostgreSQL",
+                    "Oracle",
+                    "MongoDB",
+                    "MySQL"
+                ],
+                "answer": "MongoDB"
+            },
+            {
+                "id": 4,
+                "question": "Which communication model is used in gRPC?",
+                "options": [
+                    "Message Queues",
+                    "Remote Procedure Call",
+                    "Publish-Subscribe",
+                    "Socket Streams"
+                ],
+                "answer": "Remote Procedure Call"
+            },
+            {
+                "id": 5,
+                "question": "In computer vision, CNNs are effective because they exploit:",
+                "options": [
+                    "Temporal dependencies",
+                    "Spatial hierarchies",
+                    "Sequential order",
+                    "Random sampling"
+                ],
+                "answer": "Spatial hierarchies"
+            },
+            {
+                "id": 6,
+                "question": "What is the typical block size in blockchain?",
+                "options": [
+                    "1 MB",
+                    "128 KB",
+                    "8 MB",
+                    "Varies with protocol"
+                ],
+                "answer": "Varies with protocol"
+            },
+            {
+                "id": 7,
+                "question": "Which RAID level provides both striping and parity?",
+                "options": [
+                    "RAID 0",
+                    "RAID 1",
+                    "RAID 5",
+                    "RAID 10"
+                ],
+                "answer": "RAID 5"
+            },
+            {
+                "id": 8,
+                "question": "Which database normal form removes transitive dependency?",
+                "options": [
+                    "1NF",
+                    "2NF",
+                    "3NF",
+                    "BCNF"
+                ],
+                "answer": "3NF"
+            },
+            {
+                "id": 9,
+                "question": "Which concurrency control technique uses timestamps?",
+                "options": [
+                    "Two-Phase Locking",
+                    "Timestamp Ordering",
+                    "Wait-Die Scheme",
+                    "Strict Scheduling"
+                ],
+                "answer": "Timestamp Ordering"
+            },
+            {
+                "id": 10,
+                "question": "Which data mining technique is used for grouping similar records?",
+                "options": [
+                    "Classification",
+                    "Clustering",
+                    "Regression",
+                    "Association"
+                ],
+                "answer": "Clustering"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 26",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "What does CAP theorem in distributed systems state?",
+                "options": [
+                    "Consistency, Availability, Partition tolerance – only two can be guaranteed",
+                    "Concurrency, Atomicity, Persistence – all three always possible",
+                    "Capacity, Adaptability, Performance – all three must be balanced",
+                    "Consistency, Accuracy, Portability – only one at a time"
+                ],
+                "answer": "Consistency, Availability, Partition tolerance – only two can be guaranteed"
+            },
+            {
+                "id": 2,
+                "question": "In operating systems, what is a ‘deadlock’?",
+                "options": [
+                    "When multiple processes run simultaneously",
+                    "When processes wait for each other indefinitely",
+                    "When memory is completely used up",
+                    "When CPU halts unexpectedly"
+                ],
+                "answer": "When processes wait for each other indefinitely"
+            },
+            {
+                "id": 3,
+                "question": "What is eventual consistency in distributed databases?",
+                "options": [
+                    "Data is always consistent immediately",
+                    "Data becomes consistent across replicas after some time",
+                    "Data never reaches consistency",
+                    "Data is replicated only once per day"
+                ],
+                "answer": "Data becomes consistent across replicas after some time"
+            },
+            {
+                "id": 4,
+                "question": "In big-O notation, which complexity class is generally the most efficient?",
+                "options": [
+                    "O(1)",
+                    "O(n log n)",
+                    "O(n^2)",
+                    "O(2^n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 5,
+                "question": "Which of the following is an example of a Byzantine fault?",
+                "options": [
+                    "Process crashes silently",
+                    "Message is delayed in the network",
+                    "Node sends conflicting or incorrect information",
+                    "Disk runs out of space"
+                ],
+                "answer": "Node sends conflicting or incorrect information"
+            },
+            {
+                "id": 6,
+                "question": "Which protocol is primarily used for consensus in blockchain systems like Bitcoin?",
+                "options": [
+                    "Raft",
+                    "Proof of Work",
+                    "Paxos",
+                    "Two-Phase Commit"
+                ],
+                "answer": "Proof of Work"
+            },
+            {
+                "id": 7,
+                "question": "What is a monad in functional programming?",
+                "options": [
+                    "A type of binary tree",
+                    "A design pattern for inheritance",
+                    "A structure that represents computations with context",
+                    "A method for multithreading"
+                ],
+                "answer": "A structure that represents computations with context"
+            },
+            {
+                "id": 8,
+                "question": "Which is NOT a property of transactions in databases (ACID)?",
+                "options": [
+                    "Atomicity",
+                    "Consistency",
+                    "Isolation",
+                    "Durability",
+                    "Scalability"
+                ],
+                "answer": "Scalability"
+            },
+            {
+                "id": 9,
+                "question": "What does NP-Complete mean in computational complexity?",
+                "options": [
+                    "Problems that can be solved in polynomial time",
+                    "Problems solvable only with exponential time",
+                    "Problems both in NP and as hard as any NP problem",
+                    "Problems with no solutions"
+                ],
+                "answer": "Problems both in NP and as hard as any NP problem"
+            },
+            {
+                "id": 10,
+                "question": "Which database type is optimized for storing graph data?",
+                "options": [
+                    "Relational Database",
+                    "Document Store",
+                    "Key-Value Store",
+                    "Graph Database"
+                ],
+                "answer": "Graph Database"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 27",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which consistency model guarantees that all reads return the most recent write?",
+                "options": [
+                    "Causal consistency",
+                    "Eventual consistency",
+                    "Strong consistency",
+                    "Session consistency"
+                ],
+                "answer": "Strong consistency"
+            },
+            {
+                "id": 2,
+                "question": "Which is a NoSQL database?",
+                "options": [
+                    "PostgreSQL",
+                    "MongoDB",
+                    "MySQL",
+                    "Oracle"
+                ],
+                "answer": "MongoDB"
+            },
+            {
+                "id": 3,
+                "question": "What is a race condition?",
+                "options": [
+                    "A bug that occurs due to slow internet speed",
+                    "A condition when multiple threads access shared data leading to unpredictable results",
+                    "When CPU scheduling happens too quickly",
+                    "When processes run sequentially"
+                ],
+                "answer": "A condition when multiple threads access shared data leading to unpredictable results"
+            },
+            {
+                "id": 4,
+                "question": "What does the halting problem prove?",
+                "options": [
+                    "All problems are solvable with enough time",
+                    "There exist problems that no algorithm can solve",
+                    "Every algorithm halts eventually",
+                    "Computers cannot perform infinite loops"
+                ],
+                "answer": "There exist problems that no algorithm can solve"
+            },
+            {
+                "id": 5,
+                "question": "Which protocol provides reliable, connection-oriented communication over the internet?",
+                "options": [
+                    "UDP",
+                    "TCP",
+                    "IP",
+                    "HTTP"
+                ],
+                "answer": "TCP"
+            },
+            {
+                "id": 6,
+                "question": "What is sharding in databases?",
+                "options": [
+                    "Compressing data",
+                    "Distributing data across multiple servers",
+                    "Encrypting data",
+                    "Backing up data"
+                ],
+                "answer": "Distributing data across multiple servers"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm is used in public-key cryptography?",
+                "options": [
+                    "RSA",
+                    "MD5",
+                    "AES",
+                    "SHA-256"
+                ],
+                "answer": "RSA"
+            },
+            {
+                "id": 8,
+                "question": "Which is NOT a component of the Von Neumann architecture?",
+                "options": [
+                    "Arithmetic Logic Unit",
+                    "Control Unit",
+                    "Memory",
+                    "Neural Processor"
+                ],
+                "answer": "Neural Processor"
+            },
+            {
+                "id": 9,
+                "question": "What is a heuristic in AI?",
+                "options": [
+                    "A guaranteed optimal solution",
+                    "A method to speed up problem-solving by approximation",
+                    "A random guess",
+                    "A type of neural network"
+                ],
+                "answer": "A method to speed up problem-solving by approximation"
+            },
+            {
+                "id": 10,
+                "question": "In cloud computing, what does 'serverless' mean?",
+                "options": [
+                    "No servers are used at all",
+                    "Servers are hidden and fully managed by the provider",
+                    "Servers are decentralized peer-to-peer nodes",
+                    "Users must build and maintain their own servers"
+                ],
+                "answer": "Servers are hidden and fully managed by the provider"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 28",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which type of machine learning involves labeled data?",
+                "options": [
+                    "Supervised learning",
+                    "Unsupervised learning",
+                    "Reinforcement learning",
+                    "Deep learning only"
+                ],
+                "answer": "Supervised learning"
+            },
+            {
+                "id": 2,
+                "question": "What is the main advantage of using microservices?",
+                "options": [
+                    "Easier to write assembly code",
+                    "Independent scaling and deployment of components",
+                    "Requires only one programming language",
+                    "Eliminates the need for networking"
+                ],
+                "answer": "Independent scaling and deployment of components"
+            },
+            {
+                "id": 3,
+                "question": "What is the main function of a hypervisor?",
+                "options": [
+                    "To manage CPU registers",
+                    "To allow multiple virtual machines to share hardware",
+                    "To speed up disk access",
+                    "To encrypt network traffic"
+                ],
+                "answer": "To allow multiple virtual machines to share hardware"
+            },
+            {
+                "id": 4,
+                "question": "Which of the following is a reinforcement learning application?",
+                "options": [
+                    "Spam email classification",
+                    "Self-driving cars",
+                    "Document clustering",
+                    "Image compression"
+                ],
+                "answer": "Self-driving cars"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm is commonly used for shortest path in graphs?",
+                "options": [
+                    "Merge Sort",
+                    "Dijkstra’s Algorithm",
+                    "Kruskal’s Algorithm",
+                    "Quick Sort"
+                ],
+                "answer": "Dijkstra’s Algorithm"
+            },
+            {
+                "id": 6,
+                "question": "What does RAID stand for in computer storage?",
+                "options": [
+                    "Redundant Array of Independent Disks",
+                    "Random Access of Indexed Data",
+                    "Rapid Application of Input Devices",
+                    "Reliable Allocation of Integrated Data"
+                ],
+                "answer": "Redundant Array of Independent Disks"
+            },
+            {
+                "id": 7,
+                "question": "Which of these is an example of a strongly typed programming language?",
+                "options": [
+                    "Python",
+                    "C",
+                    "Java",
+                    "JavaScript"
+                ],
+                "answer": "Java"
+            },
+            {
+                "id": 8,
+                "question": "Which type of attack exploits SQL databases by inserting malicious queries?",
+                "options": [
+                    "XSS",
+                    "SQL Injection",
+                    "Buffer Overflow",
+                    "Brute Force"
+                ],
+                "answer": "SQL Injection"
+            },
+            {
+                "id": 9,
+                "question": "Which of the following is a lossless compression algorithm?",
+                "options": [
+                    "JPEG",
+                    "PNG",
+                    "MP3",
+                    "MPEG"
+                ],
+                "answer": "PNG"
+            },
+            {
+                "id": 10,
+                "question": "What is the primary use of MapReduce?",
+                "options": [
+                    "Encrypting data",
+                    "Distributed data processing",
+                    "Storing logs",
+                    "Rendering 3D graphics"
+                ],
+                "answer": "Distributed data processing"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 29",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which of these is an NP-hard problem?",
+                "options": [
+                    "Sorting",
+                    "Travelling Salesman Problem",
+                    "Binary Search",
+                    "Finding Maximum"
+                ],
+                "answer": "Travelling Salesman Problem"
+            },
+            {
+                "id": 2,
+                "question": "What does the term 'idempotent' mean in REST APIs?",
+                "options": [
+                    "Calling the same request multiple times gives the same result",
+                    "The API always returns unique results",
+                    "The API is read-only",
+                    "The API is stateful"
+                ],
+                "answer": "Calling the same request multiple times gives the same result"
+            },
+            {
+                "id": 3,
+                "question": "Which kind of system is Kafka used for?",
+                "options": [
+                    "Message streaming and event processing",
+                    "Static file storage",
+                    "Web page rendering",
+                    "Cryptographic key management"
+                ],
+                "answer": "Message streaming and event processing"
+            },
+            {
+                "id": 4,
+                "question": "What is the difference between symmetric and asymmetric encryption?",
+                "options": [
+                    "Symmetric uses one key, asymmetric uses two keys",
+                    "Symmetric is slower, asymmetric is faster",
+                    "Asymmetric cannot be decrypted",
+                    "Symmetric always uses hashing"
+                ],
+                "answer": "Symmetric uses one key, asymmetric uses two keys"
+            },
+            {
+                "id": 5,
+                "question": "Which of the following is a distributed version control system?",
+                "options": [
+                    "Git",
+                    "SVN",
+                    "Mercurial",
+                    "Both Git and Mercurial"
+                ],
+                "answer": "Both Git and Mercurial"
+            },
+            {
+                "id": 6,
+                "question": "What is a bloom filter used for?",
+                "options": [
+                    "Exact data matching",
+                    "Approximate membership testing",
+                    "Sorting numbers",
+                    "Compressing data"
+                ],
+                "answer": "Approximate membership testing"
+            },
+            {
+                "id": 7,
+                "question": "Which is a common consensus algorithm in distributed systems?",
+                "options": [
+                    "DFS",
+                    "MapReduce",
+                    "Raft",
+                    "Bubble Sort"
+                ],
+                "answer": "Raft"
+            },
+            {
+                "id": 8,
+                "question": "Which protocol is used for secure web browsing?",
+                "options": [
+                    "HTTP",
+                    "HTTPS",
+                    "FTP",
+                    "SMTP"
+                ],
+                "answer": "HTTPS"
+            },
+            {
+                "id": 9,
+                "question": "What is the main role of an API Gateway?",
+                "options": [
+                    "Direct database access",
+                    "Routing, authentication, and monitoring of API requests",
+                    "Encrypting all data",
+                    "Running background jobs"
+                ],
+                "answer": "Routing, authentication, and monitoring of API requests"
+            },
+            {
+                "id": 10,
+                "question": "Which model is often used to describe cloud services?",
+                "options": [
+                    "OSI model",
+                    "IaaS, PaaS, SaaS",
+                    "TCP/IP model",
+                    "Blockchain model"
+                ],
+                "answer": "IaaS, PaaS, SaaS"
+            }
+        ]
+    },
+    {
+        "title": "General CS Test - 30",
+        "duration": 10,
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which scheduling algorithm is used by most modern operating systems?",
+                "options": [
+                    "First Come First Serve",
+                    "Round Robin",
+                    "Priority Scheduling",
+                    "Multilevel Feedback Queue"
+                ],
+                "answer": "Multilevel Feedback Queue"
+            },
+            {
+                "id": 2,
+                "question": "Which architecture does TensorFlow primarily use?",
+                "options": [
+                    "Directed Acyclic Graph (DAG)",
+                    "Stack-based VM",
+                    "Layered Monolith",
+                    "Rule-based Expert System"
+                ],
+                "answer": "Directed Acyclic Graph (DAG)"
+            },
+            {
+                "id": 3,
+                "question": "Which of the following is true about containerization?",
+                "options": [
+                    "Containers run on hypervisors only",
+                    "Containers share the host OS kernel",
+                    "Containers always require separate OS installation",
+                    "Containers are slower than VMs"
+                ],
+                "answer": "Containers share the host OS kernel"
+            },
+            {
+                "id": 4,
+                "question": "Which of the following algorithms is used for fault tolerance in distributed storage (like Hadoop HDFS)?",
+                "options": [
+                    "Replication",
+                    "Compression",
+                    "Encryption",
+                    "Sorting"
+                ],
+                "answer": "Replication"
+            },
+            {
+                "id": 5,
+                "question": "What is the purpose of an index in a database?",
+                "options": [
+                    "To store duplicate rows",
+                    "To speed up data retrieval",
+                    "To encrypt data",
+                    "To enforce ACID properties"
+                ],
+                "answer": "To speed up data retrieval"
+            },
+            {
+                "id": 6,
+                "question": "Which type of learning is used in GANs (Generative Adversarial Networks)?",
+                "options": [
+                    "Supervised",
+                    "Unsupervised",
+                    "Semi-supervised",
+                    "Reinforcement"
+                ],
+                "answer": "Unsupervised"
+            },
+            {
+                "id": 7,
+                "question": "What does 'event-driven architecture' focus on?",
+                "options": [
+                    "Sequential task execution",
+                    "Reacting to and processing events asynchronously",
+                    "Executing only periodic jobs",
+                    "Replacing databases with logs"
+                ],
+                "answer": "Reacting to and processing events asynchronously"
+            },
+            {
+                "id": 8,
+                "question": "Which storage model is used in blockchain?",
+                "options": [
+                    "Linked List of Blocks",
+                    "Binary Tree",
+                    "Graph Traversal",
+                    "Circular Queue"
+                ],
+                "answer": "Linked List of Blocks"
+            },
+            {
+                "id": 9,
+                "question": "Which machine learning algorithm is widely used for classification problems?",
+                "options": [
+                    "K-Means Clustering",
+                    "Support Vector Machines (SVM)",
+                    "Dijkstra’s Algorithm",
+                    "PageRank"
+                ],
+                "answer": "Support Vector Machines (SVM)"
+            },
+            {
+                "id": 10,
+                "question": "Which cybersecurity principle means users only get the access strictly necessary?",
+                "options": [
+                    "Least Privilege",
+                    "Defense in Depth",
+                    "Zero Trust",
+                    "Non-repudiation"
+                ],
+                "answer": "Least Privilege"
+            }
+        ]
+    }
+]

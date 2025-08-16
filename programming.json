@@ -1,0 +1,1062 @@
+[
+    {
+        "title": "Programming Test 1",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "What will be the output of the following Java code?\n\nclass Main {\n  public static void main(String[] args) {\n    System.out.println(2 + 3 + \"4\");\n  }\n}",
+                "options": [
+                    "54",
+                    "234",
+                    "9",
+                    "Error"
+                ],
+                "answer": "54"
+            },
+            {
+                "q": "Python is ______ typed language.",
+                "options": [
+                    "Statically",
+                    "Dynamically",
+                    "Weakly",
+                    "None"
+                ],
+                "answer": "Dynamically"
+            },
+            {
+                "q": "C++ was developed by?",
+                "options": [
+                    "James Gosling",
+                    "Guido van Rossum",
+                    "Bjarne Stroustrup",
+                    "Dennis Ritchie"
+                ],
+                "answer": "Bjarne Stroustrup"
+            },
+            {
+                "q": "What is the output of this Python code?\n\nprint(type([]) == list)",
+                "options": [
+                    "True",
+                    "False",
+                    "list",
+                    "Error"
+                ],
+                "answer": "True"
+            },
+            {
+                "q": "Which of the following is not a JavaScript data type?",
+                "options": [
+                    "Undefined",
+                    "Number",
+                    "Float",
+                    "Object"
+                ],
+                "answer": "Float"
+            },
+            {
+                "q": "Full form of JVM?",
+                "options": [
+                    "Java Virtual Machine",
+                    "Java Verified Mode",
+                    "Just Virtual Machine",
+                    "Java Visual Model"
+                ],
+                "answer": "Java Virtual Machine"
+            },
+            {
+                "q": "Predict output in C code:\n\n#include <stdio.h>\nint main() {\n  char c = 'A' + 2;\n  printf(\"%c\", c);\n  return 0;\n}",
+                "options": [
+                    "A",
+                    "B",
+                    "C",
+                    "D"
+                ],
+                "answer": "C"
+            },
+            {
+                "q": "Which language uses GIL (Global Interpreter Lock)?",
+                "options": [
+                    "C",
+                    "C++",
+                    "Python",
+                    "Java"
+                ],
+                "answer": "Python"
+            },
+            {
+                "q": "Output of JavaScript code:\n\nconsole.log(typeof null);",
+                "options": [
+                    "null",
+                    "object",
+                    "undefined",
+                    "error"
+                ],
+                "answer": "object"
+            },
+            {
+                "q": "C language is also known as?",
+                "options": [
+                    "High-level language",
+                    "Low-level language",
+                    "Middle-level language",
+                    "Machine language"
+                ],
+                "answer": "Middle-level language"
+            }
+        ]
+    },
+    {
+        "title": "Programming Test 2",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which of the following is a strongly typed language?",
+                "options": [
+                    "JavaScript",
+                    "Python",
+                    "Java",
+                    "PHP"
+                ],
+                "answer": "Java"
+            },
+            {
+                "q": "Output of C++ code:\n\n#include <iostream>\nusing namespace std;\nint main(){\n cout << 5/2;\n}\n",
+                "options": [
+                    "2",
+                    "2.5",
+                    "2.0",
+                    "Error"
+                ],
+                "answer": "2"
+            },
+            {
+                "q": "Full form of OOP?",
+                "options": [
+                    "Object Oriented Programming",
+                    "Object Operating Program",
+                    "Operational Oriented Programming",
+                    "Only Object Programming"
+                ],
+                "answer": "Object Oriented Programming"
+            },
+            {
+                "q": "Output of Python code:\n\nprint(10 // 3)",
+                "options": [
+                    "3.33",
+                    "3",
+                    "4",
+                    "Error"
+                ],
+                "answer": "3"
+            },
+            {
+                "q": "Which keyword is used in Java to inherit a class?",
+                "options": [
+                    "extends",
+                    "inherits",
+                    "super",
+                    "implements"
+                ],
+                "answer": "extends"
+            },
+            {
+                "q": "Output of JavaScript code:\n\nconsole.log(1 + '1');",
+                "options": [
+                    "2",
+                    "11",
+                    "Error",
+                    "NaN"
+                ],
+                "answer": "11"
+            },
+            {
+                "q": "C language was developed by?",
+                "options": [
+                    "Bjarne Stroustrup",
+                    "Guido van Rossum",
+                    "Dennis Ritchie",
+                    "James Gosling"
+                ],
+                "answer": "Dennis Ritchie"
+            },
+            {
+                "q": "In Python, which of the following is immutable?",
+                "options": [
+                    "List",
+                    "Tuple",
+                    "Set",
+                    "Dictionary"
+                ],
+                "answer": "Tuple"
+            },
+            {
+                "q": "Output of C code:\n\n#include <stdio.h>\nint main(){\n int a = 5;\n printf(\"%d\", a++);\n return 0;\n}",
+                "options": [
+                    "6",
+                    "5",
+                    "Error",
+                    "Undefined"
+                ],
+                "answer": "5"
+            },
+            {
+                "q": "Which of the following runs in a web browser?",
+                "options": [
+                    "JVM",
+                    "V8 Engine",
+                    ".NET CLR",
+                    "Python Interpreter"
+                ],
+                "answer": "V8 Engine"
+            }
+        ]
+    },
+    {
+        "title": "Programming Test 3",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Output of Python code:\n\nprint(bool('False'))",
+                "options": [
+                    "False",
+                    "True",
+                    "Error",
+                    "None"
+                ],
+                "answer": "True"
+            },
+            {
+                "q": "Which of the following is not a feature of Java?",
+                "options": [
+                    "Object Oriented",
+                    "Platform Independent",
+                    "Supports pointers explicitly",
+                    "Automatic Garbage Collection"
+                ],
+                "answer": "Supports pointers explicitly"
+            },
+            {
+                "q": "Output of C++ code:\n\n#include <iostream>\nusing namespace std;\nint main(){\n cout << (3==3);\n}\n",
+                "options": [
+                    "1",
+                    "0",
+                    "true",
+                    "Error"
+                ],
+                "answer": "1"
+            },
+            {
+                "q": "Full form of API?",
+                "options": [
+                    "Application Programming Interface",
+                    "Applied Program Internet",
+                    "Advanced Protocol Interface",
+                    "None"
+                ],
+                "answer": "Application Programming Interface"
+            },
+            {
+                "q": "Output of Java code:\n\nclass Main{\n public static void main(String args[]){\n System.out.println(\"Hello\".length());\n }}",
+                "options": [
+                    "4",
+                    "5",
+                    "6",
+                    "Error"
+                ],
+                "answer": "5"
+            },
+            {
+                "q": "Which symbol is used for single-line comments in Python?",
+                "options": [
+                    "//",
+                    "#",
+                    "/* */",
+                    "<!-- -->"
+                ],
+                "answer": "#"
+            },
+            {
+                "q": "Output of JavaScript code:\n\nconsole.log(typeof NaN);",
+                "options": [
+                    "number",
+                    "NaN",
+                    "undefined",
+                    "object"
+                ],
+                "answer": "number"
+            },
+            {
+                "q": "C++ is an extension of which language?",
+                "options": [
+                    "C",
+                    "Java",
+                    "Python",
+                    "Pascal"
+                ],
+                "answer": "C"
+            },
+            {
+                "q": "In Java, which keyword is used to prevent inheritance?",
+                "options": [
+                    "private",
+                    "final",
+                    "static",
+                    "sealed"
+                ],
+                "answer": "final"
+            },
+            {
+                "q": "Which Python collection type stores unique values?",
+                "options": [
+                    "List",
+                    "Tuple",
+                    "Set",
+                    "Dictionary"
+                ],
+                "answer": "Set"
+            }
+        ]
+    },
+    {
+        "title": "Programming Test 4",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Output of C code:\n\n#include <stdio.h>\nint main(){\n printf(\"%d\", sizeof(char));\n}",
+                "options": [
+                    "1",
+                    "2",
+                    "4",
+                    "8"
+                ],
+                "answer": "1"
+            },
+            {
+                "q": "Which company developed Java?",
+                "options": [
+                    "Microsoft",
+                    "Sun Microsystems",
+                    "Google",
+                    "IBM"
+                ],
+                "answer": "Sun Microsystems"
+            },
+            {
+                "q": "Output of Python code:\n\nprint(2**3**2)",
+                "options": [
+                    "64",
+                    "512",
+                    "16",
+                    "Error"
+                ],
+                "answer": "512"
+            },
+            {
+                "q": "Full form of SQL?",
+                "options": [
+                    "Structured Query Language",
+                    "Simple Query Language",
+                    "Standard Question Language",
+                    "Sequential Query Language"
+                ],
+                "answer": "Structured Query Language"
+            },
+            {
+                "q": "Output of JavaScript code:\n\nconsole.log(0 == false);",
+                "options": [
+                    "true",
+                    "false",
+                    "error",
+                    "undefined"
+                ],
+                "answer": "true"
+            },
+            {
+                "q": "Which header file is used in C for input/output?",
+                "options": [
+                    "stdlib.h",
+                    "stdio.h",
+                    "string.h",
+                    "math.h"
+                ],
+                "answer": "stdio.h"
+            },
+            {
+                "q": "In Java, which method is the entry point of a program?",
+                "options": [
+                    "start()",
+                    "main()",
+                    "run()",
+                    "execute()"
+                ],
+                "answer": "main()"
+            },
+            {
+                "q": "Output of C++ code:\n\n#include <iostream>\nusing namespace std;\nint main(){\n string s = \"abc\";\n cout << s.size();\n}",
+                "options": [
+                    "2",
+                    "3",
+                    "4",
+                    "Error"
+                ],
+                "answer": "3"
+            },
+            {
+                "q": "Which operator is used in Python for exponentiation?",
+                "options": [
+                    "^",
+                    "**",
+                    "exp()",
+                    "pow()"
+                ],
+                "answer": "**"
+            },
+            {
+                "q": "Output of Java code:\n\nclass Main{\n public static void main(String[] args){\n System.out.println(10/3);\n }}",
+                "options": [
+                    "3",
+                    "3.33",
+                    "Error",
+                    "3.0"
+                ],
+                "answer": "3"
+            }
+        ]
+    },
+    {
+        "title": "Programming Test 5",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which of the following is dynamically typed?",
+                "options": [
+                    "Java",
+                    "C++",
+                    "Python",
+                    "C"
+                ],
+                "answer": "Python"
+            },
+            {
+                "q": "Output of JavaScript code:\n\nconsole.log(2 == '2');",
+                "options": [
+                    "true",
+                    "false",
+                    "error",
+                    "undefined"
+                ],
+                "answer": "true"
+            },
+            {
+                "q": "Full form of IDE?",
+                "options": [
+                    "Integrated Development Environment",
+                    "Internal Data Execution",
+                    "Interactive Debugging Engine",
+                    "Integrated Deployment Editor"
+                ],
+                "answer": "Integrated Development Environment"
+            },
+            {
+                "q": "Output of C code:\n\n#include <stdio.h>\nint main(){\n int a = 10;\n int b = 3;\n printf(\"%d\", a % b);\n}",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "0"
+                ],
+                "answer": "1"
+            },
+            {
+                "q": "Which keyword is used in Java for interface implementation?",
+                "options": [
+                    "extends",
+                    "inherits",
+                    "implements",
+                    "super"
+                ],
+                "answer": "implements"
+            },
+            {
+                "q": "Output of Python code:\n\nprint(len(\"Hello World\"))",
+                "options": [
+                    "10",
+                    "11",
+                    "12",
+                    "Error"
+                ],
+                "answer": "11"
+            },
+            {
+                "q": "In C++, which operator is used to allocate memory dynamically?",
+                "options": [
+                    "malloc",
+                    "calloc",
+                    "new",
+                    "alloc"
+                ],
+                "answer": "new"
+            },
+            {
+                "q": "Output of JavaScript code:\n\nconsole.log(typeof []);",
+                "options": [
+                    "array",
+                    "object",
+                    "list",
+                    "undefined"
+                ],
+                "answer": "object"
+            },
+            {
+                "q": "Which keyword in Python is used to handle exceptions?",
+                "options": [
+                    "throw",
+                    "catch",
+                    "try",
+                    "except"
+                ],
+                "answer": "except"
+            },
+            {
+                "q": "Output of Java code:\n\nclass Main{\n public static void main(String[] args){\n int x = 5;\n System.out.println(++x);\n }}",
+                "options": [
+                    "5",
+                    "6",
+                    "7",
+                    "Error"
+                ],
+                "answer": "6"
+            }
+        ]
+    },
+    {
+        "title": "Programming Test 6",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which of the following is a compiled language?",
+                "options": [
+                    "Python",
+                    "Java",
+                    "C",
+                    "Both Java and C"
+                ],
+                "answer": "Both Java and C"
+            },
+            {
+                "q": "Output of JavaScript code:\n\nconsole.log(Boolean(''));",
+                "options": [
+                    "true",
+                    "false",
+                    "undefined",
+                    "error"
+                ],
+                "answer": "false"
+            },
+            {
+                "q": "Full form of HTML?",
+                "options": [
+                    "HyperText Markup Language",
+                    "HighText Markup Language",
+                    "Hyper Transfer Markup Language",
+                    "HyperTool Multi Language"
+                ],
+                "answer": "HyperText Markup Language"
+            },
+            {
+                "q": "Output of C code:\n\n#include <stdio.h>\nint main(){\n int x = 4;\n printf(\"%d\", x<<1);\n}",
+                "options": [
+                    "4",
+                    "8",
+                    "2",
+                    "Error"
+                ],
+                "answer": "8"
+            },
+            {
+                "q": "Which method is used to find length of a string in Java?",
+                "options": [
+                    "size()",
+                    "length()",
+                    "count()",
+                    "strlen()"
+                ],
+                "answer": "length()"
+            },
+            {
+                "q": "Output of Python code:\n\nprint('a' * 3)",
+                "options": [
+                    "aaa",
+                    "a3",
+                    "Error",
+                    "None"
+                ],
+                "answer": "aaa"
+            },
+            {
+                "q": "In JavaScript, which of the following is NOT falsy?",
+                "options": [
+                    "0",
+                    "null",
+                    "undefined",
+                    "[]"
+                ],
+                "answer": "[]"
+            },
+            {
+                "q": "C++ supports _______.",
+                "options": [
+                    "Procedure-oriented programming",
+                    "Object-oriented programming",
+                    "Both",
+                    "None"
+                ],
+                "answer": "Both"
+            },
+            {
+                "q": "Output of Java code:\n\nclass Main{\n public static void main(String[] args){\n System.out.println(10%3);\n }}",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "Error"
+                ],
+                "answer": "1"
+            },
+            {
+                "q": "Which keyword is used in Python to define a function?",
+                "options": [
+                    "func",
+                    "def",
+                    "function",
+                    "lambda"
+                ],
+                "answer": "def"
+            }
+        ]
+    },
+    {
+        "title": "Programming Test 7",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Output of C++ code:\n\n#include <iostream>\nusing namespace std;\nint main(){\n cout << (5==6);\n}",
+                "options": [
+                    "0",
+                    "1",
+                    "true",
+                    "Error"
+                ],
+                "answer": "0"
+            },
+            {
+                "q": "Which of the following is case-sensitive?",
+                "options": [
+                    "C",
+                    "C++",
+                    "Python",
+                    "All of the above"
+                ],
+                "answer": "All of the above"
+            },
+            {
+                "q": "Output of Python code:\n\nprint(10 == 10.0)",
+                "options": [
+                    "True",
+                    "False",
+                    "Error",
+                    "None"
+                ],
+                "answer": "True"
+            },
+            {
+                "q": "Which of the following is used to terminate statements in Java?",
+                "options": [
+                    ";",
+                    ":",
+                    ".",
+                    ","
+                ],
+                "answer": ";"
+            },
+            {
+                "q": "Output of JavaScript code:\n\nconsole.log(5 + true);",
+                "options": [
+                    "5",
+                    "6",
+                    "true5",
+                    "Error"
+                ],
+                "answer": "6"
+            },
+            {
+                "q": "Which header file contains printf() function in C?",
+                "options": [
+                    "conio.h",
+                    "stdio.h",
+                    "stdlib.h",
+                    "string.h"
+                ],
+                "answer": "stdio.h"
+            },
+            {
+                "q": "Output of Java code:\n\nclass Main{\n public static void main(String[] args){\n int x = 7;\n System.out.println(x--);\n }}",
+                "options": [
+                    "6",
+                    "7",
+                    "8",
+                    "Error"
+                ],
+                "answer": "7"
+            },
+            {
+                "q": "Which of the following is not a loop in Python?",
+                "options": [
+                    "for",
+                    "while",
+                    "do while",
+                    "None"
+                ],
+                "answer": "do while"
+            },
+            {
+                "q": "Output of C code:\n\n#include <stdio.h>\nint main(){\n int a = 5;\n int b = 2;\n printf(\"%d\", a/b);\n}",
+                "options": [
+                    "2",
+                    "2.5",
+                    "3",
+                    "Error"
+                ],
+                "answer": "2"
+            },
+            {
+                "q": "JavaScript was created by?",
+                "options": [
+                    "Guido van Rossum",
+                    "James Gosling",
+                    "Brendan Eich",
+                    "Dennis Ritchie"
+                ],
+                "answer": "Brendan Eich"
+            }
+        ]
+    },
+    {
+        "title": "Programming Test 8",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which keyword is used to declare constants in Java?",
+                "options": [
+                    "const",
+                    "final",
+                    "static",
+                    "immutable"
+                ],
+                "answer": "final"
+            },
+            {
+                "q": "Output of Python code:\n\nprint(3 * '2')",
+                "options": [
+                    "222",
+                    "6",
+                    "Error",
+                    "None"
+                ],
+                "answer": "222"
+            },
+            {
+                "q": "Which of the following is NOT a primitive type in Java?",
+                "options": [
+                    "int",
+                    "float",
+                    "boolean",
+                    "String"
+                ],
+                "answer": "String"
+            },
+            {
+                "q": "Output of JavaScript code:\n\nconsole.log(2 + true);",
+                "options": [
+                    "2",
+                    "3",
+                    "true2",
+                    "Error"
+                ],
+                "answer": "3"
+            },
+            {
+                "q": "Which operator is used for modulo in Python?",
+                "options": [
+                    "//",
+                    "%",
+                    "^",
+                    "**"
+                ],
+                "answer": "%"
+            },
+            {
+                "q": "Output of C++ code:\n\n#include <iostream>\nusing namespace std;\nint main(){\n cout << (10 % 4);\n}",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "Error"
+                ],
+                "answer": "2"
+            },
+            {
+                "q": "Full form of URL?",
+                "options": [
+                    "Universal Resource Locator",
+                    "Uniform Resource Locator",
+                    "Unified Resource Link",
+                    "Unique Reference Locator"
+                ],
+                "answer": "Uniform Resource Locator"
+            },
+            {
+                "q": "Output of Java code:\n\nclass Main{\n public static void main(String[] args){\n System.out.println('A' + 1);\n }}",
+                "options": [
+                    "A1",
+                    "66",
+                    "B",
+                    "Error"
+                ],
+                "answer": "66"
+            },
+            {
+                "q": "Which of these is NOT a Python data type?",
+                "options": [
+                    "List",
+                    "Tuple",
+                    "Array",
+                    "Set"
+                ],
+                "answer": "Array"
+            },
+            {
+                "q": "Output of C code:\n\n#include <stdio.h>\nint main(){\n printf(\"%c\", 'A' + 1);\n}",
+                "options": [
+                    "A",
+                    "B",
+                    "C",
+                    "Error"
+                ],
+                "answer": "B"
+            }
+        ]
+    },
+    {
+        "title": "Programming Test 9",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which of the following is a scripting language?",
+                "options": [
+                    "C",
+                    "C++",
+                    "Java",
+                    "JavaScript"
+                ],
+                "answer": "JavaScript"
+            },
+            {
+                "q": "Output of Python code:\n\nprint(type(5.0))",
+                "options": [
+                    "int",
+                    "float",
+                    "double",
+                    "Error"
+                ],
+                "answer": "float"
+            },
+            {
+                "q": "Which keyword is used to inherit a class in C++?",
+                "options": [
+                    "extends",
+                    "inherits",
+                    ":",
+                    "super"
+                ],
+                "answer": ":"
+            },
+            {
+                "q": "Output of Java code:\n\nclass Main{\n public static void main(String[] args){\n int a = 5, b = 2;\n System.out.println(a/b);\n }}",
+                "options": [
+                    "2",
+                    "2.5",
+                    "3",
+                    "Error"
+                ],
+                "answer": "2"
+            },
+            {
+                "q": "Full form of XML?",
+                "options": [
+                    "eXtensible Markup Language",
+                    "Extra Markup Language",
+                    "Extended Machine Language",
+                    "Executable Markup Language"
+                ],
+                "answer": "eXtensible Markup Language"
+            },
+            {
+                "q": "Output of JavaScript code:\n\nconsole.log(2 === '2');",
+                "options": [
+                    "true",
+                    "false",
+                    "error",
+                    "undefined"
+                ],
+                "answer": "false"
+            },
+            {
+                "q": "In C, which of the following is not a storage class?",
+                "options": [
+                    "auto",
+                    "register",
+                    "static",
+                    "sealed"
+                ],
+                "answer": "sealed"
+            },
+            {
+                "q": "Output of Python code:\n\nprint(bool([]))",
+                "options": [
+                    "True",
+                    "False",
+                    "Error",
+                    "None"
+                ],
+                "answer": "False"
+            },
+            {
+                "q": "Which of the following is NOT object-oriented?",
+                "options": [
+                    "Java",
+                    "C++",
+                    "C",
+                    "Python"
+                ],
+                "answer": "C"
+            },
+            {
+                "q": "Output of C code:\n\n#include <stdio.h>\nint main(){\n printf(\"%d\", 3==3);\n}",
+                "options": [
+                    "0",
+                    "1",
+                    "true",
+                    "Error"
+                ],
+                "answer": "1"
+            }
+        ]
+    },
+    {
+        "title": "Programming Test 10",
+        "duration": 10,
+        "questions": [
+            {
+                "q": "Which company developed Python?",
+                "options": [
+                    "Google",
+                    "Microsoft",
+                    "Python Software Foundation",
+                    "None"
+                ],
+                "answer": "Python Software Foundation"
+            },
+            {
+                "q": "Output of Java code:\n\nclass Main{\n public static void main(String[] args){\n System.out.println(5 + 'a');\n }}",
+                "options": [
+                    "5a",
+                    "102",
+                    "Error",
+                    "a5"
+                ],
+                "answer": "102"
+            },
+            {
+                "q": "Full form of GUI?",
+                "options": [
+                    "Graphical User Interface",
+                    "General User Interaction",
+                    "Graphics Utility Interface",
+                    "General Utility Interaction"
+                ],
+                "answer": "Graphical User Interface"
+            },
+            {
+                "q": "Output of Python code:\n\nprint('Hello'[1])",
+                "options": [
+                    "H",
+                    "e",
+                    "l",
+                    "o"
+                ],
+                "answer": "e"
+            },
+            {
+                "q": "Which symbol is used for comments in Java?",
+                "options": [
+                    "//",
+                    "#",
+                    "--",
+                    "%"
+                ],
+                "answer": "//"
+            },
+            {
+                "q": "Output of C code:\n\n#include <stdio.h>\nint main(){\n int a = 2, b = 3;\n printf(\"%d\", a*b);\n}",
+                "options": [
+                    "5",
+                    "6",
+                    "23",
+                    "Error"
+                ],
+                "answer": "6"
+            },
+            {
+                "q": "In JavaScript, typeof [] returns?",
+                "options": [
+                    "array",
+                    "object",
+                    "list",
+                    "undefined"
+                ],
+                "answer": "object"
+            },
+            {
+                "q": "Output of C++ code:\n\n#include <iostream>\nusing namespace std;\nint main(){\n cout << (true && false);\n}",
+                "options": [
+                    "0",
+                    "1",
+                    "true",
+                    "false"
+                ],
+                "answer": "0"
+            },
+            {
+                "q": "Which keyword in Python is used to import a module?",
+                "options": [
+                    "include",
+                    "import",
+                    "require",
+                    "using"
+                ],
+                "answer": "import"
+            },
+            {
+                "q": "Output of JavaScript code:\n\nconsole.log('5' - 2);",
+                "options": [
+                    "3",
+                    "52",
+                    "Error",
+                    "undefined"
+                ],
+                "answer": "3"
+            }
+        ]
+    }
+]

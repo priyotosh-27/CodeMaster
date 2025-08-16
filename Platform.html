@@ -8,356 +8,450 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-100 text-gray-800 font-sans">
+<body class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-100 dark:from-gray-900 dark:via-purple-900 dark:to-indigo-900 text-gray-800 dark:text-white transition-all duration-300">
+  <div class="floating-shapes"></div>
 
-  <!-- Navbar -->
-  <nav class="bg-white/30 backdrop-blur-xl shadow-lg border-b border-indigo-100">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="flex items-center space-x-2 text-indigo-700">
-        <i class="fas fa-code text-2xl"></i>
-        <span class="text-xl font-bold tracking-wide">CodeMaster</span>
+  <!-- Enhanced Navbar -->
+  <nav class="glass-morphism shadow-xl border-b sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl">
+          <i class="fas fa-code text-white text-xl"></i>
+        </div>
+        <span class="text-2xl font-black gradient-text tracking-wide">CodeMaster</span>
       </div>
-      <div class="hidden md:flex items-center space-x-6 text-indigo-600 font-medium">
-        <a href="#home" class="hover:text-purple-600 transition">Home</a>
-        <a href="#tests" class="hover:text-purple-600 transition">Tests</a>
-        <a href="#code-challenge" class="hover:text-purple-600 transition">Coding Challenge</a>
-        <a href="#resources" class="hover:text-purple-600 transition">Resources</a>
+      <div class="hidden md:flex items-center space-x-8 text-indigo-700 dark:text-purple-300 font-semibold">
+        <a href="#home" class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Home</a>
+        <a href="#tests" class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Tests</a>
+        <a href="#code-challenge" class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Coding Challenge</a>
+        <a href="#resources" class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Resources</a>
       </div>
       <div class="flex gap-4 items-center">
-  <button id="loginBtn" class="px-4 py-2 rounded-lg bg-white text-indigo-700 font-medium hover:bg-gray-100">Login</button>
-  <button id="registerBtn" class="px-4 py-2 rounded-lg bg-transparent border-2 border-white font-medium hover:bg-white hover:text-indigo-700">Register</button>
-</div>
+        <!-- Theme Toggle -->
+        <div class="theme-toggle" id="themeToggle">
+          <i class="fas fa-sun absolute left-2 top-1.5 text-xs text-yellow-500 dark:opacity-0 opacity-100 transition-opacity"></i>
+          <i class="fas fa-moon absolute right-2 top-1.5 text-xs text-blue-300 dark:opacity-100 opacity-0 transition-opacity"></i>
+        </div>
+        
+        <!-- Auth Buttons (show when not logged in) -->
+        <div id="authButtons" class="flex gap-4">
+          <button id="loginBtn" class="px-6 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold hover:from-blue-600 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg">Login</button>
+          <button id="registerBtn" class="px-6 py-2 rounded-xl border-2 border-purple-500 text-purple-600 dark:text-purple-400 dark:border-purple-400 font-semibold hover:bg-purple-500 hover:text-white transform hover:scale-105 transition-all duration-300">Register</button>
+        </div>
+
+        <!-- User Menu (show when logged in) -->
+        <div id="userMenu" class="relative hidden">
+          <button id="userMenuBtn" class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-300 shadow-lg">
+            <i class="fas fa-user-circle"></i>
+            <span id="userNameDisplay">Hi, User</span>
+            <i class="fas fa-chevron-down text-sm"></i>
+          </button>
+          <div id="userDropdown" class="user-menu">
+            <div class="p-4 border-b border-gray-200 dark:border-gray-600">
+              <p id="userEmailDisplay" class="text-sm text-gray-600 dark:text-gray-400">user@example.com</p>
+            </div>
+            <div class="p-2">
+              <button id="logoutBtn" class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200 flex items-center space-x-2">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-700 via-indigo-600 to-blue-500 opacity-90 z-0"></div>
-    <div class="container mx-auto px-4 py-20 relative z-10 text-white">
+  <!-- Enhanced Hero Section -->
+  <section id="home" class="relative overflow-hidden animated-bg">
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-800/90 via-indigo-700/90 to-blue-600/90 dark:from-purple-900/95 dark:via-indigo-800/95 dark:to-blue-700/95 z-0"></div>
+    <div class="container mx-auto px-4 py-24 relative z-10 text-white">
       <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-8 md:mb-0">
-          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
-            Master Coding Skills<br><span class="text-pink-300">with Real Tests</span>
+        <div class="md:w-1/2 mb-12 md:mb-0 bounce-in">
+          <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 text-glow">
+            Master Coding Skills<br>
+            <div class="hero-text-animation">
+              <span class="hero-text-item bg-gradient-to-r from-pink-400 to-yellow-400 bg-clip-text text-transparent">Practice Coding</span>
+              <span class="hero-text-item bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Give Real Tests</span>
+              <span class="hero-text-item bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Read Study Notes</span>
+            </div>
           </h1>
-          <p class="text-xl mb-8 opacity-90">
-            Practice coding, DSA, OOP, DBMS, CN and more with our comprehensive test platform.
+          <p class="text-xl mb-10 opacity-90 leading-relaxed">
+            Practice coding, DSA, OOP, DBMS, CN and more with our comprehensive test platform designed for future tech leaders.
           </p>
           <a href="#tests">
-            <button class="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-xl font-bold shadow-lg hover:from-pink-600 hover:to-purple-700 transition duration-300 ring-2 ring-pink-400/50 hover:ring-purple-500/50">
-              🚀 Start Testing Now
+            <button class="px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white rounded-2xl font-bold shadow-2xl hover:shadow-pink-500/50 hover:scale-110 transition-all duration-300 neon-glow sparkle text-lg">
+              Start Your Journey Now
             </button>
           </a>
         </div>
         <div class="md:w-1/2 flex justify-center">
-          <img src="Coding_test.jpeg" alt="developer illustration" class="rounded-2xl shadow-2xl hover:scale-105 transition duration-500">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-r from-pink-600 to-purple-600 dark:from-purple-500 dark:to-pink-500 rounded-3xl blur opacity-75 animate-pulse"></div>
+            <div class="hero-image">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop" alt="developer illustration" class="relative w-full h-full object-cover border-4 border-white/30 dark:border-purple-300/30">
+              <div class="absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Test Categories -->
-  <section id="tests" class="py-20 bg-gradient-to-br from-[#fdfbfb] via-[#ebedee] to-[#dfe9f3]">
+  <!-- Enhanced Test Categories -->
+  <section id="tests" class="py-24 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900 dark:to-indigo-900 relative overflow-hidden">
     <div class="container mx-auto px-4">
-      <h2 class="text-5xl font-extrabold text-center text-indigo-700 mb-16 tracking-tight">🚀 Explore Test Categories</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        <a href="programming-test.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-indigo-200 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105 block">
-          <div class="flex justify-center mb-6">
-            <div class="w-20 h-20 rounded-full bg-indigo-100 flex items-center justify-center shadow-md">
-              <i class="fas fa-laptop-code text-indigo-600 text-3xl"></i>
+      <h2 class="text-6xl font-black text-center gradient-text mb-20 tracking-tight">Explore Test Categories</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="category-card rounded-3xl p-8 card-hover relative cursor-pointer test-card" data-test="programming">
+          <div class="flex justify-center mb-8">
+            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center shadow-2xl icon-bounce">
+              <i class="fas fa-laptop-code text-white text-4xl"></i>
             </div>
           </div>
-          <h3 class="text-2xl font-bold text-center text-indigo-800 mb-3">Programming</h3>
-          <p class="text-center text-gray-700">Syntax, output prediction, coding problems.</p>
-        </a>
-        <a href="java-test.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-blue-200 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105 block">
-          <div class="flex justify-center mb-6">
-            <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center shadow-md">
-              <i class="fab fa-java text-blue-600 text-3xl"></i>
+          <h3 class="text-2xl font-bold text-center text-indigo-800 dark:text-indigo-300 mb-4">Programming</h3>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Syntax, output prediction, coding problems with instant feedback.</p>
+          <div class="mt-6 text-center">
+            <span class="inline-block px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">50+ Questions</span>
+          </div>
+        </div>
+        <div class="category-card rounded-3xl p-8 card-hover relative cursor-pointer test-card" data-test="java">
+          <div class="flex justify-center mb-8">
+            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-blue-400 to-cyan-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.2s;">
+              <i class="fab fa-java text-white text-4xl"></i>
             </div>
           </div>
-          <h3 class="text-2xl font-bold text-center text-blue-800 mb-3">Java</h3>
-          <p class="text-center text-gray-700">OOP, output prediction, code snippets.</p>
-        </a>
-        <a href="dsa-test.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-pink-200 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105 block">
-          <div class="flex justify-center mb-6">
-            <div class="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center shadow-md">
-              <i class="fas fa-project-diagram text-pink-600 text-3xl"></i>
+          <h3 class="text-2xl font-bold text-center text-blue-800 dark:text-blue-300 mb-4">Java</h3>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">OOP concepts, output prediction, advanced code snippets.</p>
+          <div class="mt-6 text-center">
+            <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">40+ Questions</span>
+          </div>
+        </div>
+
+        <div class="category-card rounded-3xl p-8 card-hover relative cursor-pointer test-card" data-test="dsa">
+          <div class="flex justify-center mb-8">
+            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-pink-400 to-red-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.4s;">
+              <i class="fas fa-project-diagram text-white text-4xl"></i>
             </div>
           </div>
-          <h3 class="text-2xl font-bold text-center text-pink-800 mb-3">DSA</h3>
-          <p class="text-center text-gray-700">Conceptual and practical challenges.</p>
-        </a>
-        <a href="general-test.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-purple-200 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105 block">
-          <div class="flex justify-center mb-6">
-            <div class="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center shadow-md">
-              <i class="fas fa-brain text-purple-600 text-3xl"></i>
+          <h3 class="text-2xl font-bold text-center text-pink-800 dark:text-pink-300 mb-4">DSA</h3>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Conceptual and practical algorithm challenges.</p>
+          <div class="mt-6 text-center">
+            <span class="inline-block px-4 py-2 bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">60+ Questions</span>
+          </div>
+        </div>
+
+        <div class="category-card rounded-3xl p-8 card-hover relative cursor-pointer test-card" data-test="general">
+          <div class="flex justify-center mb-8">
+            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-purple-400 to-violet-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.6s;">
+              <i class="fas fa-brain text-white text-4xl"></i>
             </div>
           </div>
-          <h3 class="text-2xl font-bold text-center text-purple-800 mb-3">General CS</h3>
-          <p class="text-center text-gray-700">DBMS, Networking, OS, System Design.</p>
-        </a>
+          <h3 class="text-2xl font-bold text-center text-purple-800 dark:text-purple-300 mb-4">General CS</h3>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">DBMS, Networking, OS, System Design fundamentals.</p>
+          <div class="mt-6 text-center">
+            <span class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">70+ Questions</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Coding Challenges -->
-  <section id="code-challenge" class="py-20 bg-gradient-to-br from-[#fceabb] via-[#f8b500] to-[#f6e27a]">
+  <!-- Enhanced Coding Challenges -->
+  <section id="code-challenge" class="py-24 bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100 dark:from-yellow-900/20 dark:via-orange-900/20 dark:to-red-900/20 relative">
     <div class="container mx-auto px-4">
-      <h2 class="text-5xl font-extrabold text-center text-yellow-900 mb-16 tracking-tight">💻 Coding Challenges</h2>
+      <h2 class="text-6xl font-black text-center text-orange-900 dark:text-orange-300 mb-20 tracking-tight">Coding Challenges</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <a href="basic.html" class="block bg-white/70 backdrop-blur-xl p-8 rounded-3xl shadow-xl hover:shadow-2xl transition hover:scale-105">
-          <h3 class="text-2xl font-bold text-indigo-700 mb-3">📘 Basic to Advanced</h3>
-          <p class="text-gray-700">Structured learning from fundamentals to expert-level problems.</p>
-        </a>
-        <a href="challenges/interview-questions.html" class="block bg-white/70 backdrop-blur-xl p-8 rounded-3xl shadow-xl hover:shadow-2xl transition hover:scale-105">
-          <h3 class="text-2xl font-bold text-pink-700 mb-3">🎯 Interview Questions</h3>
-          <p class="text-gray-700">Real-world questions from top tech interviews.</p>
-        </a>
-                <a href="challenges/company-specific.html" class="block bg-white/70 backdrop-blur-xl p-8 rounded-3xl shadow-xl hover:shadow-2xl transition hover:scale-105">
-          <h3 class="text-2xl font-bold text-purple-700 mb-3">🏢 Company Specific</h3>
-          <p class="text-gray-700">Problems tagged by Amazon, Google, Meta, and more.</p>
-        </a>
-        
+        <div class="rainbow-border card-hover relative cursor-pointer challenge-card" data-challenge="basic">
+          <div class="rainbow-border-content">
+            <div class="text-center mb-6">
+              <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-green-400 to-blue-600 flex items-center justify-center mb-4 icon-bounce">
+                <i class="fas fa-graduation-cap text-white text-3xl"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-indigo-700 dark:text-indigo-300 mb-4 text-center">Basic to Advanced</h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-center">Structured learning path from fundamentals to expert-level problems with detailed explanations.</p>
+            <div class="mt-6 flex justify-center space-x-2">
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-xs">Beginner</span>
+              <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 rounded-full text-xs">Intermediate</span>
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 rounded-full text-xs">Advanced</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rainbow-border card-hover relative cursor-pointer challenge-card" data-challenge="interview">
+          <div class="rainbow-border-content">
+            <div class="text-center mb-6">
+              <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center mb-4 icon-bounce" style="animation-delay: 0.3s;">
+                <i class="fas fa-bullseye text-white text-3xl"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-pink-700 dark:text-pink-300 mb-4 text-center">Interview Questions</h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-center">Real-world questions from top tech interviews at FAANG companies with optimal solutions.</p>
+            <div class="mt-6 flex justify-center">
+              <span class="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full text-sm font-medium">FAANG Ready</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rainbow-border card-hover relative cursor-pointer challenge-card" data-challenge="company">
+          <div class="rainbow-border-content">
+            <div class="text-center mb-6">
+              <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-purple-400 to-indigo-600 flex items-center justify-center mb-4 icon-bounce" style="animation-delay: 0.6s;">
+                <i class="fas fa-building text-white text-3xl"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-purple-700 dark:text-purple-300 mb-4 text-center">Company Specific</h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-center">Problems tagged by Amazon, Google, Meta, Microsoft and other top companies.</p>
+            <div class="mt-6 flex justify-center flex-wrap gap-1">
+              <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded text-xs">Google</span>
+              <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 rounded text-xs">Amazon</span>
+              <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded text-xs">Meta</span>
+            </div>
+          </div>
+        </div>
       </div>
-      
     </div>
   </section>
 
-  <!-- Study Notes -->
-  <section id="resources" class="py-20 bg-gradient-to-br from-[#e0c3fc] via-[#8ec5fc] to-[#a9c9ff]">
+  <!-- Enhanced Study Notes -->
+  <section id="resources" class="py-24 bg-gradient-to-br from-cyan-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900 relative overflow-hidden">
     <div class="container mx-auto px-4">
-      <h2 class="text-5xl font-extrabold text-center text-blue-900 mb-16 tracking-tight">📚 Study Notes</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        <a href="python-tutorial.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-indigo-200 shadow-xl hover:shadow-2xl transition hover:scale-105 cursor-pointer block">
-          <div class="flex justify-center mb-6">
-            <div class="w-20 h-20 rounded-full bg-indigo-100 flex items-center justify-center shadow-md">
-              <i class="fab fa-python text-indigo-600 text-3xl"></i>
+      <h2 class="text-6xl font-black text-center text-blue-900 dark:text-blue-300 mb-20 tracking-tight">Study Notes</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="category-card rounded-3xl p-8 card-hover cursor-pointer notes-card" data-notes="python">
+          <div class="flex justify-center mb-8">
+            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-yellow-400 to-green-600 flex items-center justify-center shadow-2xl icon-bounce">
+              <i class="fab fa-python text-white text-4xl"></i>
             </div>
           </div>
-          <h3 class="text-2xl font-bold text-center text-indigo-800 mb-3">Python Notes</h3>
-          <p class="text-center text-gray-700">Comprehensive notes on Python syntax and features.</p>
-        </a>
+          <h3 class="text-2xl font-bold text-center text-indigo-800 dark:text-indigo-300 mb-4">Python Notes</h3>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Comprehensive notes on Python syntax, libraries, and best practices.</p>
+          <div class="mt-6 text-center">
+            <span class="inline-block px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">15 Chapters</span>
+          </div>
+        </div>
 
-        <a href="java-tutorial.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-blue-200 shadow-xl hover:shadow-2xl transition hover:scale-105 cursor-pointer block">
-          <div class="flex justify-center mb-6">
-            <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center shadow-md">
-              <i class="fab fa-java text-blue-600 text-3xl"></i>
+        <div class="category-card rounded-3xl p-8 card-hover cursor-pointer notes-card" data-notes="java">
+          <div class="flex justify-center mb-8">
+            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-red-400 to-orange-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.2s;">
+              <i class="fab fa-java text-white text-4xl"></i>
             </div>
           </div>
-          <h3 class="text-2xl font-bold text-center text-blue-800 mb-3">Java Notes</h3>
-          <p class="text-center text-gray-700">Key concepts and OOP principles in Java.</p>
-        </a>
+          <h3 class="text-2xl font-bold text-center text-blue-800 dark:text-blue-300 mb-4">Java Notes</h3>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Key concepts, OOP principles, and advanced Java features explained.</p>
+          <div class="mt-6 text-center">
+            <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">20 Chapters</span>
+          </div>
+        </div>
 
-        <a href="dsa-tutorial.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-pink-200 shadow-xl hover:shadow-2xl transition hover:scale-105 cursor-pointer block">
-          <div class="flex justify-center mb-6">
-            <div class="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center shadow-md">
-              <i class="fas fa-project-diagram text-pink-600 text-3xl"></i>
+        <div class="category-card rounded-3xl p-8 card-hover cursor-pointer notes-card" data-notes="dsa">
+          <div class="flex justify-center mb-8">
+            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.4s;">
+              <i class="fas fa-project-diagram text-white text-4xl"></i>
             </div>
           </div>
-          <h3 class="text-2xl font-bold text-center text-pink-800 mb-3">DSA Notes</h3>
-          <p class="text-center text-gray-700">Data structures and algorithms explained clearly.</p>
-        </a>
+          <h3 class="text-2xl font-bold text-center text-pink-800 dark:text-pink-300 mb-4">DSA Notes</h3>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Data structures and algorithms explained with visual examples.</p>
+          <div class="mt-6 text-center">
+            <span class="inline-block px-4 py-2 bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">25 Chapters</span>
+          </div>
+        </div>
 
-        <a href="general-tutorial.html" class="cat-card bg-white/60 backdrop-blur-xl rounded-3xl p-8 border border-purple-200 shadow-xl hover:shadow-2xl transition hover:scale-105 cursor-pointer block">
-          <div class="flex justify-center mb-6">
-            <div class="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center shadow-md">
-              <i class="fas fa-brain text-purple-600 text-3xl"></i>
+        <div class="category-card rounded-3xl p-8 card-hover cursor-pointer notes-card" data-notes="general">
+          <div class="flex justify-center mb-8">
+            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-violet-400 to-purple-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.6s;">
+              <i class="fas fa-brain text-white text-4xl"></i>
             </div>
           </div>
-          <h3 class="text-2xl font-bold text-center text-purple-800 mb-3">General CS Notes</h3>
-          <p class="text-center text-gray-700">DBMS, Networking, OS, and system design basics.</p>
-        </a>
+          <h3 class="text-2xl font-bold text-center text-purple-800 dark:text-purple-300 mb-4">General CS Notes</h3>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">DBMS, Networking, OS, and system design with practical examples.</p>
+          <div class="mt-6 text-center">
+            <span class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">30 Chapters</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white pt-16 pb-12 mt-24 overflow-hidden">
-    <div class="absolute inset-0 bg-white/10 backdrop-blur-sm z-0"></div>
+  <!-- Enhanced Footer -->
+  <footer class="relative bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 dark:from-gray-950 dark:via-purple-950 dark:to-violet-950 text-white pt-20 pb-12 mt-24 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-purple-800/20 to-pink-800/20 backdrop-blur-sm z-0"></div>
     <div class="container mx-auto px-4 relative z-10">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
-        <div>
-          <h3 class="text-2xl font-extrabold mb-3 tracking-wide text-pink-300">CodeMaster</h3>
-          <p class="text-sm text-gray-300 max-w-sm leading-relaxed">
-            Master coding skills with curated tests, challenges, and resources designed for future developers.
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-16">
+        <div class="text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start space-x-3 mb-4">
+            <div class="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl">
+              <i class="fas fa-code text-white text-xl"></i>
+            </div>
+            <h3 class="text-3xl font-black gradient-text tracking-wide">CodeMaster</h3>
+          </div>
+          <p class="text-lg text-gray-300 max-w-md leading-relaxed">
+            Master coding skills with curated tests, challenges, and resources designed for future developers and tech leaders.
           </p>
         </div>
-        <!-- Static Social Icons -->
-<div class="mt-10 flex justify-center space-x-6">
-  <!-- GitHub -->
-  <a href="https://github.com/priyotosh-27" target="_blank" class="group flex flex-col items-center">
-    <div class="bg-white p-3 rounded-full shadow-md hover:scale-110 transition duration-300">
-      <i class="fab fa-github text-xl text-gray-800"></i>
-    </div>
-    <span class="text-sm text-gray-300 mt-2 group-hover:text-white transition">GitHub</span>
-  </a>
 
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/in/priyotosh-roy-81833228a/" target="_blank" class="group flex flex-col items-center">
-    <div class="bg-white p-3 rounded-full shadow-md hover:scale-110 transition duration-300">
-      <i class="fab fa-linkedin-in text-xl text-blue-700"></i>
-    </div>
-    <span class="text-sm text-gray-300 mt-2 group-hover:text-white transition">LinkedIn</span>
-  </a>
+        <!-- Enhanced Social Icons -->
+        <div class="flex justify-center space-x-8">
+          <!-- GitHub -->
+          <a href="https://github.com/priyotosh-27" target="_blank" class="group flex flex-col items-center">
+            <div class="bg-gradient-to-br from-gray-800 to-black p-4 rounded-2xl shadow-2xl hover:scale-110 transition duration-300 hover:shadow-purple-500/50">
+              <i class="fab fa-github text-2xl text-white"></i>
+            </div>
+            <span class="text-sm text-gray-300 mt-3 group-hover:text-white transition font-medium">GitHub</span>
+          </a>
 
-  <!-- Portfolio -->
-  <a href="https://priyotosh-27.github.io/Portfolio_Website/" target="_blank" class="group flex flex-col items-center">
-    <div class="bg-white p-3 rounded-full shadow-md hover:scale-110 transition duration-300">
-      <i class="fas fa-user-circle text-xl text-purple-600"></i>
-    </div>
-    <span class="text-sm text-gray-300 mt-2 group-hover:text-white transition">Portfolio</span>
-  </a>
-</div>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/priyotosh-roy-81833228a/" target="_blank" class="group flex flex-col items-center">
+            <div class="bg-gradient-to-br from-blue-600 to-blue-800 p-4 rounded-2xl shadow-2xl hover:scale-110 transition duration-300 hover:shadow-blue-500/50">
+              <i class="fab fa-linkedin-in text-2xl text-white"></i>
+            </div>
+            <span class="text-sm text-gray-300 mt-3 group-hover:text-white transition font-medium">LinkedIn</span>
+          </a>
+
+          <!-- Portfolio -->
+          <a href="https://priyotosh-27.github.io/Portfolio_Website/" target="_blank" class="group flex flex-col items-center">
+            <div class="bg-gradient-to-br from-purple-600 to-pink-600 p-4 rounded-2xl shadow-2xl hover:scale-110 transition duration-300 hover:shadow-purple-500/50">
+              <i class="fas fa-user-circle text-2xl text-white"></i>
+            </div>
+            <span class="text-sm text-gray-300 mt-3 group-hover:text-white transition font-medium">Portfolio</span>
+          </a>
+        </div>
+
         <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-sm">
           <div>
-            <h4 class="font-semibold mb-3 text-indigo-300 uppercase tracking-wide">Tests</h4>
-            <ul class="space-y-2 text-gray-300">
-              <li><a href="tests/programming.html" class="hover:text-pink-400 transition duration-200">Programming</a></li>
-              <li><a href="tests/dsa.html" class="hover:text-pink-400 transition duration-200">DSA</a></li>
-              <li><a href="tests/dbms.html" class="hover:text-pink-400 transition duration-200">DBMS</a></li>
+            <h4 class="font-bold mb-4 text-purple-300 uppercase tracking-wide text-lg">Tests</h4>
+            <ul class="space-y-3 text-gray-300">
+              <li><a href="#tests" class="hover:text-pink-400 transition duration-200 hover:underline">Programming</a></li>
+              <li><a href="#tests" class="hover:text-pink-400 transition duration-200 hover:underline">DSA</a></li>
+              <li><a href="#tests" class="hover:text-pink-400 transition duration-200 hover:underline">DBMS</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-semibold mb-3 text-indigo-300 uppercase tracking-wide">Resources</h4>
-            <ul class="space-y-2 text-gray-300">
-              <li><a href="notes/tutorials.html" class="hover:text-pink-400 transition duration-200">Tutorials</a></li>
-              <li><a href="notes/practice.html" class="hover:text-pink-400 transition duration-200">Practice Problems</a></li>
+            <h4 class="font-bold mb-4 text-purple-300 uppercase tracking-wide text-lg">Resources</h4>
+            <ul class="space-y-3 text-gray-300">
+              <li><a href="#resources" class="hover:text-pink-400 transition duration-200 hover:underline">Study Notes</a></li>
+              <li><a href="#code-challenge" class="hover:text-pink-400 transition duration-200 hover:underline">Challenges</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-semibold mb-3 text-indigo-300 uppercase tracking-wide">Contact</h4>
-            <ul class="space-y-2 text-gray-300">
-              <li><a href="mailto:priyotoshr501@gmail.com" class="hover:text-pink-400 transition duration-200">priyotoshr501@gmail.com</a></li>
-              <li><a href="https://www.linkedin.com/in/priyotosh-roy-81833228a/" target="_blank" class="hover:text-pink-400 transition duration-200">LinkedIn</a></li>
-              <li><a href="https://priyotosh-27.github.io/Portfolio_Website/" target="_blank" class="hover:text-pink-400 transition duration-200">GitHub</a></li>
+            <h4 class="font-bold mb-4 text-purple-300 uppercase tracking-wide text-lg">Contact</h4>
+            <ul class="space-y-3 text-gray-300">
+              <li><a href="mailto:priyotoshr501@gmail.com" class="hover:text-pink-400 transition duration-200 hover:underline">Email</a></li>
+              <li><a href="https://www.linkedin.com/in/priyotosh-roy-81833228a/" target="_blank" class="hover:text-pink-400 transition duration-200 hover:underline">LinkedIn</a></li>
+              <li><a href="https://priyotosh-27.github.io/Portfolio_Website/" target="_blank" class="hover:text-pink-400 transition duration-200 hover:underline">Portfolio</a></li>
             </ul>
           </div>
         </div>
-        
       </div>
-      <div class="mt-12 border-t border-pink-400/30 pt-6 text-center text-sm text-gray-400">
-        © 2025 <span class="text-pink-300 font-semibold">CodeMaster</span>. All rights reserved.
+      
+      <div class="mt-16 border-t border-pink-400/30 pt-8 text-center">
+        <p class="text-lg text-gray-400">
+          © 2025 <span class="text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text font-bold">CodeMaster</span>. All rights reserved. Made with ❤️ for developers.
+        </p>
       </div>
     </div>
-    <!-- AI Assistant Toggle Button -->
-<button id="toggleAssistant" class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-pink-500 to-purple-600 text-white p-3 rounded-full shadow-lg hover:scale-110 transition duration-300">
-  <i class="fas fa-robot text-xl"></i>
-</button>
-
-<!-- Assistant Chat Box -->
-<div id="assistantBox" class="fixed bottom-24 right-6 w-80 bg-white/10 backdrop-blur-lg text-white rounded-xl shadow-xl p-4 hidden z-50">
-  <h4 class="text-lg font-bold mb-2 text-pink-300">CodeMaster Assistant</h4>
-
-  <!-- Model Selector -->
-  <label for="providerSelect" class="text-sm text-gray-300 mb-1 block">Choose AI Model:</label>
-  <select id="providerSelect" class="w-full mb-3 p-2 rounded bg-white/20 text-white">
-    <option value="openai">OpenAI (GPT-3.5)</option>
-    <option value="openrouter">OpenRouter (Claude 3 Haiku)</option>
-  </select>
-
-  <!-- Chat Log -->
-  <div id="chatLog" class="text-sm text-gray-200 mb-4 h-40 overflow-y-auto space-y-2">
-    <div class="text-pink-400">👋 Hi! What can I help you with today?</div>
-  </div>
-
-  <!-- Input -->
-  <textarea id="userInput" class="w-full p-2 rounded bg-white/20 text-white placeholder-gray-300 resize-none" rows="3" placeholder="Ask me anything..."></textarea>
-  <button id="sendBtn" class="mt-3 w-full bg-pink-500 hover:bg-pink-600 text-white py-2 rounded transition">Send</button>
-</div>
-
-<script>
-  const toggleBtn = document.getElementById('toggleAssistant');
-  const assistantBox = document.getElementById('assistantBox');
-  const sendBtn = document.getElementById('sendBtn');
-  const userInput = document.getElementById('userInput');
-  const chatLog = document.getElementById('chatLog');
-  const providerSelect = document.getElementById('providerSelect');
-
-  toggleBtn.addEventListener('click', () => {
-    assistantBox.classList.toggle('hidden');
-  });
-
-  function escapeHTML(str) {
-    return str.replace(/[&<>"']/g, tag => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    }[tag]));
-  }
-
-  sendBtn.addEventListener('click', async () => {
-    const message = userInput.value.trim();
-    const provider = providerSelect.value;
-
-    if (!message) return;
-
-    // Show user message
-    chatLog.innerHTML += `<div class="text-white mb-2">🧑‍💻 <span>${escapeHTML(message)}</span></div>`;
-    userInput.value = '';
-
-    // Show typing indicator
-    const typingIndicator = document.createElement('div');
-    typingIndicator.className = 'text-pink-400 mb-2';
-    typingIndicator.textContent = '🤖 Typing...';
-    chatLog.appendChild(typingIndicator);
-    chatLog.scrollTo({ top: chatLog.scrollHeight, behavior: 'smooth' });
-
-    try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message, provider })
-      });
-
-      const data = await response.json();
-      const reply = data.reply || "Sorry, I couldn't understand that.";
-
-      typingIndicator.textContent = `🤖 ${escapeHTML(reply)}`;
-    } catch (error) {
-      typingIndicator.textContent = "🤖 Something went wrong. Please try again.";
-    }
-
-    chatLog.scrollTo({ top: chatLog.scrollHeight, behavior: 'smooth' });
-  });
-</script>
   </footer>
-  <!-- 🔐 Auth Modal -->
-<div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-  <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
-    <button id="closeAuth" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl font-bold">&times;</button>
-    <h2 id="authTitle" class="text-2xl font-semibold text-indigo-700 mb-4 text-center">Login</h2>
 
-    <form id="authForm" class="space-y-4">
-      <input type="hidden" id="authMode" value="login" />
-
-      <!-- Full Name (only for register) -->
-      <div id="nameField" class="hidden">
-        <label for="authName" class="block text-sm font-medium text-gray-700">Full Name</label>
-        <input type="text" id="authName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+  <!-- Enhanced Auth Modal -->
+  <div id="authModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+    <div class="glass-morphism rounded-3xl shadow-2xl w-full max-w-md auth-modal relative border m-4">
+      <button id="closeAuth" class="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-2xl font-bold transition-all duration-300 hover:rotate-90 hover:scale-110">&times;</button>
+      
+      <div class="text-center mb-8 p-8 pb-0">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+          <i class="fas fa-user-circle text-white text-2xl"></i>
+        </div>
+        <h2 id="authTitle" class="text-3xl font-bold gradient-text">Welcome Back</h2>
+        <p class="text-gray-600 dark:text-gray-400 mt-2">Continue your coding journey</p>
       </div>
 
-      <!-- Email -->
-      <div>
-        <label for="authEmail" class="block text-sm font-medium text-gray-700">Email</label>
-        <input type="email" id="authEmail" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+      <form id="authForm" class="space-y-6 px-8 pb-8">
+        <input type="hidden" id="authMode" value="login" />
+
+        <!-- Full Name (only for register) -->
+        <div id="nameField" class="hidden">
+          <label for="authName" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+          <input type="text" id="authName" class="auth-input w-full px-4 py-3 rounded-xl focus:outline-none transition-all duration-300" placeholder="Enter your full name" />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="authEmail" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+          <input type="email" id="authEmail" class="auth-input w-full px-4 py-3 rounded-xl focus:outline-none transition-all duration-300" placeholder="Enter your email" required />
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label for="authPassword" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Password</label>
+          <input type="password" id="authPassword" class="auth-input w-full px-4 py-3 rounded-xl focus:outline-none transition-all duration-300" placeholder="Enter your password" required />
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:from-purple-700 hover:to-pink-700 font-semibold text-lg shadow-lg hover:shadow-purple-500/50 transform hover:scale-105 transition-all duration-300 flex items-center justify-center">
+          <span id="loadingSpinner" class="loading-spinner mr-2 hidden"></span>
+          <span id="submitText">Sign In</span>
+        </button>
+      </form>
+
+      <!-- Switch Mode -->
+      <div class="px-8 pb-6 text-center">
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          <button id="switchAuth" class="text-purple-600 dark:text-purple-400 hover:text-pink-600 dark:hover:text-pink-400 font-semibold hover:underline transition-all duration-300">Don't have an account? Join CodeMaster</button>
+        </p>
       </div>
 
-      <!-- Password -->
-      <div>
-        <label for="authPassword" class="block text-sm font-medium text-gray-700">Password</label>
-        <input type="password" id="authPassword" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+      <!-- Social Login Options -->
+      <div class="px-8 pb-8">
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-4 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 font-medium">Or continue with</span>
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-2 gap-4">
+          <button id="googleAuth" class="flex items-center justify-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105">
+            <i class="fab fa-google text-red-500 mr-2"></i>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Google</span>
+          </button>
+          <button id="githubAuth" class="flex items-center justify-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105">
+            <i class="fab fa-github text-gray-800 dark:text-gray-300 mr-2"></i>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">GitHub</span>
+          </button>
+        </div>
       </div>
-
-      <!-- Submit Button -->
-      <button type="submit" class="w-full py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium">Submit</button>
-    </form>
-
-    <!-- Switch Mode -->
-    <p class="mt-4 text-center text-sm text-gray-600">
-      <button id="switchAuth" class="text-indigo-600 hover:underline font-medium">Don't have an account? Register</button>
-    </p>
+    </div>
   </div>
-</div>
-  <script src="main.js"></script>
+
+  <!-- Access Denied Modal -->
+  <div id="accessDeniedModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+    <div class="access-denied rounded-3xl shadow-2xl w-full max-w-md relative border m-4 text-white">
+      <button id="closeAccessDenied" class="absolute top-4 right-4 text-white/80 hover:text-white text-2xl font-bold transition-all duration-300 hover:rotate-90 hover:scale-110">&times;</button>
+      
+      <div class="text-center p-8">
+        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-white/20 flex items-center justify-center">
+          <i class="fas fa-lock text-4xl"></i>
+        </div>
+        <h2 class="text-3xl font-bold mb-4">Access Restricted</h2>
+        <p class="text-lg mb-8 leading-relaxed">
+          Please log in to access coding tests and challenges. Join thousands of developers improving their skills!
+        </p>
+        <div class="flex gap-4 justify-center">
+          <button id="loginFromModal" class="px-6 py-3 bg-white/20 hover:bg-white/30 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-105">
+            Login
+          </button>
+          <button id="registerFromModal" class="px-6 py-3 bg-white text-red-600 hover:bg-gray-100 rounded-xl font-semibold transition-all duration-300 hover:scale-105">
+            Register
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+   <script src="main.js"></script>
 </body>
 </html>

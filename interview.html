@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elite Coding Challenges Pro - Extended</title>
+  <title>FAANG Interview Prep Pro - Tech Interview Questions</title>
   <style>
     * {
       margin: 0;
@@ -18,6 +18,7 @@
       --success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
       --warning: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
       --danger: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+      --faang: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
       --bg-light: #f8faff;
       --bg-dark: #0d1117;
       --text-light: #2d3748;
@@ -100,7 +101,7 @@
       gap: 0.5rem;
       font-size: 1.5rem;
       font-weight: 800;
-      background: var(--primary);
+      background: var(--faang);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -123,7 +124,7 @@
     .header-title {
       font-size: 2.5rem;
       font-weight: 900;
-      background: var(--primary);
+      background: var(--faang);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -188,7 +189,7 @@
       border-color: var(--border-dark);
     }
 
-    /* New Feature: Achievement System */
+    /* Achievement System */
     .achievement {
       position: fixed;
       top: 100px;
@@ -275,7 +276,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: var(--primary);
+      background: var(--faang);
       transition: all 0.3s ease;
       z-index: -1;
     }
@@ -337,8 +338,42 @@
       box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
     }
 
-    /* New Feature: Study Plan */
-    .study-plan {
+    /* Company selector */
+    .company-filter {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .company-btn {
+      padding: 0.4rem 0.8rem;
+      border: 2px solid var(--border-light);
+      border-radius: 20px;
+      background: var(--glass-light);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    body.dark .company-btn {
+      background: var(--glass-dark);
+      border-color: var(--border-dark);
+    }
+
+    .company-btn.active {
+      background: var(--faang);
+      color: white;
+      border-color: transparent;
+    }
+
+    .company-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Interview Prep Guide */
+    .prep-guide {
       background: var(--glass-light);
       backdrop-filter: blur(20px);
       border: 1px solid var(--border-light);
@@ -348,80 +383,67 @@
       box-shadow: var(--shadow-light);
     }
 
-    body.dark .study-plan {
+    body.dark .prep-guide {
       background: var(--glass-dark);
       border-color: var(--border-dark);
       box-shadow: var(--shadow-dark);
     }
 
-    .study-plan-header {
+    .prep-guide-header {
       text-align: center;
       margin-bottom: 2rem;
     }
 
-    .study-plan-title {
+    .prep-guide-title {
       font-size: 1.8rem;
       font-weight: 700;
-      background: var(--primary);
+      background: var(--faang);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 0.5rem;
     }
 
-    .plan-options {
+    .prep-steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
     }
 
-    .plan-card {
+    .prep-step {
       background: var(--glass-light);
       border: 2px solid var(--border-light);
       border-radius: 15px;
       padding: 1.5rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
       text-align: center;
+      transition: all 0.3s ease;
     }
 
-    body.dark .plan-card {
+    body.dark .prep-step {
       background: var(--glass-dark);
       border-color: var(--border-dark);
     }
 
-    .plan-card:hover,
-    .plan-card.selected {
+    .prep-step:hover {
       border-color: #667eea;
       transform: translateY(-5px);
       box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
     }
 
-    .plan-icon {
+    .prep-icon {
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
-    .plan-name {
+    .prep-name {
       font-size: 1.2rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
     }
 
-    .plan-description {
+    .prep-description {
       font-size: 0.9rem;
       opacity: 0.7;
-      margin-bottom: 1rem;
-    }
-
-    .plan-duration {
-      background: var(--accent);
-      color: white;
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      display: inline-block;
     }
 
     /* Timer Feature */
@@ -445,7 +467,7 @@
     .timer-display {
       font-size: 3rem;
       font-weight: 900;
-      background: var(--primary);
+      background: var(--faang);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -531,7 +553,7 @@
     .section-title {
       font-size: 2rem;
       font-weight: 800;
-      background: var(--primary);
+      background: var(--faang);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -543,7 +565,7 @@
       opacity: 0.7;
     }
 
-    /* Challenge grid */
+    /* Question grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -551,7 +573,7 @@
       margin-bottom: 3rem;
     }
 
-    /* Cards */
+    /* Question Cards */
     .card {
       background: var(--card-light);
       backdrop-filter: blur(20px);
@@ -578,7 +600,7 @@
       left: -2px;
       right: -2px;
       bottom: -2px;
-      background: var(--primary);
+      background: var(--faang);
       border-radius: 20px;
       z-index: -1;
       opacity: 0;
@@ -605,7 +627,7 @@
       font-size: 1.3rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
-      background: var(--primary);
+      background: var(--faang);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -615,8 +637,34 @@
       font-size: 1rem;
       opacity: 0.8;
       line-height: 1.6;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
+
+    .company-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .company-tag {
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .company-tag.google { background: #4285F4; }
+    .company-tag.amazon { background: #FF9900; }
+    .company-tag.apple { background: #007AFF; }
+    .company-tag.meta { background: #1877F2; }
+    .company-tag.microsoft { background: #00A4EF; }
+    .company-tag.netflix { background: #E50914; }
+    .company-tag.tesla { background: #CC0000; }
+    .company-tag.uber { background: #000000; }
+    .company-tag.airbnb { background: #FF5A5F; }
+    .company-tag.linkedin { background: #0A66C2; }
 
     .card-tags {
       display: flex;
@@ -650,6 +698,19 @@
     .badge.easy { background: var(--success); }
     .badge.medium { background: var(--warning); }
     .badge.hard { background: var(--danger); }
+
+    .interview-round {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--secondary);
+      color: white;
+      margin-bottom: 1rem;
+    }
 
     .solved-indicator {
       position: absolute;
@@ -716,7 +777,7 @@
     }
 
     .external-btn {
-      background: var(--accent);
+      background: var(--faang);
       color: white;
       padding: 0.6rem 1.2rem;
       border: none;
@@ -761,7 +822,7 @@
       font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
-      background: var(--primary);
+      background: var(--faang);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -791,7 +852,7 @@
       font-size: 2.5rem;
       font-weight: 900;
       margin-bottom: 0.5rem;
-      background: var(--primary);
+      background: var(--faang);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -840,8 +901,8 @@
       font-weight: 600;
     }
 
-    /* Leaderboard */
-    .leaderboard {
+    /* Achievements */
+    .achievements {
       background: var(--glass-light);
       backdrop-filter: blur(20px);
       border: 1px solid var(--border-light);
@@ -851,13 +912,13 @@
       box-shadow: var(--shadow-light);
     }
 
-    body.dark .leaderboard {
+    body.dark .achievements {
       background: var(--glass-dark);
       border-color: var(--border-dark);
       box-shadow: var(--shadow-dark);
     }
 
-    .leaderboard-item {
+    .achievement-item {
       display: flex;
       align-items: center;
       padding: 1rem;
@@ -867,21 +928,10 @@
       border: 1px solid var(--border-light);
     }
 
-    body.dark .leaderboard-item {
+    body.dark .achievement-item {
       background: var(--glass-dark);
       border-color: var(--border-dark);
     }
-
-    .rank {
-      font-size: 1.5rem;
-      font-weight: 900;
-      width: 50px;
-      text-align: center;
-    }
-
-    .rank.gold { color: #ffd700; }
-    .rank.silver { color: #c0c0c0; }
-    .rank.bronze { color: #cd7f32; }
 
     /* Responsive design */
     @media (max-width: 768px) {
@@ -914,6 +964,10 @@
       }
 
       .progress-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .prep-steps {
         grid-template-columns: 1fr;
       }
     }
@@ -967,12 +1021,12 @@
   <header class="header">
     <div class="header-content">
       <div class="logo">
-        <span>🧠</span>
-        <span>CodeMaster Pro</span>
+        <span>🚀</span>
+        <span>FAANG Prep Pro</span>
       </div>
       <div class="header-center">
-        <h1 class="header-title">Elite Coding Challenges</h1>
-        <p class="header-subtitle">Master algorithms, ace interviews, level up your coding skills</p>
+        <h1 class="header-title">Tech Interview Mastery</h1>
+        <p class="header-subtitle">Real interview questions from Google, Amazon, Meta, Apple, Microsoft & more</p>
       </div>
       <div class="header-right">
         <div class="streak-counter">
@@ -983,7 +1037,7 @@
             <span id="totalSolved">0</span> Solved
           </div>
           <div class="stat">
-            <span id="totalChallenges">0</span> Total
+            <span id="totalQuestions">0</span> Total
           </div>
         </div>
         <button class="theme-toggle" id="themeToggle">🌙</button>
@@ -994,14 +1048,13 @@
   <nav class="nav">
     <div class="nav-content">
       <div class="tabs">
-        <button class="tab active" data-category="all">All Challenges</button>
-        <button class="tab" data-category="arrays">Arrays</button>
-        <button class="tab" data-category="strings">Strings</button>
+        <button class="tab active" data-category="all">All Questions</button>
+        <button class="tab" data-category="arrays">Arrays & Strings</button>
         <button class="tab" data-category="linkedlist">Linked Lists</button>
-        <button class="tab" data-category="trees">Trees</button>
-        <button class="tab" data-category="graphs">Graphs</button>
+        <button class="tab" data-category="trees">Trees & Graphs</button>
         <button class="tab" data-category="dp">Dynamic Programming</button>
         <button class="tab" data-category="system">System Design</button>
+        <button class="tab" data-category="behavioral">Behavioral</button>
       </div>
       <div class="filters">
         <div class="filter-group">
@@ -1014,54 +1067,72 @@
           </select>
         </div>
         <div class="filter-group">
+          <label class="filter-label">Company</label>
+          <select id="companyFilter">
+            <option value="">All Companies</option>
+            <option value="Google">Google</option>
+            <option value="Amazon">Amazon</option>
+            <option value="Meta">Meta</option>
+            <option value="Apple">Apple</option>
+            <option value="Microsoft">Microsoft</option>
+            <option value="Netflix">Netflix</option>
+          </select>
+        </div>
+        <div class="filter-group">
           <label class="filter-label">Search</label>
-          <input type="text" class="search-input" id="searchInput" placeholder="Search challenges...">
+          <input type="text" class="search-input" id="searchInput" placeholder="Search questions...">
         </div>
       </div>
     </div>
   </nav>
 
   <div class="container">
-    <!-- Study Plan Section -->
-    <div class="study-plan">
-      <div class="study-plan-header">
-        <h2 class="study-plan-title">📚 Choose Your Study Plan</h2>
-        <p>Structured learning paths to guide your coding journey</p>
+    <!-- Interview Prep Guide -->
+    <div class="prep-guide">
+      <div class="prep-guide-header">
+        <h2 class="prep-guide-title">🎯 Interview Preparation Strategy</h2>
+        <p>Master the systematic approach used by successful FAANG candidates</p>
       </div>
-      <div class="plan-options">
-        <div class="plan-card" data-plan="beginner">
-          <div class="plan-icon">🌱</div>
-          <div class="plan-name">Beginner Path</div>
-          <div class="plan-description">Start with fundamentals and build confidence</div>
-          <div class="plan-duration">4-6 weeks</div>
+      <div class="prep-steps">
+        <div class="prep-step">
+          <div class="prep-icon">📚</div>
+          <div class="prep-name">Study Fundamentals</div>
+          <div class="prep-description">Master data structures, algorithms, and complexity analysis</div>
         </div>
-        <div class="plan-card" data-plan="intermediate">
-          <div class="plan-icon">🚀</div>
-          <div class="plan-name">Interview Prep</div>
-          <div class="plan-description">Focus on common interview questions</div>
-          <div class="plan-duration">8-10 weeks</div>
+        <div class="prep-step">
+          <div class="prep-icon">💻</div>
+          <div class="prep-name">Practice Coding</div>
+          <div class="prep-description">Solve problems daily, focus on different patterns and techniques</div>
         </div>
-        <div class="plan-card" data-plan="advanced">
-          <div class="plan-icon">⚡</div>
-          <div class="plan-name">Advanced Algorithms</div>
-          <div class="plan-description">Master complex algorithms and data structures</div>
-          <div class="plan-duration">12-16 weeks</div>
+        <div class="prep-step">
+          <div class="prep-icon">🗣️</div>
+          <div class="prep-name">Mock Interviews</div>
+          <div class="prep-description">Practice explaining your thought process and optimizing solutions</div>
         </div>
-        <div class="plan-card" data-plan="competitive">
-          <div class="plan-icon">🏆</div>
-          <div class="plan-name">Competitive Programming</div>
-          <div class="plan-description">Prepare for coding competitions</div>
-          <div class="plan-duration">16+ weeks</div>
+        <div class="prep-step">
+          <div class="prep-icon">🏗️</div>
+          <div class="prep-name">System Design</div>
+          <div class="prep-description">Learn to design scalable systems and discuss trade-offs</div>
+        </div>
+        <div class="prep-step">
+          <div class="prep-icon">🤝</div>
+          <div class="prep-name">Behavioral Prep</div>
+          <div class="prep-description">Prepare STAR method stories and understand company culture</div>
+        </div>
+        <div class="prep-step">
+          <div class="prep-icon">🎯</div>
+          <div class="prep-name">Company Research</div>
+          <div class="prep-description">Study specific company questions, values, and interview process</div>
         </div>
       </div>
     </div>
 
-    <!-- Pomodoro Timer Section -->
+    <!-- Interview Timer -->
     <div class="timer-section">
-      <h2 class="progress-title">🍅 Focus Timer</h2>
-      <p style="margin-bottom: 2rem; opacity: 0.8;">Stay focused with the Pomodoro Technique</p>
+      <h2 class="progress-title">⏱️ Interview Practice Timer</h2>
+      <p style="margin-bottom: 2rem; opacity: 0.8;">Simulate real interview conditions with timed practice</p>
       
-      <div class="timer-display" id="timerDisplay">25:00</div>
+      <div class="timer-display" id="timerDisplay">45:00</div>
       
       <div class="timer-controls">
         <button class="timer-btn start" id="startTimer">Start</button>
@@ -1070,18 +1141,18 @@
       </div>
       
       <div class="timer-presets">
-        <button class="preset-btn" data-minutes="25">Pomodoro (25m)</button>
-        <button class="preset-btn" data-minutes="15">Short Break (15m)</button>
-        <button class="preset-btn" data-minutes="30">Long Break (30m)</button>
-        <button class="preset-btn" data-minutes="45">Deep Work (45m)</button>
+        <button class="preset-btn" data-minutes="45">Coding Round (45m)</button>
+        <button class="preset-btn" data-minutes="30">Phone Screen (30m)</button>
+        <button class="preset-btn" data-minutes="60">System Design (60m)</button>
+        <button class="preset-btn" data-minutes="30">Behavioral (30m)</button>
       </div>
     </div>
 
     <!-- Progress Section -->
     <div class="progress-section">
       <div class="progress-header">
-        <h2 class="progress-title">📊 Your Progress</h2>
-        <p>Track your journey to coding mastery</p>
+        <h2 class="progress-title">📈 Interview Readiness</h2>
+        <p>Track your preparation progress across different areas</p>
       </div>
       <div class="progress-grid">
         <div class="progress-card">
@@ -1115,11 +1186,11 @@
       </div>
     </div>
 
-    <!-- Leaderboard Section -->
-    <div class="leaderboard">
+    <!-- Achievements Section -->
+    <div class="achievements">
       <div class="progress-header">
-        <h2 class="progress-title">🏆 Personal Achievements</h2>
-        <p>Your coding milestones and accomplishments</p>
+        <h2 class="progress-title">🏆 Interview Achievements</h2>
+        <p>Your milestones on the path to interview success</p>
       </div>
       <div id="achievementsList">
         <!-- Achievements will be populated by JavaScript -->
@@ -1127,149 +1198,81 @@
     </div>
 
     <div class="section-header">
-      <h2 class="section-title" id="sectionTitle">All Challenges</h2>
-      <p class="section-subtitle" id="sectionSubtitle">Choose your next coding adventure</p>
+      <h2 class="section-title" id="sectionTitle">All Interview Questions</h2>
+      <p class="section-subtitle" id="sectionSubtitle">Real questions asked at top tech companies</p>
     </div>
 
-    <div id="challengeGrid" class="grid"></div>
+    <div id="questionGrid" class="grid"></div>
 
     <div id="emptyState" class="empty-state hidden">
       <div class="empty-icon">🔍</div>
-      <div class="empty-text">No challenges found matching your criteria</div>
+      <div class="empty-text">No questions found matching your criteria</div>
     </div>
   </div>
 
   <script>
-    // Comprehensive challenge database with additional categories
-    const challenges = {
+    // Comprehensive interview questions database with real FAANG questions
+    const interviewQuestions = {
       arrays: [
         {
           title: "Two Sum",
-          description: "Find two numbers in an array that add up to a specific target sum.",
+          description: "Given an array of integers and a target, return indices of two numbers that add up to target.",
           difficulty: "Easy",
+          companies: ["Google", "Amazon", "Apple", "Microsoft"],
           tags: ["Hash Table", "Array"],
-          link: "https://leetcode.com/problems/two-sum/"
+          round: "Phone Screen",
+          link: "https://leetcode.com/problems/two-sum/",
+          hint: "Use a hash map to store complements as you iterate through the array."
         },
         {
-          title: "Best Time to Buy and Sell Stock",
-          description: "Find the maximum profit from buying and selling stock once.",
-          difficulty: "Easy",
-          tags: ["Array", "Dynamic Programming"],
-          link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"
-        },
-        {
-          title: "Contains Duplicate",
-          description: "Check if any value appears at least twice in an array.",
-          difficulty: "Easy",
-          tags: ["Array", "Hash Table"],
-          link: "https://leetcode.com/problems/contains-duplicate/"
-        },
-        {
-          title: "Product of Array Except Self",
-          description: "Return array where each element is product of all other elements.",
+          title: "Merge Intervals",
+          description: "Given an array of intervals, merge all overlapping intervals and return non-overlapping intervals.",
           difficulty: "Medium",
-          tags: ["Array", "Prefix Sum"],
-          link: "https://leetcode.com/problems/product-of-array-except-self/"
-        },
-        {
-          title: "Maximum Subarray",
-          description: "Find the contiguous subarray with the largest sum.",
-          difficulty: "Medium",
-          tags: ["Array", "Dynamic Programming"],
-          link: "https://leetcode.com/problems/maximum-subarray/"
-        },
-        {
-          title: "3Sum",
-          description: "Find all unique triplets in array that sum to zero.",
-          difficulty: "Medium",
-          tags: ["Array", "Two Pointers"],
-          link: "https://leetcode.com/problems/3sum/"
-        },
-        {
-          title: "Container With Most Water",
-          description: "Find two lines that form container holding the most water.",
-          difficulty: "Medium",
-          tags: ["Array", "Two Pointers"],
-          link: "https://leetcode.com/problems/container-with-most-water/"
+          companies: ["Google", "Meta", "Microsoft", "Amazon"],
+          tags: ["Array", "Sorting"],
+          round: "Onsite",
+          link: "https://leetcode.com/problems/merge-intervals/",
+          hint: "Sort intervals by start time, then merge overlapping ones."
         },
         {
           title: "Trapping Rain Water",
-          description: "Calculate how much water can be trapped after raining.",
+          description: "Calculate how much water can be trapped after raining given elevation map.",
           difficulty: "Hard",
-          tags: ["Array", "Two Pointers", "Stack"],
-          link: "https://leetcode.com/problems/trapping-rain-water/"
+          companies: ["Google", "Amazon", "Apple"],
+          tags: ["Array", "Two Pointers", "Dynamic Programming"],
+          round: "Onsite",
+          link: "https://leetcode.com/problems/trapping-rain-water/",
+          hint: "Use two pointers or precompute max heights from left and right."
         },
         {
-          title: "Find Minimum in Rotated Sorted Array",
-          description: "Find the minimum element in a rotated sorted array.",
+          title: "Product of Array Except Self",
+          description: "Return array where each element is product of all other elements without using division.",
           difficulty: "Medium",
-          tags: ["Array", "Binary Search"],
-          link: "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/"
+          companies: ["Amazon", "Meta", "Apple", "Microsoft"],
+          tags: ["Array", "Prefix Sum"],
+          round: "Phone Screen",
+          link: "https://leetcode.com/problems/product-of-array-except-self/",
+          hint: "Use prefix and suffix products, or optimize to single pass."
         },
         {
-          title: "Search in Rotated Sorted Array",
-          description: "Search for a target value in a rotated sorted array.",
+          title: "Find All Duplicates in Array",
+          description: "Find all duplicates in array where 1 ≤ a[i] ≤ n, some elements appear twice, others once.",
           difficulty: "Medium",
-          tags: ["Array", "Binary Search"],
-          link: "https://leetcode.com/problems/search-in-rotated-sorted-array/"
-        }
-      ],
-      strings: [
-        {
-          title: "Valid Anagram",
-          description: "Check if two strings are anagrams of each other.",
-          difficulty: "Easy",
-          tags: ["String", "Hash Table"],
-          link: "https://leetcode.com/problems/valid-anagram/"
+          companies: ["Google", "Amazon", "Microsoft"],
+          tags: ["Array", "Hash Table"],
+          round: "Phone Screen",
+          link: "https://leetcode.com/problems/find-all-duplicates-in-an-array/",
+          hint: "Use array indices as hash keys by negating values."
         },
         {
-          title: "Valid Parentheses",
-          description: "Check if string has valid combination of parentheses.",
-          difficulty: "Easy",
-          tags: ["String", "Stack"],
-          link: "https://leetcode.com/problems/valid-parentheses/"
-        },
-        {
-          title: "Longest Palindromic Substring",
-          description: "Find the longest palindromic substring in a string.",
+          title: "Subarray Sum Equals K",
+          description: "Find total number of continuous subarrays whose sum equals k.",
           difficulty: "Medium",
-          tags: ["String", "Dynamic Programming"],
-          link: "https://leetcode.com/problems/longest-palindromic-substring/"
-        },
-        {
-          title: "Group Anagrams",
-          description: "Group strings that are anagrams of each other.",
-          difficulty: "Medium",
-          tags: ["String", "Hash Table"],
-          link: "https://leetcode.com/problems/group-anagrams/"
-        },
-        {
-          title: "Longest Substring Without Repeating Characters",
-          description: "Find length of longest substring without repeating characters.",
-          difficulty: "Medium",
-          tags: ["String", "Sliding Window"],
-          link: "https://leetcode.com/problems/longest-substring-without-repeating-characters/"
-        },
-        {
-          title: "Valid Palindrome",
-          description: "Check if string is a valid palindrome ignoring non-alphanumeric.",
-          difficulty: "Easy",
-          tags: ["String", "Two Pointers"],
-          link: "https://leetcode.com/problems/valid-palindrome/"
-        },
-        {
-          title: "Minimum Window Substring",
-          description: "Find minimum window substring containing all characters of another string.",
-          difficulty: "Hard",
-          tags: ["String", "Sliding Window"],
-          link: "https://leetcode.com/problems/minimum-window-substring/"
-        },
-        {
-          title: "Palindromic Substrings",
-          description: "Count how many palindromic substrings are in a string.",
-          difficulty: "Medium",
-          tags: ["String", "Dynamic Programming"],
-          link: "https://leetcode.com/problems/palindromic-substrings/"
+          companies: ["Meta", "Amazon", "Google"],
+          tags: ["Array", "Hash Table", "Prefix Sum"],
+          round: "Onsite",
+          link: "https://leetcode.com/problems/subarray-sum-equals-k/",
+          hint: "Use prefix sum and hash map to count occurrences."
         }
       ],
       linkedlist: [
@@ -1277,282 +1280,327 @@
           title: "Reverse Linked List",
           description: "Reverse a singly linked list iteratively and recursively.",
           difficulty: "Easy",
+          companies: ["Google", "Amazon", "Apple", "Microsoft", "Meta"],
           tags: ["Linked List", "Recursion"],
-          link: "https://leetcode.com/problems/reverse-linked-list/"
-        },
-        {
-          title: "Merge Two Sorted Lists",
-          description: "Merge two sorted linked lists into one sorted list.",
-          difficulty: "Easy",
-          tags: ["Linked List", "Recursion"],
-          link: "https://leetcode.com/problems/merge-two-sorted-lists/"
-        },
-        {
-          title: "Linked List Cycle",
-          description: "Detect if linked list has a cycle using Floyd's algorithm.",
-          difficulty: "Easy",
-          tags: ["Linked List", "Two Pointers"],
-          link: "https://leetcode.com/problems/linked-list-cycle/"
-        },
-        {
-          title: "Remove Nth Node From End",
-          description: "Remove the nth node from the end of linked list in one pass.",
-          difficulty: "Medium",
-          tags: ["Linked List", "Two Pointers"],
-          link: "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"
+          round: "Phone Screen",
+          link: "https://leetcode.com/problems/reverse-linked-list/",
+          hint: "Keep track of previous, current, and next nodes while iterating."
         },
         {
           title: "Add Two Numbers",
-          description: "Add two numbers represented as linked lists.",
+          description: "Add two numbers represented as linked lists where digits are stored in reverse order.",
           difficulty: "Medium",
+          companies: ["Amazon", "Microsoft", "Meta"],
           tags: ["Linked List", "Math"],
-          link: "https://leetcode.com/problems/add-two-numbers/"
-        },
-        {
-          title: "Reorder List",
-          description: "Reorder linked list to alternate between first and last nodes.",
-          difficulty: "Medium",
-          tags: ["Linked List", "Two Pointers"],
-          link: "https://leetcode.com/problems/reorder-list/"
+          round: "Onsite",
+          link: "https://leetcode.com/problems/add-two-numbers/",
+          hint: "Simulate addition with carry, handle different lengths carefully."
         },
         {
           title: "Merge k Sorted Lists",
-          description: "Merge k sorted linked lists and return as one sorted list.",
+          description: "Merge k sorted linked lists and return it as one sorted list.",
           difficulty: "Hard",
-          tags: ["Linked List", "Divide and Conquer"],
-          link: "https://leetcode.com/problems/merge-k-sorted-lists/"
+          companies: ["Google", "Amazon", "Apple"],
+          tags: ["Linked List", "Divide and Conquer", "Heap"],
+          round: "Onsite",
+          link: "https://leetcode.com/problems/merge-k-sorted-lists/",
+          hint: "Use divide and conquer or priority queue for optimal solution."
+        },
+        {
+          title: "Copy List with Random Pointer",
+          description: "Deep copy a linked list where each node has next and random pointer.",
+          difficulty: "Medium",
+          companies: ["Amazon", "Microsoft", "Meta"],
+          tags: ["Linked List", "Hash Table"],
+          round: "Onsite",
+          link: "https://leetcode.com/problems/copy-list-with-random-pointer/",
+          hint: "Use hash map to store old->new mapping, or interweave approach."
+        },
+        {
+          title: "LRU Cache",
+          description: "Design and implement Least Recently Used cache with O(1) operations.",
+          difficulty: "Medium",
+          companies: ["Google", "Amazon", "Meta", "Apple"],
+          tags: ["Design", "Hash Table", "Doubly Linked List"],
+          round: "Onsite",
+          link: "https://leetcode.com/problems/lru-cache/",
+          hint: "Combine hash map with doubly linked list for O(1) operations."
         }
       ],
       trees: [
         {
-          title: "Maximum Depth of Binary Tree",
-          description: "Find the maximum depth of a binary tree.",
-          difficulty: "Easy",
-          tags: ["Tree", "DFS", "BFS"],
-          link: "https://leetcode.com/problems/maximum-depth-of-binary-tree/"
-        },
-        {
-          title: "Same Tree",
-          description: "Check if two binary trees are the same.",
-          difficulty: "Easy",
-          tags: ["Tree", "DFS"],
-          link: "https://leetcode.com/problems/same-tree/"
-        },
-        {
-          title: "Invert Binary Tree",
-          description: "Invert a binary tree (swap left and right subtrees).",
-          difficulty: "Easy",
-          tags: ["Tree", "DFS"],
-          link: "https://leetcode.com/problems/invert-binary-tree/"
-        },
-        {
           title: "Binary Tree Level Order Traversal",
-          description: "Return level order traversal of binary tree nodes.",
+          description: "Return level order traversal of binary tree nodes' values.",
           difficulty: "Medium",
+          companies: ["Google", "Amazon", "Meta", "Microsoft"],
           tags: ["Tree", "BFS"],
-          link: "https://leetcode.com/problems/binary-tree-level-order-traversal/"
+          round: "Phone Screen",
+          link: "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+          hint: "Use queue for BFS traversal, track levels using queue size."
         },
         {
-          title: "Validate Binary Search Tree",
-          description: "Check if binary tree is a valid binary search tree.",
+          title: "Lowest Common Ancestor of Binary Tree",
+          description: "Find lowest common ancestor of two nodes in binary tree.",
           difficulty: "Medium",
+          companies: ["Google", "Amazon", "Apple", "Meta"],
           tags: ["Tree", "DFS"],
-          link: "https://leetcode.com/problems/validate-binary-search-tree/"
-        },
-        {
-          title: "Lowest Common Ancestor of BST",
-          description: "Find lowest common ancestor of two nodes in BST.",
-          difficulty: "Medium",
-          tags: ["Tree", "DFS"],
-          link: "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"
-        },
-        {
-          title: "Binary Tree Maximum Path Sum",
-          description: "Find maximum path sum in binary tree.",
-          difficulty: "Hard",
-          tags: ["Tree", "DFS"],
-          link: "https://leetcode.com/problems/binary-tree-maximum-path-sum/"
+          round: "Onsite",
+          link: "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+          hint: "Use post-order traversal, return node if it's one of targets."
         },
         {
           title: "Serialize and Deserialize Binary Tree",
           description: "Design algorithm to serialize and deserialize binary tree.",
           difficulty: "Hard",
-          tags: ["Tree", "DFS", "Design"],
-          link: "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/"
-        }
-      ],
-      graphs: [
-        {
-          title: "Number of Islands",
-          description: "Count number of islands in 2D grid using DFS/BFS.",
-          difficulty: "Medium",
-          tags: ["Graph", "DFS", "BFS"],
-          link: "https://leetcode.com/problems/number-of-islands/"
+          companies: ["Google", "Meta", "Amazon"],
+          tags: ["Tree", "DFS", "BFS", "Design"],
+          round: "Onsite",
+          link: "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+          hint: "Use pre-order for serialization with null markers."
         },
         {
-          title: "Clone Graph",
-          description: "Return deep copy of undirected connected graph.",
+          title: "Number of Islands",
+          description: "Count number of islands in 2D binary grid using DFS or BFS.",
           difficulty: "Medium",
+          companies: ["Amazon", "Google", "Meta", "Microsoft"],
           tags: ["Graph", "DFS", "BFS"],
-          link: "https://leetcode.com/problems/clone-graph/"
+          round: "Phone Screen",
+          link: "https://leetcode.com/problems/number-of-islands/",
+          hint: "Use DFS/BFS to mark connected components, count starting points."
         },
         {
           title: "Course Schedule",
-          description: "Check if you can finish all courses (detect cycle in directed graph).",
+          description: "Determine if you can finish all courses given prerequisites (cycle detection).",
           difficulty: "Medium",
-          tags: ["Graph", "Topological Sort"],
-          link: "https://leetcode.com/problems/course-schedule/"
-        },
-        {
-          title: "Pacific Atlantic Water Flow",
-          description: "Find coordinates where water can flow to both oceans.",
-          difficulty: "Medium",
-          tags: ["Graph", "DFS", "BFS"],
-          link: "https://leetcode.com/problems/pacific-atlantic-water-flow/"
-        },
-        {
-          title: "Graph Valid Tree",
-          description: "Check if edges form a valid tree (connected and no cycles).",
-          difficulty: "Medium",
-          tags: ["Graph", "Union Find"],
-          link: "https://leetcode.com/problems/graph-valid-tree/"
+          companies: ["Google", "Amazon", "Meta"],
+          tags: ["Graph", "Topological Sort", "DFS"],
+          round: "Onsite",
+          link: "https://leetcode.com/problems/course-schedule/",
+          hint: "Use DFS with states (unvisited, visiting, visited) to detect cycles."
         },
         {
           title: "Word Ladder",
           description: "Find shortest transformation sequence from beginWord to endWord.",
           difficulty: "Hard",
+          companies: ["Google", "Amazon", "Meta"],
           tags: ["Graph", "BFS"],
-          link: "https://leetcode.com/problems/word-ladder/"
+          round: "Onsite",
+          link: "https://leetcode.com/problems/word-ladder/",
+          hint: "Model as graph problem, use BFS for shortest path."
         }
       ],
       dp: [
         {
           title: "Climbing Stairs",
-          description: "Find number of ways to climb n stairs (1 or 2 steps at a time).",
+          description: "Find number of distinct ways to climb n stairs (1 or 2 steps at a time).",
           difficulty: "Easy",
-          tags: ["Dynamic Programming"],
-          link: "https://leetcode.com/problems/climbing-stairs/"
-        },
-        {
-          title: "House Robber",
-          description: "Find maximum money you can rob without robbing adjacent houses.",
-          difficulty: "Medium",
-          tags: ["Dynamic Programming"],
-          link: "https://leetcode.com/problems/house-robber/"
+          companies: ["Amazon", "Apple", "Microsoft"],
+          tags: ["Dynamic Programming", "Math"],
+          round: "Phone Screen",
+          link: "https://leetcode.com/problems/climbing-stairs/",
+          hint: "It's essentially Fibonacci sequence: f(n) = f(n-1) + f(n-2)."
         },
         {
           title: "Coin Change",
-          description: "Find minimum coins needed to make up amount.",
+          description: "Find minimum number of coins needed to make up given amount.",
           difficulty: "Medium",
+          companies: ["Google", "Amazon", "Meta"],
           tags: ["Dynamic Programming"],
-          link: "https://leetcode.com/problems/coin-change/"
+          round: "Onsite",
+          link: "https://leetcode.com/problems/coin-change/",
+          hint: "Use DP: dp[i] = min(dp[i], dp[i-coin] + 1) for each coin."
         },
         {
           title: "Longest Increasing Subsequence",
           description: "Find length of longest strictly increasing subsequence.",
           difficulty: "Medium",
+          companies: ["Google", "Amazon", "Microsoft"],
           tags: ["Dynamic Programming", "Binary Search"],
-          link: "https://leetcode.com/problems/longest-increasing-subsequence/"
-        },
-        {
-          title: "Word Break",
-          description: "Check if string can be segmented into dictionary words.",
-          difficulty: "Medium",
-          tags: ["Dynamic Programming"],
-          link: "https://leetcode.com/problems/word-break/"
-        },
-        {
-          title: "Unique Paths",
-          description: "Find number of unique paths from top-left to bottom-right.",
-          difficulty: "Medium",
-          tags: ["Dynamic Programming"],
-          link: "https://leetcode.com/problems/unique-paths/"
+          round: "Onsite",
+          link: "https://leetcode.com/problems/longest-increasing-subsequence/",
+          hint: "O(n²) DP or O(n log n) with binary search on tails array."
         },
         {
           title: "Edit Distance",
-          description: "Find minimum operations to convert one string to another.",
+          description: "Find minimum operations (insert, delete, replace) to convert word1 to word2.",
           difficulty: "Hard",
-          tags: ["Dynamic Programming"],
-          link: "https://leetcode.com/problems/edit-distance/"
+          companies: ["Google", "Meta", "Amazon"],
+          tags: ["String", "Dynamic Programming"],
+          round: "Onsite",
+          link: "https://leetcode.com/problems/edit-distance/",
+          hint: "2D DP: if chars match, take diagonal; else min of three operations + 1."
+        },
+        {
+          title: "Maximum Product Subarray",
+          description: "Find contiguous subarray with largest product.",
+          difficulty: "Medium",
+          companies: ["Amazon", "Microsoft", "Apple"],
+          tags: ["Array", "Dynamic Programming"],
+          round: "Onsite",
+          link: "https://leetcode.com/problems/maximum-product-subarray/",
+          hint: "Track both max and min products due to negative numbers."
         }
       ],
       system: [
         {
-          title: "LRU Cache",
-          description: "Design and implement Least Recently Used cache.",
+          title: "Design URL Shortener",
+          description: "Design a URL shortening service like TinyURL with scalability considerations.",
           difficulty: "Medium",
-          tags: ["Design", "Hash Table", "Linked List"],
-          link: "https://leetcode.com/problems/lru-cache/"
+          companies: ["Google", "Amazon", "Meta", "Microsoft"],
+          tags: ["System Design", "Hashing", "Database"],
+          round: "System Design",
+          link: "#system-design",
+          hint: "Consider encoding algorithms, database sharding, caching strategies."
         },
         {
-          title: "Design Twitter",
-          description: "Design simplified version of Twitter with core features.",
-          difficulty: "Medium",
-          tags: ["Design", "Hash Table", "Heap"],
-          link: "https://leetcode.com/problems/design-twitter/"
+          title: "Design Chat System",
+          description: "Design a real-time chat system supporting millions of users.",
+          difficulty: "Hard",
+          companies: ["Meta", "Google", "Microsoft"],
+          tags: ["System Design", "WebSocket", "Database"],
+          round: "System Design",
+          link: "#system-design",
+          hint: "WebSockets, message queues, database partitioning, presence service."
         },
         {
-          title: "Implement Trie",
-          description: "Implement trie (prefix tree) data structure.",
+          title: "Design Rate Limiter",
+          description: "Design a rate limiter to control traffic sent by clients.",
           difficulty: "Medium",
-          tags: ["Design", "Trie"],
-          link: "https://leetcode.com/problems/implement-trie-prefix-tree/"
+          companies: ["Amazon", "Google", "Meta"],
+          tags: ["System Design", "Algorithms"],
+          round: "System Design",
+          link: "#system-design",
+          hint: "Token bucket, sliding window, distributed rate limiting with Redis."
         },
         {
-          title: "Design Add and Search Words",
-          description: "Design data structure supporting add and search with wildcards.",
-          difficulty: "Medium",
-          tags: ["Design", "Trie"],
-          link: "https://leetcode.com/problems/design-add-and-search-words-data-structure/"
+          title: "Design News Feed",
+          description: "Design news feed system like Facebook's feed with millions of users.",
+          difficulty: "Hard",
+          companies: ["Meta", "Google", "Amazon"],
+          tags: ["System Design", "Database", "Caching"],
+          round: "System Design",
+          link: "#system-design",
+          hint: "Pull vs push models, fanout strategies, timeline generation."
         },
         {
-          title: "Design HashMap",
-          description: "Design a HashMap without using built-in hash table libraries.",
+          title: "Design Search Engine",
+          description: "Design a web search engine like Google with crawling and indexing.",
+          difficulty: "Hard",
+          companies: ["Google", "Microsoft", "Amazon"],
+          tags: ["System Design", "Distributed Systems"],
+          round: "System Design",
+          link: "#system-design",
+          hint: "Web crawling, inverted index, ranking algorithms, distributed storage."
+        }
+      ],
+      behavioral: [
+        {
+          title: "Tell me about yourself",
+          description: "Give a concise professional summary highlighting relevant experience and skills.",
           difficulty: "Easy",
-          tags: ["Design", "Hash Table"],
-          link: "https://leetcode.com/problems/design-hashmap/"
+          companies: ["Google", "Amazon", "Meta", "Apple", "Microsoft", "Netflix"],
+          tags: ["Self Introduction", "Career Summary"],
+          round: "All Rounds",
+          link: "#behavioral",
+          hint: "Structure: Current role → Key achievements → What you're looking for next."
         },
         {
-          title: "Time Based Key-Value Store",
-          description: "Design time-based key-value data structure.",
+          title: "Why do you want to work here?",
+          description: "Demonstrate knowledge of company and genuine interest in role/mission.",
+          difficulty: "Easy",
+          companies: ["Google", "Amazon", "Meta", "Apple", "Microsoft", "Netflix"],
+          tags: ["Company Research", "Motivation"],
+          round: "All Rounds",
+          link: "#behavioral",
+          hint: "Research company values, recent news, products. Connect to your goals."
+        },
+        {
+          title: "Describe a challenging project",
+          description: "Walk through a complex technical project highlighting problem-solving and impact.",
           difficulty: "Medium",
-          tags: ["Design", "Hash Table", "Binary Search"],
-          link: "https://leetcode.com/problems/time-based-key-value-store/"
+          companies: ["Google", "Amazon", "Meta", "Apple"],
+          tags: ["Technical Leadership", "Problem Solving"],
+          round: "Behavioral",
+          link: "#behavioral",
+          hint: "Use STAR method: Situation, Task, Action, Result. Quantify impact."
+        },
+        {
+          title: "Tell me about a time you disagreed with your manager",
+          description: "Show ability to handle conflict professionally and advocate for technical decisions.",
+          difficulty: "Medium",
+          companies: ["Amazon", "Google", "Meta", "Microsoft"],
+          tags: ["Conflict Resolution", "Leadership"],
+          round: "Behavioral",
+          link: "#behavioral",
+          hint: "Focus on respectful disagreement, data-driven arguments, and resolution."
+        },
+        {
+          title: "Describe a time you failed",
+          description: "Show self-awareness, learning from mistakes, and resilience.",
+          difficulty: "Medium",
+          companies: ["Amazon", "Meta", "Google", "Apple"],
+          tags: ["Self Awareness", "Growth Mindset"],
+          round: "Behavioral",
+          link: "#behavioral",
+          hint: "Choose real failure, own the mistake, emphasize lessons learned and changes made."
+        },
+        {
+          title: "How do you handle tight deadlines?",
+          description: "Demonstrate time management, prioritization, and ability to work under pressure.",
+          difficulty: "Easy",
+          companies: ["Amazon", "Meta", "Microsoft", "Netflix"],
+          tags: ["Time Management", "Pressure Handling"],
+          round: "Behavioral",
+          link: "#behavioral",
+          hint: "Discuss prioritization frameworks, stakeholder communication, scope management."
+        },
+        {
+          title: "Tell me about a time you mentored someone",
+          description: "Show leadership potential and ability to help others grow.",
+          difficulty: "Medium",
+          companies: ["Google", "Meta", "Microsoft", "Apple"],
+          tags: ["Mentorship", "Leadership"],
+          round: "Behavioral",
+          link: "#behavioral",
+          hint: "Focus on specific techniques used, mentee's growth, and your learning."
         }
       ]
     };
 
     // Enhanced state management
     let currentCategory = "all";
-    let solvedChallenges = new Set(JSON.parse(localStorage.getItem("solvedChallenges") || "[]"));
-    let filteredChallenges = [];
-    let currentStudyPlan = localStorage.getItem("currentStudyPlan") || null;
+    let solvedQuestions = new Set(JSON.parse(localStorage.getItem("solvedQuestions") || "[]"));
+    let filteredQuestions = [];
     let streak = parseInt(localStorage.getItem("streak") || "0");
     let lastSolvedDate = localStorage.getItem("lastSolvedDate");
     let achievements = JSON.parse(localStorage.getItem("achievements") || "[]");
 
     // Timer state
     let timerInterval;
-    let timeRemaining = 25 * 60; // 25 minutes in seconds
+    let timeRemaining = 45 * 60; // 45 minutes in seconds
     let isTimerRunning = false;
 
-    // Achievement system
+    // Achievement system for interview prep
     const achievementDefinitions = [
-      { id: 'first_solve', name: 'First Steps', description: 'Solved your first challenge', icon: '🎯', threshold: 1 },
-      { id: 'five_solved', name: 'Getting Started', description: 'Solved 5 challenges', icon: '🚀', threshold: 5 },
-      { id: 'ten_solved', name: 'On Fire', description: 'Solved 10 challenges', icon: '🔥', threshold: 10 },
-      { id: 'twenty_solved', name: 'Dedicated Learner', description: 'Solved 20 challenges', icon: '📚', threshold: 20 },
-      { id: 'fifty_solved', name: 'Code Master', description: 'Solved 50 challenges', icon: '⚡', threshold: 50 },
-      { id: 'easy_master', name: 'Easy Master', description: 'Completed all easy challenges', icon: '🟢', threshold: 'all_easy' },
-      { id: 'medium_master', name: 'Medium Master', description: 'Completed all medium challenges', icon: '🟡', threshold: 'all_medium' },
-      { id: 'hard_master', name: 'Hard Master', description: 'Completed all hard challenges', icon: '🔴', threshold: 'all_hard' },
-      { id: 'week_streak', name: 'Week Warrior', description: '7 day solving streak', icon: '📅', threshold: 'streak_7' },
-      { id: 'month_streak', name: 'Monthly Champion', description: '30 day solving streak', icon: '🏆', threshold: 'streak_30' }
+      { id: 'first_solve', name: 'Getting Started', description: 'Solved your first interview question', icon: '🎯', threshold: 1 },
+      { id: 'five_solved', name: 'Building Momentum', description: 'Solved 5 interview questions', icon: '🚀', threshold: 5 },
+      { id: 'ten_solved', name: 'On Track', description: 'Solved 10 interview questions', icon: '🔥', threshold: 10 },
+      { id: 'twenty_solved', name: 'Interview Ready', description: 'Solved 20 interview questions', icon: '📚', threshold: 20 },
+      { id: 'fifty_solved', name: 'FAANG Ready', description: 'Solved 50 interview questions', icon: '⚡', threshold: 50 },
+      { id: 'hundred_solved', name: 'Interview Expert', description: 'Solved 100 interview questions', icon: '🏆', threshold: 100 },
+      { id: 'google_focused', name: 'Google Specialist', description: 'Solved 10 Google questions', icon: '🟦', threshold: 'google_10' },
+      { id: 'amazon_focused', name: 'Amazon Specialist', description: 'Solved 10 Amazon questions', icon: '🟠', threshold: 'amazon_10' },
+      { id: 'meta_focused', name: 'Meta Specialist', description: 'Solved 10 Meta questions', icon: '🔵', threshold: 'meta_10' },
+      { id: 'system_design_master', name: 'System Design Pro', description: 'Completed all system design questions', icon: '🏗️', threshold: 'all_system' },
+      { id: 'behavioral_master', name: 'Behavioral Expert', description: 'Completed all behavioral questions', icon: '🤝', threshold: 'all_behavioral' },
+      { id: 'week_streak', name: 'Consistent Learner', description: '7 day solving streak', icon: '📅', threshold: 'streak_7' },
+      { id: 'month_streak', name: 'Dedicated Candidate', description: '30 day solving streak', icon: '🏆', threshold: 'streak_30' }
     ];
 
     // DOM elements
-    const challengeGrid = document.getElementById("challengeGrid");
+    const questionGrid = document.getElementById("questionGrid");
     const difficultyFilter = document.getElementById("difficultyFilter");
+    const companyFilter = document.getElementById("companyFilter");
     const searchInput = document.getElementById("searchInput");
     const themeToggle = document.getElementById("themeToggle");
     const emptyState = document.getElementById("emptyState");
@@ -1570,11 +1618,10 @@
     function init() {
       setupEventListeners();
       updateStats();
-      renderChallenges();
+      renderQuestions();
       updateProgress();
       updateStreak();
       renderAchievements();
-      setupStudyPlan();
       setupTimer();
     }
 
@@ -1587,27 +1634,17 @@
           tab.classList.add("active");
           currentCategory = tab.dataset.category;
           updateSectionHeader();
-          renderChallenges();
+          renderQuestions();
         });
       });
 
       // Filters
-      difficultyFilter.addEventListener("change", renderChallenges);
-      searchInput.addEventListener("input", debounce(renderChallenges, 300));
+      difficultyFilter.addEventListener("change", renderQuestions);
+      companyFilter.addEventListener("change", renderQuestions);
+      searchInput.addEventListener("input", debounce(renderQuestions, 300));
 
       // Theme toggle
       themeToggle.addEventListener("click", toggleTheme);
-
-      // Study plan selection
-      document.querySelectorAll(".plan-card").forEach(card => {
-        card.addEventListener("click", () => {
-          document.querySelectorAll(".plan-card").forEach(c => c.classList.remove("selected"));
-          card.classList.add("selected");
-          currentStudyPlan = card.dataset.plan;
-          localStorage.setItem("currentStudyPlan", currentStudyPlan);
-          showAchievement(`Study plan selected: ${card.querySelector('.plan-name').textContent}`);
-        });
-      });
 
       // Load saved theme
       if (localStorage.getItem("darkMode") === "true") {
@@ -1616,22 +1653,12 @@
       }
     }
 
-    // Study Plan Setup
-    function setupStudyPlan() {
-      if (currentStudyPlan) {
-        const selectedCard = document.querySelector(`[data-plan="${currentStudyPlan}"]`);
-        if (selectedCard) {
-          selectedCard.classList.add("selected");
-        }
-      }
-    }
-
     // Timer Setup and Functions
     function setupTimer() {
       // Timer controls
-      startTimer.addEventListener("click", startPomodoroTimer);
-      pauseTimer.addEventListener("click", pausePomodoroTimer);
-      resetTimer.addEventListener("click", resetPomodoroTimer);
+      startTimer.addEventListener("click", startInterviewTimer);
+      pauseTimer.addEventListener("click", pauseInterviewTimer);
+      resetTimer.addEventListener("click", resetInterviewTimer);
 
       // Timer presets
       document.querySelectorAll(".preset-btn").forEach(btn => {
@@ -1644,7 +1671,7 @@
       updateTimerDisplay();
     }
 
-    function startPomodoroTimer() {
+    function startInterviewTimer() {
       if (!isTimerRunning) {
         isTimerRunning = true;
         timerInterval = setInterval(() => {
@@ -1652,31 +1679,30 @@
           updateTimerDisplay();
           
           if (timeRemaining <= 0) {
-            pausePomodoroTimer();
-            showAchievement("Pomodoro session completed! 🍅");
-            // Play notification sound would go here
-            timeRemaining = 25 * 60; // Reset to 25 minutes
+            pauseInterviewTimer();
+            showAchievement("Interview time completed! ⏰");
+            timeRemaining = 45 * 60; // Reset to 45 minutes
             updateTimerDisplay();
           }
         }, 1000);
       }
     }
 
-    function pausePomodoroTimer() {
+    function pauseInterviewTimer() {
       isTimerRunning = false;
       if (timerInterval) {
         clearInterval(timerInterval);
       }
     }
 
-    function resetPomodoroTimer() {
-      pausePomodoroTimer();
-      timeRemaining = 25 * 60;
+    function resetInterviewTimer() {
+      pauseInterviewTimer();
+      timeRemaining = 45 * 60;
       updateTimerDisplay();
     }
 
     function setTimer(minutes) {
-      pausePomodoroTimer();
+      pauseInterviewTimer();
       timeRemaining = minutes * 60;
       updateTimerDisplay();
     }
@@ -1689,8 +1715,8 @@
 
     // Achievement System
     function checkAchievements() {
-      const totalSolved = solvedChallenges.size;
-      const allChallenges = Object.values(challenges).flat();
+      const totalSolved = solvedQuestions.size;
+      const allQuestions = Object.values(interviewQuestions).flat();
       
       achievementDefinitions.forEach(achievement => {
         if (achievements.includes(achievement.id)) return;
@@ -1699,18 +1725,26 @@
 
         if (typeof achievement.threshold === 'number' && totalSolved >= achievement.threshold) {
           earned = true;
-        } else if (achievement.threshold === 'all_easy') {
-          const easyChallenges = allChallenges.filter(c => c.difficulty === 'Easy');
-          const solvedEasy = easyChallenges.filter(c => solvedChallenges.has(c.title));
-          earned = solvedEasy.length === easyChallenges.length && easyChallenges.length > 0;
-        } else if (achievement.threshold === 'all_medium') {
-          const mediumChallenges = allChallenges.filter(c => c.difficulty === 'Medium');
-          const solvedMedium = mediumChallenges.filter(c => solvedChallenges.has(c.title));
-          earned = solvedMedium.length === mediumChallenges.length && mediumChallenges.length > 0;
-        } else if (achievement.threshold === 'all_hard') {
-          const hardChallenges = allChallenges.filter(c => c.difficulty === 'Hard');
-          const solvedHard = hardChallenges.filter(c => solvedChallenges.has(c.title));
-          earned = solvedHard.length === hardChallenges.length && hardChallenges.length > 0;
+        } else if (achievement.threshold === 'google_10') {
+          const googleQuestions = allQuestions.filter(q => q.companies.includes('Google'));
+          const solvedGoogle = googleQuestions.filter(q => solvedQuestions.has(q.title));
+          earned = solvedGoogle.length >= 10;
+        } else if (achievement.threshold === 'amazon_10') {
+          const amazonQuestions = allQuestions.filter(q => q.companies.includes('Amazon'));
+          const solvedAmazon = amazonQuestions.filter(q => solvedQuestions.has(q.title));
+          earned = solvedAmazon.length >= 10;
+        } else if (achievement.threshold === 'meta_10') {
+          const metaQuestions = allQuestions.filter(q => q.companies.includes('Meta'));
+          const solvedMeta = metaQuestions.filter(q => solvedQuestions.has(q.title));
+          earned = solvedMeta.length >= 10;
+        } else if (achievement.threshold === 'all_system') {
+          const systemQuestions = interviewQuestions.system || [];
+          const solvedSystem = systemQuestions.filter(q => solvedQuestions.has(q.title));
+          earned = solvedSystem.length === systemQuestions.length && systemQuestions.length > 0;
+        } else if (achievement.threshold === 'all_behavioral') {
+          const behavioralQuestions = interviewQuestions.behavioral || [];
+          const solvedBehavioral = behavioralQuestions.filter(q => solvedQuestions.has(q.title));
+          earned = solvedBehavioral.length === behavioralQuestions.length && behavioralQuestions.length > 0;
         } else if (achievement.threshold === 'streak_7' && streak >= 7) {
           earned = true;
         } else if (achievement.threshold === 'streak_30' && streak >= 30) {
@@ -1743,8 +1777,8 @@
       if (earnedAchievements.length === 0) {
         achievementsList.innerHTML = `
           <div style="text-align: center; padding: 2rem; opacity: 0.6;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🏆</div>
-            <p>Start solving challenges to unlock achievements!</p>
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+            <p>Start solving interview questions to unlock achievements!</p>
           </div>
         `;
         return;
@@ -1752,7 +1786,7 @@
 
       earnedAchievements.forEach(achievement => {
         const achievementEl = document.createElement("div");
-        achievementEl.className = "leaderboard-item";
+        achievementEl.className = "achievement-item";
         achievementEl.innerHTML = `
           <div style="font-size: 2rem; margin-right: 1rem;">${achievement.icon}</div>
           <div style="flex: 1;">
@@ -1776,18 +1810,18 @@
         // Already solved today, keep streak
       } else if (lastSolvedDate === yesterday) {
         // Solved yesterday, increment streak
-        if (solvedChallenges.size > parseInt(localStorage.getItem("lastSolvedCount") || "0")) {
+        if (solvedQuestions.size > parseInt(localStorage.getItem("lastSolvedCount") || "0")) {
           streak++;
           localStorage.setItem("streak", streak.toString());
           localStorage.setItem("lastSolvedDate", today);
-          localStorage.setItem("lastSolvedCount", solvedChallenges.size.toString());
+          localStorage.setItem("lastSolvedCount", solvedQuestions.size.toString());
         }
       } else if (lastSolvedDate && lastSolvedDate !== today) {
         // Streak broken
-        streak = solvedChallenges.size > parseInt(localStorage.getItem("lastSolvedCount") || "0") ? 1 : 0;
+        streak = solvedQuestions.size > parseInt(localStorage.getItem("lastSolvedCount") || "0") ? 1 : 0;
         localStorage.setItem("streak", streak.toString());
         localStorage.setItem("lastSolvedDate", today);
-        localStorage.setItem("lastSolvedCount", solvedChallenges.size.toString());
+        localStorage.setItem("lastSolvedCount", solvedQuestions.size.toString());
       }
 
       streakCount.textContent = streak;
@@ -1816,108 +1850,131 @@
     // Update section header based on category
     function updateSectionHeader() {
       const categoryTitles = {
-        all: "All Challenges",
-        arrays: "Array Challenges",
-        strings: "String Challenges",
-        linkedlist: "Linked List Challenges",
-        trees: "Tree Challenges",
-        graphs: "Graph Challenges",
-        dp: "Dynamic Programming Challenges",
-        system: "System Design Challenges"
+        all: "All Interview Questions",
+        arrays: "Arrays & Strings Questions",
+        linkedlist: "Linked Lists Questions", 
+        trees: "Trees & Graphs Questions",
+        dp: "Dynamic Programming Questions",
+        system: "System Design Questions",
+        behavioral: "Behavioral Interview Questions"
       };
 
       const categorySubtitles = {
-        all: "Choose your next coding adventure",
-        arrays: "Master array manipulation and algorithms",
-        strings: "Conquer string processing challenges",
-        linkedlist: "Navigate through pointer-based structures",
-        trees: "Climb the hierarchy of tree problems",
-        graphs: "Explore connected data relationships",
-        dp: "Optimize with dynamic programming patterns",
-        system: "Design scalable systems and data structures"
+        all: "Real questions asked at top tech companies",
+        arrays: "Master array and string manipulation problems",
+        linkedlist: "Navigate pointer-based data structures",
+        trees: "Conquer tree and graph traversal problems", 
+        dp: "Optimize with dynamic programming techniques",
+        system: "Design scalable systems and architectures",
+        behavioral: "Prepare for behavioral interview rounds"
       };
 
       sectionTitle.textContent = categoryTitles[currentCategory];
       sectionSubtitle.textContent = categorySubtitles[currentCategory];
     }
 
-    // Get all challenges or filtered by category
-    function getAllChallenges() {
+    // Get all questions or filtered by category
+    function getAllQuestions() {
       if (currentCategory === "all") {
-        return Object.values(challenges).flat();
+        return Object.values(interviewQuestions).flat();
       }
-      return challenges[currentCategory] || [];
+      return interviewQuestions[currentCategory] || [];
     }
 
-    // Render challenges
-    function renderChallenges() {
-      const allChallenges = getAllChallenges();
+    // Render questions
+    function renderQuestions() {
+      const allQuestions = getAllQuestions();
       const difficultyValue = difficultyFilter.value;
+      const companyValue = companyFilter.value;
       const searchValue = searchInput.value.toLowerCase().trim();
 
-      // Filter challenges
-      filteredChallenges = allChallenges.filter(challenge => {
-        const matchesDifficulty = !difficultyValue || challenge.difficulty === difficultyValue;
+      // Filter questions
+      filteredQuestions = allQuestions.filter(question => {
+        const matchesDifficulty = !difficultyValue || question.difficulty === difficultyValue;
+        const matchesCompany = !companyValue || question.companies.includes(companyValue);
         const matchesSearch = !searchValue || 
-          challenge.title.toLowerCase().includes(searchValue) ||
-          challenge.description.toLowerCase().includes(searchValue) ||
-          challenge.tags.some(tag => tag.toLowerCase().includes(searchValue));
+          question.title.toLowerCase().includes(searchValue) ||
+          question.description.toLowerCase().includes(searchValue) ||
+          question.tags.some(tag => tag.toLowerCase().includes(searchValue)) ||
+          question.companies.some(company => company.toLowerCase().includes(searchValue));
         
-        return matchesDifficulty && matchesSearch;
+        return matchesDifficulty && matchesCompany && matchesSearch;
       });
 
       // Clear grid
-      challengeGrid.innerHTML = "";
+      questionGrid.innerHTML = "";
 
-      if (filteredChallenges.length === 0) {
+      if (filteredQuestions.length === 0) {
         emptyState.classList.remove("hidden");
-        challengeGrid.classList.add("hidden");
+        questionGrid.classList.add("hidden");
         return;
       }
 
       emptyState.classList.add("hidden");
-      challengeGrid.classList.remove("hidden");
+      questionGrid.classList.remove("hidden");
 
-      // Render each challenge
-      filteredChallenges.forEach((challenge, index) => {
-        const card = createChallengeCard(challenge, index);
-        challengeGrid.appendChild(card);
+      // Render each question
+      filteredQuestions.forEach((question, index) => {
+        const card = createQuestionCard(question, index);
+        questionGrid.appendChild(card);
       });
     }
 
-    // Create challenge card
-    function createChallengeCard(challenge, index) {
+    // Create question card
+    function createQuestionCard(question, index) {
       const card = document.createElement("div");
       card.className = "card fade-in";
       card.style.animationDelay = `${index * 0.1}s`;
 
-      const isSolved = solvedChallenges.has(challenge.title);
+      const isSolved = solvedQuestions.has(question.title);
       
       card.innerHTML = `
         <div class="card-header">
           <div>
-            <h3 class="card-title">${challenge.title}</h3>
-            <p class="card-description">${challenge.description}</p>
+            <h3 class="card-title">${question.title}</h3>
+            <p class="card-description">${question.description}</p>
           </div>
           ${isSolved ? '<div class="solved-indicator">✓</div>' : ''}
         </div>
         
-        <div class="card-tags">
-          ${challenge.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        <div class="interview-round">
+          📋 ${question.round}
         </div>
         
-        <div class="badge ${challenge.difficulty.toLowerCase()}">
-          ${getDifficultyIcon(challenge.difficulty)} ${challenge.difficulty}
+        <div class="company-tags">
+          ${question.companies.map(company => 
+            `<span class="company-tag ${company.toLowerCase()}">${company}</span>`
+          ).join('')}
         </div>
+        
+        <div class="card-tags">
+          ${question.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+        
+        <div class="badge ${question.difficulty.toLowerCase()}">
+          ${getDifficultyIcon(question.difficulty)} ${question.difficulty}
+        </div>
+        
+        ${question.hint ? `
+          <div style="margin: 1rem 0; padding: 1rem; background: var(--glass-light); border-radius: 10px; border-left: 4px solid var(--accent);">
+            <strong>💡 Hint:</strong> ${question.hint}
+          </div>
+        ` : ''}
         
         <div class="card-actions">
-          <div class="checkbox-wrapper" onclick="toggleSolved('${challenge.title}', '${challenge.difficulty}')">
+          <div class="checkbox-wrapper" onclick="toggleSolved('${question.title}', '${question.difficulty}')">
             <div class="checkbox ${isSolved ? 'checked' : ''}"></div>
             <span class="checkbox-label">Mark as solved</span>
           </div>
-          <a href="${challenge.link}" target="_blank" rel="noopener noreferrer" class="external-btn">
-            Solve Now <span>→</span>
-          </a>
+          ${question.link !== '#system-design' && question.link !== '#behavioral' ? `
+            <a href="${question.link}" target="_blank" rel="noopener noreferrer" class="external-btn">
+              Practice Now <span>→</span>
+            </a>
+          ` : `
+            <button class="external-btn" onclick="showInterviewTips('${question.title}', '${currentCategory}')">
+              View Tips <span>💡</span>
+            </button>
+          `}
         </div>
       `;
 
@@ -1928,7 +1985,7 @@
     function getDifficultyIcon(difficulty) {
       const icons = {
         Easy: "🟢",
-        Medium: "🟡",
+        Medium: "🟡", 
         Hard: "🔴"
       };
       return icons[difficulty] || "⚪";
@@ -1936,14 +1993,14 @@
 
     // Toggle solved status
     function toggleSolved(title, difficulty) {
-      const wasAlreadySolved = solvedChallenges.has(title);
+      const wasAlreadySolved = solvedQuestions.has(title);
       
       if (wasAlreadySolved) {
-        solvedChallenges.delete(title);
+        solvedQuestions.delete(title);
         showAchievement(`Unmarked: ${title}`);
       } else {
-        solvedChallenges.add(title);
-        showAchievement(`Great job! ${title} completed! 🎉`);
+        solvedQuestions.add(title);
+        showAchievement(`Excellent! ${title} completed! 🎉`);
         
         // Update streak
         const today = new Date().toDateString();
@@ -1953,26 +2010,53 @@
         }
       }
       
-      localStorage.setItem("solvedChallenges", JSON.stringify([...solvedChallenges]));
+      localStorage.setItem("solvedQuestions", JSON.stringify([...solvedQuestions]));
       updateStats();
       updateProgress();
-      renderChallenges();
+      renderQuestions();
       checkAchievements();
       renderAchievements();
     }
 
+    // Show interview tips for system design and behavioral questions
+    function showInterviewTips(title, category) {
+      const tips = {
+        system: {
+          "Design URL Shortener": "Focus on: 1) Functional requirements (shortening, redirecting) 2) Non-functional (scale, availability) 3) Database design (SQL vs NoSQL) 4) Caching strategy 5) Load balancing",
+          "Design Chat System": "Discuss: 1) Real-time messaging (WebSocket) 2) Message storage and retrieval 3) User presence 4) Push notifications 5) Media sharing 6) End-to-end encryption",
+          "Design Rate Limiter": "Cover: 1) Rate limiting algorithms (token bucket, sliding window) 2) Distributed rate limiting 3) Storage (Redis) 4) Where to place (client, server, gateway) 5) Error handling",
+          "Design News Feed": "Address: 1) Pull vs Push model 2) Fanout strategies 3) Timeline generation 4) Content ranking 5) Database schema 6) Caching layers",
+          "Design Search Engine": "Include: 1) Web crawling 2) Indexing (inverted index) 3) Ranking algorithms 4) Query processing 5) Distributed storage 6) Caching"
+        },
+        behavioral: {
+          "Tell me about yourself": "Structure: Current role (30 sec) → Key achievements with metrics (60 sec) → What you're looking for (30 sec). Keep it professional and relevant to the role.",
+          "Why do you want to work here?": "Research: Company mission, recent products/news, engineering culture. Connect your values and career goals to what the company offers.",
+          "Describe a challenging project": "Use STAR method: Situation (context) → Task (your role) → Action (what you did) → Result (quantified impact). Focus on technical challenges and leadership.",
+          "Tell me about a time you disagreed with your manager": "Show: Respectful disagreement, data-driven arguments, willingness to compromise, focus on what's best for the project/team.",
+          "Describe a time you failed": "Choose real failure, take ownership, focus on lessons learned and how you changed your approach. Show growth mindset.",
+          "How do you handle tight deadlines?": "Discuss: Prioritization frameworks, stakeholder communication, scope negotiation, quality vs speed trade-offs.",
+          "Tell me about a time you mentored someone": "Cover: Specific mentoring techniques, mentee's growth and success, what you learned from the experience."
+        }
+      };
+
+      const categoryTips = tips[category];
+      const tip = categoryTips?.[title] || "Focus on clear communication, structured thinking, and real examples from your experience.";
+      
+      showAchievement(`💡 Tip: ${tip}`);
+    }
+
     // Update stats in header
     function updateStats() {
-      const totalChallenges = Object.values(challenges).flat().length;
-      const totalSolved = solvedChallenges.size;
+      const totalQuestions = Object.values(interviewQuestions).flat().length;
+      const totalSolved = solvedQuestions.size;
       
       document.getElementById("totalSolved").textContent = totalSolved;
-      document.getElementById("totalChallenges").textContent = totalChallenges;
+      document.getElementById("totalQuestions").textContent = totalQuestions;
     }
 
     // Update progress section
     function updateProgress() {
-      const allChallenges = Object.values(challenges).flat();
+      const allQuestions = Object.values(interviewQuestions).flat();
       const solvedByDifficulty = {
         Easy: 0,
         Medium: 0,
@@ -1984,11 +2068,11 @@
         Hard: 0
       };
 
-      // Count challenges by difficulty
-      allChallenges.forEach(challenge => {
-        totalByDifficulty[challenge.difficulty]++;
-        if (solvedChallenges.has(challenge.title)) {
-          solvedByDifficulty[challenge.difficulty]++;
+      // Count questions by difficulty
+      allQuestions.forEach(question => {
+        totalByDifficulty[question.difficulty]++;
+        if (solvedQuestions.has(question.title)) {
+          solvedByDifficulty[question.difficulty]++;
         }
       });
 
@@ -2003,16 +2087,17 @@
       });
 
       // Update overall progress
-      const totalSolved = solvedChallenges.size;
-      const totalChallenges = allChallenges.length;
-      const overallPercentage = totalChallenges > 0 ? Math.round((totalSolved / totalChallenges) * 100) : 0;
+      const totalSolved = solvedQuestions.size;
+      const totalQuestions = allQuestions.length;
+      const overallPercentage = totalQuestions > 0 ? Math.round((totalSolved / totalQuestions) * 100) : 0;
 
       document.getElementById("overallProgress").textContent = `${overallPercentage}%`;
       document.getElementById("overallProgressBar").style.width = `${overallPercentage}%`;
     }
 
-    // Make toggleSolved globally accessible
+    // Make functions globally accessible
     window.toggleSolved = toggleSolved;
+    window.showInterviewTips = showInterviewTips;
 
     // Initialize app when DOM is loaded
     document.addEventListener("DOMContentLoaded", init);
@@ -2035,40 +2120,99 @@
       // Escape to clear search
       if (e.key === 'Escape' && document.activeElement === searchInput) {
         searchInput.value = '';
-        renderChallenges();
+        renderQuestions();
         searchInput.blur();
+      }
+      
+      // Space bar to start/pause timer when not focused on inputs
+      if (e.key === ' ' && !['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+        e.preventDefault();
+        if (isTimerRunning) {
+          pauseInterviewTimer();
+        } else {
+          startInterviewTimer();
+        }
       }
     });
 
-    // Add some motivational messages
+    // Motivational messages for interview prep
     const motivationalMessages = [
-      "Keep coding! Every expert was once a beginner! 💪",
-      "You're making great progress! 🌟",
-      "Consistency is key to mastering algorithms! 🔑",
-      "Challenge yourself - that's where growth happens! 🚀",
-      "Debugging is like being a detective! 🕵️",
-      "Code is poetry written in logic! 📝",
-      "Every bug you fix makes you stronger! 🐛➡️💪",
-      "Think twice, code once! 🤔",
-      "Great code is not about perfection, but progression! ⬆️"
+      "Keep practicing! Consistency beats perfection! 💪",
+      "You're building interview-winning skills! 🌟", 
+      "Every question solved gets you closer to your dream job! 🎯",
+      "Practice makes permanent - keep going! 🚀",
+      "Confidence comes from preparation! 📚",
+      "You've got this - one question at a time! ⭐",
+      "Great developers are made through deliberate practice! 🔥",
+      "Your future self will thank you for this preparation! 🏆",
+      "Technical interviews are just puzzles - you're getting better! 🧩"
     ];
 
     // Show random motivational message occasionally
     function showMotivationalMessage() {
-      if (Math.random() < 0.3) { // 30% chance
+      if (Math.random() < 0.4) { // 40% chance
         const message = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
         setTimeout(() => showAchievement(message), 2000);
       }
     }
 
-    // Call motivational message when user solves challenges
+    // Call motivational message when user solves questions
     const originalToggleSolved = toggleSolved;
     window.toggleSolved = function(title, difficulty) {
       originalToggleSolved(title, difficulty);
-      if (solvedChallenges.has(title)) {
+      if (solvedQuestions.has(title)) {
         setTimeout(showMotivationalMessage, 3000);
       }
     };
+
+    // Add interview readiness indicator
+    function getInterviewReadiness() {
+      const totalSolved = solvedQuestions.size;
+      const allQuestions = Object.values(interviewQuestions).flat();
+      const percentage = (totalSolved / allQuestions.length) * 100;
+      
+      if (percentage >= 80) return { level: "Interview Ready! 🚀", color: "var(--success)" };
+      if (percentage >= 60) return { level: "Almost Ready! 💪", color: "var(--warning)" };
+      if (percentage >= 40) return { level: "Making Progress! 📈", color: "var(--accent)" };
+      if (percentage >= 20) return { level: "Getting Started! 🌱", color: "var(--primary)" };
+      return { level: "Just Beginning! 🎯", color: "var(--secondary)" };
+    }
+
+    // Update readiness indicator
+    function updateReadinessIndicator() {
+      const readiness = getInterviewReadiness();
+      const indicator = document.querySelector('.readiness-indicator');
+      if (indicator) {
+        indicator.textContent = readiness.level;
+        indicator.style.background = readiness.color;
+      }
+    }
+
+    // Add some company-specific insights
+    const companyInsights = {
+      "Google": "Focus on algorithms, system design, and Googleyness. Practice LeetCode medium/hard problems.",
+      "Amazon": "Master Amazon's 16 Leadership Principles. Practice system design and behavioral questions using STAR method.", 
+      "Meta": "Emphasize building connections and moving fast. Practice product design and scalability questions.",
+      "Apple": "Focus on attention to detail and user experience. Practice hardware/software integration questions.",
+      "Microsoft": "Demonstrate growth mindset and collaboration. Practice Azure and distributed systems questions.",
+      "Netflix": "Show high performance culture fit. Practice streaming and content delivery system design."
+    };
+
+    // Show company insight when filtering by company
+    function showCompanyInsight(company) {
+      const insight = companyInsights[company];
+      if (insight) {
+        setTimeout(() => showAchievement(`💡 ${company} Tip: ${insight}`), 1000);
+      }
+    }
+
+    // Update company filter event listener
+    companyFilter.addEventListener("change", (e) => {
+      renderQuestions();
+      if (e.target.value) {
+        showCompanyInsight(e.target.value);
+      }
+    });
   </script>
 </body>
 </html>
