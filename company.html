@@ -1,0 +1,2325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAANG Coding Questions - 100 Real Interview Problems</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      --warning: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
+      --danger: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+      --faang: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
+      --google: linear-gradient(135deg, #4285F4 0%, #34A853 50%, #FBBC05 75%, #EA4335 100%);
+      --amazon: linear-gradient(135deg, #FF9900 0%, #146EB4 100%);
+      --meta: linear-gradient(135deg, #1877F2 0%, #42B883 100%);
+      --apple: linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%);
+      --microsoft: linear-gradient(135deg, #00A4EF 0%, #7FBA00 100%);
+      --netflix: linear-gradient(135deg, #E50914 0%, #B81538 100%);
+      --bg-light: #f8faff;
+      --bg-dark: #0d1117;
+      --text-light: #2d3748;
+      --text-dark: #e2e8f0;
+      --card-light: rgba(255, 255, 255, 0.9);
+      --card-dark: rgba(30, 41, 59, 0.9);
+      --glass-light: rgba(255, 255, 255, 0.25);
+      --glass-dark: rgba(0, 0, 0, 0.25);
+      --shadow-light: 0 8px 32px rgba(31, 38, 135, 0.15);
+      --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --border-light: rgba(255, 255, 255, 0.18);
+      --border-dark: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: all 0.3s ease;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    /* Enhanced animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.2) 0%, transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 40% 80%, rgba(78, 205, 196, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 70% 60%, rgba(69, 183, 209, 0.12) 0%, transparent 50%);
+      z-index: -1;
+      animation: float 25s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-15px) rotate(1deg); }
+      50% { transform: translateY(10px) rotate(-1deg); }
+      75% { transform: translateY(-8px) rotate(0.5deg); }
+    }
+
+    /* Header with enhanced styling */
+    .header {
+      background: var(--glass-light);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-light);
+    }
+
+    body.dark .header {
+      background: var(--glass-dark);
+      border-bottom: 1px solid var(--border-dark);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.8rem;
+      font-weight: 900;
+      background: var(--faang);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo span {
+      font-size: 2.5rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .header-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .header-title {
+      font-size: 3rem;
+      font-weight: 900;
+      background: var(--faang);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .header-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      font-weight: 500;
+    }
+
+    .header-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: var(--glass-light);
+      border-radius: 15px;
+      border: 1px solid var(--border-light);
+      backdrop-filter: blur(10px);
+      min-width: 100px;
+    }
+
+    body.dark .stat-item {
+      background: var(--glass-dark);
+      border-color: var(--border-dark);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 900;
+      background: var(--faang);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      opacity: 0.7;
+    }
+
+    .header-right {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .streak-counter {
+      background: var(--warning);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-toggle {
+      background: var(--glass-light);
+      border: 1px solid var(--border-light);
+      backdrop-filter: blur(10px);
+      color: var(--text-light);
+      border-radius: 50px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.5rem;
+    }
+
+    body.dark .theme-toggle {
+      background: var(--glass-dark);
+      border-color: var(--border-dark);
+      color: var(--text-dark);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1) rotate(180deg);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Enhanced Navigation */
+    .nav {
+      background: var(--glass-light);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 120px;
+      z-index: 90;
+    }
+
+    body.dark .nav {
+      background: var(--glass-dark);
+      border-bottom-color: var(--border-dark);
+    }
+
+    .nav-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .company-tabs {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .company-tab {
+      padding: 1rem 1.8rem;
+      background: transparent;
+      border: 2px solid transparent;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .company-tab::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+
+    .company-tab.all::before { background: var(--faang); }
+    .company-tab.google::before { background: var(--google); }
+    .company-tab.amazon::before { background: var(--amazon); }
+    .company-tab.meta::before { background: var(--meta); }
+    .company-tab.apple::before { background: var(--apple); }
+    .company-tab.microsoft::before { background: var(--microsoft); }
+    .company-tab.netflix::before { background: var(--netflix); }
+
+    .company-tab:hover::before,
+    .company-tab.active::before {
+      left: 0;
+    }
+
+    .company-tab:hover,
+    .company-tab.active {
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .filters {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .filter-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    select, .search-input {
+      padding: 0.8rem 1.2rem;
+      border: 2px solid var(--border-light);
+      border-radius: 20px;
+      background: var(--glass-light);
+      backdrop-filter: blur(10px);
+      color: var(--text-light);
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      outline: none;
+      min-width: 150px;
+    }
+
+    body.dark select,
+    body.dark .search-input {
+      background: var(--glass-dark);
+      border-color: var(--border-dark);
+      color: var(--text-dark);
+    }
+
+    select:focus,
+    .search-input:focus {
+      border-color: #667eea;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    /* Main content */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .featured-section {
+      background: var(--glass-light);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-light);
+      border-radius: 25px;
+      padding: 3rem;
+      margin-bottom: 4rem;
+      box-shadow: var(--shadow-light);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark .featured-section {
+      background: var(--glass-dark);
+      border-color: var(--border-dark);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .featured-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent 0deg, rgba(102, 126, 234, 0.1) 45deg, transparent 90deg, rgba(255, 107, 107, 0.1) 135deg, transparent 180deg, rgba(78, 205, 196, 0.1) 225deg, transparent 270deg, rgba(69, 183, 209, 0.1) 315deg, transparent 360deg);
+      animation: rotate 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .featured-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: var(--faang);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .featured-description {
+      font-size: 1.3rem;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .company-showcase {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .company-logo {
+      padding: 1rem 2rem;
+      border-radius: 20px;
+      font-weight: 700;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .company-logo:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .company-logo.google { background: var(--google); }
+    .company-logo.amazon { background: var(--amazon); }
+    .company-logo.meta { background: var(--meta); }
+    .company-logo.apple { background: var(--apple); }
+    .company-logo.microsoft { background: var(--microsoft); }
+    .company-logo.netflix { background: var(--netflix); }
+
+    /* Progress Section */
+    .progress-section {
+      background: var(--glass-light);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-light);
+      border-radius: 25px;
+      padding: 3rem;
+      margin-bottom: 4rem;
+      box-shadow: var(--shadow-light);
+    }
+
+    body.dark .progress-section {
+      background: var(--glass-dark);
+      border-color: var(--border-dark);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .progress-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .progress-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: var(--faang);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.8rem;
+    }
+
+    .progress-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .progress-card {
+      text-align: center;
+      padding: 2rem;
+      background: var(--glass-light);
+      border: 2px solid var(--border-light);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    body.dark .progress-card {
+      background: var(--glass-dark);
+      border-color: var(--border-dark);
+    }
+
+    .progress-card:hover {
+      transform: translateY(-5px);
+      border-color: #667eea;
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+    }
+
+    .progress-number {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: var(--faang);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .progress-label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      opacity: 0.8;
+      margin-bottom: 1rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: var(--glass-light);
+      border-radius: 15px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    body.dark .progress-bar {
+      background: var(--glass-dark);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--success);
+      border-radius: 15px;
+      transition: width 1.5s ease;
+      position: relative;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Question grid */
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: var(--faang);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    /* Enhanced Question Cards */
+    .card {
+      background: var(--card-light);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--border-light);
+      border-radius: 25px;
+      padding: 2.5rem;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+    }
+
+    body.dark .card {
+      background: var(--card-dark);
+      border-color: var(--border-dark);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: var(--faang);
+      border-radius: 25px;
+      z-index: -1;
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      background: var(--faang);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.3;
+    }
+
+    .card-description {
+      font-size: 1rem;
+      opacity: 0.85;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .company-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .company-tag {
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .company-tag.google { background: var(--google); }
+    .company-tag.amazon { background: var(--amazon); }
+    .company-tag.apple { background: var(--apple); }
+    .company-tag.meta { background: var(--meta); }
+    .company-tag.microsoft { background: var(--microsoft); }
+    .company-tag.netflix { background: var(--netflix); }
+    .company-tag.uber { background: linear-gradient(135deg, #000000 0%, #333333 100%); }
+    .company-tag.airbnb { background: linear-gradient(135deg, #FF5A5F 0%, #FF385C 100%); }
+    .company-tag.linkedin { background: linear-gradient(135deg, #0A66C2 0%, #004182 100%); }
+    .company-tag.tesla { background: linear-gradient(135deg, #CC0000 0%, #8B0000 100%); }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tag {
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: white;
+      background: var(--accent);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .badge.easy { background: var(--success); }
+    .badge.medium { background: var(--warning); }
+    .badge.hard { background: var(--danger); }
+
+    .solved-indicator {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 40px;
+      height: 40px;
+      background: var(--success);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      animation: bounce 0.6s ease;
+      box-shadow: 0 4px 15px rgba(17, 153, 142, 0.4);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 2px solid var(--border-light);
+    }
+
+    body.dark .card-actions {
+      border-top-color: var(--border-dark);
+    }
+
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .checkbox-wrapper:hover {
+      transform: scale(1.05);
+    }
+
+    .checkbox {
+      width: 24px;
+      height: 24px;
+      border: 3px solid #667eea;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .checkbox.checked {
+      background: var(--success);
+      border-color: transparent;
+      transform: scale(1.1);
+    }
+
+    .checkbox.checked::after {
+      content: '✓';
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .external-btn {
+      background: var(--faang);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .external-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Achievement notification */
+    .achievement {
+      position: fixed;
+      top: 120px;
+      right: 30px;
+      background: var(--success);
+      color: white;
+      padding: 1.5rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transform: translateX(400px);
+      transition: transform 0.5s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 700;
+      max-width: 350px;
+    }
+
+    .achievement.show {
+      transform: translateX(0);
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 5rem 2rem;
+      opacity: 0.6;
+    }
+
+    .empty-state.hidden {
+      display: none;
+    }
+
+    .empty-icon {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+    }
+
+    .empty-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    /* Loading animation */
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid var(--glass-light);
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .header-title {
+        font-size: 2.2rem;
+      }
+
+      .header-stats {
+        gap: 1rem;
+      }
+
+      .nav-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .company-tabs {
+        justify-content: center;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .card {
+        padding: 2rem;
+      }
+
+      .progress-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-section {
+        padding: 2rem;
+      }
+
+      .company-showcase {
+        gap: 1rem;
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide-in {
+      animation: slideIn 0.6s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Achievement notification -->
+  <div id="achievementNotification" class="achievement">
+    <span>🎉</span>
+    <span id="achievementText"></span>
+  </div>
+
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <span>💻</span>
+        <span>FAANG Coder</span>
+      </div>
+      <div class="header-center">
+        <h1 class="header-title">100 Coding Challenges</h1>
+        <p class="header-subtitle">Real interview questions from top tech companies</p>
+        <div class="header-stats">
+          <div class="stat-item">
+            <div class="stat-number" id="totalSolved">0</div>
+            <div class="stat-label">Solved</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100</div>
+            <div class="stat-label">Questions</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Companies</div>
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="streak-counter">
+          🔥 <span id="streakCount">0</span> day streak
+        </div>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Featured Section -->
+  <div class="container">
+    <div class="featured-section">
+      <h2 class="featured-title">🚀 Master FAANG Interviews</h2>
+      <p class="featured-description">
+        Practice with 100 carefully curated coding questions asked at Google, Amazon, Meta, Apple, Microsoft, and Netflix. 
+        Each question includes detailed hints, difficulty levels, and direct links to practice platforms.
+      </p>
+      <div class="company-showcase">
+        <div class="company-logo google" onclick="filterByCompany('Google')">Google</div>
+        <div class="company-logo amazon" onclick="filterByCompany('Amazon')">Amazon</div>
+        <div class="company-logo meta" onclick="filterByCompany('Meta')">Meta</div>
+        <div class="company-logo apple" onclick="filterByCompany('Apple')">Apple</div>
+        <div class="company-logo microsoft" onclick="filterByCompany('Microsoft')">Microsoft</div>
+        <div class="company-logo netflix" onclick="filterByCompany('Netflix')">Netflix</div>
+      </div>
+    </div>
+
+    <!-- Progress Section -->
+    <div class="progress-section">
+      <div class="progress-header">
+        <h2 class="progress-title">📊 Your Coding Progress</h2>
+        <p>Track your journey to interview success</p>
+      </div>
+      <div class="progress-grid">
+        <div class="progress-card">
+          <div class="progress-number" id="easyCount">0</div>
+          <div class="progress-label">Easy Problems</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="easyProgress" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="progress-card">
+          <div class="progress-number" id="mediumCount">0</div>
+          <div class="progress-label">Medium Problems</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="mediumProgress" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="progress-card">
+          <div class="progress-number" id="hardCount">0</div>
+          <div class="progress-label">Hard Problems</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="hardProgress" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="progress-card">
+          <div class="progress-number" id="overallProgress">0%</div>
+          <div class="progress-label">Overall Progress</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="overallProgressBar" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-content">
+      <div class="company-tabs">
+        <button class="company-tab all active" data-company="all">All Companies</button>
+        <button class="company-tab google" data-company="Google">Google</button>
+        <button class="company-tab amazon" data-company="Amazon">Amazon</button>
+        <button class="company-tab meta" data-company="Meta">Meta</button>
+        <button class="company-tab apple" data-company="Apple">Apple</button>
+        <button class="company-tab microsoft" data-company="Microsoft">Microsoft</button>
+        <button class="company-tab netflix" data-company="Netflix">Netflix</button>
+      </div>
+      <div class="filters">
+        <div class="filter-group">
+          <label class="filter-label">Difficulty</label>
+          <select id="difficultyFilter">
+            <option value="">All Levels</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Category</label>
+          <select id="categoryFilter">
+            <option value="">All Categories</option>
+            <option value="Array">Arrays</option>
+            <option value="String">Strings</option>
+            <option value="Linked List">Linked Lists</option>
+            <option value="Tree">Trees</option>
+            <option value="Graph">Graphs</option>
+            <option value="Dynamic Programming">Dynamic Programming</option>
+            <option value="Hash Table">Hash Tables</option>
+            <option value="Two Pointers">Two Pointers</option>
+            <option value="Binary Search">Binary Search</option>
+            <option value="Sorting">Sorting</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Search</label>
+          <input type="text" class="search-input" id="searchInput" placeholder="Search problems...">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title" id="sectionTitle">All Coding Questions</h2>
+      <p class="section-subtitle" id="sectionSubtitle">Master these problems to ace your technical interviews</p>
+    </div>
+
+    <div id="questionGrid" class="grid"></div>
+
+    <div id="emptyState" class="empty-state hidden">
+      <div class="empty-icon">🔍</div>
+      <div class="empty-text">No questions found matching your criteria</div>
+    </div>
+  </div>
+
+  <script>
+    // Comprehensive 100 coding questions database
+    const codingQuestions = [
+      // Easy Problems (35 questions)
+      {
+        title: "Two Sum",
+        description: "Given an array of integers and a target, return indices of two numbers that add up to target.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Apple", "Microsoft"],
+        tags: ["Array", "Hash Table"],
+        link: "https://leetcode.com/problems/two-sum/",
+        hint: "Use a hash map to store complements as you iterate through the array."
+      },
+      {
+        title: "Valid Parentheses",
+        description: "Determine if the input string of brackets is valid with proper opening and closing.",
+        difficulty: "Easy",
+        companies: ["Google", "Meta", "Microsoft", "Amazon"],
+        tags: ["Stack", "String"],
+        link: "https://leetcode.com/problems/valid-parentheses/",
+        hint: "Use a stack to keep track of opening brackets and match them with closing ones."
+      },
+      {
+        title: "Merge Two Sorted Lists",
+        description: "Merge two sorted linked lists and return it as a sorted list.",
+        difficulty: "Easy",
+        companies: ["Amazon", "Microsoft", "Apple"],
+        tags: ["Linked List", "Recursion"],
+        link: "https://leetcode.com/problems/merge-two-sorted-lists/",
+        hint: "Compare the values of nodes and link the smaller one, then recursively process the rest."
+      },
+      {
+        title: "Best Time to Buy and Sell Stock",
+        description: "Find the maximum profit from buying and selling a stock once.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Meta", "Apple"],
+        tags: ["Array", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+        hint: "Keep track of the minimum price seen so far and calculate profit at each step."
+      },
+      {
+        title: "Valid Palindrome",
+        description: "Check if a string is a palindrome, considering only alphanumeric characters.",
+        difficulty: "Easy",
+        companies: ["Meta", "Microsoft", "Apple"],
+        tags: ["String", "Two Pointers"],
+        link: "https://leetcode.com/problems/valid-palindrome/",
+        hint: "Use two pointers from start and end, moving towards center while skipping non-alphanumeric."
+      },
+      {
+        title: "Maximum Subarray",
+        description: "Find the contiguous subarray with the largest sum (Kadane's algorithm).",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Array", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/maximum-subarray/",
+        hint: "At each position, decide whether to extend existing subarray or start a new one."
+      },
+      {
+        title: "Climbing Stairs",
+        description: "Find number of distinct ways to climb n stairs (1 or 2 steps at a time).",
+        difficulty: "Easy",
+        companies: ["Amazon", "Apple", "Microsoft"],
+        tags: ["Dynamic Programming", "Math"],
+        link: "https://leetcode.com/problems/climbing-stairs/",
+        hint: "It's essentially Fibonacci sequence: f(n) = f(n-1) + f(n-2)."
+      },
+      {
+        title: "Binary Tree Inorder Traversal",
+        description: "Return the inorder traversal of a binary tree's node values.",
+        difficulty: "Easy",
+        companies: ["Google", "Meta", "Microsoft"],
+        tags: ["Tree", "Stack", "Recursion"],
+        link: "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+        hint: "Recursively traverse left subtree, visit root, then right subtree."
+      },
+      {
+        title: "Symmetric Tree",
+        description: "Check whether a binary tree is a mirror of itself (symmetric around center).",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Tree", "BFS", "DFS"],
+        link: "https://leetcode.com/problems/symmetric-tree/",
+        hint: "Compare left subtree with right subtree recursively, checking if they're mirrors."
+      },
+      {
+        title: "Maximum Depth of Binary Tree",
+        description: "Find the maximum depth (height) of a binary tree.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Tree", "DFS", "BFS"],
+        link: "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+        hint: "Recursively find depth of left and right subtrees, return max + 1."
+      },
+      {
+        title: "Same Tree",
+        description: "Check if two binary trees are the same (same structure and node values).",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["Tree", "DFS"],
+        link: "https://leetcode.com/problems/same-tree/",
+        hint: "Recursively compare corresponding nodes in both trees."
+      },
+      {
+        title: "Reverse Linked List",
+        description: "Reverse a singly linked list iteratively or recursively.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Apple", "Microsoft", "Meta"],
+        tags: ["Linked List", "Recursion"],
+        link: "https://leetcode.com/problems/reverse-linked-list/",
+        hint: "Keep track of previous, current, and next nodes while iterating."
+      },
+      {
+        title: "Palindrome Linked List",
+        description: "Check if a singly linked list is a palindrome.",
+        difficulty: "Easy",
+        companies: ["Amazon", "Meta", "Apple"],
+        tags: ["Linked List", "Two Pointers"],
+        link: "https://leetcode.com/problems/palindrome-linked-list/",
+        hint: "Find middle, reverse second half, then compare with first half."
+      },
+      {
+        title: "Linked List Cycle",
+        description: "Determine if a linked list has a cycle using Floyd's algorithm.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Linked List", "Two Pointers"],
+        link: "https://leetcode.com/problems/linked-list-cycle/",
+        hint: "Use two pointers, slow and fast. If they meet, there's a cycle."
+      },
+      {
+        title: "Remove Duplicates from Sorted Array",
+        description: "Remove duplicates from sorted array in-place and return new length.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Array", "Two Pointers"],
+        link: "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+        hint: "Use two pointers: one for unique elements, another for iteration."
+      },
+      {
+        title: "Plus One",
+        description: "Add one to a large integer represented as an array of digits.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["Array", "Math"],
+        link: "https://leetcode.com/problems/plus-one/",
+        hint: "Handle carry from right to left, create new array if final carry exists."
+      },
+      {
+        title: "Sqrt(x)",
+        description: "Compute and return the square root of x using binary search.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Math", "Binary Search"],
+        link: "https://leetcode.com/problems/sqrtx/",
+        hint: "Use binary search between 0 and x, find largest integer whose square ≤ x."
+      },
+      {
+        title: "Search Insert Position",
+        description: "Find the index where target should be inserted in a sorted array.",
+        difficulty: "Easy",
+        companies: ["Amazon", "Microsoft"],
+        tags: ["Array", "Binary Search"],
+        link: "https://leetcode.com/problems/search-insert-position/",
+        hint: "Use binary search, return left pointer when search ends."
+      },
+      {
+        title: "Length of Last Word",
+        description: "Return the length of the last word in a string of words.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["String"],
+        link: "https://leetcode.com/problems/length-of-last-word/",
+        hint: "Traverse from the end, skip spaces, then count characters."
+      },
+      {
+        title: "Roman to Integer",
+        description: "Convert a Roman numeral string to an integer.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Hash Table", "Math", "String"],
+        link: "https://leetcode.com/problems/roman-to-integer/",
+        hint: "If current character value < next character value, subtract; otherwise add."
+      },
+      {
+        title: "Longest Common Prefix",
+        description: "Find the longest common prefix string amongst an array of strings.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["String"],
+        link: "https://leetcode.com/problems/longest-common-prefix/",
+        hint: "Compare characters at same position across all strings until mismatch."
+      },
+      {
+        title: "Single Number",
+        description: "Find the single number that appears once while others appear twice.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Array", "Bit Manipulation"],
+        link: "https://leetcode.com/problems/single-number/",
+        hint: "Use XOR operation - XOR of identical numbers is 0, XOR with 0 is the number itself."
+      },
+      {
+        title: "Happy Number",
+        description: "Determine if a number is happy (eventually reaches 1 through digit square sum).",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["Hash Table", "Math"],
+        link: "https://leetcode.com/problems/happy-number/",
+        hint: "Use a set to detect cycles, or use Floyd's cycle detection."
+      },
+      {
+        title: "Count Primes",
+        description: "Count the number of prime numbers less than a non-negative number n.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["Array", "Math"],
+        link: "https://leetcode.com/problems/count-primes/",
+        hint: "Use Sieve of Eratosthenes algorithm for efficient prime counting."
+      },
+      {
+        title: "Isomorphic Strings",
+        description: "Determine if two strings are isomorphic (characters can be mapped one-to-one).",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["Hash Table", "String"],
+        link: "https://leetcode.com/problems/isomorphic-strings/",
+        hint: "Use two hash maps to maintain bidirectional character mapping."
+      },
+      {
+        title: "Contains Duplicate",
+        description: "Check if any value appears at least twice in the array.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Array", "Hash Table"],
+        link: "https://leetcode.com/problems/contains-duplicate/",
+        hint: "Use a hash set to track seen elements."
+      },
+      {
+        title: "Missing Number",
+        description: "Find the missing number in an array containing n distinct numbers.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Array", "Math", "Bit Manipulation"],
+        link: "https://leetcode.com/problems/missing-number/",
+        hint: "Use XOR operation or sum formula: expected_sum - actual_sum."
+      },
+      {
+        title: "Move Zeroes",
+        description: "Move all zeroes to the end while maintaining relative order of non-zero elements.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Array", "Two Pointers"],
+        link: "https://leetcode.com/problems/move-zeroes/",
+        hint: "Use two pointers: one for non-zero elements, another for iteration."
+      },
+      {
+        title: "Power of Two",
+        description: "Determine if an integer is a power of two.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["Math", "Bit Manipulation"],
+        link: "https://leetcode.com/problems/power-of-two/",
+        hint: "A power of two has only one bit set: n & (n-1) == 0 and n > 0."
+      },
+      {
+        title: "Implement Queue using Stacks",
+        description: "Implement a FIFO queue using only two stacks.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Stack", "Design"],
+        link: "https://leetcode.com/problems/implement-queue-using-stacks/",
+        hint: "Use two stacks: one for enqueue operations, another for dequeue."
+      },
+      {
+        title: "Implement Stack using Queues",
+        description: "Implement a LIFO stack using only two queues.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["Stack", "Design"],
+        link: "https://leetcode.com/problems/implement-stack-using-queues/",
+        hint: "Use two queues, or optimize with one queue by rotating elements."
+      },
+      {
+        title: "Invert Binary Tree",
+        description: "Invert a binary tree (swap left and right subtrees recursively).",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Tree", "DFS", "BFS"],
+        link: "https://leetcode.com/problems/invert-binary-tree/",
+        hint: "Recursively swap left and right children for each node."
+      },
+      {
+        title: "Path Sum",
+        description: "Determine if the tree has a root-to-leaf path with given target sum.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["Tree", "DFS"],
+        link: "https://leetcode.com/problems/path-sum/",
+        hint: "Recursively check if current node value equals remaining sum at leaf."
+      },
+      {
+        title: "Minimum Depth of Binary Tree",
+        description: "Find the minimum depth of a binary tree (shortest path to a leaf).",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["Tree", "DFS", "BFS"],
+        link: "https://leetcode.com/problems/minimum-depth-of-binary-tree/",
+        hint: "Use BFS for optimal solution, or DFS with careful handling of single-child nodes."
+      },
+      {
+        title: "Balanced Binary Tree",
+        description: "Check if a binary tree is height-balanced.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["Tree", "DFS"],
+        link: "https://leetcode.com/problems/balanced-binary-tree/",
+        hint: "Check if height difference between left and right subtrees is at most 1."
+      },
+
+      // Medium Problems (45 questions)
+      {
+        title: "Add Two Numbers",
+        description: "Add two numbers represented as linked lists where digits are stored in reverse order.",
+        difficulty: "Medium",
+        companies: ["Amazon", "Microsoft", "Meta"],
+        tags: ["Linked List", "Math"],
+        link: "https://leetcode.com/problems/add-two-numbers/",
+        hint: "Simulate addition with carry, handle different lengths carefully."
+      },
+      {
+        title: "Longest Substring Without Repeating Characters",
+        description: "Find the length of the longest substring without repeating characters.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta", "Microsoft"],
+        tags: ["Hash Table", "String", "Sliding Window"],
+        link: "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+        hint: "Use sliding window with hash set to track characters in current window."
+      },
+      {
+        title: "Container With Most Water",
+        description: "Find two lines that together with x-axis forms container that holds most water.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Array", "Two Pointers"],
+        link: "https://leetcode.com/problems/container-with-most-water/",
+        hint: "Use two pointers from both ends, move pointer with smaller height."
+      },
+      {
+        title: "3Sum",
+        description: "Find all unique triplets in the array that sum up to zero.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta", "Microsoft"],
+        tags: ["Array", "Two Pointers"],
+        link: "https://leetcode.com/problems/3sum/",
+        hint: "Sort array, fix first element, use two pointers for remaining two."
+      },
+      {
+        title: "Remove Nth Node From End of List",
+        description: "Remove the nth node from the end of linked list in one pass.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Linked List", "Two Pointers"],
+        link: "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+        hint: "Use two pointers with n+1 gap between them."
+      },
+      {
+        title: "Valid Sudoku",
+        description: "Determine if a 9x9 Sudoku board is valid.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Array", "Hash Table"],
+        link: "https://leetcode.com/problems/valid-sudoku/",
+        hint: "Use hash sets to track seen numbers in rows, columns, and 3x3 boxes."
+      },
+      {
+        title: "Search in Rotated Sorted Array",
+        description: "Search for target in rotated sorted array in O(log n) time.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta", "Microsoft"],
+        tags: ["Array", "Binary Search"],
+        link: "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+        hint: "Use binary search, determine which half is sorted and if target is in that half."
+      },
+      {
+        title: "Combination Sum",
+        description: "Find all unique combinations where candidates sum to target.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon"],
+        tags: ["Array", "Backtracking"],
+        link: "https://leetcode.com/problems/combination-sum/",
+        hint: "Use backtracking, allow reuse of same element for combinations."
+      },
+      {
+        title: "Permutations",
+        description: "Generate all possible permutations of an array of distinct integers.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Array", "Backtracking"],
+        link: "https://leetcode.com/problems/permutations/",
+        hint: "Use backtracking with visited array to track used elements."
+      },
+      {
+        title: "Rotate Image",
+        description: "Rotate n×n 2D matrix representing an image by 90 degrees clockwise in-place.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Array", "Math"],
+        link: "https://leetcode.com/problems/rotate-image/",
+        hint: "Transpose matrix first, then reverse each row."
+      },
+      {
+        title: "Group Anagrams",
+        description: "Group strings that are anagrams of each other.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Array", "Hash Table", "String"],
+        link: "https://leetcode.com/problems/group-anagrams/",
+        hint: "Use sorted string as key in hash map to group anagrams."
+      },
+      {
+        title: "Spiral Matrix",
+        description: "Return all elements of matrix in spiral order.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Array", "Matrix"],
+        link: "https://leetcode.com/problems/spiral-matrix/",
+        hint: "Use four boundaries and move in spiral pattern: right → down → left → up."
+      },
+      {
+        title: "Jump Game",
+        description: "Determine if you can reach the last index starting from first index.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Array", "Greedy"],
+        link: "https://leetcode.com/problems/jump-game/",
+        hint: "Track the farthest position reachable so far."
+      },
+      {
+        title: "Merge Intervals",
+        description: "Merge all overlapping intervals and return non-overlapping intervals.",
+        difficulty: "Medium",
+        companies: ["Google", "Meta", "Microsoft", "Amazon"],
+        tags: ["Array", "Sorting"],
+        link: "https://leetcode.com/problems/merge-intervals/",
+        hint: "Sort intervals by start time, then merge overlapping ones."
+      },
+      {
+        title: "Unique Paths",
+        description: "Find number of unique paths from top-left to bottom-right in m×n grid.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon"],
+        tags: ["Math", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/unique-paths/",
+        hint: "Use dynamic programming: dp[i][j] = dp[i-1][j] + dp[i][j-1]."
+      },
+      {
+        title: "Minimum Path Sum",
+        description: "Find path from top-left to bottom-right with minimum sum.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon"],
+        tags: ["Array", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/minimum-path-sum/",
+        hint: "Use DP: dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1])."
+      },
+      {
+        title: "Set Matrix Zeroes",
+        description: "Given m×n matrix, if element is 0, set its entire row and column to 0.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Array", "Hash Table"],
+        link: "https://leetcode.com/problems/set-matrix-zeroes/",
+        hint: "Use first row and column as markers, handle matrix[0][0] separately."
+      },
+      {
+        title: "Search a 2D Matrix",
+        description: "Search for target value in m×n matrix with sorted rows and columns.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Array", "Binary Search"],
+        link: "https://leetcode.com/problems/search-a-2d-matrix/",
+        hint: "Start from top-right or bottom-left corner, eliminate row or column based on comparison."
+      },
+      {
+        title: "Sort Colors",
+        description: "Sort array containing only 0s, 1s, and 2s in-place (Dutch National Flag).",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Array", "Two Pointers", "Sorting"],
+        link: "https://leetcode.com/problems/sort-colors/",
+        hint: "Use three pointers: low, mid, high to partition array into three sections."
+      },
+      {
+        title: "Minimum Window Substring",
+        description: "Find minimum window substring of string that contains all characters of pattern.",
+        difficulty: "Medium",
+        companies: ["Google", "Meta", "Amazon"],
+        tags: ["Hash Table", "String", "Sliding Window"],
+        link: "https://leetcode.com/problems/minimum-window-substring/",
+        hint: "Use sliding window with hash maps to track character frequencies."
+      },
+      {
+        title: "Subsets",
+        description: "Generate all possible subsets (power set) of an integer array.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Array", "Backtracking", "Bit Manipulation"],
+        link: "https://leetcode.com/problems/subsets/",
+        hint: "Use backtracking or bit manipulation to generate all 2^n subsets."
+      },
+      {
+        title: "Word Search",
+        description: "Find if word exists in 2D board by connecting adjacent cells.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Array", "Backtracking"],
+        link: "https://leetcode.com/problems/word-search/",
+        hint: "Use DFS with backtracking, mark visited cells and unmark after recursion."
+      },
+      {
+        title: "Largest Rectangle in Histogram",
+        description: "Find area of largest rectangle that can be formed in histogram.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon"],
+        tags: ["Array", "Stack"],
+        link: "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+        hint: "Use stack to keep track of indices with increasing heights."
+      },
+      {
+        title: "Binary Tree Level Order Traversal",
+        description: "Return level order traversal of binary tree (BFS).",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Apple", "Microsoft"],
+        tags: ["Tree", "BFS"],
+        link: "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+        hint: "Use queue for BFS, process all nodes at current level before moving to next."
+      },
+      {
+        title: "Construct Binary Tree from Preorder and Inorder",
+        description: "Build binary tree from preorder and inorder traversal arrays.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Array", "Hash Table", "Tree", "DFS"],
+        link: "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+        hint: "First element in preorder is root, find it in inorder to split left/right subtrees."
+      },
+      {
+        title: "Validate Binary Search Tree",
+        description: "Determine if binary tree is a valid binary search tree.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta", "Microsoft"],
+        tags: ["Tree", "DFS"],
+        link: "https://leetcode.com/problems/validate-binary-search-tree/",
+        hint: "Use inorder traversal (should be strictly increasing) or pass min/max bounds."
+      },
+      {
+        title: "Binary Tree Zigzag Level Order Traversal",
+        description: "Return zigzag level order traversal of binary tree.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Tree", "BFS"],
+        link: "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+        hint: "Use level order traversal, alternate direction of adding elements to result."
+      },
+      {
+        title: "Populating Next Right Pointers",
+        description: "Populate each next pointer to point to its next right node.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Tree", "DFS", "BFS"],
+        link: "https://leetcode.com/problems/populating-next-right-pointers-in-each-node/",
+        hint: "Use level order traversal or utilize already established connections."
+      },
+      {
+        title: "Kth Smallest Element in BST",
+        description: "Find kth smallest value in binary search tree.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Tree", "DFS"],
+        link: "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+        hint: "Use inorder traversal and count nodes, or use iterative approach with stack."
+      },
+      {
+        title: "Lowest Common Ancestor of BST",
+        description: "Find lowest common ancestor of two nodes in binary search tree.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Tree"],
+        link: "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+        hint: "Use BST property: if both nodes are smaller, go left; if larger, go right."
+      },
+      {
+        title: "Number of Islands",
+        description: "Count number of islands in 2D binary grid using DFS/BFS.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta", "Microsoft"],
+        tags: ["Array", "DFS", "BFS"],
+        link: "https://leetcode.com/problems/number-of-islands/",
+        hint: "Use DFS or BFS to mark all connected land cells as visited."
+      },
+      {
+        title: "Course Schedule",
+        description: "Determine if you can finish all courses given prerequisites (cycle detection).",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["DFS", "BFS", "Graph", "Topological Sort"],
+        link: "https://leetcode.com/problems/course-schedule/",
+        hint: "Build adjacency list and use DFS to detect cycles, or use topological sort."
+      },
+      {
+        title: "Clone Graph",
+        description: "Return deep copy of connected undirected graph.",
+        difficulty: "Medium",
+        companies: ["Google", "Meta", "Amazon"],
+        tags: ["Hash Table", "DFS", "BFS", "Graph"],
+        link: "https://leetcode.com/problems/clone-graph/",
+        hint: "Use hash map to track cloned nodes and DFS/BFS for traversal."
+      },
+      {
+        title: "Pacific Atlantic Water Flow",
+        description: "Find cells from which water can flow to both Pacific and Atlantic oceans.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon"],
+        tags: ["Array", "DFS", "BFS"],
+        link: "https://leetcode.com/problems/pacific-atlantic-water-flow/",
+        hint: "Start DFS from ocean borders and find reachable cells for each ocean."
+      },
+      {
+        title: "Longest Increasing Subsequence",
+        description: "Find length of longest strictly increasing subsequence.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["Array", "Binary Search", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/longest-increasing-subsequence/",
+        hint: "Use DP with O(n²) or binary search with O(n log n) approach."
+      },
+      {
+        title: "Coin Change",
+        description: "Find minimum number of coins needed to make up given amount.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Array", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/coin-change/",
+        hint: "Use bottom-up DP: dp[i] = min(dp[i-coin] + 1) for all coins ≤ i."
+      },
+      {
+        title: "Product of Array Except Self",
+        description: "Return array where each element is product of all elements except itself.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta", "Apple"],
+        tags: ["Array", "Prefix Sum"],
+        link: "https://leetcode.com/problems/product-of-array-except-self/",
+        hint: "Use two passes: left products, then right products multiplied."
+      },
+      {
+        title: "House Robber",
+        description: "Find maximum money you can rob without robbing adjacent houses.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon"],
+        tags: ["Array", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/house-robber/",
+        hint: "Use DP: rob[i] = max(rob[i-1], rob[i-2] + nums[i])."
+      },
+      {
+        title: "House Robber II",
+        description: "Same as House Robber but houses are in a circle.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon"],
+        tags: ["Array", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/house-robber-ii/",
+        hint: "Run House Robber twice: once excluding first house, once excluding last."
+      },
+      {
+        title: "Decode Ways",
+        description: "Count number of ways to decode a string of digits.",
+        difficulty: "Medium",
+        companies: ["Google", "Meta", "Amazon"],
+        tags: ["String", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/decode-ways/",
+        hint: "Use DP: ways[i] depends on single digit and two-digit combinations."
+      },
+      {
+        title: "Unique Binary Search Trees",
+        description: "Find number of structurally unique BSTs with n nodes.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon"],
+        tags: ["Math", "Dynamic Programming", "Tree"],
+        link: "https://leetcode.com/problems/unique-binary-search-trees/",
+        hint: "Use Catalan numbers: C(n) = sum(C(i) * C(n-1-i)) for i from 0 to n-1."
+      },
+      {
+        title: "Validate Parentheses String",
+        description: "Check if string with '(', ')', '*' can be valid with '*' as '(', ')', or empty.",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["String", "Dynamic Programming", "Greedy"],
+        link: "https://leetcode.com/problems/valid-parenthesis-string/",
+        hint: "Track range of possible open parentheses count using min and max."
+      },
+
+      // Hard Problems (20 questions)
+      {
+        title: "Median of Two Sorted Arrays",
+        description: "Find median of two sorted arrays in O(log(m+n)) time.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Meta", "Apple", "Microsoft"],
+        tags: ["Array", "Binary Search"],
+        link: "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+        hint: "Use binary search on smaller array to partition both arrays equally."
+      },
+      {
+        title: "Trapping Rain Water",
+        description: "Calculate how much water can be trapped after raining given elevation map.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Meta", "Apple"],
+        tags: ["Array", "Two Pointers", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/trapping-rain-water/",
+        hint: "Use two pointers from both ends, move pointer with smaller height."
+      },
+      {
+        title: "N-Queens",
+        description: "Place n queens on n×n chessboard so they don't attack each other.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Array", "Backtracking"],
+        link: "https://leetcode.com/problems/n-queens/",
+        hint: "Use backtracking with sets to track attacked columns and diagonals."
+      },
+      {
+        title: "Sudoku Solver",
+        description: "Solve 9×9 Sudoku puzzle using backtracking.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Array", "Backtracking"],
+        link: "https://leetcode.com/problems/sudoku-solver/",
+        hint: "Use backtracking with validation for rows, columns, and 3×3 boxes."
+      },
+      {
+        title: "Maximal Rectangle",
+        description: "Find largest rectangle containing only 1s in binary matrix.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon"],
+        tags: ["Array", "Dynamic Programming", "Stack"],
+        link: "https://leetcode.com/problems/maximal-rectangle/",
+        hint: "Convert to largest rectangle in histogram for each row."
+      },
+      {
+        title: "Binary Tree Maximum Path Sum",
+        description: "Find maximum path sum between any two nodes in binary tree.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Dynamic Programming", "Tree", "DFS"],
+        link: "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+        hint: "Use DFS, at each node consider max path through this node."
+      },
+      {
+        title: "Word Ladder",
+        description: "Find minimum transformations to change beginWord to endWord.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Hash Table", "String", "BFS"],
+        link: "https://leetcode.com/problems/word-ladder/",
+        hint: "Use BFS with word transformations, each level represents one transformation."
+      },
+      {
+        title: "Serialize and Deserialize Binary Tree",
+        description: "Design algorithm to serialize and deserialize binary tree.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Meta", "Microsoft"],
+        tags: ["String", "Tree", "DFS", "BFS", "Design"],
+        link: "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+        hint: "Use preorder traversal with null markers for serialization."
+      },
+      {
+        title: "Sliding Window Maximum",
+        description: "Find maximum element in each sliding window of size k.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Array", "Queue", "Sliding Window"],
+        link: "https://leetcode.com/problems/sliding-window-maximum/",
+        hint: "Use deque to maintain elements in decreasing order within window."
+      },
+      {
+        title: "Find Median from Data Stream",
+        description: "Design data structure that supports adding integers and finding median.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Two Pointers", "Design", "Sorting", "Heap"],
+        link: "https://leetcode.com/problems/find-median-from-data-stream/",
+        hint: "Use two heaps: max heap for smaller half, min heap for larger half."
+      },
+      {
+        title: "Merge k Sorted Lists",
+        description: "Merge k sorted linked lists and return as one sorted list.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Meta", "Microsoft"],
+        tags: ["Linked List", "Divide and Conquer", "Heap", "Merge Sort"],
+        link: "https://leetcode.com/problems/merge-k-sorted-lists/",
+        hint: "Use divide and conquer or min heap to efficiently merge lists."
+      },
+      {
+        title: "Regular Expression Matching",
+        description: "Implement regular expression matching with '.' and '*'.",
+        difficulty: "Hard",
+        companies: ["Google", "Meta", "Amazon"],
+        tags: ["String", "Dynamic Programming", "Recursion"],
+        link: "https://leetcode.com/problems/regular-expression-matching/",
+        hint: "Use 2D DP where dp[i][j] represents if s[0:i] matches p[0:j]."
+      },
+      {
+        title: "Wildcard Matching",
+        description: "Implement wildcard pattern matching with '?' and '*'.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon"],
+        tags: ["String", "Dynamic Programming", "Greedy", "Recursion"],
+        link: "https://leetcode.com/problems/wildcard-matching/",
+        hint: "Use 2D DP similar to regular expression matching."
+      },
+      {
+        title: "Edit Distance",
+        description: "Find minimum edit operations to convert word1 to word2.",
+        difficulty: "Hard",
+        companies: ["Google", "Meta", "Amazon"],
+        tags: ["String", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/edit-distance/",
+        hint: "Use 2D DP: dp[i][j] = min edit distance between first i chars and first j chars."
+      },
+      {
+        title: "Interleaving String",
+        description: "Check if s3 is formed by interleaving s1 and s2.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon"],
+        tags: ["String", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/interleaving-string/",
+        hint: "Use 2D DP to track if prefixes of s1 and s2 can form prefix of s3."
+      },
+      {
+        title: "Distinct Subsequences",
+        description: "Count distinct subsequences of s which equals t.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon"],
+        tags: ["String", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/distinct-subsequences/",
+        hint: "Use 2D DP where dp[i][j] counts ways to form t[0:j] using s[0:i]."
+      },
+      {
+        title: "Word Break II",
+        description: "Return all possible sentences from word break.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Array", "Hash Table", "String", "Dynamic Programming", "Backtracking"],
+        link: "https://leetcode.com/problems/word-break-ii/",
+        hint: "Use DFS with memoization to avoid recomputing subproblems."
+      },
+      {
+        title: "Palindrome Partitioning II",
+        description: "Find minimum cuts needed for palindrome partitioning of string.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon"],
+        tags: ["String", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/palindrome-partitioning-ii/",
+        hint: "Use DP with palindrome checking optimization."
+      },
+      {
+        title: "Best Time to Buy and Sell Stock III",
+        description: "Find maximum profit with at most two transactions.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Apple"],
+        tags: ["Array", "Dynamic Programming"],
+        link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/",
+        hint: "Track buy1, sell1, buy2, sell2 states through single pass."
+      },
+      {
+        title: "Reverse Nodes in k-Group",
+        description: "Reverse nodes of linked list k at a time.",
+        difficulty: "Hard",
+        companies: ["Google", "Amazon", "Meta"],
+        tags: ["Linked List", "Recursion"],
+        link: "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+        hint: "Count nodes first, then reverse in groups using iterative or recursive approach."
+      }
+    ];
+
+    // State management
+    let currentFilters = {
+      company: 'all',
+      difficulty: '',
+      category: '',
+      search: ''
+    };
+
+    let solvedQuestions = [];
+    let streakData = { count: 0, lastSolved: null };
+
+    // Initialize the application
+    function init() {
+      loadFromStorage();
+      setupEventListeners();
+      renderQuestions();
+      updateProgress();
+      updateStreakCounter();
+      initializeTheme();
+    }
+
+    // Load data from memory (since localStorage is not available)
+    function loadFromStorage() {
+      // In a real environment, this would use localStorage
+      // For now, we'll start with empty state
+      solvedQuestions = [];
+      streakData = { count: 0, lastSolved: null };
+    }
+
+    // Set up all event listeners
+    function setupEventListeners() {
+      // Company filter tabs
+      document.querySelectorAll('.company-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remove active class from all tabs
+          document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
+          // Add active class to clicked tab
+          tab.classList.add('active');
+          
+          currentFilters.company = tab.dataset.company;
+          renderQuestions();
+          updateSectionTitle();
+        });
+      });
+
+      // Filter dropdowns
+      document.getElementById('difficultyFilter').addEventListener('change', (e) => {
+        currentFilters.difficulty = e.target.value;
+        renderQuestions();
+      });
+
+      document.getElementById('categoryFilter').addEventListener('change', (e) => {
+        currentFilters.category = e.target.value;
+        renderQuestions();
+      });
+
+      // Search input
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        currentFilters.search = e.target.value.toLowerCase();
+        renderQuestions();
+      });
+
+      // Theme toggle
+      document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    }
+
+    // Filter questions based on current filters
+    function filterQuestions() {
+      return codingQuestions.filter(question => {
+        // Company filter
+        if (currentFilters.company !== 'all' && !question.companies.includes(currentFilters.company)) {
+          return false;
+        }
+
+        // Difficulty filter
+        if (currentFilters.difficulty && question.difficulty !== currentFilters.difficulty) {
+          return false;
+        }
+
+        // Category filter
+        if (currentFilters.category && !question.tags.includes(currentFilters.category)) {
+          return false;
+        }
+
+        // Search filter
+        if (currentFilters.search) {
+          const searchTerm = currentFilters.search;
+          return question.title.toLowerCase().includes(searchTerm) ||
+                 question.description.toLowerCase().includes(searchTerm) ||
+                 question.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+        }
+
+        return true;
+      });
+    }
+
+    // Render question cards
+    function renderQuestions() {
+      const filteredQuestions = filterQuestions();
+      const grid = document.getElementById('questionGrid');
+      const emptyState = document.getElementById('emptyState');
+
+      if (filteredQuestions.length === 0) {
+        grid.style.display = 'none';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      grid.style.display = 'grid';
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filteredQuestions.map(question => createQuestionCard(question)).join('');
+
+      // Add animation
+      grid.querySelectorAll('.card').forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.classList.add('fade-in');
+      });
+    }
+
+    // Create individual question card HTML
+    function createQuestionCard(question) {
+      const isCompleted = solvedQuestions.includes(question.title);
+      const difficultyClass = question.difficulty.toLowerCase();
+      
+      return `
+        <div class="card" data-title="${question.title}">
+          ${isCompleted ? '<div class="solved-indicator">✓</div>' : ''}
+          
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">${question.title}</h3>
+              <div class="badge ${difficultyClass}">${question.difficulty}</div>
+            </div>
+          </div>
+
+          <p class="card-description">${question.description}</p>
+
+          <div class="company-tags">
+            ${question.companies.map(company => 
+              `<span class="company-tag ${company.toLowerCase()}">${company}</span>`
+            ).join('')}
+          </div>
+
+          <div class="card-tags">
+            ${question.tags.map(tag => 
+              `<span class="tag">${tag}</span>`
+            ).join('')}
+          </div>
+
+          <div class="card-actions">
+            <div class="checkbox-wrapper" onclick="toggleSolved('${question.title}')">
+              <div class="checkbox ${isCompleted ? 'checked' : ''}"></div>
+              <span>Mark as solved</span>
+            </div>
+            <a href="${question.link}" target="_blank" class="external-btn">
+              Practice →
+            </a>
+          </div>
+
+          ${question.hint ? `
+            <div style="margin-top: 1rem; padding: 1rem; background: var(--glass-light); border-radius: 15px; border-left: 4px solid #667eea;">
+              <strong>💡 Hint:</strong> ${question.hint}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    // Toggle solved status
+    function toggleSolved(title) {
+      const index = solvedQuestions.indexOf(title);
+      
+      if (index === -1) {
+        // Mark as solved
+        solvedQuestions.push(title);
+        updateStreak();
+        showAchievement(`Great job! "${title}" completed!`);
+      } else {
+        // Mark as unsolved
+        solvedQuestions.splice(index, 1);
+      }
+
+      // Update UI
+      renderQuestions();
+      updateProgress();
+      updateStreakCounter();
+    }
+
+    // Update progress statistics
+    function updateProgress() {
+      const totalQuestions = codingQuestions.length;
+      const solvedCount = solvedQuestions.length;
+      
+      // Count by difficulty
+      const easySolved = solvedQuestions.filter(title => {
+        const question = codingQuestions.find(q => q.title === title);
+        return question && question.difficulty === 'Easy';
+      }).length;
+
+      const mediumSolved = solvedQuestions.filter(title => {
+        const question = codingQuestions.find(q => q.title === title);
+        return question && question.difficulty === 'Medium';
+      }).length;
+
+      const hardSolved = solvedQuestions.filter(title => {
+        const question = codingQuestions.find(q => q.title === title);
+        return question && question.difficulty === 'Hard';
+      }).length;
+
+      // Count total by difficulty
+      const easyTotal = codingQuestions.filter(q => q.difficulty === 'Easy').length;
+      const mediumTotal = codingQuestions.filter(q => q.difficulty === 'Medium').length;
+      const hardTotal = codingQuestions.filter(q => q.difficulty === 'Hard').length;
+
+      // Update progress displays
+      document.getElementById('totalSolved').textContent = solvedCount;
+      document.getElementById('easyCount').textContent = `${easySolved}/${easyTotal}`;
+      document.getElementById('mediumCount').textContent = `${mediumSolved}/${mediumTotal}`;
+      document.getElementById('hardCount').textContent = `${hardSolved}/${hardTotal}`;
+      document.getElementById('overallProgress').textContent = `${Math.round((solvedCount / totalQuestions) * 100)}%`;
+
+      // Update progress bars
+      document.getElementById('easyProgress').style.width = `${(easySolved / easyTotal) * 100}%`;
+      document.getElementById('mediumProgress').style.width = `${(mediumSolved / mediumTotal) * 100}%`;
+      document.getElementById('hardProgress').style.width = `${(hardSolved / hardTotal) * 100}%`;
+      document.getElementById('overallProgressBar').style.width = `${(solvedCount / totalQuestions) * 100}%`;
+    }
+
+    // Update streak counter
+    function updateStreak() {
+      const today = new Date().toDateString();
+      
+      if (streakData.lastSolved !== today) {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        
+        if (streakData.lastSolved === yesterday.toDateString()) {
+          streakData.count += 1;
+        } else {
+          streakData.count = 1;
+        }
+        
+        streakData.lastSolved = today;
+      }
+    }
+
+    function updateStreakCounter() {
+      document.getElementById('streakCount').textContent = streakData.count;
+    }
+
+    // Show achievement notification
+    function showAchievement(message) {
+      const notification = document.getElementById('achievementNotification');
+      const text = document.getElementById('achievementText');
+      
+      text.textContent = message;
+      notification.classList.add('show');
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 4000);
+    }
+
+    // Update section title based on filters
+    function updateSectionTitle() {
+      const titleElement = document.getElementById('sectionTitle');
+      const subtitleElement = document.getElementById('sectionSubtitle');
+      
+      if (currentFilters.company === 'all') {
+        titleElement.textContent = 'All Coding Questions';
+        subtitleElement.textContent = 'Master these problems to ace your technical interviews';
+      } else {
+        titleElement.textContent = `${currentFilters.company} Interview Questions`;
+        subtitleElement.textContent = `Focused practice for ${currentFilters.company} technical interviews`;
+      }
+    }
+
+    // Filter by company (used by company showcase buttons)
+    function filterByCompany(company) {
+      // Update active tab
+      document.querySelectorAll('.company-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.dataset.company === company) {
+          tab.classList.add('active');
+        }
+      });
+
+      currentFilters.company = company;
+      renderQuestions();
+      updateSectionTitle();
+    }
+
+    // Theme management
+    function initializeTheme() {
+      // Default to light theme since we can't persist theme preference
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle.textContent = '🌙';
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const themeToggle = document.getElementById('themeToggle');
+      
+      if (body.classList.contains('dark')) {
+        body.classList.remove('dark');
+        themeToggle.textContent = '🌙';
+      } else {
+        body.classList.add('dark');
+        themeToggle.textContent = '☀️';
+      }
+    }
+
+    // Initialize the application when DOM is loaded
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

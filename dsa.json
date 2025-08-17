@@ -1638,5 +1638,5225 @@
                 "answer": "O(log n)"
             }
         ]
+    },
+    {
+        "title": "DSA Test - 16",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which data structure is most suitable for implementing recursion?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 2,
+                "question": "What is the time complexity of Heap Sort in the worst case?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 3,
+                "question": "Which of the following algorithms can detect negative weight cycles in a graph?",
+                "options": [
+                    "Dijkstra",
+                    "Kruskal",
+                    "Bellman-Ford",
+                    "Prim"
+                ],
+                "answer": "Bellman-Ford"
+            },
+            {
+                "id": 4,
+                "question": "Output of the following:\narr = [10, 20, 30]\nprint(arr.pop())",
+                "options": [
+                    "10",
+                    "20",
+                    "30",
+                    "Error"
+                ],
+                "answer": "30"
+            },
+            {
+                "id": 5,
+                "question": "Which tree traversal technique uses recursion in both left and right subtrees before visiting the node?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Postorder"
+            },
+            {
+                "id": 6,
+                "question": "In which case does QuickSort have its worst performance?",
+                "options": [
+                    "Array already sorted",
+                    "Array reversed",
+                    "All elements equal",
+                    "All of the above"
+                ],
+                "answer": "All of the above"
+            },
+            {
+                "id": 7,
+                "question": "What is the auxiliary space complexity of Merge Sort?",
+                "options": [
+                    "O(1)",
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(n)"
+            },
+            {
+                "id": 8,
+                "question": "Which hashing technique resolves collisions by using linked lists?",
+                "options": [
+                    "Linear Probing",
+                    "Quadratic Probing",
+                    "Chaining",
+                    "Double Hashing"
+                ],
+                "answer": "Chaining"
+            },
+            {
+                "id": 9,
+                "question": "Which data structure is used in Topological Sorting?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Deque"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 10,
+                "question": "What is the maximum number of nodes in a binary tree of height h?",
+                "options": [
+                    "2^h - 1",
+                    "2^(h+1) - 1",
+                    "h^2",
+                    "h log h"
+                ],
+                "answer": "2^(h+1) - 1"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 17",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used to find the minimum spanning tree of a graph?",
+                "options": [
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm"
+                ],
+                "answer": "Prim's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "What is the worst-case time complexity of inserting an element in a Red-Black Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Which traversal is used to get the nodes of a BST in sorted order?",
+                "options": [
+                    "Preorder",
+                    "Inorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 4,
+                "question": "Output:\nstack = []\nstack.append(5)\nstack.append(10)\nprint(stack.pop())",
+                "options": [
+                    "5",
+                    "10",
+                    "Error",
+                    "None"
+                ],
+                "answer": "10"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm is used for cycle detection in a directed graph?",
+                "options": [
+                    "DFS",
+                    "Kahn's Algorithm",
+                    "Topological Sort",
+                    "Both DFS and Kahn’s Algorithm"
+                ],
+                "answer": "Both DFS and Kahn’s Algorithm"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of accessing an element in a Hash Table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm is used for finding shortest paths between all pairs of vertices?",
+                "options": [
+                    "Dijkstra",
+                    "Floyd-Warshall",
+                    "Prim",
+                    "Kruskal"
+                ],
+                "answer": "Floyd-Warshall"
+            },
+            {
+                "id": 8,
+                "question": "Which data structure is used in implementing a queue using stacks?",
+                "options": [
+                    "Stack",
+                    "Heap",
+                    "Linked List",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 9,
+                "question": "Output:\narr = [1, 2, 3, 4]\nprint(arr[1:3])",
+                "options": [
+                    "[2, 3]",
+                    "[1, 2]",
+                    "[3, 4]",
+                    "[2, 3, 4]"
+                ],
+                "answer": "[2, 3]"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is ideal for implementing LRU cache?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Deque + Hash Map",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 18",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which sorting algorithm is stable?",
+                "options": [
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Heap Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of deleting a node from a Binary Search Tree (average case)?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm is used to detect articulation points in a graph?",
+                "options": [
+                    "Tarjan's Algorithm",
+                    "Kruskal",
+                    "Prim",
+                    "Dijkstra"
+                ],
+                "answer": "Tarjan's Algorithm"
+            },
+            {
+                "id": 4,
+                "question": "Output:\nqueue = [1,2,3]\nqueue.pop(0)\nprint(queue)",
+                "options": [
+                    "[2, 3]",
+                    "[1, 2, 3]",
+                    "[3]",
+                    "Error"
+                ],
+                "answer": "[2, 3]"
+            },
+            {
+                "id": 5,
+                "question": "Time complexity of searching in a balanced AVL Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm finds the longest increasing subsequence in O(n log n)?",
+                "options": [
+                    "DP with O(n^2)",
+                    "Patience Sorting",
+                    "DFS",
+                    "BFS"
+                ],
+                "answer": "Patience Sorting"
+            },
+            {
+                "id": 7,
+                "question": "Which traversal is used in Breadth-First Search of a tree?",
+                "options": [
+                    "Preorder",
+                    "Postorder",
+                    "Level Order",
+                    "Inorder"
+                ],
+                "answer": "Level Order"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm is used for detecting cycles in an undirected graph?",
+                "options": [
+                    "DFS",
+                    "BFS",
+                    "Union-Find",
+                    "Both DFS and Union-Find"
+                ],
+                "answer": "Both DFS and Union-Find"
+            },
+            {
+                "id": 9,
+                "question": "Output:\nnums = [5, 10, 15]\nnums.append(20)\nprint(nums)",
+                "options": [
+                    "[5, 10, 15, 20]",
+                    "[20, 5, 10, 15]",
+                    "[5, 10, 15]",
+                    "Error"
+                ],
+                "answer": "[5, 10, 15, 20]"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used to implement priority queues?",
+                "options": [
+                    "Stack",
+                    "Heap",
+                    "Queue",
+                    "Deque"
+                ],
+                "answer": "Heap"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 19",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used to find strongly connected components in a graph?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra",
+                    "Prim",
+                    "Bellman-Ford"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of inserting at the beginning of a singly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 3,
+                "question": "Which of the following is NOT a divide and conquer algorithm?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Binary Search"
+                ],
+                "answer": "Heap Sort"
+            },
+            {
+                "id": 4,
+                "question": "Output:\narr = [1,2,3]\narr.insert(1,5)\nprint(arr)",
+                "options": [
+                    "[1, 5, 2, 3]",
+                    "[5, 1, 2, 3]",
+                    "[1, 2, 3, 5]",
+                    "Error"
+                ],
+                "answer": "[1, 5, 2, 3]"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm is used in Dijkstra’s shortest path?",
+                "options": [
+                    "Greedy",
+                    "Dynamic Programming",
+                    "Divide and Conquer",
+                    "Backtracking"
+                ],
+                "answer": "Greedy"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of accessing the middle element in a singly linked list?",
+                "options": [
+                    "O(n)",
+                    "O(1)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(n)"
+            },
+            {
+                "id": 7,
+                "question": "Which traversal is used in DFS of a tree?",
+                "options": [
+                    "Level Order",
+                    "Preorder",
+                    "Breadth-First",
+                    "Queue-based"
+                ],
+                "answer": "Preorder"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm is used for topological sorting of a DAG?",
+                "options": [
+                    "DFS",
+                    "BFS",
+                    "Kahn's Algorithm",
+                    "Both DFS and Kahn’s Algorithm"
+                ],
+                "answer": "Both DFS and Kahn’s Algorithm"
+            },
+            {
+                "id": 9,
+                "question": "Output:\ndict1 = {'a':1}\ndict1['b'] = 2\nprint(dict1)",
+                "options": [
+                    "{'a': 1, 'b': 2}",
+                    "{'a': 1}",
+                    "{'b': 2}",
+                    "Error"
+                ],
+                "answer": "{'a': 1, 'b': 2}"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is ideal for implementing a circular queue?",
+                "options": [
+                    "Array",
+                    "Linked List",
+                    "Both Array and Linked List",
+                    "Stack"
+                ],
+                "answer": "Both Array and Linked List"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 20",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Time complexity of searching in a balanced B-Tree of order m?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(m log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 2,
+                "question": "Which algorithm is used for finding the minimum spanning tree using edges sorted by weight?",
+                "options": [
+                    "Kruskal's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Kruskal's Algorithm"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\nprint(arr * 2)",
+                "options": [
+                    "[1,2,3,1,2,3]",
+                    "[2,4,6]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,1,2,3]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used in Ford-Fulkerson method?",
+                "options": [
+                    "Greedy",
+                    "DFS/BFS",
+                    "Dynamic Programming",
+                    "Divide and Conquer"
+                ],
+                "answer": "DFS/BFS"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in implementing recursion?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 6,
+                "question": "Which searching algorithm works only on sorted arrays?",
+                "options": [
+                    "Binary Search",
+                    "Linear Search",
+                    "DFS",
+                    "BFS"
+                ],
+                "answer": "Binary Search"
+            },
+            {
+                "id": 7,
+                "question": "Output:\nset1 = {1,2,3}\nset1.add(2)\nprint(set1)",
+                "options": [
+                    "{1,2,3}",
+                    "{1,2,3,2}",
+                    "{2}",
+                    "Error"
+                ],
+                "answer": "{1,2,3}"
+            },
+            {
+                "id": 8,
+                "question": "Which is used for detecting cycles in a directed graph?",
+                "options": [
+                    "DFS with recursion stack",
+                    "Union-Find",
+                    "BFS",
+                    "Heap"
+                ],
+                "answer": "DFS with recursion stack"
+            },
+            {
+                "id": 9,
+                "question": "Time complexity of searching in a skip list?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used in implementing Dijkstra’s algorithm?",
+                "options": [
+                    "Queue",
+                    "Heap / Priority Queue",
+                    "Stack",
+                    "Linked List"
+                ],
+                "answer": "Heap / Priority Queue"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 21",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used to detect bridges in a graph?",
+                "options": [
+                    "Tarjan's Algorithm",
+                    "Kruskal",
+                    "Prim",
+                    "Dijkstra"
+                ],
+                "answer": "Tarjan's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Output:\narr = [1,2,3]\narr.reverse()\nprint(arr)",
+                "options": [
+                    "[3,2,1]",
+                    "[1,2,3]",
+                    "[2,3,1]",
+                    "Error"
+                ],
+                "answer": "[3,2,1]"
+            },
+            {
+                "id": 3,
+                "question": "Time complexity of BFS on a graph with V vertices and E edges?",
+                "options": [
+                    "O(V+E)",
+                    "O(V*E)",
+                    "O(V^2)",
+                    "O(E^2)"
+                ],
+                "answer": "O(V+E)"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used for strongly connected components detection?",
+                "options": [
+                    "Kosaraju's",
+                    "Dijkstra",
+                    "Prim",
+                    "Kruskal"
+                ],
+                "answer": "Kosaraju's"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in implementing LRU Cache?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Deque + Hash Map",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of accessing top element in a stack?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm finds the shortest path in a graph with negative weights but no negative cycle?",
+                "options": [
+                    "Dijkstra",
+                    "Bellman-Ford",
+                    "Floyd-Warshall",
+                    "Prim"
+                ],
+                "answer": "Bellman-Ford"
+            },
+            {
+                "id": 8,
+                "question": "Which traversal is used to print nodes in a level-order manner?",
+                "options": [
+                    "DFS",
+                    "BFS",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "BFS"
+            },
+            {
+                "id": 9,
+                "question": "Output:\narr = [1,2,3]\narr.append(4)\nprint(arr)",
+                "options": [
+                    "[1,2,3,4]",
+                    "[4,1,2,3]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,4]"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used for implementing DFS?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Deque"
+                ],
+                "answer": "Stack"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 22",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used to detect cycles in an undirected graph?",
+                "options": [
+                    "DFS",
+                    "Union-Find",
+                    "Both DFS and Union-Find",
+                    "BFS"
+                ],
+                "answer": "Both DFS and Union-Find"
+            },
+            {
+                "id": 2,
+                "question": "Output:\narr = [1,2,3,4]\nprint(arr[::2])",
+                "options": [
+                    "[1,3]",
+                    "[2,4]",
+                    "[1,2,3]",
+                    "[1,4]"
+                ],
+                "answer": "[1,3]"
+            },
+            {
+                "id": 3,
+                "question": "Time complexity of deleting a node in a doubly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used to find articulation points in a graph?",
+                "options": [
+                    "Tarjan's Algorithm",
+                    "Kruskal",
+                    "Prim",
+                    "Dijkstra"
+                ],
+                "answer": "Tarjan's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which sorting algorithm is NOT stable?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Bubble Sort",
+                    "Insertion Sort"
+                ],
+                "answer": "Quick Sort"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used in Breadth First Search of a graph?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 7,
+                "question": "Output:\nstack = []\nstack.append(1)\nstack.append(2)\nstack.pop()\nprint(stack)",
+                "options": [
+                    "[1]",
+                    "[2]",
+                    "[1,2]",
+                    "[]"
+                ],
+                "answer": "[1]"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm is used to find shortest paths from a single source in a weighted graph with non-negative weights?",
+                "options": [
+                    "Dijkstra",
+                    "Bellman-Ford",
+                    "Floyd-Warshall",
+                    "Prim"
+                ],
+                "answer": "Dijkstra"
+            },
+            {
+                "id": 9,
+                "question": "Which data structure is used for implementing recursion?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 10,
+                "question": "Time complexity of accessing an element in a hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 23",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which traversal is used to print nodes of a BST in sorted order?",
+                "options": [
+                    "Preorder",
+                    "Inorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of searching in a balanced AVL Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.insert(1,5)\nprint(arr)",
+                "options": [
+                    "[1,5,2,3]",
+                    "[5,1,2,3]",
+                    "[1,2,3,5]",
+                    "Error"
+                ],
+                "answer": "[1,5,2,3]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used in detecting strongly connected components?",
+                "options": [
+                    "Kosaraju's",
+                    "Dijkstra",
+                    "Prim",
+                    "Kruskal"
+                ],
+                "answer": "Kosaraju's"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in implementing LRU cache?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Deque + Hash Map",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of accessing top element in a stack?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm finds shortest path with negative weights but no negative cycles?",
+                "options": [
+                    "Dijkstra",
+                    "Bellman-Ford",
+                    "Floyd-Warshall",
+                    "Prim"
+                ],
+                "answer": "Bellman-Ford"
+            },
+            {
+                "id": 8,
+                "question": "Which traversal prints nodes in level-order?",
+                "options": [
+                    "DFS",
+                    "BFS",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "BFS"
+            },
+            {
+                "id": 9,
+                "question": "Output:\narr = [1,2,3]\narr.append(4)\nprint(arr)",
+                "options": [
+                    "[1,2,3,4]",
+                    "[4,1,2,3]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,4]"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used for implementing DFS?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Deque"
+                ],
+                "answer": "Stack"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 24",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Time complexity of Heap Sort in worst case?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 2,
+                "question": "Output:\narr = [1,2,3,4]\nprint(arr[1:3])",
+                "options": [
+                    "[2,3]",
+                    "[1,2]",
+                    "[3,4]",
+                    "[2,3,4]"
+                ],
+                "answer": "[2,3]"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm is used to detect negative weight cycles?",
+                "options": [
+                    "Dijkstra",
+                    "Bellman-Ford",
+                    "Floyd-Warshall",
+                    "Prim"
+                ],
+                "answer": "Bellman-Ford"
+            },
+            {
+                "id": 4,
+                "question": "Which sorting algorithm is stable?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's",
+                    "Dijkstra",
+                    "Prim",
+                    "Kruskal"
+                ],
+                "answer": "Kosaraju's"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used in implementing recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 7,
+                "question": "Output:\nset1 = {1,2,3}\nset1.add(2)\nprint(set1)",
+                "options": [
+                    "{1,2,3}",
+                    "{1,2,3,2}",
+                    "{2}",
+                    "Error"
+                ],
+                "answer": "{1,2,3}"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm finds shortest path from a single source in non-negative weighted graph?",
+                "options": [
+                    "Dijkstra",
+                    "Bellman-Ford",
+                    "Floyd-Warshall",
+                    "Prim"
+                ],
+                "answer": "Dijkstra"
+            },
+            {
+                "id": 9,
+                "question": "Time complexity of accessing element in a hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used to implement priority queues?",
+                "options": [
+                    "Stack",
+                    "Heap",
+                    "Queue",
+                    "Deque"
+                ],
+                "answer": "Heap"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 25",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for minimum spanning tree using edges sorted by weight?",
+                "options": [
+                    "Kruskal's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Kruskal's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Output:\narr = [1,2,3]\nprint(arr*2)",
+                "options": [
+                    "[1,2,3,1,2,3]",
+                    "[2,4,6]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,1,2,3]"
+            },
+            {
+                "id": 3,
+                "question": "Time complexity of accessing middle element in singly linked list?",
+                "options": [
+                    "O(n)",
+                    "O(1)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(n)"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm detects bridges in a graph?",
+                "options": [
+                    "Tarjan's Algorithm",
+                    "Kruskal",
+                    "Prim",
+                    "Dijkstra"
+                ],
+                "answer": "Tarjan's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm detects articulation points in a graph?",
+                "options": [
+                    "Tarjan's Algorithm",
+                    "Kruskal",
+                    "Prim",
+                    "Dijkstra"
+                ],
+                "answer": "Tarjan's Algorithm"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used for implementing DFS?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Deque"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm finds shortest path with negative weights but no negative cycles?",
+                "options": [
+                    "Dijkstra",
+                    "Bellman-Ford",
+                    "Floyd-Warshall",
+                    "Prim"
+                ],
+                "answer": "Bellman-Ford"
+            },
+            {
+                "id": 8,
+                "question": "Which traversal prints nodes in level-order?",
+                "options": [
+                    "DFS",
+                    "BFS",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "BFS"
+            },
+            {
+                "id": 9,
+                "question": "Output:\narr = [1,2,3]\narr.append(4)\nprint(arr)",
+                "options": [
+                    "[1,2,3,4]",
+                    "[4,1,2,3]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,4]"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used for implementing LRU Cache?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Deque + Hash Map",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 26",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for detecting articulation points in a graph?",
+                "options": [
+                    "Tarjan's Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm"
+                ],
+                "answer": "Tarjan's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of inserting an element in a max heap?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.pop()\nprint(arr)",
+                "options": [
+                    "[1,2]",
+                    "[2,3]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used to find strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm is used for shortest path in weighted graphs with non-negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of deleting a node from a doubly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 8,
+                "question": "Output:\nstack = []\nstack.append(5)\nstack.append(10)\nprint(stack.pop())",
+                "options": [
+                    "10",
+                    "5",
+                    "[5,10]",
+                    "Error"
+                ],
+                "answer": "10"
+            },
+            {
+                "id": 9,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 10,
+                "question": "Which sorting algorithm is NOT stable?",
+                "options": [
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Bubble Sort",
+                    "Insertion Sort"
+                ],
+                "answer": "Quick Sort"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 27",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm finds shortest path with negative weights but no negative cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of searching in a balanced AVL Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.insert(1,5)\nprint(arr)",
+                "options": [
+                    "[1,5,2,3]",
+                    "[5,1,2,3]",
+                    "[1,2,3,5]",
+                    "Error"
+                ],
+                "answer": "[1,5,2,3]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which traversal prints nodes in level-order?",
+                "options": [
+                    "BFS",
+                    "DFS",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "BFS"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used for implementing LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm is used for minimum spanning tree using edges sorted by weight?",
+                "options": [
+                    "Kruskal's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Kruskal's Algorithm"
+            },
+            {
+                "id": 8,
+                "question": "Time complexity of Heap Sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 9,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 10,
+                "question": "Output:\nset1 = {1,2,3}\nset1.add(2)\nprint(set1)",
+                "options": [
+                    "{1,2,3}",
+                    "{1,2,3,2}",
+                    "{2}",
+                    "Error"
+                ],
+                "answer": "{1,2,3}"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 28",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used to detect cycles in an undirected graph?",
+                "options": [
+                    "Both DFS and Union-Find",
+                    "DFS only",
+                    "Union-Find only",
+                    "BFS"
+                ],
+                "answer": "Both DFS and Union-Find"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of deleting a node from singly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm is used for topological sorting?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            },
+            {
+                "id": 4,
+                "question": "Output:\narr = [1,2,3]\narr.reverse()\nprint(arr)",
+                "options": [
+                    "[3,2,1]",
+                    "[1,2,3]",
+                    "[2,3,1]",
+                    "Error"
+                ],
+                "answer": "[3,2,1]"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in implementing recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm finds shortest path in non-negative weighted graph?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of accessing an element in hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 8,
+                "question": "Which traversal is used to print nodes of BST in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 9,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used to implement priority queue?",
+                "options": [
+                    "Heap",
+                    "Stack",
+                    "Queue",
+                    "Deque"
+                ],
+                "answer": "Heap"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 29",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used to detect articulation points in a graph?",
+                "options": [
+                    "Tarjan's Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm"
+                ],
+                "answer": "Tarjan's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of inserting an element in a max heap?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.pop()\nprint(arr)",
+                "options": [
+                    "[1,2]",
+                    "[2,3]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm is used for shortest path in weighted graphs with non-negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of deleting a node from a doubly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 8,
+                "question": "Output:\nstack = []\nstack.append(5)\nstack.append(10)\nprint(stack.pop())",
+                "options": [
+                    "10",
+                    "5",
+                    "[5,10]",
+                    "Error"
+                ],
+                "answer": "10"
+            },
+            {
+                "id": 9,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 10,
+                "question": "Which sorting algorithm is NOT stable?",
+                "options": [
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Bubble Sort",
+                    "Insertion Sort"
+                ],
+                "answer": "Quick Sort"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 30",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm finds shortest path with negative weights but no negative cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of searching in a balanced AVL Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.insert(1,5)\nprint(arr)",
+                "options": [
+                    "[1,5,2,3]",
+                    "[5,1,2,3]",
+                    "[1,2,3,5]",
+                    "Error"
+                ],
+                "answer": "[1,5,2,3]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which traversal prints nodes in level-order?",
+                "options": [
+                    "BFS",
+                    "DFS",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "BFS"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used for implementing LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm is used for minimum spanning tree using edges sorted by weight?",
+                "options": [
+                    "Kruskal's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Kruskal's Algorithm"
+            },
+            {
+                "id": 8,
+                "question": "Time complexity of Heap Sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 9,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 10,
+                "question": "Output:\nset1 = {1,2,3}\nset1.add(2)\nprint(set1)",
+                "options": [
+                    "{1,2,3}",
+                    "{1,2,3,2}",
+                    "{2}",
+                    "Error"
+                ],
+                "answer": "{1,2,3}"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 31",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used to detect cycles in an undirected graph?",
+                "options": [
+                    "Both DFS and Union-Find",
+                    "DFS only",
+                    "Union-Find only",
+                    "BFS"
+                ],
+                "answer": "Both DFS and Union-Find"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of deleting a node from singly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm is used for topological sorting?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            },
+            {
+                "id": 4,
+                "question": "Output:\narr = [1,2,3]\narr.reverse()\nprint(arr)",
+                "options": [
+                    "[3,2,1]",
+                    "[1,2,3]",
+                    "[2,3,1]",
+                    "Error"
+                ],
+                "answer": "[3,2,1]"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in implementing recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm finds shortest path in non-negative weighted graph?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of accessing an element in hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 8,
+                "question": "Which traversal is used to print nodes of BST in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 9,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used to implement priority queue?",
+                "options": [
+                    "Heap",
+                    "Stack",
+                    "Queue",
+                    "Deque"
+                ],
+                "answer": "Heap"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 32",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Time complexity of searching in a binary search tree (average case)?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 2,
+                "question": "Output:\narr = [1,2,3]\narr.append([4,5])\nprint(arr)",
+                "options": [
+                    "[1,2,3,[4,5]]",
+                    "[1,2,3,4,5]",
+                    "[[1,2,3,4,5]]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,[4,5]]"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm finds shortest path from a single source in weighted graph?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "DFS"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 4,
+                "question": "Time complexity of inserting at the beginning of a linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 6,
+                "question": "Which sorting algorithm is stable?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 8,
+                "question": "Output:\nstack = []\nstack.append(1)\nstack.append(2)\nstack.pop()\nprint(stack)",
+                "options": [
+                    "[1]",
+                    "[2]",
+                    "[1,2]",
+                    "[]"
+                ],
+                "answer": "[1]"
+            },
+            {
+                "id": 9,
+                "question": "Time complexity of accessing an element in hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used for implementing recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 33",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for topological sorting in a DAG?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of finding height of a balanced AVL tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr[1:3]\nprint(arr[1:3])",
+                "options": [
+                    "[2,3]",
+                    "[1,2]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[2,3]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used for finding minimum spanning tree using nodes?",
+                "options": [
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Prim's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used for BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm finds shortest path in weighted graphs with negative weights but no negative cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of Heap Sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 8,
+                "question": "Output:\nstack = []\nstack.append(5)\nstack.append(10)\nprint(stack.pop())",
+                "options": [
+                    "10",
+                    "5",
+                    "[5,10]",
+                    "Error"
+                ],
+                "answer": "10"
+            },
+            {
+                "id": 9,
+                "question": "Which algorithm detects cycles in directed graphs?",
+                "options": [
+                    "DFS with recursion stack",
+                    "BFS",
+                    "Union-Find",
+                    "Heap"
+                ],
+                "answer": "DFS with recursion stack"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used to implement LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 34",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Time complexity of searching in a hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 2,
+                "question": "Which traversal prints BST nodes in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.append([4,5])\nprint(arr)",
+                "options": [
+                    "[1,2,3,[4,5]]",
+                    "[1,2,3,4,5]",
+                    "[[1,2,3,4,5]]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,[4,5]]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used for minimum spanning tree using edges sorted by weight?",
+                "options": [
+                    "Kruskal's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Kruskal's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Time complexity of deleting a node from doubly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Output:\nstack = []\nstack.append(1)\nstack.append(2)\nstack.pop()\nprint(stack)",
+                "options": [
+                    "[1]",
+                    "[2]",
+                    "[1,2]",
+                    "[]"
+                ],
+                "answer": "[1]"
+            },
+            {
+                "id": 8,
+                "question": "Time complexity of accessing an element in array by index?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 9,
+                "question": "Which sorting algorithm is stable?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 35",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for shortest path in weighted graphs without negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of inserting at the beginning of linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.insert(1,5)\nprint(arr)",
+                "options": [
+                    "[1,5,2,3]",
+                    "[5,1,2,3]",
+                    "[1,2,3,5]",
+                    "Error"
+                ],
+                "answer": "[1,5,2,3]"
+            },
+            {
+                "id": 4,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of Heap Sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm is used for topological sorting in DAG?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 9,
+                "question": "Which data structure is used for implementing LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 10,
+                "question": "Output:\nset1 = {1,2,3}\nset1.add(2)\nprint(set1)",
+                "options": [
+                    "{1,2,3}",
+                    "{1,2,3,2}",
+                    "{2}",
+                    "Error"
+                ],
+                "answer": "{1,2,3}"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 36",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for finding strongly connected components in a directed graph?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of searching in a balanced AVL Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.pop()\nprint(arr)",
+                "options": [
+                    "[1,2]",
+                    "[2,3]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm detects cycles in undirected graphs?",
+                "options": [
+                    "DFS and Union-Find",
+                    "DFS only",
+                    "Union-Find only",
+                    "BFS"
+                ],
+                "answer": "DFS and Union-Find"
+            },
+            {
+                "id": 5,
+                "question": "Which traversal prints nodes in level-order?",
+                "options": [
+                    "BFS",
+                    "DFS",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "BFS"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used for implementing LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of inserting an element in a max heap?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm finds shortest path in weighted graph with negative weights but no negative cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 9,
+                "question": "Output:\nstack = []\nstack.append(5)\nstack.append(10)\nprint(stack.pop())",
+                "options": [
+                    "10",
+                    "5",
+                    "[5,10]",
+                    "Error"
+                ],
+                "answer": "10"
+            },
+            {
+                "id": 10,
+                "question": "Which sorting algorithm is stable?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 37",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for minimum spanning tree using edges sorted by weight?",
+                "options": [
+                    "Kruskal's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Kruskal's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of deleting a node from doubly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr[1:3]\nprint(arr[1:3])",
+                "options": [
+                    "[2,3]",
+                    "[1,2]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[2,3]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm finds shortest path from a single source in weighted graphs with non-negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of accessing an element in array by index?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 8,
+                "question": "Which traversal is used to print nodes of BST in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 9,
+                "question": "Output:\nstack = []\nstack.append(1)\nstack.append(2)\nstack.pop()\nprint(stack)",
+                "options": [
+                    "[1]",
+                    "[2]",
+                    "[1,2]",
+                    "[]"
+                ],
+                "answer": "[1]"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 38",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used to detect cycles in directed graphs?",
+                "options": [
+                    "DFS with recursion stack",
+                    "BFS",
+                    "Union-Find",
+                    "Heap"
+                ],
+                "answer": "DFS with recursion stack"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of inserting an element in a max heap?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.append([4,5])\nprint(arr)",
+                "options": [
+                    "[1,2,3,[4,5]]",
+                    "[1,2,3,4,5]",
+                    "[[1,2,3,4,5]]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,[4,5]]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used for topological sorting in a DAG?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Time complexity of Heap Sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Which data structure is used for implementing LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 8,
+                "question": "Which sorting algorithm is NOT stable?",
+                "options": [
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Bubble Sort",
+                    "Insertion Sort"
+                ],
+                "answer": "Quick Sort"
+            },
+            {
+                "id": 9,
+                "question": "Time complexity of searching in a binary search tree (average case)?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 39",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of accessing an element in hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.reverse()\nprint(arr)",
+                "options": [
+                    "[3,2,1]",
+                    "[1,2,3]",
+                    "[2,3,1]",
+                    "Error"
+                ],
+                "answer": "[3,2,1]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm finds shortest path in weighted graphs with non-negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which traversal prints nodes of BST in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of deleting a node from singly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm is used for minimum spanning tree using nodes?",
+                "options": [
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Prim's Algorithm"
+            },
+            {
+                "id": 8,
+                "question": "Output:\nstack = []\nstack.append(1)\nstack.append(2)\nstack.pop()\nprint(stack)",
+                "options": [
+                    "[1]",
+                    "[2]",
+                    "[1,2]",
+                    "[]"
+                ],
+                "answer": "[1]"
+            },
+            {
+                "id": 9,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 10,
+                "question": "Which algorithm is used for topological sorting in DAG?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 40",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Time complexity of searching in a B-Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 2,
+                "question": "Output:\nnums = [1,2,3]\nnums.reverse()\nprint(nums)",
+                "options": [
+                    "[3,2,1]",
+                    "[1,2,3]",
+                    "[2,3,1]",
+                    "Error"
+                ],
+                "answer": "[3,2,1]"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 4,
+                "question": "Which searching algorithm works on sorted arrays?",
+                "options": [
+                    "Binary Search",
+                    "Linear Search",
+                    "DFS",
+                    "BFS"
+                ],
+                "answer": "Binary Search"
+            },
+            {
+                "id": 5,
+                "question": "Time complexity of merge sort in worst case?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure uses LIFO?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 7,
+                "question": "Which traversal is used in BFS?",
+                "options": [
+                    "Level Order",
+                    "Inorder",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "Level Order"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm is used for shortest path in weighted graphs without negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 9,
+                "question": "Time complexity of inserting a node at the beginning of a linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 10,
+                "question": "Height of an AVL tree with n nodes?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 41",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which data structure is used to implement a priority queue?",
+                "options": [
+                    "Heap",
+                    "Stack",
+                    "Queue",
+                    "Linked List"
+                ],
+                "answer": "Heap"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of inserting at the end of a singly linked list?",
+                "options": [
+                    "O(1) if tail pointer is maintained",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1) if tail pointer is maintained"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.insert(1,5)\nprint(arr)",
+                "options": [
+                    "[1,5,2,3]",
+                    "[5,1,2,3]",
+                    "[1,2,3,5]",
+                    "Error"
+                ],
+                "answer": "[1,5,2,3]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm finds shortest path in weighted graph with negative weights?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which traversal prints BST nodes in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of searching in a hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm is used for detecting articulation points in a graph?",
+                "options": [
+                    "Tarjan’s Algorithm",
+                    "Prim’s Algorithm",
+                    "Kruskal’s Algorithm",
+                    "Dijkstra Algorithm"
+                ],
+                "answer": "Tarjan’s Algorithm"
+            },
+            {
+                "id": 8,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 9,
+                "question": "Time complexity of Heap Sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 10,
+                "question": "Which algorithm is used for topological sorting in DAG?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 42",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which searching algorithm works on sorted arrays?",
+                "options": [
+                    "Binary Search",
+                    "Linear Search",
+                    "DFS",
+                    "BFS"
+                ],
+                "answer": "Binary Search"
+            },
+            {
+                "id": 2,
+                "question": "Output:\nnums = [1,2,3]\nnums.reverse()\nprint(nums)",
+                "options": [
+                    "[3,2,1]",
+                    "[1,2,3]",
+                    "[2,3,1]",
+                    "Error"
+                ],
+                "answer": "[3,2,1]"
+            },
+            {
+                "id": 3,
+                "question": "Time complexity of deleting a node from doubly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of searching in a binary search tree (average case)?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm detects cycles in directed graphs?",
+                "options": [
+                    "DFS with recursion stack",
+                    "BFS",
+                    "Union-Find",
+                    "Heap"
+                ],
+                "answer": "DFS with recursion stack"
+            },
+            {
+                "id": 8,
+                "question": "Output:\nstack = []\nstack.append(5)\nstack.append(10)\nprint(stack.pop())",
+                "options": [
+                    "10",
+                    "5",
+                    "[5,10]",
+                    "Error"
+                ],
+                "answer": "10"
+            },
+            {
+                "id": 9,
+                "question": "Which sorting algorithm is stable?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 10,
+                "question": "Time complexity of inserting at the beginning of a linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 43",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for shortest path in weighted graphs without negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of accessing an element in array by index?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm is used for minimum spanning tree using nodes?",
+                "options": [
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Prim's Algorithm"
+            },
+            {
+                "id": 4,
+                "question": "Output:\narr = [1,2,3]\narr.append([4,5])\nprint(arr)",
+                "options": [
+                    "[1,2,3,[4,5]]",
+                    "[1,2,3,4,5]",
+                    "[[1,2,3,4,5]]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,[4,5]]"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of merge sort in worst case?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 8,
+                "question": "Which traversal prints nodes in level-order?",
+                "options": [
+                    "BFS",
+                    "DFS",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "BFS"
+            },
+            {
+                "id": 9,
+                "question": "Output:\nstack = []\nstack.append(1)\nstack.append(2)\nstack.pop()\nprint(stack)",
+                "options": [
+                    "[1]",
+                    "[2]",
+                    "[1,2]",
+                    "[]"
+                ],
+                "answer": "[1]"
+            },
+            {
+                "id": 10,
+                "question": "Time complexity of inserting an element in a max heap?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 44",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for topological sorting in DAG?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of searching in a B-Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\nnums = [1,2,3]\nnums.pop()\nprint(nums)",
+                "options": [
+                    "[1,2]",
+                    "[2,3]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2]"
+            },
+            {
+                "id": 4,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used to implement LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of deleting a node from singly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 8,
+                "question": "Which sorting algorithm is NOT stable?",
+                "options": [
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Bubble Sort",
+                    "Insertion Sort"
+                ],
+                "answer": "Quick Sort"
+            },
+            {
+                "id": 9,
+                "question": "Time complexity of accessing an element in hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 10,
+                "question": "Output:\narr = [1,2,3]\narr.insert(1,5)\nprint(arr)",
+                "options": [
+                    "[1,5,2,3]",
+                    "[5,1,2,3]",
+                    "[1,2,3,5]",
+                    "Error"
+                ],
+                "answer": "[1,5,2,3]"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 45",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm finds shortest path from a single source in weighted graphs with non-negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of inserting at the beginning of a linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 3,
+                "question": "Which traversal prints BST nodes in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 4,
+                "question": "Output:\nstack = []\nstack.append(1)\nstack.append(2)\nstack.pop()\nprint(stack)",
+                "options": [
+                    "[1]",
+                    "[2]",
+                    "[1,2]",
+                    "[]"
+                ],
+                "answer": "[1]"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm detects cycles in directed graphs?",
+                "options": [
+                    "DFS with recursion stack",
+                    "BFS",
+                    "Union-Find",
+                    "Heap"
+                ],
+                "answer": "DFS with recursion stack"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of Heap Sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm is used for minimum spanning tree using edges sorted by weight?",
+                "options": [
+                    "Kruskal's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Kruskal's Algorithm"
+            },
+            {
+                "id": 9,
+                "question": "Time complexity of searching in a binary search tree (average case)?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used for implementing recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 46",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for detecting articulation points in a graph?",
+                "options": [
+                    "Tarjan’s Algorithm",
+                    "Prim’s Algorithm",
+                    "Kruskal’s Algorithm",
+                    "Dijkstra Algorithm"
+                ],
+                "answer": "Tarjan’s Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of inserting an element in a max heap?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 4,
+                "question": "Output:\narr = [1,2,3]\narr.pop()\nprint(arr)",
+                "options": [
+                    "[1,2]",
+                    "[2,3]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2]"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of merge sort in worst case?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 7,
+                "question": "Which traversal prints BST nodes in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm is used for shortest path in weighted graphs without negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 9,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 10,
+                "question": "Time complexity of searching in a hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 47",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which sorting algorithm is stable?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 2,
+                "question": "Output:\nnums = [1,2,3]\nnums.reverse()\nprint(nums)",
+                "options": [
+                    "[3,2,1]",
+                    "[1,2,3]",
+                    "[2,3,1]",
+                    "Error"
+                ],
+                "answer": "[3,2,1]"
+            },
+            {
+                "id": 3,
+                "question": "Time complexity of inserting at the beginning of a linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm detects cycles in directed graphs?",
+                "options": [
+                    "DFS with recursion stack",
+                    "BFS",
+                    "Union-Find",
+                    "Heap"
+                ],
+                "answer": "DFS with recursion stack"
+            },
+            {
+                "id": 5,
+                "question": "Time complexity of accessing an element in array by index?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Which data structure is used to implement LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 8,
+                "question": "Time complexity of deleting a node from singly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 9,
+                "question": "Which algorithm is used for topological sorting in DAG?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            },
+            {
+                "id": 10,
+                "question": "Time complexity of Heap Sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n log n)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 48",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for minimum spanning tree using edges sorted by weight?",
+                "options": [
+                    "Kruskal's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Kruskal's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of searching in a B-Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Which traversal prints nodes in level-order?",
+                "options": [
+                    "BFS",
+                    "DFS",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "BFS"
+            },
+            {
+                "id": 4,
+                "question": "Output:\narr = [1,2,3]\narr.insert(1,5)\nprint(arr)",
+                "options": [
+                    "[1,5,2,3]",
+                    "[5,1,2,3]",
+                    "[1,2,3,5]",
+                    "Error"
+                ],
+                "answer": "[1,5,2,3]"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure uses LIFO?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of searching in a binary search tree (average case)?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm is used for shortest path in weighted graphs without negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 9,
+                "question": "Time complexity of inserting an element in a max heap?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 49",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm detects cycles in undirected graphs?",
+                "options": [
+                    "DFS and Union-Find",
+                    "DFS only",
+                    "Union-Find only",
+                    "BFS"
+                ],
+                "answer": "DFS and Union-Find"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of accessing an element in hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\nstack = []\nstack.append(1)\nstack.append(2)\nstack.pop()\nprint(stack)",
+                "options": [
+                    "[1]",
+                    "[2]",
+                    "[1,2]",
+                    "[]"
+                ],
+                "answer": "[1]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used for minimum spanning tree using nodes?",
+                "options": [
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Prim's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which traversal prints BST nodes in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of merge sort in worst case?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm finds shortest path from a single source in weighted graphs with non-negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 8,
+                "question": "Which sorting algorithm is NOT stable?",
+                "options": [
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Bubble Sort",
+                    "Insertion Sort"
+                ],
+                "answer": "Quick Sort"
+            },
+            {
+                "id": 9,
+                "question": "Which data structure is used to implement LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 10,
+                "question": "Time complexity of deleting a node from singly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 50",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for topological sorting in DAG?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Output:\narr = [1,2,3]\narr.append([4,5])\nprint(arr)",
+                "options": [
+                    "[1,2,3,[4,5]]",
+                    "[1,2,3,4,5]",
+                    "[[1,2,3,4,5]]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,[4,5]]"
+            },
+            {
+                "id": 3,
+                "question": "Time complexity of inserting at the end of a singly linked list?",
+                "options": [
+                    "O(1) if tail pointer is maintained",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1) if tail pointer is maintained"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of accessing an element in array by index?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 7,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 8,
+                "question": "Time complexity of searching in a binary search tree (average case)?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 9,
+                "question": "Output:\nstack = []\nstack.append(5)\nstack.append(10)\nprint(stack.pop())",
+                "options": [
+                    "10",
+                    "5",
+                    "[5,10]",
+                    "Error"
+                ],
+                "answer": "10"
+            },
+            {
+                "id": 10,
+                "question": "Time complexity of merge sort in worst case?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 51",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for detecting bridges in a graph?",
+                "options": [
+                    "Tarjan’s Algorithm",
+                    "Prim’s Algorithm",
+                    "Kruskal’s Algorithm",
+                    "Dijkstra Algorithm"
+                ],
+                "answer": "Tarjan’s Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of inserting an element in a min heap?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Which data structure is used to implement BFS?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 4,
+                "question": "Output:\narr = [1,2,3]\narr.append([4,5])\nprint(arr)",
+                "options": [
+                    "[1,2,3,[4,5]]",
+                    "[1,2,3,4,5]",
+                    "[[1,2,3,4,5]]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,[4,5]]"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm finds strongly connected components in a graph?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of searching in a hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 7,
+                "question": "Which traversal prints BST nodes in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm finds shortest path in weighted graphs without negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 9,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 10,
+                "question": "Time complexity of deleting a node from singly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 52",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which sorting algorithm is stable?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of accessing an element in array by index?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm detects cycles in directed graphs?",
+                "options": [
+                    "DFS with recursion stack",
+                    "BFS",
+                    "Union-Find",
+                    "Heap"
+                ],
+                "answer": "DFS with recursion stack"
+            },
+            {
+                "id": 4,
+                "question": "Time complexity of merge sort in worst case?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 5,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 6,
+                "question": "Output:\nnums = [1,2,3]\nnums.reverse()\nprint(nums)",
+                "options": [
+                    "[3,2,1]",
+                    "[1,2,3]",
+                    "[2,3,1]",
+                    "Error"
+                ],
+                "answer": "[3,2,1]"
+            },
+            {
+                "id": 7,
+                "question": "Which data structure uses LIFO?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 8,
+                "question": "Time complexity of searching in a binary search tree (average case)?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 9,
+                "question": "Which algorithm is used for topological sorting in DAG?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used to implement LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 53",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for minimum spanning tree using edges sorted by weight?",
+                "options": [
+                    "Kruskal's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Kruskal's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of inserting an element in a max heap?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\nstack = []\nstack.append(5)\nstack.append(10)\nprint(stack.pop())",
+                "options": [
+                    "10",
+                    "5",
+                    "[5,10]",
+                    "Error"
+                ],
+                "answer": "10"
+            },
+            {
+                "id": 4,
+                "question": "Which traversal prints BST nodes in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 5,
+                "question": "Time complexity of deleting a node from singly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of accessing an element in array by index?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm finds shortest path from a single source in weighted graphs with non-negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 9,
+                "question": "Which algorithm finds strongly connected components in a graph?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 54",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which sorting algorithm is NOT stable?",
+                "options": [
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Bubble Sort",
+                    "Insertion Sort"
+                ],
+                "answer": "Quick Sort"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of Heap Sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.insert(1,5)\nprint(arr)",
+                "options": [
+                    "[1,5,2,3]",
+                    "[5,1,2,3]",
+                    "[1,2,3,5]",
+                    "Error"
+                ],
+                "answer": "[1,5,2,3]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm detects cycles in undirected graphs?",
+                "options": [
+                    "DFS and Union-Find",
+                    "DFS only",
+                    "Union-Find only",
+                    "BFS"
+                ],
+                "answer": "DFS and Union-Find"
+            },
+            {
+                "id": 5,
+                "question": "Time complexity of searching in a B-Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm is used for minimum spanning tree using nodes?",
+                "options": [
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Prim's Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Which data structure is used to implement LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 8,
+                "question": "Time complexity of inserting at the end of a singly linked list?",
+                "options": [
+                    "O(1) if tail pointer is maintained",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1) if tail pointer is maintained"
+            },
+            {
+                "id": 9,
+                "question": "Which traversal prints nodes in level-order?",
+                "options": [
+                    "BFS",
+                    "DFS",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "BFS"
+            },
+            {
+                "id": 10,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 55",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Time complexity of searching in a binary search tree (average case)?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 2,
+                "question": "Which algorithm is used for topological sorting in DAG?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm finds shortest path from a single source in weighted graphs with non-negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm finds strongly connected components in a graph?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Time complexity of merge sort in worst case?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 6,
+                "question": "Output:\nnums = [1,2,3]\nnums.pop()\nprint(nums)",
+                "options": [
+                    "[1,2]",
+                    "[2,3]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2]"
+            },
+            {
+                "id": 7,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 8,
+                "question": "Which sorting algorithm is stable?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 9,
+                "question": "Time complexity of inserting an element in a max heap?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 56",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm detects cycles in directed graphs?",
+                "options": [
+                    "DFS with recursion stack",
+                    "BFS",
+                    "Union-Find",
+                    "Heap"
+                ],
+                "answer": "DFS with recursion stack"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of inserting at the end of a singly linked list?",
+                "options": [
+                    "O(1) if tail pointer is maintained",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1) if tail pointer is maintained"
+            },
+            {
+                "id": 3,
+                "question": "Output:\nstack = []\nstack.append(1)\nstack.append(2)\nstack.pop()\nprint(stack)",
+                "options": [
+                    "[1]",
+                    "[2]",
+                    "[1,2]",
+                    "[]"
+                ],
+                "answer": "[1]"
+            },
+            {
+                "id": 4,
+                "question": "Which traversal prints nodes in level-order?",
+                "options": [
+                    "BFS",
+                    "DFS",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "BFS"
+            },
+            {
+                "id": 5,
+                "question": "Time complexity of accessing an element in array by index?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm detects negative weight cycles?",
+                "options": [
+                    "Bellman-Ford Algorithm",
+                    "Dijkstra Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Bellman-Ford Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 8,
+                "question": "Time complexity of searching in a binary search tree (average case)?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 9,
+                "question": "Which algorithm finds strongly connected components in a graph?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 57",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which sorting algorithm is NOT stable?",
+                "options": [
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Bubble Sort",
+                    "Insertion Sort"
+                ],
+                "answer": "Quick Sort"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of Heap Sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(n^2)",
+                    "O(log n)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 3,
+                "question": "Output:\narr = [1,2,3]\narr.insert(1,5)\nprint(arr)",
+                "options": [
+                    "[1,5,2,3]",
+                    "[5,1,2,3]",
+                    "[1,2,3,5]",
+                    "Error"
+                ],
+                "answer": "[1,5,2,3]"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm is used for minimum spanning tree using nodes?",
+                "options": [
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Prim's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Time complexity of searching in a B-Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 6,
+                "question": "Which data structure is used to implement LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of inserting an element in a max heap?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(1)",
+                    "O(n log n)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 8,
+                "question": "Which traversal prints BST nodes in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 9,
+                "question": "Time complexity of merge sort in worst case?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 10,
+                "question": "Which algorithm finds shortest path from a single source in weighted graphs with non-negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 58",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for topological sorting in DAG?",
+                "options": [
+                    "DFS and Kahn's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Kruskal's Algorithm"
+                ],
+                "answer": "DFS and Kahn's Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Output:\nnums = [1,2,3]\nnums.pop()\nprint(nums)",
+                "options": [
+                    "[1,2]",
+                    "[2,3]",
+                    "[1,2,3]",
+                    "Error"
+                ],
+                "answer": "[1,2]"
+            },
+            {
+                "id": 3,
+                "question": "Time complexity of accessing an element in array by index?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 4,
+                "question": "Which algorithm finds strongly connected components?",
+                "options": [
+                    "Kosaraju's Algorithm",
+                    "Prim's Algorithm",
+                    "Kruskal's Algorithm",
+                    "Dijkstra Algorithm"
+                ],
+                "answer": "Kosaraju's Algorithm"
+            },
+            {
+                "id": 5,
+                "question": "Which data structure is used in BFS traversal?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Linked List"
+                ],
+                "answer": "Queue"
+            },
+            {
+                "id": 6,
+                "question": "Time complexity of searching in a binary search tree (average case)?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 7,
+                "question": "Time complexity of inserting at the end of a singly linked list?",
+                "options": [
+                    "O(1) if tail pointer is maintained",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1) if tail pointer is maintained"
+            },
+            {
+                "id": 8,
+                "question": "Which sorting algorithm is stable?",
+                "options": [
+                    "Merge Sort",
+                    "Quick Sort",
+                    "Heap Sort",
+                    "Selection Sort"
+                ],
+                "answer": "Merge Sort"
+            },
+            {
+                "id": 9,
+                "question": "Which data structure is used to implement recursion?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 10,
+                "question": "Time complexity of deleting a node from singly linked list?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 59",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm detects cycles in undirected graphs?",
+                "options": [
+                    "DFS and Union-Find",
+                    "DFS only",
+                    "Union-Find only",
+                    "BFS"
+                ],
+                "answer": "DFS and Union-Find"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of searching in a hash table (average case)?",
+                "options": [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)"
+                ],
+                "answer": "O(1)"
+            },
+            {
+                "id": 3,
+                "question": "Which algorithm is used for minimum spanning tree using edges sorted by weight?",
+                "options": [
+                    "Kruskal's Algorithm",
+                    "Prim's Algorithm",
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm"
+                ],
+                "answer": "Kruskal's Algorithm"
+            },
+            {
+                "id": 4,
+                "question": "Which traversal prints BST nodes in sorted order?",
+                "options": [
+                    "Inorder",
+                    "Preorder",
+                    "Postorder",
+                    "Level Order"
+                ],
+                "answer": "Inorder"
+            },
+            {
+                "id": 5,
+                "question": "Time complexity of merge sort in worst case?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 6,
+                "question": "Which algorithm finds shortest path from a single source in weighted graphs with non-negative weights?",
+                "options": [
+                    "Dijkstra Algorithm",
+                    "Bellman-Ford Algorithm",
+                    "Floyd-Warshall Algorithm",
+                    "Prim's Algorithm"
+                ],
+                "answer": "Dijkstra Algorithm"
+            },
+            {
+                "id": 7,
+                "question": "Which data structure is used to implement LRU Cache?",
+                "options": [
+                    "Deque + Hash Map",
+                    "Stack",
+                    "Queue",
+                    "Heap"
+                ],
+                "answer": "Deque + Hash Map"
+            },
+            {
+                "id": 8,
+                "question": "Output:\narr = [1,2,3]\narr.append([4,5])\nprint(arr)",
+                "options": [
+                    "[1,2,3,[4,5]]",
+                    "[1,2,3,4,5]",
+                    "[[1,2,3,4,5]]",
+                    "Error"
+                ],
+                "answer": "[1,2,3,[4,5]]"
+            },
+            {
+                "id": 9,
+                "question": "Which sorting algorithm is NOT stable?",
+                "options": [
+                    "Quick Sort",
+                    "Merge Sort",
+                    "Bubble Sort",
+                    "Insertion Sort"
+                ],
+                "answer": "Quick Sort"
+            },
+            {
+                "id": 10,
+                "question": "Which data structure uses LIFO?",
+                "options": [
+                    "Stack",
+                    "Queue",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            }
+        ]
+    },
+    {
+        "title": "DSA Test - 60",
+        "duration": "10 min",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which algorithm is used for detecting articulation points in a graph?",
+                "options": [
+                    "Tarjan’s Algorithm",
+                    "Prim’s",
+                    "Kruskal’s",
+                    "Dijkstra"
+                ],
+                "answer": "Tarjan’s Algorithm"
+            },
+            {
+                "id": 2,
+                "question": "Time complexity of searching in a B-Tree?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            },
+            {
+                "id": 3,
+                "question": "Which is the most efficient algorithm for finding strongly connected components?",
+                "options": [
+                    "Kruskal’s",
+                    "Kosaraju’s",
+                    "Dijkstra",
+                    "Prim’s"
+                ],
+                "answer": "Kosaraju’s"
+            },
+            {
+                "id": 4,
+                "question": "Output:\nnums = [1,2,3]\nnums.reverse()\nprint(nums)",
+                "options": [
+                    "[3,2,1]",
+                    "[1,2,3]",
+                    "Error",
+                    "[2,3,1]"
+                ],
+                "answer": "[3,2,1]"
+            },
+            {
+                "id": 5,
+                "question": "Which traversal is used in BFS?",
+                "options": [
+                    "Level Order",
+                    "Inorder",
+                    "Preorder",
+                    "Postorder"
+                ],
+                "answer": "Level Order"
+            },
+            {
+                "id": 6,
+                "question": "Which searching algorithm works on sorted arrays?",
+                "options": [
+                    "Linear Search",
+                    "Binary Search",
+                    "DFS",
+                    "BFS"
+                ],
+                "answer": "Binary Search"
+            },
+            {
+                "id": 7,
+                "question": "What is the worst case time complexity of merge sort?",
+                "options": [
+                    "O(n log n)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                "answer": "O(n log n)"
+            },
+            {
+                "id": 8,
+                "question": "Which algorithm is used for shortest path in weighted graphs without negative weights?",
+                "options": [
+                    "Bellman-Ford",
+                    "Dijkstra",
+                    "Floyd Warshall",
+                    "Prim’s"
+                ],
+                "answer": "Dijkstra"
+            },
+            {
+                "id": 9,
+                "question": "Which of the following data structures uses LIFO?",
+                "options": [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Graph"
+                ],
+                "answer": "Stack"
+            },
+            {
+                "id": 10,
+                "question": "What is the height of an AVL Tree with n nodes?",
+                "options": [
+                    "O(log n)",
+                    "O(n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "answer": "O(log n)"
+            }
+        ]
     }
 ]
