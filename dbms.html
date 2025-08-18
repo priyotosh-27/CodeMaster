@@ -3,96 +3,3269 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Database Management Systems — CodeMaster</title>
+  <title>Database Management Systems Masterclass — Complete Guide</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-slate-50">
-  <div class="container mx-auto py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+  <!-- Theme Toggle & Header -->
+  <header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg border-b border-slate-200 dark:border-slate-700">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        DBMS Masterclass
+      </h1>
+      <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+        <span class="dark:hidden">🌙</span>
+        <span class="hidden dark:inline">☀️</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="container mx-auto py-8 px-6 grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <!-- Sidebar Navigation -->
     <aside class="lg:col-span-1">
-      <div class="p-6 bg-white rounded-xl shadow sticky top-24">
-        <h3 class="font-bold text-lg">DBMS Contents</h3>
-        <ol class="mt-3 text-sm text-slate-700 space-y-1">
-          <li><a href="#relational" class="underline">Relational Model & Theory</a></li>
-          <li><a href="#sql" class="underline">SQL Deep Dive</a></li>
-          <li><a href="#indexing" class="underline">Indexing & Storage</a></li>
-          <li><a href="#transactions" class="underline">Transactions & Concurrency Control</a></li>
-          <li><a href="#query" class="underline">Query Optimization & Execution</a></li>
-          <li><a href="#internals" class="underline">Postgres Internals Case Study</a></li>
-          <li><a href="#nosql" class="underline">NoSQL & Modern Systems</a></li>
-          <li><a href="#exercises-db" class="underline">Exercises</a></li>
-        </ol>
+      <div class="sticky top-24 p-6 bg-white/70 dark:bg-slate-800/70 backdrop-blur-lg rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
+        <h3 class="font-bold text-xl mb-6 text-slate-800 dark:text-slate-100">📚 Contents</h3>
+        <nav class="space-y-3">
+          <a href="#fundamentals" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <div class="font-semibold">🏗️ Database Fundamentals</div>
+            <div class="text-xs opacity-75">Data models, ACID, Architecture</div>
+          </a>
+          <a href="#relational" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <div class="font-semibold">📊 Relational Model</div>
+            <div class="text-xs opacity-75">Theory, Normalization, Keys</div>
+          </a>
+          <a href="#sql-basics" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <div class="font-semibold">🔍 SQL Fundamentals</div>
+            <div class="text-xs opacity-75">DDL, DML, Basic Queries</div>
+          </a>
+          <a href="#sql-advanced" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <div class="font-semibold">⚡ Advanced SQL</div>
+            <div class="text-xs opacity-75">Joins, Subqueries, Window Functions</div>
+          </a>
+          <a href="#indexing" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <div class="font-semibold">🚀 Indexing & Performance</div>
+            <div class="text-xs opacity-75">B-Trees, Hash, Composite Indexes</div>
+          </a>
+          <a href="#transactions" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <div class="font-semibold">🔒 Transactions</div>
+            <div class="text-xs opacity-75">ACID, Isolation, Concurrency</div>
+          </a>
+          <a href="#query-optimization" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <div class="font-semibold">🎯 Query Optimization</div>
+            <div class="text-xs opacity-75">Execution Plans, Cost Model</div>
+          </a>
+          <a href="#storage" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <div class="font-semibold">💾 Storage Systems</div>
+            <div class="text-xs opacity-75">File Systems, Buffer Pool</div>
+          </a>
+          <a href="#nosql" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <div class="font-semibold">🌐 NoSQL Systems</div>
+            <div class="text-xs opacity-75">Document, Key-Value, Graph</div>
+          </a>
+          <a href="#exercises" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <div class="font-semibold">💪 Practice Exercises</div>
+            <div class="text-xs opacity-75">Hands-on Problems</div>
+          </a>
+        </nav>
       </div>
     </aside>
 
-    <article class="lg:col-span-3 space-y-8">
-      <section id="relational" class="p-6 bg-white rounded-xl shadow">
-        <h1 class="text-3xl font-bold">Relational Model & Theory</h1>
-        <p class="mt-3 text-slate-700">Relational model formalizes data as relations (tables) with well-defined schemas; operations are expressed in relational algebra. Set semantics, keys, and normalization are foundational.</p>
-        <h2 class="mt-4 font-semibold">Normal Forms</h2>
-        <p class="text-slate-700">1NF, 2NF, 3NF, BCNF — normalization reduces redundancy and update anomalies. We'll discuss trade-offs: normalization vs. performance and when to denormalize.</p>
+    <!-- Main Content -->
+    <main class="lg:col-span-3 space-y-12">
+      
+      <!-- Hero Section -->
+      <section class="text-center py-16 px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 rounded-3xl text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative z-10">
+          <h1 class="text-5xl font-bold mb-6">Database Management Systems</h1>
+          <p class="text-xl opacity-90 max-w-2xl mx-auto leading-relaxed">
+            Master the art and science of data storage, retrieval, and management. From SQL fundamentals to advanced concurrency control.
+          </p>
+          <div class="mt-8 flex justify-center space-x-4">
+            <span class="px-4 py-2 bg-white/20 rounded-full text-sm">📈 Performance Tuning</span>
+            <span class="px-4 py-2 bg-white/20 rounded-full text-sm">🔐 ACID Compliance</span>
+            <span class="px-4 py-2 bg-white/20 rounded-full text-sm">⚡ Query Optimization</span>
+          </div>
+        </div>
       </section>
 
-      <section id="sql" class="p-6 bg-white rounded-xl shadow">
-        <h2 class="text-2xl font-bold">SQL Deep Dive</h2>
-        <h3 class="mt-3 font-semibold">Advanced Queries</h3>
-        <pre class="language-sql"><code>-- Window functions
-SELECT user_id, event_time, ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY event_time) AS seq
-FROM events;
+      <!-- Database Fundamentals -->
+      <section id="fundamentals" class="section-card">
+        <div class="flex items-center mb-6">
+          <div class="text-4xl mr-4">🏗️</div>
+          <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100">Database Fundamentals</h2>
+        </div>
+        
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <h3 class="text-xl font-semibold mb-4">What is a Database Management System?</h3>
+          <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+            A Database Management System (DBMS) is sophisticated software that provides an interface between users/applications and the database. It manages data storage, retrieval, security, backup, and ensures data integrity while supporting concurrent access by multiple users.
+          </p>
 
--- Recursive CTE (hierarchy)
-WITH RECURSIVE deps AS (
-  SELECT id, parent_id FROM pkg WHERE id = 1
-  UNION ALL
-  SELECT p.id, p.parent_id FROM pkg p JOIN deps d ON p.parent_id = d.id
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="p-6 bg-blue-50 dark:bg-blue-900/30 rounded-xl border border-blue-200 dark:border-blue-800">
+              <h4 class="font-semibold text-blue-800 dark:text-blue-200 mb-3">🎯 Key Functions</h4>
+              <ul class="space-y-2 text-sm text-blue-700 dark:text-blue-300">
+                <li>• Data Definition (DDL)</li>
+                <li>• Data Manipulation (DML)</li>
+                <li>• Data Control (DCL)</li>
+                <li>• Transaction Control (TCL)</li>
+                <li>• Query Processing & Optimization</li>
+                <li>• Concurrency Control</li>
+              </ul>
+            </div>
+            <div class="p-6 bg-green-50 dark:bg-green-900/30 rounded-xl border border-green-200 dark:border-green-800">
+              <h4 class="font-semibold text-green-800 dark:text-green-200 mb-3">✨ Benefits</h4>
+              <ul class="space-y-2 text-sm text-green-700 dark:text-green-300">
+                <li>• Data Independence</li>
+                <li>• Reduced Redundancy</li>
+                <li>• Data Consistency</li>
+                <li>• Data Security</li>
+                <li>• Backup & Recovery</li>
+                <li>• Concurrent Access</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">ACID Properties</h3>
+          <p class="text-slate-700 dark:text-slate-300 mb-6">
+            ACID is the foundation of reliable database transactions, ensuring data integrity even in the face of system failures:
+          </p>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="space-y-4">
+              <div class="p-4 bg-red-50 dark:bg-red-900/30 rounded-lg border-l-4 border-red-400">
+                <h5 class="font-bold text-red-800 dark:text-red-200">Atomicity</h5>
+                <p class="text-sm text-red-700 dark:text-red-300">All operations in a transaction succeed or fail together. No partial updates.</p>
+              </div>
+              <div class="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border-l-4 border-blue-400">
+                <h5 class="font-bold text-blue-800 dark:text-blue-200">Consistency</h5>
+                <p class="text-sm text-blue-700 dark:text-blue-300">Database remains in a valid state before and after the transaction.</p>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg border-l-4 border-yellow-400">
+                <h5 class="font-bold text-yellow-800 dark:text-yellow-200">Isolation</h5>
+                <p class="text-sm text-yellow-700 dark:text-yellow-300">Concurrent transactions don't interfere with each other.</p>
+              </div>
+              <div class="p-4 bg-green-50 dark:bg-green-900/30 rounded-lg border-l-4 border-green-400">
+                <h5 class="font-bold text-green-800 dark:text-green-200">Durability</h5>
+                <p class="text-sm text-green-700 dark:text-green-300">Committed changes persist even after system failure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Relational Model -->
+      <section id="relational" class="section-card">
+        <div class="flex items-center mb-6">
+          <div class="text-4xl mr-4">📊</div>
+          <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100">Relational Model & Theory</h2>
+        </div>
+        
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+            The relational model, introduced by Edgar Codd in 1970, represents data as relations (tables) with well-defined schemas. It's based on mathematical set theory and provides a solid foundation for data management.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-4">Core Concepts</h3>
+          <div class="grid md:grid-cols-3 gap-4 mb-8">
+            <div class="p-4 bg-purple-50 dark:bg-purple-900/30 rounded-lg text-center">
+              <div class="text-2xl mb-2">🏗️</div>
+              <h5 class="font-semibold text-purple-800 dark:text-purple-200">Relations</h5>
+              <p class="text-sm text-purple-700 dark:text-purple-300">Tables with rows and columns</p>
+            </div>
+            <div class="p-4 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg text-center">
+              <div class="text-2xl mb-2">🔑</div>
+              <h5 class="font-semibold text-indigo-800 dark:text-indigo-200">Keys</h5>
+              <p class="text-sm text-indigo-700 dark:text-indigo-300">Unique identifiers for rows</p>
+            </div>
+            <div class="p-4 bg-teal-50 dark:bg-teal-900/30 rounded-lg text-center">
+              <div class="text-2xl mb-2">📋</div>
+              <h5 class="font-semibold text-teal-800 dark:text-teal-200">Schema</h5>
+              <p class="text-sm text-teal-700 dark:text-teal-300">Structure and constraints</p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Normalization Forms</h3>
+          <p class="text-slate-700 dark:text-slate-300 mb-6">
+            Normalization eliminates redundancy and prevents update anomalies by organizing data into well-structured tables:
+          </p>
+
+          <div class="space-y-6 mb-8">
+            <div class="p-6 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/30 dark:to-pink-900/30 rounded-xl border border-red-200 dark:border-red-800">
+              <h4 class="text-lg font-bold text-red-800 dark:text-red-200 mb-3">1NF - First Normal Form</h4>
+              <p class="text-red-700 dark:text-red-300 mb-3">Each column contains atomic (indivisible) values, and each column contains values of a single type.</p>
+              <div class="bg-white dark:bg-slate-800 p-4 rounded-lg">
+                <p class="text-sm font-mono text-slate-600 dark:text-slate-400">❌ Bad: customer_phones = "123-456-7890, 098-765-4321"</p>
+                <p class="text-sm font-mono text-green-600 dark:text-green-400">✅ Good: Separate rows for each phone number</p>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl border border-blue-200 dark:border-blue-800">
+              <h4 class="text-lg font-bold text-blue-800 dark:text-blue-200 mb-3">2NF - Second Normal Form</h4>
+              <p class="text-blue-700 dark:text-blue-300 mb-3">Must be in 1NF and all non-key attributes must be fully functionally dependent on the primary key.</p>
+              <div class="bg-white dark:bg-slate-800 p-4 rounded-lg">
+                <p class="text-sm font-mono text-slate-600 dark:text-slate-400">Eliminates partial dependencies on composite keys</p>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 rounded-xl border border-green-200 dark:border-green-800">
+              <h4 class="text-lg font-bold text-green-800 dark:text-green-200 mb-3">3NF - Third Normal Form</h4>
+              <p class="text-green-700 dark:text-green-300 mb-3">Must be in 2NF and no transitive dependencies (non-key attributes depend only on the primary key).</p>
+              <div class="bg-white dark:bg-slate-800 p-4 rounded-lg">
+                <p class="text-sm font-mono text-slate-600 dark:text-slate-400">Every non-key attribute is non-transitively dependent on the primary key</p>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gradient-to-r from-purple-50 to-violet-50 dark:from-purple-900/30 dark:to-violet-900/30 rounded-xl border border-purple-200 dark:border-purple-800">
+              <h4 class="text-lg font-bold text-purple-800 dark:text-purple-200 mb-3">BCNF - Boyce-Codd Normal Form</h4>
+              <p class="text-purple-700 dark:text-purple-300 mb-3">A stricter version of 3NF where every determinant is a candidate key.</p>
+              <div class="bg-white dark:bg-slate-800 p-4 rounded-lg">
+                <p class="text-sm font-mono text-slate-600 dark:text-slate-400">Handles cases where 3NF still allows some anomalies</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SQL Basics -->
+      <section id="sql-basics" class="section-card">
+        <div class="flex items-center mb-6">
+          <div class="text-4xl mr-4">🔍</div>
+          <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100">SQL Fundamentals</h2>
+        </div>
+        
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+            Structured Query Language (SQL) is the standard language for relational database management. Let's dive deep into every aspect of SQL.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-4">Data Definition Language (DDL)</h3>
+          <p class="text-slate-700 dark:text-slate-300 mb-4">DDL commands define and modify database structure:</p>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Creating Tables</h4>
+            <pre class="language-sql"><code>-- Creating a comprehensive table with constraints
+CREATE TABLE employees (
+    emp_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(15),
+    hire_date DATE NOT NULL DEFAULT CURRENT_DATE,
+    salary DECIMAL(10,2) CHECK (salary > 0),
+    department_id INTEGER,
+    manager_id INTEGER,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    -- Foreign key constraints
+    CONSTRAINT fk_department FOREIGN KEY (department_id) 
+        REFERENCES departments(dept_id) ON DELETE SET NULL,
+    CONSTRAINT fk_manager FOREIGN KEY (manager_id) 
+        REFERENCES employees(emp_id) ON DELETE SET NULL,
+    
+    -- Check constraints
+    CONSTRAINT chk_email_format CHECK (email ~* '^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$'),
+    CONSTRAINT chk_hire_date CHECK (hire_date <= CURRENT_DATE)
+);</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Altering Table Structure</h4>
+            <pre class="language-sql"><code>-- Adding columns
+ALTER TABLE employees 
+ADD COLUMN middle_name VARCHAR(50),
+ADD COLUMN birth_date DATE;
+
+-- Modifying columns
+ALTER TABLE employees 
+ALTER COLUMN salary TYPE DECIMAL(12,2),
+ALTER COLUMN phone SET NOT NULL;
+
+-- Adding constraints
+ALTER TABLE employees 
+ADD CONSTRAINT chk_birth_date 
+    CHECK (birth_date < hire_date);
+
+-- Dropping constraints
+ALTER TABLE employees 
+DROP CONSTRAINT chk_email_format;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Data Manipulation Language (DML)</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">INSERT Operations</h4>
+            <pre class="language-sql"><code>-- Single row insert
+INSERT INTO employees (first_name, last_name, email, salary, department_id)
+VALUES ('John', 'Doe', 'john.doe@company.com', 75000.00, 1);
+
+-- Multiple row insert
+INSERT INTO employees (first_name, last_name, email, salary, department_id) VALUES
+    ('Jane', 'Smith', 'jane.smith@company.com', 80000.00, 2),
+    ('Bob', 'Johnson', 'bob.johnson@company.com', 65000.00, 1),
+    ('Alice', 'Brown', 'alice.brown@company.com', 90000.00, 3);
+
+-- Insert with subquery
+INSERT INTO employee_backup 
+SELECT * FROM employees WHERE hire_date < '2020-01-01';
+
+-- Insert with ON CONFLICT (PostgreSQL)
+INSERT INTO employees (emp_id, first_name, last_name, email)
+VALUES (1, 'John', 'Doe', 'john.doe@company.com')
+ON CONFLICT (emp_id) 
+DO UPDATE SET 
+    first_name = EXCLUDED.first_name,
+    last_name = EXCLUDED.last_name;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">SELECT - The Heart of SQL</h4>
+            <pre class="language-sql"><code>-- Basic SELECT with various clauses
+SELECT 
+    emp_id,
+    CONCAT(first_name, ' ', last_name) AS full_name,
+    email,
+    salary,
+    salary * 0.1 AS tax_amount,
+    CASE 
+        WHEN salary >= 100000 THEN 'Senior'
+        WHEN salary >= 70000 THEN 'Mid-level'
+        ELSE 'Junior'
+    END AS level,
+    hire_date,
+    EXTRACT(YEAR FROM hire_date) AS hire_year
+FROM employees
+WHERE 
+    is_active = TRUE 
+    AND salary BETWEEN 50000 AND 150000
+    AND hire_date >= '2020-01-01'
+    AND (department_id IN (1, 2, 3) OR manager_id IS NOT NULL)
+ORDER BY 
+    department_id ASC,
+    salary DESC,
+    hire_date ASC
+LIMIT 10 OFFSET 0;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">UPDATE Operations</h4>
+            <pre class="language-sql"><code>-- Simple update
+UPDATE employees 
+SET salary = salary * 1.05 
+WHERE performance_rating = 'Excellent';
+
+-- Update with subquery
+UPDATE employees 
+SET manager_id = (
+    SELECT emp_id 
+    FROM employees 
+    WHERE title = 'Department Manager' 
+    AND department_id = employees.department_id
 )
-SELECT * FROM deps;
-</code></pre>
-        <h3 class="mt-3 font-semibold">Transactions & Isolation levels</h3>
-        <p class="text-slate-700">ACID properties: Atomicity, Consistency, Isolation, Durability. Isolation levels (Read Uncommitted, Read Committed, Repeatable Read, Serializable) trade correctness vs. concurrency.</p>
+WHERE manager_id IS NULL;
+
+-- Conditional update
+UPDATE employees 
+SET 
+    salary = CASE 
+        WHEN EXTRACT(YEAR FROM hire_date) < 2020 THEN salary * 1.10
+        WHEN EXTRACT(YEAR FROM hire_date) < 2022 THEN salary * 1.07
+        ELSE salary * 1.05
+    END,
+    updated_at = CURRENT_TIMESTAMP
+WHERE is_active = TRUE;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">DELETE Operations</h4>
+            <pre class="language-sql"><code>-- Simple delete
+DELETE FROM employees 
+WHERE is_active = FALSE AND hire_date < '2015-01-01';
+
+-- Delete with subquery
+DELETE FROM employees 
+WHERE emp_id IN (
+    SELECT emp_id 
+    FROM employee_violations 
+    WHERE violation_count > 5
+);
+
+-- Delete with joins (PostgreSQL style)
+DELETE FROM employees e
+USING departments d
+WHERE e.department_id = d.dept_id 
+AND d.is_closed = TRUE;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Data Query Language - Advanced SELECT</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Aggregate Functions & GROUP BY</h4>
+            <pre class="language-sql"><code>-- Comprehensive aggregation example
+SELECT 
+    d.dept_name,
+    COUNT(*) as employee_count,
+    COUNT(DISTINCT e.manager_id) as unique_managers,
+    AVG(e.salary) as avg_salary,
+    MIN(e.salary) as min_salary,
+    MAX(e.salary) as max_salary,
+    SUM(e.salary) as total_payroll,
+    STDDEV(e.salary) as salary_std_dev,
+    PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY e.salary) as median_salary,
+    STRING_AGG(e.first_name, ', ' ORDER BY e.salary DESC) as employees_by_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.dept_id
+WHERE e.is_active = TRUE
+GROUP BY d.dept_id, d.dept_name
+HAVING 
+    COUNT(*) >= 5 
+    AND AVG(e.salary) > 60000
+ORDER BY avg_salary DESC;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">String Functions & Pattern Matching</h4>
+            <pre class="language-sql"><code>-- String manipulation examples
+SELECT 
+    first_name,
+    last_name,
+    -- Basic string functions
+    LENGTH(first_name) as name_length,
+    UPPER(last_name) as upper_last,
+    LOWER(first_name) as lower_first,
+    INITCAP(CONCAT(first_name, ' ', last_name)) as proper_name,
+    
+    -- Substring operations
+    SUBSTRING(email FROM '@(.*)') as domain,
+    LEFT(first_name, 1) as first_initial,
+    RIGHT(last_name, 3) as last_three,
+    
+    -- Pattern matching
+    CASE 
+        WHEN email LIKE '%@gmail.%' THEN 'Gmail'
+        WHEN email LIKE '%@company.%' THEN 'Company'
+        ELSE 'Other'
+    END as email_provider,
+    
+    -- Regular expressions (PostgreSQL)
+    email ~ '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' as valid_email
+FROM employees
+WHERE 
+    first_name ILIKE 'j%'
+    OR last_name ~ '^[A-M].*';</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Date & Time Functions</h4>
+            <pre class="language-sql"><code>-- Date and time manipulation
+SELECT 
+    emp_id,
+    hire_date,
+    -- Date extraction
+    EXTRACT(YEAR FROM hire_date) as hire_year,
+    EXTRACT(MONTH FROM hire_date) as hire_month,
+    EXTRACT(DOW FROM hire_date) as day_of_week,
+    
+    -- Date arithmetic
+    hire_date + INTERVAL '90 days' as probation_end,
+    hire_date + INTERVAL '1 year' as first_anniversary,
+    CURRENT_DATE - hire_date as days_employed,
+    
+    -- Date formatting
+    TO_CHAR(hire_date, 'Month DD, YYYY') as formatted_hire_date,
+    TO_CHAR(hire_date, 'Day') as hire_day_name,
+    
+    -- Age calculation
+    AGE(CURRENT_DATE, hire_date) as employment_duration,
+    EXTRACT(YEAR FROM AGE(CURRENT_DATE, hire_date)) as years_employed,
+    
+    -- Relative dates
+    DATE_TRUNC('month', hire_date) as hire_month_start,
+    DATE_TRUNC('year', hire_date) as hire_year_start
+FROM employees
+WHERE hire_date BETWEEN '2020-01-01' AND CURRENT_DATE;</code></pre>
+          </div>
+        </div>
       </section>
 
-      <section id="indexing" class="p-6 bg-white rounded-xl shadow">
-        <h2 class="text-2xl font-bold">Indexing & Physical Storage</h2>
-        <p class="text-slate-700">B-Trees, LSM-Trees, hashing. Index design, covering indexes, composite indexes, and index-only scans impact performance drastically.</p>
-        <h3 class="mt-3 font-semibold">B-Tree fundamentals</h3>
-        <p class="text-slate-700">Balanced tree, node fanout, page fills, and cost model for range vs point queries.</p>
+      <!-- Advanced SQL -->
+      <section id="sql-advanced" class="section-card">
+        <div class="flex items-center mb-6">
+          <div class="text-4xl mr-4">⚡</div>
+          <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100">Advanced SQL Techniques</h2>
+        </div>
+        
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <h3 class="text-xl font-semibold mb-4">JOIN Operations - Complete Guide</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Inner Join</h4>
+            <pre class="language-sql"><code>-- Basic INNER JOIN
+SELECT 
+    e.first_name,
+    e.last_name,
+    e.salary,
+    d.dept_name,
+    p.project_name
+FROM employees e
+INNER JOIN departments d ON e.department_id = d.dept_id
+INNER JOIN employee_projects ep ON e.emp_id = ep.emp_id
+INNER JOIN projects p ON ep.project_id = p.project_id
+WHERE e.is_active = TRUE;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Outer Joins</h4>
+            <pre class="language-sql"><code>-- LEFT JOIN - Get all employees, even without departments
+SELECT 
+    e.first_name,
+    e.last_name,
+    COALESCE(d.dept_name, 'No Department') as department
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.dept_id;
+
+-- RIGHT JOIN - Get all departments, even without employees
+SELECT 
+    COALESCE(e.first_name, 'No Employee') as employee,
+    d.dept_name
+FROM employees e
+RIGHT JOIN departments d ON e.department_id = d.dept_id;
+
+-- FULL OUTER JOIN - Get all employees and all departments
+SELECT 
+    COALESCE(e.first_name, 'No Employee') as employee,
+    COALESCE(d.dept_name, 'No Department') as department
+FROM employees e
+FULL OUTER JOIN departments d ON e.department_id = d.dept_id;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Self Join & Complex Joins</h4>
+            <pre class="language-sql"><code>-- Self join to find employees and their managers
+SELECT 
+    e.first_name as employee_name,
+    e.last_name as employee_lastname,
+    m.first_name as manager_name,
+    m.last_name as manager_lastname,
+    e.salary as employee_salary,
+    m.salary as manager_salary
+FROM employees e
+LEFT JOIN employees m ON e.manager_id = m.emp_id
+ORDER BY e.department_id, e.salary DESC;
+
+-- Multiple table join with conditions
+SELECT 
+    e.first_name,
+    e.last_name,
+    d.dept_name,
+    p.project_name,
+    ep.role_in_project,
+    ep.start_date,
+    ep.end_date,
+    CASE 
+        WHEN ep.end_date IS NULL THEN 'Active'
+        ELSE 'Completed'
+    END as project_status
+FROM employees e
+JOIN departments d ON e.department_id = d.dept_id
+JOIN employee_projects ep ON e.emp_id = ep.emp_id
+JOIN projects p ON ep.project_id = p.project_id
+WHERE p.budget > 100000;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Subqueries - Scalar, Row, and Table</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Scalar Subqueries</h4>
+            <pre class="language-sql"><code>-- Find employees earning more than company average
+SELECT 
+    first_name,
+    last_name,
+    salary,
+    salary - (SELECT AVG(salary) FROM employees) as salary_diff
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees)
+ORDER BY salary DESC;
+
+-- Correlated subquery
+SELECT 
+    e.first_name,
+    e.last_name,
+    e.salary,
+    e.department_id,
+    (SELECT AVG(salary) 
+     FROM employees e2 
+     WHERE e2.department_id = e.department_id) as dept_avg_salary
+FROM employees e
+WHERE e.salary > (
+    SELECT AVG(salary) * 1.1
+    FROM employees e2
+    WHERE e2.department_id = e.department_id
+);</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Row Subqueries & EXISTS</h4>
+            <pre class="language-sql"><code>-- EXISTS - Find employees who are also managers
+SELECT 
+    e.first_name,
+    e.last_name,
+    e.salary
+FROM employees e
+WHERE EXISTS (
+    SELECT 1 
+    FROM employees subordinate 
+    WHERE subordinate.manager_id = e.emp_id
+);
+
+-- NOT EXISTS - Find employees with no project assignments
+SELECT 
+    e.first_name,
+    e.last_name,
+    e.hire_date
+FROM employees e
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM employee_projects ep 
+    WHERE ep.emp_id = e.emp_id
+);
+
+-- Row subquery comparison
+SELECT *
+FROM employees
+WHERE (department_id, salary) = (
+    SELECT department_id, MAX(salary)
+    FROM employees
+    GROUP BY department_id
+    HAVING department_id = 1
+);</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Table Subqueries with IN, ANY, ALL</h4>
+            <pre class="language-sql"><code>-- IN with subquery
+SELECT 
+    first_name,
+    last_name,
+    department_id
+FROM employees
+WHERE department_id IN (
+    SELECT dept_id 
+    FROM departments 
+    WHERE budget > 500000
+);
+
+-- ANY/SOME - salary greater than any salary in IT department
+SELECT 
+    first_name,
+    last_name,
+    salary
+FROM employees
+WHERE salary > ANY (
+    SELECT salary 
+    FROM employees e
+    JOIN departments d ON e.department_id = d.dept_id
+    WHERE d.dept_name = 'IT'
+);
+
+-- ALL - salary greater than all salaries in HR department
+SELECT 
+    first_name,
+    last_name,
+    salary
+FROM employees
+WHERE salary > ALL (
+    SELECT salary 
+    FROM employees e
+    JOIN departments d ON e.department_id = d.dept_id
+    WHERE d.dept_name = 'HR'
+);</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Window Functions - Advanced Analytics</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Ranking Functions</h4>
+            <pre class="language-sql"><code>-- Comprehensive ranking example
+SELECT 
+    first_name,
+    last_name,
+    department_id,
+    salary,
+    -- Ranking functions
+    ROW_NUMBER() OVER (ORDER BY salary DESC) as overall_rank,
+    RANK() OVER (ORDER BY salary DESC) as salary_rank,
+    DENSE_RANK() OVER (ORDER BY salary DESC) as dense_salary_rank,
+    
+    -- Partition by department
+    ROW_NUMBER() OVER (PARTITION BY department_id ORDER BY salary DESC) as dept_rank,
+    RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) as dept_salary_rank,
+    
+    -- Percentile ranking
+    PERCENT_RANK() OVER (ORDER BY salary) as salary_percentile,
+    CUME_DIST() OVER (ORDER BY salary) as cumulative_distribution,
+    
+    -- Ntile for quartiles
+    NTILE(4) OVER (ORDER BY salary) as salary_quartile,
+    NTILE(10) OVER (PARTITION BY department_id ORDER BY salary) as dept_decile
+FROM employees
+WHERE is_active = TRUE;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Aggregate Window Functions</h4>
+            <pre class="language-sql"><code>-- Running totals and moving averages
+SELECT 
+    first_name,
+    last_name,
+    hire_date,
+    salary,
+    department_id,
+    
+    -- Running totals
+    SUM(salary) OVER (ORDER BY hire_date) as running_total_salary,
+    SUM(salary) OVER (PARTITION BY department_id ORDER BY hire_date) as dept_running_total,
+    
+    -- Moving averages
+    AVG(salary) OVER (
+        ORDER BY hire_date 
+        ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+    ) as moving_avg_3_employees,
+    
+    -- Cumulative statistics
+    COUNT(*) OVER (ORDER BY hire_date) as cumulative_hires,
+    MAX(salary) OVER (PARTITION BY department_id) as dept_max_salary,
+    MIN(salary) OVER (PARTITION BY department_id) as dept_min_salary,
+    
+    -- Standard deviation over window
+    STDDEV(salary) OVER (PARTITION BY department_id) as dept_salary_stddev
+FROM employees
+ORDER BY hire_date;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">LAG and LEAD Functions</h4>
+            <pre class="language-sql"><code>-- Accessing previous and next rows
+SELECT 
+    first_name,
+    last_name,
+    hire_date,
+    salary,
+    
+    -- Previous values
+    LAG(salary, 1) OVER (ORDER BY hire_date) as prev_employee_salary,
+    LAG(hire_date, 1) OVER (ORDER BY hire_date) as prev_hire_date,
+    
+    -- Next values
+    LEAD(salary, 1) OVER (ORDER BY hire_date) as next_employee_salary,
+    LEAD(hire_date, 1) OVER (ORDER BY hire_date) as next_hire_date,
+    
+    -- Calculate differences
+    salary - LAG(salary, 1) OVER (ORDER BY hire_date) as salary_diff_from_prev,
+    
+    -- Days between hires
+    hire_date - LAG(hire_date, 1) OVER (ORDER BY hire_date) as days_since_last_hire,
+    
+    -- Multiple lags
+    LAG(salary, 2) OVER (PARTITION BY department_id ORDER BY hire_date) as salary_2_positions_back
+FROM employees
+ORDER BY hire_date;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Common Table Expressions (CTE)</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Basic CTE</h4>
+            <pre class="language-sql"><code>-- Single CTE
+WITH high_earners AS (
+    SELECT 
+        emp_id,
+        first_name,
+        last_name,
+        salary,
+        department_id
+    FROM employees
+    WHERE salary > 80000
+)
+SELECT 
+    he.first_name,
+    he.last_name,
+    he.salary,
+    d.dept_name
+FROM high_earners he
+JOIN departments d ON he.department_id = d.dept_id
+ORDER BY he.salary DESC;
+
+-- Multiple CTEs
+WITH 
+department_stats AS (
+    SELECT 
+        department_id,
+        AVG(salary) as avg_salary,
+        COUNT(*) as employee_count,
+        MAX(salary) as max_salary
+    FROM employees
+    GROUP BY department_id
+),
+high_performing_depts AS (
+    SELECT department_id
+    FROM department_stats
+    WHERE avg_salary > 70000 AND employee_count >= 5
+)
+SELECT 
+    e.first_name,
+    e.last_name,
+    e.salary,
+    ds.avg_salary as dept_avg,
+    e.salary - ds.avg_salary as salary_diff
+FROM employees e
+JOIN department_stats ds ON e.department_id = ds.department_id
+JOIN high_performing_depts hpd ON e.department_id = hpd.department_id;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Recursive CTE</h4>
+            <pre class="language-sql"><code>-- Recursive CTE for organizational hierarchy
+WITH RECURSIVE employee_hierarchy AS (
+    -- Anchor: Top-level managers (no manager)
+    SELECT 
+        emp_id,
+        first_name,
+        last_name,
+        manager_id,
+        0 as level,
+        CAST(first_name || ' ' || last_name AS VARCHAR(1000)) as path
+    FROM employees
+    WHERE manager_id IS NULL
+    
+    UNION ALL
+    
+    -- Recursive: Employees with managers
+    SELECT 
+        e.emp_id,
+        e.first_name,
+        e.last_name,
+        e.manager_id,
+        eh.level + 1,
+        eh.path || ' -> ' || e.first_name || ' ' || e.last_name
+    FROM employees e
+    JOIN employee_hierarchy eh ON e.manager_id = eh.emp_id
+)
+SELECT 
+    emp_id,
+    REPEAT('  ', level) || first_name || ' ' || last_name as indented_name,
+    level,
+    path as reporting_chain
+FROM employee_hierarchy
+ORDER BY path;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Advanced Query Techniques</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">PIVOT and UNPIVOT Operations</h4>
+            <pre class="language-sql"><code>-- Manual pivot using CASE statements (works in most databases)
+SELECT 
+    department_id,
+    COUNT(CASE WHEN EXTRACT(YEAR FROM hire_date) = 2020 THEN 1 END) as hires_2020,
+    COUNT(CASE WHEN EXTRACT(YEAR FROM hire_date) = 2021 THEN 1 END) as hires_2021,
+    COUNT(CASE WHEN EXTRACT(YEAR FROM hire_date) = 2022 THEN 1 END) as hires_2022,
+    COUNT(CASE WHEN EXTRACT(YEAR FROM hire_date) = 2023 THEN 1 END) as hires_2023
+FROM employees
+GROUP BY department_id;
+
+-- Salary ranges pivot
+SELECT 
+    department_id,
+    SUM(CASE WHEN salary BETWEEN 0 AND 50000 THEN 1 ELSE 0 END) as "0-50K",
+    SUM(CASE WHEN salary BETWEEN 50001 AND 75000 THEN 1 ELSE 0 END) as "50K-75K",
+    SUM(CASE WHEN salary BETWEEN 75001 AND 100000 THEN 1 ELSE 0 END) as "75K-100K",
+    SUM(CASE WHEN salary > 100000 THEN 1 ELSE 0 END) as "100K+"
+FROM employees
+GROUP BY department_id;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Set Operations</h4>
+            <pre class="language-sql"><code>-- UNION - Combine results (removes duplicates)
+SELECT first_name, last_name, 'Employee' as type
+FROM employees
+WHERE salary > 100000
+
+UNION
+
+SELECT first_name, last_name, 'Manager' as type
+FROM employees
+WHERE emp_id IN (SELECT DISTINCT manager_id FROM employees WHERE manager_id IS NOT NULL);
+
+-- UNION ALL - Include duplicates
+SELECT department_id FROM employees WHERE salary > 80000
+UNION ALL
+SELECT dept_id FROM departments WHERE budget > 1000000;
+
+-- INTERSECT - Common records
+SELECT first_name, last_name
+FROM employees
+WHERE department_id = 1
+
+INTERSECT
+
+SELECT first_name, last_name
+FROM employees
+WHERE salary > 75000;
+
+-- EXCEPT - Records in first query but not second
+SELECT first_name, last_name
+FROM employees
+
+EXCEPT
+
+SELECT first_name, last_name
+FROM employees
+WHERE department_id = 1;</code></pre>
+          </div>
+        </div>
       </section>
 
-      <section id="transactions" class="p-6 bg-white rounded-xl shadow">
-        <h2 class="text-2xl font-bold">Transactions & Concurrency Control</h2>
-        <p class="text-slate-700">Two-phase locking (2PL), optimistic concurrency control, multiversion concurrency control (MVCC). We'll explain how MVCC gives snapshot isolation and the implications for write skew.</p>
+      <!-- Indexing -->
+      <section id="indexing" class="section-card">
+        <div class="flex items-center mb-6">
+          <div class="text-4xl mr-4">🚀</div>
+          <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100">Indexing & Performance Optimization</h2>
+        </div>
+        
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+            Database indexes are data structures that improve query performance by creating efficient access paths to data. Understanding indexing is crucial for database performance optimization.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-4">Index Types and Structures</h3>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="p-6 bg-blue-50 dark:bg-blue-900/30 rounded-xl border border-blue-200 dark:border-blue-800">
+              <h4 class="font-semibold text-blue-800 dark:text-blue-200 mb-3">🌳 B-Tree Index</h4>
+              <p class="text-blue-700 dark:text-blue-300 text-sm mb-3">Most common index type, excellent for range queries and equality searches.</p>
+              <ul class="text-blue-600 dark:text-blue-400 text-sm space-y-1">
+                <li>• Balanced tree structure</li>
+                <li>• O(log n) search complexity</li>
+                <li>• Supports range queries</li>
+                <li>• Works with ORDER BY</li>
+              </ul>
+            </div>
+            <div class="p-6 bg-green-50 dark:bg-green-900/30 rounded-xl border border-green-200 dark:border-green-800">
+              <h4 class="font-semibold text-green-800 dark:text-green-200 mb-3">🔍 Hash Index</h4>
+              <p class="text-green-700 dark:text-green-300 text-sm mb-3">Optimized for equality comparisons, very fast for exact matches.</p>
+              <ul class="text-green-600 dark:text-green-400 text-sm space-y-1">
+                <li>• O(1) average lookup time</li>
+                <li>• Only equality operators</li>
+                <li>• No range queries</li>
+                <li>• Memory efficient</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Creating Indexes</h4>
+            <pre class="language-sql"><code>-- Basic index creation
+CREATE INDEX idx_employee_lastname ON employees(last_name);
+
+-- Composite index
+CREATE INDEX idx_employee_dept_salary ON employees(department_id, salary DESC);
+
+-- Unique index
+CREATE UNIQUE INDEX idx_employee_email ON employees(email);
+
+-- Partial index (PostgreSQL)
+CREATE INDEX idx_active_employees ON employees(department_id) 
+WHERE is_active = TRUE;
+
+-- Expression index
+CREATE INDEX idx_employee_full_name ON employees(LOWER(first_name || ' ' || last_name));
+
+-- Covering index (include columns)
+CREATE INDEX idx_employee_lookup ON employees(department_id) 
+INCLUDE (first_name, last_name, salary);
+
+-- Hash index (PostgreSQL)
+CREATE INDEX idx_employee_id_hash ON employees USING HASH(emp_id);
+
+-- GIN index for full-text search
+CREATE INDEX idx_employee_search ON employees 
+USING GIN(to_tsvector('english', first_name || ' ' || last_name));</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Index Usage Patterns</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Query Optimization Examples</h4>
+            <pre class="language-sql"><code>-- Query that benefits from composite index on (department_id, salary)
+EXPLAIN ANALYZE
+SELECT first_name, last_name, salary
+FROM employees 
+WHERE department_id = 1 AND salary > 75000
+ORDER BY salary DESC;
+
+-- Index scan vs Sequential scan
+-- Without index: Sequential Scan on employees (cost=0.00..25.00 rows=1000 width=68)
+-- With index: Index Scan using idx_employee_dept_salary (cost=0.29..8.31 rows=1 width=68)
+
+-- Query using covering index
+SELECT department_id, first_name, last_name, salary
+FROM employees 
+WHERE department_id = 2;
+-- Uses Index Only Scan if all columns are in the index
+
+-- Multi-column WHERE clause optimization
+SELECT * FROM employees 
+WHERE department_id = 1 
+  AND salary BETWEEN 60000 AND 90000 
+  AND hire_date > '2020-01-01';
+
+-- Best index for this query: (department_id, salary, hire_date)
+-- or (department_id, hire_date, salary) depending on selectivity</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Index Maintenance and Monitoring</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Index Statistics and Analysis</h4>
+            <pre class="language-sql"><code>-- PostgreSQL: View index usage statistics
+SELECT 
+    schemaname,
+    tablename,
+    indexname,
+    idx_scan as index_scans,
+    idx_tup_read as tuples_read,
+    idx_tup_fetch as tuples_fetched
+FROM pg_stat_user_indexes 
+ORDER BY idx_scan DESC;
+
+-- Find unused indexes
+SELECT 
+    schemaname,
+    tablename,
+    indexname,
+    idx_scan
+FROM pg_stat_user_indexes 
+WHERE idx_scan = 0;
+
+-- Index size information
+SELECT 
+    indexname,
+    pg_size_pretty(pg_relation_size(indexrelid)) as size
+FROM pg_stat_user_indexes 
+ORDER BY pg_relation_size(indexrelid) DESC;
+
+-- Table and index sizes
+SELECT 
+    tablename,
+    pg_size_pretty(pg_total_relation_size(tablename::regclass)) as total_size,
+    pg_size_pretty(pg_relation_size(tablename::regclass)) as table_size,
+    pg_size_pretty(pg_indexes_size(tablename::regclass)) as indexes_size
+FROM pg_tables 
+WHERE schemaname = 'public';</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Index Maintenance Commands</h4>
+            <pre class="language-sql"><code>-- Rebuild index
+REINDEX INDEX idx_employee_lastname;
+
+-- Rebuild all indexes on a table
+REINDEX TABLE employees;
+
+-- Drop unused index
+DROP INDEX IF EXISTS idx_unused_index;
+
+-- Analyze table statistics (important for query planning)
+ANALYZE employees;
+
+-- Update statistics for specific columns
+ANALYZE employees (first_name, last_name, salary);
+
+-- Concurrent index creation (PostgreSQL) - doesn't block writes
+CREATE INDEX CONCURRENTLY idx_employee_hire_date ON employees(hire_date);</code></pre>
+          </div>
+        </div>
       </section>
 
-      <section id="query" class="p-6 bg-white rounded-xl shadow">
-        <h2 class="text-2xl font-bold">Query Optimization & Execution</h2>
-        <p class="text-slate-700">Query planner, cost estimation, join algorithms (nested-loop, hash join, merge join), and physical operator pipelines.</p>
-        <h3 class="mt-3 font-semibold">Explain analyze walkthrough</h3>
-        <p class="text-slate-700">We dissect sample plans and show how to improve them using indexes, statistics, and query rewrites.</p>
+      <!-- Continue with more sections... -->
+      <style>
+        .section-card {
+          padding: 2rem;
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(10px);
+          border-radius: 1.5rem;
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+          border: 1px solid rgba(226, 232, 240, 0.8);
+          transition: all 0.3s ease;
+        }
+        
+        .dark .section-card {
+          background: rgba(30, 41, 59, 0.7);
+          border: 1px solid rgba(71, 85, 105, 0.8);
+        }
+        
+        .section-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        pre {
+          background: rgba(15, 23, 42, 0.95) !important;
+          border-radius: 0.75rem;
+          padding: 1.5rem;
+          border: 1px solid rgba(71, 85, 105, 0.3);
+          overflow-x: auto;
+        }
+        
+        .dark pre {
+          background: rgba(2, 6, 23, 0.95) !important;
+        }
+        
+        code {
+          font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+          font-size: 0.875rem;
+          line-height: 1.6;
+        }
+      </style>
+
+      <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme or default to light
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.classList.toggle('dark', savedTheme === 'dark');
+        
+        themeToggle.addEventListener('click', () => {
+          const isDark = html.classList.contains('dark');
+          html.classList.toggle('dark');
+          localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+        });
+        
+        // Active navigation highlighting
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('bg-blue-100', 'dark:bg-slate-700');
+              });
+              const activeLink = document.querySelector(`[href="#${entry.target.id}"]`);
+              if (activeLink) {
+                activeLink.classList.add('bg-blue-100', 'dark:bg-slate-700');
+              }
+            }
+          });
+        }, { rootMargin: '-20% 0px -80% 0px' });
+        
+        document.querySelectorAll('section[id]').forEach(section => {
+          observer.observe(section);
+        });
+      </script>
+
+      <!-- Transactions -->
+      <section id="transactions" class="section-card">
+        <div class="flex items-center mb-6">
+          <div class="text-4xl mr-4">🔒</div>
+          <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100">Transactions & Concurrency Control</h2>
+        </div>
+        
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+            Transactions ensure data consistency and integrity in multi-user database environments. Understanding ACID properties, isolation levels, and concurrency control mechanisms is essential for robust database applications.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-4">Transaction Management</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Basic Transaction Control</h4>
+            <pre class="language-sql"><code>-- Explicit transaction management
+BEGIN;
+
+-- Multiple operations that should succeed or fail together
+UPDATE accounts 
+SET balance = balance - 1000 
+WHERE account_id = 'ACC001';
+
+UPDATE accounts 
+SET balance = balance + 1000 
+WHERE account_id = 'ACC002';
+
+-- Insert transaction log
+INSERT INTO transaction_log (from_account, to_account, amount, transaction_date)
+VALUES ('ACC001', 'ACC002', 1000, CURRENT_TIMESTAMP);
+
+-- Check if everything is valid before committing
+SELECT balance FROM accounts WHERE account_id IN ('ACC001', 'ACC002');
+
+-- Commit if successful, rollback if any issues
+COMMIT;
+-- or ROLLBACK;
+
+-- Using savepoints for partial rollbacks
+BEGIN;
+
+INSERT INTO orders (customer_id, order_date, total) VALUES (123, CURRENT_DATE, 500.00);
+
+SAVEPOINT after_order_insert;
+
+INSERT INTO order_items (order_id, product_id, quantity, price) VALUES 
+(CURRVAL('orders_order_id_seq'), 101, 2, 250.00);
+
+-- If this fails, we can rollback to savepoint
+SAVEPOINT after_items_insert;
+
+UPDATE inventory SET quantity = quantity - 2 WHERE product_id = 101;
+
+-- If inventory update fails
+-- ROLLBACK TO SAVEPOINT after_items_insert;
+
+COMMIT;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Isolation Levels</h3>
+          <p class="text-slate-700 dark:text-slate-300 mb-6">
+            Isolation levels control how transactions interact with each other, balancing consistency against performance:
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="space-y-4">
+              <div class="p-4 bg-red-50 dark:bg-red-900/30 rounded-lg border-l-4 border-red-400">
+                <h5 class="font-bold text-red-800 dark:text-red-200">READ UNCOMMITTED</h5>
+                <p class="text-sm text-red-700 dark:text-red-300">Lowest isolation. Allows dirty reads, non-repeatable reads, and phantom reads.</p>
+                <div class="mt-2">
+                  <code class="text-xs bg-red-100 dark:bg-red-800 px-2 py-1 rounded">SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;</code>
+                </div>
+              </div>
+              <div class="p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg border-l-4 border-yellow-400">
+                <h5 class="font-bold text-yellow-800 dark:text-yellow-200">READ COMMITTED</h5>
+                <p class="text-sm text-yellow-700 dark:text-yellow-300">Prevents dirty reads but allows non-repeatable reads and phantom reads.</p>
+                <div class="mt-2">
+                  <code class="text-xs bg-yellow-100 dark:bg-yellow-800 px-2 py-1 rounded">SET TRANSACTION ISOLATION LEVEL READ COMMITTED;</code>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border-l-4 border-blue-400">
+                <h5 class="font-bold text-blue-800 dark:text-blue-200">REPEATABLE READ</h5>
+                <p class="text-sm text-blue-700 dark:text-blue-300">Prevents dirty and non-repeatable reads but allows phantom reads.</p>
+                <div class="mt-2">
+                  <code class="text-xs bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded">SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;</code>
+                </div>
+              </div>
+              <div class="p-4 bg-green-50 dark:bg-green-900/30 rounded-lg border-l-4 border-green-400">
+                <h5 class="font-bold text-green-800 dark:text-green-200">SERIALIZABLE</h5>
+                <p class="text-sm text-green-700 dark:text-green-300">Highest isolation. Prevents all anomalies but may impact performance.</p>
+                <div class="mt-2">
+                  <code class="text-xs bg-green-100 dark:bg-green-800 px-2 py-1 rounded">SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Demonstrating Isolation Levels</h4>
+            <pre class="language-sql"><code>-- Session 1: Dirty Read Example (READ UNCOMMITTED)
+BEGIN;
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+UPDATE accounts SET balance = 5000 WHERE account_id = 'ACC001';
+-- Don't commit yet
+
+-- Session 2: Can read uncommitted data
+BEGIN;
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SELECT balance FROM accounts WHERE account_id = 'ACC001'; -- Shows 5000 (dirty read)
+
+-- Session 1: Rollback
+ROLLBACK; -- Balance returns to original value
+
+-- Session 2: 
+SELECT balance FROM accounts WHERE account_id = 'ACC001'; -- Shows original value
+COMMIT;
+
+-- Non-repeatable read example (READ COMMITTED)
+-- Session 1:
+BEGIN;
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+SELECT balance FROM accounts WHERE account_id = 'ACC001'; -- Returns 1000
+
+-- Session 2: Changes the data
+UPDATE accounts SET balance = 2000 WHERE account_id = 'ACC001';
+COMMIT;
+
+-- Session 1: Read again in same transaction
+SELECT balance FROM accounts WHERE account_id = 'ACC001'; -- Returns 2000 (non-repeatable read)
+COMMIT;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Deadlock Detection and Prevention</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Understanding Deadlocks</h4>
+            <pre class="language-sql"><code>-- Classic deadlock scenario
+-- Session 1:
+BEGIN;
+UPDATE accounts SET balance = balance - 100 WHERE account_id = 'ACC001';
+-- Now waiting to update ACC002
+
+-- Session 2 (simultaneously):
+BEGIN;
+UPDATE accounts SET balance = balance - 100 WHERE account_id = 'ACC002';
+-- Now waiting to update ACC001
+
+-- Session 1 continues:
+UPDATE accounts SET balance = balance + 100 WHERE account_id = 'ACC002'; -- DEADLOCK!
+
+-- Session 2 continues:
+UPDATE accounts SET balance = balance + 100 WHERE account_id = 'ACC001'; -- DEADLOCK!
+
+-- PostgreSQL deadlock detection and resolution
+-- One transaction will be rolled back automatically with error:
+-- ERROR: deadlock detected
+-- DETAIL: Process 1234 waits for ShareLock on transaction 5678;
+-- blocked by process 5678.</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Deadlock Prevention Strategies</h4>
+            <pre class="language-sql"><code>-- Strategy 1: Consistent lock ordering
+-- Always lock accounts in order of account_id
+BEGIN;
+-- Lock lower account_id first
+UPDATE accounts SET balance = balance - 100 
+WHERE account_id = LEAST('ACC001', 'ACC002');
+
+UPDATE accounts SET balance = balance + 100 
+WHERE account_id = GREATEST('ACC001', 'ACC002');
+COMMIT;
+
+-- Strategy 2: Use explicit locking
+BEGIN;
+-- Lock all required rows at the beginning
+SELECT * FROM accounts 
+WHERE account_id IN ('ACC001', 'ACC002') 
+FOR UPDATE;
+
+-- Now perform updates
+UPDATE accounts SET balance = balance - 100 WHERE account_id = 'ACC001';
+UPDATE accounts SET balance = balance + 100 WHERE account_id = 'ACC002';
+COMMIT;
+
+-- Strategy 3: Use timeout
+SET statement_timeout = '30s';
+BEGIN;
+-- Transaction will timeout if it waits too long
+UPDATE accounts SET balance = balance - 100 WHERE account_id = 'ACC001';
+COMMIT;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Locking Mechanisms</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Row-Level Locking</h4>
+            <pre class="language-sql"><code>-- Exclusive row locks (FOR UPDATE)
+SELECT * FROM employees WHERE emp_id = 123 FOR UPDATE;
+-- Prevents other transactions from reading or modifying this row
+
+-- Shared row locks (FOR SHARE)
+SELECT * FROM employees WHERE emp_id = 123 FOR SHARE;
+-- Allows other transactions to read but not modify
+
+-- Lock with NO WAIT
+SELECT * FROM employees WHERE emp_id = 123 FOR UPDATE NOWAIT;
+-- Immediately fails if row is locked
+
+-- Lock with timeout
+SELECT * FROM employees WHERE emp_id = 123 FOR UPDATE SKIP LOCKED;
+-- Skips locked rows and continues
+
+-- Update with lock
+UPDATE employees 
+SET salary = salary * 1.1 
+WHERE emp_id = 123
+RETURNING *;</code></pre>
+          </div>
+        </div>
       </section>
 
-      <section id="internals" class="p-6 bg-white rounded-xl shadow">
-        <h2 class="text-2xl font-bold">Postgres Internals (Case Study)</h2>
-        <p class="text-slate-700">Background writer, WAL (write-ahead log), buffer manager, and checkpointer. We'll show how Postgres ensures durability and crash recovery.</p>
+      <!-- Query Optimization -->
+      <section id="query-optimization" class="section-card">
+        <div class="flex items-center mb-6">
+          <div class="text-4xl mr-4">🎯</div>
+          <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100">Query Optimization & Execution Plans</h2>
+        </div>
+        
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+            Query optimization is the process of choosing the most efficient execution plan for SQL queries. Understanding how databases process queries is crucial for writing performant applications.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-4">Understanding Execution Plans</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Reading EXPLAIN Output</h4>
+            <pre class="language-sql"><code>-- Basic EXPLAIN
+EXPLAIN
+SELECT e.first_name, e.last_name, d.dept_name
+FROM employees e
+JOIN departments d ON e.department_id = d.dept_id
+WHERE e.salary > 75000;
+
+-- Detailed execution plan with costs and timing
+EXPLAIN (ANALYZE, BUFFERS, VERBOSE)
+SELECT e.first_name, e.last_name, d.dept_name, e.salary
+FROM employees e
+JOIN departments d ON e.department_id = d.dept_id
+WHERE e.salary > 75000
+ORDER BY e.salary DESC;
+
+/* Example Output Analysis:
+Sort  (cost=85.17..85.67 rows=200 width=68) (actual time=2.123..2.145 rows=150 loops=1)
+  Sort Key: e.salary DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=15
+  ->  Hash Join  (cost=22.50..77.00 rows=200 width=68) (actual time=0.234..1.891 rows=150 loops=1)
+        Hash Cond: (e.department_id = d.dept_id)
+        Buffers: shared hit=15
+        ->  Seq Scan on employees e  (cost=0.00..52.00 rows=200 width=64) (actual time=0.015..1.234 rows=150 loops=1)
+              Filter: (salary > '75000'::numeric)
+              Rows Removed by Filter: 850
+              Buffers: shared hit=12
+        ->  Hash  (cost=15.00..15.00 rows=600 width=12) (actual time=0.189..0.190 rows=5 loops=1)
+              Buckets: 1024  Batches: 1  Memory Usage: 9kB
+              Buffers: shared hit=3
+              ->  Seq Scan on departments d  (cost=0.00..15.00 rows=600 width=12) (actual time=0.008..0.095 rows=5 loops=1)
+                    Buffers: shared hit=3
+*/</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Join Algorithms</h3>
+          
+          <div class="grid md:grid-cols-3 gap-4 mb-8">
+            <div class="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg text-center">
+              <div class="text-2xl mb-2">🔄</div>
+              <h5 class="font-semibold text-blue-800 dark:text-blue-200">Nested Loop Join</h5>
+              <p class="text-sm text-blue-700 dark:text-blue-300">Good for small datasets or when one side has few rows</p>
+            </div>
+            <div class="p-4 bg-green-50 dark:bg-green-900/30 rounded-lg text-center">
+              <div class="text-2xl mb-2">#</div>
+              <h5 class="font-semibold text-green-800 dark:text-green-200">Hash Join</h5>
+              <p class="text-sm text-green-700 dark:text-green-300">Efficient for large datasets, builds hash table in memory</p>
+            </div>
+            <div class="p-4 bg-purple-50 dark:bg-purple-900/30 rounded-lg text-center">
+              <div class="text-2xl mb-2">🔗</div>
+              <h5 class="font-semibold text-purple-800 dark:text-purple-200">Merge Join</h5>
+              <p class="text-sm text-purple-700 dark:text-purple-300">Best when both inputs are already sorted</p>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Query Optimization Examples</h4>
+            <pre class="language-sql"><code>-- Poorly optimized query
+SELECT *
+FROM employees e, departments d, projects p, employee_projects ep
+WHERE e.department_id = d.dept_id
+AND e.emp_id = ep.emp_id
+AND ep.project_id = p.project_id
+AND e.salary > 50000
+AND d.budget > 100000
+AND p.status = 'ACTIVE';
+
+-- Optimized version with proper JOINs and selective WHERE clauses
+SELECT e.first_name, e.last_name, e.salary, d.dept_name, p.project_name
+FROM employees e
+JOIN departments d ON e.department_id = d.dept_id AND d.budget > 100000
+JOIN employee_projects ep ON e.emp_id = ep.emp_id
+JOIN projects p ON ep.project_id = p.project_id AND p.status = 'ACTIVE'
+WHERE e.salary > 50000;
+
+-- Using EXISTS instead of JOIN when you don't need columns from joined table
+-- Less optimal:
+SELECT DISTINCT e.first_name, e.last_name
+FROM employees e
+JOIN employee_projects ep ON e.emp_id = ep.emp_id
+WHERE e.salary > 75000;
+
+-- More optimal:
+SELECT e.first_name, e.last_name
+FROM employees e
+WHERE e.salary > 75000
+AND EXISTS (
+    SELECT 1 FROM employee_projects ep 
+    WHERE ep.emp_id = e.emp_id
+);</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Performance Tuning Strategies</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Query Rewriting Techniques</h4>
+            <pre class="language-sql"><code>-- Technique 1: Eliminate unnecessary DISTINCT
+-- Slow:
+SELECT DISTINCT e.first_name, e.last_name
+FROM employees e
+JOIN departments d ON e.department_id = d.dept_id;
+
+-- Fast (if employee names are unique):
+SELECT e.first_name, e.last_name
+FROM employees e
+WHERE EXISTS (SELECT 1 FROM departments d WHERE d.dept_id = e.department_id);
+
+-- Technique 2: Use LIMIT early in subqueries
+-- Slow:
+SELECT * FROM (
+    SELECT emp_id, salary, ROW_NUMBER() OVER (ORDER BY salary DESC) as rn
+    FROM employees
+) ranked
+WHERE rn <= 10;
+
+-- Fast:
+SELECT emp_id, salary
+FROM employees
+ORDER BY salary DESC
+LIMIT 10;
+
+-- Technique 3: Push predicates down in subqueries
+-- Slow:
+SELECT * FROM (
+    SELECT e.*, d.dept_name
+    FROM employees e
+    JOIN departments d ON e.department_id = d.dept_id
+) emp_dept
+WHERE emp_dept.salary > 75000;
+
+-- Fast:
+SELECT e.*, d.dept_name
+FROM employees e
+JOIN departments d ON e.department_id = d.dept_id
+WHERE e.salary > 75000;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Index Optimization</h4>
+            <pre class="language-sql"><code>-- Analyze query patterns to create optimal indexes
+
+-- Query 1: Filter by department and order by salary
+SELECT * FROM employees 
+WHERE department_id = 1 
+ORDER BY salary DESC 
+LIMIT 10;
+-- Optimal index: CREATE INDEX ON employees(department_id, salary DESC);
+
+-- Query 2: Filter by multiple conditions
+SELECT * FROM employees 
+WHERE department_id = 1 
+AND is_active = true 
+AND hire_date > '2020-01-01';
+-- Optimal index: CREATE INDEX ON employees(department_id, is_active, hire_date);
+
+-- Query 3: Covering index for frequently accessed columns
+SELECT emp_id, first_name, last_name, salary 
+FROM employees 
+WHERE department_id = 1;
+-- Optimal covering index:
+CREATE INDEX ON employees(department_id) INCLUDE (first_name, last_name, salary);
+
+-- Query 4: Partial index for specific conditions
+SELECT * FROM employees 
+WHERE is_active = true AND department_id = 1;
+-- Optimal partial index:
+CREATE INDEX ON employees(department_id) WHERE is_active = true;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Statistics and Cost Estimation</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Updating Table Statistics</h4>
+            <pre class="language-sql"><code>-- Update statistics for better query planning
+ANALYZE employees;
+
+-- Update statistics with increased sample size
+ANALYZE employees (first_name, last_name, salary);
+
+-- View table statistics (PostgreSQL)
+SELECT 
+    schemaname,
+    tablename,
+    n_tup_ins as inserts,
+    n_tup_upd as updates,
+    n_tup_del as deletes,
+    n_live_tup as live_tuples,
+    n_dead_tup as dead_tuples,
+    last_analyze,
+    last_autoanalyze
+FROM pg_stat_user_tables
+WHERE tablename = 'employees';
+
+-- Set statistics target for specific columns
+ALTER TABLE employees ALTER COLUMN salary SET STATISTICS 1000;
+
+-- View column statistics
+SELECT 
+    attname as column_name,
+    n_distinct,
+    most_common_vals,
+    most_common_freqs,
+    histogram_bounds
+FROM pg_stats
+WHERE tablename = 'employees' AND attname = 'department_id';</code></pre>
+          </div>
+        </div>
       </section>
 
-      <section id="nosql" class="p-6 bg-white rounded-xl shadow">
-        <h2 class="text-2xl font-bold">NoSQL & Modern Systems</h2>
-        <p class="text-slate-700">Document stores, key-value stores, wide-column stores, and graph databases — their data models and when to choose them. Discuss CAP theorem, consistency models, and practical tradeoffs.</p>
+      <!-- Storage Systems -->
+      <section id="storage" class="section-card">
+        <div class="flex items-center mb-6">
+          <div class="text-4xl mr-4">💾</div>
+          <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100">Storage Systems & Architecture</h2>
+        </div>
+        
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+            Understanding how databases store and manage data physically is crucial for performance optimization and system design. This includes storage engines, buffer management, and transaction logging.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-4">Storage Engine Architecture</h3>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl border border-blue-200 dark:border-blue-800">
+              <h4 class="font-semibold text-blue-800 dark:text-blue-200 mb-3">🗂️ Page-Based Storage</h4>
+              <p class="text-blue-700 dark:text-blue-300 text-sm mb-3">Data is organized in fixed-size pages (usually 4KB-16KB)</p>
+              <ul class="text-blue-600 dark:text-blue-400 text-sm space-y-1">
+                <li>• Efficient I/O operations</li>
+                <li>• Buffer pool management</li>
+                <li>• Page checksums for integrity</li>
+                <li>• Free space management</li>
+              </ul>
+            </div>
+            <div class="p-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 rounded-xl border border-green-200 dark:border-green-800">
+              <h4 class="font-semibold text-green-800 dark:text-green-200 mb-3">📝 Write-Ahead Logging</h4>
+              <p class="text-green-700 dark:text-green-300 text-sm mb-3">Changes logged before being applied to data pages</p>
+              <ul class="text-green-600 dark:text-green-400 text-sm space-y-1">
+                <li>• Durability guarantee</li>
+                <li>• Crash recovery capability</li>
+                <li>• Transaction atomicity</li>
+                <li>• Point-in-time recovery</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Buffer Pool Management</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Buffer Pool Configuration</h4>
+            <pre class="language-sql"><code>-- PostgreSQL buffer pool settings
+-- In postgresql.conf:
+
+-- shared_buffers: Amount of memory for shared buffer pool
+-- Recommended: 25% of system RAM for dedicated database server
+shared_buffers = '2GB'
+
+-- effective_cache_size: Estimate of available OS cache
+-- Should be set to about 75% of system RAM
+effective_cache_size = '6GB'
+
+-- work_mem: Memory for query operations (sorts, joins)
+-- Set per operation, not total
+work_mem = '256MB'
+
+-- maintenance_work_mem: Memory for maintenance operations
+maintenance_work_mem = '512MB'
+
+-- View current buffer pool statistics
+SELECT 
+    count(*) as total_buffers,
+    count(*) FILTER (WHERE isdirty) as dirty_buffers,
+    count(*) FILTER (WHERE usagecount > 0) as used_buffers
+FROM pg_buffercache;
+
+-- Most frequently accessed relations
+SELECT 
+    c.relname,
+    count(*) as buffers,
+    round(100.0 * count(*) / (SELECT setting FROM pg_settings WHERE name='shared_buffers')::integer, 2) as percent_of_cache
+FROM pg_buffercache b
+JOIN pg_class c ON b.relfilenode = pg_relation_filenode(c.oid)
+WHERE b.reldatabase IN (0, (SELECT oid FROM pg_database WHERE datname = current_database()))
+AND b.usagecount > 0
+GROUP BY c.relname
+ORDER BY count(*) DESC
+LIMIT 10;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Storage Structures</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Table Storage and Organization</h4>
+            <pre class="language-sql"><code>-- View table storage information
+SELECT 
+    schemaname,
+    tablename,
+    pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) as total_size,
+    pg_size_pretty(pg_relation_size(schemaname||'.'||tablename)) as table_size,
+    pg_size_pretty(pg_indexes_size(schemaname||'.'||tablename)) as indexes_size,
+    pg_total_relation_size(schemaname||'.'||tablename) as total_bytes
+FROM pg_tables 
+WHERE schemaname = 'public'
+ORDER BY pg_total_relation_size(schemaname||'.'||tablename) DESC;
+
+-- Analyze table bloat
+WITH table_stats AS (
+    SELECT 
+        schemaname,
+        tablename,
+        n_live_tup,
+        n_dead_tup,
+        pg_relation_size(schemaname||'.'||tablename) as table_size
+    FROM pg_stat_user_tables
+)
+SELECT 
+    schemaname,
+    tablename,
+    n_live_tup as live_rows,
+    n_dead_tup as dead_rows,
+    round(100.0 * n_dead_tup / GREATEST(n_live_tup + n_dead_tup, 1), 2) as dead_row_percent,
+    pg_size_pretty(table_size) as size
+FROM table_stats
+WHERE n_dead_tup > 1000
+ORDER BY dead_row_percent DESC;
+
+-- Tablespace management
+CREATE TABLESPACE fast_ssd LOCATION '/mnt/fast_ssd/postgres';
+
+CREATE TABLE high_performance_table (
+    id SERIAL PRIMARY KEY,
+    data TEXT
+) TABLESPACE fast_ssd;
+
+-- Partitioning for large tables
+CREATE TABLE sales_data (
+    id SERIAL,
+    sale_date DATE,
+    amount DECIMAL(10,2),
+    customer_id INTEGER
+) PARTITION BY RANGE (sale_date);
+
+CREATE TABLE sales_2023 PARTITION OF sales_data
+FOR VALUES FROM ('2023-01-01') TO ('2024-01-01');
+
+CREATE TABLE sales_2024 PARTITION OF sales_data
+FOR VALUES FROM ('2024-01-01') TO ('2025-01-01');</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Backup and Recovery</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Backup Strategies</h4>
+            <pre class="language-sql"><code>-- Full database backup
+-- Command line: pg_dump database_name > backup.sql
+
+-- Point-in-time recovery setup
+-- In postgresql.conf:
+wal_level = 'replica'
+archive_mode = 'on'
+archive_command = 'cp %p /backup/wal_archive/%f'
+
+-- Create base backup
+-- Command line: pg_basebackup -D /backup/base_backup -Ft -z -P
+
+-- Continuous archiving
+SELECT pg_start_backup('daily_backup', true);
+-- Copy data directory
+SELECT pg_stop_backup();
+
+-- View WAL information
+SELECT 
+    pg_current_wal_lsn() as current_wal_location,
+    pg_walfile_name(pg_current_wal_lsn()) as current_wal_file;
+
+-- Check replication lag
+SELECT 
+    client_addr,
+    state,
+    pg_wal_lsn_diff(pg_current_wal_lsn(), sent_lsn) as send_lag,
+    pg_wal_lsn_diff(sent_lsn, flush_lsn) as flush_lag,
+    pg_wal_lsn_diff(flush_lsn, replay_lsn) as replay_lag
+FROM pg_stat_replication;</code></pre>
+          </div>
+        </div>
       </section>
 
-      <section id="exercises-db" class="p-6 bg-white rounded-xl shadow">
-        <h2 class="text-2xl font-bold">Exercises</h2>
-        <ol class="list-decimal pl-6 mt-3 text-slate-700 space-y-3">
-          <li>Design a normalized schema for an e-commerce product catalog and justify indexes.</li>
-          <li>Explain why MVCC helps reads while writes still require careful conflict handling.</li>
-          <li>Given a slow query, outline steps to optimize it (explain analyze, add index, rewrite, partition).</li>
-        </ol>
+      <!-- NoSQL -->
+      <section id="nosql" class="section-card">
+        <div class="flex items-center mb-6">
+          <div class="text-4xl mr-4">🌐</div>
+          <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100">NoSQL Database Systems</h2>
+        </div>
+        
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+            NoSQL databases provide alternative data models and architectures for applications that don't fit well with traditional relational models. Understanding when and how to use different NoSQL systems is crucial for modern application development.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="p-6 bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/30 dark:to-red-900/30 rounded-xl border border-orange-200 dark:border-orange-800">
+              <h4 class="font-semibold text-orange-800 dark:text-orange-200 mb-3">📄 Document Stores</h4>
+              <p class="text-orange-700 dark:text-orange-300 text-sm mb-3">Store data as documents (JSON, BSON)</p>
+              <ul class="text-orange-600 dark:text-orange-400 text-sm space-y-1">
+                <li>• MongoDB, CouchDB</li>
+                <li>• Flexible schema</li>
+                <li>• Complex nested data</li>
+                <li>• Rich query capabilities</li>
+              </ul>
+            </div>
+            <div class="p-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 rounded-xl border border-blue-200 dark:border-blue-800">
+              <h4 class="font-semibold text-blue-800 dark:text-blue-200 mb-3">🔑 Key-Value Stores</h4>
+              <p class="text-blue-700 dark:text-blue-300 text-sm mb-3">Simple key-value pairs for fast access</p>
+              <ul class="text-blue-600 dark:text-blue-400 text-sm space-y-1">
+                <li>• Redis, DynamoDB</li>
+                <li>• High performance</li>
+                <li>• Simple operations</li>
+                <li>• Excellent for caching</li>
+              </ul>
+            </div>
+        THEN ROUND(100.0 * n_dead_tup / (n_live_tup + n_dead_tup), 2)
+        ELSE 0
+    END as bloat_percent,
+    CASE 
+        WHEN last_vacuum > last_autovacuum THEN last_vacuum
+        ELSE last_autovacuum
+    END as last_vacuum_time
+FROM table_info
+ORDER BY total_bytes DESC;
+
+-- Index usage analysis
+SELECT 
+    schemaname,
+    tablename,
+    indexname,
+    idx_scan as times_used,
+    idx_tup_read as tuples_read,
+    idx_tup_fetch as tuples_fetched,
+    pg_size_pretty(pg_relation_size(indexrelid)) as index_size,
+    CASE 
+        WHEN idx_scan = 0 THEN 'UNUSED - Consider dropping'
+        WHEN idx_scan < 100 THEN 'LOW USAGE'
+        ELSE 'ACTIVE'
+    END as usage_status
+FROM pg_stat_user_indexes
+ORDER BY idx_scan DESC;
+
+-- Long running queries and blocking
+SELECT 
+    pid,
+    now() - pg_stat_activity.query_start AS duration,
+    query,
+    state,
+    wait_event_type,
+    wait_event
+FROM pg_stat_activity
+WHERE (now() - pg_stat_activity.query_start) > interval '5 minutes'
+ORDER BY duration DESC;
+
+-- Lock monitoring
+SELECT 
+    blocked_locks.pid AS blocked_pid,
+    blocked_activity.usename AS blocked_user,
+    blocking_locks.pid AS blocking_pid,
+    blocking_activity.usename AS blocking_user,
+    blocked_activity.query AS blocked_statement,
+    blocking_activity.query AS blocking_statement
+FROM pg_catalog.pg_locks blocked_locks
+JOIN pg_catalog.pg_stat_activity blocked_activity ON blocked_activity.pid = blocked_locks.pid
+JOIN pg_catalog.pg_locks blocking_locks ON blocking_locks.locktype = blocked_locks.locktype
+    AND blocking_locks.database IS NOT DISTINCT FROM blocked_locks.database
+    AND blocking_locks.relation IS NOT DISTINCT FROM blocked_locks.relation
+    AND blocking_locks.page IS NOT DISTINCT FROM blocked_locks.page
+    AND blocking_locks.tuple IS NOT DISTINCT FROM blocked_locks.tuple
+    AND blocking_locks.virtualxid IS NOT DISTINCT FROM blocked_locks.virtualxid
+    AND blocking_locks.transactionid IS NOT DISTINCT FROM blocked_locks.transactionid
+    AND blocking_locks.classid IS NOT DISTINCT FROM blocked_locks.classid
+    AND blocking_locks.objid IS NOT DISTINCT FROM blocked_locks.objid
+    AND blocking_locks.objsubid IS NOT DISTINCT FROM blocked_locks.objsubid
+    AND blocking_locks.pid != blocked_locks.pid
+JOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = blocking_locks.pid
+WHERE NOT blocked_locks.granted;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Maintenance Procedures</h4>
+            <pre class="language-sql"><code>-- Automated maintenance procedures
+-- Vacuum and analyze routine
+DO $
+DECLARE
+    tbl record;
+BEGIN
+    FOR tbl IN 
+        SELECT schemaname, tablename 
+        FROM pg_stat_user_tables 
+        WHERE n_dead_tup > 1000 
+        OR (last_vacuum < CURRENT_DATE - INTERVAL '7 days')
+    LOOP
+        EXECUTE format('VACUUM ANALYZE %I.%I', tbl.schemaname, tbl.tablename);
+        RAISE NOTICE 'Vacuumed and analyzed %.%', tbl.schemaname, tbl.tablename;
+    END LOOP;
+END $;
+
+-- Reindex routine for fragmented indexes
+DO $
+DECLARE
+    idx record;
+BEGIN
+    FOR idx IN 
+        SELECT schemaname, indexname 
+        FROM pg_stat_user_indexes 
+        WHERE idx_scan > 1000  -- Only reindex used indexes
+        AND pg_relation_size(indexrelid) > 100 * 1024 * 1024  -- > 100MB
+    LOOP
+        EXECUTE format('REINDEX INDEX CONCURRENTLY %I.%I', idx.schemaname, idx.indexname);
+        RAISE NOTICE 'Reindexed %.%', idx.schemaname, idx.indexname;
+    END LOOP;
+END $;
+
+-- Update table statistics with custom targets
+UPDATE pg_attribute 
+SET attstattarget = 1000 
+WHERE attrelid = 'employees'::regclass 
+AND attname IN ('department_id', 'salary', 'hire_date');
+
+ANALYZE employees;</code></pre>
+          </div>
+
+          <div class="p-6 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/30 dark:to-orange-900/30 rounded-xl border border-amber-200 dark:border-amber-800 mb-8">
+            <h4 class="font-semibold text-amber-800 dark:text-amber-200 mb-3">🎯 Practice Challenges</h4>
+            <div class="text-amber-700 dark:text-amber-300 space-y-3">
+              <p><strong>Challenge 1:</strong> Design a schema for a social media platform with users, posts, comments, likes, and followers. Include proper indexes and constraints.</p>
+              <p><strong>Challenge 2:</strong> Write a query to find the top 10 most influential users based on follower count, engagement rate, and post frequency.</p>
+              <p><strong>Challenge 3:</strong> Create a recommendation system query that suggests products based on customer purchase history and similar customer behavior.</p>
+              <p><strong>Challenge 4:</strong> Implement a rate limiting system using SQL that tracks API calls per user and enforces limits.</p>
+              <p><strong>Challenge 5:</strong> Design and implement a audit log system that tracks all changes to sensitive tables with full history.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
-    </article>
+      <!-- Advanced Topics -->
+      <section class="section-card">
+        <div class="flex items-center mb-6">
+          <div class="text-4xl mr-4">🚀</div>
+          <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100">Advanced Database Concepts</h2>
+        </div>
+        
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <h3 class="text-xl font-semibold mb-4">Database Internals</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">MVCC (Multi-Version Concurrency Control)</h4>
+            <p class="text-slate-700 dark:text-slate-300 mb-4">
+              MVCC allows multiple transactions to access the same data concurrently by maintaining multiple versions of data. Each transaction sees a consistent snapshot of the database.
+            </p>
+            <pre class="language-sql"><code>-- Understanding MVCC in action
+-- Transaction 1: Long-running read
+BEGIN;
+SELECT txid_current() as my_transaction_id;  -- Returns transaction ID
+SELECT COUNT(*) FROM orders WHERE status = 'pending';  -- Snapshot at this point
+
+-- Transaction 2: Concurrent update (in another session)
+BEGIN;
+UPDATE orders SET status = 'processing' WHERE order_id = 1001;
+COMMIT;
+
+-- Transaction 1: Continue reading (still sees old snapshot)
+SELECT COUNT(*) FROM orders WHERE status = 'pending';  -- Same result as before
+COMMIT;
+
+-- Viewing transaction snapshots
+SELECT 
+    pid,
+    usename,
+    application_name,
+    client_addr,
+    xact_start,
+    backend_xmin,
+    backend_xid
+FROM pg_stat_activity
+WHERE state = 'active';
+
+-- Dead tuple information (MVCC overhead)
+SELECT 
+    schemaname,
+    tablename,
+    n_live_tup,
+    n_dead_tup,
+    ROUND(100.0 * n_dead_tup / GREATEST(n_live_tup + n_dead_tup, 1), 2) as dead_ratio
+FROM pg_stat_user_tables
+WHERE n_dead_tup > 0
+ORDER BY dead_ratio DESC;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Distributed Databases</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Sharding Strategies</h4>
+            <pre class="language-sql"><code>-- Horizontal partitioning (sharding) example
+-- Shard by customer ID ranges
+CREATE TABLE customers_shard_1 (
+    CONSTRAINT customers_shard_1_check CHECK (customer_id >= 1 AND customer_id < 100000)
+) INHERITS (customers);
+
+CREATE TABLE customers_shard_2 (
+    CONSTRAINT customers_shard_2_check CHECK (customer_id >= 100000 AND customer_id < 200000)
+) INHERITS (customers);
+
+-- Hash-based sharding function
+CREATE OR REPLACE FUNCTION get_shard_id(customer_id INTEGER)
+RETURNS INTEGER AS $
+BEGIN
+    RETURN (customer_id % 4) + 1;  -- 4 shards
+END;
+$ LANGUAGE plpgsql;
+
+-- Date-based partitioning for time-series data
+CREATE TABLE sales_log (
+    id SERIAL,
+    sale_date DATE NOT NULL,
+    customer_id INTEGER,
+    amount DECIMAL(10,2)
+) PARTITION BY RANGE (sale_date);
+
+-- Create monthly partitions
+CREATE TABLE sales_log_2024_01 PARTITION OF sales_log
+FOR VALUES FROM ('2024-01-01') TO ('2024-02-01');
+
+CREATE TABLE sales_log_2024_02 PARTITION OF sales_log
+FOR VALUES FROM ('2024-02-01') TO ('2024-03-01');
+
+-- Automatic partition creation function
+CREATE OR REPLACE FUNCTION create_monthly_partition(table_name TEXT, start_date DATE)
+RETURNS VOID AS $
+DECLARE
+    partition_name TEXT;
+    end_date DATE;
+BEGIN
+    partition_name := table_name || '_' || TO_CHAR(start_date, 'YYYY_MM');
+    end_date := start_date + INTERVAL '1 month';
+    
+    EXECUTE format(
+        'CREATE TABLE %I PARTITION OF %I FOR VALUES FROM (%L) TO (%L)',
+        partition_name, table_name, start_date, end_date
+    );
+END;
+$ LANGUAGE plpgsql;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Database Security</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">User Management and Permissions</h4>
+            <pre class="language-sql"><code>-- Create roles and users
+CREATE ROLE app_readonly;
+CREATE ROLE app_readwrite;
+CREATE ROLE app_admin;
+
+-- Grant permissions to roles
+GRANT CONNECT ON DATABASE ecommerce TO app_readonly;
+GRANT USAGE ON SCHEMA public TO app_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO app_readonly;
+
+GRANT app_readonly TO app_readwrite;
+GRANT INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_readwrite;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO app_readwrite;
+
+GRANT app_readwrite TO app_admin;
+GRANT CREATE ON SCHEMA public TO app_admin;
+
+-- Create specific users
+CREATE USER app_user_read WITH PASSWORD 'secure_password_123';
+CREATE USER app_user_write WITH PASSWORD 'secure_password_456';
+CREATE USER admin_user WITH PASSWORD 'admin_secure_789';
+
+-- Assign roles to users
+GRANT app_readonly TO app_user_read;
+GRANT app_readwrite TO app_user_write;
+GRANT app_admin TO admin_user;
+
+-- Row Level Security (RLS)
+ALTER TABLE orders ENABLE ROW LEVEL SECURITY;
+
+-- Policy: Users can only see their own orders
+CREATE POLICY user_orders_policy ON orders
+    FOR ALL TO app_user
+    USING (customer_id = current_setting('app.current_customer_id')::INTEGER);
+
+-- Policy: Admins can see all orders
+CREATE POLICY admin_orders_policy ON orders
+    FOR ALL TO app_admin
+    USING (true);
+
+-- Audit logging
+CREATE TABLE audit_log (
+    audit_id SERIAL PRIMARY KEY,
+    table_name VARCHAR(50),
+    operation VARCHAR(10),
+    old_values JSONB,
+    new_values JSONB,
+    changed_by VARCHAR(50),
+    changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Trigger function for audit logging
+CREATE OR REPLACE FUNCTION audit_trigger_function()
+RETURNS TRIGGER AS $
+BEGIN
+    IF TG_OP = 'DELETE' THEN
+        INSERT INTO audit_log (table_name, operation, old_values, changed_by)
+        VALUES (TG_TABLE_NAME, TG_OP, row_to_json(OLD), current_user);
+        RETURN OLD;
+    ELSIF TG_OP = 'UPDATE' THEN
+        INSERT INTO audit_log (table_name, operation, old_values, new_values, changed_by)
+        VALUES (TG_TABLE_NAME, TG_OP, row_to_json(OLD), row_to_json(NEW), current_user);
+        RETURN NEW;
+    ELSIF TG_OP = 'INSERT' THEN
+        INSERT INTO audit_log (table_name, operation, new_values, changed_by)
+        VALUES (TG_TABLE_NAME, TG_OP, row_to_json(NEW), current_user);
+        RETURN NEW;
+    END IF;
+    RETURN NULL;
+END;
+$ LANGUAGE plpgsql;
+
+-- Apply audit trigger to sensitive tables
+CREATE TRIGGER audit_customers
+    AFTER INSERT OR UPDATE OR DELETE ON customers
+    FOR EACH ROW EXECUTE FUNCTION audit_trigger_function();</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Performance Monitoring</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Real-time Performance Metrics</h4>
+            <pre class="language-sql"><code>-- Active connections and their states
+SELECT 
+    state,
+    COUNT(*) as connection_count,
+    AVG(EXTRACT(EPOCH FROM (now() - query_start))) as avg_query_duration
+FROM pg_stat_activity
+WHERE pid <> pg_backend_pid()
+GROUP BY state;
+
+-- Slowest queries over time
+SELECT 
+    query,
+    calls,
+    total_time,
+    mean_time,
+    stddev_time,
+    rows,
+    100.0 * shared_blks_hit / nullif(shared_blks_hit + shared_blks_read, 0) AS hit_percent
+FROM pg_stat_statements
+ORDER BY total_time DESC
+LIMIT 10;
+
+-- Database-wide statistics
+SELECT 
+    datname as database,
+    numbackends as active_connections,
+    xact_commit as transactions_committed,
+    xact_rollback as transactions_rolled_back,
+    blks_read as blocks_read_from_disk,
+    blks_hit as blocks_read_from_cache,
+    round(100.0 * blks_hit / nullif(blks_hit + blks_read, 0), 2) as cache_hit_ratio,
+    tup_returned as tuples_returned,
+    tup_fetched as tuples_fetched,
+    tup_inserted as tuples_inserted,
+    tup_updated as tuples_updated,
+    tup_deleted as tuples_deleted
+FROM pg_stat_database
+WHERE datname = current_database();
+
+-- I/O statistics by table
+SELECT 
+    schemaname,
+    tablename,
+    heap_blks_read as table_blocks_read,
+    heap_blks_hit as table_blocks_hit,
+    round(100.0 * heap_blks_hit / nullif(heap_blks_hit + heap_blks_read, 0), 2) as table_hit_ratio,
+    idx_blks_read as index_blocks_read,
+    idx_blks_hit as index_blocks_hit,
+    round(100.0 * idx_blks_hit / nullif(idx_blks_hit + idx_blks_read, 0), 2) as index_hit_ratio
+FROM pg_statio_user_tables
+WHERE heap_blks_read + heap_blks_hit > 0
+ORDER BY heap_blks_read + idx_blks_read DESC;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="text-center py-12 px-8 bg-gradient-to-r from-slate-800 to-slate-900 rounded-3xl text-white mt-16">
+        <div class="max-w-4xl mx-auto">
+          <h3 class="text-2xl font-bold mb-4">🎓 Congratulations!</h3>
+          <p class="text-slate-300 text-lg leading-relaxed mb-6">
+            You've completed a comprehensive journey through Database Management Systems. From basic SQL to advanced optimization techniques, you now have the knowledge to build, optimize, and maintain robust database systems.
+          </p>
+          <div class="flex justify-center space-x-8 text-sm">
+            <div class="text-center">
+              <div class="text-2xl mb-2">🔍</div>
+              <div class="font-semibold">SQL Mastery</div>
+              <div class="opacity-75">Complex queries & optimization</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl mb-2">⚡</div>
+              <div class="font-semibold">Performance</div>
+              <div class="opacity-75">Indexing & query tuning</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl mb-2">🔒</div>
+              <div class="font-semibold">Transactions</div>
+              <div class="opacity-75">ACID & concurrency control</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl mb-2">🌐</div>
+              <div class="font-semibold">Modern Systems</div>
+              <div class="opacity-75">NoSQL & distributed databases</div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
   </div>
+
+  <style>
+    .section-card {
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(16px);
+      border-radius: 1.5rem;
+      box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+        0 10px 10px -5px rgba(0, 0, 0, 0.04),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .dark .section-card {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(71, 85, 105, 0.8);
+      box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.3), 
+        0 10px 10px -5px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+    
+    .section-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 
+        0 32px 64px -12px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(59, 130, 246, 0.3);
+    }
+    
+    .dark .section-card:hover {
+      box-shadow: 
+        0 32px 64px -12px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(59, 130, 246, 0.5);
+    }
+    
+    pre {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95)) !important;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(71, 85, 105, 0.3);
+      overflow-x: auto;
+      position: relative;
+    }
+    
+    .dark pre {
+      background: linear-gradient(135deg, rgba(2, 6, 23, 0.95), rgba(15, 23, 42, 0.95)) !important;
+      border: 1px solid rgba(51, 65, 85, 0.5);
+    }
+    
+    pre::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+      border-radius: 1rem 1rem 0 0;
+    }
+    
+    code {
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: #e2e8f0;
+    }
+    
+    .nav-link {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .nav-link:hover::before {
+      left: 100%;
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(148, 163, 184, 0.1);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: rgba(59, 130, 246, 0.5);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(59, 130, 246, 0.7);
+    }
+    
+    /* Enhanced animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .section-card {
+      animation: fadeInUp 0.6s ease-out;
+    }
+    
+    /* Code highlighting enhancements */
+    .token.keyword {
+      color: #c792ea !important;
+    }
+    
+    .token.string {
+      color: #c3e88d !important;
+    }
+    
+    .token.number {
+      color: #f78c6c !important;
+    }
+    
+    .token.comment {
+      color: #546e7a !important;
+    }
+    
+    .token.operator {
+      color: #89ddff !important;
+    }
+    
+    .token.function {
+      color: #82aaff !important;
+    }
+  </style>
+
+  <script>
+    // Enhanced theme toggle with smooth transitions
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage?.getItem('theme') || 'light';
+    html.classList.toggle('dark', savedTheme === 'dark');
+    
+    themeToggle.addEventListener('click', () => {
+      const isDark = html.classList.contains('dark');
+      html.classList.toggle('dark');
+      
+      // Save preference if localStorage is available
+      try {
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      } catch (e) {
+        // Gracefully handle if localStorage is not available
+      }
+      
+      // Add ripple effect
+      const ripple = document.createElement('div');
+      ripple.style.cssText = `
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(59, 130, 246, 0.3);
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
+      `;
+      
+      const rect = themeToggle.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (rect.width / 2 - size / 2) + 'px';
+      ripple.style.top = (rect.height / 2 - size / 2) + 'px';
+      
+      themeToggle.style.position = 'relative';
+      themeToggle.appendChild(ripple);
+      
+      setTimeout(() => ripple.remove(), 600);
+    });
+    
+    // Add CSS for ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Enhanced smooth scrolling for navigation
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          const headerHeight = 80;
+          const targetPosition = targetElement.offsetTop - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Advanced intersection observer for active navigation
+    const observerOptions = {
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const navLink = document.querySelector(`[href="#${entry.target.id}"]`);
+        if (entry.isIntersecting) {
+          // Remove active class from all links
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('bg-blue-100', 'dark:bg-slate-700', 'text-blue-600', 'dark:text-blue-400');
+          });
+          
+          // Add active class to current link
+          if (navLink) {
+            navLink.classList.add('bg-blue-100', 'dark:bg-slate-700', 'text-blue-600', 'dark:text-blue-400');
+          }
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all sections
+    document.querySelectorAll('section[id]').forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Add scroll progress indicator
+    const createScrollIndicator = () => {
+      const indicator = document.createElement('div');
+      indicator.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+        z-index: 9999;
+        transition: width 0.1s ease;
+      `;
+      document.body.appendChild(indicator);
+      
+      window.addEventListener('scroll', () => {
+        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        indicator.style.width = Math.min(scrollPercent, 100) + '%';
+      });
+    };
+    
+    // Initialize scroll indicator
+    createScrollIndicator();
+    
+    // Add lazy loading animation for code blocks
+    const animateCodeBlocks = () => {
+      const codeBlocks = document.querySelectorAll('pre');
+      const codeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationDelay = '0.2s';
+            entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      codeBlocks.forEach(block => {
+        block.style.opacity = '0';
+        codeObserver.observe(block);
+      });
+    };
+    
+    // Initialize animations
+    document.addEventListener('DOMContentLoaded', animateCodeBlocks);
+    
+    // Copy code functionality
+    document.querySelectorAll('pre').forEach(pre => {
+      const copyBtn = document.createElement('button');
+      copyBtn.innerHTML = '📋';
+      copyBtn.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(59, 130, 246, 0.8);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 6px 8px;
+        cursor: pointer;
+        font-size: 12px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      `;
+      
+      pre.style.position = 'relative';
+      pre.appendChild(copyBtn);
+      
+      pre.addEventListener('mouseenter', () => copyBtn.style.opacity = '1');
+      pre.addEventListener('mouseleave', () => copyBtn.style.opacity = '0');
+      
+      copyBtn.addEventListener('click', async () => {
+        const code = pre.querySelector('code').textContent;
+        try {
+          await navigator.clipboard.writeText(code);
+          copyBtn.innerHTML = '✅';
+          setTimeout(() => copyBtn.innerHTML = '📋', 2000);
+        } catch (err) {
+          copyBtn.innerHTML = '❌';
+          setTimeout(() => copyBtn.innerHTML = '📋', 2000);
+        }
+      });
+    });
+  </script>
 </body>
-</html>
+</html>dark:from-green-900/30 dark:to-teal-900/30 rounded-xl border border-green-200 dark:border-green-800">
+              <h4 class="font-semibold text-green-800 dark:text-green-200 mb-3">📊 Wide-Column</h4>
+              <p class="text-green-700 dark:text-green-300 text-sm mb-3">Column families with flexible columns</p>
+              <ul class="text-green-600 dark:text-green-400 text-sm space-y-1">
+                <li>• Cassandra, HBase</li>
+                <li>• Massive scalability</li>
+                <li>• Time-series data</li>
+                <li>• High write throughput</li>
+              </ul>
+            </div>
+            <div class="p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl border border-purple-200 dark:border-purple-800">
+              <h4 class="font-semibold text-purple-800 dark:text-purple-200 mb-3">🕸️ Graph Databases</h4>
+              <p class="text-purple-700 dark:text-purple-300 text-sm mb-3">Nodes and relationships for connected data</p>
+              <ul class="text-purple-600 dark:text-purple-400 text-sm space-y-1">
+                <li>• Neo4j, Amazon Neptune</li>
+                <li>• Complex relationships</li>
+                <li>• Social networks</li>
+                <li>• Recommendation engines</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">CAP Theorem</h3>
+          <p class="text-slate-700 dark:text-slate-300 mb-6">
+            The CAP theorem states that distributed systems can only guarantee two of three properties: Consistency, Availability, and Partition tolerance.
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-4 mb-8">
+            <div class="p-4 bg-red-50 dark:bg-red-900/30 rounded-lg border-l-4 border-red-400">
+              <h5 class="font-bold text-red-800 dark:text-red-200">Consistency</h5>
+              <p class="text-sm text-red-700 dark:text-red-300">All nodes see the same data simultaneously</p>
+            </div>
+            <div class="p-4 bg-green-50 dark:bg-green-900/30 rounded-lg border-l-4 border-green-400">
+              <h5 class="font-bold text-green-800 dark:text-green-200">Availability</h5>
+              <p class="text-sm text-green-700 dark:text-green-300">System remains operational at all times</p>
+            </div>
+            <div class="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border-l-4 border-blue-400">
+              <h5 class="font-bold text-blue-800 dark:text-blue-200">Partition Tolerance</h5>
+              <p class="text-sm text-blue-700 dark:text-blue-300">System continues despite network failures</p>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">NoSQL Query Examples</h4>
+            <pre class="language-sql"><code>-- MongoDB document queries (JavaScript syntax)
+// Find documents with complex criteria
+db.employees.find({
+  department: "Engineering",
+  salary: { $gte: 75000 },
+  skills: { $in: ["Python", "JavaScript"] },
+  "address.city": "San Francisco"
+});
+
+// Aggregation pipeline
+db.employees.aggregate([
+  { $match: { department: "Engineering" } },
+  { $group: {
+      _id: "$level",
+      averageSalary: { $avg: "$salary" },
+      count: { $sum: 1 }
+    }
+  },
+  { $sort: { averageSalary: -1 } }
+]);
+
+-- Redis key-value operations
+-- String operations
+SET user:1001:name "John Doe"
+GET user:1001:name
+SETEX user:1001:session 3600 "active"  -- expires in 1 hour
+
+-- Hash operations
+HSET user:1001 name "John Doe" email "john@example.com" age 30
+HGET user:1001 name
+HGETALL user:1001
+
+-- List operations (for queues, recent items)
+LPUSH user:1001:recent_searches "database optimization"
+LPUSH user:1001:recent_searches "sql performance"
+LRANGE user:1001:recent_searches 0 4  -- get 5 most recent
+
+-- Set operations (for tags, followers)
+SADD user:1001:skills "SQL" "Python" "JavaScript"
+SISMEMBER user:1001:skills "Python"
+SINTER user:1001:skills user:1002:skills  -- common skills</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Graph Database Queries (Cypher)</h4>
+            <pre class="language-sql"><code>-- Neo4j Cypher queries
+// Create nodes and relationships
+CREATE (john:Person {name: 'John Doe', age: 30})
+CREATE (jane:Person {name: 'Jane Smith', age: 28})
+CREATE (company:Company {name: 'TechCorp'})
+CREATE (john)-[:WORKS_FOR {since: '2020-01-01'}]->(company)
+CREATE (jane)-[:WORKS_FOR {since: '2021-06-01'}]->(company)
+CREATE (john)-[:KNOWS {since: '2019-05-01'}]->(jane)
+
+// Find patterns
+MATCH (p:Person)-[r:WORKS_FOR]->(c:Company)
+WHERE c.name = 'TechCorp'
+RETURN p.name, r.since, c.name
+
+// Complex traversal - friends of friends
+MATCH (p:Person {name: 'John Doe'})-[:KNOWS*2]-(friend_of_friend:Person)
+WHERE friend_of_friend <> p
+RETURN DISTINCT friend_of_friend.name
+
+// Recommendation - colleagues who share skills
+MATCH (me:Person {name: 'John Doe'})-[:HAS_SKILL]->(skill:Skill)<-[:HAS_SKILL]-(colleague:Person)
+WHERE colleague <> me
+RETURN colleague.name, collect(skill.name) as shared_skills
+ORDER BY size(shared_skills) DESC</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Exercises -->
+      <section id="exercises" class="section-card">
+        <div class="flex items-center mb-6">
+          <div class="text-4xl mr-4">💪</div>
+          <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100">Practice Exercises & Real-World Scenarios</h2>
+        </div>
+        
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <h3 class="text-xl font-semibold mb-4">Exercise 1: E-commerce Database Design</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Database Schema Design</h4>
+            <pre class="language-sql"><code>-- Complete e-commerce schema with proper normalization
+CREATE TABLE customers (
+    customer_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(15),
+    date_of_birth DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE addresses (
+    address_id SERIAL PRIMARY KEY,
+    customer_id INTEGER REFERENCES customers(customer_id) ON DELETE CASCADE,
+    address_type VARCHAR(20) CHECK (address_type IN ('billing', 'shipping')),
+    street_address VARCHAR(200) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    state VARCHAR(50) NOT NULL,
+    postal_code VARCHAR(20) NOT NULL,
+    country VARCHAR(50) NOT NULL DEFAULT 'USA',
+    is_default BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE categories (
+    category_id SERIAL PRIMARY KEY,
+    category_name VARCHAR(100) UNIQUE NOT NULL,
+    parent_category_id INTEGER REFERENCES categories(category_id),
+    description TEXT,
+    is_active BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE products (
+    product_id SERIAL PRIMARY KEY,
+    product_name VARCHAR(200) NOT NULL,
+    description TEXT,
+    category_id INTEGER REFERENCES categories(category_id),
+    sku VARCHAR(50) UNIQUE NOT NULL,
+    price DECIMAL(10,2) NOT NULL CHECK (price >= 0),
+    cost DECIMAL(10,2) CHECK (cost >= 0),
+    weight DECIMAL(8,2),
+    dimensions VARCHAR(50),
+    stock_quantity INTEGER DEFAULT 0 CHECK (stock_quantity >= 0),
+    reorder_level INTEGER DEFAULT 10,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    customer_id INTEGER REFERENCES customers(customer_id) ON DELETE RESTRICT,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(20) DEFAULT 'pending' 
+        CHECK (status IN ('pending', 'processing', 'shipped', 'delivered', 'cancelled')),
+    subtotal DECIMAL(10,2) NOT NULL CHECK (subtotal >= 0),
+    tax_amount DECIMAL(10,2) DEFAULT 0 CHECK (tax_amount >= 0),
+    shipping_cost DECIMAL(10,2) DEFAULT 0 CHECK (shipping_cost >= 0),
+    total_amount DECIMAL(10,2) NOT NULL CHECK (total_amount >= 0),
+    shipping_address_id INTEGER REFERENCES addresses(address_id),
+    billing_address_id INTEGER REFERENCES addresses(address_id),
+    payment_method VARCHAR(50),
+    tracking_number VARCHAR(100)
+);
+
+CREATE TABLE order_items (
+    order_item_id SERIAL PRIMARY KEY,
+    order_id INTEGER REFERENCES orders(order_id) ON DELETE CASCADE,
+    product_id INTEGER REFERENCES products(product_id) ON DELETE RESTRICT,
+    quantity INTEGER NOT NULL CHECK (quantity > 0),
+    unit_price DECIMAL(10,2) NOT NULL CHECK (unit_price >= 0),
+    total_price DECIMAL(10,2) NOT NULL CHECK (total_price >= 0),
+    
+    UNIQUE(order_id, product_id)
+);
+
+-- Recommended indexes for performance
+CREATE INDEX idx_customers_email ON customers(email);
+CREATE INDEX idx_addresses_customer ON addresses(customer_id);
+CREATE INDEX idx_products_category ON products(category_id);
+CREATE INDEX idx_products_sku ON products(sku);
+CREATE INDEX idx_products_active_price ON products(is_active, price) WHERE is_active = TRUE;
+CREATE INDEX idx_orders_customer_date ON orders(customer_id, order_date DESC);
+CREATE INDEX idx_orders_status_date ON orders(status, order_date);
+CREATE INDEX idx_order_items_order ON order_items(order_id);
+CREATE INDEX idx_order_items_product ON order_items(product_id);</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Exercise 2: Complex Business Queries</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Sales Analytics Queries</h4>
+            <pre class="language-sql"><code>-- Monthly sales report with growth calculation
+WITH monthly_sales AS (
+    SELECT 
+        DATE_TRUNC('month', order_date) as month,
+        SUM(total_amount) as monthly_revenue,
+        COUNT(*) as order_count,
+        COUNT(DISTINCT customer_id) as unique_customers
+    FROM orders
+    WHERE status IN ('delivered', 'shipped')
+    GROUP BY DATE_TRUNC('month', order_date)
+),
+sales_with_growth AS (
+    SELECT 
+        month,
+        monthly_revenue,
+        order_count,
+        unique_customers,
+        LAG(monthly_revenue) OVER (ORDER BY month) as prev_month_revenue,
+        monthly_revenue - LAG(monthly_revenue) OVER (ORDER BY month) as revenue_growth,
+        ROUND(
+            (monthly_revenue - LAG(monthly_revenue) OVER (ORDER BY month)) / 
+            NULLIF(LAG(monthly_revenue) OVER (ORDER BY month), 0) * 100, 2
+        ) as growth_percentage
+    FROM monthly_sales
+)
+SELECT 
+    TO_CHAR(month, 'Month YYYY') as month_name,
+    ' || TO_CHAR(monthly_revenue, '999,999,990.00') as revenue,
+    order_count,
+    unique_customers,
+    CASE 
+        WHEN growth_percentage > 0 THEN '📈 +' || growth_percentage || '%'
+        WHEN growth_percentage < 0 THEN '📉 ' || growth_percentage || '%'
+        ELSE '➡️ 0%'
+    END as growth
+FROM sales_with_growth
+ORDER BY month DESC;
+
+-- Customer lifetime value analysis
+WITH customer_metrics AS (
+    SELECT 
+        c.customer_id,
+        c.first_name,
+        c.last_name,
+        c.email,
+        MIN(o.order_date) as first_order_date,
+        MAX(o.order_date) as last_order_date,
+        COUNT(o.order_id) as total_orders,
+        SUM(o.total_amount) as total_spent,
+        AVG(o.total_amount) as avg_order_value,
+        EXTRACT(DAYS FROM (MAX(o.order_date) - MIN(o.order_date))) as customer_lifespan_days
+    FROM customers c
+    JOIN orders o ON c.customer_id = o.customer_id
+    WHERE o.status = 'delivered'
+    GROUP BY c.customer_id, c.first_name, c.last_name, c.email
+),
+customer_segments AS (
+    SELECT 
+        *,
+        CASE 
+            WHEN total_spent >= 5000 THEN 'VIP'
+            WHEN total_spent >= 2000 THEN 'Premium'
+            WHEN total_spent >= 500 THEN 'Regular'
+            ELSE 'New'
+        END as customer_segment,
+        CASE 
+            WHEN customer_lifespan_days > 0 THEN total_spent / (customer_lifespan_days / 365.0)
+            ELSE total_spent
+        END as annual_value
+    FROM customer_metrics
+)
+SELECT 
+    customer_segment,
+    COUNT(*) as customer_count,
+    AVG(total_spent) as avg_total_spent,
+    AVG(total_orders) as avg_orders,
+    AVG(avg_order_value) as avg_order_value,
+    AVG(annual_value) as avg_annual_value,
+    PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY total_spent) as median_spent
+FROM customer_segments
+GROUP BY customer_segment
+ORDER BY avg_total_spent DESC;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Inventory Management Queries</h4>
+            <pre class="language-sql"><code>-- Inventory analysis with reorder recommendations
+WITH product_sales AS (
+    SELECT 
+        p.product_id,
+        p.product_name,
+        p.stock_quantity,
+        p.reorder_level,
+        p.price,
+        p.cost,
+        COALESCE(SUM(oi.quantity), 0) as total_sold_last_30_days,
+        COALESCE(SUM(oi.quantity * oi.unit_price), 0) as revenue_last_30_days,
+        COUNT(DISTINCT oi.order_id) as orders_last_30_days
+    FROM products p
+    LEFT JOIN order_items oi ON p.product_id = oi.product_id
+    LEFT JOIN orders o ON oi.order_id = o.order_id 
+        AND o.order_date >= CURRENT_DATE - INTERVAL '30 days'
+        AND o.status IN ('delivered', 'shipped')
+    WHERE p.is_active = TRUE
+    GROUP BY p.product_id, p.product_name, p.stock_quantity, p.reorder_level, p.price, p.cost
+),
+inventory_analysis AS (
+    SELECT 
+        *,
+        CASE 
+            WHEN total_sold_last_30_days = 0 THEN 0
+            ELSE stock_quantity / (total_sold_last_30_days / 30.0)
+        END as days_of_inventory,
+        (price - cost) as profit_per_unit,
+        (price - cost) * total_sold_last_30_days as profit_last_30_days,
+        CASE 
+            WHEN stock_quantity <= reorder_level THEN 'REORDER NOW'
+            WHEN stock_quantity <= reorder_level * 1.5 THEN 'REORDER SOON'
+            WHEN total_sold_last_30_days = 0 AND stock_quantity > 50 THEN 'OVERSTOCK'
+            ELSE 'OK'
+        END as inventory_status
+    FROM product_sales
+)
+SELECT 
+    product_name,
+    stock_quantity,
+    total_sold_last_30_days,
+    ROUND(days_of_inventory, 1) as days_inventory,
+    ' || ROUND(profit_last_30_days, 2) as profit_30_days,
+    inventory_status,
+    CASE 
+        WHEN inventory_status = 'REORDER NOW' 
+        THEN GREATEST(reorder_level * 2 - stock_quantity, total_sold_last_30_days * 2)
+        ELSE NULL
+    END as suggested_reorder_quantity
+FROM inventory_analysis
+WHERE inventory_status != 'OK'
+ORDER BY 
+    CASE inventory_status
+        WHEN 'REORDER NOW' THEN 1
+        WHEN 'REORDER SOON' THEN 2
+        WHEN 'OVERSTOCK' THEN 3
+    END,
+    days_of_inventory ASC;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Exercise 3: Performance Optimization Challenge</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Before: Slow Query</h4>
+            <pre class="language-sql"><code>-- Problematic query (multiple issues)
+SELECT 
+    c.first_name,
+    c.last_name,
+    c.email,
+    COUNT(o.order_id) as order_count,
+    SUM(o.total_amount) as total_spent,
+    MAX(o.order_date) as last_order_date,
+    (SELECT AVG(total_amount) FROM orders) as avg_order_value,
+    (SELECT COUNT(*) FROM customers) as total_customers
+FROM customers c
+LEFT JOIN orders o ON c.customer_id = o.customer_id
+WHERE c.email LIKE '%@gmail.com'
+GROUP BY c.customer_id, c.first_name, c.last_name, c.email
+HAVING COUNT(o.order_id) > 0
+ORDER BY total_spent DESC;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">After: Optimized Query</h4>
+            <pre class="language-sql"><code>-- Optimized version with CTEs and better structure
+WITH customer_stats AS (
+    SELECT 
+        AVG(total_amount) as avg_order_value,
+        COUNT(DISTINCT customer_id) as total_customers
+    FROM orders
+    WHERE status = 'delivered'
+),
+gmail_customers AS (
+    SELECT customer_id, first_name, last_name, email
+    FROM customers
+    WHERE email LIKE '%@gmail.com'
+),
+customer_orders AS (
+    SELECT 
+        gc.customer_id,
+        gc.first_name,
+        gc.last_name,
+        gc.email,
+        COUNT(o.order_id) as order_count,
+        SUM(o.total_amount) as total_spent,
+        MAX(o.order_date) as last_order_date
+    FROM gmail_customers gc
+    JOIN orders o ON gc.customer_id = o.customer_id
+    WHERE o.status = 'delivered'
+    GROUP BY gc.customer_id, gc.first_name, gc.last_name, gc.email
+    HAVING COUNT(o.order_id) > 0
+)
+SELECT 
+    co.*,
+    cs.avg_order_value,
+    cs.total_customers,
+    ROUND(co.total_spent / co.order_count, 2) as customer_avg_order,
+    ROUND(co.total_spent / cs.avg_order_value, 2) as value_ratio
+FROM customer_orders co
+CROSS JOIN customer_stats cs
+ORDER BY co.total_spent DESC;
+
+-- Required indexes for optimization:
+CREATE INDEX idx_customers_email_gmail ON customers(email) WHERE email LIKE '%@gmail.com';
+CREATE INDEX idx_orders_customer_status ON orders(customer_id, status);
+CREATE INDEX idx_orders_status_total ON orders(status, total_amount);</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Exercise 4: Data Warehouse Queries</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">OLAP-Style Analytics</h4>
+            <pre class="language-sql"><code>-- Multi-dimensional sales analysis
+WITH date_series AS (
+    SELECT generate_series(
+        DATE_TRUNC('month', CURRENT_DATE - INTERVAL '12 months'),
+        DATE_TRUNC('month', CURRENT_DATE),
+        INTERVAL '1 month'
+    )::date as month
+),
+sales_cube AS (
+    SELECT 
+        DATE_TRUNC('month', o.order_date) as month,
+        c.category_name,
+        EXTRACT(QUARTER FROM o.order_date) as quarter,
+        EXTRACT(YEAR FROM o.order_date) as year,
+        SUM(oi.total_price) as revenue,
+        SUM(oi.quantity) as units_sold,
+        COUNT(DISTINCT o.order_id) as order_count,
+        COUNT(DISTINCT o.customer_id) as unique_customers
+    FROM orders o
+    JOIN order_items oi ON o.order_id = oi.order_id
+    JOIN products p ON oi.product_id = p.product_id
+    JOIN categories c ON p.category_id = c.category_id
+    WHERE o.status = 'delivered'
+    GROUP BY 
+        DATE_TRUNC('month', o.order_date),
+        c.category_name,
+        EXTRACT(QUARTER FROM o.order_date),
+        EXTRACT(YEAR FROM o.order_date)
+)
+SELECT 
+    ds.month,
+    COALESCE(sc.category_name, 'No Sales') as category,
+    COALESCE(sc.revenue, 0) as revenue,
+    COALESCE(sc.units_sold, 0) as units_sold,
+    
+    -- Year-over-year comparison
+    LAG(sc.revenue, 12) OVER (
+        PARTITION BY sc.category_name 
+        ORDER BY ds.month
+    ) as revenue_same_month_last_year,
+    
+    -- Quarter-over-quarter comparison
+    LAG(sc.revenue, 3) OVER (
+        PARTITION BY sc.category_name 
+        ORDER BY ds.month
+    ) as revenue_last_quarter,
+    
+    -- Moving averages
+    AVG(sc.revenue) OVER (
+        PARTITION BY sc.category_name 
+        ORDER BY ds.month 
+        ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+    ) as revenue_3_month_avg,
+    
+    -- Cumulative metrics
+    SUM(sc.revenue) OVER (
+        PARTITION BY sc.category_name, EXTRACT(YEAR FROM ds.month)
+        ORDER BY ds.month
+    ) as ytd_revenue
+FROM date_series ds
+LEFT JOIN sales_cube sc ON ds.month = sc.month
+ORDER BY ds.month DESC, sc.category_name;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Exercise 5: Advanced SQL Challenges</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Recursive Hierarchies and Complex Analytics</h4>
+            <pre class="language-sql"><code>-- Product category hierarchy with sales rollup
+WITH RECURSIVE category_hierarchy AS (
+    -- Root categories
+    SELECT 
+        category_id,
+        category_name,
+        parent_category_id,
+        0 as level,
+        ARRAY[category_id] as path,
+        category_name as root_category
+    FROM categories
+    WHERE parent_category_id IS NULL
+    
+    UNION ALL
+    
+    -- Child categories
+    SELECT 
+        c.category_id,
+        c.category_name,
+        c.parent_category_id,
+        ch.level + 1,
+        ch.path || c.category_id,
+        ch.root_category
+    FROM categories c
+    JOIN category_hierarchy ch ON c.parent_category_id = ch.category_id
+),
+category_sales AS (
+    SELECT 
+        ch.category_id,
+        ch.category_name,
+        ch.level,
+        ch.root_category,
+        COALESCE(SUM(oi.total_price), 0) as direct_sales
+    FROM category_hierarchy ch
+    LEFT JOIN products p ON ch.category_id = p.category_id
+    LEFT JOIN order_items oi ON p.product_id = oi.product_id
+    LEFT JOIN orders o ON oi.order_id = o.order_id 
+        AND o.order_date >= CURRENT_DATE - INTERVAL '90 days'
+        AND o.status = 'delivered'
+    GROUP BY ch.category_id, ch.category_name, ch.level, ch.root_category
+),
+hierarchical_sales AS (
+    SELECT 
+        cs.*,
+        -- Calculate total sales including all subcategories
+        (SELECT SUM(cs2.direct_sales)
+         FROM category_sales cs2
+         WHERE cs.category_id = ANY(cs2.path)
+        ) as total_sales_with_children
+    FROM category_sales cs
+)
+SELECT 
+    REPEAT('  ', level) || category_name as indented_name,
+    level,
+    root_category,
+    ' || TO_CHAR(direct_sales, '999,999,990.00') as direct_sales,
+    ' || TO_CHAR(total_sales_with_children, '999,999,990.00') as total_with_children,
+    ROUND(
+        100.0 * total_sales_with_children / 
+        NULLIF((SELECT SUM(total_sales_with_children) FROM hierarchical_sales WHERE level = 0), 0), 
+        2
+    ) as percent_of_total
+FROM hierarchical_sales
+ORDER BY path;</code></pre>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Cohort Analysis Query</h4>
+            <pre class="language-sql"><code>-- Customer cohort retention analysis
+WITH first_orders AS (
+    SELECT 
+        customer_id,
+        DATE_TRUNC('month', MIN(order_date)) as cohort_month
+    FROM orders
+    WHERE status = 'delivered'
+    GROUP BY customer_id
+),
+customer_orders AS (
+    SELECT 
+        o.customer_id,
+        fo.cohort_month,
+        DATE_TRUNC('month', o.order_date) as order_month,
+        o.total_amount
+    FROM orders o
+    JOIN first_orders fo ON o.customer_id = fo.customer_id
+    WHERE o.status = 'delivered'
+),
+cohort_data AS (
+    SELECT 
+        cohort_month,
+        order_month,
+        EXTRACT(EPOCH FROM order_month - cohort_month) / (30 * 24 * 3600) as month_number,
+        COUNT(DISTINCT customer_id) as customers,
+        SUM(total_amount) as revenue
+    FROM customer_orders
+    GROUP BY cohort_month, order_month
+),
+cohort_sizes AS (
+    SELECT 
+        cohort_month,
+        COUNT(DISTINCT customer_id) as cohort_size
+    FROM first_orders
+    GROUP BY cohort_month
+)
+SELECT 
+    TO_CHAR(cd.cohort_month, 'YYYY-MM') as cohort,
+    cs.cohort_size,
+    cd.month_number::integer as month,
+    cd.customers as active_customers,
+    ROUND(100.0 * cd.customers / cs.cohort_size, 2) as retention_rate,
+    ' || ROUND(cd.revenue / cd.customers, 2) as avg_revenue_per_customer
+FROM cohort_data cd
+JOIN cohort_sizes cs ON cd.cohort_month = cs.cohort_month
+WHERE cd.month_number BETWEEN 0 AND 12
+ORDER BY cd.cohort_month DESC, cd.month_number;</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Exercise 6: Database Maintenance</h3>
+          
+          <div class="mb-8">
+            <h4 class="font-semibold mb-3">Health Monitoring Queries</h4>
+            <pre class="language-sql"><code>-- Database health dashboard
+-- Table sizes and growth
+WITH table_info AS (
+    SELECT 
+        schemaname,
+        tablename,
+        pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) as total_size,
+        pg_total_relation_size(schemaname||'.'||tablename) as total_bytes,
+        pg_size_pretty(pg_relation_size(schemaname||'.'||tablename)) as table_size,
+        pg_size_pretty(pg_indexes_size(schemaname||'.'||tablename)) as index_size,
+        n_live_tup,
+        n_dead_tup,
+        last_vacuum,
+        last_autovacuum,
+        last_analyze,
+        last_autoanalyze
+    FROM pg_tables pt
+    JOIN pg_stat_user_tables psu ON pt.tablename = psu.relname
+    WHERE schemaname = 'public'
+)
+SELECT 
+    tablename,
+    total_size,
+    table_size,
+    index_size,
+    n_live_tup as live_rows,
+    n_dead_tup as dead_rows,
+    CASE 
+        WHEN n_live_tup + n_dead_tup > 0 
+        THEN ROUND(100.0 * n_dead_tup / (n_live_tup + n_dead_tup),

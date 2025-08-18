@@ -1,130 +1,2046 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Object-Oriented Programming — CodeMaster</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
-  <style>
-    body {
-      font-family: Inter, system-ui, Segoe UI, Roboto;
-      background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
-    }
-    .toc { position: sticky; top: 4rem; }
-    .section-header {
-      background: linear-gradient(90deg, #3b82f6, #06b6d4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Object-Oriented Programming - Complete Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .light-mode {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .dark-mode {
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f0c29 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card {
+            backdrop-filter: blur(20px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .card:hover {
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        .code-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .pillar-card {
+            transform: perspective(1000px) rotateY(0deg);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .pillar-card:hover {
+            transform: perspective(1000px) rotateY(5deg) scale(1.05);
+        }
+
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .sidebar-link {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .sidebar-link:hover::before {
+            width: 100%;
+        }
+
+        .sidebar-link:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        pre[class*="language-"] {
+            border-radius: 12px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .concept-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .concept-badge:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
-<body>
-  <div class="container mx-auto py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
-    <!-- Sidebar Table of Contents -->
-    <aside class="lg:col-span-1">
-      <div class="toc p-6 bg-white/80 backdrop-blur rounded-xl shadow-lg border border-slate-200">
-        <h3 class="font-bold text-lg text-sky-700">📑 Contents</h3>
-        <ul class="mt-3 space-y-2 text-sm text-slate-700">
-          <li><a href="#overview" class="hover:text-sky-600 underline">Overview & History</a></li>
-          <li><a href="#principles" class="hover:text-sky-600 underline">Core Principles</a></li>
-          <li><a href="#design" class="hover:text-sky-600 underline">Design Principles & SOLID</a></li>
-          <li><a href="#memory" class="hover:text-sky-600 underline">Memory & Object Layout</a></li>
-          <li><a href="#dispatch" class="hover:text-sky-600 underline">Dynamic Dispatch</a></li>
-          <li><a href="#patterns" class="hover:text-sky-600 underline">Design Patterns</a></li>
-          <li><a href="#advanced" class="hover:text-sky-600 underline">Advanced Topics</a></li>
-          <li><a href="#exercises" class="hover:text-sky-600 underline">Exercises</a></li>
-          <li><a href="#references" class="hover:text-sky-600 underline">References</a></li>
-        </ul>
-      </div>
-    </aside>
+<body class="light-mode min-h-screen">
+    <!-- Theme Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="themeToggle" class="bg-white/20 backdrop-blur-lg rounded-full p-3 hover:bg-white/30 transition-all duration-300 shadow-lg">
+            <svg class="w-6 h-6 text-white" id="sunIcon" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+            </svg>
+            <svg class="w-6 h-6 text-white hidden" id="moonIcon" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+        </button>
+    </div>
 
-    <!-- Main Content -->
-    <article class="lg:col-span-3 space-y-8">
-      
-      <!-- Overview Section -->
-      <section id="overview" class="p-6 bg-white rounded-xl shadow-lg border border-slate-200">
-        <h1 class="text-3xl font-extrabold section-header">Object-Oriented Programming</h1>
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Sidebar -->
+            <aside class="lg:col-span-1">
+                <div class="sticky top-8">
+                    <div class="card bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 shadow-xl">
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                            <span class="pulse-dot w-3 h-3 bg-green-400 rounded-full mr-3"></span>
+                            Table of Contents
+                        </h3>
+                        <nav class="space-y-2">
+                            <a href="#hero" class="sidebar-link block py-2 px-3 rounded-lg text-white/80 hover:text-white">🚀 Introduction</a>
+                            <a href="#what-is-oop" class="sidebar-link block py-2 px-3 rounded-lg text-white/80 hover:text-white">🎯 What is OOP?</a>
+                            <a href="#pillars" class="sidebar-link block py-2 px-3 rounded-lg text-white/80 hover:text-white">🏛️ Four Pillars</a>
+                            <a href="#encapsulation" class="sidebar-link block py-2 px-3 rounded-lg text-white/80 hover:text-white">🔒 Encapsulation</a>
+                            <a href="#inheritance" class="sidebar-link block py-2 px-3 rounded-lg text-white/80 hover:text-white">🧬 Inheritance</a>
+                            <a href="#polymorphism" class="sidebar-link block py-2 px-3 rounded-lg text-white/80 hover:text-white">🎭 Polymorphism</a>
+                            <a href="#abstraction" class="sidebar-link block py-2 px-3 rounded-lg text-white/80 hover:text-white">🎨 Abstraction</a>
+                            <a href="#advanced" class="sidebar-link block py-2 px-3 rounded-lg text-white/80 hover:text-white">🚀 Advanced Topics</a>
+                            <a href="#design-patterns" class="sidebar-link block py-2 px-3 rounded-lg text-white/80 hover:text-white">🔧 Design Patterns</a>
+                            <a href="#best-practices" class="sidebar-link block py-2 px-3 rounded-lg text-white/80 hover:text-white">✨ Best Practices</a>
+                        </nav>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="lg:col-span-3 space-y-12">
+                
+                <!-- Hero Section -->
+                <section id="hero" class="text-center">
+                    <div class="floating-animation">
+                        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6">
+                            Master <span class="gradient-text">OOP</span>
+                        </h1>
+                        <p class="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed">
+                            Journey through Object-Oriented Programming with detailed explanations, 
+                            practical Java examples, and real-world applications
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="concept-badge bg-blue-500/20 text-blue-200 border border-blue-400/30">Classes</span>
+                            <span class="concept-badge bg-green-500/20 text-green-200 border border-green-400/30">Objects</span>
+                            <span class="concept-badge bg-purple-500/20 text-purple-200 border border-purple-400/30">Inheritance</span>
+                            <span class="concept-badge bg-pink-500/20 text-pink-200 border border-pink-400/30">Polymorphism</span>
+                            <span class="concept-badge bg-yellow-500/20 text-yellow-200 border border-yellow-400/30">Encapsulation</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- What is OOP Section -->
+                <section id="what-is-oop" class="card bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <h2 class="text-3xl font-bold text-white mb-6">🎯 What is Object-Oriented Programming?</h2>
+                    
+                    <div class="text-white/90 leading-relaxed space-y-4">
+                        <p class="text-lg">
+                            Object-Oriented Programming (OOP) is a programming paradigm that organizes code into 
+                            <strong class="text-blue-300">objects</strong> - self-contained units that combine data 
+                            (attributes) and behavior (methods) together. Think of it like modeling the real world 
+                            in your code!
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl p-6 border border-blue-400/30">
+                            <h3 class="text-xl font-semibold text-blue-200 mb-3">💡 Real-World Analogy</h3>
+                            <p>
+                                Imagine a <strong>Car</strong>. It has properties like color, model, speed, and actions 
+                                like start(), stop(), accelerate(). In OOP, we create a Car class that bundles these 
+                                properties and behaviors together!
+                            </p>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-white mt-8 mb-4">📚 Key Concepts</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-green-500/20 rounded-lg p-4 border border-green-400/30">
+                                <h4 class="font-bold text-green-200 mb-2">Class</h4>
+                                <p class="text-sm text-white/80">A blueprint or template for creating objects</p>
+                            </div>
+                            <div class="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
+                                <h4 class="font-bold text-blue-200 mb-2">Object</h4>
+                                <p class="text-sm text-white/80">An instance of a class with actual values</p>
+                            </div>
+                            <div class="bg-purple-500/20 rounded-lg p-4 border border-purple-400/30">
+                                <h4 class="font-bold text-purple-200 mb-2">Method</h4>
+                                <p class="text-sm text-white/80">Functions that define what an object can do</p>
+                            </div>
+                            <div class="bg-pink-500/20 rounded-lg p-4 border border-pink-400/30">
+                                <h4 class="font-bold text-pink-200 mb-2">Attribute</h4>
+                                <p class="text-sm text-white/80">Variables that store the object's data</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Basic Java Example -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold text-white mb-4">🔥 Your First Java Class</h3>
+                        <div class="code-container bg-gray-900 rounded-xl overflow-hidden">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre><code class="language-java">// Car.java - A simple class example
+public class Car {
+    // Attributes (Properties)
+    private String brand;
+    private String color;
+    private int speed;
+    private boolean isEngineOn;
+    
+    // Constructor - special method to create objects
+    public Car(String brand, String color) {
+        this.brand = brand;
+        this.color = color;
+        this.speed = 0;
+        this.isEngineOn = false;
+    }
+    
+    // Methods (Behaviors)
+    public void startEngine() {
+        isEngineOn = true;
+        System.out.println(brand + " engine started! 🚗");
+    }
+    
+    public void accelerate(int speedIncrease) {
+        if (isEngineOn) {
+            speed += speedIncrease;
+            System.out.println("Speed increased to " + speed + " km/h");
+        } else {
+            System.out.println("Start the engine first!");
+        }
+    }
+    
+    public void displayInfo() {
+        System.out.println("🚗 " + color + " " + brand + 
+                         " | Speed: " + speed + " km/h" +
+                         " | Engine: " + (isEngineOn ? "On" : "Off"));
+    }
+    
+    // Getters and Setters
+    public String getBrand() { return brand; }
+    public String getColor() { return color; }
+    public int getSpeed() { return speed; }
+}
+
+// Using the Car class
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects (instances)
+        Car myCar = new Car("Toyota", "Red");
+        Car friendsCar = new Car("Honda", "Blue");
         
-        <p class="mt-4 text-slate-700 leading-relaxed">
-          Object-Oriented Programming (OOP) is a style of programming that organizes software design
-          around <strong>objects</strong> — reusable bundles of <em>data</em> (attributes) and <em>behaviors</em> (methods).
-          Think of objects like real-world things: a <code>Car</code> has properties (color, speed) and actions (drive, brake).
-        </p>
+        // Using the objects
+        myCar.startEngine();
+        myCar.accelerate(60);
+        myCar.displayInfo();
         
-        <div class="mt-4 p-4 bg-sky-50 border-l-4 border-sky-400 rounded">
-          <p class="text-slate-800"><strong>Beginner Tip:</strong> If you’ve only used procedural programming (functions & variables),
-            imagine OOP as putting the variables <em>inside</em> the thing they belong to, along with the functions that operate on them.</p>
+        friendsCar.displayInfo(); // Engine is off, speed is 0
+    }
+}</code></pre>
+                        </div>
+                        <div class="bg-green-500/20 rounded-lg p-4 mt-4 border border-green-400/30">
+                            <p class="text-green-200 text-sm">
+                                <strong>💡 Output:</strong><br>
+                                Toyota engine started! 🚗<br>
+                                Speed increased to 60 km/h<br>
+                                🚗 Red Toyota | Speed: 60 km/h | Engine: On<br>
+                                🚗 Blue Honda | Speed: 0 km/h | Engine: Off
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Four Pillars Section -->
+                <section id="pillars" class="card bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <h2 class="text-3xl font-bold text-white mb-8 text-center">🏛️ The Four Pillars of OOP</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="pillar-card bg-gradient-to-br from-blue-500/20 to-blue-700/20 rounded-xl p-6 border border-blue-400/30">
+                            <div class="text-center mb-4">
+                                <div class="text-4xl mb-2">🔒</div>
+                                <h3 class="text-xl font-bold text-blue-200">Encapsulation</h3>
+                            </div>
+                            <p class="text-white/80 text-sm">
+                                Bundle data and methods together, hide internal details, 
+                                and provide controlled access through public interfaces.
+                            </p>
+                        </div>
+                        
+                        <div class="pillar-card bg-gradient-to-br from-green-500/20 to-green-700/20 rounded-xl p-6 border border-green-400/30">
+                            <div class="text-center mb-4">
+                                <div class="text-4xl mb-2">🧬</div>
+                                <h3 class="text-xl font-bold text-green-200">Inheritance</h3>
+                            </div>
+                            <p class="text-white/80 text-sm">
+                                Create new classes based on existing ones, inheriting properties 
+                                and behaviors while adding new features.
+                            </p>
+                        </div>
+                        
+                        <div class="pillar-card bg-gradient-to-br from-purple-500/20 to-purple-700/20 rounded-xl p-6 border border-purple-400/30">
+                            <div class="text-center mb-4">
+                                <div class="text-4xl mb-2">🎭</div>
+                                <h3 class="text-xl font-bold text-purple-200">Polymorphism</h3>
+                            </div>
+                            <p class="text-white/80 text-sm">
+                                Use the same interface for different underlying forms, 
+                                allowing objects to behave differently based on their type.
+                            </p>
+                        </div>
+                        
+                        <div class="pillar-card bg-gradient-to-br from-pink-500/20 to-pink-700/20 rounded-xl p-6 border border-pink-400/30">
+                            <div class="text-center mb-4">
+                                <div class="text-4xl mb-2">🎨</div>
+                                <h3 class="text-xl font-bold text-pink-200">Abstraction</h3>
+                            </div>
+                            <p class="text-white/80 text-sm">
+                                Hide complex implementation details and show only essential 
+                                features, simplifying the interface for users.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Encapsulation Section -->
+                <section id="encapsulation" class="card bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <h2 class="text-3xl font-bold text-white mb-6">🔒 Encapsulation - Data Security & Control</h2>
+                    
+                    <div class="text-white/90 leading-relaxed space-y-4 mb-8">
+                        <p class="text-lg">
+                            Encapsulation is like having a <strong class="text-blue-300">protective capsule</strong> around your data. 
+                            It bundles data (variables) and methods (functions) into a single unit and restricts 
+                            direct access to some components.
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-xl p-6 border border-blue-400/30">
+                            <h3 class="text-xl font-semibold text-blue-200 mb-3">🎯 Key Benefits</h3>
+                            <ul class="list-disc list-inside space-y-2 text-white/80">
+                                <li><strong>Data Protection:</strong> Prevent unauthorized access and modification</li>
+                                <li><strong>Controlled Access:</strong> Use getters/setters to validate data</li>
+                                <li><strong>Modularity:</strong> Changes to internal implementation don't affect external code</li>
+                                <li><strong>Maintainability:</strong> Easier to debug and modify code</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Access Modifiers -->
+                    <h3 class="text-xl font-semibold text-white mb-4">🔐 Access Modifiers in Java</h3>
+                    <div class="grid md:grid-cols-2 gap-4 mb-8">
+                        <div class="bg-red-500/20 rounded-lg p-4 border border-red-400/30">
+                            <h4 class="font-bold text-red-200 mb-2">private</h4>
+                            <p class="text-sm text-white/80">Accessible only within the same class</p>
+                        </div>
+                        <div class="bg-yellow-500/20 rounded-lg p-4 border border-yellow-400/30">
+                            <h4 class="font-bold text-yellow-200 mb-2">protected</h4>
+                            <p class="text-sm text-white/80">Accessible within package and subclasses</p>
+                        </div>
+                        <div class="bg-green-500/20 rounded-lg p-4 border border-green-400/30">
+                            <h4 class="font-bold text-green-200 mb-2">public</h4>
+                            <p class="text-sm text-white/80">Accessible from anywhere</p>
+                        </div>
+                        <div class="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
+                            <h4 class="font-bold text-blue-200 mb-2">default</h4>
+                            <p class="text-sm text-white/80">Accessible within the same package</p>
+                        </div>
+                    </div>
+
+                    <!-- Practical Example -->
+                    <h3 class="text-xl font-semibold text-white mb-4">💡 Practical Example: Bank Account</h3>
+                    <div class="code-container bg-gray-900 rounded-xl overflow-hidden">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-java">public class BankAccount {
+    // Private attributes - cannot be accessed directly
+    private String accountNumber;
+    private double balance;
+    private String ownerName;
+    private boolean isActive;
+    
+    // Constructor
+    public BankAccount(String accountNumber, String ownerName, double initialBalance) {
+        this.accountNumber = accountNumber;
+        this.ownerName = ownerName;
+        this.balance = initialBalance >= 0 ? initialBalance : 0; // Validation
+        this.isActive = true;
+    }
+    
+    // Public methods to access private data (Getters)
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+    
+    public double getBalance() {
+        return balance;
+    }
+    
+    public String getOwnerName() {
+        return ownerName;
+    }
+    
+    public boolean isAccountActive() {
+        return isActive;
+    }
+    
+    // Controlled modification methods
+    public boolean deposit(double amount) {
+        if (!isActive) {
+            System.out.println("❌ Account is inactive!");
+            return false;
+        }
+        
+        if (amount <= 0) {
+            System.out.println("❌ Deposit amount must be positive!");
+            return false;
+        }
+        
+        balance += amount;
+        System.out.println("✅ Deposited $" + amount + ". New balance: $" + balance);
+        return true;
+    }
+    
+    public boolean withdraw(double amount) {
+        if (!isActive) {
+            System.out.println("❌ Account is inactive!");
+            return false;
+        }
+        
+        if (amount <= 0) {
+            System.out.println("❌ Withdrawal amount must be positive!");
+            return false;
+        }
+        
+        if (amount > balance) {
+            System.out.println("❌ Insufficient funds! Available: $" + balance);
+            return false;
+        }
+        
+        balance -= amount;
+        System.out.println("✅ Withdrew $" + amount + ". New balance: $" + balance);
+        return true;
+    }
+    
+    // Internal method to deactivate account
+    public void deactivateAccount() {
+        isActive = false;
+        System.out.println("🔒 Account deactivated!");
+    }
+    
+    // Display account info
+    public void displayAccountInfo() {
+        System.out.println("👤 Account: " + accountNumber);
+        System.out.println("👤 Owner: " + ownerName);
+        System.out.println("💰 Balance: $" + balance);
+        System.out.println("🔄 Status: " + (isActive ? "Active" : "Inactive"));
+        System.out.println("────────────────────");
+    }
+}
+
+// Usage example
+public class EncapsulationDemo {
+    public static void main(String[] args) {
+        // Creating a bank account
+        BankAccount account = new BankAccount("ACC001", "John Doe", 1000.0);
+        
+        // Using public methods to interact with private data
+        account.displayAccountInfo();
+        
+        // Valid operations
+        account.deposit(500.0);
+        account.withdraw(200.0);
+        
+        // Invalid operations (encapsulation protects us)
+        account.withdraw(-100.0);  // Negative amount
+        account.withdraw(2000.0);  // Insufficient funds
+        
+        // Direct access to balance is NOT allowed:
+        // account.balance = 999999; // ❌ Compile error!
+        // We must use controlled methods instead
+        
+        account.displayAccountInfo();
+    }
+}</code></pre>
+                    </div>
+                    
+                    <div class="bg-green-500/20 rounded-lg p-4 mt-4 border border-green-400/30">
+                        <p class="text-green-200 text-sm">
+                            <strong>🎯 Why Encapsulation Matters:</strong> Notice how we can't directly modify the balance 
+                            or make invalid operations. All changes go through controlled methods that validate the input 
+                            and maintain data integrity!
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Inheritance Section -->
+                <section id="inheritance" class="card bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <h2 class="text-3xl font-bold text-white mb-6">🧬 Inheritance - Code Reusability</h2>
+                    
+                    <div class="text-white/90 leading-relaxed space-y-4 mb-8">
+                        <p class="text-lg">
+                            Inheritance allows you to create new classes based on existing ones. The new class 
+                            <strong class="text-green-300">inherits</strong> properties and methods from the parent class, 
+                            and can add its own unique features.
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-xl p-6 border border-green-400/30">
+                            <h3 class="text-xl font-semibold text-green-200 mb-3">🌳 Family Tree Analogy</h3>
+                            <p class="text-white/80">
+                                Just like you inherit traits from your parents (eye color, height), classes can inherit 
+                                features from parent classes. A <code class="bg-white/10 px-2 py-1 rounded">Dog</code> class 
+                                might inherit from <code class="bg-white/10 px-2 py-1 rounded">Animal</code>, getting basic 
+                                animal behaviors while adding dog-specific ones like barking.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Inheritance Types -->
+                    <h3 class="text-xl font-semibold text-white mb-4">🎯 Types of Inheritance</h3>
+                    <div class="grid md:grid-cols-3 gap-4 mb-8">
+                        <div class="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
+                            <h4 class="font-bold text-blue-200 mb-2">Single</h4>
+                            <p class="text-sm text-white/80">One child class inherits from one parent class</p>
+                        </div>
+                        <div class="bg-purple-500/20 rounded-lg p-4 border border-purple-400/30">
+                            <h4 class="font-bold text-purple-200 mb-2">Multilevel</h4>
+                            <p class="text-sm text-white/80">Child class becomes parent to another class</p>
+                        </div>
+                        <div class="bg-pink-500/20 rounded-lg p-4 border border-pink-400/30">
+                            <h4 class="font-bold text-pink-200 mb-2">Hierarchical</h4>
+                            <p class="text-sm text-white/80">Multiple child classes inherit from one parent</p>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Inheritance Example -->
+                    <h3 class="text-xl font-semibold text-white mb-4">🚗 Complete Inheritance Example: Vehicle System</h3>
+                    <div class="code-container bg-gray-900 rounded-xl overflow-hidden">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-java">// Parent class (Base class/Superclass)
+public class Vehicle {
+    // Protected: accessible by child classes
+    protected String brand;
+    protected String model;
+    protected int year;
+    protected double fuelCapacity;
+    protected double currentFuel;
+    
+    // Constructor
+    public Vehicle(String brand, String model, int year, double fuelCapacity) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.fuelCapacity = fuelCapacity;
+        this.currentFuel = 0.0;
+    }
+    
+    // Common methods for all vehicles
+    public void startEngine() {
+        if (currentFuel > 0) {
+            System.out.println("🔥 " + brand + " " + model + " engine started!");
+        } else {
+            System.out.println("⛽ No fuel! Please refuel first.");
+        }
+    }
+    
+    public void stopEngine() {
+        System.out.println("🛑 " + brand + " " + model + " engine stopped.");
+    }
+    
+    public void refuel(double amount) {
+        if (amount > 0 && (currentFuel + amount) <= fuelCapacity) {
+            currentFuel += amount;
+            System.out.println("⛽ Refueled " + amount + "L. Current fuel: " + currentFuel + "L");
+        } else {
+            System.out.println("❌ Invalid fuel amount or tank would overflow!");
+        }
+    }
+    
+    public void displayInfo() {
+        System.out.println("🚗 Vehicle Info:");
+        System.out.println("   Brand: " + brand);
+        System.out.println("   Model: " + model);
+        System.out.println("   Year: " + year);
+        System.out.println("   Fuel: " + currentFuel + "/" + fuelCapacity + "L");
+    }
+    
+    // Method that can be overridden by child classes
+    public void move() {
+        System.out.println("🚗 Vehicle is moving...");
+    }
+}
+
+// Child class 1: Car extends Vehicle
+public class Car extends Vehicle {
+    private int numberOfDoors;
+    private String transmissionType;
+    private boolean hasAirConditioning;
+    
+    // Constructor - calls parent constructor using super()
+    public Car(String brand, String model, int year, double fuelCapacity, 
+               int numberOfDoors, String transmissionType) {
+        super(brand, model, year, fuelCapacity); // Call parent constructor
+        this.numberOfDoors = numberOfDoors;
+        this.transmissionType = transmissionType;
+        this.hasAirConditioning = true;
+    }
+    
+    // Car-specific methods
+    public void openTrunk() {
+        System.out.println("🎒 Car trunk opened!");
+    }
+    
+    public void toggleAirConditioning() {
+        hasAirConditioning = !hasAirConditioning;
+        System.out.println("❄️ Air conditioning: " + (hasAirConditioning ? "ON" : "OFF"));
+    }
+    
+    public void playMusic() {
+        System.out.println("🎵 Car stereo is playing music!");
+    }
+    
+    // Override parent method with car-specific behavior
+    @Override
+    public void move() {
+        if (currentFuel > 0) {
+            System.out.println("🚗 Car is driving smoothly on the road...");
+            currentFuel -= 1.0; // Consume fuel
+        } else {
+            System.out.println("⛽ Car can't move - no fuel!");
+        }
+    }
+    
+    // Override to include car-specific info
+    @Override
+    public void displayInfo() {
+        super.displayInfo(); // Call parent method
+        System.out.println("   Doors: " + numberOfDoors);
+        System.out.println("   Transmission: " + transmissionType);
+        System.out.println("   AC: " + (hasAirConditioning ? "Available" : "Not Available"));
+    }
+}
+
+// Child class 2: Motorcycle extends Vehicle
+public class Motorcycle extends Vehicle {
+    private boolean hasSidecar;
+    private String bikeType;
+    
+    public Motorcycle(String brand, String model, int year, double fuelCapacity, 
+                     boolean hasSidecar, String bikeType) {
+        super(brand, model, year, fuelCapacity);
+        this.hasSidecar = hasSidecar;
+        this.bikeType = bikeType;
+    }
+    
+    // Motorcycle-specific methods
+    public void doWheelie() {
+        System.out.println("🏍️ Performing a wheelie! Be careful!");
+    }
+    
+    public void putOnHelmet() {
+        System.out.println("🪖 Safety first - helmet is on!");
+    }
+    
+    @Override
+    public void move() {
+        if (currentFuel > 0) {
+            System.out.println("🏍️ Motorcycle is speeding through traffic...");
+            currentFuel -= 0.5; // Motorcycles are more fuel efficient
+        } else {
+            System.out.println("⛽ Motorcycle can't move - no fuel!");
+        }
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("   Type: " + bikeType);
+        System.out.println("   Sidecar: " + (hasSidecar ? "Yes" : "No"));
+    }
+}
+
+// Child class 3: Truck extends Vehicle (Multilevel inheritance example)
+public class Truck extends Vehicle {
+    private double cargoCapacity;
+    private double currentCargo;
+    
+    public Truck(String brand, String model, int year, double fuelCapacity, double cargoCapacity) {
+        super(brand, model, year, fuelCapacity);
+        this.cargoCapacity = cargoCapacity;
+        this.currentCargo = 0.0;
+    }
+    
+    public void loadCargo(double weight) {
+        if ((currentCargo + weight) <= cargoCapacity) {
+            currentCargo += weight;
+            System.out.println("📦 Loaded " + weight + "kg. Current cargo: " + currentCargo + "kg");
+        } else {
+            System.out.println("❌ Cannot load - would exceed capacity!");
+        }
+    }
+    
+    public void unloadCargo(double weight) {
+        if (weight <= currentCargo) {
+            currentCargo -= weight;
+            System.out.println("📤 Unloaded " + weight + "kg. Remaining cargo: " + currentCargo + "kg");
+        } else {
+            System.out.println("❌ Cannot unload more than current cargo!");
+        }
+    }
+    
+    @Override
+    public void move() {
+        if (currentFuel > 0) {
+            System.out.println("🚛 Truck is moving heavy cargo...");
+            currentFuel -= 2.0; // Trucks consume more fuel
+        } else {
+            System.out.println("⛽ Truck can't move - no fuel!");
+        }
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("   Cargo: " + currentCargo + "/" + cargoCapacity + "kg");
+    }
+}
+
+// Demonstration class
+public class InheritanceDemo {
+    public static void main(String[] args) {
+        System.out.println("=== INHERITANCE DEMO ===\n");
+        
+        // Create different vehicles
+        Car myCar = new Car("Toyota", "Camry", 2023, 60.0, 4, "Automatic");
+        Motorcycle myBike = new Motorcycle("Harley", "Davidson", 2022, 20.0, false, "Cruiser");
+        Truck myTruck = new Truck("Ford", "F-150", 2023, 100.0, 1000.0);
+        
+        // Refuel all vehicles
+        myCar.refuel(50.0);
+        myBike.refuel(15.0);
+        myTruck.refuel(80.0);
+        
+        System.out.println("\n--- CAR OPERATIONS ---");
+        myCar.displayInfo();
+        myCar.startEngine();
+        myCar.toggleAirConditioning();
+        myCar.playMusic();
+        myCar.move();
+        myCar.openTrunk();
+        
+        System.out.println("\n--- MOTORCYCLE OPERATIONS ---");
+        myBike.displayInfo();
+        myBike.putOnHelmet();
+        myBike.startEngine();
+        myBike.move();
+        myBike.doWheelie();
+        
+        System.out.println("\n--- TRUCK OPERATIONS ---");
+        myTruck.displayInfo();
+        myTruck.loadCargo(500.0);
+        myTruck.startEngine();
+        myTruck.move();
+        myTruck.displayInfo();
+        
+        // Demonstrate polymorphism with inheritance
+        System.out.println("\n--- POLYMORPHIC BEHAVIOR ---");
+        Vehicle[] garage = {myCar, myBike, myTruck};
+        
+        for (Vehicle vehicle : garage) {
+            System.out.println("Vehicle: " + vehicle.brand + " " + vehicle.model);
+            vehicle.move(); // Each calls its own overridden move() method!
+        }
+    }
+}</code></pre>
+                    </div>
+                    
+                    <div class="bg-green-500/20 rounded-lg p-4 mt-4 border border-green-400/30">
+                        <p class="text-green-200 text-sm">
+                            <strong>🎯 Key Inheritance Concepts:</strong><br>
+                            • <code>extends</code> keyword creates inheritance relationship<br>
+                            • <code>super()</code> calls parent constructor<br>
+                            • <code>@Override</code> indicates method overriding<br>
+                            • <code>protected</code> allows child class access<br>
+                            • Child classes can add new methods and override existing ones
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Polymorphism Section -->
+                <section id="polymorphism" class="card bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <h2 class="text-3xl font-bold text-white mb-6">🎭 Polymorphism - One Interface, Many Forms</h2>
+                    
+                    <div class="text-white/90 leading-relaxed space-y-4 mb-8">
+                        <p class="text-lg">
+                            Polymorphism means <strong class="text-purple-300">"many forms"</strong>. It allows objects 
+                            of different classes to be treated as instances of the same class through inheritance, 
+                            while each object maintains its own specific behavior.
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl p-6 border border-purple-400/30">
+                            <h3 class="text-xl font-semibold text-purple-200 mb-3">🎪 Real-World Analogy</h3>
+                            <p class="text-white/80">
+                                Think of a <strong>remote control</strong>. The "power" button works the same way on 
+                                TVs, radios, and air conditioners, but each device responds differently. Same interface, 
+                                different behaviors!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Types of Polymorphism -->
+                    <h3 class="text-xl font-semibold text-white mb-4">🎯 Types of Polymorphism</h3>
+                    <div class="grid md:grid-cols-2 gap-4 mb-8">
+                        <div class="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
+                            <h4 class="font-bold text-blue-200 mb-2">Runtime Polymorphism</h4>
+                            <p class="text-sm text-white/80">Method overriding - decision made during execution</p>
+                        </div>
+                        <div class="bg-green-500/20 rounded-lg p-4 border border-green-400/30">
+                            <h4 class="font-bold text-green-200 mb-2">Compile-time Polymorphism</h4>
+                            <p class="text-sm text-white/80">Method overloading - decision made during compilation</p>
+                        </div>
+                    </div>
+
+                    <!-- Animal Polymorphism Example -->
+                    <h3 class="text-xl font-semibold text-white mb-4">🐾 Complete Polymorphism Example: Animal Kingdom</h3>
+                    <div class="code-container bg-gray-900 rounded-xl overflow-hidden">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-java">// Abstract base class
+abstract class Animal {
+    protected String name;
+    protected int age;
+    protected String habitat;
+    
+    public Animal(String name, int age, String habitat) {
+        this.name = name;
+        this.age = age;
+        this.habitat = habitat;
+    }
+    
+    // Abstract method - must be implemented by child classes
+    public abstract void makeSound();
+    
+    // Abstract method for movement
+    public abstract void move();
+    
+    // Concrete method - same for all animals
+    public void sleep() {
+        System.out.println("💤 " + name + " is sleeping peacefully...");
+    }
+    
+    public void eat() {
+        System.out.println("🍽️ " + name + " is eating...");
+    }
+    
+    // Common display method
+    public void displayInfo() {
+        System.out.println("🐾 Name: " + name + " | Age: " + age + " | Habitat: " + habitat);
+    }
+}
+
+// Interface for additional behaviors
+interface Flyable {
+    void fly();
+    void land();
+}
+
+interface Swimmable {
+    void swim();
+    void dive();
+}
+
+// Dog class
+class Dog extends Animal {
+    private String breed;
+    
+    public Dog(String name, int age, String breed) {
+        super(name, age, "Land");
+        this.breed = breed;
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println("🐕 " + name + " says: Woof! Woof!");
+    }
+    
+    @Override
+    public void move() {
+        System.out.println("🐕 " + name + " is running on four legs!");
+    }
+    
+    // Dog-specific method
+    public void wagTail() {
+        System.out.println("🐕 " + name + " is wagging tail happily!");
+    }
+    
+    public void fetch() {
+        System.out.println("🎾 " + name + " is fetching the ball!");
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("   Breed: " + breed);
+    }
+}
+
+// Cat class
+class Cat extends Animal {
+    private boolean isIndoor;
+    
+    public Cat(String name, int age, boolean isIndoor) {
+        super(name, age, "Land");
+        this.isIndoor = isIndoor;
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println("🐱 " + name + " says: Meow! Purr...");
+    }
+    
+    @Override
+    public void move() {
+        System.out.println("🐱 " + name + " is gracefully walking and jumping!");
+    }
+    
+    // Cat-specific methods
+    public void purr() {
+        System.out.println("🐱 " + name + " is purring contentedly...");
+    }
+    
+    public void scratch() {
+        System.out.println("🐱 " + name + " is scratching the furniture!");
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("   Type: " + (isIndoor ? "Indoor" : "Outdoor") + " cat");
+    }
+}
+
+// Bird class implementing Flyable interface
+class Bird extends Animal implements Flyable {
+    private String species;
+    private double wingSpan;
+    
+    public Bird(String name, int age, String species, double wingSpan) {
+        super(name, age, "Sky");
+        this.species = species;
+        this.wingSpan = wingSpan;
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println("🐦 " + name + " says: Tweet! Chirp!");
+    }
+    
+    @Override
+    public void move() {
+        System.out.println("🐦 " + name + " is flying through the sky!");
+    }
+    
+    // Implementing Flyable interface
+    @Override
+    public void fly() {
+        System.out.println("🐦 " + name + " spreads wings and takes off!");
+    }
+    
+    @Override
+    public void land() {
+        System.out.println("🐦 " + name + " lands gracefully on a branch!");
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("   Species: " + species + " | Wingspan: " + wingSpan + "m");
+    }
+}
+
+// Fish class implementing Swimmable interface
+class Fish extends Animal implements Swimmable {
+    private String waterType;
+    private boolean isSaltwater;
+    
+    public Fish(String name, int age, String waterType, boolean isSaltwater) {
+        super(name, age, "Water");
+        this.waterType = waterType;
+        this.isSaltwater = isSaltwater;
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println("🐟 " + name + " makes bubbles... (fish don't really make sounds!)");
+    }
+    
+    @Override
+    public void move() {
+        System.out.println("🐟 " + name + " is swimming gracefully through water!");
+    }
+    
+    // Implementing Swimmable interface
+    @Override
+    public void swim() {
+        System.out.println("🐟 " + name + " swims using fins and tail!");
+    }
+    
+    @Override
+    public void dive() {
+        System.out.println("🐟 " + name + " dives deeper into the water!");
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("   Water: " + (isSaltwater ? "Saltwater" : "Freshwater") + " " + waterType);
+    }
+}
+
+// Duck class - implements both interfaces (multiple interface inheritance)
+class Duck extends Animal implements Flyable, Swimmable {
+    private String duckType;
+    
+    public Duck(String name, int age, String duckType) {
+        super(name, age, "Land/Water/Sky");
+        this.duckType = duckType;
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println("🦆 " + name + " says: Quack! Quack!");
+    }
+    
+    @Override
+    public void move() {
+        System.out.println("🦆 " + name + " can walk, swim, and fly!");
+    }
+    
+    // Flyable methods
+    @Override
+    public void fly() {
+        System.out.println("🦆 " + name + " flaps wings and flies over the pond!");
+    }
+    
+    @Override
+    public void land() {
+        System.out.println("🦆 " + name + " lands on water with a splash!");
+    }
+    
+    // Swimmable methods
+    @Override
+    public void swim() {
+        System.out.println("🦆 " + name + " paddles through water!");
+    }
+    
+    @Override
+    public void dive() {
+        System.out.println("🦆 " + name + " dips head underwater for food!");
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("   Type: " + duckType);
+    }
+}
+
+// Demonstration class showcasing polymorphism
+public class PolymorphismDemo {
+    public static void main(String[] args) {
+        System.out.println("=== POLYMORPHISM DEMO ===\n");
+        
+        // Create different animals
+        Dog buddy = new Dog("Buddy", 5, "Golden Retriever");
+        Cat whiskers = new Cat("Whiskers", 3, true);
+        Bird robin = new Bird("Robin", 2, "American Robin", 0.3);
+        Fish nemo = new Fish("Nemo", 1, "Coral Reef", true);
+        Duck donald = new Duck("Donald", 4, "Mallard");
+        
+        // Polymorphism in action - same method call, different behaviors
+        System.out.println("--- POLYMORPHIC ANIMAL SOUNDS ---");
+        Animal[] zoo = {buddy, whiskers, robin, nemo, donald};
+        
+        for (Animal animal : zoo) {
+            animal.displayInfo();
+            animal.makeSound();  // Each animal makes its own sound!
+            animal.move();       // Each animal moves differently!
+            animal.eat();        // Common method for all
+            System.out.println();
+        }
+        
+        // Interface polymorphism
+        System.out.println("--- FLYING ANIMALS ---");
+        Flyable[] flyers = {robin, donald};
+        for (Flyable flyer : flyers) {
+            flyer.fly();
+            flyer.land();
+        }
+        
+        System.out.println("\n--- SWIMMING ANIMALS ---");
+        Swimmable[] swimmers = {nemo, donald};
+        for (Swimmable swimmer : swimmers) {
+            swimmer.swim();
+            swimmer.dive();
+        }
+        
+        // Method overloading example (Compile-time polymorphism)
+        System.out.println("\n--- METHOD OVERLOADING DEMO ---");
+        AnimalCare care = new AnimalCare();
+        care.treatAnimal(buddy);
+        care.treatAnimal(robin, "wing injury");
+        care.treatAnimal(nemo, "fin damage", 30.5);
+    }
+}
+
+// Class demonstrating method overloading
+class AnimalCare {
+    // Same method name, different parameters
+    public void treatAnimal(Animal animal) {
+        System.out.println("🏥 Giving general checkup to " + animal.name);
+    }
+    
+    public void treatAnimal(Animal animal, String condition) {
+        System.out.println("🏥 Treating " + animal.name + " for " + condition);
+    }
+    
+    public void treatAnimal(Animal animal, String condition, double medication) {
+        System.out.println("🏥 Treating " + animal.name + " for " + condition + 
+                         " with " + medication + "ml medication");
+    }
+}</code></pre>
+                    </div>
+                    
+                    <div class="bg-purple-500/20 rounded-lg p-4 mt-4 border border-purple-400/30">
+                        <p class="text-purple-200 text-sm">
+                            <strong>🎯 Polymorphism Benefits:</strong><br>
+                            • <strong>Code Flexibility:</strong> Same code works with different object types<br>
+                            • <strong>Extensibility:</strong> Easy to add new classes without changing existing code<br>
+                            • <strong>Maintainability:</strong> Changes in one class don't affect others<br>
+                            • <strong>Dynamic Binding:</strong> Method calls resolved at runtime based on object type
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Abstraction Section -->
+                <section id="abstraction" class="card bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <h2 class="text-3xl font-bold text-white mb-6">🎨 Abstraction - Hiding Complexity</h2>
+                    
+                    <div class="text-white/90 leading-relaxed space-y-4 mb-8">
+                        <p class="text-lg">
+                            Abstraction means hiding the complex implementation details and showing only the 
+                            <strong class="text-pink-300">essential features</strong> of an object. It's about 
+                            creating a simple interface that hides the underlying complexity.
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-pink-500/20 to-red-500/20 rounded-xl p-6 border border-pink-400/30">
+                            <h3 class="text-xl font-semibold text-pink-200 mb-3">🚗 Car Dashboard Analogy</h3>
+                            <p class="text-white/80">
+                                When you drive a car, you use simple controls: steering wheel, pedals, gear stick. 
+                                You don't need to understand the complex engine mechanics, transmission systems, or 
+                                electronic circuits. The dashboard <em>abstracts</em> all that complexity!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Abstract Classes vs Interfaces -->
+                    <h3 class="text-xl font-semibold text-white mb-4">🎯 Abstract Classes vs Interfaces</h3>
+                    <div class="grid md:grid-cols-2 gap-4 mb-8">
+                        <div class="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
+                            <h4 class="font-bold text-blue-200 mb-3">Abstract Classes</h4>
+                            <ul class="text-sm text-white/80 space-y-1">
+                                <li>• Can have concrete methods</li>
+                                <li>• Can have constructors</li>
+                                <li>• Single inheritance only</li>
+                                <li>• Can have instance variables</li>
+                            </ul>
+                        </div>
+                        <div class="bg-green-500/20 rounded-lg p-4 border border-green-400/30">
+                            <h4 class="font-bold text-green-200 mb-3">Interfaces</h4>
+                            <ul class="text-sm text-white/80 space-y-1">
+                                <li>• All methods are abstract (Java 8+ allows default)</li>
+                                <li>• No constructors</li>
+                                <li>• Multiple inheritance supported</li>
+                                <li>• Only constants allowed</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Comprehensive Abstraction Example -->
+                    <h3 class="text-xl font-semibold text-white mb-4">💡 Complete Abstraction Example: Media Player System</h3>
+                    <div class="code-container bg-gray-900 rounded-xl overflow-hidden">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-java">// Abstract base class for media players
+abstract class MediaPlayer {
+    protected String name;
+    protected String currentMedia;
+    protected boolean isPlaying;
+    protected double volume;
+    protected double duration;
+    protected double currentTime;
+    
+    public MediaPlayer(String name) {
+        this.name = name;
+        this.isPlaying = false;
+        this.volume = 50.0;
+        this.currentTime = 0.0;
+    }
+    
+    // Abstract methods - must be implemented by subclasses
+    public abstract void loadMedia(String mediaPath);
+    public abstract void play();
+    public abstract void pause();
+    public abstract void stop();
+    
+    // Concrete methods - shared by all media players
+    public void setVolume(double volume) {
+        if (volume >= 0 && volume <= 100) {
+            this.volume = volume;
+            System.out.println("🔊 Volume set to " + volume + "%");
+        } else {
+            System.out.println("❌ Volume must be between 0-100%");
+        }
+    }
+    
+    public void displayStatus() {
+        System.out.println("📱 " + name + " Status:");
+        System.out.println("   Media: " + (currentMedia != null ? currentMedia : "None"));
+        System.out.println("   Status: " + (isPlaying ? "Playing ▶️" : "Stopped ⏹️"));
+        System.out.println("   Volume: " + volume + "%");
+        if (currentMedia != null) {
+            System.out.println("   Time: " + formatTime(currentTime) + "/" + formatTime(duration));
+        }
+    }
+    
+    // Helper method
+    private String formatTime(double seconds) {
+        int minutes = (int) (seconds / 60);
+        int secs = (int) (seconds % 60);
+        return String.format("%02d:%02d", minutes, secs);
+    }
+    
+    // Template method pattern
+    public final void startPlayback(String mediaPath) {
+        loadMedia(mediaPath);
+        play();
+        System.out.println("✅ Playback started!");
+    }
+}
+
+// Interface for advanced playback features
+interface AdvancedPlayback {
+    void seekTo(double time);
+    void setPlaybackSpeed(double speed);
+    void createPlaylist(String[] mediaPaths);
+}
+
+// Interface for network features
+interface NetworkCapable {
+    void connectToWifi(String networkName);
+    void streamOnline(String url);
+    boolean isConnected();
+}
+
+// Concrete implementation: Audio Player
+class AudioPlayer extends MediaPlayer implements AdvancedPlayback {
+    private String audioFormat;
+    private double playbackSpeed;
+    private String[] playlist;
+    private int currentTrackIndex;
+    
+    public AudioPlayer(String name) {
+        super(name);
+        this.playbackSpeed = 1.0;
+        this.currentTrackIndex = 0;
+    }
+    
+    @Override
+    public void loadMedia(String mediaPath) {
+        this.currentMedia = mediaPath;
+        this.audioFormat = detectAudioFormat(mediaPath);
+        this.duration = calculateDuration(mediaPath);
+        this.currentTime = 0.0;
+        System.out.println("🎵 Loaded audio: " + mediaPath + " (" + audioFormat + ")");
+    }
+    
+    @Override
+    public void play() {
+        if (currentMedia != null) {
+            isPlaying = true;
+            System.out.println("🎵 Playing: " + currentMedia + " at " + playbackSpeed + "x speed");
+        } else {
+            System.out.println("❌ No media loaded!");
+        }
+    }
+    
+    @Override
+    public void pause() {
+        if (isPlaying) {
+            isPlaying = false;
+            System.out.println("⏸️ Audio paused");
+        }
+    }
+    
+    @Override
+    public void stop() {
+        isPlaying = false;
+        currentTime = 0.0;
+        System.out.println("⏹️ Audio stopped");
+    }
+    
+    // Implementing AdvancedPlayback interface
+    @Override
+    public void seekTo(double time) {
+        if (currentMedia != null && time >= 0 && time <= duration) {
+            currentTime = time;
+            System.out.println("⏩ Seeked to " + formatTime(time));
+        }
+    }
+    
+    @Override
+    public void setPlaybackSpeed(double speed) {
+        if (speed > 0 && speed <= 3.0) {
+            this.playbackSpeed = speed;
+            System.out.println("⚡ Playback speed: " + speed + "x");
+        }
+    }
+    
+    @Override
+    public void createPlaylist(String[] mediaPaths) {
+        this.playlist = mediaPaths;
+        System.out.println("📜 Playlist created with " + mediaPaths.length + " tracks");
+    }
+    
+    public void nextTrack() {
+        if (playlist != null && currentTrackIndex < playlist.length - 1) {
+            currentTrackIndex++;
+            loadMedia(playlist[currentTrackIndex]);
+            play();
+        }
+    }
+    
+    // Helper methods (hidden complexity)
+    private String detectAudioFormat(String path) {
+        if (path.endsWith(".mp3")) return "MP3";
+        if (path.endsWith(".wav")) return "WAV";
+        if (path.endsWith(".flac")) return "FLAC";
+        return "Unknown";
+    }
+    
+    private double calculateDuration(String path) {
+        // Simulate complex duration calculation
+        return 180.0 + Math.random() * 120; // Random duration between 3-5 minutes
+    }
+    
+    private String formatTime(double seconds) {
+        int minutes = (int) (seconds / 60);
+        int secs = (int) (seconds % 60);
+        return String.format("%02d:%02d", minutes, secs);
+    }
+}
+
+// Concrete implementation: Video Player
+class VideoPlayer extends MediaPlayer implements AdvancedPlayback, NetworkCapable {
+    private String videoResolution;
+    private double playbackSpeed;
+    private boolean subtitlesEnabled;
+    private String networkName;
+    private boolean connected;
+    
+    public VideoPlayer(String name) {
+        super(name);
+        this.playbackSpeed = 1.0;
+        this.subtitlesEnabled = false;
+        this.connected = false;
+    }
+    
+    @Override
+    public void loadMedia(String mediaPath) {
+        this.currentMedia = mediaPath;
+        this.videoResolution = detectVideoResolution(mediaPath);
+        this.duration = calculateVideoDuration(mediaPath);
+        this.currentTime = 0.0;
+        System.out.println("🎬 Loaded video: " + mediaPath + " (" + videoResolution + ")");
+    }
+    
+    @Override
+    public void play() {
+        if (currentMedia != null) {
+            isPlaying = true;
+            System.out.println("🎬 Playing video: " + currentMedia + 
+                             " | Resolution: " + videoResolution +
+                             " | Speed: " + playbackSpeed + "x");
+            if (subtitlesEnabled) {
+                System.out.println("📝 Subtitles: ON");
+            }
+        } else {
+            System.out.println("❌ No media loaded!");
+        }
+    }
+    
+    @Override
+    public void pause() {
+        if (isPlaying) {
+            isPlaying = false;
+            System.out.println("⏸️ Video paused");
+        }
+    }
+    
+    @Override
+    public void stop() {
+        isPlaying = false;
+        currentTime = 0.0;
+        System.out.println("⏹️ Video stopped");
+    }
+    
+    // AdvancedPlayback implementation
+    @Override
+    public void seekTo(double time) {
+        if (currentMedia != null && time >= 0 && time <= duration) {
+            currentTime = time;
+            System.out.println("⏩ Video seeked to " + formatTime(time));
+        }
+    }
+    
+    @Override
+    public void setPlaybackSpeed(double speed) {
+        if (speed > 0 && speed <= 2.0) {
+            this.playbackSpeed = speed;
+            System.out.println("⚡ Video speed: " + speed + "x");
+        }
+    }
+    
+    @Override
+    public void createPlaylist(String[] mediaPaths) {
+        System.out.println("📜 Video playlist created with " + mediaPaths.length + " videos");
+    }
+    
+    // NetworkCapable implementation
+    @Override
+    public void connectToWifi(String networkName) {
+        this.networkName = networkName;
+        this.connected = true;
+        System.out.println("📶 Connected to " + networkName);
+    }
+    
+    @Override
+    public void streamOnline(String url) {
+        if (connected) {
+            currentMedia = url;
+            System.out.println("🌐 Streaming from: " + url);
+            play();
+        } else {
+            System.out.println("❌ No internet connection!");
+        }
+    }
+    
+    @Override
+    public boolean isConnected() {
+        return connected;
+    }
+    
+    // Video-specific methods
+    public void toggleSubtitles() {
+        subtitlesEnabled = !subtitlesEnabled;
+        System.out.println("📝 Subtitles: " + (subtitlesEnabled ? "ON" : "OFF"));
+    }
+    
+    public void changeResolution(String resolution) {
+        this.videoResolution = resolution;
+        System.out.println("📺 Resolution changed to " + resolution);
+    }
+    
+    // Helper methods
+    private String detectVideoResolution(String path) {
+        String[] resolutions = {"720p", "1080p", "4K"};
+        return resolutions[(int)(Math.random() * resolutions.length)];
+    }
+    
+    private double calculateVideoDuration(String path) {
+        return 300.0 + Math.random() * 3600; // Random duration between 5min-1hour
+    }
+    
+    private String formatTime(double seconds) {
+        int hours = (int) (seconds / 3600);
+        int minutes = (int) ((seconds % 3600) / 60);
+        int secs = (int) (seconds % 60);
+        return String.format("%02d:%02d:%02d", hours, minutes, secs);
+    }
+}
+
+// Smart TV class demonstrating multiple interface inheritance
+class SmartTV extends VideoPlayer {
+    private String[] installedApps;
+    private String currentApp;
+    
+    public SmartTV(String name) {
+        super(name);
+        this.installedApps = new String[]{"Netflix", "YouTube", "Amazon Prime", "Spotify"};
+        this.currentApp = "Home";
+    }
+    
+    public void launchApp(String appName) {
+        for (String app : installedApps) {
+            if (app.equals(appName)) {
+                currentApp = appName;
+                System.out.println("📱 Launched " + appName + " app");
+                return;
+            }
+        }
+        System.out.println("❌ App " + appName + " not installed");
+    }
+    
+    public void displayApps() {
+        System.out.println("📱 Installed Apps: " + String.join(", ", installedApps));
+    }
+    
+    @Override
+    public void displayStatus() {
+        super.displayStatus();
+        System.out.println("   Current App: " + currentApp);
+        System.out.println("   Network: " + (connected ? networkName : "Disconnected"));
+    }
+}
+
+// Factory pattern for creating media players (Advanced concept)
+class MediaPlayerFactory {
+    public static MediaPlayer createPlayer(String type, String name) {
+        switch (type.toLowerCase()) {
+            case "audio":
+                return new AudioPlayer(name);
+            case "video":
+                return new VideoPlayer(name);
+            case "smart-tv":
+                return new SmartTV(name);
+            default:
+                throw new IllegalArgumentException("Unknown player type: " + type);
+        }
+    }
+}
+
+// Demonstration class
+public class AbstractionDemo {
+    public static void main(String[] args) {
+        System.out.println("=== ABSTRACTION DEMO ===\n");
+        
+        // Create different media players using factory
+        MediaPlayer audioPlayer = MediaPlayerFactory.createPlayer("audio", "MyAudioPlayer");
+        MediaPlayer videoPlayer = MediaPlayerFactory.createPlayer("video", "MyVideoPlayer");
+        SmartTV smartTV = (SmartTV) MediaPlayerFactory.createPlayer("smart-tv", "Samsung Smart TV");
+        
+        // Demonstrate abstraction - same interface, different implementations
+        System.out.println("--- AUDIO PLAYER ---");
+        audioPlayer.setVolume(75);
+        audioPlayer.startPlayback("music/song.mp3");
+        
+        // Use advanced features (interface methods)
+        if (audioPlayer instanceof AdvancedPlayback) {
+            AdvancedPlayback advanced = (AdvancedPlayback) audioPlayer;
+            advanced.seekTo(45.0);
+            advanced.setPlaybackSpeed(1.25);
+        }
+        audioPlayer.displayStatus();
+        
+        System.out.println("\n--- VIDEO PLAYER ---");
+        videoPlayer.startPlayback("movies/film.mp4");
+        
+        if (videoPlayer instanceof VideoPlayer) {
+            VideoPlayer vp = (VideoPlayer) videoPlayer;
+            vp.toggleSubtitles();
+            vp.changeResolution("1080p");
+        }
+        
+        // Network features
+        if (videoPlayer instanceof NetworkCapable) {
+            NetworkCapable network = (NetworkCapable) videoPlayer;
+            network.connectToWifi("HomeWiFi");
+            network.streamOnline("https://youtube.com/watch?v=abc123");
+        }
+        
+        System.out.println("\n--- SMART TV ---");
+        smartTV.connectToWifi("HomeWiFi");
+        smartTV.displayApps();
+        smartTV.launchApp("Netflix");
+        smartTV.streamOnline("https://netflix.com/movie/123");
+        smartTV.displayStatus();
+        
+        // Polymorphic behavior
+        System.out.println("\n--- POLYMORPHIC MEDIA CONTROL ---");
+        MediaPlayer[] devices = {audioPlayer, videoPlayer, smartTV};
+        
+        for (MediaPlayer device : devices) {
+            System.out.println("Controlling: " + device.name);
+            device.setVolume(60);
+            device.pause();
+            device.displayStatus();
+            System.out.println("---");
+        }
+    }
+}</code></pre>
+                    </div>
+                    
+                    <div class="bg-pink-500/20 rounded-lg p-4 mt-4 border border-pink-400/30">
+                        <p class="text-pink-200 text-sm">
+                            <strong>🎯 Abstraction Benefits:</strong><br>
+                            • <strong>Simplicity:</strong> Complex operations hidden behind simple interfaces<br>
+                            • <strong>Security:</strong> Implementation details are protected<br>
+                            • <strong>Modularity:</strong> Changes to implementation don't affect users<br>
+                            • <strong>Maintainability:</strong> Code is easier to understand and modify<br>
+                            • <strong>Reusability:</strong> Abstract components can be reused across projects
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Advanced Topics Section -->
+                <section id="advanced" class="card bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <h2 class="text-3xl font-bold text-white mb-6">🚀 Advanced OOP Topics</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-xl p-6 border border-indigo-400/30">
+                            <h3 class="text-xl font-bold text-indigo-200 mb-3">🔗 Composition vs Inheritance</h3>
+                            <p class="text-white/80 text-sm mb-3">
+                                "Has-a" relationship (composition) is often better than "Is-a" (inheritance) 
+                                for flexible, maintainable code.
+                            </p>
+                            <div class="bg-indigo-900/30 rounded p-3">
+                                <code class="text-indigo-200 text-xs">
+                                    // Composition<br>
+                                    class Car {<br>
+                                    &nbsp;&nbsp;Engine engine; // Has-a<br>
+                                    }
+                                </code>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-green-500/20 to-teal-500/20 rounded-xl p-6 border border-green-400/30">
+                            <h3 class="text-xl font-bold text-green-200 mb-3">🏛️ SOLID Principles</h3>
+                            <ul class="text-white/80 text-sm space-y-1">
+                                <li>• <strong>S</strong>ingle Responsibility</li>
+                                <li>• <strong>O</strong>pen/Closed</li>
+                                <li>• <strong>L</strong>iskov Substitution</li>
+                                <li>• <strong>I</strong>nterface Segregation</li>
+                                <li>• <strong>D</strong>ependency Inversion</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Composition Example -->
+                    <h3 class="text-xl font-semibold text-white mb-4">🔧 Composition Over Inheritance Example</h3>
+                    <div class="code-container bg-gray-900 rounded-xl overflow-hidden">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-java">// Components for composition
+class Engine {
+    private String type;
+    private int horsepower;
+    private boolean isRunning;
+    
+    public Engine(String type, int horsepower) {
+        this.type = type;
+        this.horsepower = horsepower;
+        this.isRunning = false;
+    }
+    
+    public void start() {
+        isRunning = true;
+        System.out.println("🔥 " + type + " engine started (" + horsepower + " HP)");
+    }
+    
+    public void stop() {
+        isRunning = false;
+        System.out.println("🛑 Engine stopped");
+    }
+    
+    public boolean isRunning() { return isRunning; }
+    public String getType() { return type; }
+}
+
+class GPS {
+    private String currentLocation;
+    
+    public void navigate(String destination) {
+        System.out.println("🗺️ Navigating to " + destination);
+        currentLocation = destination;
+    }
+    
+    public String getCurrentLocation() {
+        return currentLocation != null ? currentLocation : "Unknown";
+    }
+}
+
+class MusicSystem {
+    private String currentSong;
+    private boolean isPlaying;
+    
+    public void playMusic(String song) {
+        currentSong = song;
+        isPlaying = true;
+        System.out.println("🎵 Playing: " + song);
+    }
+    
+    public void stopMusic() {
+        isPlaying = false;
+        System.out.println("🎵 Music stopped");
+    }
+}
+
+// Car using composition
+class ModernCar {
+    private String brand;
+    private String model;
+    
+    // Composition - Car HAS these components
+    private Engine engine;
+    private GPS gps;
+    private MusicSystem musicSystem;
+    
+    public ModernCar(String brand, String model, String engineType, int horsepower) {
+        this.brand = brand;
+        this.model = model;
+        this.engine = new Engine(engineType, horsepower);
+        this.gps = new GPS();
+        this.musicSystem = new MusicSystem();
+    }
+    
+    public void startCar() {
+        System.out.println("🚗 Starting " + brand + " " + model);
+        engine.start();
+    }
+    
+    public void drive(String destination) {
+        if (engine.isRunning()) {
+            gps.navigate(destination);
+            System.out.println("🚗 Driving to " + destination);
+        } else {
+            System.out.println("❌ Start the engine first!");
+        }
+    }
+    
+    public void playMusic(String song) {
+        musicSystem.playMusic(song);
+    }
+    
+    public void displayStatus() {
+        System.out.println("🚗 " + brand + " " + model);
+        System.out.println("   Engine: " + (engine.isRunning() ? "Running" : "Off"));
+        System.out.println("   Location: " + gps.getCurrentLocation());
+    }
+}</code></pre>
+                    </div>
+                </section>
+
+                <!-- Design Patterns Section -->
+                <section id="design-patterns" class="card bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <h2 class="text-3xl font-bold text-white mb-6">🔧 Essential Design Patterns</h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-4 mb-8">
+                        <div class="bg-yellow-500/20 rounded-lg p-4 border border-yellow-400/30">
+                            <h4 class="font-bold text-yellow-200 mb-2">Singleton</h4>
+                            <p class="text-sm text-white/80">Ensures only one instance exists</p>
+                        </div>
+                        <div class="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
+                            <h4 class="font-bold text-blue-200 mb-2">Factory</h4>
+                            <p class="text-sm text-white/80">Creates objects without specifying exact class</p>
+                        </div>
+                        <div class="bg-green-500/20 rounded-lg p-4 border border-green-400/30">
+                            <h4 class="font-bold text-green-200 mb-2">Observer</h4>
+                            <p class="text-sm text-white/80">Notifies multiple objects about state changes</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-white mb-4">🎯 Singleton Pattern Example</h3>
+                    <div class="code-container bg-gray-900 rounded-xl overflow-hidden">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-java">// Thread-safe Singleton implementation
+public class DatabaseConnection {
+    private static DatabaseConnection instance;
+    private String connectionString;
+    private boolean isConnected;
+    
+    // Private constructor prevents external instantiation
+    private DatabaseConnection() {
+        connectionString = "jdbc:mysql://localhost:3306/mydb";
+        isConnected = false;
+        System.out.println("🔗 Database connection object created");
+    }
+    
+    // Thread-safe getInstance method
+    public static synchronized DatabaseConnection getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConnection();
+        }
+        return instance;
+    }
+    
+    public void connect() {
+        if (!isConnected) {
+            isConnected = true;
+            System.out.println("✅ Connected to database");
+        } else {
+            System.out.println("ℹ️ Already connected");
+        }
+    }
+    
+    public void disconnect() {
+        if (isConnected) {
+            isConnected = false;
+            System.out.println("❌ Disconnected from database");
+        }
+    }
+    
+    public void executeQuery(String query) {
+        if (isConnected) {
+            System.out.println("🔍 Executing: " + query);
+        } else {
+            System.out.println("❌ Not connected to database");
+        }
+    }
+}</code></pre>
+                    </div>
+                </section>
+
+                <!-- Best Practices Section -->
+                <section id="best-practices" class="card bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <h2 class="text-3xl font-bold text-white mb-6">✨ OOP Best Practices</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div class="bg-green-500/20 rounded-lg p-4 border border-green-400/30">
+                                <h4 class="font-bold text-green-200 mb-2 flex items-center">
+                                    ✅ Do's
+                                </h4>
+                                <ul class="text-sm text-white/80 space-y-1">
+                                    <li>• Use meaningful class and method names</li>
+                                    <li>• Keep classes focused (Single Responsibility)</li>
+                                    <li>• Favor composition over inheritance</li>
+                                    <li>• Use interfaces for contracts</li>
+                                    <li>• Encapsulate data with private fields</li>
+                                    <li>• Write comprehensive unit tests</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-red-500/20 rounded-lg p-4 border border-red-400/30">
+                                <h4 class="font-bold text-red-200 mb-2 flex items-center">
+                                    ❌ Don'ts
+                                </h4>
+                                <ul class="text-sm text-white/80 space-y-1">
+                                    <li>• Don't create god classes (too many responsibilities)</li>
+                                    <li>• Avoid deep inheritance hierarchies</li>
+                                    <li>• Don't expose internal implementation</li>
+                                    <li>• Avoid tight coupling between classes</li>
+                                    <li>• Don't ignore error handling</li>
+                                    <li>• Don't skip documentation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Reference -->
+                    <div class="mt-8 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl p-6 border border-blue-400/30">
+                        <h3 class="text-xl font-semibold text-blue-200 mb-4">🎯 Quick Reference</h3>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <h4 class="font-bold text-blue-200 mb-2">Key Keywords:</h4>
+                                <ul class="text-white/80 space-y-1">
+                                    <li><code class="bg-white/10 px-2 py-1 rounded">class</code> - Define a class</li>
+                                    <li><code class="bg-white/10 px-2 py-1 rounded">extends</code> - Inheritance</li>
+                                    <li><code class="bg-white/10 px-2 py-1 rounded">implements</code> - Interface implementation</li>
+                                    <li><code class="bg-white/10 px-2 py-1 rounded">abstract</code> - Abstract class/method</li>
+                                    <li><code class="bg-white/10 px-2 py-1 rounded">super</code> - Call parent method/constructor</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-blue-200 mb-2">Access Modifiers:</h4>
+                                <ul class="text-white/80 space-y-1">
+                                    <li><code class="bg-white/10 px-2 py-1 rounded">public</code> - Accessible everywhere</li>
+                                    <li><code class="bg-white/10 px-2 py-1 rounded">private</code> - Same class only</li>
+                                    <li><code class="bg-white/10 px-2 py-1 rounded">protected</code> - Package + subclasses</li>
+                                    <li><code class="bg-white/10 px-2 py-1 rounded">default</code> - Package level</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Final Summary -->
+                <section class="card bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-2xl p-8 border border-indigo-400/30 text-center">
+                    <h2 class="text-3xl font-bold text-white mb-4">🎉 Congratulations!</h2>
+                    <p class="text-lg text-white/90 mb-6">
+                        You've completed the comprehensive Object-Oriented Programming guide! 
+                        You now understand the four pillars of OOP and can create robust, 
+                        maintainable applications using these powerful concepts.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="concept-badge bg-blue-500/30 text-blue-200 border border-blue-400/50">Master Level Unlocked</span>
+                        <span class="concept-badge bg-green-500/30 text-green-200 border border-green-400/50">Ready for Real Projects</span>
+                        <span class="concept-badge bg-purple-500/30 text-purple-200 border border-purple-400/50">OOP Expert</span>
+                    </div>
+                </section>
+            </main>
         </div>
-        
-        <h2 class="mt-6 text-2xl font-bold text-sky-700">Historical Context</h2>
-        <p class="text-slate-700 leading-relaxed">
-          In the 1960s, as programs grew bigger, procedural approaches became messy — changes in one part
-          often broke others. <strong>Simula</strong> (1967) introduced <em>classes</em> to group data and behavior.
-          <strong>Smalltalk</strong> (1970s) took this further with a pure OOP model.
-          <strong>C++</strong> (1980s) combined OOP with high-performance features.
-          <strong>Java</strong> (1995) brought OOP to the web era with built-in memory management.
-          Modern languages (Python, C#, Kotlin) mix OOP with functional programming features.
-        </p>
-      </section>
+    </div>
 
-      <!-- Core Principles -->
-      <section id="principles" class="p-6 bg-white rounded-xl shadow-lg border border-slate-200">
-        <h2 class="text-2xl font-bold text-sky-700">Core Principles of OOP</h2>
-        <p class="mt-3 text-slate-700 leading-relaxed">
-          Four main ideas — often called the <em>pillars of OOP</em> — help developers write cleaner, reusable, and more maintainable code.
-        </p>
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
 
-        <div class="mt-4 space-y-6">
-          <div>
-            <h3 class="text-lg font-semibold text-emerald-600">1. Encapsulation</h3>
-            <p class="text-slate-700 leading-relaxed">
-              Encapsulation means bundling an object’s data and its methods together, and hiding
-              the internal details from the outside world. You interact with the object through a
-              well-defined interface.
-            </p>
-            <div class="bg-emerald-50 border-l-4 border-emerald-400 p-3 rounded mt-2 text-sm">
-              Example: You drive a car without knowing the exact engineering of the engine.
-            </div>
-          </div>
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                body.classList.add('dark');
+            } else {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                body.classList.remove('dark');
+            }
+        });
 
-          <div>
-            <h3 class="text-lg font-semibold text-pink-600">2. Inheritance</h3>
-            <p class="text-slate-700 leading-relaxed">
-              Inheritance allows you to create new classes based on existing ones.
-              This lets you reuse code, but overusing it can lead to tightly-coupled designs.
-            </p>
-            <div class="bg-pink-50 border-l-4 border-pink-400 p-3 rounded mt-2 text-sm">
-              Example: <code>ElectricCar</code> can inherit from <code>Car</code> and gain all its features.
-            </div>
-          </div>
+        // Copy code functionality
+        function copyCode(button) {
+            const codeElement = button.parentElement.querySelector('code');
+            const text = codeElement.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.background = 'rgba(34, 197, 94, 0.3)';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = 'rgba(255, 255, 255, 0.2)';
+                }, 2000);
+            });
+        }
 
-          <div>
-            <h3 class="text-lg font-semibold text-indigo-600">3. Polymorphism</h3>
-            <p class="text-slate-700 leading-relaxed">
-              Polymorphism allows different classes to be treated through the same interface,
-              while each provides its own implementation.
-            </p>
-            <div class="bg-indigo-50 border-l-4 border-indigo-400 p-3 rounded mt-2 text-sm">
-              Example: Both <code>Dog</code> and <code>Cat</code> can have a <code>makeSound()</code> method, but they bark or meow differently.
-            </div>
-          </div>
+        // Smooth scrolling for sidebar links
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-          <div>
-            <h3 class="text-lg font-semibold text-orange-600">4. Abstraction</h3>
-            <p class="text-slate-700 leading-relaxed">
-              Abstraction focuses on exposing only what’s necessary and hiding the complexity.
-            </p>
-            <div class="bg-orange-50 border-l-4 border-orange-400 p-3 rounded mt-2 text-sm">
-              Example: A TV remote lets you change channels without understanding the electronics inside.
-            </div>
-          </div>
-        </div>
-      </section>
+        // Add intersection observer for active sidebar highlighting
+        const observerOptions = {
+            rootMargin: '-100px 0px -50% 0px'
+        };
 
-    </article>
-  </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove active class from all links
+                    document.querySelectorAll('.sidebar-link').forEach(link => {
+                        link.classList.remove('bg-white/20');
+                    });
+                    
+                    // Add active class to current section link
+                    const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('bg-white/20');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section[id]').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialize Prism for syntax highlighting
+        if (typeof Prism !== 'undefined') {
+            Prism.highlightAll();
+        }
+    </script>
 </body>
 </html>
