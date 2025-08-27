@@ -352,9 +352,10 @@
     position: relative;
     width: 600px;
     height: 400px;
+    /* viewport for the image */
     border-radius: 30px;
-    overflow-y: scroll;
-    /* scroll enabled */
+    overflow-y: auto;
+    /* enable vertical scroll */
     overflow-x: hidden;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
     transition: all 0.5s ease;
@@ -373,12 +374,17 @@
     width: 100%;
     height: auto;
     display: block;
+
+    /* 🔥 force image to be taller than container */
+    min-height: 800px;
+    /* adjust based on how much you want to scroll */
 }
 
 .hero-image:hover {
     box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
     transform: scale(1.02);
 }
+
 
 
 /* Modal improvements */
