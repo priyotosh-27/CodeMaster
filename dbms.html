@@ -76,18 +76,6 @@
             <div class="font-semibold">🎯 Query Optimization</div>
             <div class="text-xs opacity-75">Execution Plans, Cost Model</div>
           </a>
-          <a href="#storage" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
-            <div class="font-semibold">💾 Storage Systems</div>
-            <div class="text-xs opacity-75">File Systems, Buffer Pool</div>
-          </a>
-          <a href="#nosql" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
-            <div class="font-semibold">🌐 NoSQL Systems</div>
-            <div class="text-xs opacity-75">Document, Key-Value, Graph</div>
-          </a>
-          <a href="#exercises" class="nav-link block p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
-            <div class="font-semibold">💪 Practice Exercises</div>
-            <div class="text-xs opacity-75">Hands-on Problems</div>
-          </a>
         </nav>
       </div>
     </aside>
@@ -2188,7 +2176,7 @@ SELECT
     AVG(EXTRACT(EPOCH FROM (now() - query_start))) as avg_query_duration
 FROM pg_stat_activity
 WHERE pid <> pg_backend_pid()
-GROUP BY state;
+GROUP BY state;3
 
 -- Slowest queries over time
 SELECT 
