@@ -4,8 +4,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "What is the difference between JDK, JRE, and JVM in Java?",
+                "q": "What is the difference between JDK, JRE, and JVM in Java?",
                 "options": [
                     "JDK = Java Development Kit, JRE = Java Runtime Environment, JVM = Java Virtual Machine",
                     "JDK = Compiler only, JRE = Hardware, JVM = Interpreter",
@@ -15,8 +14,7 @@
                 "answer": "JDK = Java Development Kit, JRE = Java Runtime Environment, JVM = Java Virtual Machine"
             },
             {
-                "id": 2,
-                "question": "Which principle of OOP is implemented when a subclass provides a specific implementation of a method declared in its parent class?",
+                "q": "Which principle of OOP is implemented when a subclass provides a specific implementation of a method declared in its parent class?",
                 "options": [
                     "Encapsulation",
                     "Inheritance",
@@ -26,8 +24,7 @@
                 "answer": "Polymorphism"
             },
             {
-                "id": 3,
-                "question": "In Java, which access modifier makes a member visible only within its own package?",
+                "q": "In Java, which access modifier makes a member visible only within its own package?",
                 "options": [
                     "private",
                     "protected",
@@ -37,8 +34,7 @@
                 "answer": "default (no modifier)"
             },
             {
-                "id": 4,
-                "question": "What is the main difference between abstract class and interface in Java?",
+                "q": "What is the main difference between abstract class and interface in Java?",
                 "options": [
                     "Abstract class can have both abstract and non-abstract methods, while interface can only have abstract methods (till Java 7)",
                     "Interface supports constructors, abstract class does not",
@@ -48,8 +44,7 @@
                 "answer": "Abstract class can have both abstract and non-abstract methods, while interface can only have abstract methods (till Java 7)"
             },
             {
-                "id": 5,
-                "question": "Which keyword is used to achieve inheritance in Java?",
+                "q": "Which keyword is used to achieve inheritance in Java?",
                 "options": [
                     "extends",
                     "implements",
@@ -59,8 +54,7 @@
                 "answer": "extends"
             },
             {
-                "id": 6,
-                "question": "What is method overloading in Java?",
+                "q": "What is method overloading in Java?",
                 "options": [
                     "Defining multiple methods with the same name but different parameter lists",
                     "Redefining a method in the subclass with the same signature",
@@ -70,8 +64,7 @@
                 "answer": "Defining multiple methods with the same name but different parameter lists"
             },
             {
-                "id": 7,
-                "question": "Which of the following is NOT a feature of Java?",
+                "q": "Which of the following is NOT a feature of Java?",
                 "options": [
                     "Platform Independent",
                     "Automatic Garbage Collection",
@@ -81,8 +74,7 @@
                 "answer": "Operator Overloading"
             },
             {
-                "id": 8,
-                "question": "What is the difference between == and .equals() in Java?",
+                "q": "What is the difference between == and .equals() in Java?",
                 "options": [
                     "== checks memory reference, .equals() checks content",
                     "== checks content, .equals() checks memory reference",
@@ -92,8 +84,7 @@
                 "answer": "== checks memory reference, .equals() checks content"
             },
             {
-                "id": 9,
-                "question": "Which design pattern is used in Java for creating only one instance of a class?",
+                "q": "Which design pattern is used in Java for creating only one instance of a class?",
                 "options": [
                     "Factory Pattern",
                     "Singleton Pattern",
@@ -103,8 +94,7 @@
                 "answer": "Singleton Pattern"
             },
             {
-                "id": 10,
-                "question": "Which keyword is used in Java to call the parent class constructor?",
+                "q": "Which keyword is used in Java to call the parent class constructor?",
                 "options": [
                     "this",
                     "super",
@@ -120,8 +110,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "What is the difference between abstract class and interface in Java?",
+                "q": "What is the difference between abstract class and interface in Java?",
                 "options": [
                     "Abstract class can have both abstract and concrete methods, interface can have only abstract methods (before Java 8)",
                     "Interface can have constructors but abstract class cannot",
@@ -131,8 +120,7 @@
                 "answer": "Abstract class can have both abstract and concrete methods, interface can have only abstract methods (before Java 8)"
             },
             {
-                "id": 2,
-                "question": "Which concept of OOP is implemented by method overloading in Java?",
+                "q": "Which concept of OOP is implemented by method overloading in Java?",
                 "options": [
                     "Encapsulation",
                     "Polymorphism",
@@ -142,8 +130,7 @@
                 "answer": "Polymorphism"
             },
             {
-                "id": 3,
-                "question": "What is the default value of a local variable in Java?",
+                "q": "What is the default value of a local variable in Java?",
                 "options": [
                     "0",
                     "null",
@@ -153,8 +140,7 @@
                 "answer": "No default value (must be initialized before use)"
             },
             {
-                "id": 4,
-                "question": "Which keyword in Java is used to prevent inheritance?",
+                "q": "Which keyword in Java is used to prevent inheritance?",
                 "options": [
                     "static",
                     "final",
@@ -164,8 +150,7 @@
                 "answer": "final"
             },
             {
-                "id": 5,
-                "question": "What is the main difference between == and .equals() in Java?",
+                "q": "What is the main difference between == and .equals() in Java?",
                 "options": [
                     "== compares references, .equals() compares values",
                     "== compares values, .equals() compares references",
@@ -175,8 +160,7 @@
                 "answer": "== compares references, .equals() compares values"
             },
             {
-                "id": 6,
-                "question": "Which of the following cannot be overridden in Java?",
+                "q": "Which of the following cannot be overridden in Java?",
                 "options": [
                     "final methods",
                     "static methods",
@@ -186,8 +170,7 @@
                 "answer": "All of the above"
             },
             {
-                "id": 7,
-                "question": "What is the difference between method overloading and method overriding?",
+                "q": "What is the difference between method overloading and method overriding?",
                 "options": [
                     "Overloading is compile-time, overriding is runtime",
                     "Overloading requires inheritance, overriding does not",
@@ -197,8 +180,7 @@
                 "answer": "Overloading is compile-time, overriding is runtime"
             },
             {
-                "id": 8,
-                "question": "Which collection class allows duplicate elements in Java?",
+                "q": "Which collection class allows duplicate elements in Java?",
                 "options": [
                     "Set",
                     "List",
@@ -208,8 +190,7 @@
                 "answer": "List"
             },
             {
-                "id": 9,
-                "question": "Which of the following is true about constructors in Java?",
+                "q": "Which of the following is true about constructors in Java?",
                 "options": [
                     "They must have the same name as the class",
                     "They must return void",
@@ -219,8 +200,7 @@
                 "answer": "They must have the same name as the class"
             },
             {
-                "id": 10,
-                "question": "What is the main purpose of garbage collection in Java?",
+                "q": "What is the main purpose of garbage collection in Java?",
                 "options": [
                     "To manually delete unused variables",
                     "To reclaim memory used by unreachable objects",
@@ -236,8 +216,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which access modifier allows visibility only within the same package in Java?",
+                "q": "Which access modifier allows visibility only within the same package in Java?",
                 "options": [
                     "public",
                     "private",
@@ -247,8 +226,7 @@
                 "answer": "default (no modifier)"
             },
             {
-                "id": 2,
-                "question": "What is the main use of the 'super' keyword in Java?",
+                "q": "What is the main use of the 'super' keyword in Java?",
                 "options": [
                     "To call superclass methods/constructors",
                     "To access private variables",
@@ -258,8 +236,7 @@
                 "answer": "To call superclass methods/constructors"
             },
             {
-                "id": 3,
-                "question": "Which concept allows a subclass to provide a specific implementation of a method declared in its parent class?",
+                "q": "Which concept allows a subclass to provide a specific implementation of a method declared in its parent class?",
                 "options": [
                     "Method Overloading",
                     "Method Overriding",
@@ -269,8 +246,7 @@
                 "answer": "Method Overriding"
             },
             {
-                "id": 4,
-                "question": "Which Java feature ensures security by running code inside a controlled environment?",
+                "q": "Which Java feature ensures security by running code inside a controlled environment?",
                 "options": [
                     "Polymorphism",
                     "JVM Sandbox",
@@ -280,8 +256,7 @@
                 "answer": "JVM Sandbox"
             },
             {
-                "id": 5,
-                "question": "Which keyword is used to inherit a class in Java?",
+                "q": "Which keyword is used to inherit a class in Java?",
                 "options": [
                     "import",
                     "inherits",
@@ -291,8 +266,7 @@
                 "answer": "extends"
             },
             {
-                "id": 6,
-                "question": "Which keyword is used to implement an interface in Java?",
+                "q": "Which keyword is used to implement an interface in Java?",
                 "options": [
                     "extends",
                     "implements",
@@ -302,8 +276,7 @@
                 "answer": "implements"
             },
             {
-                "id": 7,
-                "question": "Can we override a static method in Java?",
+                "q": "Can we override a static method in Java?",
                 "options": [
                     "Yes",
                     "No",
@@ -313,8 +286,7 @@
                 "answer": "No"
             },
             {
-                "id": 8,
-                "question": "Which concept of OOP binds data and methods together as a single unit?",
+                "q": "Which concept of OOP binds data and methods together as a single unit?",
                 "options": [
                     "Encapsulation",
                     "Abstraction",
@@ -324,8 +296,7 @@
                 "answer": "Encapsulation"
             },
             {
-                "id": 9,
-                "question": "Which of the following is not part of Java’s OOP features?",
+                "q": "Which of the following is not part of Java’s OOP features?",
                 "options": [
                     "Encapsulation",
                     "Polymorphism",
@@ -335,8 +306,7 @@
                 "answer": "Platform Independence"
             },
             {
-                "id": 10,
-                "question": "Which of these is not a Java keyword?",
+                "q": "Which of these is not a Java keyword?",
                 "options": [
                     "native",
                     "volatile",
@@ -352,8 +322,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "What is the output of System.out.println(10 + 20 + \"Java\")?",
+                "q": "What is the output of System.out.println(10 + 20 + \"Java\")?",
                 "options": [
                     "30Java",
                     "Java30",
@@ -363,8 +332,7 @@
                 "answer": "30Java"
             },
             {
-                "id": 2,
-                "question": "What is the output of System.out.println(\"Java\" + 10 + 20)?",
+                "q": "What is the output of System.out.println(\"Java\" + 10 + 20)?",
                 "options": [
                     "Java30",
                     "Java1020",
@@ -374,8 +342,7 @@
                 "answer": "Java1020"
             },
             {
-                "id": 3,
-                "question": "What is the use of the transient keyword in Java?",
+                "q": "What is the use of the transient keyword in Java?",
                 "options": [
                     "To make variable thread-safe",
                     "To exclude variable from serialization",
@@ -385,8 +352,7 @@
                 "answer": "To exclude variable from serialization"
             },
             {
-                "id": 4,
-                "question": "Which Java feature is achieved using interfaces?",
+                "q": "Which Java feature is achieved using interfaces?",
                 "options": [
                     "Multiple Inheritance",
                     "Method Overloading",
@@ -396,8 +362,7 @@
                 "answer": "Multiple Inheritance"
             },
             {
-                "id": 5,
-                "question": "Which type of class cannot be instantiated directly?",
+                "q": "Which type of class cannot be instantiated directly?",
                 "options": [
                     "Abstract class",
                     "Concrete class",
@@ -407,8 +372,7 @@
                 "answer": "Abstract class"
             },
             {
-                "id": 6,
-                "question": "What is the base class of all classes in Java?",
+                "q": "What is the base class of all classes in Java?",
                 "options": [
                     "Object",
                     "Class",
@@ -418,8 +382,7 @@
                 "answer": "Object"
             },
             {
-                "id": 7,
-                "question": "Which package contains collection framework classes?",
+                "q": "Which package contains collection framework classes?",
                 "options": [
                     "java.util",
                     "java.io",
@@ -429,8 +392,7 @@
                 "answer": "java.util"
             },
             {
-                "id": 8,
-                "question": "Which keyword is used to stop a thread in Java?",
+                "q": "Which keyword is used to stop a thread in Java?",
                 "options": [
                     "stop()",
                     "terminate()",
@@ -440,8 +402,7 @@
                 "answer": "interrupt()"
             },
             {
-                "id": 9,
-                "question": "Which of the following is true about String in Java?",
+                "q": "Which of the following is true about String in Java?",
                 "options": [
                     "Strings are immutable",
                     "Strings are mutable",
@@ -451,8 +412,7 @@
                 "answer": "Strings are immutable"
             },
             {
-                "id": 10,
-                "question": "Which exception is thrown when dividing a number by zero in Java?",
+                "q": "Which exception is thrown when dividing a number by zero in Java?",
                 "options": [
                     "NullPointerException",
                     "ArithmeticException",
@@ -468,8 +428,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which type of variables are shared among all objects of a class?",
+                "q": "Which type of variables are shared among all objects of a class?",
                 "options": [
                     "Instance variables",
                     "Static variables",
@@ -479,8 +438,7 @@
                 "answer": "Static variables"
             },
             {
-                "id": 2,
-                "question": "Which of these is not a Java access modifier?",
+                "q": "Which of these is not a Java access modifier?",
                 "options": [
                     "public",
                     "private",
@@ -490,8 +448,7 @@
                 "answer": "friend"
             },
             {
-                "id": 3,
-                "question": "Which method is called automatically before an object is destroyed by garbage collection?",
+                "q": "Which method is called automatically before an object is destroyed by garbage collection?",
                 "options": [
                     "finalize()",
                     "destroy()",
@@ -501,8 +458,7 @@
                 "answer": "finalize()"
             },
             {
-                "id": 4,
-                "question": "Which keyword is used to define a constant variable in Java?",
+                "q": "Which keyword is used to define a constant variable in Java?",
                 "options": [
                     "static",
                     "const",
@@ -512,8 +468,7 @@
                 "answer": "final"
             },
             {
-                "id": 5,
-                "question": "Which collection does not allow duplicate elements in Java?",
+                "q": "Which collection does not allow duplicate elements in Java?",
                 "options": [
                     "List",
                     "Set",
@@ -523,8 +478,7 @@
                 "answer": "Set"
             },
             {
-                "id": 6,
-                "question": "Which of the following can be used for synchronization in Java?",
+                "q": "Which of the following can be used for synchronization in Java?",
                 "options": [
                     "synchronized keyword",
                     "Lock interface",
@@ -534,8 +488,7 @@
                 "answer": "Both synchronized and Lock"
             },
             {
-                "id": 7,
-                "question": "Which operator is used to allocate memory for an object in Java?",
+                "q": "Which operator is used to allocate memory for an object in Java?",
                 "options": [
                     "malloc",
                     "alloc",
@@ -545,8 +498,7 @@
                 "answer": "new"
             },
             {
-                "id": 8,
-                "question": "Which exception is checked in Java?",
+                "q": "Which exception is checked in Java?",
                 "options": [
                     "IOException",
                     "NullPointerException",
@@ -556,8 +508,7 @@
                 "answer": "IOException"
             },
             {
-                "id": 9,
-                "question": "Which Java keyword is used to explicitly throw an exception?",
+                "q": "Which Java keyword is used to explicitly throw an exception?",
                 "options": [
                     "throws",
                     "throw",
@@ -567,8 +518,7 @@
                 "answer": "throw"
             },
             {
-                "id": 10,
-                "question": "Which block in Java is always executed whether an exception occurs or not?",
+                "q": "Which block in Java is always executed whether an exception occurs or not?",
                 "options": [
                     "try",
                     "catch",
@@ -584,8 +534,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "What is the difference between an abstract class and an interface in Java?",
+                "q": "What is the difference between an abstract class and an interface in Java?",
                 "options": [
                     "Abstract class can have constructors, interface cannot",
                     "Both can have constructors",
@@ -595,8 +544,7 @@
                 "answer": "Abstract class can have constructors, interface cannot"
             },
             {
-                "id": 2,
-                "question": "Which principle of OOP is achieved using method overloading?",
+                "q": "Which principle of OOP is achieved using method overloading?",
                 "options": [
                     "Abstraction",
                     "Polymorphism",
@@ -606,8 +554,7 @@
                 "answer": "Polymorphism"
             },
             {
-                "id": 3,
-                "question": "What is the default access modifier for classes in Java?",
+                "q": "What is the default access modifier for classes in Java?",
                 "options": [
                     "public",
                     "private",
@@ -617,8 +564,7 @@
                 "answer": "default (package-private)"
             },
             {
-                "id": 4,
-                "question": "Which keyword is used to prevent inheritance of a class?",
+                "q": "Which keyword is used to prevent inheritance of a class?",
                 "options": [
                     "final",
                     "static",
@@ -628,8 +574,7 @@
                 "answer": "final"
             },
             {
-                "id": 5,
-                "question": "What will happen if a constructor is declared private in Java?",
+                "q": "What will happen if a constructor is declared private in Java?",
                 "options": [
                     "The class cannot be instantiated outside the class",
                     "The class cannot be extended",
@@ -639,8 +584,7 @@
                 "answer": "The class cannot be instantiated outside the class"
             },
             {
-                "id": 6,
-                "question": "Which of the following supports runtime polymorphism?",
+                "q": "Which of the following supports runtime polymorphism?",
                 "options": [
                     "Method overloading",
                     "Method overriding",
@@ -650,8 +594,7 @@
                 "answer": "Method overriding"
             },
             {
-                "id": 7,
-                "question": "What is the purpose of the super keyword in Java?",
+                "q": "What is the purpose of the super keyword in Java?",
                 "options": [
                     "To call parent class constructor",
                     "To call child class method",
@@ -661,8 +604,7 @@
                 "answer": "To call parent class constructor"
             },
             {
-                "id": 8,
-                "question": "Which OOP principle is violated if encapsulation is broken?",
+                "q": "Which OOP principle is violated if encapsulation is broken?",
                 "options": [
                     "Polymorphism",
                     "Inheritance",
@@ -672,8 +614,7 @@
                 "answer": "Data hiding"
             },
             {
-                "id": 9,
-                "question": "Which class in Java is the parent of all classes?",
+                "q": "Which class in Java is the parent of all classes?",
                 "options": [
                     "Base",
                     "Object",
@@ -683,8 +624,7 @@
                 "answer": "Object"
             },
             {
-                "id": 10,
-                "question": "What happens when you try to override a static method in Java?",
+                "q": "What happens when you try to override a static method in Java?",
                 "options": [
                     "It overrides normally",
                     "It throws compilation error",
@@ -700,8 +640,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which keyword is used to achieve multiple inheritance in Java?",
+                "q": "Which keyword is used to achieve multiple inheritance in Java?",
                 "options": [
                     "extends",
                     "implements",
@@ -711,8 +650,7 @@
                 "answer": "implements"
             },
             {
-                "id": 2,
-                "question": "Which method is called automatically during object creation?",
+                "q": "Which method is called automatically during object creation?",
                 "options": [
                     "finalize()",
                     "main()",
@@ -722,8 +660,7 @@
                 "answer": "constructor"
             },
             {
-                "id": 3,
-                "question": "What is method overloading in Java?",
+                "q": "What is method overloading in Java?",
                 "options": [
                     "Same method name but different return types",
                     "Same method name with different parameter lists",
@@ -733,8 +670,7 @@
                 "answer": "Same method name with different parameter lists"
             },
             {
-                "id": 4,
-                "question": "Which OOP concept ensures only relevant details are exposed?",
+                "q": "Which OOP concept ensures only relevant details are exposed?",
                 "options": [
                     "Encapsulation",
                     "Inheritance",
@@ -744,8 +680,7 @@
                 "answer": "Abstraction"
             },
             {
-                "id": 5,
-                "question": "Which modifier makes a variable constant in Java?",
+                "q": "Which modifier makes a variable constant in Java?",
                 "options": [
                     "static",
                     "const",
@@ -755,8 +690,7 @@
                 "answer": "final"
             },
             {
-                "id": 6,
-                "question": "Which block executes whether exception is handled or not?",
+                "q": "Which block executes whether exception is handled or not?",
                 "options": [
                     "try",
                     "catch",
@@ -766,8 +700,7 @@
                 "answer": "finally"
             },
             {
-                "id": 7,
-                "question": "What is the main purpose of encapsulation in Java?",
+                "q": "What is the main purpose of encapsulation in Java?",
                 "options": [
                     "To improve performance",
                     "To protect data using access modifiers",
@@ -777,8 +710,7 @@
                 "answer": "To protect data using access modifiers"
             },
             {
-                "id": 8,
-                "question": "Which of these can be overridden in a subclass?",
+                "q": "Which of these can be overridden in a subclass?",
                 "options": [
                     "private methods",
                     "final methods",
@@ -788,8 +720,7 @@
                 "answer": "instance methods"
             },
             {
-                "id": 9,
-                "question": "What is the default value of an uninitialized object reference in Java?",
+                "q": "What is the default value of an uninitialized object reference in Java?",
                 "options": [
                     "0",
                     "null",
@@ -799,8 +730,7 @@
                 "answer": "null"
             },
             {
-                "id": 10,
-                "question": "Which design principle is supported by interfaces?",
+                "q": "Which design principle is supported by interfaces?",
                 "options": [
                     "Loose coupling",
                     "Tight coupling",
@@ -816,8 +746,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which exception is thrown when dividing by zero in Java?",
+                "q": "Which exception is thrown when dividing by zero in Java?",
                 "options": [
                     "NullPointerException",
                     "ArithmeticException",
@@ -827,8 +756,7 @@
                 "answer": "ArithmeticException"
             },
             {
-                "id": 2,
-                "question": "Which keyword is used to inherit a class in Java?",
+                "q": "Which keyword is used to inherit a class in Java?",
                 "options": [
                     "inherit",
                     "extend",
@@ -838,8 +766,7 @@
                 "answer": "extends"
             },
             {
-                "id": 3,
-                "question": "What does JVM stand for?",
+                "q": "What does JVM stand for?",
                 "options": [
                     "Java Virtual Machine",
                     "Java Verified Module",
@@ -849,8 +776,7 @@
                 "answer": "Java Virtual Machine"
             },
             {
-                "id": 4,
-                "question": "Which of the following is not a feature of Java?",
+                "q": "Which of the following is not a feature of Java?",
                 "options": [
                     "Platform independent",
                     "Object-oriented",
@@ -860,8 +786,7 @@
                 "answer": "Pointer manipulation"
             },
             {
-                "id": 5,
-                "question": "Which collection class allows key-value pairs in Java?",
+                "q": "Which collection class allows key-value pairs in Java?",
                 "options": [
                     "List",
                     "Set",
@@ -871,8 +796,7 @@
                 "answer": "Map"
             },
             {
-                "id": 6,
-                "question": "Which OOP principle allows code reusability?",
+                "q": "Which OOP principle allows code reusability?",
                 "options": [
                     "Polymorphism",
                     "Abstraction",
@@ -882,8 +806,7 @@
                 "answer": "Inheritance"
             },
             {
-                "id": 7,
-                "question": "What is the size of int in Java?",
+                "q": "What is the size of int in Java?",
                 "options": [
                     "2 bytes",
                     "4 bytes",
@@ -893,8 +816,7 @@
                 "answer": "4 bytes"
             },
             {
-                "id": 8,
-                "question": "What does the 'this' keyword represent in Java?",
+                "q": "What does the 'this' keyword represent in Java?",
                 "options": [
                     "Parent class reference",
                     "Current object reference",
@@ -904,8 +826,7 @@
                 "answer": "Current object reference"
             },
             {
-                "id": 9,
-                "question": "Which Java feature ensures memory is freed automatically?",
+                "q": "Which Java feature ensures memory is freed automatically?",
                 "options": [
                     "Memory allocation",
                     "Garbage collection",
@@ -915,8 +836,7 @@
                 "answer": "Garbage collection"
             },
             {
-                "id": 10,
-                "question": "Which operator is used for object comparison in Java?",
+                "q": "Which operator is used for object comparison in Java?",
                 "options": [
                     "==",
                     "equals()",
@@ -932,8 +852,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which access modifier allows access within the same package only?",
+                "q": "Which access modifier allows access within the same package only?",
                 "options": [
                     "public",
                     "private",
@@ -943,8 +862,7 @@
                 "answer": "default"
             },
             {
-                "id": 2,
-                "question": "Which class is immutable in Java?",
+                "q": "Which class is immutable in Java?",
                 "options": [
                     "String",
                     "StringBuilder",
@@ -954,8 +872,7 @@
                 "answer": "String"
             },
             {
-                "id": 3,
-                "question": "Which OOP principle is achieved using abstract classes?",
+                "q": "Which OOP principle is achieved using abstract classes?",
                 "options": [
                     "Encapsulation",
                     "Polymorphism",
@@ -965,8 +882,7 @@
                 "answer": "Abstraction"
             },
             {
-                "id": 4,
-                "question": "Which keyword is used to throw an exception in Java?",
+                "q": "Which keyword is used to throw an exception in Java?",
                 "options": [
                     "throws",
                     "throw",
@@ -976,8 +892,7 @@
                 "answer": "throw"
             },
             {
-                "id": 5,
-                "question": "Which data structure does HashMap internally use?",
+                "q": "Which data structure does HashMap internally use?",
                 "options": [
                     "LinkedList",
                     "Array",
@@ -987,8 +902,7 @@
                 "answer": "HashTable"
             },
             {
-                "id": 6,
-                "question": "Which interface is implemented by all collection classes?",
+                "q": "Which interface is implemented by all collection classes?",
                 "options": [
                     "Collection",
                     "List",
@@ -998,8 +912,7 @@
                 "answer": "Iterable"
             },
             {
-                "id": 7,
-                "question": "Which method is executed just before an object is garbage collected?",
+                "q": "Which method is executed just before an object is garbage collected?",
                 "options": [
                     "final()",
                     "dispose()",
@@ -1009,8 +922,7 @@
                 "answer": "finalize()"
             },
             {
-                "id": 8,
-                "question": "What type of polymorphism is method overriding?",
+                "q": "What type of polymorphism is method overriding?",
                 "options": [
                     "Compile-time",
                     "Runtime",
@@ -1020,8 +932,7 @@
                 "answer": "Runtime"
             },
             {
-                "id": 9,
-                "question": "Which of the following allows thread-safe operations?",
+                "q": "Which of the following allows thread-safe operations?",
                 "options": [
                     "ArrayList",
                     "HashMap",
@@ -1031,8 +942,7 @@
                 "answer": "Vector"
             },
             {
-                "id": 10,
-                "question": "Which keyword is used to handle exceptions?",
+                "q": "Which keyword is used to handle exceptions?",
                 "options": [
                     "final",
                     "catch",
@@ -1048,8 +958,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "What is the return type of the main() method in Java?",
+                "q": "What is the return type of the main() method in Java?",
                 "options": [
                     "int",
                     "void",
@@ -1059,8 +968,7 @@
                 "answer": "void"
             },
             {
-                "id": 2,
-                "question": "Which concept allows a class to have more than one form of a method?",
+                "q": "Which concept allows a class to have more than one form of a method?",
                 "options": [
                     "Encapsulation",
                     "Inheritance",
@@ -1070,8 +978,7 @@
                 "answer": "Polymorphism"
             },
             {
-                "id": 3,
-                "question": "Which keyword makes a variable shared among all objects of a class?",
+                "q": "Which keyword makes a variable shared among all objects of a class?",
                 "options": [
                     "shared",
                     "static",
@@ -1081,8 +988,7 @@
                 "answer": "static"
             },
             {
-                "id": 4,
-                "question": "Which collection class maintains insertion order?",
+                "q": "Which collection class maintains insertion order?",
                 "options": [
                     "HashSet",
                     "TreeSet",
@@ -1092,8 +998,7 @@
                 "answer": "LinkedHashSet"
             },
             {
-                "id": 5,
-                "question": "Which keyword is used to define a constant method that cannot be overridden?",
+                "q": "Which keyword is used to define a constant method that cannot be overridden?",
                 "options": [
                     "static",
                     "final",
@@ -1103,8 +1008,7 @@
                 "answer": "final"
             },
             {
-                "id": 6,
-                "question": "Which operator is used for object type comparison?",
+                "q": "Which operator is used for object type comparison?",
                 "options": [
                     "==",
                     "equals()",
@@ -1114,8 +1018,7 @@
                 "answer": "instanceof"
             },
             {
-                "id": 7,
-                "question": "Which class in Java is used to handle threads?",
+                "q": "Which class in Java is used to handle threads?",
                 "options": [
                     "Runnable",
                     "Thread",
@@ -1125,8 +1028,7 @@
                 "answer": "Thread"
             },
             {
-                "id": 8,
-                "question": "What is the output of System.out.println(10 + 20 + \"Java\")?",
+                "q": "What is the output of System.out.println(10 + 20 + \"Java\")?",
                 "options": [
                     "30Java",
                     "Java30",
@@ -1136,8 +1038,7 @@
                 "answer": "30Java"
             },
             {
-                "id": 9,
-                "question": "Which method is used to compare two strings lexicographically?",
+                "q": "Which method is used to compare two strings lexicographically?",
                 "options": [
                     "equals()",
                     "compareTo()",
@@ -1147,8 +1048,7 @@
                 "answer": "compareTo()"
             },
             {
-                "id": 10,
-                "question": "Which Java concept provides security and portability?",
+                "q": "Which Java concept provides security and portability?",
                 "options": [
                     "Bytecode",
                     "Garbage Collector",
@@ -1164,8 +1064,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "What is method overloading in Java?",
+                "q": "What is method overloading in Java?",
                 "options": [
                     "Defining multiple methods with the same name but different parameters",
                     "Defining methods with same parameters but different return types",
@@ -1175,8 +1074,7 @@
                 "answer": "Defining multiple methods with the same name but different parameters"
             },
             {
-                "id": 2,
-                "question": "Which principle of OOP is achieved by method overriding?",
+                "q": "Which principle of OOP is achieved by method overriding?",
                 "options": [
                     "Encapsulation",
                     "Polymorphism",
@@ -1186,8 +1084,7 @@
                 "answer": "Polymorphism"
             },
             {
-                "id": 3,
-                "question": "What is a Java interface?",
+                "q": "What is a Java interface?",
                 "options": [
                     "A class with only private methods",
                     "A blueprint of a class with abstract methods",
@@ -1197,8 +1094,7 @@
                 "answer": "A blueprint of a class with abstract methods"
             },
             {
-                "id": 4,
-                "question": "Can we achieve multiple inheritance in Java using classes?",
+                "q": "Can we achieve multiple inheritance in Java using classes?",
                 "options": [
                     "Yes",
                     "No"
@@ -1206,8 +1102,7 @@
                 "answer": "No"
             },
             {
-                "id": 5,
-                "question": "Which keyword is used to prevent inheritance of a class in Java?",
+                "q": "Which keyword is used to prevent inheritance of a class in Java?",
                 "options": [
                     "static",
                     "final",
@@ -1217,8 +1112,7 @@
                 "answer": "final"
             },
             {
-                "id": 6,
-                "question": "Which of these is not a feature of Java?",
+                "q": "Which of these is not a feature of Java?",
                 "options": [
                     "Platform independence",
                     "Object oriented",
@@ -1228,8 +1122,7 @@
                 "answer": "Pointer manipulation"
             },
             {
-                "id": 7,
-                "question": "What is constructor chaining in Java?",
+                "q": "What is constructor chaining in Java?",
                 "options": [
                     "Calling one constructor from another",
                     "Calling parent methods",
@@ -1239,8 +1132,7 @@
                 "answer": "Calling one constructor from another"
             },
             {
-                "id": 8,
-                "question": "Which method is the entry point of a Java program?",
+                "q": "Which method is the entry point of a Java program?",
                 "options": [
                     "start()",
                     "run()",
@@ -1250,8 +1142,7 @@
                 "answer": "main()"
             },
             {
-                "id": 9,
-                "question": "Which exception is thrown when dividing a number by zero in Java?",
+                "q": "Which exception is thrown when dividing a number by zero in Java?",
                 "options": [
                     "ArithmeticException",
                     "NullPointerException",
@@ -1261,8 +1152,7 @@
                 "answer": "ArithmeticException"
             },
             {
-                "id": 10,
-                "question": "What does JVM stand for?",
+                "q": "What does JVM stand for?",
                 "options": [
                     "Java Variable Machine",
                     "Java Virtual Machine",
@@ -1278,8 +1168,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which of the following is true about abstract classes in Java?",
+                "q": "Which of the following is true about abstract classes in Java?",
                 "options": [
                     "They cannot have methods with implementations",
                     "They can contain both abstract and non-abstract methods",
@@ -1289,8 +1178,7 @@
                 "answer": "They can contain both abstract and non-abstract methods"
             },
             {
-                "id": 2,
-                "question": "Which keyword is used to access the parent class members in Java?",
+                "q": "Which keyword is used to access the parent class members in Java?",
                 "options": [
                     "this",
                     "super",
@@ -1300,8 +1188,7 @@
                 "answer": "super"
             },
             {
-                "id": 3,
-                "question": "What is encapsulation in Java?",
+                "q": "What is encapsulation in Java?",
                 "options": [
                     "Hiding internal details and showing only essential information",
                     "Overriding methods in a subclass",
@@ -1311,8 +1198,7 @@
                 "answer": "Hiding internal details and showing only essential information"
             },
             {
-                "id": 4,
-                "question": "Which collection class allows key-value pairs in Java?",
+                "q": "Which collection class allows key-value pairs in Java?",
                 "options": [
                     "List",
                     "Set",
@@ -1322,8 +1208,7 @@
                 "answer": "Map"
             },
             {
-                "id": 5,
-                "question": "Which of the following is a marker interface in Java?",
+                "q": "Which of the following is a marker interface in Java?",
                 "options": [
                     "Runnable",
                     "Serializable",
@@ -1333,8 +1218,7 @@
                 "answer": "Serializable"
             },
             {
-                "id": 6,
-                "question": "What is the difference between ‘==’ and ‘equals()’ in Java?",
+                "q": "What is the difference between ‘==’ and ‘equals()’ in Java?",
                 "options": [
                     "Both are same",
                     "== compares object references, equals() compares values",
@@ -1344,8 +1228,7 @@
                 "answer": "== compares object references, equals() compares values"
             },
             {
-                "id": 7,
-                "question": "Which package is imported by default in every Java program?",
+                "q": "Which package is imported by default in every Java program?",
                 "options": [
                     "java.io",
                     "java.util",
@@ -1355,8 +1238,7 @@
                 "answer": "java.lang"
             },
             {
-                "id": 8,
-                "question": "Which method is called automatically when an object is created?",
+                "q": "Which method is called automatically when an object is created?",
                 "options": [
                     "start()",
                     "main()",
@@ -1366,8 +1248,7 @@
                 "answer": "constructor"
             },
             {
-                "id": 9,
-                "question": "Which keyword is used for inheritance in Java?",
+                "q": "Which keyword is used for inheritance in Java?",
                 "options": [
                     "super",
                     "import",
@@ -1377,8 +1258,7 @@
                 "answer": "extends"
             },
             {
-                "id": 10,
-                "question": "Which type of polymorphism does method overloading represent?",
+                "q": "Which type of polymorphism does method overloading represent?",
                 "options": [
                     "Compile-time",
                     "Run-time",
@@ -1394,8 +1274,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which class is the parent of all Java classes?",
+                "q": "Which class is the parent of all Java classes?",
                 "options": [
                     "Object",
                     "Class",
@@ -1405,8 +1284,7 @@
                 "answer": "Object"
             },
             {
-                "id": 2,
-                "question": "Which method is called automatically before garbage collection?",
+                "q": "Which method is called automatically before garbage collection?",
                 "options": [
                     "delete()",
                     "free()",
@@ -1416,8 +1294,7 @@
                 "answer": "finalize()"
             },
             {
-                "id": 3,
-                "question": "Which of these is not an OOPs concept in Java?",
+                "q": "Which of these is not an OOPs concept in Java?",
                 "options": [
                     "Polymorphism",
                     "Encapsulation",
@@ -1427,8 +1304,7 @@
                 "answer": "Compilation"
             },
             {
-                "id": 4,
-                "question": "What is the default value of a boolean variable in Java?",
+                "q": "What is the default value of a boolean variable in Java?",
                 "options": [
                     "true",
                     "false",
@@ -1438,8 +1314,7 @@
                 "answer": "false"
             },
             {
-                "id": 5,
-                "question": "Which of the following is true about interfaces in Java?",
+                "q": "Which of the following is true about interfaces in Java?",
                 "options": [
                     "They can have constructors",
                     "They can extend multiple interfaces",
@@ -1449,8 +1324,7 @@
                 "answer": "They can extend multiple interfaces"
             },
             {
-                "id": 6,
-                "question": "Which collection class maintains insertion order?",
+                "q": "Which collection class maintains insertion order?",
                 "options": [
                     "HashSet",
                     "TreeSet",
@@ -1460,8 +1334,7 @@
                 "answer": "LinkedHashSet"
             },
             {
-                "id": 7,
-                "question": "What is the default access modifier in Java?",
+                "q": "What is the default access modifier in Java?",
                 "options": [
                     "private",
                     "protected",
@@ -1471,8 +1344,7 @@
                 "answer": "default (package-private)"
             },
             {
-                "id": 8,
-                "question": "Which keyword is used to define a constant in Java?",
+                "q": "Which keyword is used to define a constant in Java?",
                 "options": [
                     "static",
                     "final",
@@ -1482,8 +1354,7 @@
                 "answer": "final"
             },
             {
-                "id": 9,
-                "question": "What does JDK stand for?",
+                "q": "What does JDK stand for?",
                 "options": [
                     "Java Development Kit",
                     "Java Deployment Key",
@@ -1493,8 +1364,7 @@
                 "answer": "Java Development Kit"
             },
             {
-                "id": 10,
-                "question": "Which keyword is used to define an abstract method?",
+                "q": "Which keyword is used to define an abstract method?",
                 "options": [
                     "virtual",
                     "abstract",
@@ -1510,8 +1380,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which design pattern is used in Java for creating only one instance of a class?",
+                "q": "Which design pattern is used in Java for creating only one instance of a class?",
                 "options": [
                     "Factory",
                     "Singleton",
@@ -1521,8 +1390,7 @@
                 "answer": "Singleton"
             },
             {
-                "id": 2,
-                "question": "What is checked exception in Java?",
+                "q": "What is checked exception in Java?",
                 "options": [
                     "Exceptions checked at compile time",
                     "Exceptions checked at runtime",
@@ -1532,8 +1400,7 @@
                 "answer": "Exceptions checked at compile time"
             },
             {
-                "id": 3,
-                "question": "Which keyword is used to handle exceptions in Java?",
+                "q": "Which keyword is used to handle exceptions in Java?",
                 "options": [
                     "try",
                     "catch",
@@ -1543,8 +1410,7 @@
                 "answer": "All of the above"
             },
             {
-                "id": 4,
-                "question": "Which interface is used for sorting in Java?",
+                "q": "Which interface is used for sorting in Java?",
                 "options": [
                     "Runnable",
                     "Serializable",
@@ -1554,8 +1420,7 @@
                 "answer": "Comparable"
             },
             {
-                "id": 5,
-                "question": "Which collection class allows duplicate elements?",
+                "q": "Which collection class allows duplicate elements?",
                 "options": [
                     "Set",
                     "List",
@@ -1565,8 +1430,7 @@
                 "answer": "List"
             },
             {
-                "id": 6,
-                "question": "Which keyword is used to explicitly throw an exception?",
+                "q": "Which keyword is used to explicitly throw an exception?",
                 "options": [
                     "try",
                     "throw",
@@ -1576,8 +1440,7 @@
                 "answer": "throw"
             },
             {
-                "id": 7,
-                "question": "Which block is always executed in exception handling?",
+                "q": "Which block is always executed in exception handling?",
                 "options": [
                     "try",
                     "catch",
@@ -1587,8 +1450,7 @@
                 "answer": "finally"
             },
             {
-                "id": 8,
-                "question": "Which class in Java is used for input from users?",
+                "q": "Which class in Java is used for input from users?",
                 "options": [
                     "Scanner",
                     "InputStream",
@@ -1598,8 +1460,7 @@
                 "answer": "Scanner"
             },
             {
-                "id": 9,
-                "question": "Which method is used to start a thread in Java?",
+                "q": "Which method is used to start a thread in Java?",
                 "options": [
                     "start()",
                     "run()",
@@ -1609,8 +1470,7 @@
                 "answer": "start()"
             },
             {
-                "id": 10,
-                "question": "Which keyword is used to inherit an interface in Java?",
+                "q": "Which keyword is used to inherit an interface in Java?",
                 "options": [
                     "extends",
                     "implements",
@@ -1626,8 +1486,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "What is multithreading in Java?",
+                "q": "What is multithreading in Java?",
                 "options": [
                     "Running multiple programs",
                     "Running multiple threads simultaneously",
@@ -1637,8 +1496,7 @@
                 "answer": "Running multiple threads simultaneously"
             },
             {
-                "id": 2,
-                "question": "Which keyword is used to stop method overriding?",
+                "q": "Which keyword is used to stop method overriding?",
                 "options": [
                     "final",
                     "abstract",
@@ -1648,8 +1506,7 @@
                 "answer": "final"
             },
             {
-                "id": 3,
-                "question": "Which class provides thread-safe methods in Java?",
+                "q": "Which class provides thread-safe methods in Java?",
                 "options": [
                     "StringBuilder",
                     "StringBuffer",
@@ -1659,8 +1516,7 @@
                 "answer": "StringBuffer"
             },
             {
-                "id": 4,
-                "question": "Which keyword is used to create an object in Java?",
+                "q": "Which keyword is used to create an object in Java?",
                 "options": [
                     "this",
                     "super",
@@ -1670,8 +1526,7 @@
                 "answer": "new"
             },
             {
-                "id": 5,
-                "question": "Which Java feature allows the same method to perform different tasks?",
+                "q": "Which Java feature allows the same method to perform different tasks?",
                 "options": [
                     "Encapsulation",
                     "Polymorphism",
@@ -1681,8 +1536,7 @@
                 "answer": "Polymorphism"
             },
             {
-                "id": 6,
-                "question": "Which class is immutable in Java?",
+                "q": "Which class is immutable in Java?",
                 "options": [
                     "String",
                     "StringBuilder",
@@ -1692,8 +1546,7 @@
                 "answer": "String"
             },
             {
-                "id": 7,
-                "question": "What is the default priority of a Java thread?",
+                "q": "What is the default priority of a Java thread?",
                 "options": [
                     "0",
                     "5",
@@ -1703,8 +1556,7 @@
                 "answer": "5"
             },
             {
-                "id": 8,
-                "question": "Which method is used to get the current thread in Java?",
+                "q": "Which method is used to get the current thread in Java?",
                 "options": [
                     "getThread()",
                     "currentThread()",
@@ -1714,8 +1566,7 @@
                 "answer": "currentThread()"
             },
             {
-                "id": 9,
-                "question": "Which keyword is used to synchronize a method in Java?",
+                "q": "Which keyword is used to synchronize a method in Java?",
                 "options": [
                     "sync",
                     "lock",
@@ -1725,8 +1576,7 @@
                 "answer": "synchronized"
             },
             {
-                "id": 10,
-                "question": "What is the difference between HashMap and Hashtable?",
+                "q": "What is the difference between HashMap and Hashtable?",
                 "options": [
                     "HashMap is synchronized, Hashtable is not",
                     "HashMap allows null keys, Hashtable does not",
@@ -1742,8 +1592,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "What is the difference between method overloading and method overriding in Java?",
+                "q": "What is the difference between method overloading and method overriding in Java?",
                 "options": [
                     "Overloading is runtime polymorphism, overriding is compile-time polymorphism",
                     "Overloading is compile-time polymorphism, overriding is runtime polymorphism",
@@ -1753,8 +1602,7 @@
                 "answer": "Overloading is compile-time polymorphism, overriding is runtime polymorphism"
             },
             {
-                "id": 2,
-                "question": "Which access modifiers can be used for interfaces in Java?",
+                "q": "Which access modifiers can be used for interfaces in Java?",
                 "options": [
                     "public, default",
                     "private, public",
@@ -1764,8 +1612,7 @@
                 "answer": "public, default"
             },
             {
-                "id": 3,
-                "question": "What keyword is used to prevent inheritance of a class in Java?",
+                "q": "What keyword is used to prevent inheritance of a class in Java?",
                 "options": [
                     "final",
                     "static",
@@ -1775,8 +1622,7 @@
                 "answer": "final"
             },
             {
-                "id": 4,
-                "question": "What is the default return type of a constructor in Java?",
+                "q": "What is the default return type of a constructor in Java?",
                 "options": [
                     "void",
                     "int",
@@ -1786,8 +1632,7 @@
                 "answer": "class type itself"
             },
             {
-                "id": 5,
-                "question": "Can a static method be overridden in Java?",
+                "q": "Can a static method be overridden in Java?",
                 "options": [
                     "Yes",
                     "No",
@@ -1797,8 +1642,7 @@
                 "answer": "No"
             },
             {
-                "id": 6,
-                "question": "What is the main advantage of using generics in Java?",
+                "q": "What is the main advantage of using generics in Java?",
                 "options": [
                     "Faster execution",
                     "Type safety",
@@ -1808,8 +1652,7 @@
                 "answer": "Type safety"
             },
             {
-                "id": 7,
-                "question": "Which of the following can a constructor call explicitly?",
+                "q": "Which of the following can a constructor call explicitly?",
                 "options": [
                     "this()",
                     "super()",
@@ -1819,8 +1662,7 @@
                 "answer": "Both this() and super()"
             },
             {
-                "id": 8,
-                "question": "What does the JVM use to identify methods uniquely?",
+                "q": "What does the JVM use to identify methods uniquely?",
                 "options": [
                     "Method name only",
                     "Method name + parameters",
@@ -1830,8 +1672,7 @@
                 "answer": "Method name + parameters"
             },
             {
-                "id": 9,
-                "question": "What is the parent class of all Java classes?",
+                "q": "What is the parent class of all Java classes?",
                 "options": [
                     "Object",
                     "Class",
@@ -1841,8 +1682,7 @@
                 "answer": "Object"
             },
             {
-                "id": 10,
-                "question": "Which collection does not allow duplicate elements?",
+                "q": "Which collection does not allow duplicate elements?",
                 "options": [
                     "List",
                     "Set",
@@ -1858,8 +1698,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "What is the difference between checked and unchecked exceptions?",
+                "q": "What is the difference between checked and unchecked exceptions?",
                 "options": [
                     "Checked exceptions are handled at runtime, unchecked at compile time",
                     "Checked exceptions are handled at compile time, unchecked at runtime",
@@ -1869,8 +1708,7 @@
                 "answer": "Checked exceptions are handled at compile time, unchecked at runtime"
             },
             {
-                "id": 2,
-                "question": "Which keyword is used to achieve runtime polymorphism?",
+                "q": "Which keyword is used to achieve runtime polymorphism?",
                 "options": [
                     "this",
                     "static",
@@ -1880,8 +1718,7 @@
                 "answer": "super"
             },
             {
-                "id": 3,
-                "question": "Which collection maintains insertion order?",
+                "q": "Which collection maintains insertion order?",
                 "options": [
                     "HashSet",
                     "LinkedHashSet",
@@ -1891,8 +1728,7 @@
                 "answer": "LinkedHashSet"
             },
             {
-                "id": 4,
-                "question": "Which of the following is true about abstract classes?",
+                "q": "Which of the following is true about abstract classes?",
                 "options": [
                     "Can have both abstract and concrete methods",
                     "Cannot have constructors",
@@ -1902,8 +1738,7 @@
                 "answer": "Can have both abstract and concrete methods"
             },
             {
-                "id": 5,
-                "question": "Which class is used for mutable strings in Java?",
+                "q": "Which class is used for mutable strings in Java?",
                 "options": [
                     "String",
                     "StringBuilder",
@@ -1913,8 +1748,7 @@
                 "answer": "Both StringBuilder and StringBuffer"
             },
             {
-                "id": 6,
-                "question": "Which keyword is used to implement multiple inheritance in Java?",
+                "q": "Which keyword is used to implement multiple inheritance in Java?",
                 "options": [
                     "extends",
                     "implements",
@@ -1924,8 +1758,7 @@
                 "answer": "implements"
             },
             {
-                "id": 7,
-                "question": "What is the difference between == and .equals() in Java?",
+                "q": "What is the difference between == and .equals() in Java?",
                 "options": [
                     "== compares values, equals() compares references",
                     "== compares references, equals() compares values",
@@ -1935,8 +1768,7 @@
                 "answer": "== compares references, equals() compares values"
             },
             {
-                "id": 8,
-                "question": "Which package contains the collection framework?",
+                "q": "Which package contains the collection framework?",
                 "options": [
                     "java.util",
                     "java.lang",
@@ -1946,8 +1778,7 @@
                 "answer": "java.util"
             },
             {
-                "id": 9,
-                "question": "Which keyword is used to explicitly free memory in Java?",
+                "q": "Which keyword is used to explicitly free memory in Java?",
                 "options": [
                     "free",
                     "delete",
@@ -1957,8 +1788,7 @@
                 "answer": "None"
             },
             {
-                "id": 10,
-                "question": "What is the size of int in Java?",
+                "q": "What is the size of int in Java?",
                 "options": [
                     "16 bit",
                     "32 bit",
@@ -1974,8 +1804,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "What is JVM?",
+                "q": "What is JVM?",
                 "options": [
                     "Java Variable Machine",
                     "Java Virtual Machine",
@@ -1985,8 +1814,7 @@
                 "answer": "Java Virtual Machine"
             },
             {
-                "id": 2,
-                "question": "What is the purpose of the 'transient' keyword in Java?",
+                "q": "What is the purpose of the 'transient' keyword in Java?",
                 "options": [
                     "To make a variable constant",
                     "To prevent variable serialization",
@@ -1996,8 +1824,7 @@
                 "answer": "To prevent variable serialization"
             },
             {
-                "id": 3,
-                "question": "Which of these is not a feature of Java?",
+                "q": "Which of these is not a feature of Java?",
                 "options": [
                     "Platform independent",
                     "Automatic memory management",
@@ -2007,8 +1834,7 @@
                 "answer": "Multiple inheritance using classes"
             },
             {
-                "id": 4,
-                "question": "Which of these is true about interfaces?",
+                "q": "Which of these is true about interfaces?",
                 "options": [
                     "Can extend multiple interfaces",
                     "Cannot contain constants",
@@ -2018,8 +1844,7 @@
                 "answer": "Can extend multiple interfaces"
             },
             {
-                "id": 5,
-                "question": "What does JIT stand for in Java?",
+                "q": "What does JIT stand for in Java?",
                 "options": [
                     "Java Instant Translator",
                     "Just-In-Time Compiler",
@@ -2029,8 +1854,7 @@
                 "answer": "Just-In-Time Compiler"
             },
             {
-                "id": 6,
-                "question": "Which of the following is true about 'final' keyword?",
+                "q": "Which of the following is true about 'final' keyword?",
                 "options": [
                     "Can be used with variables, methods, and classes",
                     "Only used with methods",
@@ -2040,8 +1864,7 @@
                 "answer": "Can be used with variables, methods, and classes"
             },
             {
-                "id": 7,
-                "question": "What is the default value of a boolean variable in Java?",
+                "q": "What is the default value of a boolean variable in Java?",
                 "options": [
                     "true",
                     "false",
@@ -2051,8 +1874,7 @@
                 "answer": "false"
             },
             {
-                "id": 8,
-                "question": "What is the difference between ArrayList and LinkedList?",
+                "q": "What is the difference between ArrayList and LinkedList?",
                 "options": [
                     "ArrayList is faster for insertions, LinkedList is faster for access",
                     "ArrayList is faster for access, LinkedList is faster for insertions",
@@ -2062,8 +1884,7 @@
                 "answer": "ArrayList is faster for access, LinkedList is faster for insertions"
             },
             {
-                "id": 9,
-                "question": "Which class is a superclass of all exceptions?",
+                "q": "Which class is a superclass of all exceptions?",
                 "options": [
                     "Throwable",
                     "Exception",
@@ -2073,8 +1894,7 @@
                 "answer": "Throwable"
             },
             {
-                "id": 10,
-                "question": "Which loop is guaranteed to execute at least once?",
+                "q": "Which loop is guaranteed to execute at least once?",
                 "options": [
                     "for",
                     "while",
@@ -2090,8 +1910,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which keyword is used to prevent method overriding?",
+                "q": "Which keyword is used to prevent method overriding?",
                 "options": [
                     "static",
                     "final",
@@ -2101,8 +1920,7 @@
                 "answer": "final"
             },
             {
-                "id": 2,
-                "question": "What is the difference between abstract class and interface?",
+                "q": "What is the difference between abstract class and interface?",
                 "options": [
                     "Abstract class supports multiple inheritance, interface does not",
                     "Interface supports multiple inheritance, abstract class does not",
@@ -2112,8 +1930,7 @@
                 "answer": "Interface supports multiple inheritance, abstract class does not"
             },
             {
-                "id": 3,
-                "question": "Which keyword is used for exception handling?",
+                "q": "Which keyword is used for exception handling?",
                 "options": [
                     "try",
                     "catch",
@@ -2123,8 +1940,7 @@
                 "answer": "All of the above"
             },
             {
-                "id": 4,
-                "question": "What is the parent package of all Java packages?",
+                "q": "What is the parent package of all Java packages?",
                 "options": [
                     "java.lang",
                     "java.util",
@@ -2134,8 +1950,7 @@
                 "answer": "java.lang"
             },
             {
-                "id": 5,
-                "question": "Which method is called just before an object is garbage collected?",
+                "q": "Which method is called just before an object is garbage collected?",
                 "options": [
                     "destroy()",
                     "finalize()",
@@ -2145,8 +1960,7 @@
                 "answer": "finalize()"
             },
             {
-                "id": 6,
-                "question": "Which keyword is used to access the parent class constructor?",
+                "q": "Which keyword is used to access the parent class constructor?",
                 "options": [
                     "this",
                     "super",
@@ -2156,8 +1970,7 @@
                 "answer": "super"
             },
             {
-                "id": 7,
-                "question": "Which Java collection provides key-value mapping and does not allow duplicate keys?",
+                "q": "Which Java collection provides key-value mapping and does not allow duplicate keys?",
                 "options": [
                     "List",
                     "Set",
@@ -2167,8 +1980,7 @@
                 "answer": "Map"
             },
             {
-                "id": 8,
-                "question": "Which operator is used for object type comparison?",
+                "q": "Which operator is used for object type comparison?",
                 "options": [
                     "==",
                     "equals()",
@@ -2178,8 +1990,7 @@
                 "answer": "instanceof"
             },
             {
-                "id": 9,
-                "question": "Which keyword is used to define a constant in Java?",
+                "q": "Which keyword is used to define a constant in Java?",
                 "options": [
                     "const",
                     "final",
@@ -2189,8 +2000,7 @@
                 "answer": "final"
             },
             {
-                "id": 10,
-                "question": "Which principle of OOPs is implemented by method overriding?",
+                "q": "Which principle of OOPs is implemented by method overriding?",
                 "options": [
                     "Encapsulation",
                     "Abstraction",
@@ -2206,8 +2016,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which of these is not an OOP concept in Java?",
+                "q": "Which of these is not an OOP concept in Java?",
                 "options": [
                     "Encapsulation",
                     "Polymorphism",
@@ -2217,8 +2026,7 @@
                 "answer": "Compilation"
             },
             {
-                "id": 2,
-                "question": "What is the difference between StringBuilder and StringBuffer?",
+                "q": "What is the difference between StringBuilder and StringBuffer?",
                 "options": [
                     "StringBuilder is synchronized, StringBuffer is not",
                     "StringBuffer is synchronized, StringBuilder is not",
@@ -2228,8 +2036,7 @@
                 "answer": "StringBuffer is synchronized, StringBuilder is not"
             },
             {
-                "id": 3,
-                "question": "Which keyword is used to inherit a class?",
+                "q": "Which keyword is used to inherit a class?",
                 "options": [
                     "implement",
                     "extends",
@@ -2239,8 +2046,7 @@
                 "answer": "extends"
             },
             {
-                "id": 4,
-                "question": "Which method is called when a thread starts?",
+                "q": "Which method is called when a thread starts?",
                 "options": [
                     "run()",
                     "start()",
@@ -2250,8 +2056,7 @@
                 "answer": "run()"
             },
             {
-                "id": 5,
-                "question": "What is the difference between shallow copy and deep copy in Java?",
+                "q": "What is the difference between shallow copy and deep copy in Java?",
                 "options": [
                     "Shallow copy copies objects completely, deep copy copies only references",
                     "Shallow copy copies references, deep copy copies objects completely",
@@ -2261,8 +2066,7 @@
                 "answer": "Shallow copy copies references, deep copy copies objects completely"
             },
             {
-                "id": 6,
-                "question": "Which access modifier makes a member visible to all classes everywhere?",
+                "q": "Which access modifier makes a member visible to all classes everywhere?",
                 "options": [
                     "private",
                     "protected",
@@ -2272,8 +2076,7 @@
                 "answer": "public"
             },
             {
-                "id": 7,
-                "question": "Which collection allows duplicate elements?",
+                "q": "Which collection allows duplicate elements?",
                 "options": [
                     "Set",
                     "Map",
@@ -2283,8 +2086,7 @@
                 "answer": "List"
             },
             {
-                "id": 8,
-                "question": "Which principle of OOP ensures data hiding?",
+                "q": "Which principle of OOP ensures data hiding?",
                 "options": [
                     "Encapsulation",
                     "Polymorphism",
@@ -2294,8 +2096,7 @@
                 "answer": "Encapsulation"
             },
             {
-                "id": 9,
-                "question": "Which operator is used to allocate memory for an object?",
+                "q": "Which operator is used to allocate memory for an object?",
                 "options": [
                     "malloc",
                     "alloc",
@@ -2305,8 +2106,7 @@
                 "answer": "new"
             },
             {
-                "id": 10,
-                "question": "Which is the marker interface in Java?",
+                "q": "Which is the marker interface in Java?",
                 "options": [
                     "Cloneable",
                     "Serializable",
@@ -2322,8 +2122,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which principle of OOP is achieved by method overloading in Java?",
+                "q": "Which principle of OOP is achieved by method overloading in Java?",
                 "options": [
                     "Abstraction",
                     "Encapsulation",
@@ -2333,8 +2132,7 @@
                 "answer": "Polymorphism"
             },
             {
-                "id": 2,
-                "question": "Which keyword in Java prevents method overriding?",
+                "q": "Which keyword in Java prevents method overriding?",
                 "options": [
                     "final",
                     "static",
@@ -2344,8 +2142,7 @@
                 "answer": "final"
             },
             {
-                "id": 3,
-                "question": "What is the default value of an instance variable of type boolean in Java?",
+                "q": "What is the default value of an instance variable of type boolean in Java?",
                 "options": [
                     "true",
                     "false",
@@ -2355,8 +2152,7 @@
                 "answer": "false"
             },
             {
-                "id": 4,
-                "question": "Which collection class allows null keys and null values?",
+                "q": "Which collection class allows null keys and null values?",
                 "options": [
                     "Hashtable",
                     "HashMap",
@@ -2366,8 +2162,7 @@
                 "answer": "HashMap"
             },
             {
-                "id": 5,
-                "question": "Which type of class cannot be instantiated directly?",
+                "q": "Which type of class cannot be instantiated directly?",
                 "options": [
                     "Abstract class",
                     "Concrete class",
@@ -2377,8 +2172,7 @@
                 "answer": "Abstract class"
             },
             {
-                "id": 6,
-                "question": "Which method is called when an object is garbage collected?",
+                "q": "Which method is called when an object is garbage collected?",
                 "options": [
                     "finalize()",
                     "dispose()",
@@ -2388,8 +2182,7 @@
                 "answer": "finalize()"
             },
             {
-                "id": 7,
-                "question": "Which Java collection guarantees natural ordering of its elements?",
+                "q": "Which Java collection guarantees natural ordering of its elements?",
                 "options": [
                     "HashSet",
                     "TreeSet",
@@ -2399,8 +2192,7 @@
                 "answer": "TreeSet"
             },
             {
-                "id": 8,
-                "question": "Which keyword is used to refer to the immediate parent class constructor?",
+                "q": "Which keyword is used to refer to the immediate parent class constructor?",
                 "options": [
                     "this",
                     "super",
@@ -2410,8 +2202,7 @@
                 "answer": "super"
             },
             {
-                "id": 9,
-                "question": "Which exception is thrown when a thread is interrupted while sleeping?",
+                "q": "Which exception is thrown when a thread is interrupted while sleeping?",
                 "options": [
                     "InterruptedException",
                     "IOException",
@@ -2421,8 +2212,7 @@
                 "answer": "InterruptedException"
             },
             {
-                "id": 10,
-                "question": "Which package contains the collection framework in Java?",
+                "q": "Which package contains the collection framework in Java?",
                 "options": [
                     "java.lang",
                     "java.util",
@@ -2438,8 +2228,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which type of variables are shared among all objects of a class?",
+                "q": "Which type of variables are shared among all objects of a class?",
                 "options": [
                     "Local variables",
                     "Instance variables",
@@ -2449,8 +2238,7 @@
                 "answer": "Static variables"
             },
             {
-                "id": 2,
-                "question": "Which design pattern is used in Java Runtime class?",
+                "q": "Which design pattern is used in Java Runtime class?",
                 "options": [
                     "Factory",
                     "Singleton",
@@ -2460,8 +2248,7 @@
                 "answer": "Singleton"
             },
             {
-                "id": 3,
-                "question": "What is the parent class of all Java classes?",
+                "q": "What is the parent class of all Java classes?",
                 "options": [
                     "Object",
                     "Class",
@@ -2471,8 +2258,7 @@
                 "answer": "Object"
             },
             {
-                "id": 4,
-                "question": "Which interface is implemented by all collection classes in Java?",
+                "q": "Which interface is implemented by all collection classes in Java?",
                 "options": [
                     "List",
                     "Collection",
@@ -2482,8 +2268,7 @@
                 "answer": "Iterable"
             },
             {
-                "id": 5,
-                "question": "Which keyword is used to implement multiple inheritance in Java?",
+                "q": "Which keyword is used to implement multiple inheritance in Java?",
                 "options": [
                     "extends",
                     "super",
@@ -2493,8 +2278,7 @@
                 "answer": "implements"
             },
             {
-                "id": 6,
-                "question": "Which of these allows defining a constant in Java?",
+                "q": "Which of these allows defining a constant in Java?",
                 "options": [
                     "final",
                     "const",
@@ -2504,8 +2288,7 @@
                 "answer": "final"
             },
             {
-                "id": 7,
-                "question": "Which exception is thrown when dividing by zero using integers?",
+                "q": "Which exception is thrown when dividing by zero using integers?",
                 "options": [
                     "ArithmeticException",
                     "IllegalArgumentException",
@@ -2515,8 +2298,7 @@
                 "answer": "ArithmeticException"
             },
             {
-                "id": 8,
-                "question": "Which Java concept allows different classes to have methods with the same name but different behavior?",
+                "q": "Which Java concept allows different classes to have methods with the same name but different behavior?",
                 "options": [
                     "Inheritance",
                     "Encapsulation",
@@ -2526,8 +2308,7 @@
                 "answer": "Polymorphism"
             },
             {
-                "id": 9,
-                "question": "Which class provides methods for performing operations on files?",
+                "q": "Which class provides methods for performing operations on files?",
                 "options": [
                     "File",
                     "Files",
@@ -2537,8 +2318,7 @@
                 "answer": "File"
             },
             {
-                "id": 10,
-                "question": "Which method is used to start a thread execution?",
+                "q": "Which method is used to start a thread execution?",
                 "options": [
                     "run()",
                     "execute()",
@@ -2554,8 +2334,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which of the following is not a valid Java access modifier?",
+                "q": "Which of the following is not a valid Java access modifier?",
                 "options": [
                     "public",
                     "protected",
@@ -2565,8 +2344,7 @@
                 "answer": "package"
             },
             {
-                "id": 2,
-                "question": "Which Java feature ensures that code cannot access unauthorized memory?",
+                "q": "Which Java feature ensures that code cannot access unauthorized memory?",
                 "options": [
                     "Platform independent",
                     "Object-oriented",
@@ -2576,8 +2354,7 @@
                 "answer": "Robust and secure"
             },
             {
-                "id": 3,
-                "question": "Which keyword is used to inherit a class in Java?",
+                "q": "Which keyword is used to inherit a class in Java?",
                 "options": [
                     "super",
                     "implements",
@@ -2587,8 +2364,7 @@
                 "answer": "extends"
             },
             {
-                "id": 4,
-                "question": "Which of these is a marker interface?",
+                "q": "Which of these is a marker interface?",
                 "options": [
                     "Serializable",
                     "Cloneable",
@@ -2598,8 +2374,7 @@
                 "answer": "All of these"
             },
             {
-                "id": 5,
-                "question": "Which method is always called when an object is created in Java?",
+                "q": "Which method is always called when an object is created in Java?",
                 "options": [
                     "init()",
                     "main()",
@@ -2609,8 +2384,7 @@
                 "answer": "constructor"
             },
             {
-                "id": 6,
-                "question": "Which Java feature allows binding of method call to the method body at runtime?",
+                "q": "Which Java feature allows binding of method call to the method body at runtime?",
                 "options": [
                     "Early binding",
                     "Late binding",
@@ -2620,8 +2394,7 @@
                 "answer": "Late binding"
             },
             {
-                "id": 7,
-                "question": "Which Java memory area is shared by all threads?",
+                "q": "Which Java memory area is shared by all threads?",
                 "options": [
                     "Stack",
                     "Heap",
@@ -2631,8 +2404,7 @@
                 "answer": "Method Area"
             },
             {
-                "id": 8,
-                "question": "Which exception must be handled at compile time?",
+                "q": "Which exception must be handled at compile time?",
                 "options": [
                     "RuntimeException",
                     "Error",
@@ -2642,8 +2414,7 @@
                 "answer": "Checked Exception"
             },
             {
-                "id": 9,
-                "question": "Which keyword is used to make a method not accessible to child classes?",
+                "q": "Which keyword is used to make a method not accessible to child classes?",
                 "options": [
                     "static",
                     "abstract",
@@ -2653,8 +2424,7 @@
                 "answer": "final"
             },
             {
-                "id": 10,
-                "question": "Which concept hides the internal details of an object?",
+                "q": "Which concept hides the internal details of an object?",
                 "options": [
                     "Inheritance",
                     "Encapsulation",
@@ -2670,8 +2440,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which of these is used to handle multiple exceptions in a single block?",
+                "q": "Which of these is used to handle multiple exceptions in a single block?",
                 "options": [
                     "multi catch",
                     "try-finally",
@@ -2681,8 +2450,7 @@
                 "answer": "multi catch"
             },
             {
-                "id": 2,
-                "question": "Which Java collection class implements FIFO order?",
+                "q": "Which Java collection class implements FIFO order?",
                 "options": [
                     "ArrayList",
                     "HashMap",
@@ -2692,8 +2460,7 @@
                 "answer": "LinkedList"
             },
             {
-                "id": 3,
-                "question": "Which keyword is used to create a custom exception in Java?",
+                "q": "Which keyword is used to create a custom exception in Java?",
                 "options": [
                     "throws",
                     "throw",
@@ -2703,8 +2470,7 @@
                 "answer": "extends"
             },
             {
-                "id": 4,
-                "question": "Which of these classes are immutable in Java?",
+                "q": "Which of these classes are immutable in Java?",
                 "options": [
                     "String",
                     "StringBuilder",
@@ -2714,8 +2480,7 @@
                 "answer": "String"
             },
             {
-                "id": 5,
-                "question": "Which Java class is used for thread synchronization?",
+                "q": "Which Java class is used for thread synchronization?",
                 "options": [
                     "Lock",
                     "Semaphore",
@@ -2725,8 +2490,7 @@
                 "answer": "All of these"
             },
             {
-                "id": 6,
-                "question": "Which collection class is best for implementing LRU cache?",
+                "q": "Which collection class is best for implementing LRU cache?",
                 "options": [
                     "HashMap",
                     "TreeMap",
@@ -2736,8 +2500,7 @@
                 "answer": "LinkedHashMap"
             },
             {
-                "id": 7,
-                "question": "Which method is used to compare objects in Java?",
+                "q": "Which method is used to compare objects in Java?",
                 "options": [
                     "compareTo()",
                     "equals()",
@@ -2747,8 +2510,7 @@
                 "answer": "Both compareTo() and equals()"
             },
             {
-                "id": 8,
-                "question": "Which Java class is used for handling large integers?",
+                "q": "Which Java class is used for handling large integers?",
                 "options": [
                     "Integer",
                     "Long",
@@ -2758,8 +2520,7 @@
                 "answer": "BigInteger"
             },
             {
-                "id": 9,
-                "question": "Which Java keyword is used to import static members?",
+                "q": "Which Java keyword is used to import static members?",
                 "options": [
                     "import",
                     "include",
@@ -2769,8 +2530,7 @@
                 "answer": "static import"
             },
             {
-                "id": 10,
-                "question": "Which principle of OOP states that only essential details should be exposed?",
+                "q": "Which principle of OOP states that only essential details should be exposed?",
                 "options": [
                     "Encapsulation",
                     "Abstraction",
@@ -2786,8 +2546,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which keyword is used to define a block of code that must always execute?",
+                "q": "Which keyword is used to define a block of code that must always execute?",
                 "options": [
                     "catch",
                     "throw",
@@ -2797,8 +2556,7 @@
                 "answer": "finally"
             },
             {
-                "id": 2,
-                "question": "Which type of variable can be declared inside an interface?",
+                "q": "Which type of variable can be declared inside an interface?",
                 "options": [
                     "Instance",
                     "Static final",
@@ -2808,8 +2566,7 @@
                 "answer": "Static final"
             },
             {
-                "id": 3,
-                "question": "Which class in Java is used to create threads without extending Thread class?",
+                "q": "Which class in Java is used to create threads without extending Thread class?",
                 "options": [
                     "Runnable",
                     "Executor",
@@ -2819,8 +2576,7 @@
                 "answer": "Runnable"
             },
             {
-                "id": 4,
-                "question": "Which keyword is used to explicitly throw an exception?",
+                "q": "Which keyword is used to explicitly throw an exception?",
                 "options": [
                     "throws",
                     "throw",
@@ -2830,8 +2586,7 @@
                 "answer": "throw"
             },
             {
-                "id": 5,
-                "question": "Which concept in Java ensures that a class has only one instance?",
+                "q": "Which concept in Java ensures that a class has only one instance?",
                 "options": [
                     "Factory Pattern",
                     "Singleton Pattern",
@@ -2841,8 +2596,7 @@
                 "answer": "Singleton Pattern"
             },
             {
-                "id": 6,
-                "question": "Which Java class provides methods for mathematical operations?",
+                "q": "Which Java class provides methods for mathematical operations?",
                 "options": [
                     "Math",
                     "Number",
@@ -2852,8 +2606,7 @@
                 "answer": "Math"
             },
             {
-                "id": 7,
-                "question": "Which type of polymorphism is achieved using method overriding?",
+                "q": "Which type of polymorphism is achieved using method overriding?",
                 "options": [
                     "Compile-time",
                     "Runtime",
@@ -2863,8 +2616,7 @@
                 "answer": "Runtime"
             },
             {
-                "id": 8,
-                "question": "Which keyword is used to stop further subclassing of a class?",
+                "q": "Which keyword is used to stop further subclassing of a class?",
                 "options": [
                     "abstract",
                     "final",
@@ -2874,8 +2626,7 @@
                 "answer": "final"
             },
             {
-                "id": 9,
-                "question": "Which collection class provides constant-time performance for basic operations like add, remove, and contains?",
+                "q": "Which collection class provides constant-time performance for basic operations like add, remove, and contains?",
                 "options": [
                     "TreeSet",
                     "HashSet",
@@ -2885,8 +2636,7 @@
                 "answer": "HashSet"
             },
             {
-                "id": 10,
-                "question": "Which class is the parent of Error and Exception in Java?",
+                "q": "Which class is the parent of Error and Exception in Java?",
                 "options": [
                     "Object",
                     "Throwable",
@@ -2902,8 +2652,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which Java keyword is used to define constants inside an enum?",
+                "q": "Which Java keyword is used to define constants inside an enum?",
                 "options": [
                     "static",
                     "final",
@@ -2913,8 +2662,7 @@
                 "answer": "enum"
             },
             {
-                "id": 2,
-                "question": "Which exception is thrown when accessing an array beyond its limit?",
+                "q": "Which exception is thrown when accessing an array beyond its limit?",
                 "options": [
                     "ArrayIndexOutOfBoundsException",
                     "NullPointerException",
@@ -2924,8 +2672,7 @@
                 "answer": "ArrayIndexOutOfBoundsException"
             },
             {
-                "id": 3,
-                "question": "Which class in Java provides dynamic arrays?",
+                "q": "Which class in Java provides dynamic arrays?",
                 "options": [
                     "Array",
                     "Vector",
@@ -2935,8 +2682,7 @@
                 "answer": "ArrayList"
             },
             {
-                "id": 4,
-                "question": "Which Java keyword is used to explicitly call a parent class constructor?",
+                "q": "Which Java keyword is used to explicitly call a parent class constructor?",
                 "options": [
                     "this()",
                     "super()",
@@ -2946,8 +2692,7 @@
                 "answer": "super()"
             },
             {
-                "id": 5,
-                "question": "Which collection class maintains insertion order?",
+                "q": "Which collection class maintains insertion order?",
                 "options": [
                     "HashMap",
                     "HashSet",
@@ -2957,8 +2702,7 @@
                 "answer": "LinkedHashMap"
             },
             {
-                "id": 6,
-                "question": "Which method in Object class is used for cloning?",
+                "q": "Which method in Object class is used for cloning?",
                 "options": [
                     "copy()",
                     "clone()",
@@ -2968,8 +2712,7 @@
                 "answer": "clone()"
             },
             {
-                "id": 7,
-                "question": "Which OOP principle is used when an object hides its internal state?",
+                "q": "Which OOP principle is used when an object hides its internal state?",
                 "options": [
                     "Abstraction",
                     "Encapsulation",
@@ -2979,8 +2722,7 @@
                 "answer": "Encapsulation"
             },
             {
-                "id": 8,
-                "question": "Which operator is used for object type comparison?",
+                "q": "Which operator is used for object type comparison?",
                 "options": [
                     "==",
                     "equals()",
@@ -2990,8 +2732,7 @@
                 "answer": "instanceof"
             },
             {
-                "id": 9,
-                "question": "Which Java keyword is used to achieve multiple inheritance through interfaces?",
+                "q": "Which Java keyword is used to achieve multiple inheritance through interfaces?",
                 "options": [
                     "extends",
                     "super",
@@ -3001,8 +2742,7 @@
                 "answer": "implements"
             },
             {
-                "id": 10,
-                "question": "Which type of class must override all abstract methods of its parent?",
+                "q": "Which type of class must override all abstract methods of its parent?",
                 "options": [
                     "Concrete class",
                     "Interface",
@@ -3018,8 +2758,7 @@
         "duration": 10,
         "questions": [
             {
-                "id": 1,
-                "question": "Which Java class is best suited for high-performance multi-threaded applications?",
+                "q": "Which Java class is best suited for high-performance multi-threaded applications?",
                 "options": [
                     "Vector",
                     "Hashtable",
@@ -3029,8 +2768,7 @@
                 "answer": "ConcurrentHashMap"
             },
             {
-                "id": 2,
-                "question": "Which principle of OOP allows method overriding?",
+                "q": "Which principle of OOP allows method overriding?",
                 "options": [
                     "Encapsulation",
                     "Polymorphism",
@@ -3040,8 +2778,7 @@
                 "answer": "Polymorphism"
             },
             {
-                "id": 3,
-                "question": "Which Java class represents a sequence of characters and is mutable?",
+                "q": "Which Java class represents a sequence of characters and is mutable?",
                 "options": [
                     "String",
                     "StringBuilder",
@@ -3051,8 +2788,7 @@
                 "answer": "StringBuilder"
             },
             {
-                "id": 4,
-                "question": "Which interface must be implemented to sort custom objects in natural order?",
+                "q": "Which interface must be implemented to sort custom objects in natural order?",
                 "options": [
                     "Comparator",
                     "Comparable",
@@ -3062,8 +2798,7 @@
                 "answer": "Comparable"
             },
             {
-                "id": 5,
-                "question": "Which Java keyword is used to declare a method without implementation?",
+                "q": "Which Java keyword is used to declare a method without implementation?",
                 "options": [
                     "static",
                     "abstract",
@@ -3073,8 +2808,7 @@
                 "answer": "abstract"
             },
             {
-                "id": 6,
-                "question": "Which collection allows duplicate elements?",
+                "q": "Which collection allows duplicate elements?",
                 "options": [
                     "Set",
                     "List",
@@ -3084,8 +2818,7 @@
                 "answer": "List"
             },
             {
-                "id": 7,
-                "question": "Which exception is thrown if a null reference is used to call a method?",
+                "q": "Which exception is thrown if a null reference is used to call a method?",
                 "options": [
                     "NullPointerException",
                     "IllegalStateException",
@@ -3095,8 +2828,7 @@
                 "answer": "NullPointerException"
             },
             {
-                "id": 8,
-                "question": "Which thread state occurs when a thread is waiting for another thread to release a lock?",
+                "q": "Which thread state occurs when a thread is waiting for another thread to release a lock?",
                 "options": [
                     "Waiting",
                     "Runnable",
@@ -3106,8 +2838,7 @@
                 "answer": "Blocked"
             },
             {
-                "id": 9,
-                "question": "Which keyword in Java is used for inheritance with classes?",
+                "q": "Which keyword in Java is used for inheritance with classes?",
                 "options": [
                     "extends",
                     "implements",
@@ -3117,8 +2848,7 @@
                 "answer": "extends"
             },
             {
-                "id": 10,
-                "question": "Which Java operator cannot be overloaded?",
+                "q": "Which Java operator cannot be overloaded?",
                 "options": [
                     "+",
                     "==",
@@ -3126,6 +2856,112 @@
                     "="
                 ],
                 "answer": "instanceof"
+            }
+        ]
+    },
+    {
+        "title": "Java Test - 28",
+        "duration": "10 min",
+        "questions": [
+            {
+                "q": "Which keyword is used to inherit a class in Java?",
+                "options": [
+                    "this",
+                    "super",
+                    "extends",
+                    "implements"
+                ],
+                "answer": "extends"
+            },
+            {
+                "q": "Which method is the entry point of any Java program?",
+                "options": [
+                    "start()",
+                    "main()",
+                    "run()",
+                    "init()"
+                ],
+                "answer": "main()"
+            },
+            {
+                "q": "Which operator is used for string concatenation in Java?",
+                "options": [
+                    "+",
+                    "&",
+                    "concat",
+                    "*"
+                ],
+                "answer": "+"
+            },
+            {
+                "q": "What is the size of int data type in Java?",
+                "options": [
+                    "2 bytes",
+                    "4 bytes",
+                    "8 bytes",
+                    "Depends on OS"
+                ],
+                "answer": "4 bytes"
+            },
+            {
+                "q": "Which of these is not a primitive type in Java?",
+                "options": [
+                    "int",
+                    "float",
+                    "String",
+                    "char"
+                ],
+                "answer": "String"
+            },
+            {
+                "q": "Which package is automatically imported in every Java program?",
+                "options": [
+                    "java.io",
+                    "java.util",
+                    "java.lang",
+                    "java.net"
+                ],
+                "answer": "java.lang"
+            },
+            {
+                "q": "What is used to define a constant in Java?",
+                "options": [
+                    "final",
+                    "const",
+                    "static",
+                    "immutable"
+                ],
+                "answer": "final"
+            },
+            {
+                "q": "Which keyword is used to create an object in Java?",
+                "options": [
+                    "class",
+                    "new",
+                    "create",
+                    "object"
+                ],
+                "answer": "new"
+            },
+            {
+                "q": "Which of these is the correct way to declare an array in Java?",
+                "options": [
+                    "int arr[];",
+                    "int[] arr;",
+                    "int arr[] = new int[5];",
+                    "All of the above"
+                ],
+                "answer": "All of the above"
+            },
+            {
+                "q": "Which company developed Java?",
+                "options": [
+                    "Oracle",
+                    "Microsoft",
+                    "Sun Microsystems",
+                    "IBM"
+                ],
+                "answer": "Sun Microsystems"
             }
         ]
     }
