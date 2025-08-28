@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,10 +9,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-100 dark:from-gray-900 dark:via-purple-900 dark:to-indigo-900 text-gray-800 dark:text-white transition-all duration-300">
-  <div class="floating-shapes"></div>
 
-  <!-- Enhanced Navbar -->
+<body
+  class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-100 dark:from-gray-900 dark:via-purple-900 dark:to-indigo-900 text-gray-800 dark:text-white transition-all duration-300">
+
+  <!-- 🌟 NAVBAR (unchanged except login/register buttons kept) -->
   <nav class="glass-morphism shadow-xl border-b sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-3">
@@ -20,28 +22,35 @@
         </div>
         <span class="text-2xl font-black gradient-text tracking-wide">CodeMaster</span>
       </div>
-      <div class="hidden md:flex items-center space-x-8 text-indigo-700 dark:text-purple-300 font-semibold">
-        <a href="#home" class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Home</a>
-        <a href="#tests" class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Tests</a>
-        <a href="#code-challenge" class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Coding Challenge</a>
-        <a href="#resources" class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Resources</a>
+      <div class="hidden md:flex items-center space-x-8 text-indigo-700 dark:text-purple-300 font-semibold"> <a
+          href="#home"
+          class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Home</a>
+        <a href="#tests"
+          class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Tests</a>
+        <a href="#code-challenge"
+          class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Coding
+          Challenge</a> <a href="#resources"
+          class="nav-link hover:text-purple-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110">Resources</a>
       </div>
       <div class="flex gap-4 items-center">
         <!-- Theme Toggle -->
-        <div class="theme-toggle" id="themeToggle">
-          <i class="fas fa-sun absolute left-2 top-1.5 text-xs text-yellow-500 dark:opacity-0 opacity-100 transition-opacity"></i>
-          <i class="fas fa-moon absolute right-2 top-1.5 text-xs text-blue-300 dark:opacity-100 opacity-0 transition-opacity"></i>
+        <div class="theme-toggle" id="themeToggle"> <i
+            class="fas fa-sun absolute left-2 top-1.5 text-xs text-yellow-500 dark:opacity-0 opacity-100 transition-opacity"></i>
+          <i
+            class="fas fa-moon absolute right-2 top-1.5 text-xs text-blue-300 dark:opacity-100 opacity-0 transition-opacity"></i>
         </div>
-        
-        <!-- Auth Buttons (show when not logged in) -->
+        <!-- Auth Buttons -->
         <div id="authButtons" class="flex gap-4">
-          <button id="loginBtn" class="px-6 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold hover:from-blue-600 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg">Login</button>
-          <button id="registerBtn" class="px-6 py-2 rounded-xl border-2 border-purple-500 text-purple-600 dark:text-purple-400 dark:border-purple-400 font-semibold hover:bg-purple-500 hover:text-white transform hover:scale-105 transition-all duration-300">Register</button>
+          <button id="loginBtn"
+            class="px-6 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold hover:from-blue-600 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg">Login</button>
+          <button id="registerBtn"
+            class="px-6 py-2 rounded-xl border-2 border-purple-500 text-purple-600 dark:text-purple-400 dark:border-purple-400 font-semibold hover:bg-purple-500 hover:text-white transform hover:scale-105 transition-all duration-300">Register</button>
         </div>
 
-        <!-- User Menu (show when logged in) -->
+        <!-- User Menu -->
         <div id="userMenu" class="relative hidden">
-          <button id="userMenuBtn" class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-300 shadow-lg">
+          <button id="userMenuBtn"
+            class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-300 shadow-lg">
             <i class="fas fa-user-circle"></i>
             <span id="userNameDisplay">Hi, User</span>
             <i class="fas fa-chevron-down text-sm"></i>
@@ -51,7 +60,8 @@
               <p id="userEmailDisplay" class="text-sm text-gray-600 dark:text-gray-400">user@example.com</p>
             </div>
             <div class="p-2">
-              <button id="logoutBtn" class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200 flex items-center space-x-2">
+              <button id="logoutBtn"
+                class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200 flex items-center space-x-2">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
               </button>
@@ -64,32 +74,45 @@
 
   <!-- Enhanced Hero Section -->
   <section id="home" class="relative overflow-hidden animated-bg">
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-800/90 via-indigo-700/90 to-blue-600/90 dark:from-purple-900/95 dark:via-indigo-800/95 dark:to-blue-700/95 z-0"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-purple-800/90 via-indigo-700/90 to-blue-600/90 dark:from-purple-900/95 dark:via-indigo-800/95 dark:to-blue-700/95 z-0">
+    </div>
     <div class="container mx-auto px-4 py-24 relative z-10 text-white">
       <div class="flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 mb-12 md:mb-0 bounce-in">
           <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 text-glow">
             Master Coding Skills<br>
             <div class="hero-text-animation">
-              <span class="hero-text-item bg-gradient-to-r from-pink-400 to-yellow-400 bg-clip-text text-transparent">Practice Coding</span>
-              <span class="hero-text-item bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Give Real Tests</span>
-              <span class="hero-text-item bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Explore Resources</span>
+              <span
+                class="hero-text-item bg-gradient-to-r from-pink-400 to-yellow-400 bg-clip-text text-transparent">Practice
+                Coding</span>
+              <span
+                class="hero-text-item bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Give
+                Real Tests</span>
+              <span
+                class="hero-text-item bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Explore
+                Resources</span>
             </div>
           </h1>
           <p class="text-xl mb-10 opacity-90 leading-relaxed">
-            Practice coding, DSA, OOP, DBMS, CN and more with our comprehensive test platform designed for future tech leaders.
+            Practice coding, DSA, OOP, DBMS, CN and more with our comprehensive test platform designed for future tech
+            leaders.
           </p>
           <a href="#tests">
-            <button class="px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white rounded-2xl font-bold shadow-2xl hover:shadow-pink-500/50 hover:scale-110 transition-all duration-300 neon-glow sparkle text-lg">
+            <button
+              class="px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white rounded-2xl font-bold shadow-2xl hover:shadow-pink-500/50 hover:scale-110 transition-all duration-300 neon-glow sparkle text-lg">
               Start Your Journey Now
             </button>
           </a>
         </div>
         <div class="md:w-1/2 flex justify-center">
           <div class="relative">
-            <div class="absolute -inset-4 bg-gradient-to-r from-pink-600 to-purple-600 dark:from-purple-500 dark:to-pink-500 rounded-3xl blur opacity-75 animate-pulse"></div>
+            <div
+              class="absolute -inset-4 bg-gradient-to-r from-pink-600 to-purple-600 dark:from-purple-500 dark:to-pink-500 rounded-3xl blur opacity-75 animate-pulse">
+            </div>
             <div class="hero-image">
-              <img src="main.png" alt="developer illustration" class="relative object-cover border-4 border-white/30 dark:border-purple-300/30">
+              <img src="main.png" alt="developer illustration"
+                class="relative object-cover border-4 border-white/30 dark:border-purple-300/30">
             </div>
           </div>
         </div>
@@ -98,58 +121,78 @@
   </section>
 
   <!-- Enhanced Test Categories -->
-  <section id="tests" class="py-24 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900 dark:to-indigo-900 relative overflow-hidden">
+  <section id="tests"
+    class="py-24 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900 dark:to-indigo-900 relative overflow-hidden">
     <div class="container mx-auto px-4">
       <h2 class="text-6xl font-black text-center gradient-text mb-20 tracking-tight">Explore Test Categories</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="category-card rounded-3xl p-8 card-hover relative cursor-pointer test-card" data-test="programming">
           <div class="flex justify-center mb-8">
-            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center shadow-2xl icon-bounce">
+            <div
+              class="w-24 h-24 rounded-full bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center shadow-2xl icon-bounce">
               <i class="fas fa-laptop-code text-white text-4xl"></i>
             </div>
           </div>
           <h3 class="text-2xl font-bold text-center text-indigo-800 dark:text-indigo-300 mb-4">Programming</h3>
-          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Syntax, output prediction, coding problems with instant feedback.</p>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Syntax, output prediction, coding
+            problems with instant feedback.</p>
           <div class="mt-6 text-center">
-            <span class="inline-block px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">50+ Questions</span>
+            <span
+              class="inline-block px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">50+
+              Questions</span>
           </div>
         </div>
         <div class="category-card rounded-3xl p-8 card-hover relative cursor-pointer test-card" data-test="java">
           <div class="flex justify-center mb-8">
-            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-blue-400 to-cyan-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.2s;">
+            <div
+              class="w-24 h-24 rounded-full bg-gradient-to-br from-blue-400 to-cyan-600 flex items-center justify-center shadow-2xl icon-bounce"
+              style="animation-delay: 0.2s;">
               <i class="fab fa-java text-white text-4xl"></i>
             </div>
           </div>
           <h3 class="text-2xl font-bold text-center text-blue-800 dark:text-blue-300 mb-4">Java</h3>
-          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">OOP concepts, output prediction, advanced code snippets.</p>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">OOP concepts, output prediction,
+            advanced code snippets.</p>
           <div class="mt-6 text-center">
-            <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">40+ Questions</span>
+            <span
+              class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">40+
+              Questions</span>
           </div>
         </div>
 
         <div class="category-card rounded-3xl p-8 card-hover relative cursor-pointer test-card" data-test="dsa">
           <div class="flex justify-center mb-8">
-            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-pink-400 to-red-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.4s;">
+            <div
+              class="w-24 h-24 rounded-full bg-gradient-to-br from-pink-400 to-red-600 flex items-center justify-center shadow-2xl icon-bounce"
+              style="animation-delay: 0.4s;">
               <i class="fas fa-project-diagram text-white text-4xl"></i>
             </div>
           </div>
           <h3 class="text-2xl font-bold text-center text-pink-800 dark:text-pink-300 mb-4">DSA</h3>
-          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Conceptual and practical algorithm challenges.</p>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Conceptual and practical algorithm
+            challenges.</p>
           <div class="mt-6 text-center">
-            <span class="inline-block px-4 py-2 bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">60+ Questions</span>
+            <span
+              class="inline-block px-4 py-2 bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">60+
+              Questions</span>
           </div>
         </div>
 
         <div class="category-card rounded-3xl p-8 card-hover relative cursor-pointer test-card" data-test="general">
           <div class="flex justify-center mb-8">
-            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-purple-400 to-violet-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.6s;">
+            <div
+              class="w-24 h-24 rounded-full bg-gradient-to-br from-purple-400 to-violet-600 flex items-center justify-center shadow-2xl icon-bounce"
+              style="animation-delay: 0.6s;">
               <i class="fas fa-brain text-white text-4xl"></i>
             </div>
           </div>
           <h3 class="text-2xl font-bold text-center text-purple-800 dark:text-purple-300 mb-4">General CS</h3>
-          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">DBMS, Networking, OS, System Design fundamentals.</p>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">DBMS, Networking, OS, System Design
+            fundamentals.</p>
           <div class="mt-6 text-center">
-            <span class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">70+ Questions</span>
+            <span
+              class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">70+
+              Questions</span>
           </div>
         </div>
       </div>
@@ -157,23 +200,30 @@
   </section>
 
   <!-- Enhanced Coding Challenges -->
-  <section id="code-challenge" class="py-24 bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100 dark:from-yellow-900/20 dark:via-orange-900/20 dark:to-red-900/20 relative">
+  <section id="code-challenge"
+    class="py-24 bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100 dark:from-yellow-900/20 dark:via-orange-900/20 dark:to-red-900/20 relative">
     <div class="container mx-auto px-4">
-      <h2 class="text-6xl font-black text-center text-orange-900 dark:text-orange-300 mb-20 tracking-tight">Coding Challenges</h2>
+      <h2 class="text-6xl font-black text-center text-orange-900 dark:text-orange-300 mb-20 tracking-tight">Coding
+        Challenges</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div class="rainbow-border card-hover relative cursor-pointer challenge-card" data-challenge="basic">
           <div class="rainbow-border-content">
             <div class="text-center mb-6">
-              <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-green-400 to-blue-600 flex items-center justify-center mb-4 icon-bounce">
+              <div
+                class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-green-400 to-blue-600 flex items-center justify-center mb-4 icon-bounce">
                 <i class="fas fa-graduation-cap text-white text-3xl"></i>
               </div>
             </div>
             <h3 class="text-2xl font-bold text-indigo-700 dark:text-indigo-300 mb-4 text-center">Basic to Advanced</h3>
-            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-center">Structured learning path from fundamentals to expert-level problems with detailed explanations.</p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-center">Structured learning path from
+              fundamentals to expert-level problems with detailed explanations.</p>
             <div class="mt-6 flex justify-center space-x-2">
-              <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-xs">Beginner</span>
-              <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 rounded-full text-xs">Intermediate</span>
-              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 rounded-full text-xs">Advanced</span>
+              <span
+                class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-xs">Beginner</span>
+              <span
+                class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 rounded-full text-xs">Intermediate</span>
+              <span
+                class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 rounded-full text-xs">Advanced</span>
             </div>
           </div>
         </div>
@@ -181,14 +231,19 @@
         <div class="rainbow-border card-hover relative cursor-pointer challenge-card" data-challenge="interview">
           <div class="rainbow-border-content">
             <div class="text-center mb-6">
-              <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center mb-4 icon-bounce" style="animation-delay: 0.3s;">
+              <div
+                class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center mb-4 icon-bounce"
+                style="animation-delay: 0.3s;">
                 <i class="fas fa-bullseye text-white text-3xl"></i>
               </div>
             </div>
             <h3 class="text-2xl font-bold text-pink-700 dark:text-pink-300 mb-4 text-center">Interview Questions</h3>
-            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-center">Real-world questions from top tech interviews at FAANG companies with optimal solutions.</p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-center">Real-world questions from top tech
+              interviews at FAANG companies with optimal solutions.</p>
             <div class="mt-6 flex justify-center">
-              <span class="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full text-sm font-medium">FAANG Ready</span>
+              <span
+                class="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full text-sm font-medium">FAANG
+                Ready</span>
             </div>
           </div>
         </div>
@@ -196,16 +251,22 @@
         <div class="rainbow-border card-hover relative cursor-pointer challenge-card" data-challenge="company">
           <div class="rainbow-border-content">
             <div class="text-center mb-6">
-              <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-purple-400 to-indigo-600 flex items-center justify-center mb-4 icon-bounce" style="animation-delay: 0.6s;">
+              <div
+                class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-purple-400 to-indigo-600 flex items-center justify-center mb-4 icon-bounce"
+                style="animation-delay: 0.6s;">
                 <i class="fas fa-building text-white text-3xl"></i>
               </div>
             </div>
             <h3 class="text-2xl font-bold text-purple-700 dark:text-purple-300 mb-4 text-center">Company Specific</h3>
-            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-center">Problems tagged by Amazon, Google, Meta, Microsoft and other top companies.</p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-center">Problems tagged by Amazon, Google,
+              Meta, Microsoft and other top companies.</p>
             <div class="mt-6 flex justify-center flex-wrap gap-1">
-              <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded text-xs">Google</span>
-              <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 rounded text-xs">Amazon</span>
-              <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded text-xs">Meta</span>
+              <span
+                class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded text-xs">Google</span>
+              <span
+                class="px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 rounded text-xs">Amazon</span>
+              <span
+                class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded text-xs">Meta</span>
             </div>
           </div>
         </div>
@@ -214,59 +275,79 @@
   </section>
 
   <!-- Enhanced Study Notes -->
-  <section id="resources" class="py-24 bg-gradient-to-br from-cyan-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900 relative overflow-hidden">
+  <section id="resources"
+    class="py-24 bg-gradient-to-br from-cyan-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900 relative overflow-hidden">
     <div class="container mx-auto px-4">
       <h2 class="text-6xl font-black text-center text-blue-900 dark:text-blue-300 mb-20 tracking-tight">Study Notes</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="category-card rounded-3xl p-8 card-hover cursor-pointer notes-card" data-notes="python">
           <div class="flex justify-center mb-8">
-            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-yellow-400 to-green-600 flex items-center justify-center shadow-2xl icon-bounce">
+            <div
+              class="w-24 h-24 rounded-full bg-gradient-to-br from-yellow-400 to-green-600 flex items-center justify-center shadow-2xl icon-bounce">
               <i class="fab fa-python text-white text-4xl"></i>
             </div>
           </div>
           <h3 class="text-2xl font-bold text-center text-indigo-800 dark:text-indigo-300 mb-4">Python Notes</h3>
-          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Comprehensive notes on Python syntax, libraries, and best practices.</p>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Comprehensive notes on Python syntax,
+            libraries, and best practices.</p>
           <div class="mt-6 text-center">
-            <span class="inline-block px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">15 Chapters</span>
+            <span
+              class="inline-block px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">15
+              Chapters</span>
           </div>
         </div>
 
         <div class="category-card rounded-3xl p-8 card-hover cursor-pointer notes-card" data-notes="java">
           <div class="flex justify-center mb-8">
-            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-red-400 to-orange-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.2s;">
+            <div
+              class="w-24 h-24 rounded-full bg-gradient-to-br from-red-400 to-orange-600 flex items-center justify-center shadow-2xl icon-bounce"
+              style="animation-delay: 0.2s;">
               <i class="fab fa-java text-white text-4xl"></i>
             </div>
           </div>
           <h3 class="text-2xl font-bold text-center text-blue-800 dark:text-blue-300 mb-4">Java Notes</h3>
-          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Key concepts, OOP principles, and advanced Java features explained.</p>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Key concepts, OOP principles, and
+            advanced Java features explained.</p>
           <div class="mt-6 text-center">
-            <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">20 Chapters</span>
+            <span
+              class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">20
+              Chapters</span>
           </div>
         </div>
 
         <div class="category-card rounded-3xl p-8 card-hover cursor-pointer notes-card" data-notes="dsa">
           <div class="flex justify-center mb-8">
-            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.4s;">
+            <div
+              class="w-24 h-24 rounded-full bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center shadow-2xl icon-bounce"
+              style="animation-delay: 0.4s;">
               <i class="fas fa-project-diagram text-white text-4xl"></i>
             </div>
           </div>
           <h3 class="text-2xl font-bold text-center text-pink-800 dark:text-pink-300 mb-4">DSA Notes</h3>
-          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Data structures and algorithms explained with visual examples.</p>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">Data structures and algorithms
+            explained with visual examples.</p>
           <div class="mt-6 text-center">
-            <span class="inline-block px-4 py-2 bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">25 Chapters</span>
+            <span
+              class="inline-block px-4 py-2 bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">25
+              Chapters</span>
           </div>
         </div>
 
         <div class="category-card rounded-3xl p-8 card-hover cursor-pointer notes-card" data-notes="general">
           <div class="flex justify-center mb-8">
-            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-violet-400 to-purple-600 flex items-center justify-center shadow-2xl icon-bounce" style="animation-delay: 0.6s;">
+            <div
+              class="w-24 h-24 rounded-full bg-gradient-to-br from-violet-400 to-purple-600 flex items-center justify-center shadow-2xl icon-bounce"
+              style="animation-delay: 0.6s;">
               <i class="fas fa-brain text-white text-4xl"></i>
             </div>
           </div>
           <h3 class="text-2xl font-bold text-center text-purple-800 dark:text-purple-300 mb-4">General CS Notes</h3>
-          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">DBMS, Networking, OS, and system design with practical examples.</p>
+          <p class="text-center text-gray-700 dark:text-gray-300 leading-relaxed">DBMS, Networking, OS, and system
+            design with practical examples.</p>
           <div class="mt-6 text-center">
-            <span class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">30 Chapters</span>
+            <span
+              class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">30
+              Chapters</span>
           </div>
         </div>
       </div>
@@ -274,7 +355,8 @@
   </section>
 
   <!-- Enhanced Footer -->
-  <footer class="relative bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 dark:from-gray-950 dark:via-purple-950 dark:to-violet-950 text-white pt-20 pb-12 mt-24 overflow-hidden">
+  <footer
+    class="relative bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 dark:from-gray-950 dark:via-purple-950 dark:to-violet-950 text-white pt-20 pb-12 mt-24 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-r from-purple-800/20 to-pink-800/20 backdrop-blur-sm z-0"></div>
     <div class="container mx-auto px-4 relative z-10">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-16">
@@ -286,7 +368,8 @@
             <h3 class="text-3xl font-black gradient-text tracking-wide">CodeMaster</h3>
           </div>
           <p class="text-lg text-gray-300 max-w-md leading-relaxed">
-            Master coding skills with curated tests, challenges, and resources designed for future developers and tech leaders.
+            Master coding skills with curated tests, challenges, and resources designed for future developers and tech
+            leaders.
           </p>
         </div>
 
@@ -294,23 +377,28 @@
         <div class="flex justify-center space-x-8">
           <!-- GitHub -->
           <a href="https://github.com/priyotosh-27" target="_blank" class="group flex flex-col items-center">
-            <div class="bg-gradient-to-br from-gray-800 to-black p-4 rounded-2xl shadow-2xl hover:scale-110 transition duration-300 hover:shadow-purple-500/50">
+            <div
+              class="bg-gradient-to-br from-gray-800 to-black p-4 rounded-2xl shadow-2xl hover:scale-110 transition duration-300 hover:shadow-purple-500/50">
               <i class="fab fa-github text-2xl text-white"></i>
             </div>
             <span class="text-sm text-gray-300 mt-3 group-hover:text-white transition font-medium">GitHub</span>
           </a>
 
           <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/in/priyotosh-roy-81833228a/" target="_blank" class="group flex flex-col items-center">
-            <div class="bg-gradient-to-br from-blue-600 to-blue-800 p-4 rounded-2xl shadow-2xl hover:scale-110 transition duration-300 hover:shadow-blue-500/50">
+          <a href="https://www.linkedin.com/in/priyotosh-roy-81833228a/" target="_blank"
+            class="group flex flex-col items-center">
+            <div
+              class="bg-gradient-to-br from-blue-600 to-blue-800 p-4 rounded-2xl shadow-2xl hover:scale-110 transition duration-300 hover:shadow-blue-500/50">
               <i class="fab fa-linkedin-in text-2xl text-white"></i>
             </div>
             <span class="text-sm text-gray-300 mt-3 group-hover:text-white transition font-medium">LinkedIn</span>
           </a>
 
           <!-- Portfolio -->
-          <a href="https://priyotosh-27.github.io/Portfolio_Website/" target="_blank" class="group flex flex-col items-center">
-            <div class="bg-gradient-to-br from-purple-600 to-pink-600 p-4 rounded-2xl shadow-2xl hover:scale-110 transition duration-300 hover:shadow-purple-500/50">
+          <a href="https://priyotosh-27.github.io/Portfolio_Website/" target="_blank"
+            class="group flex flex-col items-center">
+            <div
+              class="bg-gradient-to-br from-purple-600 to-pink-600 p-4 rounded-2xl shadow-2xl hover:scale-110 transition duration-300 hover:shadow-purple-500/50">
               <i class="fas fa-user-circle text-2xl text-white"></i>
             </div>
             <span class="text-sm text-gray-300 mt-3 group-hover:text-white transition font-medium">Portfolio</span>
@@ -321,7 +409,8 @@
           <div>
             <h4 class="font-bold mb-4 text-purple-300 uppercase tracking-wide text-lg">Tests</h4>
             <ul class="space-y-3 text-gray-300">
-              <li><a href="#tests" class="hover:text-pink-400 transition duration-200 hover:underline">Programming</a></li>
+              <li><a href="#tests" class="hover:text-pink-400 transition duration-200 hover:underline">Programming</a>
+              </li>
               <li><a href="#tests" class="hover:text-pink-400 transition duration-200 hover:underline">DSA</a></li>
               <li><a href="#tests" class="hover:text-pink-400 transition duration-200 hover:underline">DBMS</a></li>
             </ul>
@@ -329,36 +418,44 @@
           <div>
             <h4 class="font-bold mb-4 text-purple-300 uppercase tracking-wide text-lg">Resources</h4>
             <ul class="space-y-3 text-gray-300">
-              <li><a href="#resources" class="hover:text-pink-400 transition duration-200 hover:underline">Study Notes</a></li>
-              <li><a href="#code-challenge" class="hover:text-pink-400 transition duration-200 hover:underline">Challenges</a></li>
+              <li><a href="#resources" class="hover:text-pink-400 transition duration-200 hover:underline">Study
+                  Notes</a></li>
+              <li><a href="#code-challenge"
+                  class="hover:text-pink-400 transition duration-200 hover:underline">Challenges</a></li>
             </ul>
           </div>
           <div>
             <h4 class="font-bold mb-4 text-purple-300 uppercase tracking-wide text-lg">Contact</h4>
             <ul class="space-y-3 text-gray-300">
-              <li><a href="mailto:priyotoshr501@gmail.com" class="hover:text-pink-400 transition duration-200 hover:underline">Email</a></li>
-              <li><a href="https://www.linkedin.com/in/priyotosh-roy-81833228a/" target="_blank" class="hover:text-pink-400 transition duration-200 hover:underline">LinkedIn</a></li>
-              <li><a href="https://priyotosh-27.github.io/Portfolio_Website/" target="_blank" class="hover:text-pink-400 transition duration-200 hover:underline">Portfolio</a></li>
+              <li><a href="mailto:priyotoshr501@gmail.com"
+                  class="hover:text-pink-400 transition duration-200 hover:underline">Email</a></li>
+              <li><a href="https://www.linkedin.com/in/priyotosh-roy-81833228a/" target="_blank"
+                  class="hover:text-pink-400 transition duration-200 hover:underline">LinkedIn</a></li>
+              <li><a href="https://priyotosh-27.github.io/Portfolio_Website/" target="_blank"
+                  class="hover:text-pink-400 transition duration-200 hover:underline">Portfolio</a></li>
             </ul>
           </div>
         </div>
       </div>
-      
+
       <div class="mt-16 border-t border-pink-400/30 pt-8 text-center">
         <p class="text-lg text-gray-400">
-          © 2025 <span class="text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text font-bold">CodeMaster</span>. All rights reserved. Made with ❤️ for developers.
+          © 2025 <span
+            class="text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text font-bold">CodeMaster</span>.
+          All rights reserved. Made with ❤️ for developers.
         </p>
       </div>
     </div>
   </footer>
 
-  <!-- Enhanced Auth Modal -->
   <div id="authModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden">
     <div class="glass-morphism rounded-3xl shadow-2xl w-full max-w-md auth-modal relative border m-4">
-      <button id="closeAuth" class="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-2xl font-bold transition-all duration-300 hover:rotate-90 hover:scale-110">&times;</button>
-      
+      <button id="closeAuth"
+        class="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-2xl font-bold transition-all duration-300 hover:rotate-90 hover:scale-110">&times;</button>
+
       <div class="text-center mb-8 p-8 pb-0">
-        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+        <div
+          class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
           <i class="fas fa-user-circle text-white text-2xl"></i>
         </div>
         <h2 id="authTitle" class="text-3xl font-bold gradient-text">Welcome Back</h2>
@@ -368,89 +465,74 @@
       <form id="authForm" class="space-y-6 px-8 pb-8">
         <input type="hidden" id="authMode" value="login" />
 
-        <!-- Full Name (only for register) -->
+        <!-- Full Name (Register only) -->
         <div id="nameField" class="hidden">
-          <label for="authName" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
-          <input type="text" id="authName" class="auth-input w-full px-4 py-3 rounded-xl focus:outline-none transition-all duration-300" placeholder="Enter your full name" />
+          <label for="authName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full
+            Name</label>
+          <input type="text" id="authName"
+            class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-800 dark:text-white transition"
+            placeholder="John Doe">
         </div>
 
         <!-- Email -->
         <div>
-          <label for="authEmail" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
-          <input type="email" id="authEmail" class="auth-input w-full px-4 py-3 rounded-xl focus:outline-none transition-all duration-300" placeholder="Enter your email" required />
+          <label for="authEmail" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+          <input type="email" id="authEmail" required
+            class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-800 dark:text-white transition"
+            placeholder="you@example.com">
         </div>
 
         <!-- Password -->
         <div>
-          <label for="authPassword" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Password</label>
-          <input type="password" id="authPassword" class="auth-input w-full px-4 py-3 rounded-xl focus:outline-none transition-all duration-300" placeholder="Enter your password" required />
+          <label for="authPassword"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
+          <input type="password" id="authPassword" required minlength="6"
+            class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-800 dark:text-white transition"
+            placeholder="••••••••">
         </div>
 
-        <!-- Submit Button -->
-        <button type="submit" class="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:from-purple-700 hover:to-pink-700 font-semibold text-lg shadow-lg hover:shadow-purple-500/50 transform hover:scale-105 transition-all duration-300 flex items-center justify-center">
-          <span id="loadingSpinner" class="loading-spinner mr-2 hidden"></span>
+        <!-- Submit -->
+        <button type="submit"
+          class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold shadow-lg hover:from-purple-600 hover:to-pink-600 transform hover:scale-[1.02] transition-all duration-300 flex justify-center items-center space-x-2">
           <span id="submitText">Sign In</span>
+          <div id="loadingSpinner"
+            class="hidden animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
         </button>
+
+        <!-- Switch Auth Mode -->
+        <p id="switchAuth"
+          class="text-center text-sm text-gray-600 dark:text-gray-400 cursor-pointer hover:text-purple-500 dark:hover:text-purple-300 transition mt-4">
+          Don’t have an account? Join CodeMaster
+        </p>
       </form>
-
-      <!-- Switch Mode -->
-      <div class="px-8 pb-6 text-center">
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          <button id="switchAuth" class="text-purple-600 dark:text-purple-400 hover:text-pink-600 dark:hover:text-pink-400 font-semibold hover:underline transition-all duration-300">Don't have an account? Join CodeMaster</button>
-        </p>
-      </div>
-
-      <!-- Social Login Options -->
-      <div class="px-8 pb-8">
-        <div class="relative">
-          <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
-          </div>
-          <div class="relative flex justify-center text-sm">
-            <span class="px-4 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 font-medium">Or continue with</span>
-          </div>
-        </div>
-
-        <div class="mt-6 grid grid-cols-2 gap-4">
-          <button id="googleAuth" class="flex items-center justify-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105">
-            <i class="fab fa-google text-red-500 mr-2"></i>
-            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Google</span>
-          </button>
-          <button id="githubAuth" class="flex items-center justify-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105">
-            <i class="fab fa-github text-gray-800 dark:text-gray-300 mr-2"></i>
-            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">GitHub</span>
-          </button>
-        </div>
-      </div>
     </div>
   </div>
 
-  <!-- Access Denied Modal -->
-  <div id="accessDeniedModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden">
-    <div class="access-denied rounded-3xl shadow-2xl w-full max-w-md relative border m-4 text-white">
-      <button id="closeAccessDenied" class="absolute top-4 right-4 text-white/80 hover:text-white text-2xl font-bold transition-all duration-300 hover:rotate-90 hover:scale-110">&times;</button>
-      
-      <div class="text-center p-8">
-        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-white/20 flex items-center justify-center">
-          <i class="fas fa-lock text-4xl"></i>
-        </div>
-        <h2 class="text-3xl font-bold mb-4">Access Restricted</h2>
-        <p class="text-lg mb-8 leading-relaxed">
-          Please log in to access coding tests and challenges. Join thousands of developers improving their skills!
-        </p>
-        <div class="flex gap-4 justify-center">
-          <button id="loginFromModal" class="px-6 py-3 bg-white/20 hover:bg-white/30 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-105">
-            Login
-          </button>
-          <button id="registerFromModal" class="px-6 py-3 bg-white text-red-600 hover:bg-gray-100 rounded-xl font-semibold transition-all duration-300 hover:scale-105">
-            Register
-          </button>
-        </div>
+  <!-- ======================
+       ACCESS DENIED MODAL
+  ======================= -->
+  <div id="accessDeniedModal"
+    class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+    <div class="glass-morphism rounded-3xl shadow-2xl w-full max-w-md p-8 relative border m-4 text-center">
+      <h2 class="text-2xl font-bold mb-4 text-red-500">Access Denied</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-6">You must be logged in to access this content.</p>
+      <div class="flex gap-4 justify-center">
+        <button id="loginFromModal"
+          class="px-6 py-2 rounded-xl bg-blue-500 text-white font-semibold hover:bg-blue-600 transition">Login</button>
+        <button id="registerFromModal"
+          class="px-6 py-2 rounded-xl bg-purple-500 text-white font-semibold hover:bg-purple-600 transition">Register</button>
       </div>
+      <button id="closeAccessDenied"
+        class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
     </div>
   </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js"></script>
 
   <!-- Scripts -->
-   <script src="main.js"></script>
+  <script type="module" src="main.js"></script>
 </body>
+
 </html>
