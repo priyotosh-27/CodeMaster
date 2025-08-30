@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -106,10 +107,8 @@
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: conic-gradient(
-        var(--ring-color, var(--accent-primary)) calc(var(--progress, 0) * 1%), 
-        var(--border) 0
-      );
+      background: conic-gradient(var(--ring-color, var(--accent-primary)) calc(var(--progress, 0) * 1%),
+          var(--border) 0);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -235,8 +234,15 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.7;
+      }
     }
 
     .floating-action {
@@ -261,6 +267,7 @@
         transform: translateX(100%);
         opacity: 0;
       }
+
       to {
         transform: translateX(0);
         opacity: 1;
@@ -272,8 +279,15 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Custom scrollbar */
@@ -365,7 +379,7 @@
             <p class="text-white/80 text-sm">Programming Assessment Platform</p>
           </div>
         </div>
-        
+
         <div class="flex items-center gap-4">
           <div class="hidden md:flex items-center gap-2 text-sm bg-white/10 rounded-lg px-3 py-2">
             <i class="fas fa-keyboard"></i>
@@ -445,7 +459,8 @@
           <div class="mb-6">
             <div class="text-sm text-[var(--text-secondary)] mb-2">Progress</div>
             <div class="bg-[var(--border)] rounded-full h-2">
-              <div id="progressBar" class="h-2 rounded-full bg-[var(--accent-primary)] transition-all duration-300" style="width: 0%"></div>
+              <div id="progressBar" class="h-2 rounded-full bg-[var(--accent-primary)] transition-all duration-300"
+                style="width: 0%"></div>
             </div>
             <div class="text-xs text-[var(--text-muted)] mt-1" id="progressLabel">0 / 0 answered</div>
           </div>
@@ -470,7 +485,8 @@
                 <p id="testMeta" class="text-[var(--text-secondary)]"></p>
               </div>
               <div class="flex gap-2">
-                <span class="px-3 py-1 bg-[var(--accent-primary)] text-white rounded-full text-xs font-medium">Timed</span>
+                <span
+                  class="px-3 py-1 bg-[var(--accent-primary)] text-white rounded-full text-xs font-medium">Timed</span>
                 <span class="px-3 py-1 bg-[var(--success)] text-white rounded-full text-xs font-medium">Auto-Save</span>
               </div>
             </div>
@@ -484,15 +500,18 @@
                 <i class="fas fa-paper-plane mr-2"></i>
                 Submit Test
               </button>
-              <button id="clearBtn" class="px-6 py-3 bg-[var(--warning)] text-white rounded-2xl font-semibold transition-all hover:transform hover:-translate-y-1">
+              <button id="clearBtn"
+                class="px-6 py-3 bg-[var(--warning)] text-white rounded-2xl font-semibold transition-all hover:transform hover:-translate-y-1">
                 <i class="fas fa-eraser mr-2"></i>
                 Clear All
               </button>
-              <button id="saveProgressBtn" class="px-6 py-3 bg-[var(--success)] text-white rounded-2xl font-semibold transition-all hover:transform hover:-translate-y-1">
+              <button id="saveProgressBtn"
+                class="px-6 py-3 bg-[var(--success)] text-white rounded-2xl font-semibold transition-all hover:transform hover:-translate-y-1">
                 <i class="fas fa-save mr-2"></i>
                 Save Progress
               </button>
-              <button id="resetBtn" class="px-6 py-3 bg-[var(--text-muted)] text-white rounded-2xl font-semibold transition-all hover:transform hover:-translate-y-1">
+              <button id="resetBtn"
+                class="px-6 py-3 bg-[var(--text-muted)] text-white rounded-2xl font-semibold transition-all hover:transform hover:-translate-y-1">
                 <i class="fas fa-redo mr-2"></i>
                 Reset
               </button>
@@ -529,7 +548,8 @@
                 <i class="fas fa-redo mr-2"></i>
                 Retake Test
               </button>
-              <button id="shareBtn" class="px-6 py-3 bg-[var(--accent-secondary)] text-white rounded-2xl font-semibold transition-all hover:transform hover:-translate-y-1">
+              <button id="shareBtn"
+                class="px-6 py-3 bg-[var(--accent-secondary)] text-white rounded-2xl font-semibold transition-all hover:transform hover:-translate-y-1">
                 <i class="fas fa-share mr-2"></i>
                 Share Result
               </button>
@@ -542,7 +562,8 @@
 
   <!-- Floating Action Button -->
   <div class="floating-action">
-    <button id="helpBtn" class="w-14 h-14 rounded-full bg-[var(--accent-primary)] text-white shadow-lg hover:shadow-xl transition-all hover:scale-110">
+    <button id="helpBtn"
+      class="w-14 h-14 rounded-full bg-[var(--accent-primary)] text-white shadow-lg hover:shadow-xl transition-all hover:scale-110">
       <i class="fas fa-question"></i>
     </button>
   </div>
@@ -553,7 +574,9 @@
   <!-- Loading Spinner -->
   <div id="loadingSpinner" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
     <div class="glass-card p-8 text-center">
-      <div class="animate-spin w-12 h-12 border-4 border-[var(--accent-primary)] border-t-transparent rounded-full mx-auto mb-4"></div>
+      <div
+        class="animate-spin w-12 h-12 border-4 border-[var(--accent-primary)] border-t-transparent rounded-full mx-auto mb-4">
+      </div>
       <div class="text-lg font-semibold">Loading Tests...</div>
     </div>
   </div>
@@ -776,7 +799,7 @@
     function calculateBestStreak(history) {
       let currentStreak = 0;
       let bestStreak = 0;
-      
+
       history.forEach(test => {
         if (test.score / test.total >= 0.8) {
           currentStreak++;
@@ -785,7 +808,7 @@
           currentStreak = 0;
         }
       });
-      
+
       return bestStreak;
     }
 
@@ -865,11 +888,11 @@
       const categoryFilter = document.querySelector('.filter-chip.active').dataset.category;
 
       const filteredTests = tests.filter(test => {
-        const matchesSearch = test.title.toLowerCase().includes(searchTerm) || 
-                            (test.description && test.description.toLowerCase().includes(searchTerm));
+        const matchesSearch = test.title.toLowerCase().includes(searchTerm) ||
+          (test.description && test.description.toLowerCase().includes(searchTerm));
         const matchesDifficulty = !difficultyFilter || test.difficulty === difficultyFilter;
         const matchesCategory = !categoryFilter || test.category === categoryFilter;
-        
+
         return matchesSearch && matchesDifficulty && matchesCategory;
       });
 
@@ -884,7 +907,7 @@
       testStartTime = new Date();
 
       const test = tests[testIndex];
-      
+
       // Load saved progress if available
       loadSavedProgress();
 
@@ -892,7 +915,7 @@
       elements.listSection.style.display = 'none';
       elements.testSection.style.display = 'block';
       elements.testSection.classList.add('slide-in-right');
-      
+
       elements.testTitle.textContent = test.title;
       elements.testMeta.textContent = `${test.questions.length} questions • ${test.duration} minutes • ${test.category}`;
 
@@ -906,7 +929,7 @@
       const test = tests[currentTestIndex];
       const questionsHTML = test.questions.map((question, index) => {
         const savedAnswer = userAnswers[index];
-        
+
         return `
           <div class="question-card ${index === currentQuestionIndex ? 'current' : ''}" id="question-${index}">
             <div class="mb-4">
@@ -916,10 +939,10 @@
             
             <div class="space-y-3">
               ${question.options.map(option => {
-                const optionId = `q${index}-${option.replace(/\W+/g, '-')}`;
-                const isSelected = savedAnswer === option;
-                
-                return `
+          const optionId = `q${index}-${option.replace(/\W+/g, '-')}`;
+          const isSelected = savedAnswer === option;
+
+          return `
                   <label class="option-label ${isSelected ? 'selected' : ''}" for="${optionId}">
                     <input 
                       type="radio" 
@@ -932,7 +955,7 @@
                     <span class="flex-1">${option}</span>
                   </label>
                 `;
-              }).join('')}
+        }).join('')}
             </div>
           </div>
         `;
@@ -944,16 +967,16 @@
     function handleAnswerChange(questionIndex, answer) {
       userAnswers[questionIndex] = answer;
       updateProgress();
-      
+
       // Update option styling
       const questionCard = document.getElementById(`question-${questionIndex}`);
       questionCard.querySelectorAll('.option-label').forEach(label => {
         label.classList.remove('selected');
       });
-      
+
       const selectedLabel = questionCard.querySelector(`input[value="${answer}"]`).closest('.option-label');
       selectedLabel.classList.add('selected');
-      
+
       // Auto-save
       autoSaveProgress();
     }
@@ -963,7 +986,7 @@
       const navHTML = test.questions.map((_, index) => {
         const isAnswered = userAnswers.hasOwnProperty(index);
         const isCurrent = index === currentQuestionIndex;
-        
+
         return `
           <div class="nav-dot ${isAnswered ? 'answered' : ''} ${isCurrent ? 'current' : ''}" 
                onclick="navigateToQuestion(${index})">
@@ -977,9 +1000,9 @@
 
     function navigateToQuestion(questionIndex) {
       currentQuestionIndex = questionIndex;
-      document.getElementById(`question-${questionIndex}`).scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'center' 
+      document.getElementById(`question-${questionIndex}`).scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
       });
       updateCurrentQuestion();
     }
@@ -988,7 +1011,7 @@
       document.querySelectorAll('.question-card').forEach((card, index) => {
         card.classList.toggle('current', index === currentQuestionIndex);
       });
-      
+
       document.querySelectorAll('.nav-dot').forEach((dot, index) => {
         dot.classList.toggle('current', index === currentQuestionIndex);
       });
@@ -1036,9 +1059,9 @@
       const minutes = Math.floor(remainingTime / 60);
       const seconds = remainingTime % 60;
       const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      
+
       elements.timer.innerHTML = `<i class="fas fa-clock mr-2"></i><span>${timeStr}</span>`;
-      
+
       // Update timer styling based on remaining time
       elements.timer.className = 'timer-badge';
       if (remainingTime <= 60) {
@@ -1053,7 +1076,7 @@
       if (!autoSubmit) {
         const test = tests[currentTestIndex];
         const unanswered = test.questions.length - Object.keys(userAnswers).length;
-        
+
         if (unanswered > 0) {
           const confirmSubmit = confirm(`You have ${unanswered} unanswered question(s). Submit anyway?`);
           if (!confirmSubmit) return;
@@ -1061,11 +1084,11 @@
       }
 
       clearInterval(timerInterval);
-      
+
       const results = calculateResults();
       displayResults(results, autoSubmit);
       saveTestHistory(results);
-      
+
       if (results.percentage >= 80) {
         celebrateSuccess();
       }
@@ -1081,7 +1104,7 @@
       test.questions.forEach((question, index) => {
         const userAnswer = userAnswers[index];
         const isCorrect = userAnswer === question.answer;
-        
+
         if (userAnswer === undefined) {
           unanswered++;
         } else if (isCorrect) {
@@ -1120,8 +1143,8 @@
 
       // Score display
       elements.scoreDisplay.textContent = `${results.correct}/${results.total} (${results.percentage}%)`;
-      elements.scoreDisplay.style.color = results.percentage >= 80 ? 'var(--success)' : 
-                                          results.percentage >= 60 ? 'var(--warning)' : 'var(--error)';
+      elements.scoreDisplay.style.color = results.percentage >= 80 ? 'var(--success)' :
+        results.percentage >= 60 ? 'var(--warning)' : 'var(--error)';
 
       // Score message
       let message = '';
@@ -1129,7 +1152,7 @@
       else if (results.percentage >= 80) message = '👏 Great job! Well done!';
       else if (results.percentage >= 60) message = '👍 Good work! Room for improvement.';
       else message = '💪 Keep practicing! You can do better!';
-      
+
       if (autoSubmit) message += ' (Auto-submitted due to time limit)';
       elements.scoreMessage.textContent = message;
 
@@ -1143,10 +1166,9 @@
         <div class="border border-[var(--border)] rounded-lg p-4">
           <div class="flex items-start justify-between mb-2">
             <h4 class="font-semibold">Question ${index + 1}</h4>
-            <span class="px-2 py-1 rounded text-xs font-medium ${
-              result.isCorrect ? 'bg-green-100 text-green-800' : 
-              result.userAnswer === 'No Answer' ? 'bg-gray-100 text-gray-800' : 'bg-red-100 text-red-800'
-            }">
+            <span class="px-2 py-1 rounded text-xs font-medium ${result.isCorrect ? 'bg-green-100 text-green-800' :
+          result.userAnswer === 'No Answer' ? 'bg-gray-100 text-gray-800' : 'bg-red-100 text-red-800'
+        }">
               ${result.isCorrect ? 'Correct' : result.userAnswer === 'No Answer' ? 'Unanswered' : 'Incorrect'}
             </span>
           </div>
@@ -1170,9 +1192,9 @@
 
       // Update progress ring for final score
       elements.progressRing.style.setProperty('--progress', results.percentage);
-      elements.progressRing.style.setProperty('--ring-color', 
-        results.percentage >= 80 ? 'var(--success)' : 
-        results.percentage >= 60 ? 'var(--warning)' : 'var(--error)'
+      elements.progressRing.style.setProperty('--ring-color',
+        results.percentage >= 80 ? 'var(--success)' :
+          results.percentage >= 60 ? 'var(--warning)' : 'var(--error)'
       );
       elements.progressText.textContent = results.percentage + '%';
 
@@ -1209,7 +1231,7 @@
       elements.testForm.querySelectorAll('input[type="radio"]').forEach(input => {
         input.checked = false;
       });
-      
+
       document.querySelectorAll('.option-label').forEach(label => {
         label.classList.remove('selected');
       });
@@ -1255,7 +1277,7 @@
 
       try {
         const progressData = JSON.parse(savedData);
-        
+
         // Check if save is recent (within 24 hours)
         const now = new Date().getTime();
         if (now - progressData.timestamp > 24 * 60 * 60 * 1000) {
@@ -1284,7 +1306,7 @@
 
       const historyKey = `test_history_${user.email}`;
       const history = JSON.parse(localStorage.getItem(historyKey) || '[]');
-      
+
       history.push({
         title: results.testTitle,
         score: results.correct,
@@ -1303,7 +1325,7 @@
     function getTestHistory() {
       const user = getCurrentUser();
       if (!user) return [];
-      
+
       const historyKey = `test_history_${user.email}`;
       return JSON.parse(localStorage.getItem(historyKey) || '[]');
     }
@@ -1319,7 +1341,7 @@
     function shareResults() {
       const results = calculateResults();
       const shareText = `I scored ${results.percentage}% on "${results.testTitle}" at CodeMaster! 🎯\n\n${results.correct}/${results.total} correct answers.\n\nTry it yourself!`;
-      
+
       if (navigator.share) {
         navigator.share({
           title: 'My Test Results - CodeMaster',
@@ -1335,7 +1357,7 @@
     function celebrateSuccess() {
       // Confetti animation
       const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7'];
-      
+
       for (let i = 0; i < 100; i++) {
         setTimeout(() => {
           const confetti = document.createElement('div');
@@ -1349,9 +1371,9 @@
             border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
             animation: confetti-fall ${Math.random() * 3 + 2}s linear forwards;
           `;
-          
+
           elements.confetti.appendChild(confetti);
-          
+
           setTimeout(() => {
             confetti.remove();
           }, 5000);
@@ -1398,12 +1420,12 @@
           <button onclick="this.parentElement.parentElement.remove()" class="btn-primary w-full mt-4">Got it!</button>
         </div>
       `;
-      
+
       const overlay = document.createElement('div');
       overlay.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
       overlay.innerHTML = helpContent;
       document.body.appendChild(overlay);
-      
+
       overlay.addEventListener('click', (e) => {
         if (e.target === overlay) overlay.remove();
       });
@@ -1411,21 +1433,20 @@
 
     function showNotification(message, type = 'info') {
       const notification = document.createElement('div');
-      notification.className = `fixed top-4 right-4 z-50 glass-card p-4 ${
-        type === 'success' ? 'border-green-500' : 
-        type === 'error' ? 'border-red-500' : 'border-blue-500'
-      }`;
+      notification.className = `fixed top-4 right-4 z-50 glass-card p-4 ${type === 'success' ? 'border-green-500' :
+          type === 'error' ? 'border-red-500' : 'border-blue-500'
+        }`;
       notification.innerHTML = `
         <div class="flex items-center gap-2">
-          <i class="fas fa-${type === 'success' ? 'check-circle text-green-500' : 
-                        type === 'error' ? 'exclamation-circle text-red-500' : 
-                        'info-circle text-blue-500'}"></i>
+          <i class="fas fa-${type === 'success' ? 'check-circle text-green-500' :
+          type === 'error' ? 'exclamation-circle text-red-500' :
+            'info-circle text-blue-500'}"></i>
           <span>${message}</span>
         </div>
       `;
-      
+
       document.body.appendChild(notification);
-      
+
       setTimeout(() => {
         notification.style.opacity = '0';
         setTimeout(() => notification.remove(), 300);
@@ -1434,9 +1455,9 @@
 
     function handleKeyboard(e) {
       if (elements.testSection.style.display === 'none') return;
-      
+
       const key = e.key.toLowerCase();
-      
+
       if (key === 'n' && !e.ctrlKey) {
         e.preventDefault();
         const nextIndex = Math.min(currentQuestionIndex + 1, tests[currentTestIndex].questions.length - 1);
@@ -1484,13 +1505,26 @@
     document.addEventListener('DOMContentLoaded', init);
 
     // Auth check (commented out for demo purposes)
-    
-    const user = getCurrentUser();
-    if (!user.email) {
-      alert('Please login to access tests');
-      window.location.href = 'index.html?auth=login';
-    }
-    
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCtwyVv3cCc8udicg09akTJvGpr5LgmXF4",
+      authDomain: "codemaster-102b4.firebaseapp.com",
+      projectId: "codemaster-102b4",
+      storageBucket: "codemaster-102b4.appspot.com",
+      messagingSenderId: "932558907143",
+      appId: "1:932558907143:web:d6e3e034be1f2f955b87a2",
+      measurementId: "G-E5M37X3LMH"
+    };
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("User is logged in:", user.email);
+      } else {
+        alert("Please login to access tests");
+        window.location.href = "index.html?auth=login";
+      }
+    });
+
   </script>
 </body>
+
 </html>
