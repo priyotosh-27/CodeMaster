@@ -9,8 +9,23 @@ import {
     signOut,
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc,
+    onSnapshot,
+    serverTimestamp,
+    updateDoc,
+    arrayUnion,
+    increment,
+    collection,
+    addDoc,
+    query,
+    orderBy
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Your Firebase Config
+// 🔹 Your Firebase Config
 const firebaseConfig = {
     apiKey: "AIzaSyCtwyVv3cCc8udicg09akTJvGpr5LgmXF4",
     authDomain: "codemaster-102b4.firebaseapp.com",
@@ -21,9 +36,11 @@ const firebaseConfig = {
     measurementId: "G-E5M37X3LMH"
 };
 
-// Initialize Firebase
+// 🔹 Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
+
 
 /* ===============================
    Authentication System
@@ -49,7 +66,7 @@ class AuthSystem {
         document.getElementById('userMenuBtn')?.addEventListener('click', () => this.toggleUserMenu());
         document.getElementById('logoutBtn')?.addEventListener('click', () => this.logout());
 
-        // Access control
+        // Content access
         document.querySelectorAll('.test-card, .challenge-card').forEach(card => {
             card.addEventListener('click', (e) => this.handleProtectedContent(e, card));
         });
@@ -73,12 +90,11 @@ class AuthSystem {
         document.getElementById('authModal')?.addEventListener('click', (e) => {
             if (e.target === document.getElementById('authModal')) this.closeAuthModal();
         });
-
         document.getElementById('accessDeniedModal')?.addEventListener('click', (e) => {
             if (e.target === document.getElementById('accessDeniedModal')) this.closeAccessDeniedModal();
         });
 
-        // Close on escape key
+        // Escape key closes modals
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 this.closeAuthModal();
@@ -108,17 +124,68 @@ class AuthSystem {
         try {
             if (mode === 'register') {
                 if (!name || name.length < 2) throw new Error("Please enter a valid name");
+
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                this.currentUser = { name, email: userCredential.user.email };
+                const user = userCredential.user;
+
+                // 🔹 Create Firestore profile
+                await setDoc(doc(db, "users", user.uid), {
+                    uid: user.uid,
+                    name,
+                    email: user.email,
+                    streak: 0,
+                    solvedChallenges: [],
+                    savedNotes: [],
+                    profile: { theme: "light", bio: "" },
+                    createdAt: serverTimestamp(),
+                    updatedAt: serverTimestamp(),
+                    lastLogin: serverTimestamp()
+                });
+
+                this.currentUser = { uid: user.uid, name, email: user.email };
                 this.updateUI();
                 this.closeAuthModal();
                 this.showNotification(`Welcome, ${name}! 🎉`, 'success');
+
             } else {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                this.currentUser = { name: userCredential.user.displayName || "User", email: userCredential.user.email };
+                const user = userCredential.user;
+
+                // 🔹 Fetch Firestore data
+                const ref = doc(db, "users", user.uid);
+                const snap = await getDoc(ref);
+
+                if (snap.exists()) {
+                    const userData = snap.data();
+
+                    // update login timestamp
+                    await setDoc(ref, {
+                        ...userData,
+                        lastLogin: serverTimestamp(),
+                        updatedAt: serverTimestamp()
+                    }, { merge: true });
+
+                    this.currentUser = { uid: user.uid, ...userData };
+                } else {
+                    // create profile if not exist
+                    await setDoc(ref, {
+                        uid: user.uid,
+                        name: user.displayName || "User",
+                        email: user.email,
+                        streak: 0,
+                        solvedChallenges: [],
+                        savedNotes: [],
+                        profile: { theme: "light" },
+                        createdAt: serverTimestamp(),
+                        updatedAt: serverTimestamp(),
+                        lastLogin: serverTimestamp()
+                    });
+                    this.currentUser = { uid: user.uid, name: user.displayName || "User", email: user.email };
+                }
+
                 this.updateUI();
                 this.closeAuthModal();
-                this.showNotification(`Welcome back, ${this.currentUser.email}`, 'success');
+                this.showNotification(`Welcome back, ${this.currentUser.name}!`, 'success');
             }
         } catch (error) {
             this.showNotification(error.message, 'error');
@@ -142,31 +209,84 @@ class AuthSystem {
     listenToAuthChanges() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                this.currentUser = { name: user.displayName || "User", email: user.email };
+                const ref = doc(db, "users", user.uid);
+                onSnapshot(ref, (snap) => {
+                    if (snap.exists()) {
+                        this.currentUser = { uid: user.uid, ...snap.data() };
+                    } else {
+                        this.currentUser = { uid: user.uid, name: user.displayName || "User", email: user.email };
+                    }
+                    this.updateUI();
+                });
             } else {
                 this.currentUser = null;
+                this.updateUI();
             }
-            this.updateUI();
+        });
+    }
+
+    /* ===============================
+       Progress Tracking Methods
+    ================================ */
+    async saveSolvedChallenge(challengeId) {
+        if (!auth.currentUser) return;
+        const ref = doc(db, "users", auth.currentUser.uid);
+        await updateDoc(ref, {
+            solvedChallenges: arrayUnion(challengeId),
+            updatedAt: serverTimestamp()
+        });
+        this.showNotification(`Challenge ${challengeId} solved ✅`, "success");
+    }
+
+    async saveNoteAccess(noteId) {
+        if (!auth.currentUser) return;
+        const ref = doc(db, "users", auth.currentUser.uid);
+        await updateDoc(ref, {
+            savedNotes: arrayUnion(noteId),
+            updatedAt: serverTimestamp()
+        });
+        this.showNotification(`Note ${noteId} saved 📖`, "info");
+    }
+
+    async increaseStreak() {
+        if (!auth.currentUser) return;
+        const ref = doc(db, "users", auth.currentUser.uid);
+        await updateDoc(ref, {
+            streak: increment(1),
+            updatedAt: serverTimestamp()
+        });
+        this.showNotification("🔥 Streak increased!", "success");
+    }
+
+    async saveTestResult(testId, score) {
+        if (!auth.currentUser) return;
+        const historyRef = collection(db, "users", auth.currentUser.uid, "history");
+        await addDoc(historyRef, {
+            testId,
+            score,
+            date: serverTimestamp()
+        });
+        this.showNotification(`Test ${testId} saved with score ${score}`, "success");
+    }
+
+    listenToHistory() {
+        if (!auth.currentUser) return;
+        const historyRef = collection(db, "users", auth.currentUser.uid, "history");
+        const q = query(historyRef, orderBy("date", "desc"));
+
+        onSnapshot(q, (snapshot) => {
+            const results = [];
+            snapshot.forEach(doc => results.push(doc.data()));
+            console.log("📊 Test History:", results);
         });
     }
 
     /* ===============================
        UI Helpers
     ================================ */
-    openAuthModal(mode) {
-        document.getElementById('authModal')?.classList.remove('hidden');
-        this.setAuthMode(mode);
-    }
-
-    closeAuthModal() {
-        document.getElementById('authModal')?.classList.add('hidden');
-        this.resetForm();
-    }
-
-    closeAccessDeniedModal() {
-        document.getElementById('accessDeniedModal')?.classList.add('hidden');
-    }
-
+    openAuthModal(mode) { document.getElementById('authModal')?.classList.remove('hidden'); this.setAuthMode(mode); }
+    closeAuthModal() { document.getElementById('authModal')?.classList.add('hidden'); this.resetForm(); }
+    closeAccessDeniedModal() { document.getElementById('accessDeniedModal')?.classList.add('hidden'); }
     setAuthMode(mode) {
         const authMode = document.getElementById('authMode');
         const authTitle = document.getElementById('authTitle');
@@ -187,12 +307,10 @@ class AuthSystem {
             nameField.classList.remove('hidden');
         }
     }
-
     switchAuthMode() {
         const currentMode = document.getElementById('authMode').value;
         this.setAuthMode(currentMode === 'login' ? 'register' : 'login');
     }
-
     updateUI() {
         const authButtons = document.getElementById('authButtons');
         const userMenu = document.getElementById('userMenu');
@@ -209,14 +327,8 @@ class AuthSystem {
             userMenu?.classList.add('hidden');
         }
     }
-
-    toggleUserMenu() {
-        document.getElementById('userDropdown')?.classList.toggle('show');
-    }
-
-    closeUserMenu() {
-        document.getElementById('userDropdown')?.classList.remove('show');
-    }
+    toggleUserMenu() { document.getElementById('userDropdown')?.classList.toggle('show'); }
+    closeUserMenu() { document.getElementById('userDropdown')?.classList.remove('show'); }
 
     /* ===============================
        Navigation / Access Control
@@ -228,12 +340,18 @@ class AuthSystem {
             return;
         }
         const testType = card.dataset.test || card.dataset.challenge;
+        if (card.dataset.challenge) this.saveSolvedChallenge(testType); // auto save progress
         this.navigateToTestPage(testType, card.dataset.test ? 'test' : 'challenge');
     }
 
     handleNotesContent(e, card) {
         e.preventDefault();
+        if (!this.currentUser) {
+            document.getElementById('accessDeniedModal')?.classList.remove('hidden');
+            return;
+        }
         const notesType = card.dataset.notes;
+        this.saveNoteAccess(notesType); // auto save notes progress
         this.navigateToNotesPage(notesType);
     }
 
@@ -299,9 +417,9 @@ class AuthSystem {
     showNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 max-w-sm ${type === 'success' ? 'bg-green-500 text-white' :
-            type === 'error' ? 'bg-red-500 text-white' :
-                type === 'info' ? 'bg-blue-500 text-white' :
-                    'bg-gray-500 text-white'
+                type === 'error' ? 'bg-red-500 text-white' :
+                    type === 'info' ? 'bg-blue-500 text-white' :
+                        'bg-gray-500 text-white'
             }`;
         notification.innerHTML = `
           <div class="flex items-center space-x-2">
@@ -321,26 +439,18 @@ class AuthSystem {
     }
 }
 
-// Initialize system
+// Initialize
 const authSystem = new AuthSystem();
 
-// Theme Toggle Functionality
+/* ===============================
+   Theme Toggle
+================================ */
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
-
-// Check for saved theme preference or default to light mode
 const currentTheme = localStorage.getItem('theme');
-if (currentTheme === 'dark') {
-    body.classList.add('dark');
-}
+if (currentTheme === 'dark') body.classList.add('dark');
 
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark');
-    // Save theme preference
-    if (body.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-    } else {
-        localStorage.setItem('theme', 'light');
-    }
+    localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
 });
-

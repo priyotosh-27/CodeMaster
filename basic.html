@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,7 +55,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: 
+      background:
         radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
@@ -63,9 +64,19 @@
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      33% { transform: translateY(-20px) rotate(1deg); }
-      66% { transform: translateY(10px) rotate(-1deg); }
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      33% {
+        transform: translateY(-20px) rotate(1deg);
+      }
+
+      66% {
+        transform: translateY(10px) rotate(-1deg);
+      }
     }
 
     /* Header */
@@ -112,8 +123,15 @@
     }
 
     @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
     }
 
     .header-center {
@@ -311,7 +329,8 @@
       opacity: 0.7;
     }
 
-    select, .search-input {
+    select,
+    .search-input {
       padding: 0.6rem 1rem;
       border: 2px solid var(--border-light);
       border-radius: 15px;
@@ -647,9 +666,17 @@
       letter-spacing: 0.5px;
     }
 
-    .badge.easy { background: var(--success); }
-    .badge.medium { background: var(--warning); }
-    .badge.hard { background: var(--danger); }
+    .badge.easy {
+      background: var(--success);
+    }
+
+    .badge.medium {
+      background: var(--warning);
+    }
+
+    .badge.hard {
+      background: var(--danger);
+    }
 
     .solved-indicator {
       position: absolute;
@@ -668,8 +695,15 @@
     }
 
     @keyframes bounce {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
     }
 
     .card-actions {
@@ -879,9 +913,17 @@
       text-align: center;
     }
 
-    .rank.gold { color: #ffd700; }
-    .rank.silver { color: #c0c0c0; }
-    .rank.bronze { color: #cd7f32; }
+    .rank.gold {
+      color: #ffd700;
+    }
+
+    .rank.silver {
+      color: #c0c0c0;
+    }
+
+    .rank.bronze {
+      color: #cd7f32;
+    }
 
     /* Responsive design */
     @media (max-width: 768px) {
@@ -928,6 +970,7 @@
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -952,11 +995,17 @@
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- Achievement notification -->
   <div id="achievementNotification" class="achievement">
@@ -1060,15 +1109,15 @@
     <div class="timer-section">
       <h2 class="progress-title">🍅 Focus Timer</h2>
       <p style="margin-bottom: 2rem; opacity: 0.8;">Stay focused with the Pomodoro Technique</p>
-      
+
       <div class="timer-display" id="timerDisplay">25:00</div>
-      
+
       <div class="timer-controls">
         <button class="timer-btn start" id="startTimer">Start</button>
         <button class="timer-btn pause" id="pauseTimer">Pause</button>
         <button class="timer-btn reset" id="resetTimer">Reset</button>
       </div>
-      
+
       <div class="timer-presets">
         <button class="preset-btn" data-minutes="25">Pomodoro (25m)</button>
         <button class="preset-btn" data-minutes="15">Short Break (15m)</button>
@@ -1650,7 +1699,7 @@
         timerInterval = setInterval(() => {
           timeRemaining--;
           updateTimerDisplay();
-          
+
           if (timeRemaining <= 0) {
             pausePomodoroTimer();
             showAchievement("Pomodoro session completed! 🍅");
@@ -1691,7 +1740,7 @@
     function checkAchievements() {
       const totalSolved = solvedChallenges.size;
       const allChallenges = Object.values(challenges).flat();
-      
+
       achievementDefinitions.forEach(achievement => {
         if (achievements.includes(achievement.id)) return;
 
@@ -1728,7 +1777,7 @@
     function showAchievement(text) {
       achievementText.textContent = text;
       achievementNotification.classList.add("show");
-      
+
       setTimeout(() => {
         achievementNotification.classList.remove("show");
       }, 4000);
@@ -1739,7 +1788,7 @@
       achievementsList.innerHTML = "";
 
       const earnedAchievements = achievementDefinitions.filter(a => achievements.includes(a.id));
-      
+
       if (earnedAchievements.length === 0) {
         achievementsList.innerHTML = `
           <div style="text-align: center; padding: 2rem; opacity: 0.6;">
@@ -1771,27 +1820,41 @@
     function updateStreak() {
       const today = new Date().toDateString();
       const yesterday = new Date(Date.now() - 86400000).toDateString();
-      
+
+      // Load stored values
+      let lastSolvedDate = localStorage.getItem("lastSolvedDate");
+      let streak = parseInt(localStorage.getItem("streak") || "0");
+      let lastSolvedCount = parseInt(localStorage.getItem("lastSolvedCount") || "0");
+
+      // ✅ Case 1: Solved today already
       if (lastSolvedDate === today) {
-        // Already solved today, keep streak
-      } else if (lastSolvedDate === yesterday) {
-        // Solved yesterday, increment streak
-        if (solvedChallenges.size > parseInt(localStorage.getItem("lastSolvedCount") || "0")) {
+        // Do nothing, streak stays same
+      }
+      // ✅ Case 2: Solved yesterday → continue streak
+      else if (lastSolvedDate === yesterday) {
+        if (solvedChallenges.size > lastSolvedCount) {
           streak++;
           localStorage.setItem("streak", streak.toString());
           localStorage.setItem("lastSolvedDate", today);
           localStorage.setItem("lastSolvedCount", solvedChallenges.size.toString());
         }
-      } else if (lastSolvedDate && lastSolvedDate !== today) {
-        // Streak broken
-        streak = solvedChallenges.size > parseInt(localStorage.getItem("lastSolvedCount") || "0") ? 1 : 0;
+      }
+      // ✅ Case 3: Missed days → reset streak
+      else {
+        if (solvedChallenges.size > lastSolvedCount) {
+          streak = 1; // new streak
+        } else {
+          streak = 0; // no new solve
+        }
         localStorage.setItem("streak", streak.toString());
         localStorage.setItem("lastSolvedDate", today);
         localStorage.setItem("lastSolvedCount", solvedChallenges.size.toString());
       }
 
+      // Update UI
       streakCount.textContent = streak;
     }
+
 
     // Debounce function for search
     function debounce(func, wait) {
@@ -1858,11 +1921,11 @@
       // Filter challenges
       filteredChallenges = allChallenges.filter(challenge => {
         const matchesDifficulty = !difficultyValue || challenge.difficulty === difficultyValue;
-        const matchesSearch = !searchValue || 
+        const matchesSearch = !searchValue ||
           challenge.title.toLowerCase().includes(searchValue) ||
           challenge.description.toLowerCase().includes(searchValue) ||
           challenge.tags.some(tag => tag.toLowerCase().includes(searchValue));
-        
+
         return matchesDifficulty && matchesSearch;
       });
 
@@ -1892,7 +1955,7 @@
       card.style.animationDelay = `${index * 0.1}s`;
 
       const isSolved = solvedChallenges.has(challenge.title);
-      
+
       card.innerHTML = `
         <div class="card-header">
           <div>
@@ -1937,14 +2000,14 @@
     // Toggle solved status
     function toggleSolved(title, difficulty) {
       const wasAlreadySolved = solvedChallenges.has(title);
-      
+
       if (wasAlreadySolved) {
         solvedChallenges.delete(title);
         showAchievement(`Unmarked: ${title}`);
       } else {
         solvedChallenges.add(title);
         showAchievement(`Great job! ${title} completed! 🎉`);
-        
+
         // Update streak
         const today = new Date().toDateString();
         if (lastSolvedDate !== today) {
@@ -1952,7 +2015,7 @@
           updateStreak();
         }
       }
-      
+
       localStorage.setItem("solvedChallenges", JSON.stringify([...solvedChallenges]));
       updateStats();
       updateProgress();
@@ -1965,7 +2028,7 @@
     function updateStats() {
       const totalChallenges = Object.values(challenges).flat().length;
       const totalSolved = solvedChallenges.size;
-      
+
       document.getElementById("totalSolved").textContent = totalSolved;
       document.getElementById("totalChallenges").textContent = totalChallenges;
     }
@@ -2031,7 +2094,7 @@
         e.preventDefault();
         searchInput.focus();
       }
-      
+
       // Escape to clear search
       if (e.key === 'Escape' && document.activeElement === searchInput) {
         searchInput.value = '';
@@ -2063,7 +2126,7 @@
 
     // Call motivational message when user solves challenges
     const originalToggleSolved = toggleSolved;
-    window.toggleSolved = function(title, difficulty) {
+    window.toggleSolved = function (title, difficulty) {
       originalToggleSolved(title, difficulty);
       if (solvedChallenges.has(title)) {
         setTimeout(showMotivationalMessage, 3000);
@@ -2071,4 +2134,5 @@
     };
   </script>
 </body>
+
 </html>
