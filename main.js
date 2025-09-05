@@ -417,9 +417,9 @@ class AuthSystem {
     showNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 max-w-sm ${type === 'success' ? 'bg-green-500 text-white' :
-                type === 'error' ? 'bg-red-500 text-white' :
-                    type === 'info' ? 'bg-blue-500 text-white' :
-                        'bg-gray-500 text-white'
+            type === 'error' ? 'bg-red-500 text-white' :
+                type === 'info' ? 'bg-blue-500 text-white' :
+                    'bg-gray-500 text-white'
             }`;
         notification.innerHTML = `
           <div class="flex items-center space-x-2">
