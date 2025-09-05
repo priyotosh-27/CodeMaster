@@ -1435,6 +1435,11 @@
       appId: "1:932558907143:web:d6e3e034be1f2f955b87a2",
       measurementId: "G-E5M37X3LMH"
     };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
     onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log("User is logged in:", user.email);
@@ -1447,6 +1452,9 @@
 
 
   </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 </body>
 
 </html>
