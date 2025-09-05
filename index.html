@@ -526,7 +526,48 @@
         class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
     </div>
   </div>
+  <div id="instructionModal"
+    class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+    <div class="glass-morphism rounded-3xl shadow-2xl w-full max-w-lg relative border m-4 auth-modal">
+      <button id="closeInstructionModal"
+        class="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-2xl font-bold transition-all duration-300 hover:rotate-90 hover:scale-110">&times;</button>
 
+      <div class="p-8">
+        <h2 class="text-3xl font-bold gradient-text mb-6">How to Use CodeMaster</h2>
+        <div class="space-y-4 text-gray-700 dark:text-gray-300">
+          <p>Welcome to your ultimate coding practice platform! Here’s a quick guide:</p>
+          <ul class="list-disc list-inside space-y-3 pl-2">
+            <li>
+              <b><i class="fas fa-adjust mr-2 text-purple-400"></i>Toggle Theme:</b> Click the sun/moon icon in the
+              top-right corner to switch between light and dark modes for your comfort.
+            </li>
+            <li>
+              <b><i class="fas fa-user-plus mr-2 text-pink-400"></i>Login/Register:</b> You must be logged in to attempt
+              tests and challenges. Use the buttons in the navbar to create an account or sign in.
+            </li>
+            <li>
+              <b><i class="fas fa-shield-alt mr-2 text-green-400"></i>Secure Session Check:</b> When you refresh the
+              page, you may briefly appear logged out. This is a normal security measure while we verify your session.
+              Your profile will reappear in a moment!
+            </li>
+            <li>
+              <b><i class="fas fa-vial mr-2 text-indigo-400"></i>Attempt Tests:</b> Navigate to the "Explore Test
+              Categories" section and click on any card (like DSA or Java) to start a quiz.
+            </li>
+            <li>
+              <b><i class="fas fa-book-open mr-2 text-blue-400"></i>Study Resources:</b> Visit the "Study Notes" section
+              for comprehensive guides on various topics to sharpen your knowledge.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="instructionBtn"
+    class="fixed bottom-8 right-8 w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:rotate-12 transition-transform duration-300 z-50">
+    <i class="fas fa-question text-2xl"></i>
+  </button>
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js"></script>

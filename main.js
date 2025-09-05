@@ -454,3 +454,31 @@ themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark');
     localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
 });
+
+// --- INSTRUCTION MODAL LOGIC ---
+
+// 1. Get all the necessary elements from the HTML
+const instructionBtn = document.getElementById('instructionBtn');
+const instructionModal = document.getElementById('instructionModal');
+const closeInstructionModalBtn = document.getElementById('closeInstructionModal');
+
+// 2. Create functions to show and hide the modal
+const showInstructionModal = () => {
+    instructionModal.classList.remove('hidden');
+};
+
+const hideInstructionModal = () => {
+    instructionModal.classList.add('hidden');
+};
+
+// 3. Add event listeners to trigger the functions
+instructionBtn.addEventListener('click', showInstructionModal);
+closeInstructionModalBtn.addEventListener('click', hideInstructionModal);
+
+// 4. Optional: Close the modal if the user clicks on the background overlay
+instructionModal.addEventListener('click', (event) => {
+    // We check if the clicked element is the modal background itself
+    if (event.target === instructionModal) {
+        hideInstructionModal();
+    }
+});
