@@ -789,6 +789,24 @@
       document.getElementById('bestStreak').textContent = stats.bestStreak;
     }
 
+    // ✅ NEW HELPER FUNCTION
+    // This function specifically updates dashboard stats based on a filtered list of tests
+    async function updateDashboardWithFilteredResults(filteredTests) {
+      const history = await getTestHistory();
+
+      // Calculate stats ONLY for the tests currently being shown
+      const completedInFilter = history.filter(h => filteredTests.some(t => t.title === h.title));
+      const averageScoreInFilter = completedInFilter.length > 0 ?
+        Math.round(completedInFilter.reduce((acc, test) => acc + test.percentage, 0) / completedInFilter.length) : 0;
+      const bestStreakInFilter = calculateBestStreak(completedInFilter);
+
+      // Update the dashboard UI
+      document.getElementById('totalTests').textContent = filteredTests.length; // Show count of filtered tests
+      document.getElementById('completedTests').textContent = completedInFilter.length;
+      document.getElementById('averageScore').textContent = averageScoreInFilter + '%';
+      document.getElementById('bestStreak').textContent = bestStreakInFilter;
+    }
+
     async function calculateStats() {
       const history = await getTestHistory(); // Await history from Firestore
       return {
@@ -870,7 +888,7 @@
                         <div class="text-lg font-bold text-[var(--success)]">${Math.round(bestScore)}%</div>
                     </div>
                 ` : ''}
-                <button class="btn-primary w-full" onclick="startTest(${tests.indexOf(test)})">
+                <button class="btn-primary w-full" onclick="startTest('${test.title}')">
                     <i class="fas fa-play mr-2"></i>
                     ${bestScore !== null ? 'Retake Test' : 'Start Test'}
                 </button>
@@ -880,7 +898,7 @@
       elements.testsGrid.innerHTML = testsHTML;
     }
 
-    async function filterTests() { // Needs to be async
+    async function filterTests() {
       const searchTerm = elements.searchInput.value.toLowerCase();
       const difficultyFilter = elements.difficultyFilter.value;
       const categoryFilter = document.querySelector('.filter-chip.active').dataset.category;
@@ -892,22 +910,39 @@
         const matchesCategory = !categoryFilter || test.category === categoryFilter;
         return matchesSearch && matchesDifficulty && matchesCategory;
       });
-      await renderTests(filteredTests); // Await the re-render
+
+      // First, re-render the list of test cards with the filtered list
+      await renderTests(filteredTests);
+
+      // ✅ NEW: After filtering, update the dashboard stats based on the filtered list
+      await updateDashboardWithFilteredResults(filteredTests);
     }
 
     // Test execution functions
-    function startTest(testIndex) {
+    function startTest(testTitle) {
+      if (document.activeElement) document.activeElement.blur();
+      // Find the index of the test in the original 'tests' array using its title
+      const testIndex = tests.findIndex(test => test.title === testTitle);
+
+      // If the test isn't found for some reason, do nothing.
+      if (testIndex === -1) {
+        console.error("Test not found:", testTitle);
+        return;
+      }
+
       currentTestIndex = testIndex;
       currentQuestionIndex = 0;
       userAnswers = {};
       testStartTime = new Date();
       const test = tests[testIndex];
+
+      // --- The rest of the function is the same ---
       loadSavedProgress();
       elements.listSection.style.display = 'none';
       elements.testSection.style.display = 'block';
       elements.testSection.classList.add('slide-in-right');
       elements.testTitle.textContent = test.title;
-      elements.testMeta.textContent = `${test.questions.length} questions • ${test.duration} minutes • ${test.category}`;
+      elements.testMeta.textContent = `${test.questions.length} questions • ${test.duration} minutes • ${test.category ?? 'General'}`; // Added default for safety
       renderQuestions();
       setupNavigator();
       startTimer();
@@ -1128,7 +1163,8 @@
     function resetTest() {
       if (confirm('Are you sure you want to reset the test? All progress will be lost.')) {
         clearSavedProgress();
-        startTest(currentTestIndex);
+        // ✅ FIX: Pass the test title, not its index
+        startTest(tests[currentTestIndex].title);
       }
     }
 
@@ -1137,7 +1173,8 @@
       elements.resultCard.classList.add('hidden');
       elements.submitBtn.disabled = false;
       elements.submitBtn.style.opacity = '1';
-      startTest(currentTestIndex);
+      // ✅ FIX: Pass the test title, not its index
+      startTest(tests[currentTestIndex].title);
     }
 
     function saveProgress() {
@@ -1278,7 +1315,7 @@
     }
 
     function handleKeyboard(e) {
-      if (elements.testSection.style.display === 'none') return;
+      if (elements.testSection.style.display !== 'block') return;
       const key = e.key.toLowerCase();
       if (e.ctrlKey) {
         if (key === 's') { e.preventDefault(); saveProgress(); }
@@ -1312,8 +1349,5 @@
 
   </script>
 </body>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
 </html>

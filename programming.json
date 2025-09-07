@@ -1,6 +1,8 @@
 [
     {
         "title": "Programming Test 1",
+        "category": "Programming",
+        "difficulty": "beginner",
         "duration": 10,
         "questions": [
             {
@@ -107,6 +109,8 @@
     },
     {
         "title": "Programming Test 2",
+        "category": "Programming",
+        "difficulty": "beginner",
         "duration": 10,
         "questions": [
             {
@@ -213,6 +217,8 @@
     },
     {
         "title": "Programming Test 3",
+        "category": "Programming",
+        "difficulty": "intermediate",
         "duration": 10,
         "questions": [
             {
@@ -271,7 +277,7 @@
                     "//",
                     "#",
                     "/* */",
-                    "<!-- -->"
+                    ""
                 ],
                 "answer": "#"
             },
@@ -319,6 +325,8 @@
     },
     {
         "title": "Programming Test 4",
+        "category": "Programming",
+        "difficulty": "intermediate",
         "duration": 10,
         "questions": [
             {
@@ -425,6 +433,8 @@
     },
     {
         "title": "Programming Test 5",
+        "category": "Programming",
+        "difficulty": "advanced",
         "duration": 10,
         "questions": [
             {
@@ -531,6 +541,8 @@
     },
     {
         "title": "Programming Test 6",
+        "category": "Programming",
+        "difficulty": "beginner",
         "duration": 10,
         "questions": [
             {
@@ -637,6 +649,8 @@
     },
     {
         "title": "Programming Test 7",
+        "category": "Programming",
+        "difficulty": "intermediate",
         "duration": 10,
         "questions": [
             {
@@ -743,6 +757,8 @@
     },
     {
         "title": "Programming Test 8",
+        "category": "Programming",
+        "difficulty": "intermediate",
         "duration": 10,
         "questions": [
             {
@@ -849,6 +865,8 @@
     },
     {
         "title": "Programming Test 9",
+        "category": "Programming",
+        "difficulty": "advanced",
         "duration": 10,
         "questions": [
             {
@@ -955,6 +973,8 @@
     },
     {
         "title": "Programming Test 10",
+        "category": "Programming",
+        "difficulty": "advanced",
         "duration": 10,
         "questions": [
             {

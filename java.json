@@ -2,6 +2,8 @@
     {
         "title": "Java Test 1",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "beginner",
         "questions": [
             {
                 "q": "What is the difference between JDK, JRE, and JVM in Java?",
@@ -108,6 +110,8 @@
     {
         "title": "Java Test 2",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "beginner",
         "questions": [
             {
                 "q": "What is the difference between abstract class and interface in Java?",
@@ -214,6 +218,8 @@
     {
         "title": "Java Test 3",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "beginner",
         "questions": [
             {
                 "q": "Which access modifier allows visibility only within the same package in Java?",
@@ -320,6 +326,8 @@
     {
         "title": "Java Test 4",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "What is the output of System.out.println(10 + 20 + \"Java\")?",
@@ -426,6 +434,8 @@
     {
         "title": "Java Test 5",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "Which type of variables are shared among all objects of a class?",
@@ -532,6 +542,8 @@
     {
         "title": "Java Test 6",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "beginner",
         "questions": [
             {
                 "q": "What is the difference between an abstract class and an interface in Java?",
@@ -638,6 +650,8 @@
     {
         "title": "Java Test 7",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "beginner",
         "questions": [
             {
                 "q": "Which keyword is used to achieve multiple inheritance in Java?",
@@ -744,6 +758,8 @@
     {
         "title": "Java Test 8",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "beginner",
         "questions": [
             {
                 "q": "Which exception is thrown when dividing by zero in Java?",
@@ -850,6 +866,8 @@
     {
         "title": "Java Test 9",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "Which access modifier allows access within the same package only?",
@@ -956,6 +974,8 @@
     {
         "title": "Java Test 10",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "What is the return type of the main() method in Java?",
@@ -1062,6 +1082,8 @@
     {
         "title": "Java Test 11",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "beginner",
         "questions": [
             {
                 "q": "What is method overloading in Java?",
@@ -1166,6 +1188,8 @@
     {
         "title": "Java Test 12",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "beginner",
         "questions": [
             {
                 "q": "Which of the following is true about abstract classes in Java?",
@@ -1272,6 +1296,8 @@
     {
         "title": "Java Test 13",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "beginner",
         "questions": [
             {
                 "q": "Which class is the parent of all Java classes?",
@@ -1378,6 +1404,8 @@
     {
         "title": "Java Test 14",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "Which design pattern is used in Java for creating only one instance of a class?",
@@ -1484,6 +1512,8 @@
     {
         "title": "Java Test 15",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "What is multithreading in Java?",
@@ -1590,6 +1620,8 @@
     {
         "title": "Java Test 16",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "What is the difference between method overloading and method overriding in Java?",
@@ -1696,6 +1728,8 @@
     {
         "title": "Java Test 17",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "What is the difference between checked and unchecked exceptions?",
@@ -1802,6 +1836,8 @@
     {
         "title": "Java Test 18",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "advanced",
         "questions": [
             {
                 "q": "What is JVM?",
@@ -1908,6 +1944,8 @@
     {
         "title": "Java Test 19",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "Which keyword is used to prevent method overriding?",
@@ -2014,6 +2052,8 @@
     {
         "title": "Java Test 20",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "advanced",
         "questions": [
             {
                 "q": "Which of these is not an OOP concept in Java?",
@@ -2120,6 +2160,8 @@
     {
         "title": "Java Test 21",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "Which principle of OOP is achieved by method overloading in Java?",
@@ -2226,6 +2268,8 @@
     {
         "title": "Java Test 22",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "Which type of variables are shared among all objects of a class?",
@@ -2332,6 +2376,8 @@
     {
         "title": "Java Test 23",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "advanced",
         "questions": [
             {
                 "q": "Which of the following is not a valid Java access modifier?",
@@ -2438,6 +2484,8 @@
     {
         "title": "Java Test 24",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "advanced",
         "questions": [
             {
                 "q": "Which of these is used to handle multiple exceptions in a single block?",
@@ -2544,6 +2592,8 @@
     {
         "title": "Java Test 25",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "advanced",
         "questions": [
             {
                 "q": "Which keyword is used to define a block of code that must always execute?",
@@ -2650,6 +2700,8 @@
     {
         "title": "Java Test 26",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "q": "Which Java keyword is used to define constants inside an enum?",
@@ -2756,6 +2808,8 @@
     {
         "title": "Java Test 27",
         "duration": 10,
+        "category": "DSA",
+        "difficulty": "advanced",
         "questions": [
             {
                 "q": "Which Java class is best suited for high-performance multi-threaded applications?",
@@ -2862,6 +2916,8 @@
     {
         "title": "Java Test - 28",
         "duration": "10 min",
+        "category": "DSA",
+        "difficulty": "beginner",
         "questions": [
             {
                 "q": "Which keyword is used to inherit a class in Java?",

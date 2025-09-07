@@ -2,6 +2,8 @@
     {
         "title": "General CS Test - 1",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "beginner",
         "questions": [
             {
                 "id": 1,
@@ -118,6 +120,8 @@
     {
         "title": "General CS Test - 2",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "beginner",
         "questions": [
             {
                 "id": 1,
@@ -234,6 +238,8 @@
     {
         "title": "General CS Test - 3",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "beginner",
         "questions": [
             {
                 "id": 1,
@@ -350,6 +356,8 @@
     {
         "title": "General CS Test - 4",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "id": 1,
@@ -466,6 +474,8 @@
     {
         "title": "General CS Test - 5",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "id": 1,
@@ -582,6 +592,8 @@
     {
         "title": "General CS Test - 6",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "id": 1,
@@ -698,6 +710,8 @@
     {
         "title": "General CS Test - 7",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "id": 1,
@@ -814,6 +828,8 @@
     {
         "title": "General CS Test - 8",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "id": 1,
@@ -931,6 +947,8 @@
     {
         "title": "General CS Test - 9",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "id": 1,
@@ -1047,6 +1065,8 @@
     {
         "title": "General CS Test - 10",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "id": 1,
@@ -1163,6 +1183,8 @@
     {
         "title": "General CS Test - 11",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -1279,6 +1301,8 @@
     {
         "title": "General CS Test - 12",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -1395,6 +1419,8 @@
     {
         "title": "General CS Test - 13",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -1511,6 +1537,8 @@
     {
         "title": "General CS Test - 14",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -1627,6 +1655,8 @@
     {
         "title": "General CS Test - 15",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -1743,6 +1773,8 @@
     {
         "title": "General CS Test - 16",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "beginner",
         "questions": [
             {
                 "id": 1,
@@ -1859,6 +1891,8 @@
     {
         "title": "General CS Test - 17",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "beginner",
         "questions": [
             {
                 "id": 1,
@@ -1975,6 +2009,8 @@
     {
         "title": "General CS Test - 18",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "beginner",
         "questions": [
             {
                 "id": 1,
@@ -2091,6 +2127,8 @@
     {
         "title": "General CS Test - 19",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "id": 1,
@@ -2208,6 +2246,8 @@
     {
         "title": "General CS Test - 20",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "intermediate",
         "questions": [
             {
                 "id": 1,
@@ -2324,6 +2364,8 @@
     {
         "title": "General CS Test - 21",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -2440,6 +2482,8 @@
     {
         "title": "General CS Test - 22",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -2556,6 +2600,8 @@
     {
         "title": "General CS Test - 23",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -2672,6 +2718,8 @@
     {
         "title": "General CS Test - 24",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -2788,6 +2836,8 @@
     {
         "title": "General CS Test - 25",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -2904,6 +2954,8 @@
     {
         "title": "General CS Test - 26",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -3021,6 +3073,8 @@
     {
         "title": "General CS Test - 27",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -3137,6 +3191,8 @@
     {
         "title": "General CS Test - 28",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -3253,6 +3309,8 @@
     {
         "title": "General CS Test - 29",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
@@ -3369,6 +3427,8 @@
     {
         "title": "General CS Test - 30",
         "duration": 10,
+        "category": "Core Subject",
+        "difficulty": "advanced",
         "questions": [
             {
                 "id": 1,
