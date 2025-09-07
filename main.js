@@ -346,15 +346,16 @@ class AuthSystem {
 
     handleNotesContent(e, card) {
         e.preventDefault();
-        if (!this.currentUser) {
-            document.getElementById('accessDeniedModal')?.classList.remove('hidden');
-            return;
-        }
         const notesType = card.dataset.notes;
-        this.saveNoteAccess(notesType); // auto save notes progress
+
+        // ✅ If the user is logged in, save their progress.
+        if (this.currentUser) {
+            this.saveNoteAccess(notesType);
+        }
+
+        // ✅ Always navigate to the notes page, regardless of login status.
         this.navigateToNotesPage(notesType);
     }
-
     navigateToTestPage(testType, category) {
         const testPages = {
             'programming': 'programming-test.html',
