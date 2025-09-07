@@ -1,486 +1,1069 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Mastery Guide - CodeMaster</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Python Mastery Guide - The Ultimate Learning Path</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Prism.js for code highlighting -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js" defer></script>
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <style>
-    /* --- Utilities used by this page (kept minimal) --- */
-    .gradient-bg { background: linear-gradient(135deg, #2b6cb0 0%, #4fd1c5 35%, #f6ad55 70%, #f687b3 100%); }
-    .section-bg { background: linear-gradient(180deg, #fbfdff 0%, #fff 100%); }
-    .rainbow-text { background: linear-gradient(90deg, #2b6cb0, #16a085, #f6ad55, #f687b3, #16a085, #2b6cb0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: rainbow 6s linear infinite; background-size: 200% 200%; }
-    @keyframes rainbow { 0% {background-position: 0% 50%;} 100% {background-position: 100% 50%;} }
+    :root {
+      --navbar-height: 64px;
+      --sidebar-width: 280px;
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-sidebar: #f1f5f9;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-heading: #0f172a;
+      --border-color: #e2e8f0;
+      --shadow-color: rgba(76, 107, 193, 0.07);
+      --accent-primary: #4c6bc1;
+      /* Python Blue */
+      --accent-secondary: #f9c74f;
+      /* Python Yellow */
+      --color-basics: #4CAF50;
+      --color-control-flow: #FF9800;
+      --color-functions: #2196F3;
+      --color-data-structures: #9C27B0;
+      --color-oop: #E91E63;
+      --color-advanced: #607D8B;
+      --color-libraries: #795548;
+      /* Brown for Libraries */
+      --color-specialized: #009688;
+    }
 
-    .sidebar { position: sticky; top: 2rem; height: fit-content; background: linear-gradient(135deg, #2b6cb0 60%, #4fd1c5 100%); color: #fff; border-radius: 1.5rem; padding: 2rem 1.5rem; margin-bottom: 2rem; box-shadow: 0 8px 32px 0 rgba(43,108,176,0.12); }
-    .sidebar a { display: block; padding: 0.6rem 1rem; margin-bottom: 0.5rem; border-radius: 9999px; color: #fff; font-weight: 600; text-decoration: none; transition: background 0.2s, color 0.2s; }
-    .sidebar a.active, .sidebar a:hover { background: rgba(255,255,255,0.14); color: #fff; }
+    html[data-theme='dark'] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-sidebar: #111827;
+      --text-primary: #cbd5e1;
+      --text-secondary: #94a3b8;
+      --text-heading: #f8fafc;
+      --border-color: #334155;
+      --shadow-color: rgba(0, 0, 0, 0.2);
+    }
 
-    .topic-section { margin-bottom: 3.5rem; border-radius: 1.5rem; box-shadow: 0 8px 32px 0 rgba(43,108,176,0.06); background: #fff; padding: 2rem; border-top: 6px solid; }
-    .topic-section h2 { margin-bottom: 1rem; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-    .code-tabs { margin-top: 1rem; margin-bottom: 1.25rem; }
-    .tab-btn { display: inline-block; padding: 0.5rem 1.2rem; margin-right: 0.5rem; border-radius: 9999px; background: #f3f4f6; color: #333; font-weight: 600; cursor: pointer; border: none; outline: none; transition: background 0.2s; }
-    .tab-btn.active { background: #2b6cb0; color: #fff; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s, color 0.3s;
+      padding-top: var(--navbar-height);
+    }
 
-    pre { border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1rem; }
-    .topic-section table { background: #f8fafc; border-radius: 0.75rem; box-shadow: 0 2px 8px 0 rgba(43,108,176,0.04); margin-bottom: 1rem; }
-    .topic-section h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
-    .note { background: #ebf8ff; border-left: 4px solid #3182ce; padding: 0.75rem 1rem; border-radius: 0.5rem; }
-    .pro { background: #ecfeff; border-left: 4px solid #06b6d4; padding: 0.75rem 1rem; border-radius: 0.5rem; }
-    .warn { background: #fff7ed; border-left: 4px solid #f59e0b; padding: 0.75rem 1rem; border-radius: 0.5rem; }
-    .ok { background: #ecfdf5; border-left: 4px solid #10b981; padding: 0.75rem 1rem; border-radius: 0.5rem; }
-    .chip { display:inline-block; padding: .25rem .6rem; border-radius:999px; background:#f3f4f6; margin-right:.4rem; font-weight:600; font-size:.8rem; }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-heading);
+    }
 
-    @media (max-width: 1024px) { .sidebar { position: static; margin-bottom: 2rem; } }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--navbar-height);
+      z-index: 20;
+    }
+
+    #sidebar {
+      position: fixed;
+      top: var(--navbar-height);
+      left: 0;
+      bottom: 0;
+      width: var(--sidebar-width);
+      overflow-y: auto;
+      z-index: 10;
+      background-color: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+    }
+
+    #main-content {
+      margin-left: var(--sidebar-width);
+    }
+
+    #sidebar::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #sidebar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #sidebar::-webkit-scrollbar-thumb {
+      background-color: var(--border-color);
+      border-radius: 10px;
+    }
+
+    .sidebar a.active {
+      background: var(--accent-primary);
+      color: white !important;
+    }
+
+    .sidebar-link:hover {
+      background-color: var(--border-color);
+    }
+
+    .topic-completed a {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .topic-section {
+      background: var(--bg-secondary);
+      box-shadow: 0 4px 16px var(--shadow-color);
+      border-top: 6px solid;
+    }
+
+    details>summary {
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.2s;
+    }
+
+    details>summary:hover {
+      background-color: var(--bg-sidebar);
+    }
+
+    details>summary::marker {
+      color: var(--accent-primary);
+    }
+
+    details[open]>summary {
+      background-color: var(--bg-sidebar);
+    }
+
+    pre[class*="language-"] {
+      position: relative;
+    }
+
+    .copy-code-btn {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: none;
+      padding: 0.25rem 0.6rem;
+      border-radius: 0.375rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    pre:hover .copy-code-btn {
+      opacity: 1;
+    }
+
+    #progressBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      background: var(--accent-primary);
+      width: 0%;
+      z-index: 30;
+      transition: width 0.1s linear;
+    }
+
+    .nav-button {
+      background-color: var(--bg-sidebar);
+      border: 1px solid var(--border-color);
+      transition: all 0.2s ease;
+    }
+
+    .nav-button:hover {
+      background-color: var(--accent-primary);
+      color: white;
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    blockquote {
+      border-left: 4px solid var(--accent-secondary);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+    }
   </style>
 </head>
-<body class="min-h-screen section-bg">
 
-  <!-- Navbar -->
-  <nav class="gradient-bg text-white shadow-lg">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <i class="fas fa-python text-2xl"></i>
-        <span class="text-xl font-bold">CodeMaster</span>
-      </div>
-      <a href="index.html" class="hover:text-gray-200 font-semibold flex items-center">
-        <i class="fas fa-arrow-left mr-2"></i>Back to Home
-      </a>
-    </div>
-  </nav>
+<body class="min-h-screen">
 
-  <header class="py-12 bg-gradient-to-r from-blue-600 via-teal-400 to-pink-400 text-white shadow-xl">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-5xl font-extrabold mb-4 rainbow-text">Python Mastery Guide</h1>
-      <p class="text-xl mb-6 font-medium">In-depth, modern Python — from clean syntax and idioms to CPython internals, async I/O, data engineering, web backends, and performance tuning.</p>
-      <div class="flex flex-wrap gap-2 justify-center">
-        <span class="chip">Python 3.8 → 3.12+</span>
-        <span class="chip">Idiomatic Python</span>
-        <span class="chip">Typing & Mypy</span>
-        <span class="chip">Asyncio</span>
-        <span class="chip">Concurrency & GIL</span>
-        <span class="chip">Packaging</span>
-        <span class="chip">C Extensions</span>
-        <span class="chip">Data Science</span>
-        <span class="chip">Web (FastAPI)</span>
-      </div>
-    </div>
-  </header>
+  <div id="progressBar"></div>
 
-  <main class="container mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar w-full lg:w-1/4">
-      <div class="mb-4 text-xl font-bold">Topics</div>
-      <a href="#intro" class="sidebar-link"><i class="fas fa-lightbulb mr-2"></i>Intro & Tooling</a>
-      <a href="#setup" class="sidebar-link"><i class="fas fa-download mr-2"></i>Setup & Versions</a>
-      <a href="#syntax" class="sidebar-link"><i class="fas fa-code mr-2"></i>Syntax & Idioms</a>
-      <a href="#types" class="sidebar-link"><i class="fas fa-layer-group mr-2"></i>Built-in Types</a>
-      <a href="#control" class="sidebar-link"><i class="fas fa-equals mr-2"></i>Control Flow</a>
-      <a href="#functions" class="sidebar-link"><i class="fas fa-cubes mr-2"></i>Functions & Closures</a>
-      <a href="#oop" class="sidebar-link"><i class="fas fa-diagram-project mr-2"></i>OOP & Data Classes</a>
-      <a href="#typing" class="sidebar-link"><i class="fas fa-code-branch mr-2"></i>Typing & Protocols</a>
-      <a href="#modules" class="sidebar-link"><i class="fas fa-boxes mr-2"></i>Modules & Packaging</a>
-      <a href="#virtualenv" class="sidebar-link"><i class="fas fa-layer-minus mr-2"></i>Virtualenv & Pyenv</a>
-      <a href="#async" class="sidebar-link"><i class="fas fa-bolt mr-2"></i>Asyncio & Concurrency</a>
-      <a href="#memory" class="sidebar-link"><i class="fas fa-memory mr-2"></i>Memory & GIL</a>
-      <a href="#perf" class="sidebar-link"><i class="fas fa-gauge-high mr-2"></i>Performance & Profiling</a>
-      <a href="#c-ext" class="sidebar-link"><i class="fas fa-microchip mr-2"></i>C Extensions & Rust</a>
-      <a href="#testing" class="sidebar-link"><i class="fas fa-vial mr-2"></i>Testing (pytest)</a>
-      <a href="#web" class="sidebar-link"><i class="fas fa-network-wired mr-2"></i>Web: FastAPI & WSGI</a>
-      <a href="#data" class="sidebar-link"><i class="fas fa-database mr-2"></i>Data & NumPy/Pandas</a>
-      <a href="#tools" class="sidebar-link"><i class="fas fa-tools mr-2"></i>Tooling & CI</a>
-      <a href="#security" class="sidebar-link"><i class="fas fa-shield-halved mr-2"></i>Security & Best Practices</a>
-      <a href="#cheats" class="sidebar-link"><i class="fas fa-list-check mr-2"></i>Cheat Sheets</a>
-    </aside>
-
-    <!-- Content -->
-    <section class="w-full lg:w-3/4">
-
-      <!-- INTRO -->
-      <div id="intro" class="topic-section" style="border-top-color:#2b6cb0">
-        <h2 class="text-3xl font-bold">Intro & Tooling</h2>
-        <p class="text-gray-700">Python is a high-level, interpreted language emphasizing readability and developer productivity. Its ecosystem spans web servers, data science, scripting, automation, and embedded systems. CPython is the reference implementation; there are alternatives (PyPy, Jython, IronPython) that are useful in specific contexts.</p>
-        <div class="grid md:grid-cols-2 gap-4 mt-4">
-          <div class="ok">
-            <strong>Install:</strong> Use official installers or package managers. For multiple versions prefer <code>pyenv</code> or system packages. Verify with <code>python --version</code> or <code>python3 --version</code>.
-          </div>
-          <div class="pro">
-            <strong>IDE:</strong> VS Code, PyCharm, or NeoVim. Enable type checking, formatting (Black), linting (Flake8), and test integration.
+  <div id="app-container">
+    <nav class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-md z-50">
+      <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <i class="fab fa-python text-3xl" style="color: var(--accent-primary);"></i>
+          <span class="text-2xl font-bold">Python Mastery Guide</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <div id="themeToggle"
+            class="theme-switch text-xl cursor-pointer p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon hidden"></i>
           </div>
         </div>
-        <h3 class="text-2xl font-semibold">Your First Script</h3>
-        <div class="code-tabs">
-          <button class="tab-btn active" data-tab="intro-py">Python</button>
+      </div>
+    </nav>
+
+    <div id="main-wrapper">
+      <aside id="sidebar" class="sidebar p-6 border-r border-gray-200 dark:border-gray-800">
+        <h3 class="text-xl font-bold mb-4">Learning Path</h3>
+        <div id="sidebar-topics" class="space-y-1">
         </div>
-        <pre id="intro-py" class="tab-content language-python"><code class="language-python"># hello.py
-if __name__ == "__main__":
-    print("Hello, Python!")
+      </aside>
 
-# Run: python hello.py</code></pre>
-        <div class="note">Python scripts can be executed directly. For larger apps, use packages and entry points (<code>setup.cfg</code> / <code>pyproject.toml</code>).</div>
-      </div>
+      <main id="main-content" class="p-4 md:p-8 lg:p-12">
+        <header class="mb-12">
+          <h1 class="text-5xl font-extrabold mb-2">The Complete Python Learning Path</h1>
+          <p class="text-lg text-gray-500 dark:text-gray-400">Your ultimate, in-depth roadmap from beginner to
+            professional Python developer.</p>
+        </header>
 
-      <!-- SETUP -->
-      <div id="setup" class="topic-section" style="border-top-color:#16a085">
-        <h2 class="text-3xl font-bold">Setup & Versions</h2>
-        <p>Python 3.8+ is recommended for modern features (assignment expressions, positional-only params, typing improvements). Know how to manage multiple versions with <code>pyenv</code> and environment isolation with <code>venv</code> or <code>virtualenv</code>. Use <code>pipx</code> for installing CLI tools globally without polluting interpreter site-packages.</p>
-        <h3>Essential Tools</h3>
-        <ul class="list-disc pl-6 text-gray-700">
-          <li><code>pyenv</code> — manage interpreter versions.</li>
-          <li><code>python -m venv .venv</code> — create local virtual env.</li>
-          <li><code>pip</code> / <code>pip-tools</code> / <code>pipx</code> — package management.</li>
-          <li><code>poetry</code> or <code>flit</code> — modern packaging & publishing.</li>
-        </ul>
-      </div>
+        <div class="space-y-16" id="sections-container">
 
-      <!-- SYNTAX -->
-      <div id="syntax" class="topic-section" style="border-top-color:#3182ce">
-        <h2 class="text-3xl font-bold">Syntax & Idioms</h2>
-        <p>Python's syntax is intentionally clear: indentation defines blocks, and there is one obvious way to do many things. Embrace comprehension, context managers, and EAFP (Easier to Ask Forgiveness than Permission) instead of LBYL (Look Before You Leap).</p>
-        <pre class="language-python"><code># List comprehension
-squares = [x*x for x in range(10) if x % 2 == 0]
+          <section class="topic-section p-8 rounded-2xl" id="basics" data-aos="fade-up"
+            style="border-top-color: var(--color-basics);">
+            <h2 class="text-4xl font-bold flex items-center mb-4"><i class="fas fa-rocket mr-4"
+                style="color: var(--color-basics);"></i>Python Basics: Your First Steps</h2>
+            <p class="text-lg mb-6 text-gray-600 dark:text-gray-400">Every great journey starts with a
+              single step. This section covers the absolute bedrock of Python programming. Mastering these
+              concepts is non-negotiable, as everything else you learn will build upon them.</p>
 
-# Context manager
-with open('data.txt') as f:
-    first = f.readline().strip()
+            <h3 class="text-2xl font-bold mb-3">Variables: The Labeled Boxes of Programming</h3>
+            <p class="mb-4">Imagine you have a set of storage boxes. To know what's inside each, you put a
+              label on it. A **variable** is exactly this: a labeled box in your computer's memory where
+              you store a piece of information. You give it a name (the label) and put something inside it
+              (the value).</p>
 
-# EAFP
+            <h4 class="text-xl font-semibold mt-6 mb-2">Core Data Types</h4>
+            <p class="mb-4">Python is dynamically typed, which means you don't have to explicitly declare
+              the type of a variable; the interpreter figures it out automatically. Here are the
+              fundamental types:</p>
+            <ul class="list-disc ml-5 space-y-2 mb-6">
+              <li><strong>String (`str`):</strong> Textual data. Anything enclosed in single (`'`) or
+                double (`"`) quotes.</li>
+              <li><strong>Integer (`int`):</strong> Whole numbers, positive or negative, without decimals.
+              </li>
+              <li><strong>Float (`float`):</strong> Numbers with a decimal point.</li>
+              <li><strong>Boolean (`bool`):</strong> Represents truth values. Can only be `True` or
+                `False`.</li>
+            </ul>
+            <pre><code class="language-python">
+# A variable named 'city' holding a string value.
+city = "Kharagpur"
+
+# A variable named 'population' holding an integer.
+population = 197000
+
+# A variable named 'literacy_rate' holding a float.
+literacy_rate = 0.875
+
+# A variable named 'is_metro' holding a boolean.
+is_metro = False
+
+# You can check a variable's type using the type() function.
+print(f"The type of 'city' is: {type(city)}")
+# Output: The type of 'city' is: <class 'str'>
+                        </code></pre>
+
+            <h4 class="text-xl font-semibold mt-6 mb-2">Type Conversion: Changing Labels</h4>
+            <p class="mb-4">Sometimes you need to convert data from one type to another. For instance, user
+              input is always received as a string, even if they type a number. You must explicitly
+              convert it before doing math.</p>
+            <pre><code class="language-python">
+user_age_str = input("Enter your age: ") # Let's say user types '30'
+
+# user_age_str is currently "30" (a string)
+# We can't do math with it yet: user_age_str + 5 would cause an error.
+
+# Convert the string to an integer
+user_age_int = int(user_age_str)
+
+# Now we can perform calculations
+age_in_a_decade = user_age_int + 10
+print(f"In a decade, you will be {age_in_a_decade} years old.")
+
+# You can also convert other ways
+year = 2025
+print("The current year is " + str(year)) # Convert int to str for concatenation
+                        </code></pre>
+
+            <h3 class="text-2xl font-bold mt-8 mb-3">Operators: The Tools of Your Trade</h3>
+            <p class="mb-4">Operators are the symbols that tell the computer to perform a specific
+              mathematical or logical manipulation. Think of them as the verbs of your code.</p>
+            <details class="mb-6 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+              <summary class="text-lg">View Key Operator Types</summary>
+              <ul class="list-decimal ml-5 space-y-3 mt-4">
+                <li><strong>Arithmetic:</strong> `+` (add), `-` (subtract), `*` (multiply), `/`
+                  (divide), `//` (floor divide, discards remainder), `%` (modulus, gives remainder),
+                  `**` (exponent).</li>
+                <li><strong>Comparison:</strong> `==` (equal to), `!=` (not equal to), `>` (greater
+                  than), `<` (less than), `>=` (greater than or equal to), `<=` (less than or equal to). These always
+                      result in a Boolean (`True` or `False`).</li>
+                <li><strong>Logical:</strong> `and` (both must be true), `or` (at least one must be
+                  true), `not` (inverts the truth value).</li>
+              </ul>
+            </details>
+
+            <div class="mt-12 flex justify-between">
+              <span></span>
+              <a href="#control-flow" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm">Next: Control Flow
+                <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+          </section>
+
+          <section class="topic-section p-8 rounded-2xl" id="control-flow" data-aos="fade-up"
+            style="border-top-color: var(--color-control-flow);">
+            <h2 class="text-4xl font-bold flex items-center mb-4"><i class="fas fa-code-branch mr-4"
+                style="color: var(--color-control-flow);"></i>Control Flow: Making Decisions</h2>
+            <p class="text-lg mb-6 text-gray-600 dark:text-gray-400">A program that just runs top to bottom
+              isn't very smart. Control flow statements are the brains of the operation, allowing your
+              code to react to different situations and repeat tasks efficiently.</p>
+
+            <h3 class="text-2xl font-bold mb-3">Conditional Statements: The Forks in the Road</h3>
+            <p class="mb-4">Conditional logic using `if`, `elif` (else if), and `else` allows your program
+              to execute different blocks of code based on whether certain conditions are `True` or
+              `False`.</p>
+            <blockquote>Python uses indentation (whitespace at the beginning of a line) to define blocks of
+              code. This is a strict rule and is central to Python's readability.</blockquote>
+            <pre><code class="language-python">
+# A program to recommend an activity based on the weather.
+weather = "sunny"
+temperature_celsius = 28
+
+if weather == "sunny" and temperature_celsius > 25:
+    print("It's a perfect day for the beach! 🏖️")
+elif weather == "sunny" and temperature_celsius <= 25:
+    print("Nice day for a walk in the park. 🌳")
+elif weather == "rainy":
+    print("Good day to read a book indoors. 📚")
+else:
+    print("Maybe a good day for the gym. 💪")
+                        </code></pre>
+
+            <h3 class="text-2xl font-bold mt-8 mb-3">Loops: The Assembly Lines</h3>
+            <p class="mb-4">Loops are for when you need to do the same thing over and over. Instead of
+              copying and pasting code, you tell Python to loop.</p>
+
+            <h4 class="text-xl font-semibold mt-6 mb-2">The `for` loop: For Every Item...</h4>
+            <p class="mb-4">A `for` loop is used for iterating over a sequence (like a list, a string, or a
+              range of numbers).</p>
+            <pre><code class="language-python">
+# Processing a list of tasks
+tasks = ["Email client", "Update spreadsheet", "Call team lead"]
+
+for task in tasks:
+    print(f"Processing task: {task}...")
+print("All tasks processed!")
+
+# Using range() to loop a specific number of times
+for number in range(1, 4): # range(1, 4) generates numbers 1, 2, 3
+    print(f"Launch sequence: T-{number}")
+                        </code></pre>
+
+            <h4 class="text-xl font-semibold mt-6 mb-2">The `while` loop: While This is True...</h4>
+            <p class="mb-4">A `while` loop repeats as long as a certain boolean condition is met. It's
+              useful when you don't know in advance how many times you need to loop.</p>
+            <div
+              class="bg-red-100 dark:bg-red-900 border-l-4 border-red-500 text-red-700 dark:text-red-200 p-4 rounded mb-4">
+              <p class="font-bold">Watch Out! Infinite Loops</p>
+              <p>Be careful with `while` loops. If the condition never becomes `False`, the loop will run
+                forever, and you'll have to stop your program manually.</p>
+            </div>
+            <pre><code class="language-python">
+import random
+
+# A simple number guessing game
+secret_number = random.randint(1, 10)
+guess = 0 # Initialize guess to a value that doesn't match
+
+while guess != secret_number:
+    guess = int(input("Guess a number between 1 and 10: "))
+    if guess < secret_number:
+        print("Too low!")
+    elif guess > secret_number:
+        print("Too high!")
+
+print(f"You got it! The number was {secret_number}. 🎉")
+                        </code></pre>
+
+            <div class="mt-12 flex justify-between">
+              <a href="#basics" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm"><i
+                  class="fas fa-arrow-left mr-2"></i> Prev: Basics</a>
+              <a href="#functions" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm">Next:
+                Functions <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+          </section>
+
+          <section class="topic-section p-8 rounded-2xl" id="functions" data-aos="fade-up"
+            style="border-top-color: var(--color-functions);">
+            <h2 class="text-4xl font-bold flex items-center mb-4"><i class="fas fa-cogs mr-4"
+                style="color: var(--color-functions);"></i>Functions: Building Reusable Tools</h2>
+            <p class="text-lg mb-6 text-gray-600 dark:text-gray-400">Functions are the cornerstone of
+              organized, reusable, and readable code. Think of them as creating your own custom tools.
+              Instead of rewriting the instructions to calculate a sales tax every time, you build a
+              `calculate_tax` tool (a function) and use it whenever you need it.</p>
+
+            <h3 class="text-2xl font-bold mb-3">Anatomy of a Function</h3>
+            <ul class="list-disc ml-5 space-y-2 mb-4">
+              <li><strong>`def` keyword:</strong> How you start defining a function.</li>
+              <li><strong>Function Name:</strong> A descriptive name (e.g., `calculate_area`).</li>
+              <li><strong>Parameters:</strong> Variables inside the parentheses `()` that act as
+                placeholders for the data the function needs to work.</li>
+              <li><strong>Docstring:</strong> A string enclosed in triple quotes `"""..."""` that explains
+                what the function does. It's a crucial part of good documentation.</li>
+              <li><strong>Function Body:</strong> The indented block of code that performs the task.</li>
+              <li><strong>`return` keyword:</strong> Sends a value back to where the function was called.
+              </li>
+            </ul>
+            <pre><code class="language-python">
+# A function that calculates the area of a rectangle
+def calculate_area(length, width):
+    """
+    Calculates the area of a rectangle.
+    
+    Args:
+        length (int/float): The length of the rectangle.
+        width (int/float): The width of the rectangle.
+        
+    Returns:
+        int/float: The calculated area of the rectangle.
+    """
+    if length < 0 or width < 0:
+        return 0 # A sensible default for invalid input
+    
+    area = length * width
+    return area
+
+# "Calling" the function and storing the returned value
+room_area = calculate_area(12.5, 10)
+print(f"The area of the room is {room_area} square meters.")
+                        </code></pre>
+
+            <h3 class="text-2xl font-bold mt-8 mb-3">Parameters vs. Arguments</h3>
+            <p class="mb-4">This is a common point of confusion. It's simple:</p>
+            <ul>
+              <li><strong>Parameters</strong> are the variable names in the function's definition
+                (`length` and `width` above).</li>
+              <li><strong>Arguments</strong> are the actual values you pass into the function when you
+                call it (`12.5` and `10` above).</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold mt-8 mb-3">Variable Scope: Where a Variable Lives</h3>
+            <p class="mb-4">A variable's "scope" determines where in your program it can be accessed.
+              Variables created inside a function are **local** to that function; they are born when the
+              function is called and die when it finishes. They cannot be seen from outside.</p>
+            <pre><code class="language-python">
+# This is a GLOBAL variable, accessible anywhere in the file
+global_message = "I'm a global variable."
+
+def my_function():
+    # This is a LOCAL variable, it only exists inside this function
+    local_message = "I'm a local variable."
+    print(local_message)
+    print(global_message) # The function can SEE the global variable
+
+# Calling the function works fine
+my_function()
+
+# Trying to access the local variable from outside will cause a NameError
+# print(local_message) # This line would CRASH the program!
+                        </code></pre>
+
+            <div class="mt-12 flex justify-between">
+              <a href="#control-flow" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm"><i
+                  class="fas fa-arrow-left mr-2"></i> Prev: Control Flow</a>
+              <a href="#data-structures" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm">Next: Data
+                Structures <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+          </section>
+
+          <section class="topic-section p-8 rounded-2xl" id="data-structures" data-aos="fade-up"
+            style="border-top-color: var(--color-data-structures);">
+            <h2 class="text-4xl font-bold flex items-center mb-4"><i class="fas fa-database mr-4"
+                style="color: var(--color-data-structures);"></i>Data Structures: Organizing Information
+            </h2>
+            <p class="text-lg mb-6 text-gray-600 dark:text-gray-400">Storing single pieces of data is
+              useful, but most real-world problems involve collections of data. Python's built-in data
+              structures are incredibly powerful and optimized tools for storing and managing these
+              collections.</p>
+
+            <h3 class="text-2xl font-bold mb-3">Lists: The Versatile Workhorse</h3>
+            <p class="mb-4">A list is an ordered, changeable collection of items. Think of it as a shopping
+              list where you can add, remove, and re-order items.</p>
+            <ul class="list-disc ml-5 space-y-2 mb-4">
+              <li><strong>Ordered:</strong> The items have a defined sequence, which will not change.</li>
+              <li><strong>Mutable:</strong> You can change the list after it's created (add, remove, or
+                change items).</li>
+              <li><strong>Allows Duplicates:</strong> A list can contain items with the same value.</li>
+            </ul>
+            <pre><code class="language-python">
+# A list of invited guests
+guests = ["Alice", "Bob", "Charlie"]
+
+# Accessing by index (starts at 0)
+first_guest = guests[0] # "Alice"
+
+# Modifying an element
+guests[1] = "Robert" # Bob is now Robert
+
+# Adding an element to the end
+guests.append("Diane")
+
+# Removing an element by value
+guests.remove("Alice")
+
+# `guests` is now ['Robert', 'Charlie', 'Diane']
+print(guests)
+                        </code></pre>
+
+            <h4 class="text-xl font-semibold mt-6 mb-2">List Comprehensions: The Elegant Shortcut</h4>
+            <p class="mb-4">This is a highly "Pythonic" feature. It provides a concise syntax for creating
+              lists based on existing lists.</p>
+            <pre><code class="language-python">
+numbers = [1, 2, 3, 4, 5, 6]
+
+# The "old" way with a for loop
+even_squares = []
+for num in numbers:
+    if num % 2 == 0:
+        even_squares.append(num * num)
+# even_squares is [4, 16, 36]
+
+# The elegant way with a list comprehension
+even_squares_comp = [num * num for num in numbers if num % 2 == 0]
+# even_squares_comp is also [4, 16, 36]
+                        </code></pre>
+
+            <h3 class="text-2xl font-bold mt-8 mb-3">Dictionaries: The Labeled File Cabinet</h3>
+            <p class="mb-4">A dictionary is an unordered collection of key-value pairs. Think of it as a
+              file cabinet where each file has a unique label (the **key**) that you use to instantly find
+              the file's contents (the **value**).</p>
+            <ul class="list-disc ml-5 space-y-2 mb-4">
+              <li><strong>Key-Value Pairs:</strong> Each item consists of a unique key and its
+                corresponding value.</li>
+              <li><strong>Unordered:</strong> (Prior to Python 3.7) The items did not have a defined
+                order. Now they are insertion-ordered.</li>
+              <li><strong>Mutable:</strong> You can change, add, or remove items.</li>
+              <li><strong>Unique Keys:</strong> Keys must be unique within a dictionary.</li>
+            </ul>
+            <pre><code class="language-python">
+# A dictionary representing a book
+book = {
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "author": "Douglas Adams",
+    "year": 1979
+}
+
+# Accessing a value using its key
+author_name = book["author"] # "Douglas Adams"
+
+# Adding a new key-value pair
+book["genre"] = "Science Fiction"
+
+# Iterating over a dictionary
+for key, value in book.items():
+    print(f"{key.title()}: {value}")
+                        </code></pre>
+
+            <div class="mt-12 flex justify-between">
+              <a href="#functions" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm"><i
+                  class="fas fa-arrow-left mr-2"></i> Prev: Functions</a>
+              <a href="#oop" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm">Next: OOP <i
+                  class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+          </section>
+
+          <section class="topic-section p-8 rounded-2xl" id="oop" data-aos="fade-up"
+            style="border-top-color: var(--color-oop);">
+            <h2 class="text-4xl font-bold flex items-center mb-4"><i class="fas fa-object-group mr-4"
+                style="color: var(--color-oop);"></i>Object-Oriented Programming (OOP)</h2>
+            <p class="text-lg mb-6 text-gray-600 dark:text-gray-400">OOP is a powerful way to structure your
+              code, especially for large, complex applications. It allows you to model real-world things
+              by creating "objects" that have their own data and behaviors, just like objects in the real
+              world.</p>
+
+            <h3 class="text-2xl font-bold mb-3">Analogy: The Car Factory</h3>
+            <blockquote>
+              A <strong>Class</strong> is like the master blueprint for a car. It defines what every car
+              will have (attributes like `color`, `model`, `max_speed`) and what every car can do (methods
+              like `start_engine()`, `accelerate()`, `brake()`).
+              <br><br>
+              An <strong>Object</strong> is an actual car built from that blueprint. Your red Tesla is one
+              object, and my blue Ford is another. They are separate instances, each with its own specific
+              attributes (different colors, models), but they share the same fundamental behaviors defined
+              by the `Car` class.
+            </blockquote>
+
+            <h3 class="text-2xl font-bold mt-8 mb-3">Building a Class</h3>
+            <pre><code class="language-python">
+class Car:
+    # This is the constructor. It's called when a new object is created.
+    # 'self' refers to the specific instance (the car being built).
+    def __init__(self, make, model, year, color):
+        # These are attributes - data associated with the object
+        self.make = make
+        self.model = model
+        self.year = year
+        self.color = color
+        self.is_running = False
+
+    # This is a method - a behavior the object can perform
+    def start_engine(self):
+        if not self.is_running:
+            self.is_running = True
+            print(f"The {self.color} {self.model}'s engine is now running. Vroom!")
+        else:
+            print("The engine is already running.")
+
+    def stop_engine(self):
+        if self.is_running:
+            self.is_running = False
+            print(f"The {self.model}'s engine has stopped.")
+
+# --- Creating and Using Objects ---
+
+# We use the class blueprint to build two distinct car objects
+my_car = Car("Tesla", "Model 3", 2024, "Red")
+friends_car = Car("Ford", "Mustang", 2022, "Blue")
+
+# Accessing attributes of each object
+print(f"I have a {my_car.year} {my_car.make} {my_car.model}.")
+
+# Calling methods on each object
+my_car.start_engine()
+friends_car.start_engine()
+my_car.stop_engine()
+                        </code></pre>
+
+            <h3 class="text-2xl font-bold mt-8 mb-3">The Pillars of OOP</h3>
+            <p class="mb-4">OOP is defined by a few core principles:</p>
+            <ul class="list-disc ml-5 space-y-3">
+              <li><strong>Inheritance:</strong> Allows a new class (e.g., `ElectricCar`) to inherit
+                attributes and methods from an existing class (`Car`), promoting code reuse. The
+                `ElectricCar` can have all the features of a `Car` plus its own, like a
+                `charge_battery()` method.</li>
+              <li><strong>Encapsulation:</strong> The practice of bundling data (attributes) and methods
+                that operate on the data into a single unit (the class). This helps protect data from
+                accidental modification.</li>
+              <li><strong>Polymorphism:</strong> Allows objects of different classes to be treated as
+                objects of a common superclass. For example, you could have a list of different `Car`
+                objects (some electric, some gas) and call a `refuel()` method on each, where each type
+                of car implements that method in its own specific way.</li>
+            </ul>
+
+            <div class="mt-12 flex justify-between">
+              <a href="#data-structures" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm"><i
+                  class="fas fa-arrow-left mr-2"></i> Prev: Data Structures</a>
+              <a href="#advanced" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm">Next:
+                Advanced Topics <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+          </section>
+
+          <section class="topic-section p-8 rounded-2xl" id="advanced" data-aos="fade-up"
+            style="border-top-color: var(--color-advanced);">
+            <h2 class="text-4xl font-bold flex items-center mb-4"><i class="fas fa-brain mr-4"
+                style="color: var(--color-advanced);"></i>Advanced Topics for Robust Code</h2>
+            <p class="text-lg mb-6 text-gray-600 dark:text-gray-400">These topics are crucial for moving
+              from writing simple scripts to building professional, resilient applications that can handle
+              errors and interact with the outside world.</p>
+
+            <h3 class="text-2xl font-bold mb-3">Exception Handling: Planning for Failure</h3>
+            <p class="mb-4">Good code doesn't just work when everything goes right; it handles things
+              gracefully when they go wrong. An **exception** is an error that happens during the
+              execution of a program. Exception handling allows you to "catch" these errors and prevent
+              your program from crashing.</p>
+            <pre><code class="language-python">
+# The try-except-else-finally block
 try:
-    value = data['key']
-except KeyError:
-    value = default
-</code></pre>
-        <div class="note">Follow PEP 8 for style and PEP 257 for docstrings. Use Black for formatting — deterministic and widely adopted.</div>
-      </div>
+    # 1. The 'try' block: Code that might cause an error goes here.
+    numerator = int(input("Enter a number to divide: "))
+    denominator = int(input("Enter a number to divide by: "))
+    result = numerator / denominator
 
-      <!-- TYPES -->
-      <div id="types" class="topic-section" style="border-top-color:#805ad5">
-        <h2 class="text-3xl font-bold">Built-in Types</h2>
-        <p>Python has simple built-ins (int, float, bool, str) and powerful containers (list, tuple, dict, set). Strings are immutable and sequence types offer common protocols (iterable, sequence, mapping).</p>
-        <h3>Quick Reference</h3>
-        <table class="w-full text-left">
-          <thead><tr class="bg-gray-100"><th class="p-2">Type</th><th class="p-2">Mutable?</th><th class="p-2">Use</th></tr></thead>
-          <tbody>
-            <tr><td class="p-2">int/float/complex</td><td class="p-2">No</td><td class="p-2">Numbers, arithmetic</td></tr>
-            <tr><td class="p-2">str</td><td class="p-2">No</td><td class="p-2">Text</td></tr>
-            <tr><td class="p-2">list</td><td class="p-2">Yes</td><td class="p-2">Ordered sequence (mutable)</td></tr>
-            <tr><td class="p-2">tuple</td><td class="p-2">No</td><td class="p-2">Ordered sequence (immutable)</td></tr>
-            <tr><td class="p-2">dict</td><td class="p-2">Yes</td><td class="p-2">Key → value mapping</td></tr>
-            <tr><td class="p-2">set / frozenset</td><td class="p-2">set: Yes, frozenset: No</td><td class="p-2">Membership, uniqueness</td></tr>
-          </tbody>
-        </table>
-        <div class="warn">Prefer tuples for heterogeneous fixed-size groups and lists for homogeneous sequences. Use <code>collections.deque</code> for efficient FIFO operations.</div>
-      </div>
+except ValueError:
+    # 2. The 'except' block: If a specific error (like typing text) occurs.
+    print("Invalid input! Please enter numbers only.")
+except ZeroDivisionError:
+    # You can have multiple except blocks for different errors.
+    print("You can't divide by zero, that's just silly.")
+else:
+    # 3. The 'else' block: This runs ONLY if no exceptions were raised.
+    print(f"The result is {result}.")
+finally:
+    # 4. The 'finally' block: This code runs NO MATTER WHAT.
+    # Perfect for cleanup tasks, like closing a file or network connection.
+    print("Calculation attempt finished.")
+                        </code></pre>
 
-      <!-- CONTROL FLOW -->
-      <div id="control" class="topic-section" style="border-top-color:#ed8936">
-        <h2 class="text-3xl font-bold">Control Flow</h2>
-        <p>Use loops, comprehensions, generator expressions, and concise conditionals. Python supports <code>for</code>, <code>while</code>, <code>if/elif/else</code>, and <code>match</code> (structural pattern matching, Python 3.10+).</p>
-        <pre class="language-python"><code># match (PEP 634)
-point = (0, 0)
-match point:
-    case (0, 0):
-        origin = True
-    case (x, 0):
-        on_x = True
-    case _:
-        pass
+            <h3 class="text-2xl font-bold mt-8 mb-3">File Handling with `with`</h3>
+            <p class="mb-4">Interacting with files is a common task. The modern, safest way to do this in
+              Python is with the `with` statement, which automatically handles closing the file for you,
+              even if errors occur.</p>
+            <pre><code class="language-python">
+# The 'w' mode will create a file if it doesn't exist, or overwrite it if it does.
+with open("my_log.txt", "w") as file:
+    file.write("Log entry 1: System started.\n")
+    file.write("Log entry 2: All systems nominal.\n")
 
-# generator expression
-s = sum(x*x for x in range(1000))
-</code></pre>
-      </div>
+# The 'a' mode will append to the end of an existing file.
+with open("my_log.txt", "a") as file:
+    file.write("Log entry 3: User logged in.\n")
 
-      <!-- FUNCTIONS -->
-      <div id="functions" class="topic-section" style="border-top-color:#38b2ac">
-        <h2 class="text-3xl font-bold">Functions & Closures</h2>
-        <p>Functions are first-class: pass them, return them, and create closures. Use keyword-only arguments and <code>*args</code>/<code>**kwargs</code> judiciously.</p>
-        <pre class="language-python"><code>def add(a: int, b: int = 0) -> int:
-    return a + b
+# The 'r' mode is for reading. This is the default.
+with open("my_log.txt", "r") as file:
+    log_contents = file.read()
+    print("--- Log File Contents ---")
+    print(log_contents)
+                        </code></pre>
 
-# closure
-def make_multiplier(n):
-    def mul(x):
-        return x * n
-    return mul
+            <div class="mt-12 flex justify-between">
+              <a href="#oop" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm"><i
+                  class="fas fa-arrow-left mr-2"></i> Prev: OOP</a>
+              <a href="#python-libraries" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm">Next:
+                Essential
+                Libraries <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+          </section>
 
-times3 = make_multiplier(3)
-print(times3(5))  # 15
-</code></pre>
-        <div class="note">Annotate with types for clarity and tooling support; they are not enforced at runtime unless using runtime checkers.</div>
-      </div>
+          <section class="topic-section p-8 rounded-2xl" id="python-libraries" data-aos="fade-up"
+            style="border-top-color: var(--color-libraries);">
+            <h2 class="text-4xl font-bold flex items-center mb-4"><i class="fas fa-book mr-4"
+                style="color: var(--color-libraries);"></i>Essential Libraries: NumPy & Pandas</h2>
+            <p class="text-lg mb-6 text-gray-600 dark:text-gray-400">While Python's built-in features are
+              powerful, its true strength lies in its vast ecosystem of third-party libraries. For any
+              task involving data, NumPy and Pandas are the undisputed champions. They provide
+              high-performance, easy-to-use data structures and analysis tools.</p>
 
-      <!-- OOP -->
-      <div id="oop" class="topic-section" style="border-top-color:#6b46c1">
-        <h2 class="text-3xl font-bold">OOP & Data Classes</h2>
-        <p>Python supports object-oriented programming with classes, inheritance, descriptors, and metaclasses. For value-like classes prefer <code>@dataclass</code> (Python 3.7+).</p>
-        <pre class="language-python"><code>from dataclasses import dataclass
+            <div
+              class="bg-blue-100 dark:bg-blue-900 border-l-4 border-blue-500 text-blue-700 dark:text-blue-200 p-4 rounded my-8">
+              <p class="font-bold">Installation</p>
+              <p>Before using these libraries, you need to install them. Open your terminal or command
+                prompt and run: `pip install numpy pandas`</p>
+            </div>
 
-@dataclass(frozen=True)
-class Point:
-    x: float
-    y: float
+            <h3 class="text-2xl font-bold mt-8 mb-3">NumPy: The Foundation of Scientific Computing</h3>
+            <p class="mb-4">**NumPy** (Numerical Python) introduces a powerful new object: the
+              **n-dimensional array (`ndarray`)**. Think of it as a Python list on steroids, specifically
+              designed for fast, complex mathematical operations on large sets of numbers.</p>
+            <blockquote>
+              **Why it matters:** Standard Python lists are slow for numerical operations because they are
+              flexible (can hold different data types) and require loops for calculations. NumPy arrays
+              are homogeneous (all items have the same type) and perform operations in fast, pre-compiled
+              C code, making them orders of magnitude faster.
+            </blockquote>
 
-p = Point(3, 4)
-print(p.x)
-</code></pre>
-        <div class="warn">Avoid deep inheritance hierarchies; prefer composition. Use slots if you need to reduce memory per-instance: <code>__slots__</code>.</div>
-      </div>
+            <h4 class="text-xl font-semibold mt-6 mb-2">Creating NumPy Arrays</h4>
+            <pre><code class="language-python">
+import numpy as np # 'np' is the standard alias for numpy
 
-      <!-- TYPING -->
-      <div id="typing" class="topic-section" style="border-top-color:#2c7a7b">
-        <h2 class="text-3xl font-bold">Typing, Protocols & Gradual Typing</h2>
-        <p>Python has gradual typing via the typing module and tools like Mypy. Use types for maintenance, refactoring, and editor support. Familiarize with <code>TypedDict</code>, <code>Protocol</code>, <code>Union</code>, and <code>Optional</code>.</p>
-        <pre class="language-python"><code>from typing import Protocol, Iterable
+# Create an array from a Python list
+my_list = [1, 2, 3, 4, 5]
+my_array = np.array(my_list)
+print(f"NumPy Array: {my_array}")
 
-class SupportsLen(Protocol):
-    def __len__(self) -> int: ...
+# Create an array of zeros
+zeros_array = np.zeros(5) # Creates [0. 0. 0. 0. 0.]
+print(f"Zeros Array: {zeros_array}")
+                        </code></pre>
 
-def needs_len(x: SupportsLen):
-    return len(x)
-</code></pre>
-        <div class="note">Types are optional — adopt incrementally. Use <code>pyright</code> or <code>mypy</code> in CI to enforce contracts.</div>
-      </div>
+            <h4 class="text-xl font-semibold mt-6 mb-2">Vectorized Operations: The Magic of NumPy</h4>
+            <p class="mb-4">This is the core feature. You can perform an operation on an entire array at
+              once, without writing a `for` loop.</p>
+            <pre><code class="language-python">
+import numpy as np
 
-      <!-- MODULES & PACKAGING -->
-      <div id="modules" class="topic-section" style="border-top-color:#4c51bf">
-        <h2 class="text-3xl font-bold">Modules, Packages & Packaging</h2>
-        <p>Structure projects with packages (directories + <code>__init__.py</code>) and keep public API surface small. For packaging prefer <code>pyproject.toml</code> (PEP 621) and tools like Poetry or Flit to build and publish wheels.</p>
-        <pre class="language-python"><code># package structure
-myapp/
-  pyproject.toml
-  src/
-    myapp/
-      __init__.py
-      main.py
+temps_celsius = np.array([0, 10, 20, 30, 40])
 
-# entry point in pyproject.toml
-[project.scripts]
-myapp = "myapp.main:cli"
-</code></pre>
-        <div class="warn">Avoid relative imports outside packages; tests should import from installed package (use editable install <code>pip install -e .</code>).</div>
-      </div>
+# The OLD way with a list
+# temps_fahrenheit_list = []
+# for temp in temps_celsius_list:
+#     temps_fahrenheit_list.append(temp * 9/5 + 32)
 
-      <!-- VENV -->
-      <div id="virtualenv" class="topic-section" style="border-top-color:#38b2ac">
-        <h2 class="text-3xl font-bold">Virtual Environments & pyenv</h2>
-        <p>Isolate dependencies per-project. Use <code>python -m venv .venv</code>, activate script, and keep <code>.venv</code> out of VCS. For per-user interpreters use <code>pyenv</code> and for global CLI tools use <code>pipx</code>.</p>
-        <pre class="language-bash"><code>python -m venv .venv
-source .venv/bin/activate
-pip install -U pip setuptools wheel
-</code></pre>
-      </div>
+# The NumPy way: vectorized operation
+temps_fahrenheit = temps_celsius * 9/5 + 32
 
-      <!-- ASYNCIO -->
-      <div id="async" class="topic-section" style="border-top-color:#ed64a6">
-        <h2 class="text-3xl font-bold">Asyncio & Concurrency</h2>
-        <p>Asyncio provides cooperative concurrency via event loop and coroutines. Use <code>async/await</code> for high-concurrency IO-bound tasks. Understand where threads/processes are still valuable.</p>
-        <pre class="language-python"><code>import asyncio
+print(f"Celsius:    {temps_celsius}")
+print(f"Fahrenheit: {temps_fahrenheit}")
+                        </code></pre>
 
-async def fetch(i):
-    await asyncio.sleep(0.1)
-    return i * i
+            <h3 class="text-2xl font-bold mt-12 mb-3">Pandas: Data Analysis Made Easy</h3>
+            <p class="mb-4">If NumPy is the engine, **Pandas** is the high-tech dashboard. It provides two
+              main data structures, the **Series** and the **DataFrame**, which make working with
+              structured, tabular data (like spreadsheets or SQL tables) incredibly intuitive.</p>
+            <blockquote>
+              **Analogy:** A Pandas **DataFrame** is like an entire spreadsheet. It has rows and columns,
+              and each column has a label. A **Series** is a single column from that spreadsheet.
+            </blockquote>
 
-async def main():
-    res = await asyncio.gather(*(fetch(i) for i in range(10)))
-    print(res)
-
-asyncio.run(main())
-</code></pre>
-        <div class="note">Use <code>anyio</code> or libraries like <code>httpx</code> and <code>asyncpg</code> for async networking and DB access. Prefer FastAPI for async web backends.</div>
-      </div>
-
-      <!-- MEMORY & GIL -->
-      <div id="memory" class="topic-section" style="border-top-color:#e53e3e">
-        <h2 class="text-3xl font-bold">Memory Management & the GIL</h2>
-        <p>CPython uses reference counting + cyclic GC. Understand reference cycles and weakrefs. The Global Interpreter Lock (GIL) prevents multiple native threads from executing Python bytecode simultaneously — limiting CPU-bound multi-threaded scaling on CPython.</p>
-        <pre class="language-python"><code>import weakref
-
-class Node:
-    def __init__(self):
-        self.ref = None
-
-n = Node()
-w = weakref.ref(n)
-print(w())
-</code></pre>
-        <div class="warn">For CPU-bound parallelism use multiprocessing, C extensions, or run worker processes. For IO-bound concurrency prefer asyncio or threads.</div>
-      </div>
-
-      <!-- PERFORMANCE -->
-      <div id="perf" class="topic-section" style="border-top-color:#2f855a">
-        <h2 class="text-3xl font-bold">Performance & Profiling</h2>
-        <ul class="list-disc pl-6 text-gray-700">
-          <li>Measure with <code>cProfile</code>, <code>pyinstrument</code>, or <code>perf</code>. Visualize with SnakeViz or speedscope.</li>
-          <li>Optimize hotspots: algorithmic improvements, reduce allocations, and avoid costly operations in tight loops.</li>
-          <li>Consider PyPy for long-running workloads with many Python-level allocations; use C/Rust extensions for hot CPU code.</li>
-        </ul>
-        <pre class="language-bash"><code>python -m cProfile -o out.prof myapp.py
-snakeviz out.prof
-</code></pre>
-      </div>
-
-      <!-- C EXTENSIONS -->
-      <div id="c-ext" class="topic-section" style="border-top-color:#d69e2e">
-        <h2 class="text-3xl font-bold">C Extensions, Cython & Rust</h2>
-        <p>When Python is not fast enough, implement critical code in C (CPython API), Cython, or Rust (pyo3/maturin). Build wheels for distribution to avoid requiring users to compile native code.</p>
-        <pre class="language-python"><code># Example Cython snippet (pyx)
-# cdef int add(int a, int b):
-#     return a + b
-</code></pre>
-        <div class="note">C extensions bypass the GIL if written carefully and can deliver huge speedups for tight loops or numeric work.</div>
-      </div>
-
-      <!-- TESTING -->
-      <div id="testing" class="topic-section" style="border-top-color:#718096">
-        <h2 class="text-3xl font-bold">Testing with pytest</h2>
-        <p>Use pytest for readable tests, fixtures, and parametric testing. Aim for unit tests, integration tests, and end-to-end tests. Use coverage tools to measure testing gaps.</p>
-        <pre class="language-python"><code>def add(a, b):
-    return a + b
-
-def test_add():
-    assert add(2, 3) == 5
-</code></pre>
-        <div class="ok">Mock external I/O (requests, DB) using <code>pytest-mock</code> or <code>MonkeyPatch</code>. Run tests in CI with fast, reproducible environments.</div>
-      </div>
-
-      <!-- WEB -->
-      <div id="web" class="topic-section" style="border-top-color:#2b6cb0">
-        <h2 class="text-3xl font-bold">Web Backends: FastAPI & WSGI</h2>
-        <p>FastAPI + Uvicorn is the modern async stack: fast, type-friendly, and excellent for building APIs. For traditional WSGI apps, Flask and Django remain solid choices.</p>
-        <pre class="language-python"><code>from fastapi import FastAPI
-
-app = FastAPI()
-
-@app.get("/hello")
-async def hello(name: str = "World"):
-    return {"msg": f"Hello, {name}"}
-</code></pre>
-        <div class="note">Run with <code>uvicorn myapp:app --workers 4</code>. Use Gunicorn+Uvicorn worker class for process workers. Always configure timeouts, limits, and graceful shutdowns.</div>
-      </div>
-
-      <!-- DATA -->
-      <div id="data" class="topic-section" style="border-top-color:#dd6b20">
-        <h2 class="text-3xl font-bold">Data Science: NumPy, Pandas & ML</h2>
-        <p>Python dominates data science. Learn NumPy for vectorized ops, Pandas for tabular data, and libraries like scikit-learn, TensorFlow, and PyTorch for ML. Use environments (conda) for complex native deps.</p>
-        <pre class="language-python"><code>import numpy as np
+            <h4 class="text-xl font-semibold mt-6 mb-2">Reading and Inspecting Data</h4>
+            <p class="mb-4">The most common use of Pandas is to read data from a file (like a CSV) into a
+              DataFrame and start exploring it.</p>
+            <pre><code class="language-python">
 import pandas as pd
+from io import StringIO # Used to simulate a file for this example
 
-a = np.arange(10)
-df = pd.DataFrame({'x': a, 'y': a**2})
-print(df.describe())
-</code></pre>
-        <div class="warn">Avoid using Pandas in tight loops—vectorize. Be conscious of memory when working with large datasets; consider chunked processing or Dask.</div>
-      </div>
+# In a real scenario, you'd use: df = pd.read_csv('your_data.csv')
+csv_data = """Name,Age,City
+Alice,28,New York
+Bob,34,Kharagpur
+Charlie,22,London"""
 
-      <!-- TOOLS -->
-      <div id="tools" class="topic-section" style="border-top-color:#38b2ac">
-        <h2 class="text-3xl font-bold">Tooling: Linting, Formatting, Debugging & CI</h2>
-        <ul class="list-disc pl-6 text-gray-700">
-          <li>Format with <code>black</code>, lint with <code>ruff</code> or <code>flake8</code>.</li>
-          <li>Type-check with <code>mypy</code> or <code>pyright</code>.</li>
-          <li>Debug with <code>pdb</code>, <code>ipdb</code>, or IDE debuggers.</li>
-          <li>CI: run tests, linters, and type checks in GitHub Actions/GitLab CI.</li>
-        </ul>
-        <pre class="language-yaml"><code># Example GitHub Actions snippet
-name: CI
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - run: python -m pip install -U pip
-      - run: pip install -r requirements.txt
-      - run: pytest -q
-</code></pre>
-      </div>
+df = pd.read_csv(StringIO(csv_data))
 
-      <!-- SECURITY -->
-      <div id="security" class="topic-section" style="border-top-color:#c05621">
-        <h2 class="text-3xl font-bold">Security & Best Practices</h2>
-        <p>Sanitize inputs, use prepared statements/ORM parameterization, validate and escape data when rendering, and use secure defaults. Keep dependencies up to date and scan for vulnerabilities (Safety, Dependabot).</p>
-        <ul class="list-disc pl-6 text-gray-700">
-          <li>Never store plaintext secrets in code—use environment variables and secret stores.</li>
-          <li>Use HTTPS, proper cookie flags, and CSRF protection for web apps.</li>
-          <li>Limit user-supplied file uploads and validate file types.</li>
-        </ul>
-      </div>
+# Display the first few rows
+print("--- DataFrame Head ---")
+print(df.head())
 
-      <!-- CHEAT SHEETS -->
-      <div id="cheats" class="topic-section" style="border-top-color:#f56565">
-        <h2 class="text-3xl font-bold">Cheat Sheets & Quick Tips</h2>
-        <h3>Common Built-ins</h3>
-        <p><code>len, range, enumerate, zip, map, filter, sorted, reversed, any, all, sum</code></p>
-        <h3>Virtualenv Shortcuts</h3>
-        <p><code>python -m venv .venv</code>, <code>source .venv/bin/activate</code>, <code>pip install -r requirements.txt</code></p>
-        <h3>Testing Tips</h3>
-        <ul class="list-disc pl-6 text-gray-700">
-          <li>Keep tests small and deterministic.</li>
-          <li>Use fixtures for setup/teardown.</li>
-          <li>Mock external services during unit tests.</li>
-        </ul>
-      </div>
+# Get a concise summary of the DataFrame
+print("\n--- DataFrame Info ---")
+df.info()
+                        </code></pre>
 
-    </section>
-  </main>
+            <h4 class="text-xl font-semibold mt-6 mb-2">Selection and Filtering</h4>
+            <p class="mb-4">Pandas makes it easy to select specific columns or filter rows based on
+              conditions.</p>
+            <pre><code class="language-python">
+# (Continuing from the previous example)
 
-  <footer class="gradient-bg text-white py-8 mt-12">
-    <div class="container mx-auto px-4 text-center">
-      <div class="mb-2 text-lg font-bold">CodeMaster</div>
-      <div>Master Python with comprehensive, practical content and production-ready examples.</div>
-      <div class="mt-2 text-sm opacity-80">© 2025 CodeMaster. All rights reserved.</div>
+# Select a single column (this returns a Series)
+ages = df['Age']
+print("\n--- Ages Column ---")
+print(ages)
+
+# Filter rows based on a condition
+people_over_30 = df[df['Age'] > 30]
+print("\n--- People Over 30 ---")
+print(people_over_30)
+                        </code></pre>
+
+            <div class="mt-12 flex justify-between">
+              <a href="#advanced" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm"><i
+                  class="fas fa-arrow-left mr-2"></i> Prev: Advanced Topics</a>
+              <a href="#specialized" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm">Next:
+                Specialized Topics <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+          </section>
+
+          <section class="topic-section p-8 rounded-2xl" id="specialized" data-aos="fade-up"
+            style="border-top-color: var(--color-specialized);">
+            <h2 class="text-4xl font-bold flex items-center mb-4"><i class="fas fa-star mr-4"
+                style="color: var(--color-specialized);"></i>Specialized Fields & Your Next Adventure
+            </h2>
+            <p class="text-lg mb-6 text-gray-600 dark:text-gray-400">Congratulations on mastering the core
+              concepts! This is where the real fun begins. Python is not just a language; it's a key that
+              unlocks countless exciting fields. Your next step is to pick a path that fascinates you and
+              start building projects.</p>
+
+            <h3 class="text-2xl font-bold mb-3">Choose Your Path</h3>
+            <div class="grid md:grid-cols-2 gap-8 mt-4">
+              <div>
+                <h4 class="text-xl font-semibold mb-2">📊 Data Science & Machine Learning</h4>
+                <p>This is Python's superpower. With libraries like <strong>Pandas</strong> for data
+                  analysis, <strong>Matplotlib</strong> for visualization, and
+                  <strong>Scikit-learn</strong> or <strong>TensorFlow</strong> for building predictive
+                  models, you can analyze massive datasets, uncover hidden trends, and build
+                  artificial intelligence applications.
+                </p>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold mb-2">🌐 Web Development</h4>
+                <p>Build robust, scalable websites and APIs using powerful backend frameworks.
+                  <strong>Django</strong> is a full-featured "batteries-included" framework perfect
+                  for large projects, while <strong>Flask</strong> and <strong>FastAPI</strong> are
+                  lightweight, flexible micro-frameworks ideal for building APIs and smaller web apps.
+                </p>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold mb-2">🤖 Automation & Scripting</h4>
+                <p>Tired of repetitive tasks? Automate them! Use libraries like
+                  <strong>Selenium</strong> to control web browsers, <strong>Beautiful Soup</strong>
+                  to scrape data from websites, or <strong>PyAutoGUI</strong> to automate your
+                  keyboard and mouse. Write scripts to organize files, manage spreadsheets, and make
+                  your computer work for you.
+                </p>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold mb-2">🎮 Game Development</h4>
+                <p>Bring your creative ideas to life by building your own games. <strong>Pygame</strong>
+                  is a fantastic library for learning the fundamentals of 2D game development,
+                  including graphics, sound, and user input, all within the Python ecosystem you now
+                  know.</p>
+              </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mt-12 mb-3">Example: Interacting with an API using `requests`</h3>
+            <p class="mb-4">This example shows how to use the popular `requests` library to fetch data from
+              a public API. First, run `pip install requests` in your terminal.</p>
+            <pre><code class="language-python">
+import requests
+
+# Make an API request to get data about a Pokémon
+response = requests.get("https://pokeapi.co/api/v2/pokemon/pikachu")
+
+if response.status_code == 200:
+    data = response.json() # Parse the JSON response
+    print(f"Name: {data['name'].title()}")
+    print("Abilities:")
+    for ability_info in data['abilities']:
+        print(f"- {ability_info['ability']['name']}")
+else:
+    print(f"Error: Could not fetch data (Status code: {response.status_code})")
+                        </code></pre>
+
+            <div class="mt-12 flex justify-between">
+              <a href="#python-libraries" class="nav-button font-semibold py-2 px-6 rounded-lg shadow-sm"><i
+                  class="fas fa-arrow-left mr-2"></i> Prev: Essential Libraries</a>
+              <span></span>
+            </div>
+          </section>
+        </div>
+
+        <footer class="mt-16 text-center text-sm text-gray-500">
+          <p>&copy; 2025 CodeMaster Pro. All rights reserved.</p>
+        </footer>
+      </main>
     </div>
-  </footer>
+  </div>
 
   <script>
-    // Tab switching for code samples
-    document.querySelectorAll('.code-tabs').forEach(tabGroup => {
-      const btns = tabGroup.querySelectorAll('.tab-btn');
-      btns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          btns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const tabId = btn.getAttribute('data-tab');
-          tabGroup.parentElement.querySelectorAll('.tab-content').forEach(tc => {
-            tc.classList.add('hidden');
+    document.addEventListener('DOMContentLoaded', () => {
+      const topics = [
+        { id: 'basics', title: 'Basics', icon: 'fas fa-rocket', color: 'var(--color-basics)' },
+        { id: 'control-flow', title: 'Control Flow', icon: 'fas fa-code-branch', color: 'var(--color-control-flow)' },
+        { id: 'functions', title: 'Functions', icon: 'fas fa-cogs', color: 'var(--color-functions)' },
+        { id: 'data-structures', title: 'Data Structures', icon: 'fas fa-database', color: 'var(--color-data-structures)' },
+        { id: 'oop', title: 'OOP', icon: 'fas fa-object-group', color: 'var(--color-oop)' },
+        { id: 'advanced', title: 'Advanced Topics', icon: 'fas fa-brain', color: 'var(--color-advanced)' },
+        { id: 'python-libraries', title: 'Essential Libraries', icon: 'fas fa-book', color: 'var(--color-libraries)' },
+        { id: 'specialized', title: 'Specialized Topics', icon: 'fas fa-star', color: 'var(--color-specialized)' }
+      ];
+
+      const sidebarTopics = document.getElementById('sidebar-topics');
+      topics.forEach(topic => {
+        const label = document.createElement('label');
+        label.className = 'flex items-center';
+        label.dataset.topicId = topic.id;
+        label.innerHTML = `
+                    <input type="checkbox" class="progress-checkbox form-checkbox h-5 w-5 rounded text-indigo-500 bg-transparent border-gray-400 focus:ring-0">
+                    <a href="#${topic.id}" class="sidebar-link ml-3 flex-1 p-2 rounded-md">
+                        <i class="${topic.icon} w-6" style="color:${topic.color}"></i>${topic.title}
+                    </a>
+                `;
+        sidebarTopics.appendChild(label);
+      });
+
+      AOS.init({ duration: 500, once: true, delay: 50 });
+
+      const themeToggle = document.getElementById('themeToggle');
+      const sunIcon = themeToggle.querySelector('.fa-sun');
+      const moonIcon = themeToggle.querySelector('.fa-moon');
+      const userTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      const setTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        if (theme === 'dark') {
+          sunIcon.style.display = 'none'; moonIcon.style.display = 'block';
+        } else {
+          sunIcon.style.display = 'block'; moonIcon.style.display = 'none';
+        }
+      };
+
+      setTheme(userTheme ? userTheme : (systemTheme ? 'dark' : 'light'));
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+
+      document.querySelectorAll('pre').forEach(pre => {
+        const button = document.createElement('button');
+        button.className = 'copy-code-btn';
+        button.innerHTML = '<i class="fas fa-copy"></i>';
+        button.title = 'Copy code';
+        pre.appendChild(button);
+
+        button.addEventListener('click', () => {
+          const code = pre.querySelector('code').innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            button.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => { button.innerHTML = '<i class="fas fa-copy"></i>'; }, 2000);
           });
-          const target = tabGroup.parentElement.querySelector('#' + tabId);
-          if (target) target.classList.remove('hidden');
+        });
+      });
+
+      const progressBar = document.getElementById('progressBar');
+      window.addEventListener('scroll', () => {
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / scrollableHeight) * 100;
+        progressBar.style.width = `${scrolled}%`;
+      });
+
+      const sidebarLinks = document.querySelectorAll('.sidebar-link');
+      const sections = document.querySelectorAll('.topic-section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            sidebarLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, { root: null, rootMargin: '0px 0px -50% 0px' });
+      sections.forEach(section => observer.observe(section));
+
+      document.querySelectorAll('.progress-checkbox').forEach(checkbox => {
+        const topicId = checkbox.parentElement.dataset.topicId;
+        if (localStorage.getItem(topicId) === 'true') {
+          checkbox.checked = true;
+          checkbox.parentElement.classList.add('topic-completed');
+        }
+        checkbox.addEventListener('change', (e) => {
+          localStorage.setItem(topicId, e.target.checked);
+          checkbox.parentElement.classList.toggle('topic-completed', e.target.checked);
         });
       });
     });
-
-    // Sidebar active link highlight
-    function setActiveSidebarLink() {
-      const links = document.querySelectorAll('.sidebar a');
-      let fromTop = window.scrollY + 120;
-      let currentId = '';
-      document.querySelectorAll('.topic-section').forEach(section => {
-        if (section.offsetTop <= fromTop) {
-          currentId = section.id;
-        }
-      });
-      links.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + currentId) {
-          link.classList.add('active');
-        }
-      });
-    }
-    window.addEventListener('scroll', setActiveSidebarLink);
-    window.addEventListener('DOMContentLoaded', setActiveSidebarLink);
   </script>
 </body>
+
 </html>

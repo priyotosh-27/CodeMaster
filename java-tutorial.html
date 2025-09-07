@@ -1,667 +1,1536 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Java Tutorial - CodeMaster</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Learning Center | From Zero to Hero</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Prism.js for code highlighting -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
   <style>
-    /* --- Utilities used by this page (kept minimal) --- */
-    .gradient-bg { background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 35%, #fdcb6e 70%, #fd79a8 100%); }
-    .section-bg { background: linear-gradient(180deg, #f8fafc 0%, #fff 100%); }
-    .rainbow-text { background: linear-gradient(90deg, #6c5ce7, #00b894, #fdcb6e, #fd79a8, #00b894, #6c5ce7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: rainbow 5s linear infinite; background-size: 200% 200%; }
-    @keyframes rainbow { 0% {background-position: 0% 50%;} 100% {background-position: 100% 50%;} }
+    /* Custom Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0D1117;
+      color: #C9D1D9;
+    }
 
-    .sidebar { position: sticky; top: 2rem; height: fit-content; background: linear-gradient(135deg, #6c5ce7 60%, #fdcb6e 100%); color: #fff; border-radius: 1.5rem; padding: 2rem 1.5rem; margin-bottom: 2rem; box-shadow: 0 8px 32px 0 rgba(99,102,241,0.10); }
-    .sidebar a { display: block; padding: 0.6rem 1rem; margin-bottom: 0.5rem; border-radius: 9999px; color: #fff; font-weight: 600; text-decoration: none; transition: background 0.2s, color 0.2s; }
-    .sidebar a.active, .sidebar a:hover { background: rgba(255,255,255,0.18); color: #fff; }
+    /* Light mode styles */
+    .light body {
+      background-color: #ffffff;
+      color: #24292f;
+    }
 
-    .topic-section { margin-bottom: 3.5rem; border-radius: 1.5rem; box-shadow: 0 8px 32px 0 rgba(99,102,241,0.10); background: #fff; padding: 2rem; border-top: 6px solid; }
-    .topic-section h2 { margin-bottom: 1rem; }
+    .light .main-header {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-bottom-color: #d0d7de;
+    }
 
-    .code-tabs { margin-top: 1rem; margin-bottom: 1.25rem; }
-    .tab-btn { display: inline-block; padding: 0.5rem 1.2rem; margin-right: 0.5rem; border-radius: 9999px; background: #f3f4f6; color: #333; font-weight: 600; cursor: pointer; border: none; outline: none; transition: background 0.2s; }
-    .tab-btn.active { background: #6c5ce7; color: #fff; }
+    .light #mobile-menu {
+      background-color: #f6f8fa;
+    }
 
-    pre { border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1rem; }
-    .topic-section table { background: #f8fafc; border-radius: 0.75rem; box-shadow: 0 2px 8px 0 rgba(99,102,241,0.06); margin-bottom: 1rem; }
-    .topic-section h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
-    .note { background: #eef2ff; border-left: 4px solid #6366f1; padding: 0.75rem 1rem; border-radius: 0.5rem; }
-    .pro { background: #ecfeff; border-left: 4px solid #06b6d4; padding: 0.75rem 1rem; border-radius: 0.5rem; }
-    .warn { background: #fff7ed; border-left: 4px solid #f59e0b; padding: 0.75rem 1rem; border-radius: 0.5rem; }
-    .ok { background: #ecfdf5; border-left: 4px solid #10b981; padding: 0.75rem 1rem; border-radius: 0.5rem; }
-    .chip { display:inline-block; padding: .25rem .6rem; border-radius:999px; background:#f3f4f6; margin-right:.4rem; font-weight:600; font-size:.8rem; }
-    
+    .light h1,
+    .light h2,
+    .light h3,
+    .light h4,
+    .light a.text-xl,
+    .light strong.text-white,
+    .light strong.text-\[\#F0F6FC\] {
+      color: #24292f;
+    }
 
-    @media (max-width: 1024px) { .sidebar { position: static; margin-bottom: 2rem; } }
+    .light p,
+    .light li,
+    .light .text-\[\#8B949E\] {
+      color: #57606a;
+    }
+
+    .light h2 {
+      border-bottom-color: #d0d7de;
+    }
+
+    .light .card {
+      background-color: #f6f8fa;
+      border-color: #d0d7de;
+    }
+
+    .light .card:hover {
+      box-shadow: 0 8px 24px rgba(140, 149, 159, 0.2);
+    }
+
+    .light .btn-secondary {
+      background-color: #f6f8fa;
+      border-color: #d0d7de;
+      color: #24292f;
+    }
+
+    .light .btn-secondary:hover {
+      background-color: #f0f2f4;
+      border-color: #0969da;
+    }
+
+    .light blockquote {
+      border-left-color: #d0d7de;
+      color: #57606a;
+    }
+
+    .light th,
+    .light td {
+      border-color: #d0d7de;
+    }
+
+    .light th {
+      background-color: #f6f8fa;
+    }
+
+    .light .table-of-contents a {
+      color: #57606a;
+    }
+
+    .light .table-of-contents a:hover,
+    .light .table-of-contents a.active {
+      color: #0969da;
+    }
+
+    .light .toc-indicator {
+      background-color: #0969da;
+    }
+
+    .light #toc-nav {
+      border-left-color: #d0d7de;
+    }
+
+    .light .bg-grid-pattern {
+      background-image: radial-gradient(#d0d7de 1px, transparent 1px);
+    }
+
+    .light .border-\[\#30363D\] {
+      border-color: #d0d7de;
+    }
+
+    .light .text-\[\#58A6FF\] {
+      color: #0969da;
+    }
+
+    .light a {
+      color: #0969da;
+    }
+
+    .light .bg-\[\#161B22\] {
+      background-color: #f6f8fa;
+    }
+
+    .light pre {
+      background-color: #f6f8fa;
+      border-color: #d0d7de;
+    }
+
+    .light .code-header {
+      background-color: #ffffff;
+      border-bottom-color: #d0d7de;
+      color: #57606a;
+    }
+
+    .light .copy-btn {
+      background-color: #f6f8fa;
+      border-color: #d0d7de;
+      color: #57606a;
+    }
+
+    .light .copy-btn:hover {
+      background-color: #f0f2f4;
+      border-color: #0969da;
+    }
+
+    .light footer {
+      border-top-color: #d0d7de;
+    }
+
+    .light ::-webkit-scrollbar-track {
+      background: #ffffff;
+    }
+
+    .light ::-webkit-scrollbar-thumb {
+      background: #d0d7de;
+    }
+
+    .light ::-webkit-scrollbar-thumb:hover {
+      background: #0969da;
+    }
+
+    #theme-toggle {
+      color: #8B949E;
+    }
+
+    #theme-toggle:hover {
+      background-color: #30363D;
+    }
+
+    .light #theme-toggle {
+      color: #57606a;
+    }
+
+    .light #theme-toggle:hover {
+      background-color: #f0f2f4;
+    }
+
+    .light #mobile-menu-button:hover {
+      background-color: #f0f2f4;
+    }
+
+    /* Syntax Highlighting-like styles for code blocks */
+    pre {
+      font-family: 'JetBrains Mono', monospace;
+      background-color: #161B22;
+      border: 1px solid #30363D;
+      border-radius: 8px;
+      padding: 1.25rem;
+      overflow-x: auto;
+      position: relative;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .code-header {
+      background-color: #0d1117;
+      border-bottom: 1px solid #30363d;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      color: #8b949e;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: #21262D;
+      border: 1px solid #30363D;
+      color: #C9D1D9;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .copy-btn:hover {
+      background-color: #30363D;
+      border-color: #58A6FF;
+    }
+
+    .copy-btn.copied {
+      background-color: #238636;
+      color: white;
+    }
+
+    /* Code content styling */
+    .code-content .keyword {
+      color: #FF7B72;
+    }
+
+    .code-content .type {
+      color: #79C0FF;
+    }
+
+    .code-content .class-name {
+      color: #FFA657;
+    }
+
+    .code-content .method {
+      color: #D2A8FF;
+    }
+
+    .code-content .string {
+      color: #A5D6FF;
+    }
+
+    .code-content .comment {
+      color: #8B949E;
+    }
+
+    .code-content .number {
+      color: #79C0FF;
+    }
+
+    .code-content .annotation {
+      color: #D2A8FF;
+    }
+
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: #F0F6FC;
+      font-weight: 700;
+    }
+
+    h2 {
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 0.5rem;
+      margin-top: 3rem;
+    }
+
+    h3 {
+      margin-top: 2rem;
+    }
+
+    a {
+      color: #58A6FF;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .highlight {
+      background-color: rgba(88, 166, 255, 0.1);
+      color: #79c0ff;
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .main-header {
+      background-color: rgba(13, 17, 23, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid #30363D;
+    }
+
+    .table-of-contents a {
+      color: #8B949E;
+      transition: all 0.2s ease;
+    }
+
+    .table-of-contents a:hover,
+    .table-of-contents a.active {
+      color: #58A6FF;
+      transform: translateX(4px);
+    }
+
+    .toc-indicator {
+      position: absolute;
+      left: 0;
+      width: 2px;
+      height: 1.5rem;
+      /* Match line-height */
+      background-color: #58A6FF;
+      transition: top 0.2s ease-in-out;
+      border-radius: 1px;
+    }
+
+    .card {
+      background-color: #161B22;
+      border: 1px solid #30363D;
+      border-radius: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-primary {
+      background-color: #238636;
+      color: white;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #2EA043;
+    }
+
+    .btn-secondary {
+      background-color: #21262d;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: #30363d;
+      border-color: #58a6ff;
+    }
+
+    blockquote {
+      border-left: 4px solid #30363D;
+      padding-left: 1rem;
+      color: #8B949E;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    th,
+    td {
+      border: 1px solid #30363D;
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #161B22;
+      font-weight: 600;
+    }
+
+    /* Custom scrollbar for better aesthetics */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #161B22;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #30363D;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #58A6FF;
+    }
   </style>
 </head>
-<body class="min-h-screen section-bg">
 
-  <!-- Navbar -->
-  <nav class="gradient-bg text-white shadow-lg">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <i class="fas fa-mug-hot text-2xl"></i>
-        <span class="text-xl font-bold"> CodeMaster</span>
+<body class="antialiased">
+
+  <!-- Header -->
+  <header id="header" class="main-header sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" class="text-[#58A6FF]">
+            <path fill="currentColor"
+              d="M168 88a8 8 0 0 1-8 8h-24v24a8 8 0 0 1-16 0v-24h-24a8 8 0 0 1 0-16h24V72a8 8 0 0 1 16 0v16h24a8 8 0 0 1 8 8M184 24H72a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h112a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m0 16v16H72V40Zm-16 176H88a16 16 0 0 1-16-15.82V72h112v144.18A16 16 0 0 1 168 232m-80-64a8 8 0 0 1 8-8h56a8 8 0 0 1 0 16H96a8 8 0 0 1-8-8m8 24a8 8 0 0 0 0 16h32a8 8 0 0 0 0-16Z" />
+          </svg>
+          <a href="#hero" class="text-xl font-bold text-white">Java Learning Center</a>
+        </div>
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <a href="#introduction" class="hover:text-[#58A6FF] transition-colors">Introduction</a>
+          <a href="#core-concepts" class="hover:text-[#58A6FF] transition-colors">Core Concepts</a>
+          <a href="#oop" class="hover:text-[#58A6FF] transition-colors">OOP</a>
+          <a href="#advanced" class="hover:text-[#58A6FF] transition-colors">Advanced</a>
+          <a href="#frameworks" class="hover:text-[#58A6FF] transition-colors">Frameworks</a>
+          <a href="#resources" class="hover:text-[#58A6FF] transition-colors">Resources</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" type="button" class="p-2.5 rounded-lg text-sm">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 12.02l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+          <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-[#30363D]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
       </div>
-      <a href="index.html" class="hover:text-gray-200 font-semibold flex items-center">
-        <i class="fas fa-arrow-left mr-2"></i>Back to Home
-      </a>
     </div>
-  </nav>
-
-  <header class="py-12 bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 text-white shadow-xl">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-5xl font-extrabold mb-4 rainbow-text">Java Mastery Guide</h1>
-      <p class="text-xl mb-6 font-medium">Crystal-clear theory, modern best practices, and production-grade examples.<br>Built to take you from beginner to expert.</p>
-      <div class="flex flex-wrap gap-2 justify-center">
-        <span class="chip">Java 8 → 21+</span>
-        <span class="chip">OOP</span>
-        <span class="chip">Generics</span>
-        <span class="chip">Streams</span>
-        <span class="chip">Concurrency</span>
-        <span class="chip">JVM & GC</span>
-        <span class="chip">Records & Sealed</span>
-        <span class="chip">HTTP Client</span>
-        <span class="chip">Security</span>
-      </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#161B22] px-4 pt-2 pb-4 space-y-2">
+      <a href="#introduction" class="block py-2 hover:text-[#58A6FF] transition-colors">Introduction</a>
+      <a href="#core-concepts" class="block py-2 hover:text-[#58A6FF] transition-colors">Core Concepts</a>
+      <a href="#oop" class="block py-2 hover:text-[#58A6FF] transition-colors">OOP</a>
+      <a href="#advanced" class="block py-2 hover:text-[#58A6FF] transition-colors">Advanced</a>
+      <a href="#frameworks" class="block py-2 hover:text-[#58A6FF] transition-colors">Frameworks</a>
+      <a href="#resources" class="block py-2 hover:text-[#58A6FF] transition-colors">Resources</a>
     </div>
   </header>
 
-  <main class="container mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar w-full lg:w-1/4">
-      <div class="mb-4 text-xl font-bold">Topics</div>
-      <a href="#intro" class="sidebar-link"><i class="fas fa-lightbulb mr-2"></i>Intro & Tooling</a>
-      <a href="#syntax" class="sidebar-link"><i class="fas fa-code mr-2"></i>Syntax & Program Structure</a>
-      <a href="#types" class="sidebar-link"><i class="fas fa-shapes mr-2"></i>Types & Variables</a>
-      <a href="#operators" class="sidebar-link"><i class="fas fa-equals mr-2"></i>Operators & Control Flow</a>
-      <a href="#methods" class="sidebar-link"><i class="fas fa-cubes mr-2"></i>Methods & Parameters</a>
-      <a href="#oop" class="sidebar-link"><i class="fas fa-diagram-project mr-2"></i>OOP Core</a>
-      <a href="#classes" class="sidebar-link"><i class="fas fa-cube mr-2"></i>Classes, Records, Sealed</a>
-      <a href="#generics" class="sidebar-link"><i class="fas fa-angle-double-right mr-2"></i>Generics</a>
-      <a href="#collections" class="sidebar-link"><i class="fas fa-layer-group mr-2"></i>Collections Framework</a>
-      <a href="#streams" class="sidebar-link"><i class="fas fa-water mr-2"></i>Streams & Lambdas</a>
-      <a href="#exceptions" class="sidebar-link"><i class="fas fa-triangle-exclamation mr-2"></i>Exceptions</a>
-      <a href="#io" class="sidebar-link"><i class="fas fa-file-lines mr-2"></i>I/O & NIO.2</a>
-      <a href="#concurrency" class="sidebar-link"><i class="fas fa-bolt mr-2"></i>Concurrency & Virtual Threads</a>
-      <a href="#jvm" class="sidebar-link"><i class="fas fa-microchip mr-2"></i>JVM Internals & GC</a>
-      <a href="#modules" class="sidebar-link"><i class="fas fa-puzzle-piece mr-2"></i>Modules & Classloading</a>
-      <a href="#time" class="sidebar-link"><i class="fas fa-clock mr-2"></i>Date & Time</a>
-      <a href="#network" class="sidebar-link"><i class="fas fa-network-wired mr-2"></i>Networking & HTTP</a>
-      <a href="#jdbc" class="sidebar-link"><i class="fas fa-database mr-2"></i>JDBC</a>
-      <a href="#reflection" class="sidebar-link"><i class="fas fa-magnifying-glass mr-2"></i>Reflection & Annotations</a>
-      <a href="#security" class="sidebar-link"><i class="fas fa-shield-halved mr-2"></i>Security & Crypto</a>
-      <a href="#testing" class="sidebar-link"><i class="fas fa-vial mr-2"></i>Testing (JUnit 5)</a>
-      <a href="#build" class="sidebar-link"><i class="fas fa-hammer mr-2"></i>Build & Packaging</a>
-      <a href="#perf" class="sidebar-link"><i class="fas fa-gauge-high mr-2"></i>Performance & Tuning</a>
-      <a href="#cheats" class="sidebar-link"><i class="fas fa-list-check mr-2"></i>Cheat Sheets</a>
-    </aside>
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 mt-8">
+    <div class="flex flex-col lg:flex-row gap-8">
 
-    <!-- Content -->
-    <section class="w-full lg:w-3/4">
+      <!-- Table of Contents (Sticky) -->
+      <aside class="hidden lg:block w-64 flex-shrink-0">
+        <div id="toc" class="sticky top-24">
+          <h3 class="font-semibold text-lg mb-4 text-white">On this page</h3>
+          <nav id="toc-nav"
+            class="relative table-of-contents flex flex-col space-y-3 text-sm border-l border-[#30363D] pl-4">
+            <!-- Links will be dynamically inserted here -->
+          </nav>
+        </div>
+      </aside>
 
-      <!-- INTRO -->
-      <div id="intro" class="topic-section" style="border-top-color:#6c5ce7">
-        <h2 class="text-3xl font-bold">Intro & Tooling</h2>
-        <p class="text-gray-700">Java is a compiled, garbage-collected, strongly-typed, object-oriented language that runs on the JVM (Java Virtual Machine). Write once, run anywhere — thanks to bytecode portability. In modern Java (8→21+), you get lambdas, streams, records, sealed types, pattern matching, switch expressions, text blocks, and virtual threads.</p>
-        <div class="grid md:grid-cols-2 gap-4 mt-4">
-          <div class="ok">
-            <strong>Install:</strong> Use the latest LTS (Java 21+) from a vendor like Eclipse Temurin or Oracle. Verify with <code>java -version</code> and <code>javac -version</code>.
+      <!-- Page Content -->
+      <div class="flex-grow w-full lg:w-0">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center py-16 md:py-24">
+          <div class="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"
+            style="background-image: radial-gradient(#30363D 1px, transparent 1px); background-size: 20px 20px;">
           </div>
-          <div class="pro">
-            <strong>IDE:</strong> IntelliJ IDEA (Community/Ultimate) or VS Code with Java extensions. Enable code inspections and formatting.
+          <div class="relative">
+            <span
+              class="inline-block bg-[#161B22] border border-[#30363D] text-[#58A6FF] px-4 py-1 rounded-full text-sm font-semibold mb-4">
+              The Definitive Guide to Java Programming
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+              Master Java, from Syntax to Scalability.</h1>
+            <p class="max-w-3xl mx-auto text-lg md:text-xl text-[#8B949E] mb-10">
+              Dive into the world's most versatile programming language. Whether you're building robust
+              enterprise applications, dynamic web services, or powerful mobile apps, your journey starts
+              here.
+            </p>
+            <div class="flex justify-center gap-4">
+              <a href="#introduction" class="btn-primary font-semibold px-8 py-3 rounded-lg text-base">Start Learning
+                Now</a>
+              <a href="#core-concepts" class="btn-secondary font-semibold px-8 py-3 rounded-lg text-base">Explore Core
+                Concepts</a>
+            </div>
           </div>
-        </div>
-        <h3 class="text-2xl font-semibold">Your First Program</h3>
-        <div class="code-tabs">
-          <button class="tab-btn active" data-tab="intro-java">Java</button>
-        </div>
-        <pre id="intro-java" class="tab-content language-java"><code class="language-java">public class Hello {
-  public static void main(String[] args) {
-    System.out.println("Hello, Java!");
-  }
+        </section>
+
+        <!-- Main Content Sections -->
+        <div id="content-sections">
+
+          <!-- Introduction Section -->
+          <section id="introduction" class="content-section py-8">
+            <h2 class="text-3xl font-bold tracking-tight">Introduction to Java</h2>
+            <p class="mt-4 text-lg text-[#8B949E]">Get acquainted with the fundamentals of Java, its
+              history, and how to set up your development environment to start coding.</p>
+
+            <h3 class="text-2xl font-semibold">What is Java?</h3>
+            <p class="mt-3 leading-relaxed">
+              Java is a high-level, class-based, object-oriented programming language that is designed to
+              have as few implementation dependencies as possible. It is a general-purpose programming
+              language intended to let application developers <strong class="text-[#F0F6FC]">"write once,
+                run anywhere" (WORA)</strong>, meaning that compiled Java code can run on all platforms
+              that support Java without the need for recompilation. Java applications are typically
+              compiled to bytecode that can run on any Java Virtual Machine (JVM) regardless of the
+              underlying computer architecture.
+            </p>
+
+            <h3 class="text-2xl font-semibold">Why Learn Java?</h3>
+            <p class="mt-3 leading-relaxed">
+              Java has been a mainstay in the software development world for decades, and for good reason.
+              Here are a few key advantages:
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">Platform Independent</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">Thanks to the JVM, Java code can run on any
+                  device, from servers and desktops to mobile phones, making it incredibly versatile.
+                </p>
+              </div>
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">Object-Oriented</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">Java's strict OOP paradigm helps you build
+                  modular, reusable, and maintainable code, which is essential for large-scale
+                  applications.</p>
+              </div>
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">Rich API & Ecosystem</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">Java has a massive standard library (API) and a
+                  rich ecosystem of frameworks like Spring and Hibernate, accelerating development.
+                </p>
+              </div>
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">High Demand in Industry</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">Java is a top language for enterprise-level
+                  applications, big data, Android development, and scientific computing, ensuring
+                  strong job prospects.</p>
+              </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold">Setting up Your Environment</h3>
+            <p class="mt-3 leading-relaxed">
+              To start writing Java, you need two main things: the <strong class="text-[#F0F6FC]">Java
+                Development Kit (JDK)</strong> and an <strong class="text-[#F0F6FC]">Integrated
+                Development Environment (IDE)</strong>. The JDK includes the Java Runtime Environment
+              (JRE) for running code and the compiler (<code class="highlight">javac</code>) for compiling
+              it.
+            </p>
+
+            <h4 class="text-xl font-medium mt-4">1. Install the JDK</h4>
+            <p class="mt-2">We recommend installing an LTS (Long-Term Support) version like Java 17 or Java
+              21. You can download it from <a href="https://www.oracle.com/java/technologies/downloads/"
+                target="_blank">Oracle</a> or use an open-source distribution like <a href="https://adoptium.net/"
+                target="_blank">Eclipse Adoptium</a>.</p>
+
+            <h4 class="text-xl font-medium mt-4">2. Choose an IDE</h4>
+            <p class="mt-2">An IDE makes coding much easier with features like syntax highlighting, code
+              completion, and debugging tools. Popular choices include:</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+              <li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> (with
+                the Extension Pack for Java) - Lightweight and versatile.</li>
+              <li><a href="https://www.jetbrains.com/idea/" target="_blank">IntelliJ IDEA</a> (Community
+                Edition is free) - Powerful and feature-rich.</li>
+              <li><a href="https://www.eclipse.org/downloads/" target="_blank">Eclipse IDE for Java
+                  Developers</a> - A classic and robust choice.</li>
+            </ul>
+
+            <h4 class="text-xl font-medium mt-4">3. Verify Your Installation</h4>
+            <p class="mt-2">Once installed, open your terminal or command prompt and run the following
+              commands to ensure everything is set up correctly.</p>
+
+            <div class="code-container mt-4">
+              <div class="code-header">Terminal</div>
+              <pre><code class="language-bash code-content"><span class="comment"># Check Java compiler version</span>
+$ javac -version
+javac 21.0.1
+
+<span class="comment"># Check Java runtime version</span>
+$ java -version
+java version "21.0.1" 2023-10-17 LTS
+Java(TM) SE Runtime Environment (build 21.0.1+12-LTS-29)
+Java HotSpot(TM) 64-Bit Server VM (build 21.0.1+12-LTS-29, mixed mode, sharing)
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+          </section>
+
+          <!-- Core Concepts Section -->
+          <section id="core-concepts" class="content-section py-8">
+            <h2 class="text-3xl font-bold tracking-tight">Java Core Concepts</h2>
+            <p class="mt-4 text-lg text-[#8B949E]">Master the building blocks of the Java language. These
+              fundamental concepts are essential for writing any Java program.</p>
+
+            <h3 class="text-2xl font-semibold">Your First Java Program: "Hello, World!"</h3>
+            <p class="mt-3 leading-relaxed">
+              Let's start with the classic "Hello, World!" program. This simple program will introduce you
+              to the basic syntax and structure of a Java application.
+            </p>
+            <div class="code-container mt-4">
+              <div class="code-header">HelloWorld.java</div>
+              <pre><code class="language-java code-content"><span class="comment">// This is a single-line comment. Every Java program must have a class definition.</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">HelloWorld</span> {
+
+    <span class="comment">/* * This is a multi-line comment. The main method is the entry point
+     * of any Java application. The JVM starts execution from here.
+     */</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// System.out.println() is used to print text to the console.</span>
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Hello, World!"</span>);
+    }
 }
-// Compile: javac Hello.java
-// Run:     java Hello</code></pre>
-        <div class="note">Java source (<code>.java</code>) compiles to bytecode (<code>.class</code>). The JVM loads bytecode, optionally JIT-compiles hot methods to native code, and executes.</div>
-      </div>
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+            <p class="mt-3 leading-relaxed">
+              To run this code:
+              <br>1. Save it as a file named <code class="highlight">HelloWorld.java</code>.
+              <br>2. Open your terminal, navigate to the directory, and compile it: <code
+                class="highlight">javac HelloWorld.java</code>.
+              <br>3. This creates a <code class="highlight">HelloWorld.class</code> file. Now, run it:
+              <code class="highlight">java HelloWorld</code>.
+              <br>4. You should see "Hello, World!" printed to your console.
+            </p>
 
-      <!-- SYNTAX -->
-      <div id="syntax" class="topic-section" style="border-top-color:#00b894">
-        <h2 class="text-3xl font-bold">Syntax & Program Structure</h2>
-        <p>Every Java application starts at <code>public static void main(String[] args)</code>. Source files contain at most one <code>public</code> top-level class with the same filename. Since Java 11, you can also run single-file source-code programs directly: <code>java Hello.java</code>.</p>
-        <h3>Packages & Imports</h3>
-        <pre class="language-java"><code>package com.codemaster.tutorial; // must be first non-comment line
+            <h3 class="text-2xl font-semibold">Variables and Data Types</h3>
+            <p class="mt-3 leading-relaxed">
+              Variables are containers for storing data values. In Java, each variable must have a
+              specified data type. There are two main groups of data types:
+            </p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+              <li><strong class="text-white">Primitive Types:</strong> These are the most basic data types
+                and are predefined by the language.</li>
+              <li><strong class="text-white">Reference/Object Types:</strong> These refer to objects and
+                are created using defined classes. Examples include <code class="highlight">String</code>, <code
+                  class="highlight">Array</code>, and any
+                custom classes you create.</li>
+            </ul>
 
-import java.util.*; // import types
-
-public class App { /* ... */ }
-</code></pre>
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <h3>Access Modifiers</h3>
-            <table class="w-full text-left">
-              <thead><tr class="bg-gray-100"><th class="p-2">Modifier</th><th class="p-2">Class</th><th class="p-2">Package</th><th class="p-2">Subclass</th><th class="p-2">World</th></tr></thead>
+            <h4 class="text-xl font-medium mt-4">Primitive Data Types</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Size</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
               <tbody>
-                <tr><td class="p-2">public</td><td class="p-2">✔</td><td class="p-2">✔</td><td class="p-2">✔</td><td class="p-2">✔</td></tr>
-                <tr><td class="p-2">protected</td><td class="p-2">✔</td><td class="p-2">✔</td><td class="p-2">✔</td><td class="p-2">✖</td></tr>
-                <tr><td class="p-2">(package-private)</td><td class="p-2">✔</td><td class="p-2">✔</td><td class="p-2">✖</td><td class="p-2">✖</td></tr>
-                <tr><td class="p-2">private</td><td class="p-2">✔</td><td class="p-2">✖</td><td class="p-2">✖</td><td class="p-2">✖</td></tr>
+                <tr>
+                  <td><code class="highlight">byte</code></td>
+                  <td>1 byte</td>
+                  <td>Stores whole numbers from -128 to 127</td>
+                </tr>
+                <tr>
+                  <td><code class="highlight">short</code></td>
+                  <td>2 bytes</td>
+                  <td>Stores whole numbers from -32,768 to 32,767</td>
+                </tr>
+                <tr>
+                  <td><code class="highlight">int</code></td>
+                  <td>4 bytes</td>
+                  <td>Stores whole numbers from -2,147,483,648 to 2,147,483,647 (most common for
+                    integers)</td>
+                </tr>
+                <tr>
+                  <td><code class="highlight">long</code></td>
+                  <td>8 bytes</td>
+                  <td>Stores very large whole numbers. Must end with an 'L' (e.g., <code
+                      class="highlight">12345L</code>).</td>
+                </tr>
+                <tr>
+                  <td><code class="highlight">float</code></td>
+                  <td>4 bytes</td>
+                  <td>Stores fractional numbers. Sufficient for 6-7 decimal digits. Must end with an
+                    'f' (e.g., <code class="highlight">3.14f</code>).</td>
+                </tr>
+                <tr>
+                  <td><code class="highlight">double</code></td>
+                  <td>8 bytes</td>
+                  <td>Stores fractional numbers. Sufficient for ~15 decimal digits (most common for
+                    decimals).</td>
+                </tr>
+                <tr>
+                  <td><code class="highlight">boolean</code></td>
+                  <td>1 bit</td>
+                  <td>Stores true or false values.</td>
+                </tr>
+                <tr>
+                  <td><code class="highlight">char</code></td>
+                  <td>2 bytes</td>
+                  <td>Stores a single character/letter or ASCII values. Surrounded by single quotes
+                    (e.g., <code class="highlight">'A'</code>).</td>
+                </tr>
               </tbody>
             </table>
-          </div>
-          <div>
-            <h3>Keywords You’ll Meet Early</h3>
-            <p><code>class</code>, <code>interface</code>, <code>enum</code>, <code>extends</code>, <code>implements</code>, <code>static</code>, <code>final</code>, <code>abstract</code>, <code>super</code>, <code>this</code>.</p>
-          </div>
-        </div>
-      </div>
 
-      <!-- TYPES -->
-      <div id="types" class="topic-section" style="border-top-color:#fdcb6e">
-        <h2 class="text-3xl font-bold">Types & Variables</h2>
-        <p>Java has <strong>primitive</strong> types (stored by value) and <strong>reference</strong> types (objects/arrays). Primitives live on the stack or within objects; references point to heap objects.</p>
-        <h3>Primitives</h3>
-        <table class="w-full text-left">
-          <thead><tr class="bg-gray-100"><th class="p-2">Type</th><th class="p-2">Bits</th><th class="p-2">Range/Notes</th></tr></thead>
-          <tbody>
-            <tr><td class="p-2">byte</td><td class="p-2">8</td><td class="p-2">-128..127</td></tr>
-            <tr><td class="p-2">short</td><td class="p-2">16</td><td class="p-2">-32,768..32,767</td></tr>
-            <tr><td class="p-2">int</td><td class="p-2">32</td><td class="p-2">~±2.1B</td></tr>
-            <tr><td class="p-2">long</td><td class="p-2">64</td><td class="p-2">~±9.22e18 (suffix <code>L</code>)</td></tr>
-            <tr><td class="p-2">float</td><td class="p-2">32</td><td class="p-2">IEEE 754 (suffix <code>f</code>)</td></tr>
-            <tr><td class="p-2">double</td><td class="p-2">64</td><td class="p-2">IEEE 754 (default)</td></tr>
-            <tr><td class="p-2">char</td><td class="p-2">16</td><td class="p-2">UTF-16 code unit</td></tr>
-            <tr><td class="p-2">boolean</td><td class="p-2">JVM dependent</td><td class="p-2">true/false</td></tr>
-          </tbody>
-        </table>
-        <div class="warn">Use <code>BigInteger</code> / <code>BigDecimal</code> for precise big numbers (money, crypto).</div>
-        <h3>Reference Types</h3>
-        <pre class="language-java"><code>String s = "Hello";        // immutable
-int[] a = {1,2,3};          // array
-List&lt;String&gt; list = new ArrayList<>(); // object on heap</code></pre>
-        <h3>Type Inference (var)</h3>
-        <pre class="language-java"><code>var map = new HashMap&lt;String, Integer&gt;(); // local inference (Java 10+)</code></pre>
-      </div>
-
-      <!-- OPERATORS & CONTROL FLOW -->
-      <div id="operators" class="topic-section" style="border-top-color:#fd79a8">
-        <h2 class="text-3xl font-bold">Operators & Control Flow</h2>
-        <p>Standard arithmetic, logical, and bitwise operators apply. Short-circuiting operators <code>&&</code> and <code>||</code> evaluate lazily. Ternary <code>?:</code> returns a value.</p>
-        <h3>If/Else, Loops, Switch</h3>
-        <pre class="language-java"><code>for (int i = 0; i &lt; 3; i++) {}
-while (condition) {}
-do { } while (condition);
-
-// Switch expression (Java 14+)
-int score = 95;
-String grade = switch (score/10) {
-  case 10,9 -> "A";
-  case 8 -> "B";
-  case 7 -> "C";
-  case 6 -> "D";
-  default -> "F";
-};</code></pre>
-        <div class="note">Enhanced switch is an expression and can <em>yield</em> a value. Use arrows, not fall-through.</div>
-      </div>
-
-      <!-- METHODS -->
-      <div id="methods" class="topic-section" style="border-top-color:#00bcd4">
-        <h2 class="text-3xl font-bold">Methods & Parameters</h2>
-        <p>Java passes arguments by value. For objects, the <em>reference</em> is copied, so method can mutate the object but not rebind caller’s reference.</p>
-        <pre class="language-java"><code>class Box { int v; }
-
-static void set(Box b, int x) { b.v = x; }
-static void rebind(Box b) { b = new Box(); b.v = 99; }
-
-public static void main(String[] args) {
-  Box b = new Box();
-  set(b, 7);          // b.v == 7
-  rebind(b);          // caller still points to original box (not 99)
-}</code></pre>
-        <h3>Overloading, Varargs, Optional-like</h3>
-        <pre class="language-java"><code>int sum(int a, int b) { return a + b; }
-int sum(int a, int b, int c) { return a + b + c; }  // overload
-int sum(int... xs) { return Arrays.stream(xs).sum(); } // varargs
-Optional&lt;String&gt; maybe = Optional.of("value");</code></pre>
-      </div>
-
-      <!-- OOP CORE -->
-      <div id="oop" class="topic-section" style="border-top-color:#8e44ad">
-        <h2 class="text-3xl font-bold">OOP Core</h2>
-        <p>Java’s OOP pillars: <strong>Encapsulation</strong> (hide internals), <strong>Abstraction</strong> (focus on essentials), <strong>Inheritance</strong> (is-a), and <strong>Polymorphism</strong> (many forms via dynamic dispatch).</p>
-        <pre class="language-java"><code>abstract class Shape { abstract double area(); }
-class Circle extends Shape {
-  private final double r;
-  Circle(double r) { this.r = r; }
-  @Override double area() { return Math.PI * r * r; }
-}
-class Rect extends Shape {
-  private final double w,h; Rect(double w,double h){this.w=w;this.h=h;}
-  @Override double area() { return w*h; }
-}
-
-// Polymorphism in action
-List&lt;Shape&gt; shapes = List.of(new Circle(2), new Rect(3,4));
-double total = shapes.stream().mapToDouble(Shape::area).sum();</code></pre>
-        <div class="warn">Favor composition over inheritance. Keep classes small, cohesive, and immutable where possible.</div>
-      </div>
-
-      <!-- CLASSES, RECORDS, SEALED -->
-      <div id="classes" class="topic-section" style="border-top-color:#2ecc71">
-        <h2 class="text-3xl font-bold">Classes, Records, Sealed Types</h2>
-        <h3>Classes & Immutability</h3>
-        <pre class="language-java"><code>public final class Money {
-  private final long cents;
-  private Money(long cents) { this.cents = cents; }
-  public static Money of(long cents) { return new Money(cents); }
-  public Money add(Money other) { return new Money(this.cents + other.cents); }
-  public long cents() { return cents; }
-}</code></pre>
-        <h3>Records (Java 16+)</h3>
-        <pre class="language-java"><code>public record Point(int x, int y) { }
-Point p = new Point(3,4);
-int x = p.x(); // accessor</code></pre>
-        <h3>Sealed Hierarchies (Java 17+)</h3>
-        <pre class="language-java"><code>sealed interface Expr permits Lit, Add { }
-record Lit(int v) implements Expr { }
-record Add(Expr a, Expr b) implements Expr { }
-
-static int eval(Expr e) {
-  return switch (e) {
-    case Lit(int v) -> v;            // pattern switch
-    case Add(var a, var b) -> eval(a) + eval(b);
-  };
-}</code></pre>
-      </div>
-
-      <!-- GENERICS -->
-      <div id="generics" class="topic-section" style="border-top-color:#1abc9c">
-        <h2 class="text-3xl font-bold">Generics</h2>
-        <p>Generics enable type-safe collections and APIs. Java uses <em>type erasure</em> at runtime; generic type info is mostly compile-time only.</p>
-        <h3>Basics & Wildcards</h3>
-        <pre class="language-java"><code>List&lt;String&gt; names = new ArrayList<>();
-
-// PECS: Producer Extends, Consumer Super
-void copyAll(List&lt;? extends Number&gt; src, List&lt;? super Number&gt; dst) {
-  for (Number n : src) dst.add(n);
-}
-
-// Bounded type parameters
-typedef interface Repo&lt;T extends Entity&gt; { T findById(String id); }</code></pre>
-        <div class="note">You cannot create <code>new T[]</code> or <code>new ArrayList&lt;T&gt;()</code> with a type variable directly; use factories or pass <code>Class&lt;T&gt;</code>.</div>
-      </div>
-
-      <!-- COLLECTIONS -->
-      <div id="collections" class="topic-section" style="border-top-color:#3498db">
-        <h2 class="text-3xl font-bold">Collections Framework</h2>
-        <p>Core interfaces: <code>Collection</code>, <code>List</code>, <code>Set</code>, <code>Map</code>, <code>Queue</code>, and their concurrent variants. Choose by access pattern and constraints.</p>
-        <h3>Choosing the Right Collection</h3>
-        <table class="w-full text-left">
-          <thead><tr class="bg-gray-100"><th class="p-2">Type</th><th class="p-2">Impl</th><th class="p-2">Strengths</th><th class="p-2">Notes</th></tr></thead>
-          <tbody>
-            <tr><td class="p-2">List</td><td class="p-2">ArrayList</td><td class="p-2">Fast random access</td><td class="p-2">Amortized append O(1)</td></tr>
-            <tr><td class="p-2">List</td><td class="p-2">LinkedList</td><td class="p-2">Frequent head/tail ops</td><td class="p-2">Poor random access</td></tr>
-            <tr><td class="p-2">Set</td><td class="p-2">HashSet</td><td class="p-2">O(1) average ops</td><td class="p-2">Needs good <code>hashCode</code></td></tr>
-            <tr><td class="p-2">Set</td><td class="p-2">TreeSet</td><td class="p-2">Sorted</td><td class="p-2">O(log n)</td></tr>
-            <tr><td class="p-2">Map</td><td class="p-2">HashMap</td><td class="p-2">General purpose</td><td class="p-2">Keys must be stable</td></tr>
-            <tr><td class="p-2">Map</td><td class="p-2">LinkedHashMap</td><td class="p-2">Predictable iteration</td><td class="p-2">LRU via access-order</td></tr>
-            <tr><td class="p-2">Map</td><td class="p-2">TreeMap</td><td class="p-2">Sorted keys</td><td class="p-2">Range queries</td></tr>
-            <tr><td class="p-2">Concurrent</td><td class="p-2">ConcurrentHashMap</td><td class="p-2">High concurrency</td><td class="p-2">Segmented locking</td></tr>
-          </tbody>
-        </table>
-        <pre class="language-java"><code>// Equals & hashCode contract for map/set keys
-final class User {
-  private final String id;
-  private final String name;
-  User(String id, String name) { this.id=id; this.name=name; }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof User u)) return false;
-    return Objects.equals(id, u.id);
-  }
-  @Override public int hashCode() { return Objects.hash(id); }
-}</code></pre>
-      </div>
-
-      <!-- STREAMS & LAMBDAS -->
-      <div id="streams" class="topic-section" style="border-top-color:#9b59b6">
-        <h2 class="text-3xl font-bold">Streams & Lambdas</h2>
-        <p>Streams provide functional-style processing over sequences. Distinguish <em>intermediate</em> (map/filter) vs <em>terminal</em> (collect, reduce) operations. Streams are lazy.</p>
-        <pre class="language-java"><code>List&lt;String&gt; names = List.of("Ada","Bob","Chen","Diya");
-Map&lt;Integer, List&lt;String&gt;&gt; byLen = names.stream()
-    .filter(n -&gt; n.compareTo("C") &gt; 0)
-    .map(String::toUpperCase)
-    .collect(Collectors.groupingBy(String::length));
-
-// Reduce
-int sum = IntStream.rangeClosed(1, 100).reduce(0, Integer::sum);
-
-// Parallel streams (use sparingly for CPU-bound, large data)
-long count = names.parallelStream().count();</code></pre>
-        <div class="warn">Do not use parallel streams for IO-bound tasks. Prefer <code>CompletableFuture</code> or virtual threads.</div>
-      </div>
-
-      <!-- EXCEPTIONS -->
-      <div id="exceptions" class="topic-section" style="border-top-color:#e74c3c">
-        <h2 class="text-3xl font-bold">Exceptions</h2>
-        <p>Checked exceptions (<code>Exception</code>) must be declared/handled. Unchecked (<code>RuntimeException</code>) represent programming errors or unrecoverable states.</p>
-        <pre class="language-java"><code>try (var reader = Files.newBufferedReader(Path.of("data.txt"))) {
-  String line = reader.readLine();
-} catch (IOException e) {
-  // handle or rethrow
-}
-
-// Wrapping checked into unchecked for boundary layers
-try { doIO(); } catch (IOException e) { throw new UncheckedIOException(e); }</code></pre>
-        <div class="note">Try-with-resources automatically closes resources that implement <code>AutoCloseable</code>.</div>
-      </div>
-
-      <!-- IO & NIO -->
-      <div id="io" class="topic-section" style="border-top-color:#34495e">
-        <h2 class="text-3xl font-bold">I/O & NIO.2</h2>
-        <p>Prefer <code>java.nio.file.Files</code> and <code>Path</code> APIs (NIO.2). They offer efficient bulk operations and better error handling.</p>
-        <pre class="language-java"><code>// Read all lines
-List&lt;String&gt; lines = Files.readAllLines(Path.of("notes.txt"));
-
-// Stream lines lazily
-try (Stream&lt;String&gt; s = Files.lines(Path.of("big.log"))) {
-  long errors = s.filter(l -&gt; l.contains("ERROR")).count();
-}
-
-// Walk directory
-try (Stream&lt;Path&gt; paths = Files.walk(Path.of("src"))) {
-  paths.filter(p -&gt; p.toString().endsWith(".java")).forEach(System.out::println);
-}</code></pre>
-      </div>
-
-      <!-- CONCURRENCY -->
-      <div id="concurrency" class="topic-section" style="border-top-color:#f39c12">
-        <h2 class="text-3xl font-bold">Concurrency & Virtual Threads</h2>
-        <p>Java offers threads, locks, executors, futures, and since Java 21, <strong>virtual threads</strong> (Project Loom) for lightweight concurrency.</p>
-        <h3>Threading Foundations</h3>
-        <pre class="language-java"><code>// Intrinsic lock (synchronized)
-class Counter { private int n; synchronized void inc() { n++; } int get(){return n;} }
-
-// ReentrantLock
-Lock lock = new ReentrantLock();
-lock.lock();
-try { /* critical section */ } finally { lock.unlock(); }
-
-// Atomic
-AtomicInteger ai = new AtomicInteger(); ai.incrementAndGet();
-
-// CompletableFuture
-CompletableFuture&lt;String&gt; f = CompletableFuture.supplyAsync(() -&gt; fetch());
-String result = f.thenApply(String::toUpperCase).join();</code></pre>
-        <h3>Virtual Threads (Java 21+)</h3>
-        <pre class="language-java"><code>ExecutorService exec = Executors.newVirtualThreadPerTaskExecutor();
-try (exec) {
-  List&lt;Future&lt;String&gt;&gt; futures = IntStream.range(0, 10)
-    .mapToObj(i -&gt; exec.submit(() -&gt; httpCall(i)))
-    .toList();
-  for (Future&lt;String&gt; fut : futures) System.out.println(fut.get());
-}</code></pre>
-        <div class="ok">Virtual threads make blocking IO cheap and massively scalable. Use platform threads for CPU-bound pools, virtual for IO-bound tasks.</div>
-        <h3>Visibility & the Java Memory Model</h3>
-        <pre class="language-java"><code>volatile boolean running = true;
-void stop() { running = false; }  // writes to volatile are visible across threads
-</code></pre>
-      </div>
-
-      <!-- JVM & GC -->
-      <div id="jvm" class="topic-section" style="border-top-color:#2c3e50">
-        <h2 class="text-3xl font-bold">JVM Internals & Garbage Collection</h2>
-        <p>The JVM loads classes, verifies bytecode, manages memory (heap + stacks), and JIT compiles hot methods. Modern collectors: G1 (default), ZGC, Shenandoah. Choose based on latency/throughput needs.</p>
-        <h3>Memory Areas</h3>
-        <ul class="list-disc pl-6 text-gray-700">
-          <li><strong>Heap:</strong> Objects and arrays.</li>
-          <li><strong>Thread Stacks:</strong> Frames for method calls and local variables.</li>
-          <li><strong>Metaspace:</strong> Class metadata.</li>
-          <li><strong>Code Cache:</strong> JIT compiled code.</li>
-        </ul>
-        <h3>GC Tuning Quick Tips</h3>
-        <div class="pro">
-          Prefer G1 for most server apps. For ultra-low-latency, try ZGC (<code>-XX:+UseZGC</code>). Always measure with <code>-Xlog:gc*</code> and realistic workloads.
-        </div>
-      </div>
-
-      <!-- MODULES & CLASSLOADING -->
-      <div id="modules" class="topic-section" style="border-top-color:#27ae60">
-        <h2 class="text-3xl font-bold">Modules & Classloading</h2>
-        <p>Java Platform Module System (JPMS) introduces <code>module-info.java</code> for strong encapsulation.</p>
-        <pre class="language-java"><code>// module-info.java
-module com.codemaster.app {
-  requires java.sql;
-  exports com.codemaster.api;
-}
-</code></pre>
-        <div class="note">Classloaders load classes from jars/paths. Parent-first delegation prevents conflicts. Use the <code>ServiceLoader</code> for pluggable architectures.</div>
-      </div>
-
-      <!-- DATE & TIME -->
-      <div id="time" class="topic-section" style="border-top-color:#16a085">
-        <h2 class="text-3xl font-bold">Date & Time (java.time)</h2>
-        <pre class="language-java"><code>ZonedDateTime nowInKolkata = ZonedDateTime.now(ZoneId.of("Asia/Kolkata"));
-LocalDate d = LocalDate.of(2025, 8, 13);
-Period age = Period.between(LocalDate.of(2000,1,1), LocalDate.now());
-String iso = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(OffsetDateTime.now());</code></pre>
-        <div class="ok">Avoid <code>java.util.Date</code>/<code>Calendar</code>. Use immutable, thread-safe <code>java.time</code> types.</div>
-      </div>
-
-      <!-- NETWORKING & HTTP -->
-      <div id="network" class="topic-section" style="border-top-color:#2980b9">
-        <h2 class="text-3xl font-bold">Networking & HTTP</h2>
-        <h3>HTTP Client (Java 11+)</h3>
-        <pre class="language-java"><code>HttpClient client = HttpClient.newHttpClient();
-HttpRequest req = HttpRequest.newBuilder(URI.create("https://api.example.com"))
-  .header("Accept","application/json").build();
-HttpResponse&lt;String&gt; res = client.send(req, HttpResponse.BodyHandlers.ofString());
-System.out.println(res.statusCode());
-</code></pre>
-        <h3>Sockets</h3>
-        <pre class="language-java"><code>try (var socket = new Socket("example.com", 80);
-     var out = new PrintWriter(socket.getOutputStream());
-     var in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-  out.println("GET / HTTP/1.1\r\nHost: example.com\r\n\r\n");
-  out.flush();
-  System.out.println(in.readLine());
-}</code></pre>
-      </div>
-
-      <!-- JDBC -->
-      <div id="jdbc" class="topic-section" style="border-top-color:#8e44ad">
-        <h2 class="text-3xl font-bold">JDBC</h2>
-        <pre class="language-java"><code>String url = "jdbc:postgresql://localhost:5432/app";
-try (Connection c = DriverManager.getConnection(url, "user", "pass");
-     PreparedStatement ps = c.prepareStatement("select id,name from users where id=?")) {
-  ps.setInt(1, 42);
-  try (ResultSet rs = ps.executeQuery()) {
-    if (rs.next()) {
-      System.out.println(rs.getString("name"));
+            <div class="code-container mt-4">
+              <div class="code-header">DataTypesExample.java</div>
+              <pre><code class="language-java code-content"><span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">DataTypesExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// Declaring and initializing variables</span>
+        <span class="type">int</span> age = <span class="number">30</span>;
+        <span class="type">double</span> price = <span class="number">19.99</span>;
+        <span class="type">char</span> initial = <span class="string">'J'</span>;
+        <span class="type">boolean</span> isLoggedIn = <span class="keyword">true</span>;
+        
+        <span class="comment">// Reference type: String</span>
+        <span class="type">String</span> name = <span class="string">"John Doe"</span>;
+        
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Name: "</span> + name);
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Age: "</span> + age);
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Price: $"</span> + price);
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Initial: "</span> + initial);
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Logged In: "</span> + isLoggedIn);
     }
-  }
-}</code></pre>
-        <div class="warn">Always use prepared statements to prevent SQL injection. Manage transactions with <code>setAutoCommit(false)</code>, <code>commit()</code>, <code>rollback()</code>.</div>
-      </div>
-
-      <!-- REFLECTION & ANNOTATIONS -->
-      <div id="reflection" class="topic-section" style="border-top-color:#d35400">
-        <h2 class="text-3xl font-bold">Reflection & Annotations</h2>
-        <pre class="language-java"><code>@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-@interface Component { String value(); }
-
-@Component("service")
-class S {}
-
-Class&lt;S&gt; c = S.class;
-boolean present = c.isAnnotationPresent(Component.class);
-for (Method m : c.getDeclaredMethods()) { /* inspect */ }
-</code></pre>
-        <div class="note">Reflection is powerful but slower and less safe. Prefer explicit code or dependency injection frameworks when appropriate.</div>
-      </div>
-
-      <!-- SECURITY & CRYPTO -->
-      <div id="security" class="topic-section" style="border-top-color:#c0392b">
-        <h2 class="text-3xl font-bold">Security & Cryptography</h2>
-        <pre class="language-java"><code>// Secure random
-byte[] nonce = new byte[12];
-SecureRandom.getInstanceStrong().nextBytes(nonce);
-
-// Message digest
-MessageDigest md = MessageDigest.getInstance("SHA-256");
-byte[] hash = md.digest("hello".getBytes(StandardCharsets.UTF_8));
-
-// AES-GCM
-Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
-SecretKey key = KeyGenerator.getInstance("AES").generateKey();
-GCMParameterSpec spec = new GCMParameterSpec(128, nonce);
-cipher.init(Cipher.ENCRYPT_MODE, key, spec);
-byte[] ct = cipher.doFinal("secret".getBytes(StandardCharsets.UTF_8));
-</code></pre>
-        <div class="warn">Never roll your own crypto. Use strong algorithms (AES-GCM, RSA/ECDSA for signatures) and keep keys safe (e.g., JCEKS, cloud KMS).</div>
-      </div>
-
-      <!-- TESTING -->
-      <div id="testing" class="topic-section" style="border-top-color:#7f8c8d">
-        <h2 class="text-3xl font-bold">Testing (JUnit 5)</h2>
-        <pre class="language-java"><code>import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
-
-class CalcTest {
-  @Test void adds() { assertEquals(5, 2 + 3); }
-  @ParameterizedTest
-  @ValueSource(strings = {"madam","racecar"})
-  void palindromes(String s) { assertEquals(s, new StringBuilder(s).reverse().toString()); }
 }
-</code></pre>
-        <div class="ok">Use mocks (Mockito) for collaborators and test behavior at boundaries. Keep tests fast and deterministic.</div>
-      </div>
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
 
-      <!-- BUILD & PACKAGING -->
-      <div id="build" class="topic-section" style="border-top-color:#6366f1">
-        <h2 class="text-3xl font-bold">Build & Packaging</h2>
-        <h3>CLI</h3>
-        <pre class="language-java"><code>// Compile multiple files
-javac -d out $(find src -name "*.java")
-// Run
-java -cp out com.codemaster.app.Main
-// Create JAR
-jar --create --file app.jar -C out .
-// Run JAR with Main-Class in MANIFEST.MF
-java -jar app.jar</code></pre>
-        <h3>Maven (pom.xml)</h3>
-        <pre class="language-xml"><code>&lt;project&gt;
-  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;groupId&gt;com.codemaster&lt;/groupId&gt;
-  &lt;artifactId&gt;app&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0&lt;/version&gt;
-  &lt;properties&gt;&lt;maven.compiler.release&gt;21&lt;/maven.compiler.release&gt;&lt;/properties&gt;
-  &lt;dependencies&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;&lt;artifactId&gt;junit-jupiter&lt;/artifactId&gt;&lt;version&gt;5.10.2&lt;/version&gt;&lt;scope&gt;test&lt;/scope&gt;
-    &lt;/dependency&gt;
-  &lt;/dependencies&gt;
-&lt;/project&gt;</code></pre>
-        <h3>Gradle (build.gradle.kts)</h3>
-        <pre class="language-kotlin"><code>plugins { application; java }
-java { toolchain { languageVersion.set(JavaLanguageVersion.of(21)) } }
-dependencies { testImplementation("org.junit.jupiter:junit-jupiter:5.10.2") }
-application { mainClass.set("com.codemaster.app.Main") }
-tasks.test { useJUnitPlatform() }</code></pre>
-      </div>
+            <h3 class="text-2xl font-semibold">Operators</h3>
+            <p class="mt-3 leading-relaxed">
+              Operators are special symbols that perform operations on variables and values. Java provides
+              a rich set of operators.
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Operators</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Arithmetic</td>
+                  <td><code class="highlight">+</code>, <code class="highlight">-</code>, <code
+                      class="highlight">*</code>, <code class="highlight">/</code>, <code class="highlight">%</code>
+                    (modulo)</td>
+                  <td><code class="highlight">int sum = 5 + 3;</code></td>
+                </tr>
+                <tr>
+                  <td>Assignment</td>
+                  <td><code class="highlight">=</code>, <code class="highlight">+=</code>, <code
+                      class="highlight">-=</code>, <code class="highlight">*=</code>, <code class="highlight">/=</code>
+                  </td>
+                  <td><code class="highlight">x += 5; // same as x = x + 5</code></td>
+                </tr>
+                <tr>
+                  <td>Comparison</td>
+                  <td><code class="highlight">==</code>, <code class="highlight">!=</code>, <code
+                      class="highlight">></code>, <code class="highlight"><</code>, <code class="highlight">>=</code>,
+                    <code class="highlight"><=</code></td>
+                  <td><code class="highlight">if (age >= 18)</code></td>
+                </tr>
+                <tr>
+                  <td>Logical</td>
+                  <td><code class="highlight">&&</code> (AND), <code class="highlight">||</code> (OR),
+                    <code class="highlight">!</code> (NOT)
+                  </td>
+                  <td><code class="highlight">if (isLoggedIn && isAdmin)</code></td>
+                </tr>
+                <tr>
+                  <td>Unary</td>
+                  <td><code class="highlight">++</code> (increment), <code class="highlight">--</code>
+                    (decrement)</td>
+                  <td><code class="highlight">count++;</code></td>
+                </tr>
+              </tbody>
+            </table>
 
-      <!-- PERFORMANCE & TUNING -->
-      <div id="perf" class="topic-section" style="border-top-color:#10b981">
-        <h2 class="text-3xl font-bold">Performance & Tuning</h2>
-        <ul class="list-disc pl-6 text-gray-700">
-          <li>Measure before optimizing. Use JFR (Java Flight Recorder) and JMC (Mission Control).</li>
-          <li>Use microbenchmarks with JMH; avoid naive <code>System.nanoTime()</code> loops.</li>
-          <li>Minimize allocations on hot paths; prefer primitives and immutable objects wisely.</li>
-          <li>Choose the right collector (G1/ZGC) and size heap appropriately.</li>
-        </ul>
-        <pre class="language-java"><code>@State(Scope.Thread)
-public class Bench {
-  private final List&lt;Integer&gt; data = IntStream.range(0, 1_000).boxed().toList();
-  @Benchmark public long sum() { return data.stream().mapToLong(i -&gt; i).sum(); }
-}</code></pre>
-      </div>
+            <h3 class="text-2xl font-semibold">Control Flow</h3>
+            <p class="mt-3 leading-relaxed">
+              Control flow statements regulate the order in which the program executes instructions.
+            </p>
 
-      <!-- CHEAT SHEETS -->
-      <div id="cheats" class="topic-section" style="border-top-color:#ff6b6b">
-        <h2 class="text-3xl font-bold">Cheat Sheets</h2>
-        <h3>Common Annotations</h3>
-        <p><code>@Override</code>, <code>@FunctionalInterface</code>, <code>@Deprecated</code>, <code>@Nullable</code>/<code>@NotNull</code> (from libs), <code>@Test</code>, <code>@BeforeEach</code>, <code>@AfterEach</code>.</p>
-        <h3>Useful APIs</h3>
-        <p><code>Objects.requireNonNull</code>, <code>List.of</code>/<code>Map.of</code>, <code>Pattern</code>/<code>Matcher</code>, <code>Files</code>, <code>Paths</code>, <code>Collectors</code>, <code>Optional</code>.</p>
-        <h3>Error Handling Rules</h3>
-        <ul class="list-disc pl-6 text-gray-700">
-          <li>Catch at boundaries, not everywhere.</li>
-          <li>Prefer meaningful custom unchecked exceptions for domain errors.</li>
-          <li>Always include context in messages.</li>
-        </ul>
-      </div>
+            <h4 class="text-xl font-medium mt-4">Conditional Statements (if-else, switch)</h4>
+            <div class="code-container mt-4">
+              <div class="code-header">ConditionalExample.java</div>
+              <pre><code class="language-java code-content"><span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">ConditionalExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+        <span class="type">int</span> score = <span class="number">85</span>;
+        
+        <span class="comment">// if-else if-else statement</span>
+        <span class="keyword">if</span> (score >= <span class="number">90</span>) {
+            <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Grade: A"</span>);
+        } <span class="keyword">else</span> <span class="keyword">if</span> (score >= <span class="number">80</span>) {
+            <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Grade: B"</span>);
+        } <span class="keyword">else</span> {
+            <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Grade: C or below"</span>);
+        }
+        
+        <span class="type">int</span> dayOfWeek = <span class="number">3</span>;
+        <span class="type">String</span> dayName;
 
-    </section>
+        <span class="comment">// switch statement</span>
+        <span class="keyword">switch</span> (dayOfWeek) {
+            <span class="keyword">case</span> <span class="number">1</span>: dayName = <span class="string">"Monday"</span>; <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="number">2</span>: dayName = <span class="string">"Tuesday"</span>; <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="number">3</span>: dayName = <span class="string">"Wednesday"</span>; <span class="keyword">break</span>;
+            <span class="keyword">default</span>: dayName = <span class="string">"Some other day"</span>;
+        }
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Today is "</span> + dayName);
+    }
+}
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h4 class="text-xl font-medium mt-4">Loops (for, while, do-while)</h4>
+            <div class="code-container mt-4">
+              <div class="code-header">LoopExample.java</div>
+              <pre><code class="language-java code-content"><span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">LoopExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// for loop: executes a block of code a specific number of times.</span>
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"--- For Loop ---"</span>);
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i <= <span class="number">5</span>; i++) {
+            <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Iteration "</span> + i);
+        }
+        
+        <span class="comment">// while loop: executes as long as a condition is true.</span>
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"\n--- While Loop ---"</span>);
+        <span class="type">int</span> count = <span class="number">1</span>;
+        <span class="keyword">while</span> (count <= <span class="number">3</span>) {
+            <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Count is "</span> + count);
+            count++;
+        }
+        
+        <span class="comment">// do-while loop: similar to while, but always executes at least once.</span>
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"\n--- Do-While Loop ---"</span>);
+        <span class="type">int</span> num = <span class="number">6</span>;
+        <span class="keyword">do</span> {
+            <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Num is "</span> + num);
+            num++;
+        } <span class="keyword">while</span> (num <= <span class="number">5</span>); <span class="comment">// Condition is false, but it ran once.</span>
+    }
+}
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3 class="text-2xl font-semibold">Arrays</h3>
+            <p class="mt-3 leading-relaxed">
+              Arrays are used to store multiple values of the same type in a single variable. The size of
+              an array is fixed once it is created.
+            </p>
+            <div class="code-container mt-4">
+              <div class="code-header">ArrayExample.java</div>
+              <pre><code class="language-java code-content"><span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">ArrayExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// Declare and initialize an array of integers</span>
+        <span class="type">int</span>[] numbers = {<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>};
+        
+        <span class="comment">// Access an element by its index (starts from 0)</span>
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"First element: "</span> + numbers[<span class="number">0</span>]); <span class="comment">// Output: 10</span>
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Third element: "</span> + numbers[<span class="number">2</span>]); <span class="comment">// Output: 30</span>
+        
+        <span class="comment">// Change an element's value</span>
+        numbers[<span class="number">1</span>] = <span class="number">25</span>;
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"New second element: "</span> + numbers[<span class="number">1</span>]); <span class="comment">// Output: 25</span>
+        
+        <span class="comment">// Get the length of the array</span>
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Array length: "</span> + numbers.length); <span class="comment">// Output: 5</span>
+        
+        <span class="comment">// Loop through an array using an enhanced for loop (for-each)</span>
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"\nIterating through the array:"</span>);
+        <span class="keyword">for</span> (<span class="type">int</span> number : numbers) {
+            <span class="type">System</span>.out.<span class="method">print</span>(number + <span class="string">" "</span>);
+        }
+        <span class="comment">// Output: 10 25 30 40 50</span>
+    }
+}
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3 class="text-2xl font-semibold">Methods</h3>
+            <p class="mt-3 leading-relaxed">
+              A method is a block of code that runs only when it is called. You can pass data, known as
+              parameters, into a method. Methods are used to perform certain actions, and they are also
+              known as functions.
+            </p>
+            <div class="code-container mt-4">
+              <div class="code-header">MethodExample.java</div>
+              <pre><code class="language-java code-content"><span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">MethodExample</span> {
+    
+    <span class="comment">// The main method, where the program starts</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// Call the sayHello method</span>
+        <span class="method">sayHello</span>(<span class="string">"Alice"</span>);
+        <span class="method">sayHello</span>(<span class="string">"Bob"</span>);
+        
+        <span class="comment">// Call the add method and store the returned value</span>
+        <span class="type">int</span> sum = <span class="method">add</span>(<span class="number">5</span>, <span class="number">7</span>);
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"The sum is: "</span> + sum);
+    }
+    
+    <span class="comment">/**
+     * A simple method that takes a name and prints a greeting.
+     * This method has a 'void' return type, meaning it doesn't return any value.
+     * @param name The name to greet.
+     */</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">sayHello</span>(<span class="type">String</span> name) {
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Hello, "</span> + name + <span class="string">"!"</span>);
+    }
+    
+    <span class="comment">/**
+     * A method that takes two integers and returns their sum.
+     * This method has an 'int' return type.
+     * @param a The first number.
+     * @param b The second number.
+     * @return The sum of a and b.
+     */</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="method">add</span>(<span class="type">int</span> a, <span class="type">int</span> b) {
+        <span class="keyword">return</span> a + b;
+    }
+}
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+          </section>
+
+          <!-- Object-Oriented Programming (OOP) Section -->
+          <section id="oop" class="content-section py-8">
+            <h2 class="text-3xl font-bold tracking-tight">Object-Oriented Programming (OOP)</h2>
+            <p class="mt-4 text-lg text-[#8B949E]">OOP is the core paradigm of Java. It organizes software
+              design around data, or objects, rather than functions and logic. Understanding these
+              concepts is crucial for writing effective Java code.</p>
+
+            <h3 class="text-2xl font-semibold">Classes and Objects</h3>
+            <p class="mt-3 leading-relaxed">
+              Think of a <strong class="text-white">class</strong> as a blueprint for creating objects. A
+              class defines attributes (fields or variables) and behaviors (methods). An <strong
+                class="text-white">object</strong> is an instance of a class. For example, you could
+              have a <code class="highlight">Car</code> class (the blueprint) and create multiple car
+              objects like <code class="highlight">myBmw</code> and <code class="highlight">yourTesla</code>.
+            </p>
+
+            <div class="code-container mt-4">
+              <div class="code-header">Car.java</div>
+              <pre><code class="language-java code-content"><span class="comment">// This is the blueprint (Class) for a Car</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">Car</span> {
+    <span class="comment">// Attributes (fields)</span>
+    <span class="type">String</span> color;
+    <span class="type">String</span> model;
+    <span class="type">int</span> year;
+
+    <span class="comment">// Behavior (method)</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="method">startEngine</span>() {
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"The "</span> + color + <span class="string">" "</span> + model + <span class="string">" engine starts. Vroom!"</span>);
+    }
+}
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <div class="code-container mt-4">
+              <div class="code-header">Garage.java (to test the Car class)</div>
+              <pre><code class="language-java code-content"><span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">Garage</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// Create an instance (Object) of the Car class</span>
+        <span class="type">Car</span> myCar = <span class="keyword">new</span> <span class="class-name">Car</span>();
+        
+        <span class="comment">// Set the attributes of the myCar object</span>
+        myCar.color = <span class="string">"Red"</span>;
+        myCar.model = <span class="string">"Ferrari"</span>;
+        myCar.year = <span class="number">2023</span>;
+        
+        <span class="comment">// Call the method of the myCar object</span>
+        myCar.<span class="method">startEngine</span>(); <span class="comment">// Output: The Red Ferrari engine starts. Vroom!</span>
+
+        <span class="comment">// Create another Car object</span>
+        <span class="type">Car</span> friendsCar = <span class="keyword">new</span> <span class="class-name">Car</span>();
+        friendsCar.color = <span class="string">"Blue"</span>;
+        friendsCar.model = <span class="string">"Honda"</span>;
+        friendsCar.<span class="method">startEngine</span>(); <span class="comment">// Output: The Blue Honda engine starts. Vroom!</span>
+    }
+}
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3 class="text-2xl font-semibold">The Four Pillars of OOP</h3>
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">1. Encapsulation</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">The bundling of data (attributes) and methods
+                  that operate on the data into a single unit (a class). It restricts direct access to
+                  some of an object's components, which is a means of preventing unintended
+                  interference. This is typically achieved using <code class="highlight">private</code> access modifiers
+                  and public "getter" and
+                  "setter" methods.</p>
+              </div>
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">2. Inheritance</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">A mechanism where a new class (subclass or child
+                  class) inherits attributes and methods from an existing class (superclass or parent
+                  class). This promotes code reuse. The <code class="highlight">extends</code> keyword
+                  is used to achieve inheritance.</p>
+              </div>
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">3. Polymorphism</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">Literally "many forms," it's the ability of an
+                  object to take on many forms. The most common use of polymorphism in OOP occurs when
+                  a parent class reference is used to refer to a child class object. It allows you to
+                  perform a single action in different ways (e.g., through method overriding).</p>
+              </div>
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">4. Abstraction</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">The concept of hiding the complex implementation
+                  details and showing only the essential features of the object. It helps in reducing
+                  programming complexity and effort. This is achieved using <code class="highlight">abstract</code>
+                  classes and <code class="highlight">interfaces</code>.</p>
+              </div>
+            </div>
+
+            <h4 class="text-xl font-medium mt-6">Example: Encapsulation</h4>
+            <p class="mt-2">Here, the <code class="highlight">balance</code> is <code class="highlight">private</code>.
+              It can only be accessed or modified through the public
+              <code class="highlight">getBalance()</code> and <code class="highlight">deposit()</code>
+              methods, giving us control over how the data is handled.
+            </p>
+            <div class="code-container mt-4">
+              <div class="code-header">BankAccount.java</div>
+              <pre><code class="language-java code-content"><span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">BankAccount</span> {
+    <span class="comment">// The balance is private, hidden from outside classes</span>
+    <span class="keyword">private</span> <span class="type">double</span> balance;
+
+    <span class="keyword">public</span> <span class="class-name">BankAccount</span>(<span class="type">double</span> initialBalance) {
+        <span class="keyword">if</span> (initialBalance > <span class="number">0</span>) {
+            <span class="keyword">this</span>.balance = initialBalance;
+        }
+    }
+
+    <span class="comment">// Public "getter" method to safely read the balance</span>
+    <span class="keyword">public</span> <span class="type">double</span> <span class="method">getBalance</span>() {
+        <span class="keyword">return</span> <span class="keyword">this</span>.balance;
+    }
+
+    <span class="comment">// Public "setter" like method to modify the balance</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="method">deposit</span>(<span class="type">double</span> amount) {
+        <span class="keyword">if</span> (amount > <span class="number">0</span>) {
+            <span class="keyword">this</span>.balance += amount;
+        }
+    }
+}
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h4 class="text-xl font-medium mt-6">Example: Inheritance & Polymorphism</h4>
+            <p class="mt-2">The <code class="highlight">Dog</code> and <code class="highlight">Cat</code>
+              classes inherit from <code class="highlight">Animal</code> and provide their own
+              implementation of the <code class="highlight">makeSound()</code> method (Method Overriding).
+              This demonstrates both inheritance and polymorphism.</p>
+            <div class="code-container mt-4">
+              <div class="code-header">AnimalExample.java</div>
+              <pre><code class="language-java code-content"><span class="comment">// Superclass</span>
+<span class="keyword">class</span> <span class="class-name">Animal</span> {
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="method">makeSound</span>() {
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Some generic animal sound"</span>);
+    }
+}
+
+<span class="comment">// Subclass inheriting from Animal</span>
+<span class="keyword">class</span> <span class="class-name">Dog</span> <span class="keyword">extends</span> <span class="class-name">Animal</span> {
+    <span class="annotation">@Override</span> <span class="comment">// This is an annotation, good practice for overriding</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="method">makeSound</span>() {
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Woof woof"</span>);
+    }
+}
+
+<span class="comment">// Another subclass</span>
+<span class="keyword">class</span> <span class="class-name">Cat</span> <span class="keyword">extends</span> <span class="class-name">Animal</span> {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="method">makeSound</span>() {
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Meow"</span>);
+    }
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">TestPolymorphism</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+        <span class="type">Animal</span> myAnimal = <span class="keyword">new</span> <span class="class-name">Animal</span>(); <span class="comment">// Animal object</span>
+        <span class="type">Animal</span> myDog = <span class="keyword">new</span> <span class="class-name">Dog</span>();    <span class="comment">// Dog object, referenced by Animal type</span>
+        <span class="type">Animal</span> myCat = <span class="keyword">new</span> <span class="class-name">Cat</span>();    <span class="comment">// Cat object, referenced by Animal type</span>
+        
+        myAnimal.<span class="method">makeSound</span>(); <span class="comment">// Calls Animal's method</span>
+        myDog.<span class="method">makeSound</span>();    <span class="comment">// Calls Dog's overridden method</span>
+        myCat.<span class="method">makeSound</span>();    <span class="comment">// Calls Cat's overridden method</span>
+    }
+}
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+          </section>
+
+          <!-- Advanced Topics Section -->
+          <section id="advanced" class="content-section py-8">
+            <h2 class="text-3xl font-bold tracking-tight">Advanced Java Topics</h2>
+            <p class="mt-4 text-lg text-[#8B949E]">Ready to go deeper? These topics cover more complex but
+              powerful features of the Java platform, enabling you to build sophisticated applications.
+            </p>
+
+            <h3 class="text-2xl font-semibold">Exception Handling</h3>
+            <p class="mt-3 leading-relaxed">
+              An exception is an event that disrupts the normal flow of the program. Java's exception
+              handling mechanism allows you to gracefully manage runtime errors using <code
+                class="highlight">try</code>, <code class="highlight">catch</code>, and <code
+                class="highlight">finally</code> blocks.
+            </p>
+            <div class="code-container mt-4">
+              <div class="code-header">ExceptionExample.java</div>
+              <pre><code class="language-java code-content"><span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">ExceptionExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+        <span class="keyword">try</span> {
+            <span class="comment">// Code that might throw an exception</span>
+            <span class="type">int</span>[] numbers = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>};
+            <span class="type">System</span>.out.<span class="method">println</span>(numbers[<span class="number">10</span>]); <span class="comment">// This will cause an ArrayIndexOutOfBoundsException</span>
+        } <span class="keyword">catch</span> (<span class="type">ArrayIndexOutOfBoundsException</span> e) {
+            <span class="comment">// Block of code to handle the error</span>
+            <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Error: Array index is out of bounds."</span>);
+            <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Exception message: "</span> + e.<span class="method">getMessage</span>());
+        } <span class="keyword">finally</span> {
+            <span class="comment">// This block will always execute, whether an exception occurred or not.</span>
+            <span class="comment">// Useful for cleanup, like closing files or database connections.</span>
+            <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"The 'try-catch' block is finished."</span>);
+        }
+    }
+}
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3 class="text-2xl font-semibold">Java Collections Framework</h3>
+            <p class="mt-3 leading-relaxed">
+              The Collections Framework provides a set of interfaces and classes to represent and manage
+              groups of objects. It's a crucial part of the Java API.
+            </p>
+            <ul class="list-disc list-inside mt-2 space-y-2">
+              <li><strong class="text-white">List:</strong> An ordered collection that allows duplicate
+                elements. Common implementations are <code class="highlight">ArrayList</code> (dynamic
+                array) and <code class="highlight">LinkedList</code> (doubly-linked list).</li>
+              <li><strong class="text-white">Set:</strong> A collection that cannot contain duplicate
+                elements. Common implementations are <code class="highlight">HashSet</code> (unordered,
+                uses hash codes) and <code class="highlight">TreeSet</code> (sorted).</li>
+              <li><strong class="text-white">Map:</strong> An object that maps keys to values. Keys must
+                be unique. Common implementations are <code class="highlight">HashMap</code> (unordered)
+                and <code class="highlight">TreeMap</code> (sorted by key).</li>
+            </ul>
+
+            <div class="code-container mt-4">
+              <div class="code-header">CollectionsExample.java</div>
+              <pre><code class="language-java code-content"><span class="keyword">import</span> java.util.ArrayList;
+<span class="keyword">import</span> java.util.HashMap;
+<span class="keyword">import</span> java.util.List;
+<span class="keyword">import</span> java.util.Map;
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">CollectionsExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// List example</span>
+        <span class="type">List</span>&lt;<span class="type">String</span>&gt; fruits = <span class="keyword">new</span> <span class="class-name">ArrayList</span>&lt;&gt;();
+        fruits.<span class="method">add</span>(<span class="string">"Apple"</span>);
+        fruits.<span class="method">add</span>(<span class="string">"Banana"</span>);
+        fruits.<span class="method">add</span>(<span class="string">"Apple"</span>); <span class="comment">// Duplicates are allowed</span>
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Fruits List: "</span> + fruits);
+
+        <span class="comment">// Map example</span>
+        <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">Integer</span>&gt; studentScores = <span class="keyword">new</span> <span class="class-name">HashMap</span>&lt;&gt;();
+        studentScores.<span class="method">put</span>(<span class="string">"Alice"</span>, <span class="number">95</span>);
+        studentScores.<span class="method">put</span>(<span class="string">"Bob"</span>, <span class="number">88</span>);
+        studentScores.<span class="method">put</span>(<span class="string">"Charlie"</span>, <span class="number">92</span>);
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"Bob's Score: "</span> + studentScores.<span class="method">get</span>(<span class="string">"Bob"</span>));
+        <span class="type">System</span>.out.<span class="method">println</span>(<span class="string">"All Scores: "</span> + studentScores);
+    }
+}
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3 class="text-2xl font-semibold">Lambda Expressions & Streams API (Java 8+)</h3>
+            <p class="mt-3 leading-relaxed">
+              Introduced in Java 8, lambdas provide a clear and concise way to represent a method
+              interface using an expression. The Streams API uses lambdas to perform SQL-like operations
+              on collections, enabling a more functional style of programming.
+            </p>
+
+            <div class="code-container mt-4">
+              <div class="code-header">StreamsExample.java</div>
+              <pre><code class="language-java code-content"><span class="keyword">import</span> java.util.Arrays;
+<span class="keyword">import</span> java.util.List;
+<span class="keyword">import</span> java.util.stream.Collectors;
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">StreamsExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+        <span class="type">List</span>&lt;<span class="type">String</span>&gt; names = <span class="type">Arrays</span>.<span class="method">asList</span>(<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>, <span class="string">"Anna"</span>, <span class="string">"Alex"</span>);
+
+        <span class="comment">// Use a stream to find all names starting with "A", convert them to uppercase,</span>
+        <span class="comment">// and collect them into a new list.</span>
+        
+        <span class="type">List</span>&lt;<span class="type">String</span>&gt; result = names.<span class="method">stream</span>() <span class="comment">// 1. Create a stream</span>
+                .<span class="method">filter</span>(name -> name.<span class="method">startsWith</span>(<span class="string">"A"</span>)) <span class="comment">// 2. Intermediate operation: filter</span>
+                .<span class="method">map</span>(<span class="type">String</span>::toUpperCase) <span class="comment">// 3. Intermediate operation: map to uppercase</span>
+                .<span class="method">collect</span>(<span class="type">Collectors</span>.<span class="method">toList</span>()); <span class="comment">// 4. Terminal operation: collect results</span>
+
+        <span class="type">System</span>.out.<span class="method">println</span>(result); <span class="comment">// Output: [ALICE, ANNA, ALEX]</span>
+    }
+}
+                            </code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+          </section>
+
+          <!-- Frameworks Section -->
+          <section id="frameworks" class="content-section py-8">
+            <h2 class="text-3xl font-bold tracking-tight">The Java Ecosystem: Frameworks & Tools</h2>
+            <p class="mt-4 text-lg text-[#8B949E]">Beyond the core language lies a vast ecosystem of
+              powerful frameworks, libraries, and tools that simplify development and enable you to build
+              complex, production-ready applications efficiently.</p>
+
+            <div class="space-y-8 mt-6">
+              <div class="card p-6 flex flex-col md:flex-row gap-6 items-center">
+                <img src="https://placehold.co/100x100/238636/FFFFFF?text=Spring" alt="Spring Framework Logo"
+                  class="rounded-lg w-24 h-24 md:w-auto md:h-auto">
+                <div>
+                  <h3 class="text-2xl font-semibold">Spring Framework</h3>
+                  <p class="mt-2 leading-relaxed">
+                    The de facto standard for building enterprise-grade Java applications. Spring
+                    provides a comprehensive programming and configuration model.
+                    <strong class="block mt-2 text-white">Key Modules:</strong>
+                  </p>
+                  <ul class="list-disc list-inside mt-2 text-sm space-y-1">
+                    <li><strong class="text-white">Spring Boot:</strong> Radically simplifies
+                      building stand-alone, production-grade Spring-based applications. It removes
+                      boilerplate configuration.</li>
+                    <li><strong class="text-white">Spring MVC:</strong> A robust framework for
+                      building web applications following the Model-View-Controller design
+                      pattern.</li>
+                    <li><strong class="text-white">Spring Data:</strong> Simplifies data access from
+                      relational and NoSQL databases.</li>
+                    <li><strong class="text-white">Spring Security:</strong> Provides powerful
+                      authentication and authorization features.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="card p-6 flex flex-col md:flex-row gap-6 items-center">
+                <img src="https://placehold.co/100x100/58A6FF/0D1117?text=Hibernate" alt="Hibernate Logo"
+                  class="rounded-lg w-24 h-24 md:w-auto md:h-auto">
+                <div>
+                  <h3 class="text-2xl font-semibold">Hibernate</h3>
+                  <p class="mt-2 leading-relaxed">
+                    Hibernate is an Object-Relational Mapping (ORM) framework that simplifies
+                    database programming. It maps your Java objects (POJOs - Plain Old Java Objects)
+                    to database tables, allowing you to interact with the database using high-level
+                    object-oriented idioms instead of writing raw SQL. This greatly improves
+                    developer productivity and application maintainability.
+                  </p>
+                </div>
+              </div>
+
+              <div class="card p-6 flex flex-col md:flex-row gap-6 items-center">
+                <img src="https://placehold.co/100x100/FFA657/0D1117?text=Build" alt="Build Tools Logo"
+                  class="rounded-lg w-24 h-24 md:w-auto md:h-auto">
+                <div>
+                  <h3 class="text-2xl font-semibold">Build Tools: Maven & Gradle</h3>
+                  <p class="mt-2 leading-relaxed">
+                    Build automation tools are essential for managing a project's lifecycle,
+                    including dependencies, compilation, testing, and packaging.
+                  </p>
+                  <ul class="list-disc list-inside mt-2 text-sm space-y-1">
+                    <li><strong class="text-white">Maven:</strong> Uses a declarative XML file
+                      (<code class="highlight">pom.xml</code>) and follows a
+                      convention-over-configuration approach. It has a huge repository of
+                      libraries (Maven Central).</li>
+                    <li><strong class="text-white">Gradle:</strong> A more modern and flexible build
+                      tool that uses a Groovy or Kotlin-based DSL for its build scripts. It often
+                      provides better performance than Maven.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Resources & Next Steps Section -->
+          <section id="resources" class="content-section py-8">
+            <h2 class="text-3xl font-bold tracking-tight">Resources & Next Steps</h2>
+            <p class="mt-4 text-lg text-[#8B949E]">Your learning journey doesn't end here. Continue to grow
+              your skills with these excellent resources and by building your own projects.</p>
+
+            <h3 class="text-2xl font-semibold">Official & Community Resources</h3>
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">Official Java Documentation</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">The ultimate source of truth. It's dense but
+                  incredibly detailed and accurate.</p>
+                <a href="https://docs.oracle.com/en/java/" target="_blank"
+                  class="text-sm font-semibold mt-3 inline-block">Visit Docs &rarr;</a>
+              </div>
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">Baeldung</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">An incredibly popular and practical blog with
+                  tutorials on Java, Spring, and related technologies.</p>
+                <a href="https://www.baeldung.com/" target="_blank"
+                  class="text-sm font-semibold mt-3 inline-block">Visit Baeldung &rarr;</a>
+              </div>
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">Stack Overflow</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">The go-to place for asking questions and finding
+                  solutions to specific programming problems.</p>
+                <a href="https://stackoverflow.com/questions/tagged/java" target="_blank"
+                  class="text-sm font-semibold mt-3 inline-block">Visit Stack Overflow &rarr;</a>
+              </div>
+              <div class="card p-6">
+                <h4 class="font-bold text-lg text-white">r/java on Reddit</h4>
+                <p class="mt-2 text-sm text-[#8B949E]">A large and active community for news,
+                  discussions, and help related to Java.</p>
+                <a href="https://www.reddit.com/r/java/" target="_blank"
+                  class="text-sm font-semibold mt-3 inline-block">Join the Community &rarr;</a>
+              </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold">Project Ideas to Practice</h3>
+            <p class="mt-3 leading-relaxed">
+              The best way to learn is by doing. Try building one of these projects to solidify your
+              knowledge.
+            </p>
+            <ul class="list-disc list-inside mt-4 space-y-2">
+              <li><strong class="text-white">A Simple Command-Line Calculator:</strong> Practice with user
+                input, operators, and methods.</li>
+              <li><strong class="text-white">A To-Do List Application:</strong> Use collections to manage
+                a list of tasks. Add features to save/load tasks from a file.</li>
+              <li><strong class="text-white">A Basic Banking System:</strong> Apply OOP principles
+                (Encapsulation, Classes) to create accounts with deposit and withdrawal functionality.
+              </li>
+              <li><strong class="text-white">A Simple REST API with Spring Boot:</strong> A great next
+                step to learn about web development and frameworks. Create endpoints for a simple
+                resource (e.g., a collection of books or movies).</li>
+            </ul>
+          </section>
+        </div>
+
+      </div>
+    </div>
   </main>
 
-  <footer class="gradient-bg text-white py-8 mt-12">
-    <div class="container mx-auto px-4 text-center">
-      <div class="mb-2 text-lg font-bold">CodeMaster</div>
-      <div>Master Java with comprehensive, modern content and real-world examples.</div>
-      <div class="mt-2 text-sm opacity-80">© 2025 CodeMaster. All rights reserved.</div>
+  <footer class="mt-16 border-t border-[#30363D]">
+    <div class="container mx-auto px-4 py-8 text-center text-[#8B949E] text-sm">
+      <p>&copy; 2024 Java Learning Center. A comprehensive guide to mastering Java.</p>
+      <p class="mt-2">Built with passion and a lot of coffee.</p>
     </div>
   </footer>
 
   <script>
-    // Tab switching for code samples
-    document.querySelectorAll('.code-tabs').forEach(tabGroup => {
-      const btns = tabGroup.querySelectorAll('.tab-btn');
-      btns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          btns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const tabId = btn.getAttribute('data-tab');
-          tabGroup.parentElement.querySelectorAll('.tab-content').forEach(tc => {
-            tc.classList.add('hidden');
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- Theme Toggle ---
+      const themeToggleButton = document.getElementById('theme-toggle');
+      const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+      const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+      const htmlElement = document.documentElement;
+
+      // Function to apply the theme
+      const applyTheme = (theme) => {
+        if (theme === 'dark') {
+          htmlElement.classList.remove('light');
+          themeToggleLightIcon.classList.remove('hidden');
+          themeToggleDarkIcon.classList.add('hidden');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          htmlElement.classList.add('light');
+          themeToggleDarkIcon.classList.remove('hidden');
+          themeToggleLightIcon.classList.add('hidden');
+          localStorage.setItem('theme', 'light');
+        }
+      };
+
+      // Check for saved theme in localStorage or system preference
+      const savedTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      // Apply the initial theme based on saved preference or system setting
+      if (savedTheme) {
+        applyTheme(savedTheme);
+      } else {
+        applyTheme(systemPrefersDark ? 'dark' : 'light');
+      }
+
+      // Add click listener to the button
+      themeToggleButton.addEventListener('click', () => {
+        const currentTheme = htmlElement.classList.contains('light') ? 'light' : 'dark';
+        applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+      });
+
+      // --- Mobile Menu Toggle ---
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // --- Copy to Clipboard for Code Blocks ---
+      const allCodeContainers = document.querySelectorAll('.code-container, pre');
+
+      allCodeContainers.forEach(container => {
+        const pre = container.querySelector('pre') || container;
+        const code = pre.querySelector('code');
+        const copyButton = container.querySelector('.copy-btn');
+
+        if (copyButton && code) {
+          copyButton.addEventListener('click', () => {
+            const textToCopy = code.innerText;
+            const tempTextarea = document.createElement('textarea');
+            tempTextarea.value = textToCopy;
+            document.body.appendChild(tempTextarea);
+            tempTextarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextarea);
+
+            copyButton.textContent = 'Copied!';
+            copyButton.classList.add('copied');
+
+            setTimeout(() => {
+              copyButton.textContent = 'Copy';
+              copyButton.classList.remove('copied');
+            }, 2000);
           });
-          tabGroup.parentElement.querySelector('#' + tabId).classList.remove('hidden');
+        }
+      });
+
+      // --- Dynamic Table of Contents and Active Section Highlighting ---
+      const tocNav = document.getElementById('toc-nav');
+      const contentSectionsContainer = document.getElementById('content-sections');
+      if (!tocNav || !contentSectionsContainer) return;
+
+      const sections = contentSectionsContainer.querySelectorAll('.content-section');
+      const tocLinks = [];
+
+      // Create an indicator element
+      const tocIndicator = document.createElement('div');
+      tocIndicator.className = 'toc-indicator';
+      if (tocNav.firstChild) {
+        tocNav.insertBefore(tocIndicator, tocNav.firstChild);
+      } else {
+        tocNav.appendChild(tocIndicator);
+      }
+
+
+      sections.forEach(section => {
+        const h2 = section.querySelector('h2');
+        if (h2) {
+          const id = section.id;
+          const title = h2.textContent;
+
+          const link = document.createElement('a');
+          link.href = `#${id}`;
+          link.textContent = title;
+          link.className = "block py-1 hover:text-[#58A6FF] transition-all duration-200 transform";
+          link.dataset.targetId = id;
+          tocNav.appendChild(link);
+          tocLinks.push(link);
+        }
+      });
+
+      const observer = new IntersectionObserver(entries => {
+        let activeSectionId = null;
+
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            activeSectionId = entry.target.id;
+          }
+        });
+
+        // Fallback to the first visible section if none meet the 0.5 threshold
+        if (!activeSectionId) {
+          const firstVisible = entries.find(e => e.isIntersecting);
+          if (firstVisible) {
+            activeSectionId = firstVisible.target.id;
+          }
+        }
+
+        tocLinks.forEach(link => {
+          if (link.dataset.targetId === activeSectionId) {
+            link.classList.add('active', 'font-semibold');
+            const linkTop = link.offsetTop;
+            tocIndicator.style.top = `${linkTop}px`;
+            tocIndicator.style.height = `${link.offsetHeight}px`;
+
+          } else {
+            link.classList.remove('active', 'font-semibold');
+          }
+        });
+
+      }, {
+        rootMargin: '-80px 0px -50% 0px', // Adjust rootMargin to trigger when section is in the upper half of the viewport
+        threshold: [0, 0.5, 1]
+      });
+
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+
+      // --- Smooth scroll for mobile menu links ---
+      document.querySelectorAll('#mobile-menu a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          mobileMenu.classList.add('hidden'); // Hide menu on click
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
         });
       });
     });
-
-    // Sidebar active link highlight
-    function setActiveSidebarLink() {
-      const links = document.querySelectorAll('.sidebar a');
-      let fromTop = window.scrollY + 120;
-      let currentId = '';
-      document.querySelectorAll('.topic-section').forEach(section => {
-        if (section.offsetTop <= fromTop) {
-          currentId = section.id;
-        }
-      });
-      links.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + currentId) {
-          link.classList.add('active');
-        }
-      });
-    }
-    window.addEventListener('scroll', setActiveSidebarLink);
-    window.addEventListener('DOMContentLoaded', setActiveSidebarLink);
-
-    // Dry run toggling function (available for future examples)
-    function toggleDryRun(id) { const el = document.getElementById(id); if (el) el.classList.toggle('hidden'); }
   </script>
 </body>
+
 </html>
