@@ -214,21 +214,24 @@ class AuthSystem {
     }
 
     listenToAuthChanges() {
-        onAuthStateChanged(this.auth, (user) => {
+        onAuthStateChanged(this.auth, async (user) => {
             if (user) {
+                // User is signed in, get their profile from Firestore.
                 const ref = doc(this.db, "users", user.uid);
-                onSnapshot(ref, (snap) => {
-                    if (snap.exists()) {
-                        this.currentUser = { uid: user.uid, ...snap.data() };
-                    } else {
-                        this.currentUser = { uid: user.uid, name: user.displayName || "User", email: user.email };
-                    }
-                    this.updateUI();
-                });
+                const snap = await getDoc(ref);
+
+                if (snap.exists()) {
+                    this.currentUser = { uid: user.uid, ...snap.data() };
+                } else {
+                    // This is a fallback in case the user exists in Auth but not Firestore.
+                    this.currentUser = { uid: user.uid, name: user.displayName || "User", email: user.email };
+                }
             } else {
+                // User is signed out.
                 this.currentUser = null;
-                this.updateUI();
             }
+            // Update the UI after the user status is confirmed.
+            this.updateUI();
         });
     }
 
