@@ -584,8 +584,10 @@
     // Import Firebase SDKs
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import { getFirestore, collection, getDocs, doc, getDoc, query, orderBy, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
+    import {
+      getFirestore, collection, getDocs, doc, getDoc, query, orderBy, addDoc,
+      updateDoc, increment, arrayUnion, serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
     // Global variables
     let tests = [];
@@ -1107,8 +1109,13 @@
       }
       clearInterval(timerInterval);
       const results = calculateResults();
-      displayResults(results, autoSubmit);
+
+      // ✨ THIS IS THE KEY CHANGE ✨
+      // Call both saving functions: one for history and one for profile stats.
       await saveTestHistory(results);
+      await updateUserStats(results);
+
+      displayResults(results, autoSubmit);
       if (results.percentage >= 80) {
         celebrateSuccess();
       }
@@ -1181,6 +1188,36 @@
       elements.testForm.querySelectorAll('input').forEach(input => input.disabled = true);
       elements.submitBtn.disabled = true;
       elements.submitBtn.style.opacity = '0.6';
+    }
+
+    // ✨ ADD THIS ENTIRE NEW FUNCTION ✨
+    async function updateUserStats(results) {
+      if (!currentUser) {
+        console.error("Cannot update stats, no user is logged in.");
+        return;
+      }
+
+      const userDocRef = doc(db, "users", currentUser.uid);
+      const category = results.testCategory;
+
+      // Ensure the category from your test data is valid
+      if (!category) {
+        console.error(`Test "${results.testTitle}" is missing a category.`);
+        return;
+      }
+
+      try {
+        await updateDoc(userDocRef, {
+          // Use dot notation to update nested map fields
+          [`testProgress.${category}.attempts`]: increment(1),
+          [`testProgress.${category}.scores`]: arrayUnion(results.percentage),
+          updatedAt: serverTimestamp()
+        });
+        console.log("User profile stats updated successfully!");
+      } catch (error) {
+        console.error("Error updating user stats:", error);
+        showNotification('Could not update your main profile stats.', 'error');
+      }
     }
 
     // Utility functions

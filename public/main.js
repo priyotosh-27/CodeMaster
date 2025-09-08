@@ -14,15 +14,10 @@ import {
     doc,
     setDoc,
     getDoc,
-    onSnapshot,
     serverTimestamp,
     updateDoc,
     arrayUnion,
     increment,
-    collection,
-    addDoc,
-    query,
-    orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 // This function will fetch the config and start the entire application
@@ -138,56 +133,77 @@ class AuthSystem {
                 const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
                 const user = userCredential.user;
 
-                // 🔹 Create Firestore profile
+                // ✨ MODIFIED: Create Firestore profile with new detailed structure
                 await setDoc(doc(this.db, "users", user.uid), {
                     uid: user.uid,
                     name,
                     email: user.email,
                     streak: 0,
-                    solvedChallenges: [],
                     savedNotes: [],
                     profile: { theme: "light", bio: "" },
                     createdAt: serverTimestamp(),
                     updatedAt: serverTimestamp(),
-                    lastLogin: serverTimestamp()
+                    lastLogin: serverTimestamp(),
+                    testProgress: {
+                        programming: { attempts: 0, scores: [] },
+                        java: { attempts: 0, scores: [] },
+                        dsa: { attempts: 0, scores: [] },
+                        general: { attempts: 0, scores: [] }
+                    },
+                    challengeProgress: {
+                        basic: [],
+                        interview: [],
+                        company: []
+                    }
                 });
 
-                this.currentUser = { uid: user.uid, name, email: user.email };
+                // Fetch the newly created doc to have all fields locally
+                const newUserDoc = await getDoc(doc(this.db, "users", user.uid));
+                this.currentUser = { uid: user.uid, ...newUserDoc.data() };
+
                 this.updateUI();
                 this.closeAuthModal();
                 this.showNotification(`Welcome, ${name}! 🎉`, 'success');
 
-            } else {
+            } else { // 'login' mode
                 const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
                 const user = userCredential.user;
 
-                // 🔹 Fetch Firestore data
                 const ref = doc(this.db, "users", user.uid);
                 const snap = await getDoc(ref);
 
                 if (snap.exists()) {
-                    const userData = snap.data();
-                    // update login timestamp
                     await updateDoc(ref, {
                         lastLogin: serverTimestamp(),
                         updatedAt: serverTimestamp()
                     });
-                    this.currentUser = { uid: user.uid, ...userData };
+                    this.currentUser = { uid: user.uid, ...snap.data() };
                 } else {
-                    // create profile if not exist
+                    // This is a fallback case if Auth user exists but Firestore doc doesn't
                     await setDoc(ref, {
                         uid: user.uid,
                         name: user.displayName || "User",
                         email: user.email,
                         streak: 0,
-                        solvedChallenges: [],
                         savedNotes: [],
-                        profile: { theme: "light" },
+                        profile: { theme: "light", bio: "" },
                         createdAt: serverTimestamp(),
                         updatedAt: serverTimestamp(),
-                        lastLogin: serverTimestamp()
+                        lastLogin: serverTimestamp(),
+                        testProgress: {
+                            programming: { attempts: 0, scores: [] },
+                            java: { attempts: 0, scores: [] },
+                            dsa: { attempts: 0, scores: [] },
+                            general: { attempts: 0, scores: [] }
+                        },
+                        challengeProgress: {
+                            basic: [],
+                            interview: [],
+                            company: []
+                        }
                     });
-                    this.currentUser = { uid: user.uid, name: user.displayName || "User", email: user.email };
+                    const newUserDoc = await getDoc(ref);
+                    this.currentUser = { uid: user.uid, ...newUserDoc.data() };
                 }
 
                 this.updateUI();
@@ -216,36 +232,75 @@ class AuthSystem {
     listenToAuthChanges() {
         onAuthStateChanged(this.auth, async (user) => {
             if (user) {
-                // User is signed in, get their profile from Firestore.
                 const ref = doc(this.db, "users", user.uid);
                 const snap = await getDoc(ref);
 
                 if (snap.exists()) {
                     this.currentUser = { uid: user.uid, ...snap.data() };
                 } else {
-                    // This is a fallback in case the user exists in Auth but not Firestore.
                     this.currentUser = { uid: user.uid, name: user.displayName || "User", email: user.email };
                 }
             } else {
-                // User is signed out.
                 this.currentUser = null;
             }
-            // Update the UI after the user status is confirmed.
             this.updateUI();
         });
     }
 
     /* ===============================
-        Progress Tracking Methods
+        ✨ NEW & MODIFIED: Progress Tracking Methods
     ================================ */
-    async saveSolvedChallenge(challengeId) {
-        if (!this.currentUser) return;
+
+    /**
+     * Records the result of a completed test.
+     * Call this from your test page (e.g., programming-test.html) when a test is finished.
+     * Example: window.authSystem.saveTestResult('programming', 85);
+     * @param {string} testType - The category of the test (e.g., 'programming', 'java').
+     * @param {number} score - The user's score on the test.
+     */
+    async saveTestResult(testType, score) {
+        if (!this.currentUser || !testType || score === undefined) return;
+
+        const numericScore = Number(score);
+        if (isNaN(numericScore)) {
+            console.error("Invalid score provided.");
+            return;
+        }
+
         const ref = doc(this.db, "users", this.currentUser.uid);
-        await updateDoc(ref, {
-            solvedChallenges: arrayUnion(challengeId),
-            updatedAt: serverTimestamp()
-        });
-        this.showNotification(`Challenge ${challengeId} solved ✅`, "success");
+        try {
+            // Use dot notation to update nested fields
+            await updateDoc(ref, {
+                [`testProgress.${testType}.attempts`]: increment(1),
+                [`testProgress.${testType}.scores`]: arrayUnion(numericScore),
+                updatedAt: serverTimestamp()
+            });
+            this.showNotification(`Test result saved! Score: ${numericScore}`, "success");
+        } catch (error) {
+            console.error("Error saving test result:", error);
+            this.showNotification(`Could not save your test result.`, "error");
+        }
+    }
+
+    /**
+     * Records a solved coding challenge.
+     * @param {string} category - The category of the challenge (e.g., 'basic', 'interview').
+     * @param {string} challengeId - The unique identifier for the solved challenge.
+     */
+    async saveSolvedChallenge(category, challengeId) {
+        if (!this.currentUser || !category || !challengeId) return;
+
+        const ref = doc(this.db, "users", this.currentUser.uid);
+        try {
+            await updateDoc(ref, {
+                [`challengeProgress.${category}`]: arrayUnion(challengeId),
+                updatedAt: serverTimestamp()
+            });
+            this.showNotification(`Challenge progress saved! ✅`, "success");
+        } catch (error) {
+            console.error("Error saving challenge progress:", error);
+            this.showNotification("Could not save your progress.", "error");
+        }
     }
 
     async saveNoteAccess(noteId) {
@@ -264,7 +319,9 @@ class AuthSystem {
     openAuthModal(mode) { document.getElementById('authModal')?.classList.remove('hidden'); this.setAuthMode(mode); }
     closeAuthModal() { document.getElementById('authModal')?.classList.add('hidden'); this.resetForm(); }
     closeAccessDeniedModal() { document.getElementById('accessDeniedModal')?.classList.add('hidden'); }
+
     setAuthMode(mode) {
+        // ... (this function remains unchanged)
         const authMode = document.getElementById('authMode');
         const authTitle = document.getElementById('authTitle');
         const submitText = document.getElementById('submitText');
@@ -284,11 +341,14 @@ class AuthSystem {
             nameField.classList.remove('hidden');
         }
     }
+
     switchAuthMode() {
         const currentMode = document.getElementById('authMode').value;
         this.setAuthMode(currentMode === 'login' ? 'register' : 'login');
     }
+
     updateUI() {
+        // ... (this function remains unchanged)
         const authButtons = document.getElementById('authButtons');
         const userMenu = document.getElementById('userMenu');
         const userNameDisplay = document.getElementById('userNameDisplay');
@@ -304,17 +364,32 @@ class AuthSystem {
             userMenu?.classList.add('hidden');
         }
     }
+
     toggleUserMenu() { document.getElementById('userDropdown')?.classList.toggle('show'); }
     closeUserMenu() { document.getElementById('userDropdown')?.classList.remove('show'); }
 
+    /**
+     * ✨ MODIFIED: Handles clicks on protected content cards.
+     */
     handleProtectedContent(e, card) {
         e.preventDefault();
         if (!this.currentUser) {
             document.getElementById('accessDeniedModal')?.classList.remove('hidden');
+            return; // Stop further execution if not logged in
         }
-        const testType = card.dataset.test || card.dataset.challenge;
-        if (card.dataset.challenge) this.saveSolvedChallenge(testType);
-        this.navigateToTestPage(testType);
+
+        const testType = card.dataset.test;
+        const challengeCategory = card.dataset.challenge;
+
+        if (challengeCategory) {
+            // This is a coding challenge. Save progress and navigate.
+            // Using the category itself as the ID for simplicity. You might have a more specific ID.
+            this.saveSolvedChallenge(challengeCategory, challengeCategory);
+            this.navigateToTestPage(challengeCategory);
+        } else if (testType) {
+            // This is a test. Just navigate. The result will be saved on the test page itself.
+            this.navigateToTestPage(testType);
+        }
     }
 
     handleNotesContent(e, card) {
@@ -327,6 +402,7 @@ class AuthSystem {
     }
 
     navigateToTestPage(testType) {
+        // ... (this function remains unchanged)
         const testPages = {
             'programming': 'programming-test.html', 'java': 'java-test.html',
             'dsa': 'dsa-test.html', 'general': 'general-test.html',
@@ -341,6 +417,7 @@ class AuthSystem {
     }
 
     navigateToNotesPage(notesType) {
+        // ... (this function remains unchanged)
         const notesPages = {
             'python': 'python-tutorial.html', 'java': 'java-tutorial.html',
             'dsa': 'dsa-tutorial.html', 'general': 'general-tutorial.html'
@@ -357,6 +434,7 @@ class AuthSystem {
         Helpers
     ================================ */
     setLoading(isLoading) {
+        // ... (this function remains unchanged)
         const submitBtn = document.querySelector('#authForm button[type="submit"]');
         const loadingSpinner = document.getElementById('loadingSpinner');
         const submitText = document.getElementById('submitText');
@@ -378,6 +456,7 @@ class AuthSystem {
     }
 
     showNotification(message, type = 'info') {
+        // ... (this function remains unchanged)
         const notification = document.createElement('div');
         notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 max-w-sm ${type === 'success' ? 'bg-green-500 text-white' :
             type === 'error' ? 'bg-red-500 text-white' : 'bg-blue-500 text-white'
@@ -398,6 +477,7 @@ class AuthSystem {
     Standalone UI Logic
 ================================ */
 function initializeThemeToggle() {
+    // ... (this function remains unchanged)
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
     const currentTheme = localStorage.getItem('theme');
@@ -410,6 +490,7 @@ function initializeThemeToggle() {
 }
 
 function initializeInstructionModal() {
+    // ... (this function remains unchanged)
     const instructionBtn = document.getElementById('instructionBtn');
     const instructionModal = document.getElementById('instructionModal');
     const closeInstructionModalBtn = document.getElementById('closeInstructionModal');
