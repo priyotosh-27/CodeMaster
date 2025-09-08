@@ -1,5 +1,5 @@
 /* ===============================
-   Firebase Setup
+    Firebase Setup
 ================================ */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
@@ -25,28 +25,34 @@ import {
     orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// 🔹 Your Firebase Config
-const firebaseConfig = {
-    apiKey: "AIzaSyCtwyVv3cCc8udicg09akTJvGpr5LgmXF4",
-    authDomain: "codemaster-102b4.firebaseapp.com",
-    projectId: "codemaster-102b4",
-    storageBucket: "codemaster-102b4.appspot.com",
-    messagingSenderId: "932558907143",
-    appId: "1:932558907143:web:d6e3e034be1f2f955b87a2",
-    measurementId: "G-E5M37X3LMH"
-};
+// This function will fetch the config and start the entire application
+async function startApp() {
+    try {
+        const response = await fetch('/config');
+        const firebaseConfig = await response.json();
 
-// 🔹 Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+        // 🔹 Initialize Firebase with the fetched config
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // 🔹 Now that Firebase is ready, initialize your main application logic
+        window.authSystem = new AuthSystem(auth, db);
+
+    } catch (error) {
+        console.error("Fatal Error: Could not start the application.", error);
+        document.body.innerHTML = "<h1>Error: Could not load application. Please try again later.</h1>";
+    }
+}
 
 
 /* ===============================
-   Authentication System
+    Authentication System
 ================================ */
 class AuthSystem {
-    constructor() {
+    constructor(auth, db) {
+        this.auth = auth;
+        this.db = db;
         this.currentUser = null;
         this.initializeEventListeners();
         this.listenToAuthChanges();
@@ -106,10 +112,14 @@ class AuthSystem {
         document.addEventListener('click', (e) => {
             if (!e.target.closest('#userMenu')) this.closeUserMenu();
         });
+
+        // This is now separate from the AuthSystem class
+        initializeThemeToggle();
+        initializeInstructionModal();
     }
 
     /* ===============================
-       Firebase Authentication
+        Firebase Authentication
     ================================ */
     async handleAuth(e) {
         e.preventDefault();
@@ -125,11 +135,11 @@ class AuthSystem {
             if (mode === 'register') {
                 if (!name || name.length < 2) throw new Error("Please enter a valid name");
 
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
                 const user = userCredential.user;
 
                 // 🔹 Create Firestore profile
-                await setDoc(doc(db, "users", user.uid), {
+                await setDoc(doc(this.db, "users", user.uid), {
                     uid: user.uid,
                     name,
                     email: user.email,
@@ -148,23 +158,20 @@ class AuthSystem {
                 this.showNotification(`Welcome, ${name}! 🎉`, 'success');
 
             } else {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
                 const user = userCredential.user;
 
                 // 🔹 Fetch Firestore data
-                const ref = doc(db, "users", user.uid);
+                const ref = doc(this.db, "users", user.uid);
                 const snap = await getDoc(ref);
 
                 if (snap.exists()) {
                     const userData = snap.data();
-
                     // update login timestamp
-                    await setDoc(ref, {
-                        ...userData,
+                    await updateDoc(ref, {
                         lastLogin: serverTimestamp(),
                         updatedAt: serverTimestamp()
-                    }, { merge: true });
-
+                    });
                     this.currentUser = { uid: user.uid, ...userData };
                 } else {
                     // create profile if not exist
@@ -196,7 +203,7 @@ class AuthSystem {
 
     async logout() {
         try {
-            await signOut(auth);
+            await signOut(this.auth);
             this.currentUser = null;
             this.updateUI();
             this.closeUserMenu();
@@ -207,9 +214,9 @@ class AuthSystem {
     }
 
     listenToAuthChanges() {
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(this.auth, (user) => {
             if (user) {
-                const ref = doc(db, "users", user.uid);
+                const ref = doc(this.db, "users", user.uid);
                 onSnapshot(ref, (snap) => {
                     if (snap.exists()) {
                         this.currentUser = { uid: user.uid, ...snap.data() };
@@ -226,11 +233,11 @@ class AuthSystem {
     }
 
     /* ===============================
-       Progress Tracking Methods
+        Progress Tracking Methods
     ================================ */
     async saveSolvedChallenge(challengeId) {
-        if (!auth.currentUser) return;
-        const ref = doc(db, "users", auth.currentUser.uid);
+        if (!this.currentUser) return;
+        const ref = doc(this.db, "users", this.currentUser.uid);
         await updateDoc(ref, {
             solvedChallenges: arrayUnion(challengeId),
             updatedAt: serverTimestamp()
@@ -239,8 +246,8 @@ class AuthSystem {
     }
 
     async saveNoteAccess(noteId) {
-        if (!auth.currentUser) return;
-        const ref = doc(db, "users", auth.currentUser.uid);
+        if (!this.currentUser) return;
+        const ref = doc(this.db, "users", this.currentUser.uid);
         await updateDoc(ref, {
             savedNotes: arrayUnion(noteId),
             updatedAt: serverTimestamp()
@@ -248,41 +255,8 @@ class AuthSystem {
         this.showNotification(`Note ${noteId} saved 📖`, "info");
     }
 
-    async increaseStreak() {
-        if (!auth.currentUser) return;
-        const ref = doc(db, "users", auth.currentUser.uid);
-        await updateDoc(ref, {
-            streak: increment(1),
-            updatedAt: serverTimestamp()
-        });
-        this.showNotification("🔥 Streak increased!", "success");
-    }
-
-    async saveTestResult(testId, score) {
-        if (!auth.currentUser) return;
-        const historyRef = collection(db, "users", auth.currentUser.uid, "history");
-        await addDoc(historyRef, {
-            testId,
-            score,
-            date: serverTimestamp()
-        });
-        this.showNotification(`Test ${testId} saved with score ${score}`, "success");
-    }
-
-    listenToHistory() {
-        if (!auth.currentUser) return;
-        const historyRef = collection(db, "users", auth.currentUser.uid, "history");
-        const q = query(historyRef, orderBy("date", "desc"));
-
-        onSnapshot(q, (snapshot) => {
-            const results = [];
-            snapshot.forEach(doc => results.push(doc.data()));
-            console.log("📊 Test History:", results);
-        });
-    }
-
     /* ===============================
-       UI Helpers
+        UI Helpers & Navigation
     ================================ */
     openAuthModal(mode) { document.getElementById('authModal')?.classList.remove('hidden'); this.setAuthMode(mode); }
     closeAuthModal() { document.getElementById('authModal')?.classList.add('hidden'); this.resetForm(); }
@@ -330,9 +304,6 @@ class AuthSystem {
     toggleUserMenu() { document.getElementById('userDropdown')?.classList.toggle('show'); }
     closeUserMenu() { document.getElementById('userDropdown')?.classList.remove('show'); }
 
-    /* ===============================
-       Navigation / Access Control
-    ================================ */
     handleProtectedContent(e, card) {
         e.preventDefault();
         if (!this.currentUser) {
@@ -340,35 +311,28 @@ class AuthSystem {
             return;
         }
         const testType = card.dataset.test || card.dataset.challenge;
-        if (card.dataset.challenge) this.saveSolvedChallenge(testType); // auto save progress
-        this.navigateToTestPage(testType, card.dataset.test ? 'test' : 'challenge');
+        if (card.dataset.challenge) this.saveSolvedChallenge(testType);
+        this.navigateToTestPage(testType);
     }
 
     handleNotesContent(e, card) {
         e.preventDefault();
         const notesType = card.dataset.notes;
-
-        // ✅ If the user is logged in, save their progress.
         if (this.currentUser) {
             this.saveNoteAccess(notesType);
         }
-
-        // ✅ Always navigate to the notes page, regardless of login status.
         this.navigateToNotesPage(notesType);
     }
-    navigateToTestPage(testType, category) {
+
+    navigateToTestPage(testType) {
         const testPages = {
-            'programming': 'programming-test.html',
-            'java': 'java-test.html',
-            'dsa': 'dsa-test.html',
-            'general': 'general-test.html',
-            'basic': 'basic.html',
-            'interview': 'interview.html',
-            'company': 'company.html'
+            'programming': 'programming-test.html', 'java': 'java-test.html',
+            'dsa': 'dsa-test.html', 'general': 'general-test.html',
+            'basic': 'basic.html', 'interview': 'interview.html', 'company': 'company.html'
         };
         const targetPage = testPages[testType];
         if (targetPage) {
-            setTimeout(() => { window.location.href = targetPage; }, 500);
+            setTimeout(() => { window.location.href = targetPage; }, 300);
         } else {
             this.showNotification(`Page not found: ${testType}`, 'error');
         }
@@ -376,21 +340,19 @@ class AuthSystem {
 
     navigateToNotesPage(notesType) {
         const notesPages = {
-            'python': 'python-tutorial.html',
-            'java': 'java-tutorial.html',
-            'dsa': 'dsa-tutorial.html',
-            'general': 'general-tutorial.html'
+            'python': 'python-tutorial.html', 'java': 'java-tutorial.html',
+            'dsa': 'dsa-tutorial.html', 'general': 'general-tutorial.html'
         };
         const targetPage = notesPages[notesType];
         if (targetPage) {
-            setTimeout(() => { window.location.href = targetPage; }, 500);
+            setTimeout(() => { window.location.href = targetPage; }, 300);
         } else {
             this.showNotification(`Notes not found: ${notesType}`, 'error');
         }
     }
 
     /* ===============================
-       Helpers
+        Helpers
     ================================ */
     setLoading(isLoading) {
         const submitBtn = document.querySelector('#authForm button[type="submit"]');
@@ -400,13 +362,11 @@ class AuthSystem {
         if (isLoading) {
             submitBtn.disabled = true;
             loadingSpinner.classList.remove('hidden');
-            const mode = document.getElementById('authMode').value;
-            submitText.textContent = mode === 'login' ? 'Signing In...' : 'Creating Account...';
+            submitText.textContent = document.getElementById('authMode').value === 'login' ? 'Signing In...' : 'Creating Account...';
         } else {
             submitBtn.disabled = false;
             loadingSpinner.classList.add('hidden');
-            const mode = document.getElementById('authMode').value;
-            submitText.textContent = mode === 'login' ? 'Sign In' : 'Create Account';
+            submitText.textContent = document.getElementById('authMode').value === 'login' ? 'Sign In' : 'Create Account';
         }
     }
 
@@ -418,19 +378,11 @@ class AuthSystem {
     showNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 max-w-sm ${type === 'success' ? 'bg-green-500 text-white' :
-            type === 'error' ? 'bg-red-500 text-white' :
-                type === 'info' ? 'bg-blue-500 text-white' :
-                    'bg-gray-500 text-white'
+            type === 'error' ? 'bg-red-500 text-white' : 'bg-blue-500 text-white'
             }`;
-        notification.innerHTML = `
-          <div class="flex items-center space-x-2">
-            <i class="fas ${type === 'success' ? 'fa-check-circle' :
-                type === 'error' ? 'fa-exclamation-circle' :
-                    type === 'info' ? 'fa-info-circle' :
-                        'fa-bell'}"></i>
-            <span>${message}</span>
-          </div>
-        `;
+        notification.innerHTML = `<div class="flex items-center space-x-2"><i class="fas ${type === 'success' ? 'fa-check-circle' :
+            type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'
+            }"></i><span>${message}</span></div>`;
         document.body.appendChild(notification);
         setTimeout(() => { notification.style.transform = 'translateX(0)'; }, 100);
         setTimeout(() => {
@@ -440,46 +392,37 @@ class AuthSystem {
     }
 }
 
-// Initialize
-const authSystem = new AuthSystem();
-
 /* ===============================
-   Theme Toggle
+    Standalone UI Logic
 ================================ */
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme === 'dark') body.classList.add('dark');
+function initializeThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') body.classList.add('dark');
 
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark');
-    localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
-});
+    themeToggle?.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
+    });
+}
 
-// --- INSTRUCTION MODAL LOGIC ---
+function initializeInstructionModal() {
+    const instructionBtn = document.getElementById('instructionBtn');
+    const instructionModal = document.getElementById('instructionModal');
+    const closeInstructionModalBtn = document.getElementById('closeInstructionModal');
 
-// 1. Get all the necessary elements from the HTML
-const instructionBtn = document.getElementById('instructionBtn');
-const instructionModal = document.getElementById('instructionModal');
-const closeInstructionModalBtn = document.getElementById('closeInstructionModal');
+    const showInstructionModal = () => instructionModal?.classList.remove('hidden');
+    const hideInstructionModal = () => instructionModal?.classList.add('hidden');
 
-// 2. Create functions to show and hide the modal
-const showInstructionModal = () => {
-    instructionModal.classList.remove('hidden');
-};
+    instructionBtn?.addEventListener('click', showInstructionModal);
+    closeInstructionModalBtn?.addEventListener('click', hideInstructionModal);
+    instructionModal?.addEventListener('click', (event) => {
+        if (event.target === instructionModal) {
+            hideInstructionModal();
+        }
+    });
+}
 
-const hideInstructionModal = () => {
-    instructionModal.classList.add('hidden');
-};
-
-// 3. Add event listeners to trigger the functions
-instructionBtn.addEventListener('click', showInstructionModal);
-closeInstructionModalBtn.addEventListener('click', hideInstructionModal);
-
-// 4. Optional: Close the modal if the user clicks on the background overlay
-instructionModal.addEventListener('click', (event) => {
-    // We check if the clicked element is the modal background itself
-    if (event.target === instructionModal) {
-        hideInstructionModal();
-    }
-});
+// 🚀 Start the application
+startApp();
