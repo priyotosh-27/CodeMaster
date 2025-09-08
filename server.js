@@ -1,19 +1,17 @@
-// server.js
-
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
 
-// Load environment variables from .env file
+// Load environment variables from the .env file
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Use Render's port or 3000 for local
+const PORT = process.env.PORT || 3000;
 
-// Serve the static files from the 'public' directory
+// Serve all static files (HTML, CSS, JS, images) from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API endpoint to provide the public Firebase config to the front-end
+// API endpoint that the front-end will call to get the Firebase config
 app.get('/config', (req, res) => {
     res.json({
         apiKey: process.env.FIREBASE_API_KEY,
@@ -26,8 +24,8 @@ app.get('/config', (req, res) => {
     });
 });
 
-// All other routes should serve the index.html file
-app.get('/*', (req, res) => {
+// A "catch-all" middleware to send index.html for any other request
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
