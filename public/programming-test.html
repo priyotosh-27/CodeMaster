@@ -366,7 +366,6 @@
 </head>
 
 <body class="min-h-full">
-  <!-- Header -->
   <header class="gradient-bg text-white sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-4">
       <div class="flex items-center justify-between">
@@ -397,7 +396,6 @@
   </header>
 
   <main class="max-w-7xl mx-auto px-4 py-8">
-    <!-- Dashboard Section -->
     <section id="dashboard-section" class="mb-8">
       <div class="grid md:grid-cols-4 gap-6 mb-8">
         <div class="stats-card">
@@ -419,7 +417,6 @@
       </div>
     </section>
 
-    <!-- Test List Section -->
     <section id="list-section">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
         <h2 class="text-3xl font-bold">Available Tests</h2>
@@ -441,10 +438,8 @@
       <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6" id="testsGrid"></div>
     </section>
 
-    <!-- Test Interface -->
     <section id="test-section" class="hidden">
       <div class="grid lg:grid-cols-[280px,1fr] gap-8">
-        <!-- Enhanced Navigator -->
         <aside class="glass-card p-6 h-fit sticky top-24">
           <div class="text-center mb-6">
             <div class="progress-ring mx-auto mb-4" id="progressRing">
@@ -476,7 +471,6 @@
           </button>
         </aside>
 
-        <!-- Enhanced Test Paper -->
         <div class="glass-card p-8">
           <div class="mb-8">
             <div class="flex justify-between items-start mb-4">
@@ -518,7 +512,6 @@
             </div>
           </div>
 
-          <!-- Enhanced Results -->
           <div id="resultCard" class="hidden mt-8 glass-card p-6">
             <div class="text-center mb-6">
               <div class="text-2xl font-bold mb-2">Test Results</div>
@@ -560,7 +553,6 @@
     </section>
   </main>
 
-  <!-- Floating Action Button -->
   <div class="floating-action">
     <button id="helpBtn"
       class="w-14 h-14 rounded-full bg-[var(--accent-primary)] text-white shadow-lg hover:shadow-xl transition-all hover:scale-110">
@@ -568,10 +560,8 @@
     </button>
   </div>
 
-  <!-- Confetti Container -->
   <div id="confetti" class="pointer-events-none fixed inset-0 z-50"></div>
 
-  <!-- Loading Spinner -->
   <div id="loadingSpinner" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
     <div class="glass-card p-8 text-center">
       <div
@@ -580,38 +570,36 @@
       <div class="text-lg font-semibold">Loading Tests...</div>
     </div>
   </div>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-  <script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script> -->
+  <script type="module">
     // ✅ START OF UPDATED JAVASCRIPT CODE
 
     // Firebase SDKs should be loaded in the HTML *before* this script runs.
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCtwyVv3cCc8udicg09akTJvGpr5LgmXF4",
-      authDomain: "codemaster-102b4.firebaseapp.com",
-      projectId: "codemaster-102b4",
-      storageBucket: "codemaster-102b4.appspot.com",
-      messagingSenderId: "932558907143",
-      appId: "1:932558907143:web:d6e3e034be1f2f955b87a2",
-      measurementId: "G-E5M37X3LMH"
-    };
+    /* ===============================
+    Firebase Setup
+================================ */
+    // Import Firebase SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, collection, getDocs, doc, getDoc, query, orderBy, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
 
     // Global variables
     let tests = [];
-    let currentUser = null; // Will hold the logged-in user object
+    let currentUser = null;
     let currentTestIndex = null;
     let currentQuestionIndex = 0;
     let timerInterval = null;
     let remainingTime = 0;
     let userAnswers = {};
     let testStartTime = null;
+
+    // Firebase instances, declared globally
+    let auth;
+    let db;
 
     // Sample test data (fallback)
     const sampleTests = [
@@ -694,34 +682,63 @@
       confetti: document.getElementById('confetti')
     };
 
-    // Auth state listener to control the app
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        console.log("User is logged in:", user.email);
-        currentUser = user; // Store the user object globally
-        // The 'DOMContentLoaded' event might have already fired, so we call init() directly.
-        // We add a check to ensure it only runs once.
-        if (document.readyState === "complete" || document.readyState === "interactive") {
-          if (!window.appInitialized) {
-            init();
-            window.appInitialized = true;
-          }
-        } else {
-          document.addEventListener('DOMContentLoaded', () => {
+
+    /* ===============================
+        Core Application Logic
+    ================================ */
+
+    // Initialize Firebase and set up the auth listener
+    async function startApp() {
+      try {
+        const response = await fetch('/config');
+        const firebaseConfig = await response.json();
+
+        const app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+        db = getFirestore(app);
+
+        // Now that Firebase is initialized, set up the auth listener
+        onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            console.log("User is logged in:", user.email);
+            currentUser = user;
+
+            // Fetch the user's profile from Firestore
+            const userDocRef = doc(db, "users", user.uid);
+            const userDocSnap = await getDoc(userDocRef);
+            if (userDocSnap.exists()) {
+              currentUser.profileData = userDocSnap.data();
+            }
+
+            // Initialize the app only once
             if (!window.appInitialized) {
-              init();
+              await init();
               window.appInitialized = true;
             }
-          });
-        }
-      } else {
-        console.log("No user logged in. Redirecting...");
-        alert("Please login to access tests.");
-        window.location.href = "index.html?auth=login"; // Redirect to homepage
-      }
-    });
+          } else {
+            console.log("No user logged in. Showing login prompt.");
+            // Hide loading spinner and show login prompt
+            hideLoading();
+            elements.dashboard.style.display = 'none';
+            elements.listSection.innerHTML = `
+                    <div class="glass-card p-12 text-center fade-in">
+                        <h2 class="text-2xl font-bold mb-4">Access Denied</h2>
+                        <p class="text-[var(--text-secondary)] mb-6">You must be logged in to view programming tests.</p>
+                        <button onclick="window.location.href = 'index.html?auth=login'" class="btn-primary">
+                            Go to Login Page
+                        </button>
+                    </div>
+                `;
+          }
+        });
 
-    // Initialize application (now async to handle data fetching)
+      } catch (error) {
+        console.error("Fatal Error: Could not start the application.", error);
+        document.body.innerHTML = "<h1>Error: Could not load application. Please try again later.</h1>";
+      }
+    }
+
+    // Initialize application
     async function init() {
       try {
         // Fetch tests from JSON file
@@ -737,8 +754,8 @@
 
         initializeTheme();
         setupEventListeners();
-        await renderDashboard(); // Now awaits Firestore data
-        await renderTestList(); // Now awaits Firestore data
+        await renderDashboard();
+        await renderTestList();
         hideLoading();
       } catch (error) {
         console.error('Initialization error:', error);
@@ -763,6 +780,7 @@
     }
 
     // Event listeners
+    // Event listeners for static elements
     function setupEventListeners() {
       elements.themeToggle.addEventListener('click', toggleTheme);
       elements.fullscreenBtn.addEventListener('click', toggleFullscreen);
@@ -779,36 +797,29 @@
       document.addEventListener('keydown', handleKeyboard);
       setInterval(autoSaveProgress, 30000); // Auto-save every 30 seconds
     }
-
-    // Dashboard functions (now async)
+    // Dashboard functions
     async function renderDashboard() {
-      const stats = await calculateStats(); // Await calculated stats
+      const stats = await calculateStats();
       document.getElementById('totalTests').textContent = stats.total;
       document.getElementById('completedTests').textContent = stats.completed;
       document.getElementById('averageScore').textContent = stats.averageScore + '%';
       document.getElementById('bestStreak').textContent = stats.bestStreak;
     }
 
-    // ✅ NEW HELPER FUNCTION
-    // This function specifically updates dashboard stats based on a filtered list of tests
     async function updateDashboardWithFilteredResults(filteredTests) {
       const history = await getTestHistory();
-
-      // Calculate stats ONLY for the tests currently being shown
       const completedInFilter = history.filter(h => filteredTests.some(t => t.title === h.title));
       const averageScoreInFilter = completedInFilter.length > 0 ?
         Math.round(completedInFilter.reduce((acc, test) => acc + test.percentage, 0) / completedInFilter.length) : 0;
       const bestStreakInFilter = calculateBestStreak(completedInFilter);
-
-      // Update the dashboard UI
-      document.getElementById('totalTests').textContent = filteredTests.length; // Show count of filtered tests
+      document.getElementById('totalTests').textContent = filteredTests.length;
       document.getElementById('completedTests').textContent = completedInFilter.length;
       document.getElementById('averageScore').textContent = averageScoreInFilter + '%';
       document.getElementById('bestStreak').textContent = bestStreakInFilter;
     }
 
     async function calculateStats() {
-      const history = await getTestHistory(); // Await history from Firestore
+      const history = await getTestHistory();
       return {
         total: tests.length,
         completed: history.length,
@@ -820,10 +831,9 @@
     function calculateBestStreak(history) {
       let currentStreak = 0;
       let bestStreak = 0;
-      // Assuming history is sorted by date, oldest first for streak calculation
       const sortedHistory = [...history].sort((a, b) => a.date - b.date);
       sortedHistory.forEach(test => {
-        if (test.percentage >= 80) { // Passing score is 80%
+        if (test.percentage >= 80) {
           currentStreak++;
           bestStreak = Math.max(bestStreak, currentStreak);
         } else {
@@ -832,12 +842,32 @@
       });
       return bestStreak;
     }
+    // New function to attach listeners to dynamically generated content
+    function setupDynamicEventListeners() {
+      // Add event listeners for category filter chips
+      elements.categoryFilter.addEventListener('click', (e) => {
+        if (e.target.classList.contains('filter-chip')) {
+          document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
+          e.target.classList.add('active');
+          filterTests();
+        }
+      });
 
-    // Test list functions (now async)
+      // Add event listeners for test start buttons
+      const startButtons = document.querySelectorAll('.start-test-btn');
+      startButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const testTitle = button.dataset.testTitle;
+          startTest(testTitle);
+        });
+      });
+    }
+
+    // Test list functions
     async function renderTestList() {
       const categories = [...new Set(tests.map(test => test.category))];
       renderCategoryFilter(categories);
-      await renderTests(tests); // Await the rendering
+      await renderTests(tests);
     }
 
     function renderCategoryFilter(categories) {
@@ -855,8 +885,10 @@
       });
     }
 
+    // ... (Your existing code) ...
+
     async function renderTests(testsToRender) {
-      const history = await getTestHistory(); // Get history once for efficiency
+      const history = await getTestHistory();
       const testsHTML = testsToRender.map((test, index) => {
         const difficulty = test.difficulty || 'intermediate';
         const difficultyColor = {
@@ -888,14 +920,16 @@
                         <div class="text-lg font-bold text-[var(--success)]">${Math.round(bestScore)}%</div>
                     </div>
                 ` : ''}
-                <button class="btn-primary w-full" onclick="startTest('${test.title}')">
+                <button class="btn-primary w-full start-test-btn" data-test-title="${test.title}">
                     <i class="fas fa-play mr-2"></i>
                     ${bestScore !== null ? 'Retake Test' : 'Start Test'}
                 </button>
             </div>
         `;
       }).join('');
+
       elements.testsGrid.innerHTML = testsHTML;
+      setupDynamicEventListeners(); // Call the new function here!
     }
 
     async function filterTests() {
@@ -911,20 +945,14 @@
         return matchesSearch && matchesDifficulty && matchesCategory;
       });
 
-      // First, re-render the list of test cards with the filtered list
       await renderTests(filteredTests);
-
-      // ✅ NEW: After filtering, update the dashboard stats based on the filtered list
       await updateDashboardWithFilteredResults(filteredTests);
+      setupDynamicEventListeners(); // Call the new function here!
     }
-
     // Test execution functions
     function startTest(testTitle) {
       if (document.activeElement) document.activeElement.blur();
-      // Find the index of the test in the original 'tests' array using its title
       const testIndex = tests.findIndex(test => test.title === testTitle);
-
-      // If the test isn't found for some reason, do nothing.
       if (testIndex === -1) {
         console.error("Test not found:", testTitle);
         return;
@@ -936,13 +964,12 @@
       testStartTime = new Date();
       const test = tests[testIndex];
 
-      // --- The rest of the function is the same ---
       loadSavedProgress();
       elements.listSection.style.display = 'none';
       elements.testSection.style.display = 'block';
       elements.testSection.classList.add('slide-in-right');
       elements.testTitle.textContent = test.title;
-      elements.testMeta.textContent = `${test.questions.length} questions • ${test.duration} minutes • ${test.category ?? 'General'}`; // Added default for safety
+      elements.testMeta.textContent = `${test.questions.length} questions • ${test.duration} minutes • ${test.category ?? 'General'}`;
       renderQuestions();
       setupNavigator();
       startTimer();
@@ -954,27 +981,44 @@
       const questionsHTML = test.questions.map((question, index) => {
         const savedAnswer = userAnswers[index];
         return `
-            <div class="question-card ${index === currentQuestionIndex ? 'current' : ''}" id="question-${index}">
-                <div class="mb-4">
-                    <h3 class="text-lg font-semibold mb-2">Question ${index + 1}</h3>
-                    <p class="text-[var(--text-primary)]">${question.q}</p>
-                </div>
-                <div class="space-y-3">
-                    ${question.options.map(option => {
+        <div class="question-card ${index === currentQuestionIndex ? 'current' : ''}" id="question-${index}">
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">Question ${index + 1}</h3>
+                <p class="text-[var(--text-primary)]">${question.q}</p>
+            </div>
+            <div class="space-y-3">
+                ${question.options.map(option => {
           const optionId = `q${index}-${option.replace(/\W+/g, '-')}`;
           const isSelected = savedAnswer === option;
           return `
-                            <label class="option-label ${isSelected ? 'selected' : ''}" for="${optionId}">
-                                <input type="radio" id="${optionId}" name="q${index}" value="${option}" ${isSelected ? 'checked' : ''} onchange="handleAnswerChange(${index}, this.value)">
-                                <span class="flex-1">${option}</span>
-                            </label>
-                        `;
+                        <label class="option-label ${isSelected ? 'selected' : ''}" for="${optionId}">
+                            <input type="radio" id="${optionId}" name="q${index}" value="${option}" ${isSelected ? 'checked' : ''}>
+                            <span class="flex-1">${option}</span>
+                        </label>
+                    `;
         }).join('')}
-                </div>
             </div>
-        `;
+        </div>
+    `;
       }).join('');
+
       elements.testForm.innerHTML = questionsHTML;
+
+      // ✅ New function call to attach event listeners
+      setupQuestionEventListeners();
+    }
+
+    function setupQuestionEventListeners() {
+      // Select all radio buttons within the test form
+      const radioButtons = elements.testForm.querySelectorAll('input[type="radio"]');
+
+      radioButtons.forEach(input => {
+        input.addEventListener('change', (e) => {
+          const questionIndex = parseInt(e.target.name.replace('q', ''));
+          const answer = e.target.value;
+          handleAnswerChange(questionIndex, answer);
+        });
+      });
     }
 
     function handleAnswerChange(questionIndex, answer) {
@@ -1052,7 +1096,7 @@
       }
     }
 
-    // Test submission and results (now async)
+    // Test submission and results
     async function submitTest(autoSubmit = false) {
       if (!autoSubmit) {
         const test = tests[currentTestIndex];
@@ -1064,7 +1108,7 @@
       clearInterval(timerInterval);
       const results = calculateResults();
       displayResults(results, autoSubmit);
-      await saveTestHistory(results); // Await the save to database
+      await saveTestHistory(results);
       if (results.percentage >= 80) {
         celebrateSuccess();
       }
@@ -1148,8 +1192,8 @@
       clearInterval(timerInterval);
       elements.testSection.style.display = 'none';
       elements.listSection.style.display = 'block';
-      await renderDashboard(); // Refresh dashboard with latest data
-      await renderTestList(); // Refresh test list
+      await renderDashboard();
+      await renderTestList();
     }
 
     function clearAllAnswers() {
@@ -1163,7 +1207,6 @@
     function resetTest() {
       if (confirm('Are you sure you want to reset the test? All progress will be lost.')) {
         clearSavedProgress();
-        // ✅ FIX: Pass the test title, not its index
         startTest(tests[currentTestIndex].title);
       }
     }
@@ -1173,7 +1216,6 @@
       elements.resultCard.classList.add('hidden');
       elements.submitBtn.disabled = false;
       elements.submitBtn.style.opacity = '1';
-      // ✅ FIX: Pass the test title, not its index
       startTest(tests[currentTestIndex].title);
     }
 
@@ -1226,7 +1268,7 @@
         return;
       }
       try {
-        await db.collection("users").doc(currentUser.uid).collection("history").add({
+        await addDoc(collection(db, "users", currentUser.uid, "history"), {
           title: results.testTitle,
           score: results.correct,
           total: results.total,
@@ -1248,9 +1290,9 @@
     async function getTestHistory() {
       if (!currentUser) return [];
       try {
-        const snapshot = await db.collection("users").doc(currentUser.uid).collection("history")
-          .orderBy("date", "desc")
-          .get();
+        const historyCollection = collection(db, "users", currentUser.uid, "history");
+        const q = query(historyCollection, orderBy("date", "desc"));
+        const snapshot = await getDocs(q);
         const history = [];
         snapshot.forEach(doc => history.push(doc.data()));
         return history;
@@ -1299,7 +1341,7 @@
     }
 
     function showHelp() {
-      const helpContent = `...`; // Your help content here
+      const helpContent = `...`;
       // ... logic to show modal ...
     }
 
@@ -1343,9 +1385,9 @@
     .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }`;
     document.head.appendChild(style);
 
-    // The DOMContentLoaded listener is removed because init() is now called by the auth state change listener.
+    // Start the application process when the script is loaded
+    startApp();
 
-    // ✅ END OF UPDATED JAVASCRIPT CODE
 
   </script>
 </body>

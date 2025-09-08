@@ -311,7 +311,6 @@ class AuthSystem {
         e.preventDefault();
         if (!this.currentUser) {
             document.getElementById('accessDeniedModal')?.classList.remove('hidden');
-            return;
         }
         const testType = card.dataset.test || card.dataset.challenge;
         if (card.dataset.challenge) this.saveSolvedChallenge(testType);

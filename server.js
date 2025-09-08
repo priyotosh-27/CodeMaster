@@ -25,7 +25,8 @@ app.get('/config', (req, res) => {
 });
 
 // A "catch-all" middleware to send index.html for any other request
-app.get('/*', (req, res) => {
+// This MUST be placed after all other routes.
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
