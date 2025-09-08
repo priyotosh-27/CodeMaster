@@ -603,6 +603,9 @@
     let auth;
     let db;
 
+    // In programming-test.html
+    const PAGE_CATEGORY = "programming";
+
     // Sample test data (fallback)
     const sampleTests = [
       {
@@ -820,13 +823,30 @@
       document.getElementById('bestStreak').textContent = bestStreakInFilter;
     }
 
+    // This is the NEW function
+    // ✅ REPLACE your old calculateStats function with this one
+    // ✅ REPLACE your old calculateStats with this one
     async function calculateStats() {
-      const history = await getTestHistory();
+      let completed = 0;
+      let averageScore = 0;
+
+      // Use the up-to-date profileData we fetched right after submitting the test
+      const progress = currentUser?.profileData?.testProgress?.[PAGE_CATEGORY];
+
+      if (progress) {
+        // 'attempts' is the most reliable count of completed tests
+        completed = progress.attempts || 0;
+        if (progress.scores && progress.scores.length > 0) {
+          const sum = progress.scores.reduce((acc, score) => acc + score, 0);
+          averageScore = Math.round(sum / progress.scores.length);
+        }
+      }
+
       return {
         total: tests.length,
-        completed: history.length,
-        averageScore: history.length > 0 ? Math.round(history.reduce((acc, test) => acc + test.percentage, 0) / history.length) : 0,
-        bestStreak: calculateBestStreak(history)
+        completed: completed,
+        averageScore: averageScore,
+        bestStreak: 0 // Note: a proper streak needs the history collection
       };
     }
 
@@ -866,10 +886,54 @@
     }
 
     // Test list functions
+    // ✅ REPLACE your old renderTestList function with this one
+    // ✅ REPLACE the simplified renderTestList function with this one
+    // ✅ REPLACE your old renderTestList with this one
     async function renderTestList() {
-      const categories = [...new Set(tests.map(test => test.category))];
-      renderCategoryFilter(categories);
-      await renderTests(tests);
+      const progress = currentUser?.profileData?.testProgress?.[PAGE_CATEGORY];
+
+      const testsHTML = tests.map((test, index) => {
+        const difficulty = test.difficulty || 'intermediate';
+        const difficultyColor = {
+          beginner: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+          intermediate: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+          advanced: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300'
+        };
+
+        const bestScore = (progress && progress.scores && progress.scores.length > 0)
+          ? Math.max(...progress.scores)
+          : null;
+
+        return `
+            <div class="glass-card p-6 flex flex-col fade-in" style="animation-delay: ${index * 0.05}s">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold">${test.title}</h3>
+                    <span class="px-3 py-1 rounded-full text-xs font-medium ${difficultyColor[difficulty]}">
+                        ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
+                    </span>
+                </div>
+                <p class="text-[var(--text-secondary)] mb-4 flex-grow">${test.description || 'Test your knowledge.'}</p>
+                <div class="flex items-center gap-4 mb-4 text-sm text-[var(--text-muted)]">
+                    <span><i class="fas fa-question-circle mr-1"></i> ${test.questions.length} questions</span>
+                    <span><i class="fas fa-clock mr-1"></i> ${test.duration} min</span>
+                    <span><i class="fas fa-tag mr-1"></i> ${test.category}</span>
+                </div>
+                ${bestScore !== null ? `
+                    <div class="mb-4 p-3 bg-[var(--bg-secondary)] rounded-lg">
+                        <div class="text-sm text-[var(--text-secondary)]">Best Score</div>
+                        <div class="text-lg font-bold text-[var(--success)]">${Math.round(bestScore)}%</div>
+                    </div>
+                ` : ''}
+                <button class="btn-primary w-full mt-auto start-test-btn" data-test-title="${test.title}">
+                    <i class="fas fa-play mr-2"></i>
+                    ${(progress && progress.attempts > 0) ? 'Retake Test' : 'Start Test'}
+                </button>
+            </div>
+        `;
+      }).join('');
+
+      elements.testsGrid.innerHTML = testsHTML;
+      document.querySelectorAll('.start-test-btn').forEach(b => b.addEventListener('click', e => startTest(e.currentTarget.dataset.testTitle)));
     }
 
     function renderCategoryFilter(categories) {
@@ -1099,23 +1163,34 @@
     }
 
     // Test submission and results
+    // ✅ REPLACE the old submitTest function with this one
+    // ✅ REPLACE the old submitTest function with this one
     async function submitTest(autoSubmit = false) {
-      if (!autoSubmit) {
-        const test = tests[currentTestIndex];
-        const unanswered = test.questions.length - Object.keys(userAnswers).length;
-        if (unanswered > 0 && !confirm(`You have ${unanswered} unanswered question(s). Submit anyway?`)) {
-          return;
-        }
-      }
+      if (!autoSubmit && !confirm('Are you sure you want to submit?')) return;
+
       clearInterval(timerInterval);
       const results = calculateResults();
 
-      // ✨ THIS IS THE KEY CHANGE ✨
-      // Call both saving functions: one for history and one for profile stats.
+      elements.loadingSpinner.style.display = 'flex';
+
       await saveTestHistory(results);
       await updateUserStats(results);
 
+      // Re-fetch the user's complete profile data from Firestore
+      const userDocRef = doc(db, "users", currentUser.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      if (userDocSnap.exists()) {
+        currentUser.profileData = userDocSnap.data();
+      }
+
+      // ✨ FINAL FIX: Refresh the dashboard with the new data ✨
+      await renderDashboard();
+
+      elements.loadingSpinner.style.display = 'none';
+
+      // Now, display the results
       displayResults(results, autoSubmit);
+
       if (results.percentage >= 80) {
         celebrateSuccess();
       }
@@ -1221,14 +1296,17 @@
     }
 
     // Utility functions
+    // ✅ REPLACE the old goBackToList function with this one
     async function goBackToList() {
       if (timerInterval && elements.resultCard.classList.contains('hidden')) {
-        if (!confirm('Test is in progress. Are you sure you want to leave? Progress will be saved.')) return;
-        autoSaveProgress();
+        if (!confirm('Test is in progress. Are you sure you want to leave? Your progress will not be saved.')) return;
       }
       clearInterval(timerInterval);
       elements.testSection.style.display = 'none';
       elements.listSection.style.display = 'block';
+
+      // ✨ ADD THESE TWO LINES ✨
+      // These lines tell the page to fetch the new data from Firestore and update the display.
       await renderDashboard();
       await renderTestList();
     }
@@ -1248,11 +1326,16 @@
       }
     }
 
-    function retakeTest() {
+    // NEW and improved retakeTest function
+    async function retakeTest() {
       clearSavedProgress();
       elements.resultCard.classList.add('hidden');
       elements.submitBtn.disabled = false;
-      elements.submitBtn.style.opacity = '1';
+
+      // ✨ Also update the dashboard and list here for consistency
+      await renderDashboard();
+      await renderTestList();
+
       startTest(tests[currentTestIndex].title);
     }
 
