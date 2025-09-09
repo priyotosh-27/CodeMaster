@@ -17,7 +17,7 @@ app.use(cors({
 }));
 
 // ✅ Serve all static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'docs')));
 
 // ✅ API endpoint to serve Firebase config to the frontend
 app.get('/config', (req, res) => {
@@ -34,7 +34,7 @@ app.get('/config', (req, res) => {
 
 // ✅ "Catch-all" route to serve index.html for client-side routing
 app.use((req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'docs', 'index.html'));
 });
 
 // ✅ Start the server
