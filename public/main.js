@@ -23,7 +23,7 @@ import {
 // This function will fetch the config and start the entire application
 async function startApp() {
     try {
-        const response = await fetch('/config');
+        const response = await fetch('https://codemaster-t6q4.onrender.com/config');
         const firebaseConfig = await response.json();
 
         // 🔹 Initialize Firebase with the fetched config

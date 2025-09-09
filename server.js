@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
+const cors = require('cors');
 
 // Load environment variables from the .env file
 dotenv.config();
@@ -8,10 +9,17 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve all static files (HTML, CSS, JS, images) from the 'public' directory
+// ✅ Enable CORS for your frontend domain
+// Replace 'https://your-frontend-url.github.io' with your actual frontend URL
+app.use(cors({
+    origin: 'https://priyotosh-27.github.io', // or '*' for testing, but be cautious in production
+    methods: ['GET', 'POST'],
+}));
+
+// ✅ Serve all static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API endpoint that the front-end will call to get the Firebase config
+// ✅ API endpoint to serve Firebase config to the frontend
 app.get('/config', (req, res) => {
     res.json({
         apiKey: process.env.FIREBASE_API_KEY,
@@ -24,12 +32,12 @@ app.get('/config', (req, res) => {
     });
 });
 
-// A "catch-all" middleware to send index.html for any other request
-// This MUST be placed after all other routes.
+// ✅ "Catch-all" route to serve index.html for client-side routing
 app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// ✅ Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
