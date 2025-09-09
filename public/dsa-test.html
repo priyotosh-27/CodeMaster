@@ -362,6 +362,51 @@
       font-weight: 800;
       color: var(--accent-primary);
     }
+
+    /* Modal Animations */
+    @keyframes modal-fade-in {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes modal-scale-up {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .modal-enter {
+      animation: modal-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .modal-enter .modal-content {
+      animation: modal-scale-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Keyboard Key Styles */
+    .kbd-key {
+      background: var(--border);
+      color: var(--text-secondary);
+      border-radius: 6px;
+      border: 1px solid rgba(127, 127, 127, 0.2);
+      border-bottom-width: 3px;
+      display: inline-block;
+      padding: 4px 8px;
+      font-family: monospace;
+      font-weight: 600;
+      line-height: 1;
+    }
   </style>
 </head>
 
@@ -570,25 +615,7 @@
       <div class="text-lg font-semibold">Loading Tests...</div>
     </div>
   </div>
-  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script> -->
   <script type="module">
-    // ✅ START OF UPDATED JAVASCRIPT CODE
-
-    // Firebase SDKs should be loaded in the HTML *before* this script runs.
-
-    /* ===============================
-    Firebase Setup
-================================ */
-    // Import Firebase SDKs
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import {
-      getFirestore, collection, getDocs, doc, getDoc, query, orderBy, addDoc,
-      updateDoc, increment, arrayUnion, serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
     // Global variables
     let tests = [];
     let currentUser = null;
@@ -598,10 +625,12 @@
     let remainingTime = 0;
     let userAnswers = {};
     let testStartTime = null;
+    let currentFilteredTests = []; // Store currently filtered tests
 
     // Firebase instances, declared globally
     let auth;
     let db;
+    const PAGE_CATEGORY = "dsa";
 
     // Sample test data (fallback)
     const sampleTests = [
@@ -684,10 +713,13 @@
       confetti: document.getElementById('confetti')
     };
 
-
-    /* ===============================
-        Core Application Logic
-    ================================ */
+    // Import Firebase SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import {
+      getFirestore, collection, getDocs, doc, getDoc, query, orderBy, addDoc,
+      updateDoc, increment, arrayUnion, serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
     // Initialize Firebase and set up the auth listener
     async function startApp() {
@@ -699,27 +731,23 @@
         auth = getAuth(app);
         db = getFirestore(app);
 
-        // Now that Firebase is initialized, set up the auth listener
         onAuthStateChanged(auth, async (user) => {
           if (user) {
             console.log("User is logged in:", user.email);
             currentUser = user;
 
-            // Fetch the user's profile from Firestore
             const userDocRef = doc(db, "users", user.uid);
             const userDocSnap = await getDoc(userDocRef);
             if (userDocSnap.exists()) {
               currentUser.profileData = userDocSnap.data();
             }
 
-            // Initialize the app only once
             if (!window.appInitialized) {
               await init();
               window.appInitialized = true;
             }
           } else {
             console.log("No user logged in. Showing login prompt.");
-            // Hide loading spinner and show login prompt
             hideLoading();
             elements.dashboard.style.display = 'none';
             elements.listSection.innerHTML = `
@@ -743,16 +771,21 @@
     // Initialize application
     async function init() {
       try {
-        // Fetch tests from JSON file
+        // Fetch tests from dsa.json file
         try {
           const response = await fetch('dsa.json');
           if (response.ok) {
             tests = await response.json();
-          } else { throw new Error('Failed to load dsa.json'); }
+          } else {
+            throw new Error('Failed to load dsa.json');
+          }
         } catch (error) {
           console.warn('Using sample data:', error.message);
           tests = sampleTests;
         }
+
+        // Initialize current filtered tests to all tests
+        currentFilteredTests = [...tests];
 
         initializeTheme();
         setupEventListeners();
@@ -782,7 +815,6 @@
     }
 
     // Event listeners
-    // Event listeners for static elements
     function setupEventListeners() {
       elements.themeToggle.addEventListener('click', toggleTheme);
       elements.fullscreenBtn.addEventListener('click', toggleFullscreen);
@@ -799,41 +831,57 @@
       document.addEventListener('keydown', handleKeyboard);
       setInterval(autoSaveProgress, 30000); // Auto-save every 30 seconds
     }
-    // Dashboard functions
-    async function renderDashboard() {
-      const stats = await calculateStats();
+
+    // FIXED Dashboard functions - Always use consistent data source
+    async function renderDashboard(testsToCount = null) {
+      // Use filtered tests if provided, otherwise use all tests
+      const testsForStats = testsToCount || tests;
+      const stats = await calculateStats(testsForStats);
+
       document.getElementById('totalTests').textContent = stats.total;
       document.getElementById('completedTests').textContent = stats.completed;
       document.getElementById('averageScore').textContent = stats.averageScore + '%';
       document.getElementById('bestStreak').textContent = stats.bestStreak;
     }
 
-    async function updateDashboardWithFilteredResults(filteredTests) {
-      const history = await getTestHistory();
-      const completedInFilter = history.filter(h => filteredTests.some(t => t.title === h.title));
-      const averageScoreInFilter = completedInFilter.length > 0 ?
-        Math.round(completedInFilter.reduce((acc, test) => acc + test.percentage, 0) / completedInFilter.length) : 0;
-      const bestStreakInFilter = calculateBestStreak(completedInFilter);
-      document.getElementById('totalTests').textContent = filteredTests.length;
-      document.getElementById('completedTests').textContent = completedInFilter.length;
-      document.getElementById('averageScore').textContent = averageScoreInFilter + '%';
-      document.getElementById('bestStreak').textContent = bestStreakInFilter;
-    }
+    // FIXED calculateStats - Now accepts testsToAnalyze parameter
+    async function calculateStats(testsToAnalyze = tests) {
+      let completed = 0;
+      let averageScore = 0;
+      let bestStreak = 0;
 
-    async function calculateStats() {
-      const history = await getTestHistory();
+      const progress = currentUser?.profileData?.testProgress?.[PAGE_CATEGORY];
+
+      if (progress) {
+        // Get test history to calculate filtered stats
+        const history = await getTestHistory();
+
+        // Filter history to only include tests that are in testsToAnalyze
+        const testTitles = testsToAnalyze.map(t => t.title);
+        const filteredHistory = history.filter(h => testTitles.includes(h.title));
+
+        completed = filteredHistory.length;
+
+        if (filteredHistory.length > 0) {
+          const sum = filteredHistory.reduce((acc, test) => acc + test.percentage, 0);
+          averageScore = Math.round(sum / filteredHistory.length);
+          bestStreak = calculateBestStreak(filteredHistory);
+        }
+      }
+
       return {
-        total: tests.length,
-        completed: history.length,
-        averageScore: history.length > 0 ? Math.round(history.reduce((acc, test) => acc + test.percentage, 0) / history.length) : 0,
-        bestStreak: calculateBestStreak(history)
+        total: testsToAnalyze.length,
+        completed: completed,
+        averageScore: averageScore,
+        bestStreak: bestStreak
       };
     }
 
     function calculateBestStreak(history) {
       let currentStreak = 0;
       let bestStreak = 0;
-      const sortedHistory = [...history].sort((a, b) => a.date - b.date);
+      const sortedHistory = [...history].sort((a, b) => new Date(a.date) - new Date(b.date));
+
       sortedHistory.forEach(test => {
         if (test.percentage >= 80) {
           currentStreak++;
@@ -842,11 +890,24 @@
           currentStreak = 0;
         }
       });
+
       return bestStreak;
     }
-    // New function to attach listeners to dynamically generated content
-    function setupDynamicEventListeners() {
-      // Add event listeners for category filter chips
+
+    // FIXED Test list functions
+    async function renderTestList() {
+      await renderTests(currentFilteredTests);
+      renderCategoryFilter();
+    }
+
+    function renderCategoryFilter() {
+      const categories = [...new Set(tests.map(test => test.category).filter(Boolean))];
+      const filterHTML = `
+        <div class="filter-chip active" data-category="">All Categories</div>
+        ${categories.map(cat => `<div class="filter-chip" data-category="${cat}">${cat}</div>`).join('')}
+      `;
+      elements.categoryFilter.innerHTML = filterHTML;
+
       elements.categoryFilter.addEventListener('click', (e) => {
         if (e.target.classList.contains('filter-chip')) {
           document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
@@ -854,10 +915,54 @@
           filterTests();
         }
       });
+    }
 
-      // Add event listeners for test start buttons
-      const startButtons = document.querySelectorAll('.start-test-btn');
-      startButtons.forEach(button => {
+    async function renderTests(testsToRender) {
+      const history = await getTestHistory();
+
+      const testsHTML = testsToRender.map((test, index) => {
+        const difficulty = test.difficulty || 'intermediate';
+        const difficultyColor = {
+          beginner: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+          intermediate: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+          advanced: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300'
+        };
+
+        const testHistory = history.filter(h => h.title === test.title);
+        const bestScore = testHistory.length > 0 ? Math.max(...testHistory.map(h => h.percentage)) : null;
+
+        return `
+          <div class="glass-card p-6 flex flex-col fade-in" style="animation-delay: ${index * 0.05}s">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold">${test.title}</h3>
+              <span class="px-3 py-1 rounded-full text-xs font-medium ${difficultyColor[difficulty]}">
+                ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
+              </span>
+            </div>
+            <p class="text-[var(--text-secondary)] mb-4 flex-grow">${test.description || 'Test your knowledge.'}</p>
+            <div class="flex items-center gap-4 mb-4 text-sm text-[var(--text-muted)]">
+              <span><i class="fas fa-question-circle mr-1"></i> ${test.questions.length} questions</span>
+              <span><i class="fas fa-clock mr-1"></i> ${test.duration} min</span>
+              <span><i class="fas fa-tag mr-1"></i> ${test.category}</span>
+            </div>
+            ${bestScore !== null ? `
+              <div class="mb-4 p-3 bg-[var(--bg-secondary)] rounded-lg">
+                <div class="text-sm text-[var(--text-secondary)]">Best Score</div>
+                <div class="text-lg font-bold text-[var(--success)]">${Math.round(bestScore)}%</div>
+              </div>
+            ` : ''}
+            <button class="btn-primary w-full mt-auto start-test-btn" data-test-title="${test.title}">
+              <i class="fas fa-play mr-2"></i>
+              ${bestScore !== null ? 'Retake Test' : 'Start Test'}
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      elements.testsGrid.innerHTML = testsHTML;
+
+      // Setup event listeners for start buttons
+      document.querySelectorAll('.start-test-btn').forEach(button => {
         button.addEventListener('click', () => {
           const testTitle = button.dataset.testTitle;
           startTest(testTitle);
@@ -865,75 +970,7 @@
       });
     }
 
-    // Test list functions
-    async function renderTestList() {
-      const categories = [...new Set(tests.map(test => test.category))];
-      renderCategoryFilter(categories);
-      await renderTests(tests);
-    }
-
-    function renderCategoryFilter(categories) {
-      const filterHTML = `
-        <div class="filter-chip active" data-category="">All Categories</div>
-        ${categories.map(cat => `<div class="filter-chip" data-category="${cat}">${cat}</div>`).join('')}
-    `;
-      elements.categoryFilter.innerHTML = filterHTML;
-      elements.categoryFilter.addEventListener('click', (e) => {
-        if (e.target.classList.contains('filter-chip')) {
-          document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
-          e.target.classList.add('active');
-          filterTests();
-        }
-      });
-    }
-
-    // ... (Your existing code) ...
-
-    async function renderTests(testsToRender) {
-      const history = await getTestHistory();
-      const testsHTML = testsToRender.map((test, index) => {
-        const difficulty = test.difficulty || 'intermediate';
-        const difficultyColor = {
-          beginner: 'bg-green-100 text-green-800',
-          intermediate: 'bg-yellow-100 text-yellow-800',
-          advanced: 'bg-red-100 text-red-800'
-        };
-
-        const testHistory = history.filter(h => h.title === test.title);
-        const bestScore = testHistory.length > 0 ? Math.max(...testHistory.map(h => h.percentage)) : null;
-
-        return `
-            <div class="glass-card p-6 fade-in" style="animation-delay: ${index * 0.1}s">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold">${test.title}</h3>
-                    <span class="px-3 py-1 rounded-full text-xs font-medium ${difficultyColor[difficulty] || difficultyColor.intermediate}">
-                        ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
-                    </span>
-                </div>
-                <p class="text-[var(--text-secondary)] mb-4 line-clamp-2">${test.description || 'Test your programming knowledge.'}</p>
-                <div class="flex items-center gap-4 mb-4 text-sm text-[var(--text-muted)]">
-                    <span><i class="fas fa-question-circle mr-1"></i> ${test.questions.length} questions</span>
-                    <span><i class="fas fa-clock mr-1"></i> ${test.duration} min</span>
-                    <span><i class="fas fa-tag mr-1"></i> ${test.category}</span>
-                </div>
-                ${bestScore !== null ? `
-                    <div class="mb-4 p-3 bg-[var(--bg-secondary)] rounded-lg">
-                        <div class="text-sm text-[var(--text-secondary)]">Best Score</div>
-                        <div class="text-lg font-bold text-[var(--success)]">${Math.round(bestScore)}%</div>
-                    </div>
-                ` : ''}
-                <button class="btn-primary w-full start-test-btn" data-test-title="${test.title}">
-                    <i class="fas fa-play mr-2"></i>
-                    ${bestScore !== null ? 'Retake Test' : 'Start Test'}
-                </button>
-            </div>
-        `;
-      }).join('');
-
-      elements.testsGrid.innerHTML = testsHTML;
-      setupDynamicEventListeners(); // Call the new function here!
-    }
-
+    // FIXED filterTests function
     async function filterTests() {
       const searchTerm = elements.searchInput.value.toLowerCase();
       const difficultyFilter = elements.difficultyFilter.value;
@@ -947,10 +984,16 @@
         return matchesSearch && matchesDifficulty && matchesCategory;
       });
 
+      // Update the current filtered tests
+      currentFilteredTests = filteredTests;
+
+      // Render the filtered tests
       await renderTests(filteredTests);
-      await updateDashboardWithFilteredResults(filteredTests);
-      setupDynamicEventListeners(); // Call the new function here!
+
+      // CRITICAL FIX: Update dashboard with filtered data
+      await renderDashboard(filteredTests);
     }
+
     // Test execution functions
     function startTest(testTitle) {
       if (document.activeElement) document.activeElement.blur();
@@ -983,37 +1026,33 @@
       const questionsHTML = test.questions.map((question, index) => {
         const savedAnswer = userAnswers[index];
         return `
-        <div class="question-card ${index === currentQuestionIndex ? 'current' : ''}" id="question-${index}">
+          <div class="question-card ${index === currentQuestionIndex ? 'current' : ''}" id="question-${index}">
             <div class="mb-4">
-                <h3 class="text-lg font-semibold mb-2">Question ${index + 1}</h3>
-                <p class="text-[var(--text-primary)]">${question.q}</p>
+              <h3 class="text-lg font-semibold mb-2">Question ${index + 1}</h3>
+              <p class="text-[var(--text-primary)]">${question.q}</p>
             </div>
             <div class="space-y-3">
-                ${question.options.map(option => {
+              ${question.options.map(option => {
           const optionId = `q${index}-${option.replace(/\W+/g, '-')}`;
           const isSelected = savedAnswer === option;
           return `
-                        <label class="option-label ${isSelected ? 'selected' : ''}" for="${optionId}">
-                            <input type="radio" id="${optionId}" name="q${index}" value="${option}" ${isSelected ? 'checked' : ''}>
-                            <span class="flex-1">${option}</span>
-                        </label>
-                    `;
+                  <label class="option-label ${isSelected ? 'selected' : ''}" for="${optionId}">
+                    <input type="radio" id="${optionId}" name="q${index}" value="${option}" ${isSelected ? 'checked' : ''}>
+                    <span class="flex-1">${option}</span>
+                  </label>
+                `;
         }).join('')}
             </div>
-        </div>
-    `;
+          </div>
+        `;
       }).join('');
 
       elements.testForm.innerHTML = questionsHTML;
-
-      // ✅ New function call to attach event listeners
       setupQuestionEventListeners();
     }
 
     function setupQuestionEventListeners() {
-      // Select all radio buttons within the test form
       const radioButtons = elements.testForm.querySelectorAll('input[type="radio"]');
-
       radioButtons.forEach(input => {
         input.addEventListener('change', (e) => {
           const questionIndex = parseInt(e.target.name.replace('q', ''));
@@ -1043,7 +1082,7 @@
       elements.navGrid.innerHTML = navHTML;
     }
 
-    function navigateToQuestion(questionIndex) {
+    window.navigateToQuestion = function (questionIndex) {
       currentQuestionIndex = questionIndex;
       document.getElementById(`question-${questionIndex}`).scrollIntoView({ behavior: 'smooth', block: 'center' });
       updateCurrentQuestion();
@@ -1059,11 +1098,13 @@
       const totalQuestions = test.questions.length;
       const answeredCount = Object.keys(userAnswers).length;
       const progress = totalQuestions > 0 ? answeredCount / totalQuestions : 0;
+
       elements.progressRing.style.setProperty('--progress', progress * 100);
       elements.progressText.textContent = `${Math.round(progress * 100)}%`;
       elements.progressBar.style.width = `${progress * 100}%`;
       elements.progressLabel.textContent = `${answeredCount} / ${totalQuestions} answered`;
       setupNavigator();
+
       const color = progress >= 0.8 ? 'var(--success)' : progress >= 0.5 ? 'var(--accent-primary)' : 'var(--warning)';
       elements.progressRing.style.setProperty('--ring-color', color);
     }
@@ -1090,6 +1131,7 @@
       const seconds = remainingTime % 60;
       const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
       elements.timer.innerHTML = `<i class="fas fa-clock mr-2"></i><span>${timeStr}</span>`;
+
       elements.timer.className = 'timer-badge';
       if (remainingTime <= 60) {
         elements.timer.classList.add('timer-danger');
@@ -1100,22 +1142,29 @@
 
     // Test submission and results
     async function submitTest(autoSubmit = false) {
-      if (!autoSubmit) {
-        const test = tests[currentTestIndex];
-        const unanswered = test.questions.length - Object.keys(userAnswers).length;
-        if (unanswered > 0 && !confirm(`You have ${unanswered} unanswered question(s). Submit anyway?`)) {
-          return;
-        }
-      }
+      if (!autoSubmit && !confirm('Are you sure you want to submit?')) return;
+
       clearInterval(timerInterval);
       const results = calculateResults();
 
-      // ✨ THIS IS THE KEY CHANGE ✨
-      // Call both saving functions: one for history and one for profile stats.
+      elements.loadingSpinner.style.display = 'flex';
+
       await saveTestHistory(results);
       await updateUserStats(results);
 
+      // Re-fetch the user's complete profile data from Firestore
+      const userDocRef = doc(db, "users", currentUser.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      if (userDocSnap.exists()) {
+        currentUser.profileData = userDocSnap.data();
+      }
+
+      // Refresh the dashboard with current filtered tests
+      await renderDashboard(currentFilteredTests);
+
+      elements.loadingSpinner.style.display = 'none';
       displayResults(results, autoSubmit);
+
       if (results.percentage >= 80) {
         celebrateSuccess();
       }
@@ -1124,6 +1173,7 @@
     function calculateResults() {
       const test = tests[currentTestIndex];
       let correct = 0;
+
       const questionResults = test.questions.map((question, index) => {
         const userAnswer = userAnswers[index];
         const isCorrect = userAnswer === question.answer;
@@ -1136,8 +1186,10 @@
           options: question.options
         };
       });
+
       const total = test.questions.length;
       const percentage = total > 0 ? Math.round((correct / total) * 100) : 0;
+
       return {
         correct,
         incorrect: total - correct - (total - Object.keys(userAnswers).length),
@@ -1146,7 +1198,8 @@
         percentage,
         questionResults,
         testTitle: test.title,
-        timeTaken: (test.duration * 60) - remainingTime
+        timeTaken: (test.duration * 60) - remainingTime,
+        testCategory: test.category || PAGE_CATEGORY
       };
     }
 
@@ -1169,19 +1222,19 @@
 
       elements.answerReview.innerHTML = results.questionResults.map((result, index) => `
         <div class="border border-[var(--border)] rounded-lg p-4">
-            <div class="flex items-start justify-between mb-2">
-                <h4 class="font-semibold">Question ${index + 1}</h4>
-                <span class="px-2 py-1 rounded text-xs font-medium ${result.isCorrect ? 'bg-green-100 text-green-800' : result.userAnswer === 'No Answer' ? 'bg-gray-100 text-gray-800' : 'bg-red-100 text-red-800'}">
-                    ${result.isCorrect ? 'Correct' : result.userAnswer === 'No Answer' ? 'Unanswered' : 'Incorrect'}
-                </span>
-            </div>
-            <p class="text-[var(--text-secondary)] mb-3">${result.question}</p>
-            <div class="space-y-2 text-sm">
-                <div><span class="font-medium">Your answer:</span> <span class="${result.isCorrect ? 'text-green-600' : 'text-red-600'}">${result.userAnswer}</span></div>
-                <div><span class="font-medium">Correct answer:</span> <span class="text-[var(--success)]">${result.correctAnswer}</span></div>
-            </div>
+          <div class="flex items-start justify-between mb-2">
+            <h4 class="font-semibold">Question ${index + 1}</h4>
+            <span class="px-2 py-1 rounded text-xs font-medium ${result.isCorrect ? 'bg-green-100 text-green-800' : result.userAnswer === 'No Answer' ? 'bg-gray-100 text-gray-800' : 'bg-red-100 text-red-800'}">
+              ${result.isCorrect ? 'Correct' : result.userAnswer === 'No Answer' ? 'Unanswered' : 'Incorrect'}
+            </span>
+          </div>
+          <p class="text-[var(--text-secondary)] mb-3">${result.question}</p>
+          <div class="space-y-2 text-sm">
+            <div><span class="font-medium">Your answer:</span> <span class="${result.isCorrect ? 'text-green-600' : 'text-red-600'}">${result.userAnswer}</span></div>
+            <div><span class="font-medium">Correct answer:</span> <span class="text-[var(--success)]">${result.correctAnswer}</span></div>
+          </div>
         </div>
-    `).join('');
+      `).join('');
 
       elements.progressRing.style.setProperty('--progress', results.percentage);
       elements.progressText.textContent = `${results.percentage}%`;
@@ -1190,7 +1243,6 @@
       elements.submitBtn.style.opacity = '0.6';
     }
 
-    // ✨ ADD THIS ENTIRE NEW FUNCTION ✨
     async function updateUserStats(results) {
       if (!currentUser) {
         console.error("Cannot update stats, no user is logged in.");
@@ -1200,7 +1252,6 @@
       const userDocRef = doc(db, "users", currentUser.uid);
       const category = results.testCategory;
 
-      // Ensure the category from your test data is valid
       if (!category) {
         console.error(`Test "${results.testTitle}" is missing a category.`);
         return;
@@ -1208,7 +1259,6 @@
 
       try {
         await updateDoc(userDocRef, {
-          // Use dot notation to update nested map fields
           [`testProgress.${category}.attempts`]: increment(1),
           [`testProgress.${category}.scores`]: arrayUnion(results.percentage),
           updatedAt: serverTimestamp()
@@ -1223,14 +1273,25 @@
     // Utility functions
     async function goBackToList() {
       if (timerInterval && elements.resultCard.classList.contains('hidden')) {
-        if (!confirm('Test is in progress. Are you sure you want to leave? Progress will be saved.')) return;
-        autoSaveProgress();
+        if (!confirm('Test is in progress. Are you sure you want to leave?')) return;
       }
       clearInterval(timerInterval);
+
+      elements.loadingSpinner.style.display = 'flex';
+
+      const userDocRef = doc(db, "users", currentUser.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      if (userDocSnap.exists()) {
+        currentUser.profileData = userDocSnap.data();
+      }
+
       elements.testSection.style.display = 'none';
       elements.listSection.style.display = 'block';
-      await renderDashboard();
+
+      await renderDashboard(currentFilteredTests);
       await renderTestList();
+
+      elements.loadingSpinner.style.display = 'none';
     }
 
     function clearAllAnswers() {
@@ -1248,11 +1309,14 @@
       }
     }
 
-    function retakeTest() {
+    async function retakeTest() {
       clearSavedProgress();
       elements.resultCard.classList.add('hidden');
       elements.submitBtn.disabled = false;
-      elements.submitBtn.style.opacity = '1';
+
+      await renderDashboard(currentFilteredTests);
+      await renderTestList();
+
       startTest(tests[currentTestIndex].title);
     }
 
@@ -1356,11 +1420,11 @@
           const confetti = document.createElement('div');
           confetti.className = 'confetti-particle';
           confetti.style.cssText = `
-                width: ${Math.random() * 10 + 5}px; height: ${Math.random() * 10 + 5}px;
-                background: ${colors[Math.floor(Math.random() * colors.length)]};
-                left: ${Math.random() * 100}vw; top: -10px;
-                border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
-                animation: confetti-fall ${Math.random() * 3 + 2}s linear forwards;`;
+            width: ${Math.random() * 10 + 5}px; height: ${Math.random() * 10 + 5}px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            left: ${Math.random() * 100}vw; top: -10px;
+            border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+            animation: confetti-fall ${Math.random() * 3 + 2}s linear forwards;`;
           elements.confetti.appendChild(confetti);
           setTimeout(() => confetti.remove(), 5000);
         }, i * 20);
@@ -1378,8 +1442,64 @@
     }
 
     function showHelp() {
-      const helpContent = `...`;
-      // ... logic to show modal ...
+      const helpContent = `
+    <div class="modal-content glass-card p-6 max-w-md w-full">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-bold flex items-center gap-3">
+          <i class="fas fa-keyboard text-[var(--accent-primary)]"></i>
+          Help & Shortcuts
+        </h3>
+        <button id="closeHelpBtn" class="p-2 -mr-2 rounded-full text-[var(--text-secondary)] hover:bg-[var(--bg-glass)] hover:text-[var(--text-primary)] transition-colors">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="space-y-4 text-sm">
+        <div class="flex items-center justify-between"><span class="text-[var(--text-secondary)]">Next Question</span><kbd class="kbd-key">N</kbd></div>
+        <div class="flex items-center justify-between"><span class="text-[var(--text-secondary)]">Previous Question</span><kbd class="kbd-key">P</kbd></div>
+        <div class="flex items-center justify-between"><span class="text-[var(--text-secondary)]">Submit Test</span><kbd class="kbd-key">S</kbd></div>
+        <div class="flex items-center justify-between"><span class="text-[var(--text-secondary)]">Clear All Answers</span><kbd class="kbd-key">C</kbd></div>
+        <div class="flex items-center justify-between"><span class="text-[var(--text-secondary)]">Save Progress</span><kbd class="kbd-key">Ctrl + S</kbd></div>
+      </div>
+    </div>
+  `;
+
+      // Create a modal overlay
+      const modalOverlay = document.createElement('div');
+      modalOverlay.id = 'helpModal';
+      modalOverlay.className = 'fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[2000] p-4 modal-enter';
+      modalOverlay.innerHTML = helpContent;
+
+      // Add the modal to the page
+      document.body.appendChild(modalOverlay);
+
+      // Function to close the modal
+      const closeModal = () => {
+        // Add an exit animation class
+        modalOverlay.classList.remove('modal-enter');
+        // We can simply remove it after a delay, a fade-out animation is optional but can be added
+        setTimeout(() => {
+          modalOverlay.remove();
+          document.removeEventListener('keydown', escapeListener);
+        }, 300); // Animation duration
+      };
+
+      // Add event listener to the close button
+      modalOverlay.querySelector('#closeHelpBtn').addEventListener('click', closeModal);
+
+      // Add event listener to close the modal by clicking the background
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
+
+      // Add event listener to close with the Escape key
+      const escapeListener = (e) => {
+        if (e.key === 'Escape') {
+          closeModal();
+        }
+      };
+      document.addEventListener('keydown', escapeListener);
     }
 
     function showNotification(message, type = 'info') {
