@@ -1297,19 +1297,33 @@
     }
 
     // Utility functions
-    // ✅ REPLACE the old goBackToList function with this one
+    // ✅ REPLACE your current goBackToList function with this definitive one.
     async function goBackToList() {
       if (timerInterval && elements.resultCard.classList.contains('hidden')) {
-        if (!confirm('Test is in progress. Are you sure you want to leave? Your progress will not be saved.')) return;
+        if (!confirm('Test is in progress. Are you sure you want to leave?')) return;
       }
       clearInterval(timerInterval);
+
+      elements.loadingSpinner.style.display = 'flex';
+
+      // ✨ THIS IS THE GUARANTEED FIX ✨
+      // Force a re-fetch of the user's data ONE LAST TIME before showing the list.
+      // This ensures all subsequent functions use perfectly fresh data.
+      const userDocRef = doc(db, "users", currentUser.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      if (userDocSnap.exists()) {
+        currentUser.profileData = userDocSnap.data();
+      }
+
+      // Now hide the test section and show the list section
       elements.testSection.style.display = 'none';
       elements.listSection.style.display = 'block';
 
-      // ✨ ADD THESE TWO LINES ✨
-      // These lines tell the page to fetch the new data from Firestore and update the display.
+      // These functions will now use the 100% fresh data we just fetched.
       await renderDashboard();
       await renderTestList();
+
+      elements.loadingSpinner.style.display = 'none';
     }
 
     function clearAllAnswers() {

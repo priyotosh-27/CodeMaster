@@ -886,7 +886,8 @@
     }
 
     // Test list functions
-
+    // ✅ REPLACE your old renderTestList function with this one
+    // ✅ REPLACE the simplified renderTestList function with this one
     // ✅ REPLACE your old renderTestList with this one
     async function renderTestList() {
       const progress = currentUser?.profileData?.testProgress?.[PAGE_CATEGORY];
@@ -1195,7 +1196,6 @@
       }
     }
 
-    // ✅ REPLACE your old calculateResults function with this one
     function calculateResults() {
       const test = tests[currentTestIndex];
       let correct = 0;
@@ -1213,7 +1213,6 @@
       });
       const total = test.questions.length;
       const percentage = total > 0 ? Math.round((correct / total) * 100) : 0;
-
       return {
         correct,
         incorrect: total - correct - (total - Object.keys(userAnswers).length),
@@ -1222,11 +1221,7 @@
         percentage,
         questionResults,
         testTitle: test.title,
-        timeTaken: (test.duration * 60) - remainingTime,
-
-        // ✨ THIS IS THE CRITICAL FIX ✨
-        // We must include the category in the results so updateUserStats() can use it.
-        testCategory: test.category || PAGE_CATEGORY
+        timeTaken: (test.duration * 60) - remainingTime
       };
     }
 
