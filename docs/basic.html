@@ -21,16 +21,44 @@
       --success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
       --warning: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
       --danger: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+
+      /* Light theme colors */
+      --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --bg-secondary: rgba(255, 255, 255, 0.15);
+      --text-primary: #333;
+      --text-secondary: #6b7280;
+      --text-white: white;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --border-color: rgba(255, 255, 255, 0.2);
+      --input-bg: rgba(255, 255, 255, 0.1);
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --solution-bg: #f8fafc;
+      --solution-border: #e2e8f0;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      --bg-secondary: rgba(45, 55, 72, 0.3);
+      --text-primary: #e2e8f0;
+      --text-secondary: #a0aec0;
+      --text-white: #f7fafc;
+      --card-bg: rgba(45, 55, 72, 0.9);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --input-bg: rgba(45, 55, 72, 0.5);
+      --shadow-color: rgba(0, 0, 0, 0.3);
+      --solution-bg: #2d3748;
+      --solution-border: #4a5568;
     }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       line-height: 1.6;
-      color: #333;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: var(--text-primary);
+      background: var(--bg-primary);
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
+      transition: all 0.3s ease;
     }
 
     /* Animated background particles */
@@ -131,9 +159,40 @@
 
     .header {
       text-align: center;
-      color: white;
+      color: var(--text-white);
       margin-bottom: 50px;
       animation: fadeInUp 1s ease-out;
+      position: relative;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--bg-secondary);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      padding: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px var(--shadow-color);
+    }
+
+    .theme-icon {
+      font-size: 1.2rem;
+      padding: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      transition: all 0.3s ease;
     }
 
     .header h1 {
@@ -179,17 +238,17 @@
     }
 
     .stats {
-      background: rgba(255, 255, 255, 0.15);
+      background: var(--bg-secondary);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid var(--border-color);
       border-radius: 20px;
       padding: 30px;
       margin-bottom: 40px;
       display: flex;
       justify-content: center;
       gap: 60px;
-      color: white;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      color: var(--text-white);
+      box-shadow: 0 8px 32px var(--shadow-color);
       animation: slideInUp 1s ease-out 0.3s both;
       position: relative;
       overflow: hidden;
@@ -242,9 +301,9 @@
     }
 
     .filters {
-      background: rgba(255, 255, 255, 0.15);
+      background: var(--bg-secondary);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid var(--border-color);
       border-radius: 20px;
       padding: 25px;
       margin-bottom: 40px;
@@ -252,7 +311,7 @@
       gap: 30px;
       align-items: center;
       flex-wrap: wrap;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 32px var(--shadow-color);
       animation: slideInUp 1s ease-out 0.6s both;
     }
 
@@ -263,7 +322,7 @@
     }
 
     .filter-label {
-      color: white;
+      color: var(--text-white);
       font-weight: 600;
       font-size: 0.9rem;
       text-transform: uppercase;
@@ -273,11 +332,11 @@
     select,
     input {
       padding: 12px 16px;
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      border: 2px solid var(--border-color);
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--input-bg);
       backdrop-filter: blur(10px);
-      color: white;
+      color: var(--text-white);
       font-size: 0.95rem;
       font-weight: 500;
       outline: none;
@@ -294,12 +353,12 @@
       border-color: rgba(255, 255, 255, 0.5);
       background: rgba(255, 255, 255, 0.2);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 25px var(--shadow-color);
     }
 
     select option {
-      background: #1f2937;
-      color: white;
+      background: var(--card-bg);
+      color: var(--text-primary);
     }
 
     .tabs {
@@ -312,9 +371,9 @@
     }
 
     .tab {
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: var(--bg-secondary);
+      color: var(--text-white);
+      border: 2px solid var(--border-color);
       padding: 12px 24px;
       border-radius: 30px;
       cursor: pointer;
@@ -346,7 +405,7 @@
     .tab.active {
       border-color: transparent;
       transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 30px var(--shadow-color);
     }
 
     .challenges-grid {
@@ -357,12 +416,12 @@
     }
 
     .challenge-card {
-      background: rgba(255, 255, 255, 0.95);
+      background: var(--card-bg);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid var(--border-color);
       border-radius: 20px;
       padding: 30px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 40px var(--shadow-color);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       cursor: pointer;
       position: relative;
@@ -413,7 +472,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
       transition: all 0.6s ease;
     }
 
@@ -423,13 +482,13 @@
 
     .challenge-card:hover {
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 20px 60px var(--shadow-color);
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
     .challenge-card.solved {
       border-left: 5px solid #10b981;
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(255, 255, 255, 0.95) 100%);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, var(--card-bg) 100%);
     }
 
     .challenge-card.solved::after {
@@ -467,7 +526,7 @@
       font-size: 1.4rem;
       font-weight: 700;
       margin-bottom: 12px;
-      color: #1f2937;
+      color: var(--text-primary);
       background: var(--primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -475,7 +534,7 @@
     }
 
     .challenge-description {
-      color: #6b7280;
+      color: var(--text-secondary);
       margin-bottom: 20px;
       font-size: 1rem;
       line-height: 1.6;
@@ -502,7 +561,7 @@
 
     .tag:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px var(--shadow-color);
     }
 
     .difficulty {
@@ -555,16 +614,19 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .solve-btn {
+    .solve-btn,
+    .solution-btn {
       background: var(--primary);
       color: white;
       border: none;
-      padding: 12px 24px;
+      padding: 12px 20px;
       border-radius: 12px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: all 0.3s ease;
       text-decoration: none;
@@ -575,7 +637,12 @@
       overflow: hidden;
     }
 
-    .solve-btn::before {
+    .solution-btn {
+      background: var(--secondary);
+    }
+
+    .solve-btn::before,
+    .solution-btn::before {
       content: '';
       position: absolute;
       top: 0;
@@ -586,17 +653,15 @@
       transition: all 0.5s ease;
     }
 
-    .solve-btn:hover::before {
+    .solve-btn:hover::before,
+    .solution-btn:hover::before {
       left: 100%;
     }
 
-    .solve-btn:hover {
+    .solve-btn:hover,
+    .solution-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-    }
-
-    .solve-btn:active {
-      transform: translateY(0);
     }
 
     .checkbox-container {
@@ -652,18 +717,130 @@
 
     .checkbox-label {
       font-weight: 500;
-      color: #6b7280;
+      color: var(--text-secondary);
       transition: color 0.3s ease;
     }
 
-    .checkbox-container:hover .checkbox-label {
-      color: #374151;
+    .solution-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .solution-content {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px var(--shadow-color);
+    }
+
+    .solution-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--solution-border);
+      padding-bottom: 15px;
+    }
+
+    .solution-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .close-btn {
+      background: var(--danger);
+      color: white;
+      border: none;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    .solution-section {
+      margin-bottom: 25px;
+    }
+
+    .solution-section h3 {
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .solution-code {
+      background: var(--solution-bg);
+      border: 1px solid var(--solution-border);
+      border-radius: 10px;
+      padding: 20px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+
+    .complexity-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .complexity-item {
+      background: var(--solution-bg);
+      border: 1px solid var(--solution-border);
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .complexity-label {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 5px;
+    }
+
+    .complexity-value {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
     }
 
     .empty-state {
       text-align: center;
       padding: 80px 20px;
-      color: white;
+      color: var(--text-white);
       animation: fadeIn 1s ease-out;
     }
 
@@ -728,8 +905,16 @@
 
     /* Mobile responsiveness */
     @media (max-width: 768px) {
+      .theme-toggle {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 100;
+      }
+
       .header h1 {
         font-size: 2.5rem;
+        margin-top: 60px;
       }
 
       .stats {
@@ -742,16 +927,26 @@
         align-items: stretch;
       }
 
-      .tabs {
-        justify-content: center;
-      }
-
       .challenges-grid {
         grid-template-columns: 1fr;
       }
 
       .challenge-card {
         padding: 25px;
+      }
+
+      .challenge-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .solution-content {
+        margin: 10px;
+        padding: 20px;
+      }
+
+      .complexity-info {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -763,17 +958,11 @@
       .header h1 {
         font-size: 2rem;
       }
-
-      .challenge-actions {
-        flex-direction: column;
-        gap: 15px;
-        align-items: stretch;
-      }
     }
   </style>
 </head>
 
-<body>
+<body data-theme="light">
   <div class="floating-shapes">
     <div class="shape"></div>
     <div class="shape"></div>
@@ -782,6 +971,9 @@
 
   <div class="container">
     <header class="header">
+      <div class="theme-toggle" onclick="toggleTheme()">
+        <div class="theme-icon">🌙</div>
+      </div>
       <h1>Coding Challenges</h1>
       <p>Master algorithms and data structures with style</p>
     </header>
@@ -818,10 +1010,12 @@
     </div>
 
     <div class="tabs">
-      <button class="tab active" data-category="all">All</button>
+      <button class="tab" data-category="all">All Challenges</button>
       <button class="tab" data-category="arrays">Arrays</button>
       <button class="tab" data-category="strings">Strings</button>
       <button class="tab" data-category="linkedlist">Linked Lists</button>
+      <button class="tab" data-category="stacks">Stacks</button>
+      <button class="tab" data-category="queues">Queues</button>
       <button class="tab" data-category="trees">Trees</button>
       <button class="tab" data-category="graphs">Graphs</button>
       <button class="tab" data-category="dp">Dynamic Programming</button>
@@ -835,80 +1029,1149 @@
     </div>
   </div>
 
+  <!-- Solution Modal -->
+  <div id="solutionModal" class="solution-modal">
+    <div class="solution-content">
+      <div class="solution-header">
+        <h2 class="solution-title" id="solutionTitle">Challenge Solution</h2>
+        <button class="close-btn" onclick="closeSolution()">×</button>
+      </div>
+      <div id="solutionBody"></div>
+    </div>
+  </div>
+
   <script>
-    // Challenge data
+    // Challenge data with solutions
     const challenges = {
       arrays: [
-        { title: "Two Sum", description: "Find two numbers that add up to target", difficulty: "Easy", tags: ["Hash Table"], link: "https://leetcode.com/problems/two-sum/" },
-        { title: "Best Time to Buy and Sell Stock", description: "Find maximum profit from stock trading", difficulty: "Easy", tags: ["Array", "DP"], link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" },
-        { title: "Contains Duplicate", description: "Check if array contains duplicates", difficulty: "Easy", tags: ["Hash Table"], link: "https://leetcode.com/problems/contains-duplicate/" },
-        { title: "Maximum Subarray", description: "Find contiguous subarray with largest sum", difficulty: "Medium", tags: ["DP"], link: "https://leetcode.com/problems/maximum-subarray/" },
-        { title: "3Sum", description: "Find triplets that sum to zero", difficulty: "Medium", tags: ["Two Pointers"], link: "https://leetcode.com/problems/3sum/" },
-        { title: "Trapping Rain Water", description: "Calculate trapped rainwater", difficulty: "Hard", tags: ["Two Pointers"], link: "https://leetcode.com/problems/trapping-rain-water/" }
+        {
+          title: "Two Sum",
+          description: "Find two numbers that add up to target",
+          difficulty: "Easy",
+          tags: ["Hash Table"],
+          link: "https://leetcode.com/problems/two-sum/",
+          solution: {
+            approach: "Use a hash map to store numbers we've seen and their indices. For each number, check if target - current number exists in the hash map.",
+            code: `def twoSum(nums, target):
+    seen = {}  # value -> index
+    
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    
+    return []
+
+# Example: nums = [2,7,11,15], target = 9
+# Output: [0,1] (because nums[0] + nums[1] = 2 + 7 = 9)`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(n)"
+          }
+        },
+        {
+          title: "Best Time to Buy and Sell Stock",
+          description: "Find maximum profit from buying and selling stock once",
+          difficulty: "Easy",
+          tags: ["Array", "Greedy"],
+          link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+          solution: {
+            approach: "Keep track of minimum price seen so far and calculate profit at each step.",
+            code: `def maxProfit(prices):
+    if not prices:
+        return 0
+    
+    min_price = prices[0]
+    max_profit = 0
+    
+    for price in prices[1:]:
+        min_price = min(min_price, price)
+        profit = price - min_price
+        max_profit = max(max_profit, profit)
+    
+    return max_profit
+
+# Example: prices = [7,1,5,3,6,4]
+# Output: 5 (buy at price 1, sell at price 6)`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)"
+          }
+        },
+        {
+          title: "Maximum Subarray",
+          description: "Find the contiguous subarray with largest sum",
+          difficulty: "Easy",
+          tags: ["Array", "DP"],
+          link: "https://leetcode.com/problems/maximum-subarray/",
+          solution: {
+            approach: "Use Kadane's algorithm - at each position, decide whether to extend the previous subarray or start a new one.",
+            code: `def maxSubArray(nums):
+    max_sum = nums[0]
+    current_sum = nums[0]
+    
+    for i in range(1, len(nums)):
+        current_sum = max(nums[i], current_sum + nums[i])
+        max_sum = max(max_sum, current_sum)
+    
+    return max_sum
+
+# Example: nums = [-2,1,-3,4,-1,2,1,-5,4]
+# Output: 6 (subarray [4,-1,2,1] has the largest sum)`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)"
+          }
+        },
+        {
+          title: "Contains Duplicate",
+          description: "Check if array contains any duplicate values",
+          difficulty: "Easy",
+          tags: ["Hash Table"],
+          link: "https://leetcode.com/problems/contains-duplicate/",
+          solution: {
+            approach: "Use a hash set to track numbers we've seen. If we encounter a number already in the set, return true.",
+            code: `def containsDuplicate(nums):
+    seen = set()
+    
+    for num in nums:
+        if num in seen:
+            return True
+        seen.add(num)
+    
+    return False
+
+# Example: nums = [1,2,3,1]
+# Output: True (1 appears twice)`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(n)"
+          }
+        },
+        {
+          title: "Product of Array Except Self",
+          description: "Return array where each element is product of all others",
+          difficulty: "Medium",
+          tags: ["Array", "Prefix Sum"],
+          link: "https://leetcode.com/problems/product-of-array-except-self/",
+          solution: {
+            approach: "Use two passes - first calculate left products, then right products while building the result.",
+            code: `def productExceptSelf(nums):
+    n = len(nums)
+    result = [1] * n
+    
+    # First pass: calculate left products
+    left_product = 1
+    for i in range(n):
+        result[i] = left_product
+        left_product *= nums[i]
+    
+    # Second pass: multiply by right products
+    right_product = 1
+    for i in range(n - 1, -1, -1):
+        result[i] *= right_product
+        right_product *= nums[i]
+    
+    return result
+
+# Example: nums = [1,2,3,4]
+# Output: [24,12,8,6]`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1) extra space"
+          }
+        },
+        {
+          title: "3Sum",
+          description: "Find all unique triplets that sum to zero",
+          difficulty: "Medium",
+          tags: ["Array", "Two Pointers"],
+          link: "https://leetcode.com/problems/3sum/",
+          solution: {
+            approach: "Sort array, then for each element, use two pointers to find pairs that sum to negative of current element.",
+            code: `def threeSum(nums):
+    nums.sort()
+    result = []
+    
+    for i in range(len(nums) - 2):
+        if i > 0 and nums[i] == nums[i-1]:
+            continue  # Skip duplicates
+        
+        left, right = i + 1, len(nums) - 1
+        
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+            
+            if total < 0:
+                left += 1
+            elif total > 0:
+                right -= 1
+            else:
+                result.append([nums[i], nums[left], nums[right]])
+                
+                # Skip duplicates
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+                
+                left += 1
+                right -= 1
+    
+    return result`,
+            timeComplexity: "O(n²)",
+            spaceComplexity: "O(1)"
+          }
+        },
+        {
+          title: "Container With Most Water",
+          description: "Find two lines that contain the most water",
+          difficulty: "Medium",
+          tags: ["Array", "Two Pointers"],
+          link: "https://leetcode.com/problems/container-with-most-water/",
+          solution: {
+            approach: "Use two pointers from both ends. Move the pointer with smaller height inward to potentially find a larger area.",
+            code: `def maxArea(height):
+    left, right = 0, len(height) - 1
+    max_water = 0
+    
+    while left < right:
+        width = right - left
+        current_height = min(height[left], height[right])
+        water = width * current_height
+        max_water = max(max_water, water)
+        
+        # Move the pointer with smaller height
+        if height[left] < height[right]:
+            left += 1
+        else:
+            right -= 1
+    
+    return max_water`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)"
+          }
+        }
       ],
       strings: [
-        { title: "Valid Anagram", description: "Check if strings are anagrams", difficulty: "Easy", tags: ["Hash Table"], link: "https://leetcode.com/problems/valid-anagram/" },
-        { title: "Valid Parentheses", description: "Check valid parentheses combination", difficulty: "Easy", tags: ["Stack"], link: "https://leetcode.com/problems/valid-parentheses/" },
-        { title: "Longest Palindromic Substring", description: "Find longest palindromic substring", difficulty: "Medium", tags: ["DP"], link: "https://leetcode.com/problems/longest-palindromic-substring/" },
-        { title: "Group Anagrams", description: "Group strings by anagram", difficulty: "Medium", tags: ["Hash Table"], link: "https://leetcode.com/problems/group-anagrams/" }
+        {
+          title: "Valid Anagram",
+          description: "Check if two strings are anagrams of each other",
+          difficulty: "Easy",
+          tags: ["Hash Table", "Sorting"],
+          link: "https://leetcode.com/problems/valid-anagram/",
+          solution: {
+            approach: "Count character frequencies in both strings and compare.",
+            code: `def isAnagram(s, t):
+    if len(s) != len(t):
+        return False
+    
+    from collections import Counter
+    return Counter(s) == Counter(t)
+
+# Alternative: Using sorting
+def isAnagramSort(s, t):
+    return sorted(s) == sorted(t)`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)"
+          }
+        },
+        {
+          title: "Valid Palindrome",
+          description: "Check if string is a valid palindrome ignoring non-alphanumeric characters",
+          difficulty: "Easy",
+          tags: ["Two Pointers", "String"],
+          link: "https://leetcode.com/problems/valid-palindrome/",
+          solution: {
+            approach: "Use two pointers from start and end, skip non-alphanumeric characters.",
+            code: `def isPalindrome(s):
+    left, right = 0, len(s) - 1
+    
+    while left < right:
+        while left < right and not s[left].isalnum():
+            left += 1
+        while left < right and not s[right].isalnum():
+            right -= 1
+        
+        if s[left].lower() != s[right].lower():
+            return False
+        
+        left += 1
+        right -= 1
+    
+    return True`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)"
+          }
+        },
+        {
+          title: "Longest Substring Without Repeating Characters",
+          description: "Find length of longest substring without repeating characters",
+          difficulty: "Medium",
+          tags: ["Hash Table", "Sliding Window"],
+          link: "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+          solution: {
+            approach: "Use sliding window with hash map to track character positions.",
+            code: `def lengthOfLongestSubstring(s):
+    char_index = {}
+    left = 0
+    max_length = 0
+    
+    for right in range(len(s)):
+        char = s[right]
+        
+        if char in char_index and char_index[char] >= left:
+            left = char_index[char] + 1
+        
+        char_index[char] = right
+        max_length = max(max_length, right - left + 1)
+    
+    return max_length`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(min(m,n))"
+          }
+        },
+        {
+          title: "Group Anagrams",
+          description: "Group strings that are anagrams of each other",
+          difficulty: "Medium",
+          tags: ["Hash Table", "String"],
+          link: "https://leetcode.com/problems/group-anagrams/",
+          solution: {
+            approach: "Use sorted string as key to group anagrams together.",
+            code: `def groupAnagrams(strs):
+    from collections import defaultdict
+    
+    groups = defaultdict(list)
+    
+    for s in strs:
+        key = ''.join(sorted(s))
+        groups[key].append(s)
+    
+    return list(groups.values())`,
+            timeComplexity: "O(n * k log k)",
+            spaceComplexity: "O(n * k)"
+          }
+        },
+        {
+          title: "Longest Palindromic Substring",
+          description: "Find the longest palindromic substring",
+          difficulty: "Medium",
+          tags: ["String", "Dynamic Programming"],
+          link: "https://leetcode.com/problems/longest-palindromic-substring/",
+          solution: {
+            approach: "Expand around centers - check for both odd and even length palindromes.",
+            code: `def longestPalindrome(s):
+    if not s:
+        return ""
+    
+    start = 0
+    max_len = 1
+    
+    def expand_around_center(left, right):
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return right - left - 1
+    
+    for i in range(len(s)):
+        # Odd length palindromes
+        len1 = expand_around_center(i, i)
+        # Even length palindromes
+        len2 = expand_around_center(i, i + 1)
+        
+        current_max = max(len1, len2)
+        if current_max > max_len:
+            max_len = current_max
+            start = i - (current_max - 1) // 2
+    
+    return s[start:start + max_len]`,
+            timeComplexity: "O(n²)",
+            spaceComplexity: "O(1)"
+          }
+        },
+        {
+          title: "Valid Parentheses",
+          description: "Check if string of parentheses is valid",
+          difficulty: "Easy",
+          tags: ["Stack", "String"],
+          link: "https://leetcode.com/problems/valid-parentheses/",
+          solution: {
+            approach: "Use a stack to keep track of opening brackets.",
+            code: `def isValid(s):
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}
+    
+    for char in s:
+        if char in mapping:
+            if not stack or stack.pop() != mapping[char]:
+                return False
+        else:
+            stack.append(char)
+    
+    return len(stack) == 0`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(n)"
+          }
+        }
       ],
       linkedlist: [
-        { title: "Reverse Linked List", description: "Reverse a singly linked list", difficulty: "Easy", tags: ["Recursion"], link: "https://leetcode.com/problems/reverse-linked-list/" },
-        { title: "Merge Two Sorted Lists", description: "Merge two sorted linked lists", difficulty: "Easy", tags: ["Recursion"], link: "https://leetcode.com/problems/merge-two-sorted-lists/" },
-        { title: "Linked List Cycle", description: "Detect cycle in linked list", difficulty: "Easy", tags: ["Two Pointers"], link: "https://leetcode.com/problems/linked-list-cycle/" },
-        { title: "Remove Nth Node From End", description: "Remove nth node from end", difficulty: "Medium", tags: ["Two Pointers"], link: "https://leetcode.com/problems/remove-nth-node-from-end-of-list/" }
+        {
+          title: "Reverse Linked List",
+          description: "Reverse a singly linked list",
+          difficulty: "Easy",
+          tags: ["Linked List", "Recursion"],
+          link: "https://leetcode.com/problems/reverse-linked-list/",
+          solution: {
+            approach: "Use three pointers to reverse the links iteratively.",
+            code: `def reverseList(head):
+    prev = None
+    current = head
+    
+    while current:
+        next_temp = current.next
+        current.next = prev
+        prev = current
+        current = next_temp
+    
+    return prev`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)"
+          }
+        },
+        {
+          title: "Merge Two Sorted Lists",
+          description: "Merge two sorted linked lists into one sorted list",
+          difficulty: "Easy",
+          tags: ["Linked List", "Recursion"],
+          link: "https://leetcode.com/problems/merge-two-sorted-lists/",
+          solution: {
+            approach: "Use a dummy node to simplify the merge process.",
+            code: `def mergeTwoLists(list1, list2):
+    dummy = ListNode(0)
+    current = dummy
+    
+    while list1 and list2:
+        if list1.val <= list2.val:
+            current.next = list1
+            list1 = list1.next
+        else:
+            current.next = list2
+            list2 = list2.next
+        current = current.next
+    
+    current.next = list1 or list2
+    return dummy.next`,
+            timeComplexity: "O(n + m)",
+            spaceComplexity: "O(1)"
+          }
+        },
+        {
+          title: "Linked List Cycle",
+          description: "Detect if a linked list has a cycle",
+          difficulty: "Easy",
+          tags: ["Linked List", "Two Pointers"],
+          link: "https://leetcode.com/problems/linked-list-cycle/",
+          solution: {
+            approach: "Use Floyd's tortoise and hare algorithm.",
+            code: `def hasCycle(head):
+    if not head or not head.next:
+        return False
+    
+    slow = head
+    fast = head.next
+    
+    while fast and fast.next:
+        if slow == fast:
+            return True
+        slow = slow.next
+        fast = fast.next.next
+    
+    return False`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)"
+          }
+        },
+        {
+          title: "Remove Nth Node From End",
+          description: "Remove the nth node from the end of the list",
+          difficulty: "Medium",
+          tags: ["Linked List", "Two Pointers"],
+          link: "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+          solution: {
+            approach: "Use two pointers with n distance between them.",
+            code: `def removeNthFromEnd(head, n):
+    dummy = ListNode(0)
+    dummy.next = head
+    first = dummy
+    second = dummy
+    
+    # Move first n+1 steps ahead
+    for i in range(n + 1):
+        first = first.next
+    
+    # Move both until first reaches end
+    while first:
+        first = first.next
+        second = second.next
+    
+    # Remove nth node
+    second.next = second.next.next
+    return dummy.next`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)"
+          }
+        },
+        {
+          title: "Add Two Numbers",
+          description: "Add two numbers represented as linked lists",
+          difficulty: "Medium",
+          tags: ["Linked List", "Math"],
+          link: "https://leetcode.com/problems/add-two-numbers/",
+          solution: {
+            approach: "Simulate addition with carry, process digits from least significant.",
+            code: `def addTwoNumbers(l1, l2):
+    dummy = ListNode(0)
+    current = dummy
+    carry = 0
+    
+    while l1 or l2 or carry:
+        val1 = l1.val if l1 else 0
+        val2 = l2.val if l2 else 0
+        
+        total = val1 + val2 + carry
+        carry = total // 10
+        digit = total % 10
+        
+        current.next = ListNode(digit)
+        current = current.next
+        
+        if l1:
+            l1 = l1.next
+        if l2:
+            l2 = l2.next
+    
+    return dummy.next`,
+            timeComplexity: "O(max(m,n))",
+            spaceComplexity: "O(max(m,n))"
+          }
+        }
+      ],
+      stacks: [
+        {
+          title: "Valid Parentheses",
+          description: "Check if string of parentheses is valid",
+          difficulty: "Easy",
+          tags: ["Stack", "String"],
+          link: "https://leetcode.com/problems/valid-parentheses/",
+          solution: {
+            approach: "Use a stack to keep track of opening brackets.",
+            code: `def isValid(s):
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}
+    
+    for char in s:
+        if char in mapping:
+            if not stack or stack.pop() != mapping[char]:
+                return False
+        else:
+            stack.append(char)
+    
+    return len(stack) == 0`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(n)"
+          }
+        },
+        {
+          title: "Min Stack",
+          description: "Design a stack that supports push, pop, top, and retrieving minimum element",
+          difficulty: "Easy",
+          tags: ["Stack", "Design"],
+          link: "https://leetcode.com/problems/min-stack/",
+          solution: {
+            approach: "Use two stacks - one for values and another to track minimum values.",
+            code: `class MinStack:
+    def __init__(self):
+        self.stack = []
+        self.min_stack = []
+    
+    def push(self, val):
+        self.stack.append(val)
+        if not self.min_stack or val <= self.min_stack[-1]:
+            self.min_stack.append(val)
+    
+    def pop(self):
+        if self.stack:
+            val = self.stack.pop()
+            if self.min_stack and val == self.min_stack[-1]:
+                self.min_stack.pop()
+    
+    def top(self):
+        return self.stack[-1] if self.stack else None
+    
+    def getMin(self):
+        return self.min_stack[-1] if self.min_stack else None`,
+            timeComplexity: "O(1) for all operations",
+            spaceComplexity: "O(n)"
+          }
+        },
+        {
+          title: "Daily Temperatures",
+          description: "Find how many days until warmer temperature for each day",
+          difficulty: "Medium",
+          tags: ["Stack", "Array"],
+          link: "https://leetcode.com/problems/daily-temperatures/",
+          solution: {
+            approach: "Use a monotonic decreasing stack to keep track of indices.",
+            code: `def dailyTemperatures(temperatures):
+    n = len(temperatures)
+    result = [0] * n
+    stack = []
+    
+    for i in range(n):
+        while stack and temperatures[i] > temperatures[stack[-1]]:
+            prev_index = stack.pop()
+            result[prev_index] = i - prev_index
+        
+        stack.append(i)
+    
+    return result`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(n)"
+          }
+        },
+        {
+          title: "Evaluate Reverse Polish Notation",
+          description: "Evaluate arithmetic expression in Reverse Polish Notation",
+          difficulty: "Medium",
+          tags: ["Stack", "Array"],
+          link: "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+          solution: {
+            approach: "Use a stack to store operands. When encountering an operator, pop two operands and compute result.",
+            code: `def evalRPN(tokens):
+    stack = []
+    operators = {'+', '-', '*', '/'}
+    
+    for token in tokens:
+        if token in operators:
+            b = stack.pop()
+            a = stack.pop()
+            
+            if token == '+':
+                result = a + b
+            elif token == '-':
+                result = a - b
+            elif token == '*':
+                result = a * b
+            elif token == '/':
+                result = int(a / b)
+            
+            stack.append(result)
+        else:
+            stack.append(int(token))
+    
+    return stack[0]`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(n)"
+          }
+        },
+        {
+          title: "Largest Rectangle in Histogram",
+          description: "Find the area of largest rectangle in histogram",
+          difficulty: "Hard",
+          tags: ["Stack", "Array"],
+          link: "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+          solution: {
+            approach: "Use a monotonic increasing stack to find the largest rectangle.",
+            code: `def largestRectangleArea(heights):
+    stack = []
+    max_area = 0
+    heights.append(0)  # Add sentinel to process remaining bars
+    
+    for i, height in enumerate(heights):
+        while stack and heights[stack[-1]] > height:
+            h = heights[stack.pop()]
+            w = i if not stack else i - stack[-1] - 1
+            max_area = max(max_area, h * w)
+        stack.append(i)
+    
+    return max_area`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(n)"
+          }
+        },
+        {
+          title: "Simplify Path",
+          description: "Simplify Unix-style file path",
+          difficulty: "Medium",
+          tags: ["Stack", "String"],
+          link: "https://leetcode.com/problems/simplify-path/",
+          solution: {
+            approach: "Use a stack to process path components, handle '..' and '.' appropriately.",
+            code: `def simplifyPath(path):
+    stack = []
+    components = path.split('/')
+    
+    for component in components:
+        if component == '..' and stack:
+            stack.pop()  # Go back one directory
+        elif component and component != '.' and component != '..':
+            stack.append(component)  # Add directory to path
+    
+    return '/' + '/'.join(stack)`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(n)"
+          }
+        }
+      ],
+      queues: [
+        {
+          title: "Implement Queue using Stacks",
+          description: "Implement FIFO queue using only two stacks",
+          difficulty: "Easy",
+          tags: ["Stack", "Queue", "Design"],
+          link: "https://leetcode.com/problems/implement-queue-using-stacks/",
+          solution: {
+            approach: "Use two stacks - one for push operations and another for pop operations.",
+            code: `class MyQueue:
+    def __init__(self):
+        self.input_stack = []
+        self.output_stack = []
+    
+    def push(self, x):
+        self.input_stack.append(x)
+    
+    def pop(self):
+        self.peek()
+        return self.output_stack.pop()
+    
+    def peek(self):
+        if not self.output_stack:
+            while self.input_stack:
+                self.output_stack.append(self.input_stack.pop())
+        return self.output_stack[-1]
+    
+    def empty(self):
+        return len(self.input_stack) == 0 and len(self.output_stack) == 0`,
+            timeComplexity: "O(1) amortized",
+            spaceComplexity: "O(n)"
+          }
+        },
+        {
+          title: "Number of Recent Calls",
+          description: "Count requests in the past 3000 milliseconds",
+          difficulty: "Easy",
+          tags: ["Queue", "Design"],
+          link: "https://leetcode.com/problems/number-of-recent-calls/",
+          solution: {
+            approach: "Use a queue to store timestamps and remove old ones.",
+            code: `from collections import deque
+
+class RecentCounter:
+    def __init__(self):
+        self.requests = deque()
+    
+    def ping(self, t):
+        self.requests.append(t)
+        
+        while self.requests and self.requests[0] < t - 3000:
+            self.requests.popleft()
+        
+        return len(self.requests)`,
+            timeComplexity: "O(1) amortized",
+            spaceComplexity: "O(W) where W = 3000"
+          }
+        },
+        {
+          title: "Design Circular Queue",
+          description: "Design circular queue with fixed size",
+          difficulty: "Medium",
+          tags: ["Array", "Queue", "Design"],
+          link: "https://leetcode.com/problems/design-circular-queue/",
+          solution: {
+            approach: "Use array with head and tail pointers using modular arithmetic.",
+            code: `class MyCircularQueue:
+    def __init__(self, k):
+        self.queue = [0] * k
+        self.head = 0
+        self.tail = -1
+        self.size = 0
+        self.capacity = k
+    
+    def enQueue(self, value):
+        if self.isFull():
+            return False
+        
+        self.tail = (self.tail + 1) % self.capacity
+        self.queue[self.tail] = value
+        self.size += 1
+        return True
+    
+    def deQueue(self):
+        if self.isEmpty():
+            return False
+        
+        self.head = (self.head + 1) % self.capacity
+        self.size -= 1
+        return True
+    
+    def Front(self):
+        return -1 if self.isEmpty() else self.queue[self.head]
+    
+    def Rear(self):
+        return -1 if self.isEmpty() else self.queue[self.tail]
+    
+    def isEmpty(self):
+        return self.size == 0
+    
+    def isFull(self):
+        return self.size == self.capacity`,
+            timeComplexity: "O(1) for all operations",
+            spaceComplexity: "O(n)"
+          }
+        },
+        {
+          title: "Sliding Window Maximum",
+          description: "Find maximum value in each sliding window of size k",
+          difficulty: "Hard",
+          tags: ["Queue", "Sliding Window", "Deque"],
+          link: "https://leetcode.com/problems/sliding-window-maximum/",
+          solution: {
+            approach: "Use a deque to maintain indices of elements in decreasing order of their values.",
+            code: `from collections import deque
+
+def maxSlidingWindow(nums, k):
+    result = []
+    dq = deque()  # Store indices
+    
+    for i in range(len(nums)):
+        # Remove indices outside current window
+        while dq and dq[0] <= i - k:
+            dq.popleft()
+        
+        # Remove indices with smaller values
+        while dq and nums[dq[-1]] <= nums[i]:
+            dq.pop()
+        
+        dq.append(i)
+        
+        # Add to result when window is complete
+        if i >= k - 1:
+            result.append(nums[dq[0]])
+    
+    return result`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(k)"
+          }
+        },
+        {
+          title: "First Unique Character in a String",
+          description: "Find the first non-repeating character in a string",
+          difficulty: "Easy",
+          tags: ["Hash Table", "String", "Queue"],
+          link: "https://leetcode.com/problems/first-unique-character-in-a-string/",
+          solution: {
+            approach: "Use a hash map to count character frequencies, then find first character with count 1.",
+            code: `def firstUniqChar(s):
+    from collections import Counter
+    
+    char_count = Counter(s)
+    
+    for i, char in enumerate(s):
+        if char_count[char] == 1:
+            return i
+    
+    return -1`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1) - at most 26 lowercase letters"
+          }
+        },
+        {
+          title: "Moving Average from Data Stream",
+          description: "Calculate the moving average of all integers in a sliding window",
+          difficulty: "Easy",
+          tags: ["Queue", "Design", "Array"],
+          link: "https://leetcode.com/problems/moving-average-from-data-stream/",
+          solution: {
+            approach: "Use a queue to maintain the sliding window and keep track of the sum.",
+            code: `from collections import deque
+
+class MovingAverage:
+    def __init__(self, size):
+        self.size = size
+        self.queue = deque()
+        self.window_sum = 0
+    
+    def next(self, val):
+        self.queue.append(val)
+        self.window_sum += val
+        
+        # Remove oldest element if window exceeds size
+        if len(self.queue) > self.size:
+            self.window_sum -= self.queue.popleft()
+        
+        return self.window_sum / len(self.queue)`,
+            timeComplexity: "O(1)",
+            spaceComplexity: "O(n)"
+          }
+        }
       ],
       trees: [
-        { title: "Maximum Depth of Binary Tree", description: "Find max depth of binary tree", difficulty: "Easy", tags: ["DFS", "BFS"], link: "https://leetcode.com/problems/maximum-depth-of-binary-tree/" },
-        { title: "Same Tree", description: "Check if two trees are same", difficulty: "Easy", tags: ["DFS"], link: "https://leetcode.com/problems/same-tree/" },
-        { title: "Invert Binary Tree", description: "Invert a binary tree", difficulty: "Easy", tags: ["DFS"], link: "https://leetcode.com/problems/invert-binary-tree/" },
-        { title: "Binary Tree Level Order Traversal", description: "Level order traversal", difficulty: "Medium", tags: ["BFS"], link: "https://leetcode.com/problems/binary-tree-level-order-traversal/" }
+        {
+          title: "Maximum Depth of Binary Tree",
+          description: "Find the maximum depth of a binary tree",
+          difficulty: "Easy",
+          tags: ["Tree", "DFS", "BFS"],
+          link: "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+          solution: {
+            approach: "Use recursion to calculate depth of left and right subtrees.",
+            code: `def maxDepth(root):
+    if not root:
+        return 0
+    
+    left_depth = maxDepth(root.left)
+    right_depth = maxDepth(root.right)
+    
+    return max(left_depth, right_depth) + 1`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(h) where h is height"
+          }
+        },
+        {
+          title: "Same Tree",
+          description: "Check if two binary trees are the same",
+          difficulty: "Easy",
+          tags: ["Tree", "DFS"],
+          link: "https://leetcode.com/problems/same-tree/",
+          solution: {
+            approach: "Recursively compare nodes and their children.",
+            code: `def isSameTree(p, q):
+    if not p and not q:
+        return True
+    
+    if not p or not q:
+        return False
+    
+    return (p.val == q.val and 
+            isSameTree(p.left, q.left) and 
+            isSameTree(p.right, q.right))`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(h)"
+          }
+        },
+        {
+          title: "Invert Binary Tree",
+          description: "Invert/flip a binary tree",
+          difficulty: "Easy",
+          tags: ["Tree", "DFS"],
+          link: "https://leetcode.com/problems/invert-binary-tree/",
+          solution: {
+            approach: "Recursively swap left and right children of each node.",
+            code: `def invertTree(root):
+    if not root:
+        return None
+    
+    # Swap left and right children
+    root.left, root.right = root.right, root.left
+    
+    # Recursively invert subtrees
+    invertTree(root.left)
+    invertTree(root.right)
+    
+    return root`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(h)"
+          }
+        }
       ],
       graphs: [
-        { title: "Number of Islands", description: "Count islands in 2D grid", difficulty: "Medium", tags: ["DFS", "BFS"], link: "https://leetcode.com/problems/number-of-islands/" },
-        { title: "Clone Graph", description: "Deep copy of graph", difficulty: "Medium", tags: ["DFS", "BFS"], link: "https://leetcode.com/problems/clone-graph/" },
-        { title: "Course Schedule", description: "Check if courses can be finished", difficulty: "Medium", tags: ["Topological Sort"], link: "https://leetcode.com/problems/course-schedule/" }
+        {
+          title: "Number of Islands",
+          description: "Count the number of islands in a 2D grid",
+          difficulty: "Medium",
+          tags: ["DFS", "BFS", "Graph"],
+          link: "https://leetcode.com/problems/number-of-islands/",
+          solution: {
+            approach: "Use DFS to mark connected land cells as visited.",
+            code: `def numIslands(grid):
+    if not grid or not grid[0]:
+        return 0
+    
+    rows, cols = len(grid), len(grid[0])
+    count = 0
+    
+    def dfs(r, c):
+        if (r < 0 or r >= rows or c < 0 or c >= cols or 
+            grid[r][c] != '1'):
+            return
+        
+        grid[r][c] = '0'  # Mark as visited
+        
+        # Explore all 4 directions
+        dfs(r + 1, c)
+        dfs(r - 1, c)
+        dfs(r, c + 1)
+        dfs(r, c - 1)
+    
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] == '1':
+                dfs(r, c)
+                count += 1
+    
+    return count`,
+            timeComplexity: "O(m * n)",
+            spaceComplexity: "O(m * n)"
+          }
+        },
+        {
+          title: "Clone Graph",
+          description: "Clone an undirected graph",
+          difficulty: "Medium",
+          tags: ["Graph", "DFS", "BFS"],
+          link: "https://leetcode.com/problems/clone-graph/",
+          solution: {
+            approach: "Use DFS with a hash map to track cloned nodes.",
+            code: `def cloneGraph(node):
+    if not node:
+        return None
+    
+    cloned = {}
+    
+    def dfs(node):
+        if node in cloned:
+            return cloned[node]
+        
+        clone = Node(node.val)
+        cloned[node] = clone
+        
+        for neighbor in node.neighbors:
+            clone.neighbors.append(dfs(neighbor))
+        
+        return clone
+    
+    return dfs(node)`,
+            timeComplexity: "O(n + m)",
+            spaceComplexity: "O(n)"
+          }
+        }
       ],
       dp: [
-        { title: "Climbing Stairs", description: "Count ways to climb stairs", difficulty: "Easy", tags: ["DP"], link: "https://leetcode.com/problems/climbing-stairs/" },
-        { title: "House Robber", description: "Maximum money without adjacent houses", difficulty: "Medium", tags: ["DP"], link: "https://leetcode.com/problems/house-robber/" },
-        { title: "Coin Change", description: "Minimum coins for amount", difficulty: "Medium", tags: ["DP"], link: "https://leetcode.com/problems/coin-change/" }
+        {
+          title: "Climbing Stairs",
+          description: "Count ways to climb n stairs (1 or 2 steps at a time)",
+          difficulty: "Easy",
+          tags: ["Dynamic Programming"],
+          link: "https://leetcode.com/problems/climbing-stairs/",
+          solution: {
+            approach: "Use dynamic programming - each step is sum of previous two steps.",
+            code: `def climbStairs(n):
+    if n <= 2:
+        return n
+    
+    prev2 = 1  # ways to reach step 1
+    prev1 = 2  # ways to reach step 2
+    
+    for i in range(3, n + 1):
+        current = prev1 + prev2
+        prev2 = prev1
+        prev1 = current
+    
+    return prev1`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)"
+          }
+        },
+        {
+          title: "House Robber",
+          description: "Find maximum money that can be robbed without alerting police",
+          difficulty: "Medium",
+          tags: ["Dynamic Programming", "Array"],
+          link: "https://leetcode.com/problems/house-robber/",
+          solution: {
+            approach: "At each house, decide whether to rob it or not based on maximum profit.",
+            code: `def rob(nums):
+    if not nums:
+        return 0
+    if len(nums) == 1:
+        return nums[0]
+    
+    prev2 = 0  # Max money up to 2 houses ago
+    prev1 = 0  # Max money up to 1 house ago
+    
+    for money in nums:
+        current = max(prev1, prev2 + money)
+        prev2 = prev1
+        prev1 = current
+    
+    return prev1`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)"
+          }
+        }
       ]
     };
 
-    // State
-    let currentCategory = 'all';
+    // State management
     let solvedChallenges = new Set(JSON.parse(localStorage.getItem('solvedChallenges') || '[]'));
+    let currentCategory = 'all';
+    let currentDifficulty = '';
+    let searchTerm = '';
 
-    // DOM elements
-    const challengesGrid = document.getElementById('challengesGrid');
-    const emptyState = document.getElementById('emptyState');
-    const difficultyFilter = document.getElementById('difficultyFilter');
-    const searchInput = document.getElementById('searchInput');
-    const solvedCount = document.getElementById('solvedCount');
-    const totalCount = document.getElementById('totalCount');
-    const progressPercent = document.getElementById('progressPercent');
-
-    // Get all challenges
-    function getAllChallenges() {
-      if (currentCategory === 'all') {
-        return Object.values(challenges).flat();
-      }
-      return challenges[currentCategory] || [];
+    // Initialize the application
+    function init() {
+      updateStats();
+      renderChallenges();
+      setupEventListeners();
     }
 
-    // Filter challenges
+    // Toggle theme
+    function toggleTheme() {
+      const body = document.body;
+      const themeIcon = document.querySelector('.theme-icon');
+
+      if (body.getAttribute('data-theme') === 'dark') {
+        body.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Load saved theme
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.body.setAttribute('data-theme', savedTheme);
+      const themeIcon = document.querySelector('.theme-icon');
+      themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    // Update statistics
+    function updateStats() {
+      const totalChallenges = Object.values(challenges).flat().length;
+      const solvedCount = solvedChallenges.size;
+      const progressPercent = totalChallenges > 0 ? Math.round((solvedCount / totalChallenges) * 100) : 0;
+
+      document.getElementById('solvedCount').textContent = solvedCount;
+      document.getElementById('totalCount').textContent = totalChallenges;
+      document.getElementById('progressPercent').textContent = `${progressPercent}%`;
+    }
+
+    // Get filtered challenges
     function getFilteredChallenges() {
-      const allChallenges = getAllChallenges();
-      const difficulty = difficultyFilter.value;
-      const search = searchInput.value.toLowerCase();
+      let allChallenges = [];
+
+      if (currentCategory === 'all') {
+        allChallenges = Object.values(challenges).flat();
+      } else {
+        allChallenges = challenges[currentCategory] || [];
+      }
 
       return allChallenges.filter(challenge => {
-        const matchesDifficulty = !difficulty || challenge.difficulty === difficulty;
-        const matchesSearch = !search ||
-          challenge.title.toLowerCase().includes(search) ||
-          challenge.description.toLowerCase().includes(search) ||
-          challenge.tags.some(tag => tag.toLowerCase().includes(search));
+        const matchesDifficulty = !currentDifficulty || challenge.difficulty === currentDifficulty;
+        const matchesSearch = !searchTerm ||
+          challenge.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          challenge.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          challenge.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
 
         return matchesDifficulty && matchesSearch;
       });
@@ -916,39 +2179,54 @@
 
     // Render challenges
     function renderChallenges() {
+      const grid = document.getElementById('challengesGrid');
+      const emptyState = document.getElementById('emptyState');
       const filteredChallenges = getFilteredChallenges();
 
       if (filteredChallenges.length === 0) {
-        challengesGrid.style.display = 'none';
+        grid.style.display = 'none';
         emptyState.style.display = 'block';
         return;
       }
 
-      challengesGrid.style.display = 'grid';
+      grid.style.display = 'grid';
       emptyState.style.display = 'none';
 
-      challengesGrid.innerHTML = filteredChallenges.map(challenge => {
-        const isSolved = solvedChallenges.has(challenge.title);
-        return `
-                    <div class="challenge-card ${isSolved ? 'solved' : ''}">
-                        <h3 class="challenge-title">${challenge.title}</h3>
-                        <p class="challenge-description">${challenge.description}</p>
-                        <div class="challenge-tags">
-                            ${challenge.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                        </div>
-                        <div class="difficulty ${challenge.difficulty.toLowerCase()}">${challenge.difficulty}</div>
-                        <div class="challenge-actions">
-                            <div class="checkbox-container" onclick="toggleSolved('${challenge.title}')">
-                                <div class="checkbox ${isSolved ? 'checked' : ''}">${isSolved ? '✓' : ''}</div>
-                                <span class="checkbox-label">Solved</span>
+      grid.innerHTML = filteredChallenges.map(challenge =>
+        createChallengeCard(challenge)
+      ).join('');
+    }
+
+    // Create challenge card
+    function createChallengeCard(challenge) {
+      const isSolved = solvedChallenges.has(challenge.title);
+
+      return `
+                <div class="challenge-card ${isSolved ? 'solved' : ''}" data-title="${challenge.title}">
+                    <h3 class="challenge-title">${challenge.title}</h3>
+                    <p class="challenge-description">${challenge.description}</p>
+                    <div class="challenge-tags">
+                        ${challenge.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <div class="difficulty ${challenge.difficulty.toLowerCase()}">${challenge.difficulty}</div>
+                    <div class="challenge-actions">
+                        <div class="checkbox-container" onclick="toggleSolved('${challenge.title}')">
+                            <div class="checkbox ${isSolved ? 'checked' : ''}">
+                                ${isSolved ? '✓' : ''}
                             </div>
+                            <span class="checkbox-label">Mark as solved</span>
+                        </div>
+                        <div>
                             <a href="${challenge.link}" target="_blank" class="solve-btn">
-                                Solve Now →
+                                <span>🚀</span> Solve
                             </a>
+                            <button class="solution-btn" onclick="showSolution('${challenge.title}')">
+                                <span>💡</span> Solution
+                            </button>
                         </div>
                     </div>
-                `;
-      }).join('');
+                </div>
+            `;
     }
 
     // Toggle solved status
@@ -964,37 +2242,91 @@
       renderChallenges();
     }
 
-    // Update statistics
-    function updateStats() {
-      const total = getAllChallenges().length;
-      const solved = getAllChallenges().filter(c => solvedChallenges.has(c.title)).length;
-      const progress = total > 0 ? Math.round((solved / total) * 100) : 0;
+    // Show solution modal
+    function showSolution(title) {
+      const challenge = Object.values(challenges).flat().find(c => c.title === title);
+      if (!challenge || !challenge.solution) return;
 
-      solvedCount.textContent = solved;
-      totalCount.textContent = total;
-      progressPercent.textContent = progress + '%';
+      const modal = document.getElementById('solutionModal');
+      const modalTitle = document.getElementById('solutionTitle');
+      const modalBody = document.getElementById('solutionBody');
+
+      modalTitle.textContent = challenge.title;
+      modalBody.innerHTML = `
+                <div class="solution-section">
+                    <h3>💭 Approach</h3>
+                    <p>${challenge.solution.approach}</p>
+                </div>
+                
+                <div class="solution-section">
+                    <h3>💻 Implementation</h3>
+                    <div class="solution-code">${challenge.solution.code}</div>
+                </div>
+                
+                <div class="complexity-info">
+                    <div class="complexity-item">
+                        <div class="complexity-label">Time Complexity</div>
+                        <div class="complexity-value">${challenge.solution.timeComplexity}</div>
+                    </div>
+                    <div class="complexity-item">
+                        <div class="complexity-label">Space Complexity</div>
+                        <div class="complexity-value">${challenge.solution.spaceComplexity}</div>
+                    </div>
+                </div>
+            `;
+
+      modal.style.display = 'flex';
     }
 
-    // Event listeners
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        currentCategory = tab.dataset.category;
-        updateStats();
+    // Close solution modal
+    function closeSolution() {
+      document.getElementById('solutionModal').style.display = 'none';
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+      // Tab switching
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          currentCategory = tab.dataset.category;
+          renderChallenges();
+        });
+      });
+
+      // Difficulty filter
+      document.getElementById('difficultyFilter').addEventListener('change', (e) => {
+        currentDifficulty = e.target.value;
         renderChallenges();
       });
+
+      // Search input
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        searchTerm = e.target.value;
+        renderChallenges();
+      });
+
+      // Close modal on background click
+      document.getElementById('solutionModal').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) {
+          closeSolution();
+        }
+      });
+
+      // Close modal on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeSolution();
+        }
+      });
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTheme();
+      init();
     });
-
-    difficultyFilter.addEventListener('change', renderChallenges);
-    searchInput.addEventListener('input', renderChallenges);
-
-    // Make toggleSolved globally accessible
-    window.toggleSolved = toggleSolved;
-
-    // Initialize
-    updateStats();
-    renderChallenges();
   </script>
 </body>
 

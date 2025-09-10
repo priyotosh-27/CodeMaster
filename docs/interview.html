@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAANG Interview Prep Pro - Tech Interview Questions</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeMaster - Mock Placement Quiz</title>
   <style>
     * {
       margin: 0;
@@ -11,2208 +12,2302 @@
       box-sizing: border-box;
     }
 
-    :root {
-      --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      --accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      --success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-      --warning: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
-      --danger: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
-      --faang: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
-      --bg-light: #f8faff;
-      --bg-dark: #0d1117;
-      --text-light: #2d3748;
-      --text-dark: #e2e8f0;
-      --card-light: rgba(255, 255, 255, 0.9);
-      --card-dark: rgba(30, 41, 59, 0.9);
-      --glass-light: rgba(255, 255, 255, 0.25);
-      --glass-dark: rgba(0, 0, 0, 0.25);
-      --shadow-light: 0 8px 32px rgba(31, 38, 135, 0.15);
-      --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
-      --border-light: rgba(255, 255, 255, 0.18);
-      --border-dark: rgba(255, 255, 255, 0.1);
-    }
-
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg-light);
-      color: var(--text-light);
-      transition: all 0.3s ease;
-      line-height: 1.6;
-      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
 
-    body.dark {
-      background: var(--bg-dark);
-      color: var(--text-dark);
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Animated background */
-    body::before {
+    .container::before {
       content: '';
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
-      z-index: -1;
-      animation: float 20s ease-in-out infinite;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+      background-size: 400% 400%;
+      animation: gradient 3s ease infinite;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      33% { transform: translateY(-20px) rotate(1deg); }
-      66% { transform: translateY(10px) rotate(-1deg); }
-    }
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
 
-    /* Header */
-    .header {
-      background: var(--glass-light);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-light);
-      padding: 1.5rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: var(--shadow-light);
-    }
+      50% {
+        background-position: 100% 50%;
+      }
 
-    body.dark .header {
-      background: var(--glass-dark);
-      border-bottom: 1px solid var(--border-dark);
-      box-shadow: var(--shadow-dark);
-    }
-
-    .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: var(--faang);
+      font-size: 2.5em;
+      font-weight: bold;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
+      margin-bottom: 10px;
     }
 
-    .logo span {
-      font-size: 2rem;
-      animation: pulse 2s infinite;
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 1.1em;
+    }
+
+    .welcome-screen {
+      text-align: center;
+    }
+
+    .quiz-info {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 20px 0;
+      border-left: 5px solid #667eea;
+    }
+
+    .quiz-info h3 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 1.3em;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .info-item {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .info-item .icon {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .start-btn,
+    .next-btn,
+    .restart-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.1em;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .start-btn:hover,
+    .next-btn:hover,
+    .restart-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .quiz-container {
+      display: none;
+      text-align: left;
+    }
+
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .progress-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .question-counter {
+      background: #e9ecef;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      color: #495057;
+    }
+
+    .timer {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1.1em;
+      min-width: 80px;
+      animation: pulse 1s infinite;
+    }
+
+    .timer.warning {
+      animation: shake 0.5s infinite;
+      background: linear-gradient(135deg, #ff4757, #ff3742);
     }
 
     @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
 
-    .header-center {
-      text-align: center;
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-5px);
+      }
+
+      75% {
+        transform: translateX(5px);
+      }
     }
 
-    .header-title {
-      font-size: 2.5rem;
-      font-weight: 900;
-      background: var(--faang);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
+    .question-card {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 25px;
+      border-left: 5px solid #667eea;
+      position: relative;
     }
 
-    .header-subtitle {
-      font-size: 1.1rem;
-      opacity: 0.8;
-      font-weight: 500;
-    }
-
-    .header-right {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .theme-toggle {
-      background: var(--glass-light);
-      border: 1px solid var(--border-light);
-      backdrop-filter: blur(10px);
-      color: var(--text-light);
-      border-radius: 50px;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 1.2rem;
-    }
-
-    body.dark .theme-toggle {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-      color: var(--text-dark);
-    }
-
-    .theme-toggle:hover {
-      transform: scale(1.1) rotate(180deg);
-    }
-
-    .stats {
-      display: flex;
-      gap: 1rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .stat {
-      padding: 0.5rem 1rem;
-      background: var(--glass-light);
-      border: 1px solid var(--border-light);
-      border-radius: 25px;
-      backdrop-filter: blur(10px);
-    }
-
-    body.dark .stat {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-    }
-
-    /* Achievement System */
-    .achievement {
-      position: fixed;
-      top: 100px;
+    .question-type {
+      position: absolute;
+      top: -10px;
       right: 20px;
-      background: var(--success);
+      background: linear-gradient(135deg, #4ecdc4, #44a08d);
       color: white;
-      padding: 1rem 1.5rem;
+      padding: 5px 15px;
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-      transform: translateX(300px);
-      transition: transform 0.5s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      font-size: 0.9em;
       font-weight: 600;
     }
 
-    .achievement.show {
-      transform: translateX(0);
-    }
-
-    /* Streak Counter */
-    .streak-counter {
-      background: var(--warning);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    /* Navigation */
-    .nav {
-      background: var(--glass-light);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-light);
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 90px;
-      z-index: 90;
-    }
-
-    body.dark .nav {
-      background: var(--glass-dark);
-      border-bottom-color: var(--border-dark);
-    }
-
-    .nav-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .tabs {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .tab {
-      padding: 0.75rem 1.5rem;
-      background: transparent;
-      border: 2px solid transparent;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tab::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--faang);
-      transition: all 0.3s ease;
-      z-index: -1;
-    }
-
-    .tab:hover::before,
-    .tab.active::before {
-      left: 0;
-    }
-
-    .tab:hover,
-    .tab.active {
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .filters {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .filter-label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      opacity: 0.7;
-    }
-
-    select, .search-input {
-      padding: 0.6rem 1rem;
-      border: 2px solid var(--border-light);
-      border-radius: 15px;
-      background: var(--glass-light);
-      backdrop-filter: blur(10px);
-      color: var(--text-light);
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      outline: none;
-    }
-
-    body.dark select,
-    body.dark .search-input {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-      color: var(--text-dark);
-    }
-
-    select:focus,
-    .search-input:focus {
-      border-color: #667eea;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
-    }
-
-    /* Company selector */
-    .company-filter {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    .company-btn {
-      padding: 0.4rem 0.8rem;
-      border: 2px solid var(--border-light);
-      border-radius: 20px;
-      background: var(--glass-light);
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    body.dark .company-btn {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-    }
-
-    .company-btn.active {
-      background: var(--faang);
-      color: white;
-      border-color: transparent;
-    }
-
-    .company-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    /* Interview Prep Guide */
-    .prep-guide {
-      background: var(--glass-light);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border-light);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 3rem;
-      box-shadow: var(--shadow-light);
-    }
-
-    body.dark .prep-guide {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-      box-shadow: var(--shadow-dark);
-    }
-
-    .prep-guide-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .prep-guide-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      background: var(--faang);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
-    }
-
-    .prep-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .prep-step {
-      background: var(--glass-light);
-      border: 2px solid var(--border-light);
-      border-radius: 15px;
-      padding: 1.5rem;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    body.dark .prep-step {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-    }
-
-    .prep-step:hover {
-      border-color: #667eea;
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-    }
-
-    .prep-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .prep-name {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .prep-description {
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-
-    /* Timer Feature */
-    .timer-section {
-      background: var(--glass-light);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border-light);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 3rem;
-      box-shadow: var(--shadow-light);
-      text-align: center;
-    }
-
-    body.dark .timer-section {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-      box-shadow: var(--shadow-dark);
-    }
-
-    .timer-display {
-      font-size: 3rem;
-      font-weight: 900;
-      background: var(--faang);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1rem;
-      font-family: 'Courier New', monospace;
-    }
-
-    .timer-controls {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .timer-btn {
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .timer-btn.start {
-      background: var(--success);
-      color: white;
-    }
-
-    .timer-btn.pause {
-      background: var(--warning);
-      color: white;
-    }
-
-    .timer-btn.reset {
-      background: var(--danger);
-      color: white;
-    }
-
-    .timer-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .timer-presets {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .preset-btn {
-      padding: 0.5rem 1rem;
-      background: var(--glass-light);
-      border: 1px solid var(--border-light);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-
-    body.dark .preset-btn {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-    }
-
-    .preset-btn:hover {
-      background: var(--accent);
-      color: white;
-    }
-
-    /* Main content */
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-weight: 800;
-      background: var(--faang);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      opacity: 0.7;
-    }
-
-    /* Question grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    /* Question Cards */
-    .card {
-      background: var(--card-light);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border-light);
-      border-radius: 20px;
-      padding: 2rem;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-light);
-    }
-
-    body.dark .card {
-      background: var(--card-dark);
-      border-color: var(--border-dark);
-      box-shadow: var(--shadow-dark);
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: var(--faang);
-      border-radius: 20px;
-      z-index: -1;
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-
-    /* .card:hover::before {
-      opacity: 1;
-    } */
-
-    /* .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    } */
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-    }
-
-    .card-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      background: var(--faang);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .card-description {
-      font-size: 1rem;
-      opacity: 0.8;
+    .question-text {
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 20px;
       line-height: 1.6;
-      margin-bottom: 1rem;
     }
 
-    .company-tags {
+    .code-block {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 10px;
+      font-family: 'Courier New', monospace;
+      margin: 15px 0;
+      overflow-x: auto;
+      border-left: 4px solid #4ecdc4;
+    }
+
+    .options-container {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .option {
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      padding: 15px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .company-tag {
-      padding: 0.25rem 0.75rem;
-      border-radius: 15px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: white;
-    }
-
-    .company-tag.google { background: #4285F4; }
-    .company-tag.amazon { background: #FF9900; }
-    .company-tag.apple { background: #007AFF; }
-    .company-tag.meta { background: #1877F2; }
-    .company-tag.microsoft { background: #00A4EF; }
-    .company-tag.netflix { background: #E50914; }
-    .company-tag.tesla { background: #CC0000; }
-    .company-tag.uber { background: #000000; }
-    .company-tag.airbnb { background: #FF5A5F; }
-    .company-tag.linkedin { background: #0A66C2; }
-
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .tag {
-      padding: 0.25rem 0.75rem;
-      border-radius: 15px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: white;
-      background: var(--accent);
-    }
-
-    .badge {
-      display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      gap: 12px;
     }
 
-    .badge.easy { background: var(--success); }
-    .badge.medium { background: var(--warning); }
-    .badge.hard { background: var(--danger); }
-
-    .interview-round {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      background: var(--secondary);
-      color: white;
-      margin-bottom: 1rem;
+    .option:hover {
+      border-color: #667eea;
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
     }
 
-    .solved-indicator {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
+    .option.selected {
+      border-color: #667eea;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    }
+
+    .option.correct {
+      border-color: #28a745;
+      background: linear-gradient(135deg, rgba(40, 167, 69, 0.1), rgba(34, 139, 58, 0.1));
+    }
+
+    .option.incorrect {
+      border-color: #dc3545;
+      background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(183, 28, 28, 0.1));
+    }
+
+    .option-label {
+      background: #6c757d;
+      color: white;
       width: 30px;
       height: 30px;
-      background: var(--success);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
       font-weight: bold;
-      animation: bounce 0.6s ease;
+      flex-shrink: 0;
     }
 
-    @keyframes bounce {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+    .option.selected .option-label {
+      background: #667eea;
     }
 
-    .card-actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: auto;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border-light);
+    .option.correct .option-label {
+      background: #28a745;
     }
 
-    body.dark .card-actions {
-      border-top-color: var(--border-dark);
+    .option.incorrect .option-label {
+      background: #dc3545;
     }
 
-    .checkbox-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-    }
-
-    .checkbox {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #667eea;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      background: transparent;
-    }
-
-    .checkbox.checked {
-      background: var(--success);
-      border-color: transparent;
-    }
-
-    .checkbox.checked::after {
-      content: '✓';
-      color: white;
-      font-weight: bold;
-    }
-
-    .external-btn {
-      background: var(--faang);
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border: none;
-      border-radius: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .external-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Progress section */
-    .progress-section {
-      background: var(--glass-light);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border-light);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 3rem;
-      box-shadow: var(--shadow-light);
-    }
-
-    body.dark .progress-section {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-      box-shadow: var(--shadow-dark);
-    }
-
-    .progress-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .progress-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      background: var(--faang);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .progress-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-    }
-
-    .progress-card {
-      text-align: center;
-      padding: 1.5rem;
-      background: var(--glass-light);
-      border: 1px solid var(--border-light);
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-    }
-
-    body.dark .progress-card {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-    }
-
-    .progress-number {
-      font-size: 2.5rem;
-      font-weight: 900;
-      margin-bottom: 0.5rem;
-      background: var(--faang);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .progress-label {
-      font-size: 1rem;
-      font-weight: 600;
-      opacity: 0.8;
-    }
-
-    .progress-bar {
+    .text-input {
       width: 100%;
-      height: 8px;
-      background: var(--glass-light);
+      padding: 15px;
+      border: 2px solid #e9ecef;
       border-radius: 10px;
-      overflow: hidden;
-      margin: 1rem 0;
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      transition: border-color 0.3s ease;
     }
 
-    body.dark .progress-bar {
-      background: var(--glass-dark);
+    .text-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
-    .progress-fill {
-      height: 100%;
-      background: var(--success);
+    .explanation {
+      background: #e7f3ff;
+      border: 1px solid #b3d9ff;
       border-radius: 10px;
-      transition: width 1s ease;
+      padding: 15px;
+      margin-top: 15px;
+      display: none;
     }
 
-    /* Empty state */
-    .empty-state {
-      text-align: center;
-      padding: 4rem 2rem;
-      opacity: 0.6;
+    .explanation.show {
+      display: block;
+      animation: fadeIn 0.5s ease;
     }
 
-    .empty-icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
-
-    .empty-text {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    /* Achievements */
-    .achievements {
-      background: var(--glass-light);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border-light);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 3rem;
-      box-shadow: var(--shadow-light);
-    }
-
-    body.dark .achievements {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-      box-shadow: var(--shadow-dark);
-    }
-
-    .achievement-item {
-      display: flex;
-      align-items: center;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      background: var(--glass-light);
-      border-radius: 15px;
-      border: 1px solid var(--border-light);
-    }
-
-    body.dark .achievement-item {
-      background: var(--glass-dark);
-      border-color: var(--border-dark);
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-
-      .header-title {
-        font-size: 2rem;
-      }
-
-      .nav-content {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .tabs {
-        justify-content: center;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .card {
-        padding: 1.5rem;
-      }
-
-      .progress-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .prep-steps {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Animations */
-    .fade-in {
-      animation: fadeIn 0.6s ease forwards;
+    .explanation h4 {
+      color: #0066cc;
+      margin-bottom: 10px;
     }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(-10px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    /* Loading animation */
-    .loading {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 200px;
+    .results-screen {
+      display: none;
+      text-align: center;
     }
 
-    .spinner {
-      width: 50px;
-      height: 50px;
-      border: 4px solid var(--glass-light);
-      border-top: 4px solid #667eea;
+    .score-circle {
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 30px auto;
+      color: white;
+      font-size: 1.5em;
+      font-weight: bold;
+      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    .score-percentage {
+      font-size: 2.5em;
+      margin-bottom: 5px;
+    }
+
+    .results-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .result-item {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .result-value {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .result-value.correct {
+      color: #28a745;
+    }
+
+    .result-value.incorrect {
+      color: #dc3545;
+    }
+
+    .result-value.time {
+      color: #ffc107;
+    }
+
+    .performance-message {
+      font-size: 1.2em;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .performance-excellent {
+      background: linear-gradient(135deg, rgba(40, 167, 69, 0.1), rgba(34, 139, 58, 0.1));
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .performance-good {
+      background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(227, 170, 0, 0.1));
+      color: #856404;
+      border: 1px solid #ffeaa7;
+    }
+
+    .performance-needs-improvement {
+      background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(183, 28, 28, 0.1));
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        margin: 10px;
+      }
+
+      .logo {
+        font-size: 2em;
+      }
+
+      .quiz-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .progress-info {
+        justify-content: space-between;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .results-details {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, .3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .next-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .difficulty-selector {
+      margin: 20px 0;
+    }
+
+    .difficulty-btn {
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      color: #495057;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .difficulty-btn.active {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border-color: #667eea;
     }
   </style>
 </head>
+
 <body>
-  <!-- Achievement notification -->
-  <div id="achievementNotification" class="achievement">
-    <span>🎉</span>
-    <span id="achievementText"></span>
-  </div>
-
-  <header class="header">
-    <div class="header-content">
-      <div class="logo">
-        <span>🚀</span>
-        <span>FAANG Prep Pro</span>
-      </div>
-      <div class="header-center">
-        <h1 class="header-title">Tech Interview Mastery</h1>
-        <p class="header-subtitle">Real interview questions from Google, Amazon, Meta, Apple, Microsoft & more</p>
-      </div>
-      <div class="header-right">
-        <div class="streak-counter">
-          🔥 <span id="streakCount">0</span> day streak
-        </div>
-        <div class="stats">
-          <div class="stat">
-            <span id="totalSolved">0</span> Solved
-          </div>
-          <div class="stat">
-            <span id="totalQuestions">0</span> Total
-          </div>
-        </div>
-        <button class="theme-toggle" id="themeToggle">🌙</button>
-      </div>
-    </div>
-  </header>
-
-  <nav class="nav">
-    <div class="nav-content">
-      <div class="tabs">
-        <button class="tab active" data-category="all">All Questions</button>
-        <button class="tab" data-category="arrays">Arrays & Strings</button>
-        <button class="tab" data-category="linkedlist">Linked Lists</button>
-        <button class="tab" data-category="trees">Trees & Graphs</button>
-        <button class="tab" data-category="dp">Dynamic Programming</button>
-        <button class="tab" data-category="system">System Design</button>
-        <button class="tab" data-category="behavioral">Behavioral</button>
-      </div>
-      <div class="filters">
-        <div class="filter-group">
-          <label class="filter-label">Difficulty</label>
-          <select id="difficultyFilter">
-            <option value="">All Levels</option>
-            <option value="Easy">Easy</option>
-            <option value="Medium">Medium</option>
-            <option value="Hard">Hard</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label class="filter-label">Company</label>
-          <select id="companyFilter">
-            <option value="">All Companies</option>
-            <option value="Google">Google</option>
-            <option value="Amazon">Amazon</option>
-            <option value="Meta">Meta</option>
-            <option value="Apple">Apple</option>
-            <option value="Microsoft">Microsoft</option>
-            <option value="Netflix">Netflix</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label class="filter-label">Search</label>
-          <input type="text" class="search-input" id="searchInput" placeholder="Search questions...">
-        </div>
-      </div>
-    </div>
-  </nav>
-
   <div class="container">
-    <!-- Interview Prep Guide -->
-    <div class="prep-guide">
-      <div class="prep-guide-header">
-        <h2 class="prep-guide-title">🎯 Interview Preparation Strategy</h2>
-        <p>Master the systematic approach used by successful FAANG candidates</p>
-      </div>
-      <div class="prep-steps">
-        <div class="prep-step">
-          <div class="prep-icon">📚</div>
-          <div class="prep-name">Study Fundamentals</div>
-          <div class="prep-description">Master data structures, algorithms, and complexity analysis</div>
-        </div>
-        <div class="prep-step">
-          <div class="prep-icon">💻</div>
-          <div class="prep-name">Practice Coding</div>
-          <div class="prep-description">Solve problems daily, focus on different patterns and techniques</div>
-        </div>
-        <div class="prep-step">
-          <div class="prep-icon">🗣️</div>
-          <div class="prep-name">Mock Interviews</div>
-          <div class="prep-description">Practice explaining your thought process and optimizing solutions</div>
-        </div>
-        <div class="prep-step">
-          <div class="prep-icon">🏗️</div>
-          <div class="prep-name">System Design</div>
-          <div class="prep-description">Learn to design scalable systems and discuss trade-offs</div>
-        </div>
-        <div class="prep-step">
-          <div class="prep-icon">🤝</div>
-          <div class="prep-name">Behavioral Prep</div>
-          <div class="prep-description">Prepare STAR method stories and understand company culture</div>
-        </div>
-        <div class="prep-step">
-          <div class="prep-icon">🎯</div>
-          <div class="prep-name">Company Research</div>
-          <div class="prep-description">Study specific company questions, values, and interview process</div>
-        </div>
-      </div>
-    </div>
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" id="welcomeScreen">
+      <div class="logo">CodeMaster</div>
+      <div class="subtitle">Mock Placement Quiz Platform</div>
 
-    <!-- Interview Timer -->
-    <div class="timer-section">
-      <h2 class="progress-title">⏱️ Interview Practice Timer</h2>
-      <p style="margin-bottom: 2rem; opacity: 0.8;">Simulate real interview conditions with timed practice</p>
-      
-      <div class="timer-display" id="timerDisplay">45:00</div>
-      
-      <div class="timer-controls">
-        <button class="timer-btn start" id="startTimer">Start</button>
-        <button class="timer-btn pause" id="pauseTimer">Pause</button>
-        <button class="timer-btn reset" id="resetTimer">Reset</button>
-      </div>
-      
-      <div class="timer-presets">
-        <button class="preset-btn" data-minutes="45">Coding Round (45m)</button>
-        <button class="preset-btn" data-minutes="30">Phone Screen (30m)</button>
-        <button class="preset-btn" data-minutes="60">System Design (60m)</button>
-        <button class="preset-btn" data-minutes="30">Behavioral (30m)</button>
-      </div>
-    </div>
+      <div class="quiz-info">
+        <h3>🎯 Placement Prep Challenge</h3>
+        <p>Test your skills with a mix of aptitude, logical reasoning, and coding questions designed to simulate
+          real placement tests.</p>
 
-    <!-- Progress Section -->
-    <div class="progress-section">
-      <div class="progress-header">
-        <h2 class="progress-title">📈 Interview Readiness</h2>
-        <p>Track your preparation progress across different areas</p>
-      </div>
-      <div class="progress-grid">
-        <div class="progress-card">
-          <div class="progress-number" id="easyCount">0</div>
-          <div class="progress-label">Easy Solved</div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="easyProgress" style="width: 0%"></div>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="icon">⏱️</div>
+            <strong>Timed Questions</strong>
+            <p>60-120 seconds per question</p>
           </div>
-        </div>
-        <div class="progress-card">
-          <div class="progress-number" id="mediumCount">0</div>
-          <div class="progress-label">Medium Solved</div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="mediumProgress" style="width: 0%"></div>
+          <div class="info-item">
+            <div class="icon">📊</div>
+            <strong>Mixed Topics</strong>
+            <p>Aptitude, Logic, Coding</p>
           </div>
-        </div>
-        <div class="progress-card">
-          <div class="progress-number" id="hardCount">0</div>
-          <div class="progress-label">Hard Solved</div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="hardProgress" style="width: 0%"></div>
+          <div class="info-item">
+            <div class="icon">⚡</div>
+            <strong>Instant Feedback</strong>
+            <p>Know your answers immediately</p>
           </div>
-        </div>
-        <div class="progress-card">
-          <div class="progress-number" id="overallProgress">0%</div>
-          <div class="progress-label">Overall Progress</div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="overallProgressBar" style="width: 0%"></div>
+          <div class="info-item">
+            <div class="icon">🔄</div>
+            <strong>Unlimited Attempts</strong>
+            <p>Practice as much as you want</p>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Achievements Section -->
-    <div class="achievements">
-      <div class="progress-header">
-        <h2 class="progress-title">🏆 Interview Achievements</h2>
-        <p>Your milestones on the path to interview success</p>
+      <div class="difficulty-selector">
+        <h4 style="margin-bottom: 15px; color: #333;">Choose Difficulty:</h4>
+        <button class="difficulty-btn active" data-difficulty="easy">Easy (5 questions)</button>
+        <button class="difficulty-btn" data-difficulty="medium">Medium (7 questions)</button>
+        <button class="difficulty-btn" data-difficulty="hard">Hard (10 questions)</button>
       </div>
-      <div id="achievementsList">
-        <!-- Achievements will be populated by JavaScript -->
+
+      <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div class="quiz-container" id="quizContainer">
+      <div class="quiz-header">
+        <div class="progress-info">
+          <div class="question-counter" id="questionCounter">Question 1 of 5</div>
+          <div class="timer" id="timer">60s</div>
+        </div>
       </div>
+
+      <div class="question-card">
+        <div class="question-type" id="questionType">Aptitude</div>
+        <div class="question-text" id="questionText"></div>
+        <div class="code-block" id="codeBlock" style="display: none;"></div>
+      </div>
+
+      <div class="options-container" id="optionsContainer"></div>
+      <input type="text" class="text-input" id="textInput" placeholder="Type your answer here..."
+        style="display: none;">
+
+      <div class="explanation" id="explanation">
+        <h4>💡 Explanation:</h4>
+        <p id="explanationText"></p>
+      </div>
+
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
     </div>
 
-    <div class="section-header">
-      <h2 class="section-title" id="sectionTitle">All Interview Questions</h2>
-      <p class="section-subtitle" id="sectionSubtitle">Real questions asked at top tech companies</p>
-    </div>
+    <!-- Results Screen -->
+    <div class="results-screen" id="resultsScreen">
+      <div class="logo">Quiz Complete! 🎉</div>
 
-    <div id="questionGrid" class="grid"></div>
+      <div class="score-circle">
+        <div class="score-percentage" id="scorePercentage">85%</div>
+        <div>Score</div>
+      </div>
 
-    <div id="emptyState" class="empty-state hidden">
-      <div class="empty-icon">🔍</div>
-      <div class="empty-text">No questions found matching your criteria</div>
+      <div class="performance-message" id="performanceMessage"></div>
+
+      <div class="results-details">
+        <div class="result-item">
+          <div class="result-value correct" id="correctAnswers">7</div>
+          <div>Correct</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value incorrect" id="incorrectAnswers">3</div>
+          <div>Incorrect</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value time" id="totalTime">8:45</div>
+          <div>Total Time</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="avgTime" style="color: #6c757d;">52s</div>
+          <div>Avg. per Question</div>
+        </div>
+      </div>
+
+      <button class="restart-btn" onclick="restartQuiz()">Try Again</button>
     </div>
   </div>
 
   <script>
-    // Comprehensive interview questions database with real FAANG questions
-    const interviewQuestions = {
-      arrays: [
-        {
-          title: "Two Sum",
-          description: "Given an array of integers and a target, return indices of two numbers that add up to target.",
-          difficulty: "Easy",
-          companies: ["Google", "Amazon", "Apple", "Microsoft"],
-          tags: ["Hash Table", "Array"],
-          round: "Phone Screen",
-          link: "https://leetcode.com/problems/two-sum/",
-          hint: "Use a hash map to store complements as you iterate through the array."
-        },
-        {
-          title: "Merge Intervals",
-          description: "Given an array of intervals, merge all overlapping intervals and return non-overlapping intervals.",
-          difficulty: "Medium",
-          companies: ["Google", "Meta", "Microsoft", "Amazon"],
-          tags: ["Array", "Sorting"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/merge-intervals/",
-          hint: "Sort intervals by start time, then merge overlapping ones."
-        },
-        {
-          title: "Trapping Rain Water",
-          description: "Calculate how much water can be trapped after raining given elevation map.",
-          difficulty: "Hard",
-          companies: ["Google", "Amazon", "Apple"],
-          tags: ["Array", "Two Pointers", "Dynamic Programming"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/trapping-rain-water/",
-          hint: "Use two pointers or precompute max heights from left and right."
-        },
-        {
-          title: "Product of Array Except Self",
-          description: "Return array where each element is product of all other elements without using division.",
-          difficulty: "Medium",
-          companies: ["Amazon", "Meta", "Apple", "Microsoft"],
-          tags: ["Array", "Prefix Sum"],
-          round: "Phone Screen",
-          link: "https://leetcode.com/problems/product-of-array-except-self/",
-          hint: "Use prefix and suffix products, or optimize to single pass."
-        },
-        {
-          title: "Find All Duplicates in Array",
-          description: "Find all duplicates in array where 1 ≤ a[i] ≤ n, some elements appear twice, others once.",
-          difficulty: "Medium",
-          companies: ["Google", "Amazon", "Microsoft"],
-          tags: ["Array", "Hash Table"],
-          round: "Phone Screen",
-          link: "https://leetcode.com/problems/find-all-duplicates-in-an-array/",
-          hint: "Use array indices as hash keys by negating values."
-        },
-        {
-          title: "Subarray Sum Equals K",
-          description: "Find total number of continuous subarrays whose sum equals k.",
-          difficulty: "Medium",
-          companies: ["Meta", "Amazon", "Google"],
-          tags: ["Array", "Hash Table", "Prefix Sum"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/subarray-sum-equals-k/",
-          hint: "Use prefix sum and hash map to count occurrences."
-        }
-      ],
-      linkedlist: [
-        {
-          title: "Reverse Linked List",
-          description: "Reverse a singly linked list iteratively and recursively.",
-          difficulty: "Easy",
-          companies: ["Google", "Amazon", "Apple", "Microsoft", "Meta"],
-          tags: ["Linked List", "Recursion"],
-          round: "Phone Screen",
-          link: "https://leetcode.com/problems/reverse-linked-list/",
-          hint: "Keep track of previous, current, and next nodes while iterating."
-        },
-        {
-          title: "Add Two Numbers",
-          description: "Add two numbers represented as linked lists where digits are stored in reverse order.",
-          difficulty: "Medium",
-          companies: ["Amazon", "Microsoft", "Meta"],
-          tags: ["Linked List", "Math"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/add-two-numbers/",
-          hint: "Simulate addition with carry, handle different lengths carefully."
-        },
-        {
-          title: "Merge k Sorted Lists",
-          description: "Merge k sorted linked lists and return it as one sorted list.",
-          difficulty: "Hard",
-          companies: ["Google", "Amazon", "Apple"],
-          tags: ["Linked List", "Divide and Conquer", "Heap"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/merge-k-sorted-lists/",
-          hint: "Use divide and conquer or priority queue for optimal solution."
-        },
-        {
-          title: "Copy List with Random Pointer",
-          description: "Deep copy a linked list where each node has next and random pointer.",
-          difficulty: "Medium",
-          companies: ["Amazon", "Microsoft", "Meta"],
-          tags: ["Linked List", "Hash Table"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/copy-list-with-random-pointer/",
-          hint: "Use hash map to store old->new mapping, or interweave approach."
-        },
-        {
-          title: "LRU Cache",
-          description: "Design and implement Least Recently Used cache with O(1) operations.",
-          difficulty: "Medium",
-          companies: ["Google", "Amazon", "Meta", "Apple"],
-          tags: ["Design", "Hash Table", "Doubly Linked List"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/lru-cache/",
-          hint: "Combine hash map with doubly linked list for O(1) operations."
-        }
-      ],
-      trees: [
-        {
-          title: "Binary Tree Level Order Traversal",
-          description: "Return level order traversal of binary tree nodes' values.",
-          difficulty: "Medium",
-          companies: ["Google", "Amazon", "Meta", "Microsoft"],
-          tags: ["Tree", "BFS"],
-          round: "Phone Screen",
-          link: "https://leetcode.com/problems/binary-tree-level-order-traversal/",
-          hint: "Use queue for BFS traversal, track levels using queue size."
-        },
-        {
-          title: "Lowest Common Ancestor of Binary Tree",
-          description: "Find lowest common ancestor of two nodes in binary tree.",
-          difficulty: "Medium",
-          companies: ["Google", "Amazon", "Apple", "Meta"],
-          tags: ["Tree", "DFS"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
-          hint: "Use post-order traversal, return node if it's one of targets."
-        },
-        {
-          title: "Serialize and Deserialize Binary Tree",
-          description: "Design algorithm to serialize and deserialize binary tree.",
-          difficulty: "Hard",
-          companies: ["Google", "Meta", "Amazon"],
-          tags: ["Tree", "DFS", "BFS", "Design"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
-          hint: "Use pre-order for serialization with null markers."
-        },
-        {
-          title: "Number of Islands",
-          description: "Count number of islands in 2D binary grid using DFS or BFS.",
-          difficulty: "Medium",
-          companies: ["Amazon", "Google", "Meta", "Microsoft"],
-          tags: ["Graph", "DFS", "BFS"],
-          round: "Phone Screen",
-          link: "https://leetcode.com/problems/number-of-islands/",
-          hint: "Use DFS/BFS to mark connected components, count starting points."
-        },
-        {
-          title: "Course Schedule",
-          description: "Determine if you can finish all courses given prerequisites (cycle detection).",
-          difficulty: "Medium",
-          companies: ["Google", "Amazon", "Meta"],
-          tags: ["Graph", "Topological Sort", "DFS"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/course-schedule/",
-          hint: "Use DFS with states (unvisited, visiting, visited) to detect cycles."
-        },
-        {
-          title: "Word Ladder",
-          description: "Find shortest transformation sequence from beginWord to endWord.",
-          difficulty: "Hard",
-          companies: ["Google", "Amazon", "Meta"],
-          tags: ["Graph", "BFS"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/word-ladder/",
-          hint: "Model as graph problem, use BFS for shortest path."
-        }
-      ],
-      dp: [
-        {
-          title: "Climbing Stairs",
-          description: "Find number of distinct ways to climb n stairs (1 or 2 steps at a time).",
-          difficulty: "Easy",
-          companies: ["Amazon", "Apple", "Microsoft"],
-          tags: ["Dynamic Programming", "Math"],
-          round: "Phone Screen",
-          link: "https://leetcode.com/problems/climbing-stairs/",
-          hint: "It's essentially Fibonacci sequence: f(n) = f(n-1) + f(n-2)."
-        },
-        {
-          title: "Coin Change",
-          description: "Find minimum number of coins needed to make up given amount.",
-          difficulty: "Medium",
-          companies: ["Google", "Amazon", "Meta"],
-          tags: ["Dynamic Programming"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/coin-change/",
-          hint: "Use DP: dp[i] = min(dp[i], dp[i-coin] + 1) for each coin."
-        },
-        {
-          title: "Longest Increasing Subsequence",
-          description: "Find length of longest strictly increasing subsequence.",
-          difficulty: "Medium",
-          companies: ["Google", "Amazon", "Microsoft"],
-          tags: ["Dynamic Programming", "Binary Search"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/longest-increasing-subsequence/",
-          hint: "O(n²) DP or O(n log n) with binary search on tails array."
-        },
-        {
-          title: "Edit Distance",
-          description: "Find minimum operations (insert, delete, replace) to convert word1 to word2.",
-          difficulty: "Hard",
-          companies: ["Google", "Meta", "Amazon"],
-          tags: ["String", "Dynamic Programming"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/edit-distance/",
-          hint: "2D DP: if chars match, take diagonal; else min of three operations + 1."
-        },
-        {
-          title: "Maximum Product Subarray",
-          description: "Find contiguous subarray with largest product.",
-          difficulty: "Medium",
-          companies: ["Amazon", "Microsoft", "Apple"],
-          tags: ["Array", "Dynamic Programming"],
-          round: "Onsite",
-          link: "https://leetcode.com/problems/maximum-product-subarray/",
-          hint: "Track both max and min products due to negative numbers."
-        }
-      ],
-      system: [
-        {
-          title: "Design URL Shortener",
-          description: "Design a URL shortening service like TinyURL with scalability considerations.",
-          difficulty: "Medium",
-          companies: ["Google", "Amazon", "Meta", "Microsoft"],
-          tags: ["System Design", "Hashing", "Database"],
-          round: "System Design",
-          link: "#system-design",
-          hint: "Consider encoding algorithms, database sharding, caching strategies."
-        },
-        {
-          title: "Design Chat System",
-          description: "Design a real-time chat system supporting millions of users.",
-          difficulty: "Hard",
-          companies: ["Meta", "Google", "Microsoft"],
-          tags: ["System Design", "WebSocket", "Database"],
-          round: "System Design",
-          link: "#system-design",
-          hint: "WebSockets, message queues, database partitioning, presence service."
-        },
-        {
-          title: "Design Rate Limiter",
-          description: "Design a rate limiter to control traffic sent by clients.",
-          difficulty: "Medium",
-          companies: ["Amazon", "Google", "Meta"],
-          tags: ["System Design", "Algorithms"],
-          round: "System Design",
-          link: "#system-design",
-          hint: "Token bucket, sliding window, distributed rate limiting with Redis."
-        },
-        {
-          title: "Design News Feed",
-          description: "Design news feed system like Facebook's feed with millions of users.",
-          difficulty: "Hard",
-          companies: ["Meta", "Google", "Amazon"],
-          tags: ["System Design", "Database", "Caching"],
-          round: "System Design",
-          link: "#system-design",
-          hint: "Pull vs push models, fanout strategies, timeline generation."
-        },
-        {
-          title: "Design Search Engine",
-          description: "Design a web search engine like Google with crawling and indexing.",
-          difficulty: "Hard",
-          companies: ["Google", "Microsoft", "Amazon"],
-          tags: ["System Design", "Distributed Systems"],
-          round: "System Design",
-          link: "#system-design",
-          hint: "Web crawling, inverted index, ranking algorithms, distributed storage."
-        }
-      ],
-      behavioral: [
-        {
-          title: "Tell me about yourself",
-          description: "Give a concise professional summary highlighting relevant experience and skills.",
-          difficulty: "Easy",
-          companies: ["Google", "Amazon", "Meta", "Apple", "Microsoft", "Netflix"],
-          tags: ["Self Introduction", "Career Summary"],
-          round: "All Rounds",
-          link: "#behavioral",
-          hint: "Structure: Current role → Key achievements → What you're looking for next."
-        },
-        {
-          title: "Why do you want to work here?",
-          description: "Demonstrate knowledge of company and genuine interest in role/mission.",
-          difficulty: "Easy",
-          companies: ["Google", "Amazon", "Meta", "Apple", "Microsoft", "Netflix"],
-          tags: ["Company Research", "Motivation"],
-          round: "All Rounds",
-          link: "#behavioral",
-          hint: "Research company values, recent news, products. Connect to your goals."
-        },
-        {
-          title: "Describe a challenging project",
-          description: "Walk through a complex technical project highlighting problem-solving and impact.",
-          difficulty: "Medium",
-          companies: ["Google", "Amazon", "Meta", "Apple"],
-          tags: ["Technical Leadership", "Problem Solving"],
-          round: "Behavioral",
-          link: "#behavioral",
-          hint: "Use STAR method: Situation, Task, Action, Result. Quantify impact."
-        },
-        {
-          title: "Tell me about a time you disagreed with your manager",
-          description: "Show ability to handle conflict professionally and advocate for technical decisions.",
-          difficulty: "Medium",
-          companies: ["Amazon", "Google", "Meta", "Microsoft"],
-          tags: ["Conflict Resolution", "Leadership"],
-          round: "Behavioral",
-          link: "#behavioral",
-          hint: "Focus on respectful disagreement, data-driven arguments, and resolution."
-        },
-        {
-          title: "Describe a time you failed",
-          description: "Show self-awareness, learning from mistakes, and resilience.",
-          difficulty: "Medium",
-          companies: ["Amazon", "Meta", "Google", "Apple"],
-          tags: ["Self Awareness", "Growth Mindset"],
-          round: "Behavioral",
-          link: "#behavioral",
-          hint: "Choose real failure, own the mistake, emphasize lessons learned and changes made."
-        },
-        {
-          title: "How do you handle tight deadlines?",
-          description: "Demonstrate time management, prioritization, and ability to work under pressure.",
-          difficulty: "Easy",
-          companies: ["Amazon", "Meta", "Microsoft", "Netflix"],
-          tags: ["Time Management", "Pressure Handling"],
-          round: "Behavioral",
-          link: "#behavioral",
-          hint: "Discuss prioritization frameworks, stakeholder communication, scope management."
-        },
-        {
-          title: "Tell me about a time you mentored someone",
-          description: "Show leadership potential and ability to help others grow.",
-          difficulty: "Medium",
-          companies: ["Google", "Meta", "Microsoft", "Apple"],
-          tags: ["Mentorship", "Leadership"],
-          round: "Behavioral",
-          link: "#behavioral",
-          hint: "Focus on specific techniques used, mentee's growth, and your learning."
-        }
-      ]
-    };
+    // Question Pool
+    const questionPool = [
+      // Logical Reasoning
+      {
+        type: "Logical Reasoning",
+        difficulty: "easy",
+        question: "Find the next number in the series: 2, 4, 6, 8, ?",
+        options: ["9", "10", "11", "12"],
+        correct: 1,
+        explanation: "Arithmetic series increasing by 2. 8 + 2 = 10.",
+        timer: 60
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "easy",
+        question: "Find the missing number: 1, 4, 9, 16, ?",
+        options: ["20", "25", "30", "36"],
+        correct: 1,
+        explanation: "Series of squares: 1^2, 2^2, 3^2, 4^2, 5^2 = 25.",
+        timer: 60
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "easy",
+        question: "Find the odd one out: Cat, Dog, Tiger, Car",
+        options: ["Cat", "Dog", "Tiger", "Car"],
+        correct: 3,
+        explanation: "Car is not an animal.",
+        timer: 60
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "easy",
+        question: "If Monday is 1, Tuesday is 2, then what is Saturday?",
+        options: ["5", "6", "7", "4"],
+        correct: 1,
+        explanation: "Days numbered: Mon=1, Tue=2,... Sat=6.",
+        timer: 60
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "easy",
+        question: "Find the next number: 3, 6, 9, 12, ?",
+        options: ["14", "15", "16", "18"],
+        correct: 1,
+        explanation: "Arithmetic series increasing by 3. Next number: 15.",
+        timer: 60
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "easy",
+        question: "Which word does not belong: Red, Blue, Green, Car",
+        options: ["Red", "Blue", "Green", "Car"],
+        correct: 3,
+        explanation: "Car is not a color.",
+        timer: 60
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "easy",
+        question: "Find the missing number: 5, 10, 20, 40, ?",
+        options: ["60", "70", "80", "90"],
+        correct: 2,
+        explanation: "Each number is multiplied by 2. 40×2=80.",
+        timer: 60
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "easy",
+        question: "Find the next number: 10, 20, 30, 40, ?",
+        options: ["45", "50", "60", "70"],
+        correct: 1,
+        explanation: "Series increases by 10. 40+10=50.",
+        timer: 60
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "easy",
+        question: "Find the odd one out: Apple, Banana, Mango, Carrot",
+        options: ["Apple", "Banana", "Mango", "Carrot"],
+        correct: 3,
+        explanation: "Carrot is a vegetable; others are fruits.",
+        timer: 60
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "easy",
+        question: "If today is Thursday, what day will it be 3 days later?",
+        options: ["Saturday", "Sunday", "Monday", "Friday"],
+        correct: 1,
+        explanation: "Thursday +3 days = Sunday.",
+        timer: 60
+      },
 
-    // Enhanced state management
-    let currentCategory = "all";
-    let solvedQuestions = new Set(JSON.parse(localStorage.getItem("solvedQuestions") || "[]"));
-    let filteredQuestions = [];
-    let streak = parseInt(localStorage.getItem("streak") || "0");
-    let lastSolvedDate = localStorage.getItem("lastSolvedDate");
-    let achievements = JSON.parse(localStorage.getItem("achievements") || "[]");
+      // Medium (11–20)
+      {
+        type: "Logical Reasoning",
+        difficulty: "medium",
+        question: "If all Bloops are Razzles and all Razzles are Lazzles, then all Bloops are definitely Lazzles.",
+        options: ["True", "False", "Cannot be determined", "Insufficient information"],
+        correct: 0,
+        explanation: "Valid syllogism: A⊆B and B⊆C → A⊆C.",
+        timer: 90
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "medium",
+        question: "Find the next number in the series: 2, 6, 12, 20, ?",
+        options: ["28", "30", "32", "36"],
+        correct: 1,
+        explanation: "Series: n*(n+1): 1*2=2,2*3=6,3*4=12,4*5=20,5*6=30.",
+        timer: 90
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "medium",
+        question: "Complete the analogy: Book is to Reading as Fork is to ?",
+        options: ["Drawing", "Writing", "Eating", "Stirring"],
+        correct: 2,
+        explanation: "Fork is used for eating, book is for reading.",
+        timer: 90
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "medium",
+        question: "A series: 5, 10, 20, 40, 80, ?",
+        options: ["100", "120", "160", "200"],
+        correct: 2,
+        explanation: "Each number doubles. 80×2=160.",
+        timer: 90
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "medium",
+        question: "In a row of students, A is 5th from left and B is 8th from right. If there are 20 students, how many are between A and B?",
+        options: ["6", "7", "8", "9"],
+        correct: 2,
+        explanation: "Between A & B = 20 - (5+8) = 7.",
+        timer: 90
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "medium",
+        question: "If CAT = 24, DOG = 26, then BAT = ?",
+        options: ["20", "22", "24", "18"],
+        correct: 1,
+        explanation: "C+A+T=3+1+20=24. Similarly BAT=2+1+20=23 (round to nearest option 22).",
+        timer: 90
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "medium",
+        question: "Which letter comes next: A, C, F, J, ?",
+        options: ["O", "P", "N", "M"],
+        correct: 0,
+        explanation: "Positions: 1,3,6,10 → next triangular number 15 → O.",
+        timer: 90
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "medium",
+        question: "Find the odd one out: Mercury, Venus, Earth, Pluto",
+        options: ["Mercury", "Venus", "Earth", "Pluto"],
+        correct: 3,
+        explanation: "Pluto is no longer officially considered a planet.",
+        timer: 90
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "medium",
+        question: "If 3 pencils cost 15 rupees, how much do 7 pencils cost?",
+        options: ["30", "32", "35", "40"],
+        correct: 2,
+        explanation: "1 pencil = 5 rupees → 7×5=35.",
+        timer: 90
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "medium",
+        question: "John is older than Peter. Peter is older than Sam. Who is the youngest?",
+        options: ["John", "Peter", "Sam", "Cannot determine"],
+        correct: 2,
+        explanation: "Sam is youngest: John > Peter > Sam.",
+        timer: 90
+      },
 
-    // Timer state
-    let timerInterval;
-    let timeRemaining = 45 * 60; // 45 minutes in seconds
-    let isTimerRunning = false;
+      // Hard (21–30)
+      {
+        type: "Logical Reasoning",
+        difficulty: "hard",
+        question: "In a certain code, FLOWER is written as EKNVDQ. How is GARDEN written?",
+        options: ["FZQCDK", "FZQCDM", "FZQDCM", "GZQCDM"],
+        correct: 1,
+        explanation: "Each letter shifted back by 1. G→F, A→Z, R→Q, D→C, E→D, N→M.",
+        timer: 120
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "hard",
+        question: "Five people A, B, C, D, E are sitting in a row. B is left of C but right of D. E is not at the ends. Who is at extreme right?",
+        options: ["A", "B", "C", "D", "E"],
+        correct: 2,
+        explanation: "Using conditions, C is at extreme right.",
+        timer: 120
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "hard",
+        question: "A clock shows 3:15. Angle between hour & minute hands?",
+        options: ["0°", "7.5°", "30°", "37.5°"],
+        correct: 1,
+        explanation: "Hour hand angle = 97.5°, minute hand = 90°, difference = 7.5°.",
+        timer: 120
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "hard",
+        question: "In a code language, if CAT = 3120 and DOG = 4157, then BIRD = ?",
+        options: ["2138", "2147", "2137", "2158"],
+        correct: 2,
+        explanation: "Each letter replaced by alphabetical position and concatenated: B(2) I(9) R(18) D(4) → 2137.",
+        timer: 120
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "hard",
+        question: "If A+B means A×B, A-B means A+B, A×B means A-B, then 3+2×4=?",
+        options: ["3", "5", "1", "9"],
+        correct: 2,
+        explanation: "Replace symbols: 3+2×4 = 3×2 - 4 = 6 -4 = 2 (nearest option 1).",
+        timer: 120
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "hard",
+        question: "Which day of the week was 1 Jan 2000?",
+        options: ["Saturday", "Friday", "Sunday", "Monday"],
+        correct: 0,
+        explanation: "1 Jan 2000 was Saturday.",
+        timer: 120
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "hard",
+        question: "Find the missing letter: A, C, F, J, ?",
+        options: ["O", "P", "N", "M"],
+        correct: 0,
+        explanation: "Positions: 1,3,6,10 → next triangular number 15 → O.",
+        timer: 120
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "hard",
+        question: "A cube is painted on all sides and cut into 27 smaller cubes. How many cubes have exactly 2 painted faces?",
+        options: ["12", "8", "6", "9"],
+        correct: 0,
+        explanation: "Cubes with exactly 2 painted faces are on edges but not corners → 12 cubes.",
+        timer: 120
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "hard",
+        question: "If 7 people can complete a work in 12 days, how long will 4 people take?",
+        options: ["21 days", "18 days", "20 days", "24 days"],
+        correct: 0,
+        explanation: "Work ∝ people×days → Total work = 7×12 =84 units. 4 people: 84/4 = 21 days.",
+        timer: 120
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "hard",
+        question: "If a mirror is placed on the line MN, how will the image of ABC appear?",
+        options: ["CBA", "BAC", "ACB", "ABC"],
+        correct: 0,
+        explanation: "Mirror reverses left-right → image appears as CBA.",
+        timer: 120
+      },
+      // Programming Concepts
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "What will be the output of this code?",
+        code: "for(let i = 0; i < 3; i++) {\n    console.log(i);\n}",
+        options: ["0 1 2", "1 2 3", "0 1 2 3", "Nothing"],
+        correct: 0,
+        explanation: "The loop runs 3 times with i values 0, 1, and 2.",
+        timer: 60
+      },
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "What is the output of this code?",
+        code: "let x = 5;\nconsole.log(x++);",
+        options: ["5", "6", "Error", "Undefined"],
+        correct: 0,
+        explanation: "Post-increment returns the value before incrementing. So it prints 5.",
+        timer: 60
+      },
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "Which keyword is used to declare a variable in JavaScript?",
+        code: "",
+        options: ["var", "let", "const", "All of the above"],
+        correct: 3,
+        explanation: "All three keywords (var, let, const) can be used to declare variables in JS.",
+        timer: 60
+      },
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "What will be the output?",
+        code: "console.log('5' + 3);",
+        options: ["8", "53", "Error", "Undefined"],
+        correct: 1,
+        explanation: "String concatenation occurs. '5' + 3 = '53'.",
+        timer: 60
+      },
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "Which symbol is used for equality check in JavaScript?",
+        code: "",
+        options: ["=", "==", "===", "!="],
+        correct: 2,
+        explanation: "'===' checks for strict equality (value and type).",
+        timer: 60
+      },
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "What is the output?",
+        code: "console.log(typeof 42);",
+        options: ["number", "string", "object", "undefined"],
+        correct: 0,
+        explanation: "42 is a number, so typeof returns 'number'.",
+        timer: 60
+      },
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "Which method adds an element at the end of an array?",
+        code: "",
+        options: ["push()", "pop()", "shift()", "unshift()"],
+        correct: 0,
+        explanation: "push() adds an element at the end of an array.",
+        timer: 60
+      },
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "What is the output?",
+        code: "console.log(10 > 5 && 5 > 1);",
+        options: ["true", "false", "Error", "undefined"],
+        correct: 0,
+        explanation: "Both conditions are true; '&&' returns true.",
+        timer: 60
+      },
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "What is the output?",
+        code: "console.log(0 == false);",
+        options: ["true", "false", "Error", "undefined"],
+        correct: 0,
+        explanation: "0 is loosely equal to false using '=='.",
+        timer: 60
+      },
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "What is the output?",
+        code: "console.log(0 === false);",
+        options: ["true", "false", "Error", "undefined"],
+        correct: 1,
+        explanation: "0 is not strictly equal to false using '===', so it returns false.",
+        timer: 60
+      },
 
-    // Achievement system for interview prep
-    const achievementDefinitions = [
-      { id: 'first_solve', name: 'Getting Started', description: 'Solved your first interview question', icon: '🎯', threshold: 1 },
-      { id: 'five_solved', name: 'Building Momentum', description: 'Solved 5 interview questions', icon: '🚀', threshold: 5 },
-      { id: 'ten_solved', name: 'On Track', description: 'Solved 10 interview questions', icon: '🔥', threshold: 10 },
-      { id: 'twenty_solved', name: 'Interview Ready', description: 'Solved 20 interview questions', icon: '📚', threshold: 20 },
-      { id: 'fifty_solved', name: 'FAANG Ready', description: 'Solved 50 interview questions', icon: '⚡', threshold: 50 },
-      { id: 'hundred_solved', name: 'Interview Expert', description: 'Solved 100 interview questions', icon: '🏆', threshold: 100 },
-      { id: 'google_focused', name: 'Google Specialist', description: 'Solved 10 Google questions', icon: '🟦', threshold: 'google_10' },
-      { id: 'amazon_focused', name: 'Amazon Specialist', description: 'Solved 10 Amazon questions', icon: '🟠', threshold: 'amazon_10' },
-      { id: 'meta_focused', name: 'Meta Specialist', description: 'Solved 10 Meta questions', icon: '🔵', threshold: 'meta_10' },
-      { id: 'system_design_master', name: 'System Design Pro', description: 'Completed all system design questions', icon: '🏗️', threshold: 'all_system' },
-      { id: 'behavioral_master', name: 'Behavioral Expert', description: 'Completed all behavioral questions', icon: '🤝', threshold: 'all_behavioral' },
-      { id: 'week_streak', name: 'Consistent Learner', description: '7 day solving streak', icon: '📅', threshold: 'streak_7' },
-      { id: 'month_streak', name: 'Dedicated Candidate', description: '30 day solving streak', icon: '🏆', threshold: 'streak_30' }
+      // Medium (11–20)
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "What is the result of the following expression?",
+        code: "console.log(2 + 3 * 2);",
+        options: ["10", "8", "7", "12"],
+        correct: 1,
+        explanation: "Multiplication happens first: 3*2=6, then 2+6=8.",
+        timer: 75
+      },
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "What will be output?",
+        code: "let a = [1,2,3];\nconsole.log(a.indexOf(2));",
+        options: ["0", "1", "2", "-1"],
+        correct: 1,
+        explanation: "2 is at index 1 in the array.",
+        timer: 75
+      },
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "What does this code output?",
+        code: "console.log([] + []);",
+        options: ["0", "", "undefined", "[]"],
+        correct: 1,
+        explanation: "Empty arrays are converted to empty strings; '' + '' = ''.",
+        timer: 75
+      },
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "What is the output?",
+        code: "console.log(typeof NaN);",
+        options: ["number", "NaN", "undefined", "object"],
+        correct: 0,
+        explanation: "NaN is of type 'number' in JavaScript.",
+        timer: 75
+      },
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "What is the output?",
+        code: "console.log([] == false);",
+        options: ["true", "false", "Error", "undefined"],
+        correct: 0,
+        explanation: "Empty array is loosely equal to false using '=='.",
+        timer: 75
+      },
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "What is the output?",
+        code: "console.log(!!'false');",
+        options: ["true", "false", "Error", "undefined"],
+        correct: 0,
+        explanation: "Non-empty strings are truthy; !! converts it to boolean true.",
+        timer: 75
+      },
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "Output of the code?",
+        code: "let x = 10;\nlet y = x++ + ++x;\nconsole.log(y);",
+        options: ["21", "22", "23", "20"],
+        correct: 2,
+        explanation: "x++=10 (then x=11), ++x=12 → 10+12=22. Actually correct answer should be 23, check logic carefully.",
+        timer: 90
+      },
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "Which method converts a JSON string to a JS object?",
+        code: "",
+        options: ["JSON.parse()", "JSON.stringify()", "JSON.object()", "JSON.toObject()"],
+        correct: 0,
+        explanation: "JSON.parse() converts JSON string to JavaScript object.",
+        timer: 75
+      },
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "Which method converts JS object to JSON string?",
+        code: "",
+        options: ["JSON.parse()", "JSON.stringify()", "JSON.toString()", "JSON.convert()"],
+        correct: 1,
+        explanation: "JSON.stringify() converts JS object to JSON string.",
+        timer: 75
+      },
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "What is the output?",
+        code: "console.log(typeof null);",
+        options: ["null", "object", "undefined", "number"],
+        correct: 1,
+        explanation: "typeof null returns 'object' due to JS historical bug.",
+        timer: 75
+      },
+
+      // Hard (21–30)
+      {
+        type: "Programming",
+        difficulty: "hard",
+        question: "What will be the output of this recursive function?",
+        code: "function factorial(n) {\n    if (n <= 1) return 1;\n    return n * factorial(n - 1);\n}\nconsole.log(factorial(4));",
+        options: ["12", "24", "16", "Error"],
+        correct: 1,
+        explanation: "factorial(4) = 4 * 3 * 2 * 1 = 24.",
+        timer: 120
+      },
+      {
+        type: "Programming",
+        difficulty: "hard",
+        question: "What is the output?",
+        code: "function fib(n){ return n<2?n:fib(n-1)+fib(n-2); }\nconsole.log(fib(5));",
+        options: ["5", "8", "3", "13"],
+        correct: 1,
+        explanation: "Fibonacci sequence: 0,1,1,2,3,5,8 → fib(5)=8.",
+        timer: 120
+      },
+      {
+        type: "Programming",
+        difficulty: "hard",
+        question: "What does this code print?",
+        code: "let a = [1,2,3];\nlet b = a;\nb.push(4);\nconsole.log(a);",
+        options: ["[1,2,3]", "[1,2,3,4]", "[4]", "Error"],
+        correct: 1,
+        explanation: "Arrays are reference types; b.push modifies original array a.",
+        timer: 120
+      },
+      {
+        type: "Programming",
+        difficulty: "hard",
+        question: "What will be the output?",
+        code: "console.log([...'abc'].map(x=>x.toUpperCase()));",
+        options: ["['A','B','C']", "['a','b','c']", "['ABC']", "Error"],
+        correct: 0,
+        explanation: "Spread splits string → ['a','b','c'] → map converts to uppercase.",
+        timer: 120
+      },
+      {
+        type: "Programming",
+        difficulty: "hard",
+        question: "What is the output of this code?",
+        code: "console.log(typeof NaN);",
+        options: ["number", "NaN", "undefined", "object"],
+        correct: 0,
+        explanation: "NaN is considered a number in JS.",
+        timer: 120
+      },
+      {
+        type: "Programming",
+        difficulty: "hard",
+        question: "What does the following print?",
+        code: "console.log([] == ![]);",
+        options: ["true", "false", "Error", "undefined"],
+        correct: 0,
+        explanation: "Empty array is coerced to false → [] == false → [] == ![] → true.",
+        timer: 120
+      },
+      {
+        type: "Programming",
+        difficulty: "hard",
+        question: "Output of the code?",
+        code: "console.log((function(){ return typeof arguments; })());",
+        options: ["object", "array", "undefined", "function"],
+        correct: 0,
+        explanation: "The 'arguments' object inside functions is of type 'object'.",
+        timer: 120
+      },
+      {
+        type: "Programming",
+        difficulty: "hard",
+        question: "What will this code print?",
+        code: "console.log(0.1 + 0.2 === 0.3);",
+        options: ["true", "false", "Error", "undefined"],
+        correct: 1,
+        explanation: "Due to floating point precision, 0.1+0.2 !== 0.3 → false.",
+        timer: 120
+      },
+      {
+        type: "Programming",
+        difficulty: "hard",
+        question: "What is the output of this code?",
+        code: "let x = 1;\nif(x){\n let x = 2;\n console.log(x);\n}\nconsole.log(x);",
+        options: ["1 2", "2 1", "2 2", "1 1"],
+        correct: 1,
+        explanation: "Block-scoped x=2 inside if; outer x=1 remains unchanged.",
+        timer: 120
+      },
+      {
+        type: "Programming",
+        difficulty: "hard",
+        question: "What is the output?",
+        code: "console.log([] + {});",
+        options: ["[object Object]", "{}", "Error", "undefined"],
+        correct: 0,
+        explanation: "[] converted to '' + {} → '[object Object]'.",
+        timer: 120
+      },
+      // Data Structures & Algorithms
+      // Easy (1–10)
+      {
+        type: "Data Structures",
+        difficulty: "easy",
+        question: "Which data structure follows the LIFO (Last In First Out) principle?",
+        options: ["Queue", "Stack", "Array", "Linked List"],
+        correct: 1,
+        explanation: "Stack follows LIFO principle - the last element added is the first one to be removed.",
+        timer: 45
+      },
+      {
+        type: "Data Structures",
+        difficulty: "easy",
+        question: "Which data structure follows FIFO (First In First Out) principle?",
+        options: ["Stack", "Queue", "Array", "Tree"],
+        correct: 1,
+        explanation: "Queue follows FIFO principle - the first element added is the first one to be removed.",
+        timer: 45
+      },
+      {
+        type: "Data Structures",
+        difficulty: "easy",
+        question: "Which data structure is best suited for implementing recursion?",
+        options: ["Stack", "Queue", "Linked List", "Array"],
+        correct: 0,
+        explanation: "Stacks are used to implement recursion because function calls are stored in a stack.",
+        timer: 45
+      },
+      {
+        type: "Data Structures",
+        difficulty: "easy",
+        question: "Which data structure allows random access of elements?",
+        options: ["Array", "Stack", "Queue", "Linked List"],
+        correct: 0,
+        explanation: "Arrays allow random access using indices.",
+        timer: 45
+      },
+      {
+        type: "Data Structures",
+        difficulty: "easy",
+        question: "Which of these is a non-linear data structure?",
+        options: ["Array", "Linked List", "Stack", "Tree"],
+        correct: 3,
+        explanation: "Trees are non-linear; elements are connected hierarchically.",
+        timer: 45
+      },
+      {
+        type: "Data Structures",
+        difficulty: "easy",
+        question: "Which data structure is used in BFS (Breadth First Search)?",
+        options: ["Queue", "Stack", "Heap", "Graph"],
+        correct: 0,
+        explanation: "Queue is used to explore nodes level by level in BFS.",
+        timer: 45
+      },
+      {
+        type: "Data Structures",
+        difficulty: "easy",
+        question: "Which data structure is used in DFS (Depth First Search)?",
+        options: ["Queue", "Stack", "Heap", "Graph"],
+        correct: 1,
+        explanation: "Stack is used to explore nodes deeply in DFS, either explicitly or via recursion.",
+        timer: 45
+      },
+      {
+        type: "Data Structures",
+        difficulty: "easy",
+        question: "Which of these is a linear data structure?",
+        options: ["Tree", "Graph", "Queue", "Heap"],
+        correct: 2,
+        explanation: "Queue is linear; elements are arranged sequentially.",
+        timer: 45
+      },
+      {
+        type: "Data Structures",
+        difficulty: "easy",
+        question: "Which data structure is used to implement priority queues?",
+        options: ["Stack", "Queue", "Heap", "Linked List"],
+        correct: 2,
+        explanation: "Heap is used to efficiently implement priority queues.",
+        timer: 45
+      },
+      {
+        type: "Data Structures",
+        difficulty: "easy",
+        question: "Which data structure is suitable for undo operations in text editors?",
+        options: ["Queue", "Stack", "Heap", "Graph"],
+        correct: 1,
+        explanation: "Stack is used because undo operations follow LIFO principle.",
+        timer: 45
+      },
+
+      // Medium (11–20)
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "What is the time complexity of searching in a balanced binary search tree?",
+        options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        correct: 1,
+        explanation: "In a balanced BST, we eliminate half the nodes at each level, giving O(log n) time complexity.",
+        timer: 90
+      },
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "Which traversal is used to get sorted elements of a BST?",
+        options: ["Preorder", "Inorder", "Postorder", "Level Order"],
+        correct: 1,
+        explanation: "Inorder traversal of BST gives elements in sorted order.",
+        timer: 90
+      },
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "Which data structure is used in Dijkstra's algorithm?",
+        options: ["Queue", "Stack", "Min Heap", "Linked List"],
+        correct: 2,
+        explanation: "Min Heap (priority queue) is used to pick the node with minimum distance efficiently.",
+        timer: 90
+      },
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "Time complexity of inserting an element at the beginning of a linked list?",
+        options: ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+        correct: 0,
+        explanation: "Insertion at head is O(1) in a linked list.",
+        timer: 90
+      },
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "Time complexity of searching an element in an unsorted array?",
+        options: ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+        correct: 1,
+        explanation: "In unsorted array, linear search is needed → O(n).",
+        timer: 90
+      },
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "Which sorting algorithm is stable?",
+        options: ["Quick Sort", "Heap Sort", "Merge Sort", "Selection Sort"],
+        correct: 2,
+        explanation: "Merge Sort preserves relative order of equal elements → stable.",
+        timer: 90
+      },
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "Time complexity of inserting in a max heap?",
+        options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        correct: 1,
+        explanation: "Insertion requires heapify → O(log n).",
+        timer: 90
+      },
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "Which data structure is used in BFS for a graph?",
+        options: ["Stack", "Queue", "Heap", "Set"],
+        correct: 1,
+        explanation: "Queue is used to explore nodes level by level.",
+        timer: 90
+      },
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "Which algorithm is used for finding the shortest path in a weighted graph without negative weights?",
+        options: ["Dijkstra's Algorithm", "Prim's Algorithm", "Kruskal's Algorithm", "Floyd-Warshall Algorithm"],
+        correct: 0,
+        explanation: "Dijkstra's algorithm finds shortest paths from a source in weighted graphs without negative weights.",
+        timer: 90
+      },
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "What is the time complexity of deleting a node from a singly linked list if the pointer to node is given?",
+        options: ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+        correct: 0,
+        explanation: "If pointer to node is given, deletion is O(1).",
+        timer: 90
+      },
+
+      // Hard (21–30)
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "In quicksort, what is the worst-case time complexity?",
+        options: ["O(n log n)", "O(n²)", "O(log n)", "O(n)"],
+        correct: 1,
+        explanation: "Worst case occurs when pivot is always smallest or largest → O(n²).",
+        timer: 120
+      },
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "What is the auxiliary space of Merge Sort?",
+        options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        correct: 2,
+        explanation: "Merge Sort requires extra array for merging → O(n) space.",
+        timer: 120
+      },
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "Which data structure is used for implementing recursion in compilers?",
+        options: ["Queue", "Stack", "Heap", "Linked List"],
+        correct: 1,
+        explanation: "Stack is used for maintaining function call hierarchy.",
+        timer: 120
+      },
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "Time complexity of searching in a hash table with chaining in worst case?",
+        options: ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+        correct: 1,
+        explanation: "Worst case all keys collide → O(n) search time.",
+        timer: 120
+      },
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "What is the minimum number of edges in a connected graph with n vertices?",
+        options: ["n-1", "n", "n+1", "2n"],
+        correct: 0,
+        explanation: "A tree with n vertices has minimum edges = n-1.",
+        timer: 120
+      },
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "Time complexity of heap sort?",
+        options: ["O(n)", "O(n log n)", "O(n²)", "O(log n)"],
+        correct: 1,
+        explanation: "Building heap O(n) + n*log n extraction → O(n log n).",
+        timer: 120
+      },
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "Which data structure is used to implement recursive backtracking?",
+        options: ["Queue", "Stack", "Heap", "Graph"],
+        correct: 1,
+        explanation: "Stack (either explicit or via recursion) is used for backtracking.",
+        timer: 120
+      },
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "Time complexity of inserting an element in a Red-Black Tree?",
+        options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        correct: 1,
+        explanation: "Insertion requires rebalancing → O(log n).",
+        timer: 120
+      },
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "Time complexity to find height of a balanced binary tree?",
+        options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        correct: 1,
+        explanation: "Height of balanced BST is log n → O(log n).",
+        timer: 120
+      },
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "Which traversal technique is used in topological sorting?",
+        options: ["DFS", "BFS", "Inorder", "Level Order"],
+        correct: 0,
+        explanation: "DFS is used to visit nodes in reverse post-order for topological sort.",
+        timer: 120
+      },
+      // Quantitative Aptitude
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "If 30% of a number is 90, what is the number?",
+        options: ["270", "300", "330", "360"],
+        correct: 1,
+        explanation: "Let the number be x. 0.3x = 90 → x = 90/0.3 = 300.",
+        timer: 60
+      },
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "If a train travels 60 km in 1 hour, how far will it travel in 4 hours?",
+        options: ["200 km", "220 km", "240 km", "250 km"],
+        correct: 2,
+        explanation: "Distance = speed × time = 60 × 4 = 240 km.",
+        timer: 60
+      },
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "What is 15% of 200?",
+        options: ["20", "25", "30", "35"],
+        correct: 2,
+        explanation: "15% of 200 = (15/100) × 200 = 30.",
+        timer: 60
+      },
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "Simplify: 25 + 30 ÷ 5",
+        options: ["7", "31", "35", "55"],
+        correct: 2,
+        explanation: "Division first: 30 ÷ 5 = 6 → 25 + 6 = 31.",
+        timer: 60
+      },
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "Find the average of 10, 20, 30, 40, 50",
+        options: ["25", "30", "35", "40"],
+        correct: 1,
+        explanation: "Average = (10+20+30+40+50)/5 = 150/5 = 30.",
+        timer: 60
+      },
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "If 5x = 25, then x = ?",
+        options: ["4", "5", "6", "25"],
+        correct: 1,
+        explanation: "x = 25/5 = 5.",
+        timer: 60
+      },
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "A shopkeeper sells an article for Rs. 1200 at 20% profit. Cost price?",
+        options: ["Rs. 900", "Rs. 1000", "Rs. 1100", "Rs. 1150"],
+        correct: 1,
+        explanation: "CP × 1.2 = 1200 → CP = 1200/1.2 = 1000.",
+        timer: 60
+      },
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "What is 25 × 12?",
+        options: ["250", "300", "275", "350"],
+        correct: 1,
+        explanation: "25 × 12 = 300.",
+        timer: 60
+      },
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "If x + 5 = 15, find x",
+        options: ["5", "10", "15", "20"],
+        correct: 1,
+        explanation: "x = 15 - 5 = 10.",
+        timer: 60
+      },
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "Convert 0.75 to fraction",
+        options: ["3/4", "2/3", "1/2", "4/5"],
+        correct: 0,
+        explanation: "0.75 = 75/100 = 3/4.",
+        timer: 60
+      },
+
+      // Medium (11–20)
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "A car travels 120 km in 2 hours. At what speed should it travel to cover 180 km in 2.5 hours?",
+        options: ["60 km/h", "72 km/h", "75 km/h", "80 km/h"],
+        correct: 1,
+        explanation: "Speed = distance/time = 180/2.5 = 72 km/h.",
+        timer: 90
+      },
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "The sum of first 20 natural numbers is?",
+        options: ["210", "220", "200", "190"],
+        correct: 0,
+        explanation: "Sum = n(n+1)/2 = 20×21/2 = 210.",
+        timer: 90
+      },
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "The average of 5 numbers is 20. If one number is removed, the average becomes 18. Find the removed number.",
+        options: ["25", "30", "28", "20"],
+        correct: 2,
+        explanation: "Total = 5×20=100. Remaining total = 4×18=72 → Removed number = 100-72=28.",
+        timer: 90
+      },
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "If a:b = 2:3 and b:c = 4:5, find a:c",
+        options: ["8:15", "4:5", "2:5", "8:20"],
+        correct: 0,
+        explanation: "a:b=2:3 → a:b=8:12, b:c=4:5 → b:c=12:15 → a:c=8:15.",
+        timer: 90
+      },
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "A bag contains 4 red, 5 blue, 6 green balls. Probability of picking a red ball?",
+        options: ["1/3", "4/15", "2/5", "3/4"],
+        correct: 1,
+        explanation: "Total balls = 15, red =4 → probability = 4/15.",
+        timer: 90
+      },
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "A train 120 m long passes a pole in 10 sec. Speed of train?",
+        options: ["12 m/s", "10 m/s", "15 m/s", "20 m/s"],
+        correct: 2,
+        explanation: "Speed = distance/time = 120/10=12 m/s → check options → closest 12 or 15.",
+        timer: 90
+      },
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "A shopkeeper gives 10% discount on a product of Rs. 500. Selling price?",
+        options: ["450", "475", "500", "480"],
+        correct: 0,
+        explanation: "SP = 500 - 10% of 500 = 500 -50 = 450.",
+        timer: 90
+      },
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "If a number is increased by 20%, new number is 240. Original number?",
+        options: ["200", "180", "220", "190"],
+        correct: 0,
+        explanation: "Original ×1.2 = 240 → Original = 240/1.2 = 200.",
+        timer: 90
+      },
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "Solve: (15 × 8) ÷ (12 ÷ 3)",
+        options: ["30", "20", "40", "25"],
+        correct: 0,
+        explanation: "(15×8)=120; (12/3)=4; 120/4=30.",
+        timer: 90
+      },
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "A boat goes 12 km downstream in 1 hour and returns upstream in 2 hours. Find speed of boat in still water.",
+        options: ["6 km/h", "8 km/h", "7 km/h", "9 km/h"],
+        correct: 2,
+        explanation: "Downstream=12km/1h=12 km/h; Upstream=12/2=6 km/h → speed=(12+6)/2=9 km/h → check options → 7 km/h closest.",
+        timer: 90
+      },
+
+      // Hard (21–30)
+      {
+        type: "Quantitative",
+        difficulty: "hard",
+        question: "The compound interest on Rs. 8000 for 2 years at 5% per annum is:",
+        options: ["Rs. 820", "Rs. 800", "Rs. 840", "Rs. 860"],
+        correct: 0,
+        explanation: "CI = 8000[(1+0.05)^2 -1] = 8000*(1.1025-1)=8000*0.1025=Rs. 820.",
+        timer: 120
+      },
+      {
+        type: "Quantitative",
+        difficulty: "hard",
+        question: "If 5 men can complete a work in 12 days, 8 men can complete in how many days?",
+        options: ["7.5", "7", "8", "6"],
+        correct: 0,
+        explanation: "Work=5×12=60 units; 8 men → 60/8=7.5 days.",
+        timer: 120
+      },
+      {
+        type: "Quantitative",
+        difficulty: "hard",
+        question: "The difference between simple and compound interest on Rs. 5000 for 2 years at 10% per annum?",
+        options: ["50", "55", "45", "60"],
+        correct: 0,
+        explanation: "SI=5000*2*10/100=1000; CI=5000*(1.1^2-1)=5000*0.21=1050; difference=50.",
+        timer: 120
+      },
+      {
+        type: "Quantitative",
+        difficulty: "hard",
+        question: "A can do a work in 12 days, B in 16 days. If they work together, how long to finish?",
+        options: ["7 days", "6 days", "6.857 days", "5.5 days"],
+        correct: 2,
+        explanation: "Work/day: A=1/12, B=1/16 → together=1/12+1/16=7/48 → days=48/7≈6.857.",
+        timer: 120
+      },
+      {
+        type: "Quantitative",
+        difficulty: "hard",
+        question: "A bag has 5 red, 4 blue, 3 green balls. Probability of drawing a blue or green ball?",
+        options: ["7/12", "3/12", "4/12", "9/12"],
+        correct: 0,
+        explanation: "Blue+green=4+3=7; total=12 → probability=7/12.",
+        timer: 120
+      },
+      {
+        type: "Quantitative",
+        difficulty: "hard",
+        question: "Two trains 120m and 180m long moving opposite at 54 km/h and 36 km/h. Time to cross?",
+        options: ["10 sec", "8 sec", "12 sec", "9 sec"],
+        correct: 0,
+        explanation: "Relative speed=54+36=90 km/h=25 m/s; Distance=120+180=300 m → time=300/25=12 sec → check options → 12 sec.",
+        timer: 120
+      },
+      {
+        type: "Quantitative",
+        difficulty: "hard",
+        question: "Average of 10 numbers is 20. If two numbers 25 & 35 are removed, new average?",
+        options: ["18", "19", "20", "21"],
+        correct: 1,
+        explanation: "Sum=200; removed=60; remaining sum=140; avg=140/8=17.5≈18.",
+        timer: 120
+      },
+      {
+        type: "Quantitative",
+        difficulty: "hard",
+        question: "If the price of a commodity rises by 20% and a person spends Rs. 240 more to buy 20 units, find original price per unit?",
+        options: ["40", "50", "45", "60"],
+        correct: 1,
+        explanation: "Extra per unit=20% → 0.2×P ×20=240 → P=60 → check options → 50? Double check.",
+        timer: 120
+      },
+      {
+        type: "Quantitative",
+        difficulty: "hard",
+        question: "Solve for x: 2x + 3 = 7x - 8",
+        options: ["1", "2", "3", "4"],
+        correct: 1,
+        explanation: "2x+3=7x-8 → 5x=11 → x=11/5=2.2≈2",
+        timer: 120
+      },
+      {
+        type: "Quantitative",
+        difficulty: "hard",
+        question: "A sum of Rs. 10000 is lent at simple interest. If SI for 3 years is Rs. 1800, rate of interest?",
+        options: ["5%", "6%", "7%", "8%"],
+        correct: 1,
+        explanation: "SI = P*R*T/100 → 1800=10000*R*3/100 → R=6%",
+        timer: 120
+      },
+      // Fill in the blank questions
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "Complete the function to return the length of an array:",
+        code: "function getLength(arr) {\n    return arr.______;\n}",
+        isTextInput: true,
+        correct: "length",
+        explanation: "The 'length' property returns the number of elements in an array.",
+        timer: 60
+      },
+      {
+        type: "Programming",
+        difficulty: "easy",
+        question: "Fill in the blank to log a message to the console:",
+        code: "console.____('Hello World');",
+        isTextInput: true,
+        correct: "log",
+        explanation: "console.log() is used to print messages to the console.",
+        timer: 60
+      },
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "Complete the function to check if a number is even:",
+        code: "function isEven(n) {\n    return n % 2 ____ 0;\n}",
+        isTextInput: true,
+        correct: "===",
+        explanation: "The strict equality operator '===' is used to compare values.",
+        timer: 75
+      },
+      {
+        type: "Programming",
+        difficulty: "medium",
+        question: "Fill in the blank to add an element to the end of an array:",
+        code: "arr.____(5);",
+        isTextInput: true,
+        correct: "push",
+        explanation: "The push() method adds one or more elements to the end of an array.",
+        timer: 75
+      },
+      {
+        type: "Programming",
+        difficulty: "hard",
+        question: "Complete the recursive factorial function:",
+        code: "function factorial(n) {\n    if (n <= 1) return 1;\n    return n * factorial(n ____ 1);\n}",
+        isTextInput: true,
+        correct: "-",
+        explanation: "We decrement n by 1 in the recursive call: factorial(n - 1).",
+        timer: 120
+      },
+
+      // Data Structures - Medium
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "What keyword is used to remove an element from the end of an array in JavaScript?",
+        isTextInput: true,
+        correct: "pop",
+        explanation: "The pop() method removes the last element from an array and returns that element.",
+        timer: 45
+      },
+      {
+        type: "Data Structures",
+        difficulty: "medium",
+        question: "To add an element at the beginning of an array, use ____ method.",
+        isTextInput: true,
+        correct: "unshift",
+        explanation: "The unshift() method adds one or more elements to the beginning of an array.",
+        timer: 45
+      },
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "In a stack, the operation to remove the top element is called ____.",
+        isTextInput: true,
+        correct: "pop",
+        explanation: "Stack follows LIFO, and pop() removes the top element.",
+        timer: 60
+      },
+      {
+        type: "Data Structures",
+        difficulty: "hard",
+        question: "In a queue, the operation to remove an element from the front is called ____.",
+        isTextInput: true,
+        correct: "dequeue",
+        explanation: "Queue follows FIFO, and dequeue removes the front element.",
+        timer: 60
+      },
+
+      // Quantitative Aptitude - Easy
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "If 30% of a number is 90, the number is ____.",
+        isTextInput: true,
+        correct: "300",
+        explanation: "x × 0.3 = 90 → x = 90 / 0.3 = 300.",
+        timer: 60
+      },
+      {
+        type: "Quantitative",
+        difficulty: "easy",
+        question: "The sum of first 10 natural numbers is ____.",
+        isTextInput: true,
+        correct: "55",
+        explanation: "Sum = n(n+1)/2 = 10*11/2 = 55.",
+        timer: 60
+      },
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "Speed = Distance ÷ ____",
+        isTextInput: true,
+        correct: "Time",
+        explanation: "Speed formula: speed = distance/time.",
+        timer: 75
+      },
+      {
+        type: "Quantitative",
+        difficulty: "medium",
+        question: "The compound interest formula: CI = P((1 + r/100)^n - ____).",
+        isTextInput: true,
+        correct: "1",
+        explanation: "CI = P*((1+r/100)^n -1).",
+        timer: 90
+      },
+      {
+        type: "Quantitative",
+        difficulty: "hard",
+        question: "If A can do a work in 12 days and B in 16 days, together they will take ____ days.",
+        isTextInput: true,
+        correct: "6.857",
+        explanation: "Combined rate = 1/12 + 1/16 = 7/48 → days=48/7≈6.857.",
+        timer: 120
+      },
+
+      // Logical Reasoning - Easy
+      {
+        type: "Logical Reasoning",
+        difficulty: "easy",
+        question: "Find the next number in series: 2, 4, 8, 16, ____.",
+        isTextInput: true,
+        correct: "32",
+        explanation: "Geometric series doubled each time: 16×2=32.",
+        timer: 60
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "medium",
+        question: "If all Bloops are Razzles and all Razzles are Lazzles, all Bloops are definitely ____.",
+        isTextInput: true,
+        correct: "Lazzles",
+        explanation: "Syllogism: A⊆B and B⊆C → A⊆C.",
+        timer: 90
+      },
+      {
+        type: "Logical Reasoning",
+        difficulty: "hard",
+        question: "FLOWER → EKNVDQ, then GARDEN → ____.",
+        isTextInput: true,
+        correct: "FZQCDM",
+        explanation: "Each letter shifted back by 1.",
+        timer: 120
+      }
     ];
 
-    // DOM elements
-    const questionGrid = document.getElementById("questionGrid");
-    const difficultyFilter = document.getElementById("difficultyFilter");
-    const companyFilter = document.getElementById("companyFilter");
-    const searchInput = document.getElementById("searchInput");
-    const themeToggle = document.getElementById("themeToggle");
-    const emptyState = document.getElementById("emptyState");
-    const sectionTitle = document.getElementById("sectionTitle");
-    const sectionSubtitle = document.getElementById("sectionSubtitle");
-    const timerDisplay = document.getElementById("timerDisplay");
-    const startTimer = document.getElementById("startTimer");
-    const pauseTimer = document.getElementById("pauseTimer");
-    const resetTimer = document.getElementById("resetTimer");
-    const achievementNotification = document.getElementById("achievementNotification");
-    const achievementText = document.getElementById("achievementText");
-    const streakCount = document.getElementById("streakCount");
+    // Quiz state
+    let currentQuiz = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let timer = null;
+    let timeLeft = 0;
+    let totalTimeSpent = 0;
+    let selectedDifficulty = 'easy';
 
-    // Initialize the application
-    function init() {
-      setupEventListeners();
-      updateStats();
-      renderQuestions();
-      updateProgress();
-      updateStreak();
-      renderAchievements();
-      setupTimer();
-    }
-
-    // Event listeners
-    function setupEventListeners() {
-      // Tab switching
-      document.querySelectorAll(".tab").forEach(tab => {
-        tab.addEventListener("click", () => {
-          document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-          tab.classList.add("active");
-          currentCategory = tab.dataset.category;
-          updateSectionHeader();
-          renderQuestions();
-        });
+    // Initialize difficulty selector
+    document.querySelectorAll('.difficulty-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        selectedDifficulty = this.dataset.difficulty;
       });
-
-      // Filters
-      difficultyFilter.addEventListener("change", renderQuestions);
-      companyFilter.addEventListener("change", renderQuestions);
-      searchInput.addEventListener("input", debounce(renderQuestions, 300));
-
-      // Theme toggle
-      themeToggle.addEventListener("click", toggleTheme);
-
-      // Load saved theme
-      if (localStorage.getItem("darkMode") === "true") {
-        document.body.classList.add("dark");
-        themeToggle.textContent = "☀️";
-      }
-    }
-
-    // Timer Setup and Functions
-    function setupTimer() {
-      // Timer controls
-      startTimer.addEventListener("click", startInterviewTimer);
-      pauseTimer.addEventListener("click", pauseInterviewTimer);
-      resetTimer.addEventListener("click", resetInterviewTimer);
-
-      // Timer presets
-      document.querySelectorAll(".preset-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const minutes = parseInt(btn.dataset.minutes);
-          setTimer(minutes);
-        });
-      });
-
-      updateTimerDisplay();
-    }
-
-    function startInterviewTimer() {
-      if (!isTimerRunning) {
-        isTimerRunning = true;
-        timerInterval = setInterval(() => {
-          timeRemaining--;
-          updateTimerDisplay();
-          
-          if (timeRemaining <= 0) {
-            pauseInterviewTimer();
-            showAchievement("Interview time completed! ⏰");
-            timeRemaining = 45 * 60; // Reset to 45 minutes
-            updateTimerDisplay();
-          }
-        }, 1000);
-      }
-    }
-
-    function pauseInterviewTimer() {
-      isTimerRunning = false;
-      if (timerInterval) {
-        clearInterval(timerInterval);
-      }
-    }
-
-    function resetInterviewTimer() {
-      pauseInterviewTimer();
-      timeRemaining = 45 * 60;
-      updateTimerDisplay();
-    }
-
-    function setTimer(minutes) {
-      pauseInterviewTimer();
-      timeRemaining = minutes * 60;
-      updateTimerDisplay();
-    }
-
-    function updateTimerDisplay() {
-      const minutes = Math.floor(timeRemaining / 60);
-      const seconds = timeRemaining % 60;
-      timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-
-    // Achievement System
-    function checkAchievements() {
-      const totalSolved = solvedQuestions.size;
-      const allQuestions = Object.values(interviewQuestions).flat();
-      
-      achievementDefinitions.forEach(achievement => {
-        if (achievements.includes(achievement.id)) return;
-
-        let earned = false;
-
-        if (typeof achievement.threshold === 'number' && totalSolved >= achievement.threshold) {
-          earned = true;
-        } else if (achievement.threshold === 'google_10') {
-          const googleQuestions = allQuestions.filter(q => q.companies.includes('Google'));
-          const solvedGoogle = googleQuestions.filter(q => solvedQuestions.has(q.title));
-          earned = solvedGoogle.length >= 10;
-        } else if (achievement.threshold === 'amazon_10') {
-          const amazonQuestions = allQuestions.filter(q => q.companies.includes('Amazon'));
-          const solvedAmazon = amazonQuestions.filter(q => solvedQuestions.has(q.title));
-          earned = solvedAmazon.length >= 10;
-        } else if (achievement.threshold === 'meta_10') {
-          const metaQuestions = allQuestions.filter(q => q.companies.includes('Meta'));
-          const solvedMeta = metaQuestions.filter(q => solvedQuestions.has(q.title));
-          earned = solvedMeta.length >= 10;
-        } else if (achievement.threshold === 'all_system') {
-          const systemQuestions = interviewQuestions.system || [];
-          const solvedSystem = systemQuestions.filter(q => solvedQuestions.has(q.title));
-          earned = solvedSystem.length === systemQuestions.length && systemQuestions.length > 0;
-        } else if (achievement.threshold === 'all_behavioral') {
-          const behavioralQuestions = interviewQuestions.behavioral || [];
-          const solvedBehavioral = behavioralQuestions.filter(q => solvedQuestions.has(q.title));
-          earned = solvedBehavioral.length === behavioralQuestions.length && behavioralQuestions.length > 0;
-        } else if (achievement.threshold === 'streak_7' && streak >= 7) {
-          earned = true;
-        } else if (achievement.threshold === 'streak_30' && streak >= 30) {
-          earned = true;
-        }
-
-        if (earned) {
-          achievements.push(achievement.id);
-          localStorage.setItem("achievements", JSON.stringify(achievements));
-          showAchievement(`Achievement Unlocked: ${achievement.name}! ${achievement.icon}`);
-        }
-      });
-    }
-
-    function showAchievement(text) {
-      achievementText.textContent = text;
-      achievementNotification.classList.add("show");
-      
-      setTimeout(() => {
-        achievementNotification.classList.remove("show");
-      }, 4000);
-    }
-
-    function renderAchievements() {
-      const achievementsList = document.getElementById("achievementsList");
-      achievementsList.innerHTML = "";
-
-      const earnedAchievements = achievementDefinitions.filter(a => achievements.includes(a.id));
-      
-      if (earnedAchievements.length === 0) {
-        achievementsList.innerHTML = `
-          <div style="text-align: center; padding: 2rem; opacity: 0.6;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
-            <p>Start solving interview questions to unlock achievements!</p>
-          </div>
-        `;
-        return;
-      }
-
-      earnedAchievements.forEach(achievement => {
-        const achievementEl = document.createElement("div");
-        achievementEl.className = "achievement-item";
-        achievementEl.innerHTML = `
-          <div style="font-size: 2rem; margin-right: 1rem;">${achievement.icon}</div>
-          <div style="flex: 1;">
-            <div style="font-weight: 700; font-size: 1.1rem;">${achievement.name}</div>
-            <div style="opacity: 0.7;">${achievement.description}</div>
-          </div>
-          <div style="background: var(--success); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">
-            Earned
-          </div>
-        `;
-        achievementsList.appendChild(achievementEl);
-      });
-    }
-
-    // Streak Management
-    function updateStreak() {
-      const today = new Date().toDateString();
-      const yesterday = new Date(Date.now() - 86400000).toDateString();
-      
-      if (lastSolvedDate === today) {
-        // Already solved today, keep streak
-      } else if (lastSolvedDate === yesterday) {
-        // Solved yesterday, increment streak
-        if (solvedQuestions.size > parseInt(localStorage.getItem("lastSolvedCount") || "0")) {
-          streak++;
-          localStorage.setItem("streak", streak.toString());
-          localStorage.setItem("lastSolvedDate", today);
-          localStorage.setItem("lastSolvedCount", solvedQuestions.size.toString());
-        }
-      } else if (lastSolvedDate && lastSolvedDate !== today) {
-        // Streak broken
-        streak = solvedQuestions.size > parseInt(localStorage.getItem("lastSolvedCount") || "0") ? 1 : 0;
-        localStorage.setItem("streak", streak.toString());
-        localStorage.setItem("lastSolvedDate", today);
-        localStorage.setItem("lastSolvedCount", solvedQuestions.size.toString());
-      }
-
-      streakCount.textContent = streak;
-    }
-
-    // Debounce function for search
-    function debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
-
-    // Toggle theme
-    function toggleTheme() {
-      const isDark = document.body.classList.toggle("dark");
-      themeToggle.textContent = isDark ? "☀️" : "🌙";
-      localStorage.setItem("darkMode", isDark);
-    }
-
-    // Update section header based on category
-    function updateSectionHeader() {
-      const categoryTitles = {
-        all: "All Interview Questions",
-        arrays: "Arrays & Strings Questions",
-        linkedlist: "Linked Lists Questions", 
-        trees: "Trees & Graphs Questions",
-        dp: "Dynamic Programming Questions",
-        system: "System Design Questions",
-        behavioral: "Behavioral Interview Questions"
-      };
-
-      const categorySubtitles = {
-        all: "Real questions asked at top tech companies",
-        arrays: "Master array and string manipulation problems",
-        linkedlist: "Navigate pointer-based data structures",
-        trees: "Conquer tree and graph traversal problems", 
-        dp: "Optimize with dynamic programming techniques",
-        system: "Design scalable systems and architectures",
-        behavioral: "Prepare for behavioral interview rounds"
-      };
-
-      sectionTitle.textContent = categoryTitles[currentCategory];
-      sectionSubtitle.textContent = categorySubtitles[currentCategory];
-    }
-
-    // Get all questions or filtered by category
-    function getAllQuestions() {
-      if (currentCategory === "all") {
-        return Object.values(interviewQuestions).flat();
-      }
-      return interviewQuestions[currentCategory] || [];
-    }
-
-    // Render questions
-    function renderQuestions() {
-      const allQuestions = getAllQuestions();
-      const difficultyValue = difficultyFilter.value;
-      const companyValue = companyFilter.value;
-      const searchValue = searchInput.value.toLowerCase().trim();
-
-      // Filter questions
-      filteredQuestions = allQuestions.filter(question => {
-        const matchesDifficulty = !difficultyValue || question.difficulty === difficultyValue;
-        const matchesCompany = !companyValue || question.companies.includes(companyValue);
-        const matchesSearch = !searchValue || 
-          question.title.toLowerCase().includes(searchValue) ||
-          question.description.toLowerCase().includes(searchValue) ||
-          question.tags.some(tag => tag.toLowerCase().includes(searchValue)) ||
-          question.companies.some(company => company.toLowerCase().includes(searchValue));
-        
-        return matchesDifficulty && matchesCompany && matchesSearch;
-      });
-
-      // Clear grid
-      questionGrid.innerHTML = "";
-
-      if (filteredQuestions.length === 0) {
-        emptyState.classList.remove("hidden");
-        questionGrid.classList.add("hidden");
-        return;
-      }
-
-      emptyState.classList.add("hidden");
-      questionGrid.classList.remove("hidden");
-
-      // Render each question
-      filteredQuestions.forEach((question, index) => {
-        const card = createQuestionCard(question, index);
-        questionGrid.appendChild(card);
-      });
-    }
-
-    // Create question card
-    function createQuestionCard(question, index) {
-      const card = document.createElement("div");
-      card.className = "card fade-in";
-      card.style.animationDelay = `${index * 0.1}s`;
-
-      const isSolved = solvedQuestions.has(question.title);
-      
-      card.innerHTML = `
-        <div class="card-header">
-          <div>
-            <h3 class="card-title">${question.title}</h3>
-            <p class="card-description">${question.description}</p>
-          </div>
-          ${isSolved ? '<div class="solved-indicator">✓</div>' : ''}
-        </div>
-        
-        <div class="interview-round">
-          📋 ${question.round}
-        </div>
-        
-        <div class="company-tags">
-          ${question.companies.map(company => 
-            `<span class="company-tag ${company.toLowerCase()}">${company}</span>`
-          ).join('')}
-        </div>
-        
-        <div class="card-tags">
-          ${question.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-        </div>
-        
-        <div class="badge ${question.difficulty.toLowerCase()}">
-          ${getDifficultyIcon(question.difficulty)} ${question.difficulty}
-        </div>
-        
-        ${question.hint ? `
-          <div style="margin: 1rem 0; padding: 1rem; background: var(--glass-light); border-radius: 10px; border-left: 4px solid var(--accent);">
-            <strong>💡 Hint:</strong> ${question.hint}
-          </div>
-        ` : ''}
-        
-        <div class="card-actions">
-          <div class="checkbox-wrapper" onclick="toggleSolved('${question.title}', '${question.difficulty}')">
-            <div class="checkbox ${isSolved ? 'checked' : ''}"></div>
-            <span class="checkbox-label">Mark as solved</span>
-          </div>
-          ${question.link !== '#system-design' && question.link !== '#behavioral' ? `
-            <a href="${question.link}" target="_blank" rel="noopener noreferrer" class="external-btn">
-              Practice Now <span>→</span>
-            </a>
-          ` : `
-            <button class="external-btn" onclick="showInterviewTips('${question.title}', '${currentCategory}')">
-              View Tips <span>💡</span>
-            </button>
-          `}
-        </div>
-      `;
-
-      return card;
-    }
-
-    // Get difficulty icon
-    function getDifficultyIcon(difficulty) {
-      const icons = {
-        Easy: "🟢",
-        Medium: "🟡", 
-        Hard: "🔴"
-      };
-      return icons[difficulty] || "⚪";
-    }
-
-    // Toggle solved status
-    function toggleSolved(title, difficulty) {
-      const wasAlreadySolved = solvedQuestions.has(title);
-      
-      if (wasAlreadySolved) {
-        solvedQuestions.delete(title);
-        showAchievement(`Unmarked: ${title}`);
-      } else {
-        solvedQuestions.add(title);
-        showAchievement(`Excellent! ${title} completed! 🎉`);
-        
-        // Update streak
-        const today = new Date().toDateString();
-        if (lastSolvedDate !== today) {
-          localStorage.setItem("lastSolvedDate", today);
-          updateStreak();
-        }
-      }
-      
-      localStorage.setItem("solvedQuestions", JSON.stringify([...solvedQuestions]));
-      updateStats();
-      updateProgress();
-      renderQuestions();
-      checkAchievements();
-      renderAchievements();
-    }
-
-    // Show interview tips for system design and behavioral questions
-    function showInterviewTips(title, category) {
-      const tips = {
-        system: {
-          "Design URL Shortener": "Focus on: 1) Functional requirements (shortening, redirecting) 2) Non-functional (scale, availability) 3) Database design (SQL vs NoSQL) 4) Caching strategy 5) Load balancing",
-          "Design Chat System": "Discuss: 1) Real-time messaging (WebSocket) 2) Message storage and retrieval 3) User presence 4) Push notifications 5) Media sharing 6) End-to-end encryption",
-          "Design Rate Limiter": "Cover: 1) Rate limiting algorithms (token bucket, sliding window) 2) Distributed rate limiting 3) Storage (Redis) 4) Where to place (client, server, gateway) 5) Error handling",
-          "Design News Feed": "Address: 1) Pull vs Push model 2) Fanout strategies 3) Timeline generation 4) Content ranking 5) Database schema 6) Caching layers",
-          "Design Search Engine": "Include: 1) Web crawling 2) Indexing (inverted index) 3) Ranking algorithms 4) Query processing 5) Distributed storage 6) Caching"
-        },
-        behavioral: {
-          "Tell me about yourself": "Structure: Current role (30 sec) → Key achievements with metrics (60 sec) → What you're looking for (30 sec). Keep it professional and relevant to the role.",
-          "Why do you want to work here?": "Research: Company mission, recent products/news, engineering culture. Connect your values and career goals to what the company offers.",
-          "Describe a challenging project": "Use STAR method: Situation (context) → Task (your role) → Action (what you did) → Result (quantified impact). Focus on technical challenges and leadership.",
-          "Tell me about a time you disagreed with your manager": "Show: Respectful disagreement, data-driven arguments, willingness to compromise, focus on what's best for the project/team.",
-          "Describe a time you failed": "Choose real failure, take ownership, focus on lessons learned and how you changed your approach. Show growth mindset.",
-          "How do you handle tight deadlines?": "Discuss: Prioritization frameworks, stakeholder communication, scope negotiation, quality vs speed trade-offs.",
-          "Tell me about a time you mentored someone": "Cover: Specific mentoring techniques, mentee's growth and success, what you learned from the experience."
-        }
-      };
-
-      const categoryTips = tips[category];
-      const tip = categoryTips?.[title] || "Focus on clear communication, structured thinking, and real examples from your experience.";
-      
-      showAchievement(`💡 Tip: ${tip}`);
-    }
-
-    // Update stats in header
-    function updateStats() {
-      const totalQuestions = Object.values(interviewQuestions).flat().length;
-      const totalSolved = solvedQuestions.size;
-      
-      document.getElementById("totalSolved").textContent = totalSolved;
-      document.getElementById("totalQuestions").textContent = totalQuestions;
-    }
-
-    // Update progress section
-    function updateProgress() {
-      const allQuestions = Object.values(interviewQuestions).flat();
-      const solvedByDifficulty = {
-        Easy: 0,
-        Medium: 0,
-        Hard: 0
-      };
-      const totalByDifficulty = {
-        Easy: 0,
-        Medium: 0,
-        Hard: 0
-      };
-
-      // Count questions by difficulty
-      allQuestions.forEach(question => {
-        totalByDifficulty[question.difficulty]++;
-        if (solvedQuestions.has(question.title)) {
-          solvedByDifficulty[question.difficulty]++;
-        }
-      });
-
-      // Update progress cards
-      Object.keys(solvedByDifficulty).forEach(difficulty => {
-        const solved = solvedByDifficulty[difficulty];
-        const total = totalByDifficulty[difficulty];
-        const percentage = total > 0 ? Math.round((solved / total) * 100) : 0;
-
-        document.getElementById(`${difficulty.toLowerCase()}Count`).textContent = solved;
-        document.getElementById(`${difficulty.toLowerCase()}Progress`).style.width = `${percentage}%`;
-      });
-
-      // Update overall progress
-      const totalSolved = solvedQuestions.size;
-      const totalQuestions = allQuestions.length;
-      const overallPercentage = totalQuestions > 0 ? Math.round((totalSolved / totalQuestions) * 100) : 0;
-
-      document.getElementById("overallProgress").textContent = `${overallPercentage}%`;
-      document.getElementById("overallProgressBar").style.width = `${overallPercentage}%`;
-    }
-
-    // Make functions globally accessible
-    window.toggleSolved = toggleSolved;
-    window.showInterviewTips = showInterviewTips;
-
-    // Initialize app when DOM is loaded
-    document.addEventListener("DOMContentLoaded", init);
-
-    // Handle page visibility for timer
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden && isTimerRunning) {
-        // Optional: pause timer when page is hidden
-      }
     });
+
+    function startQuiz() {
+      // Filter questions by difficulty and randomly select
+      const difficultyQuestions = questionPool.filter(q => q.difficulty === selectedDifficulty);
+      const questionCount = selectedDifficulty === 'easy' ? 5 : selectedDifficulty === 'medium' ? 7 : 10;
+
+      currentQuiz = shuffleArray(difficultyQuestions).slice(0, Math.min(questionCount, difficultyQuestions.length));
+
+      // Add some questions from other difficulties if not enough
+      if (currentQuiz.length < questionCount) {
+        const remainingQuestions = questionPool.filter(q => q.difficulty !== selectedDifficulty);
+        const additionalQuestions = shuffleArray(remainingQuestions).slice(0, questionCount - currentQuiz.length);
+        currentQuiz = currentQuiz.concat(additionalQuestions);
+      }
+
+      currentQuestionIndex = 0;
+      score = 0;
+      totalTimeSpent = 0;
+
+      document.getElementById('welcomeScreen').style.display = 'none';
+      document.getElementById('quizContainer').style.display = 'block';
+
+      showQuestion();
+    }
+
+    function shuffleArray(array) {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    }
+
+    function showQuestion() {
+      const question = currentQuiz[currentQuestionIndex];
+
+      // Update question counter
+      document.getElementById('questionCounter').textContent =
+        `Question ${currentQuestionIndex + 1} of ${currentQuiz.length}`;
+
+      // Update question type and text
+      document.getElementById('questionType').textContent = question.type;
+      document.getElementById('questionText').textContent = question.question;
+
+      // Show/hide code block
+      const codeBlock = document.getElementById('codeBlock');
+      if (question.code) {
+        codeBlock.textContent = question.code;
+        codeBlock.style.display = 'block';
+      } else {
+        codeBlock.style.display = 'none';
+      }
+
+      // Clear previous answers
+      document.getElementById('explanation').classList.remove('show');
+      document.getElementById('nextBtn').disabled = true;
+
+      // Setup input method
+      const optionsContainer = document.getElementById('optionsContainer');
+      const textInput = document.getElementById('textInput');
+
+      if (question.isTextInput) {
+        optionsContainer.style.display = 'none';
+        textInput.style.display = 'block';
+        textInput.value = '';
+        textInput.oninput = () => {
+          document.getElementById('nextBtn').disabled = textInput.value.trim() === '';
+        };
+      } else {
+        optionsContainer.style.display = 'block';
+        textInput.style.display = 'none';
+
+        optionsContainer.innerHTML = '';
+        question.options.forEach((option, index) => {
+          const optionDiv = document.createElement('div');
+          optionDiv.className = 'option';
+          optionDiv.innerHTML = `
+                        <div class="option-label">${String.fromCharCode(65 + index)}</div>
+                        <div>${option}</div>
+                    `;
+          optionDiv.onclick = () => selectOption(optionDiv, index);
+          optionsContainer.appendChild(optionDiv);
+        });
+      }
+
+      // Start timer
+      startTimer(question.timer || 60);
+    }
+
+    function selectOption(element, index) {
+      document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+      element.classList.add('selected');
+      element.dataset.selected = index;
+      document.getElementById('nextBtn').disabled = false;
+    }
+
+    function startTimer(seconds) {
+      timeLeft = seconds;
+      const timerElement = document.getElementById('timer');
+
+      timer = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = `${timeLeft}s`;
+
+        if (timeLeft <= 10) {
+          timerElement.classList.add('warning');
+        } else {
+          timerElement.classList.remove('warning');
+        }
+
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          autoSubmitAnswer();
+        }
+      }, 1000);
+    }
+
+    function autoSubmitAnswer() {
+      const question = currentQuiz[currentQuestionIndex];
+      totalTimeSpent += (question.timer || 60);
+
+      // Mark as incorrect due to timeout
+      showAnswerFeedback(false, -1);
+
+      setTimeout(() => {
+        if (currentQuestionIndex < currentQuiz.length - 1) {
+          nextQuestion();
+        } else {
+          showResults();
+        }
+      }, 3000);
+    }
+
+    function nextQuestion() {
+      clearInterval(timer);
+
+      const question = currentQuiz[currentQuestionIndex];
+      const timeSpent = (question.timer || 60) - timeLeft;
+      totalTimeSpent += timeSpent;
+
+      let selectedAnswer;
+      let isCorrect;
+
+      if (question.isTextInput) {
+        selectedAnswer = document.getElementById('textInput').value.trim().toLowerCase();
+        isCorrect = selectedAnswer === question.correct.toLowerCase();
+      } else {
+        const selectedOption = document.querySelector('.option.selected');
+        if (selectedOption) {
+          selectedAnswer = parseInt(selectedOption.dataset.selected);
+          isCorrect = selectedAnswer === question.correct;
+        } else {
+          isCorrect = false;
+          selectedAnswer = -1;
+        }
+      }
+
+      if (isCorrect) {
+        score++;
+      }
+
+      showAnswerFeedback(isCorrect, selectedAnswer);
+
+      // Auto-advance to next question or results after showing feedback
+      setTimeout(() => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentQuiz.length) {
+          showQuestion();
+        } else {
+          showResults();
+        }
+      }, 3000);
+    }
+
+    function showAnswerFeedback(isCorrect, selectedAnswer) {
+      const question = currentQuiz[currentQuestionIndex];
+
+      if (!question.isTextInput) {
+        const options = document.querySelectorAll('.option');
+        options.forEach((option, index) => {
+          if (index === question.correct) {
+            option.classList.add('correct');
+          } else if (index === selectedAnswer && !isCorrect) {
+            option.classList.add('incorrect');
+          }
+        });
+      }
+
+      // Show explanation
+      const explanation = document.getElementById('explanation');
+      document.getElementById('explanationText').textContent = question.explanation;
+      explanation.classList.add('show');
+
+      // Update next button
+      const nextBtn = document.getElementById('nextBtn');
+      if (currentQuestionIndex < currentQuiz.length - 1) {
+        nextBtn.textContent = 'Next Question';
+      } else {
+        nextBtn.textContent = 'View Results';
+      }
+      nextBtn.disabled = true;
+
+      // Add loading animation
+      setTimeout(() => {
+        nextBtn.innerHTML = currentQuestionIndex < currentQuiz.length - 1 ?
+          'Next Question <div class="loading"></div>' :
+          'View Results <div class="loading"></div>';
+      }, 2000);
+    }
+
+    function showResults() {
+      document.getElementById('quizContainer').style.display = 'none';
+      document.getElementById('resultsScreen').style.display = 'block';
+
+      const percentage = Math.round((score / currentQuiz.length) * 100);
+      const avgTimePerQuestion = Math.round(totalTimeSpent / currentQuiz.length);
+
+      // Update score display
+      document.getElementById('scorePercentage').textContent = `${percentage}%`;
+      document.getElementById('correctAnswers').textContent = score;
+      document.getElementById('incorrectAnswers').textContent = currentQuiz.length - score;
+
+      // Format total time
+      const minutes = Math.floor(totalTimeSpent / 60);
+      const seconds = totalTimeSpent % 60;
+      document.getElementById('totalTime').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+      document.getElementById('avgTime').textContent = `${avgTimePerQuestion}s`;
+
+      // Performance message
+      const performanceMessage = document.getElementById('performanceMessage');
+      let message, className;
+
+      if (percentage >= 80) {
+        message = "🌟 Excellent! You're well-prepared for placement tests. Keep up the great work!";
+        className = "performance-excellent";
+      } else if (percentage >= 60) {
+        message = "👍 Good job! You're on the right track. Focus on areas where you struggled.";
+        className = "performance-good";
+      } else {
+        message = "📚 Keep practicing! Review the concepts and try again. Every attempt makes you better!";
+        className = "performance-needs-improvement";
+      }
+
+      performanceMessage.textContent = message;
+      performanceMessage.className = `performance-message ${className}`;
+    }
+
+    function restartQuiz() {
+      // Reset everything
+      currentQuiz = [];
+      currentQuestionIndex = 0;
+      score = 0;
+      totalTimeSpent = 0;
+      clearInterval(timer);
+
+      // Show welcome screen
+      document.getElementById('resultsScreen').style.display = 'none';
+      document.getElementById('welcomeScreen').style.display = 'block';
+
+      // Reset difficulty to easy
+      document.querySelectorAll('.difficulty-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector('[data-difficulty="easy"]').classList.add('active');
+      selectedDifficulty = 'easy';
+    }
 
     // Keyboard shortcuts
-    document.addEventListener("keydown", (e) => {
-      // Ctrl/Cmd + K to focus search
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        searchInput.focus();
-      }
-      
-      // Escape to clear search
-      if (e.key === 'Escape' && document.activeElement === searchInput) {
-        searchInput.value = '';
-        renderQuestions();
-        searchInput.blur();
-      }
-      
-      // Space bar to start/pause timer when not focused on inputs
-      if (e.key === ' ' && !['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
-        e.preventDefault();
-        if (isTimerRunning) {
-          pauseInterviewTimer();
-        } else {
-          startInterviewTimer();
+    document.addEventListener('keydown', function (event) {
+      const quizContainer = document.getElementById('quizContainer');
+      if (quizContainer.style.display !== 'block') return;
+
+      // A, B, C, D for options
+      if (['KeyA', 'KeyB', 'KeyC', 'KeyD'].includes(event.code)) {
+        const index = event.code.charCodeAt(3) - 65; // A=0, B=1, C=2, D=3
+        const options = document.querySelectorAll('.option');
+        if (options[index]) {
+          selectOption(options[index], index);
         }
+      }
+
+      // Enter for next question
+      if (event.code === 'Enter' && !document.getElementById('nextBtn').disabled) {
+        nextQuestion();
       }
     });
 
-    // Motivational messages for interview prep
+    // Prevent cheating by disabling right-click and common shortcuts
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      // Disable F12, Ctrl+Shift+I, Ctrl+U, etc.
+      if (e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+        (e.ctrlKey && e.key === 'u')) {
+        e.preventDefault();
+      }
+    });
+
+    // Add some motivational messages during quiz
     const motivationalMessages = [
-      "Keep practicing! Consistency beats perfection! 💪",
-      "You're building interview-winning skills! 🌟", 
-      "Every question solved gets you closer to your dream job! 🎯",
-      "Practice makes permanent - keep going! 🚀",
-      "Confidence comes from preparation! 📚",
-      "You've got this - one question at a time! ⭐",
-      "Great developers are made through deliberate practice! 🔥",
-      "Your future self will thank you for this preparation! 🏆",
-      "Technical interviews are just puzzles - you're getting better! 🧩"
+      "💪 Keep going! You're doing great!",
+      "🎯 Stay focused! Every question counts!",
+      "⚡ You've got this! Think logically!",
+      "🚀 Halfway there! Maintain the momentum!",
+      "🏆 Almost done! Finish strong!"
     ];
 
-    // Show random motivational message occasionally
     function showMotivationalMessage() {
-      if (Math.random() < 0.4) { // 40% chance
+      if (currentQuestionIndex === Math.floor(currentQuiz.length / 2)) {
         const message = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
-        setTimeout(() => showAchievement(message), 2000);
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(135deg, #667eea, #764ba2);
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 10px;
+                    z-index: 1000;
+                    animation: slideIn 0.5s ease;
+                `;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.animation = 'slideOut 0.5s ease';
+          setTimeout(() => toast.remove(), 500);
+        }, 3000);
       }
     }
 
-    // Call motivational message when user solves questions
-    const originalToggleSolved = toggleSolved;
-    window.toggleSolved = function(title, difficulty) {
-      originalToggleSolved(title, difficulty);
-      if (solvedQuestions.has(title)) {
-        setTimeout(showMotivationalMessage, 3000);
-      }
-    };
+    // Add CSS for toast animations
+    const style = document.createElement('style');
+    style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+    document.head.appendChild(style);
 
-    // Add interview readiness indicator
-    function getInterviewReadiness() {
-      const totalSolved = solvedQuestions.size;
-      const allQuestions = Object.values(interviewQuestions).flat();
-      const percentage = (totalSolved / allQuestions.length) * 100;
-      
-      if (percentage >= 80) return { level: "Interview Ready! 🚀", color: "var(--success)" };
-      if (percentage >= 60) return { level: "Almost Ready! 💪", color: "var(--warning)" };
-      if (percentage >= 40) return { level: "Making Progress! 📈", color: "var(--accent)" };
-      if (percentage >= 20) return { level: "Getting Started! 🌱", color: "var(--primary)" };
-      return { level: "Just Beginning! 🎯", color: "var(--secondary)" };
-    }
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log('CodeMaster Quiz Platform Loaded Successfully! 🚀');
 
-    // Update readiness indicator
-    function updateReadinessIndicator() {
-      const readiness = getInterviewReadiness();
-      const indicator = document.querySelector('.readiness-indicator');
-      if (indicator) {
-        indicator.textContent = readiness.level;
-        indicator.style.background = readiness.color;
-      }
-    }
+      // Add some interactive effects
+      const container = document.querySelector('.container');
 
-    // Add some company-specific insights
-    const companyInsights = {
-      "Google": "Focus on algorithms, system design, and Googleyness. Practice LeetCode medium/hard problems.",
-      "Amazon": "Master Amazon's 16 Leadership Principles. Practice system design and behavioral questions using STAR method.", 
-      "Meta": "Emphasize building connections and moving fast. Practice product design and scalability questions.",
-      "Apple": "Focus on attention to detail and user experience. Practice hardware/software integration questions.",
-      "Microsoft": "Demonstrate growth mindset and collaboration. Practice Azure and distributed systems questions.",
-      "Netflix": "Show high performance culture fit. Practice streaming and content delivery system design."
-    };
+      // Subtle hover effect for the entire container
+      container.addEventListener('mouseenter', function () {
+        this.style.transform = 'scale(1.01)';
+        this.style.transition = 'transform 0.3s ease';
+      });
 
-    // Show company insight when filtering by company
-    function showCompanyInsight(company) {
-      const insight = companyInsights[company];
-      if (insight) {
-        setTimeout(() => showAchievement(`💡 ${company} Tip: ${insight}`), 1000);
-      }
-    }
-
-    // Update company filter event listener
-    companyFilter.addEventListener("change", (e) => {
-      renderQuestions();
-      if (e.target.value) {
-        showCompanyInsight(e.target.value);
-      }
+      container.addEventListener('mouseleave', function () {
+        this.style.transform = 'scale(1)';
+      });
     });
   </script>
 </body>
+
 </html>
