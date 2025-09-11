@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 // ✅ Enable CORS for your frontend domain
 // Replace 'https://your-frontend-url.github.io' with your actual frontend URL
 app.use(cors({
-    origin: 'https://priyotosh-27.github.io/CodeMaster/', // or '*' for testing, but be cautious in production
+    origin: 'https://priyotosh-27.github.io/CodeMaster', // or '*' for testing, but be cautious in production
     methods: ['GET', 'POST'],
 }));
 

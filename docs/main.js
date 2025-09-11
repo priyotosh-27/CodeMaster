@@ -40,7 +40,6 @@ async function startApp() {
     }
 }
 
-
 /* ===============================
     Authentication System
 ================================ */
@@ -54,63 +53,10 @@ class AuthSystem {
     }
 
     initializeEventListeners() {
-        // Modal controls
+        // This can remain as is in your original file
         document.getElementById('loginBtn')?.addEventListener('click', () => this.openAuthModal('login'));
         document.getElementById('registerBtn')?.addEventListener('click', () => this.openAuthModal('register'));
-        document.getElementById('closeAuth')?.addEventListener('click', () => this.closeAuthModal());
-        document.getElementById('switchAuth')?.addEventListener('click', () => this.switchAuthMode());
-
-        // Form submission
-        document.getElementById('authForm')?.addEventListener('submit', (e) => this.handleAuth(e));
-
-        // User menu
-        document.getElementById('userMenuBtn')?.addEventListener('click', () => this.toggleUserMenu());
-        document.getElementById('logoutBtn')?.addEventListener('click', () => this.logout());
-
-        // Content access
-        document.querySelectorAll('.test-card, .challenge-card').forEach(card => {
-            card.addEventListener('click', (e) => this.handleProtectedContent(e, card));
-        });
-
-        document.querySelectorAll('.notes-card').forEach(card => {
-            card.addEventListener('click', (e) => this.handleNotesContent(e, card));
-        });
-
-        // Access denied modal
-        document.getElementById('closeAccessDenied')?.addEventListener('click', () => this.closeAccessDeniedModal());
-        document.getElementById('loginFromModal')?.addEventListener('click', () => {
-            this.closeAccessDeniedModal();
-            this.openAuthModal('login');
-        });
-        document.getElementById('registerFromModal')?.addEventListener('click', () => {
-            this.closeAccessDeniedModal();
-            this.openAuthModal('register');
-        });
-
-        // Close modals on background click
-        document.getElementById('authModal')?.addEventListener('click', (e) => {
-            if (e.target === document.getElementById('authModal')) this.closeAuthModal();
-        });
-        document.getElementById('accessDeniedModal')?.addEventListener('click', (e) => {
-            if (e.target === document.getElementById('accessDeniedModal')) this.closeAccessDeniedModal();
-        });
-
-        // Escape key closes modals
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                this.closeAuthModal();
-                this.closeAccessDeniedModal();
-            }
-        });
-
-        // Close user menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('#userMenu')) this.closeUserMenu();
-        });
-
-        // This is now separate from the AuthSystem class
-        initializeThemeToggle();
-        initializeInstructionModal();
+        // ... and so on for all your event listeners
     }
 
     /* ===============================
@@ -118,27 +64,23 @@ class AuthSystem {
     ================================ */
     async handleAuth(e) {
         e.preventDefault();
-
         const mode = document.getElementById('authMode').value;
         const email = document.getElementById('authEmail').value.trim().toLowerCase();
         const password = document.getElementById('authPassword').value;
         const name = document.getElementById('authName').value.trim();
-
         this.setLoading(true);
 
         try {
             if (mode === 'register') {
                 if (!name || name.length < 2) throw new Error("Please enter a valid name");
-
                 const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
                 const user = userCredential.user;
 
-                // ✨ MODIFIED: Create Firestore profile with new detailed structure
+                // ✨ MODIFIED: Create Firestore profile with the complete structure for both progress types
                 await setDoc(doc(this.db, "users", user.uid), {
                     uid: user.uid,
                     name,
                     email: user.email,
-                    streak: 0,
                     savedNotes: [],
                     profile: { theme: "light", bio: "" },
                     createdAt: serverTimestamp(),
@@ -151,24 +93,17 @@ class AuthSystem {
                         general: { attempts: 0, scores: [] }
                     },
                     challengeProgress: {
-                        basic: [],
-                        interview: [],
-                        company: []
+                        basic: { solvedCount: 0, solvedIds: [] },
+                        company: { solvedCount: 0, solvedIds: [] }
                     }
                 });
 
-                // Fetch the newly created doc to have all fields locally
                 const newUserDoc = await getDoc(doc(this.db, "users", user.uid));
                 this.currentUser = { uid: user.uid, ...newUserDoc.data() };
-
-                this.updateUI();
-                this.closeAuthModal();
-                this.showNotification(`Welcome, ${name}! 🎉`, 'success');
 
             } else { // 'login' mode
                 const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
                 const user = userCredential.user;
-
                 const ref = doc(this.db, "users", user.uid);
                 const snap = await getDoc(ref);
 
@@ -179,12 +114,11 @@ class AuthSystem {
                     });
                     this.currentUser = { uid: user.uid, ...snap.data() };
                 } else {
-                    // This is a fallback case if Auth user exists but Firestore doc doesn't
+                    // ✨ MODIFIED: Fallback case with the complete structure
                     await setDoc(ref, {
                         uid: user.uid,
                         name: user.displayName || "User",
                         email: user.email,
-                        streak: 0,
                         savedNotes: [],
                         profile: { theme: "light", bio: "" },
                         createdAt: serverTimestamp(),
@@ -197,19 +131,19 @@ class AuthSystem {
                             general: { attempts: 0, scores: [] }
                         },
                         challengeProgress: {
-                            basic: [],
-                            interview: [],
-                            company: []
+                            basic: { solvedCount: 0, solvedIds: [] },
+                            company: { solvedCount: 0, solvedIds: [] }
                         }
                     });
                     const newUserDoc = await getDoc(ref);
                     this.currentUser = { uid: user.uid, ...newUserDoc.data() };
                 }
-
-                this.updateUI();
-                this.closeAuthModal();
-                this.showNotification(`Welcome back, ${this.currentUser.name}!`, 'success');
             }
+
+            this.updateUI();
+            this.closeAuthModal();
+            this.showNotification(`Welcome, ${this.currentUser.name}!`, 'success');
+
         } catch (error) {
             this.showNotification(error.message, 'error');
         } finally {
@@ -224,6 +158,7 @@ class AuthSystem {
             this.updateUI();
             this.closeUserMenu();
             this.showNotification("You have been logged out", "info");
+            window.location.reload(); // Reload to clear state
         } catch (error) {
             this.showNotification(error.message, "error");
         }
@@ -234,10 +169,10 @@ class AuthSystem {
             if (user) {
                 const ref = doc(this.db, "users", user.uid);
                 const snap = await getDoc(ref);
-
                 if (snap.exists()) {
                     this.currentUser = { uid: user.uid, ...snap.data() };
                 } else {
+                    // This case should be rare, but good to handle
                     this.currentUser = { uid: user.uid, name: user.displayName || "User", email: user.email };
                 }
             } else {
@@ -248,34 +183,24 @@ class AuthSystem {
     }
 
     /* ===============================
-        ✨ NEW & MODIFIED: Progress Tracking Methods
+        Progress Tracking Methods
     ================================ */
 
     /**
      * Records the result of a completed test.
-     * Call this from your test page (e.g., programming-test.html) when a test is finished.
-     * Example: window.authSystem.saveTestResult('programming', 85);
-     * @param {string} testType - The category of the test (e.g., 'programming', 'java').
+     * @param {string} testType - 'programming', 'java', 'dsa', or 'general'.
      * @param {number} score - The user's score on the test.
      */
     async saveTestResult(testType, score) {
-        if (!this.currentUser || !testType || score === undefined) return;
-
-        const numericScore = Number(score);
-        if (isNaN(numericScore)) {
-            console.error("Invalid score provided.");
-            return;
-        }
-
+        if (!this.currentUser) return;
         const ref = doc(this.db, "users", this.currentUser.uid);
         try {
-            // Use dot notation to update nested fields
             await updateDoc(ref, {
                 [`testProgress.${testType}.attempts`]: increment(1),
-                [`testProgress.${testType}.scores`]: arrayUnion(numericScore),
+                [`testProgress.${testType}.scores`]: arrayUnion(Number(score)),
                 updatedAt: serverTimestamp()
             });
-            this.showNotification(`Test result saved! Score: ${numericScore}`, "success");
+            this.showNotification(`Test result saved!`, "success");
         } catch (error) {
             console.error("Error saving test result:", error);
             this.showNotification(`Could not save your test result.`, "error");
@@ -283,20 +208,46 @@ class AuthSystem {
     }
 
     /**
-     * Records a solved coding challenge.
-     * @param {string} category - The category of the challenge (e.g., 'basic', 'interview').
-     * @param {string} challengeId - The unique identifier for the solved challenge.
+     * ✨ MODIFIED METHOD: Records a solved challenge and increments count if it's a new solution.
+     * @param {string} category - 'basic' or 'company'.
+     * @param {string} challengeId - The unique ID of the solved challenge.
      */
-    async saveSolvedChallenge(category, challengeId) {
-        if (!this.currentUser || !category || !challengeId) return;
+    async saveChallengeProgress(category, challengeId) {
+        if (!this.currentUser) {
+            this.showNotification("You must be logged in to save progress.", "error");
+            return;
+        }
+        if (!['basic', 'company'].includes(category) || !challengeId) {
+            console.error("Invalid category or challengeId provided.");
+            return;
+        }
 
         const ref = doc(this.db, "users", this.currentUser.uid);
         try {
-            await updateDoc(ref, {
-                [`challengeProgress.${category}`]: arrayUnion(challengeId),
-                updatedAt: serverTimestamp()
-            });
-            this.showNotification(`Challenge progress saved! ✅`, "success");
+            // First, get the current document to check if the ID already exists
+            const userDoc = await getDoc(ref);
+            if (!userDoc.exists()) {
+                console.error("User document not found.");
+                return;
+            }
+            const userData = userDoc.data();
+            const solvedIds = userData.challengeProgress[category]?.solvedIds || [];
+
+            if (!solvedIds.includes(challengeId)) {
+                // If the ID is not in the array, update both the array and the count
+                await updateDoc(ref, {
+                    [`challengeProgress.${category}.solvedIds`]: arrayUnion(challengeId),
+                    [`challengeProgress.${category}.solvedCount`]: increment(1),
+                    updatedAt: serverTimestamp()
+                });
+                // Manually update local state for immediate UI feedback
+                this.currentUser.challengeProgress[category].solvedIds.push(challengeId);
+                this.currentUser.challengeProgress[category].solvedCount++;
+
+                this.showNotification(`Challenge progress saved! ✅`, "success");
+            } else {
+                this.showNotification(`You've already solved this challenge.`, "info");
+            }
         } catch (error) {
             console.error("Error saving challenge progress:", error);
             this.showNotification("Could not save your progress.", "error");
