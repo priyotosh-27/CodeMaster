@@ -15,28 +15,6 @@
     }
 
     :root {
-      --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      --accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      --success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-      --warning: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
-      --danger: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
-
-      /* Light theme colors */
-      --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --bg-secondary: rgba(255, 255, 255, 0.15);
-      --text-primary: #333;
-      --text-secondary: #6b7280;
-      --text-white: white;
-      --card-bg: rgba(255, 255, 255, 0.95);
-      --border-color: rgba(255, 255, 255, 0.2);
-      --input-bg: rgba(255, 255, 255, 0.1);
-      --shadow-color: rgba(0, 0, 0, 0.1);
-      --solution-bg: #f8fafc;
-      --solution-border: #e2e8f0;
-    }
-
-    [data-theme="dark"] {
       --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
       --bg-secondary: rgba(45, 55, 72, 0.3);
       --text-primary: #e2e8f0;
@@ -163,36 +141,6 @@
       margin-bottom: 50px;
       animation: fadeInUp 1s ease-out;
       position: relative;
-    }
-
-    .theme-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--bg-secondary);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border-color);
-      border-radius: 50px;
-      padding: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .theme-toggle:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px var(--shadow-color);
-    }
-
-    .theme-icon {
-      font-size: 1.2rem;
-      padding: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: white;
-      transition: all 0.3s ease;
     }
 
     .header h1 {
@@ -905,13 +853,6 @@
 
     /* Mobile responsiveness */
     @media (max-width: 768px) {
-      .theme-toggle {
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        z-index: 100;
-      }
-
       .header h1 {
         font-size: 2.5rem;
         margin-top: 60px;
@@ -971,9 +912,6 @@
 
   <div class="container">
     <header class="header">
-      <div class="theme-toggle" onclick="toggleTheme()">
-        <div class="theme-icon">🌙</div>
-      </div>
       <h1>Coding Challenges</h1>
       <p>Master algorithms and data structures with style</p>
     </header>
@@ -991,7 +929,6 @@
         <span class="stat-number" id="progressPercent">0%</span>
         <span class="stat-label">Progress</span>
       </div>
-      <span class="theme-icon">🌙</span>
     </div>
 
     <div class="filters">
@@ -1847,7 +1784,7 @@ def maxSlidingWindow(nums, k):
             dq.popleft()
         
         # Remove indices with smaller values
-        while dq and nums[dq[-1]] <= nums[i]:
+        while dq && nums[dq[-1]] <= nums[i]:
             dq.pop()
         
         dq.append(i)
@@ -2122,30 +2059,6 @@ class MovingAverage:
       setupEventListeners();
     }
 
-    // Toggle theme
-    function toggleTheme() {
-      const body = document.body;
-      const themeIcon = document.querySelector('.theme-icon');
-
-      if (body.getAttribute('data-theme') === 'dark') {
-        body.setAttribute('data-theme', 'light');
-        themeIcon.textContent = '🌙';
-        localStorage.setItem('theme', 'light');
-      } else {
-        body.setAttribute('data-theme', 'dark');
-        themeIcon.textContent = '☀️';
-        localStorage.setItem('theme', 'dark');
-      }
-    }
-
-    // Load saved theme
-    function loadTheme() {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.body.setAttribute('data-theme', savedTheme);
-      const themeIcon = document.querySelector('.theme-icon');
-      themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-    }
-
     // Update statistics
     function updateStats() {
       const totalChallenges = Object.values(challenges).flat().length;
@@ -2324,7 +2237,6 @@ class MovingAverage:
 
     // Initialize when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
-      loadTheme();
       init();
     });
   </script>
