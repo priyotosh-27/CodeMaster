@@ -2109,7 +2109,7 @@ class MovingAverage:
     };
 
     // State management
-    let solvedChallenges = new Set(JSON.parse(localStorage.getItem('solvedChallenges') || '[]'));
+    let solvedChallenges = new Set(JSON.parse(localStorage.getItem('basicSolvedChallenges') || '[]'));
     let currentCategory = 'all';
     let currentDifficulty = '';
     let searchTerm = '';
@@ -2236,8 +2236,7 @@ class MovingAverage:
       } else {
         solvedChallenges.add(title);
       }
-
-      localStorage.setItem('solvedChallenges', JSON.stringify([...solvedChallenges]));
+      localStorage.setItem('basicSolvedChallenges', JSON.stringify([...solvedChallenges]));
       updateStats();
       renderChallenges();
     }

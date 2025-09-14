@@ -1195,7 +1195,7 @@ reversed_string = my_string[::-1]
     };
 
     // State management
-    let solvedChallenges = new Set(JSON.parse(localStorage.getItem('solvedChallenges') || '[]'));
+    let solvedChallenges = new Set(JSON.parse(localStorage.getItem('companySolvedChallenges') || '[]'));
     let currentCategory = 'all';
     let currentDifficulty = '';
     let searchTerm = '';
@@ -1300,7 +1300,7 @@ reversed_string = my_string[::-1]
       } else {
         solvedChallenges.add(title);
       }
-      localStorage.setItem('solvedChallenges', JSON.stringify([...solvedChallenges]));
+      localStorage.setItem('companySolvedChallenges', JSON.stringify([...solvedChallenges]));
       updateStats();
       renderChallenges();
     }
