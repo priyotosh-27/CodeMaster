@@ -781,55 +781,54 @@
   </div>
 
   <script>
-    // --- BEGIN: Normalized Challenges Array ---
-    const challenges = [
-      {
-        id: "two-sum",
-        title: "Two Sum",
-        description: "Find two numbers in an array that add up to a specific target.",
-        difficulty: "Easy",
-        companies: ["Google", "Amazon"],
-        tags: ["Array", "Hash Table"],
-        link: "https://leetcode.com/problems/two-sum/",
-        solution: {
-          approach: "Use a hash map to store numbers you've seen and their indices. For each number, check if `target - current_number` exists in the map. This allows for a single pass.",
-          code: `def twoSum(nums, target):\n    seen = {} # Dictionary: value -> index\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i`,
-          timeComplexity: "O(n)",
-          spaceComplexity: "O(n)"
-        }
-      },
-      {
-        id: "number-of-islands",
-        title: "Number of Islands",
-        description: "Count the number of separate islands in a 2D grid of '1's (land) and '0's (water).",
-        difficulty: "Medium",
-        companies: ["Google", "Amazon", "Microsoft"],
-        tags: ["DFS", "BFS", "Grid"],
-        link: "https://leetcode.com/problems/number-of-islands/",
-        solution: {
-          approach: "Iterate through each cell. If you find a '1' (land), increment the island count and start a Depth-First Search (DFS) from that cell. The DFS will visit all connected land parts and 'sink' them (change '1' to '0') to prevent recounting.",
-          code: `def numIslands(grid):\n    if not grid: return 0\n    rows, cols = len(grid), len(grid[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c >= cols or grid[r][c] == '0':\n            return\n        grid[r][c] = '0' # Sink the island\n        dfs(r + 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == '1':\n                count += 1\n                dfs(r, c)\n    return count`,
-          timeComplexity: "O(m*n)",
-          spaceComplexity: "O(m*n)"
-        }
-      }
-      // ...add other unique challenges here...
-    ];
-    const challengeMap = new Map(challenges.map(c => [c.id, c]));
-    // --- END: Normalized Challenges Array ---
+    // --- BEGIN: Original Per-Company Challenges Object ---
+    const challenges = {
+      google: [
+        {
+          title: "Two Sum",
+          description: "Find two numbers in an array that add up to a specific target.",
+          difficulty: "Easy",
+          tags: ["Google", "Amazon"],
+          link: "https://leetcode.com/problems/two-sum/",
+          solution: {
+            approach: "Use a hash map to store numbers you've seen and their indices. For each number, check if `target - current_number` exists in the map. This allows for a single pass.",
+            code: `def twoSum(nums, target):\n    seen = {} # Dictionary: value -> index\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i`,
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(n)"
+          }
+        },
+        // ...other google challenges...
+      ],
+      amazon: [
+        // ...other amazon challenges...
+      ],
+      // ...other company arrays...
+    };
+    // --- END: Original Per-Company Challenges Object ---
 
     // State management
     let solvedChallenges = new Set();
-    let currentCompany = 'all';
+    let currentCategory = 'all';
     let currentDifficulty = '';
     let searchTerm = '';
 
     function getFilteredChallenges() {
-      let filtered = challenges;
-      if (currentCompany !== 'all') {
-        filtered = filtered.filter(challenge => challenge.companies.includes(currentCompany.charAt(0).toUpperCase() + currentCompany.slice(1)));
+      let allChallenges = (currentCategory === 'all')
+        ? Object.values(challenges).flat()
+        : challenges[currentCategory] || [];
+      // Remove duplicates for 'All Companies' view
+      if (currentCategory === 'all') {
+        const seenTitles = new Set();
+        allChallenges = allChallenges.filter(challenge => {
+          if (seenTitles.has(challenge.title)) {
+            return false;
+          } else {
+            seenTitles.add(challenge.title);
+            return true;
+          }
+        });
       }
-      filtered = filtered.filter(challenge => {
+      return allChallenges.filter(challenge => {
         const matchesDifficulty = !currentDifficulty || challenge.difficulty === currentDifficulty;
         const matchesSearch = !searchTerm ||
           challenge.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -837,28 +836,27 @@
           challenge.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
         return matchesDifficulty && matchesSearch;
       });
-      return filtered;
     }
 
     function createChallengeCard(challenge) {
-      const isSolved = solvedChallenges.has(challenge.id);
+      const isSolved = solvedChallenges.has(challenge.title);
       return `
-    <div class="challenge-card ${isSolved ? 'solved' : ''}" data-id="${challenge.id}">
-      <h3 class="challenge-title">${challenge.title}</h3>
-      <p class="challenge-description">${challenge.description}</p>
-      <div class="challenge-tags">${challenge.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
-      <div class="difficulty ${challenge.difficulty.toLowerCase()}">${challenge.difficulty}</div>
-      <div class="challenge-actions">
-        <div class="checkbox-container" data-action="toggle">
-          <div class="checkbox ${isSolved ? 'checked' : ''}">${isSolved ? '✓' : ''}</div>
-          <span class="checkbox-label">Mark as solved</span>
-        </div>
-        <div>
-          <a href="${challenge.link}" target="_blank" class="solve-btn"><span>🚀</span> Solve</a>
-          <button class="solution-btn" data-action="solution"><span>💡</span> Solution</button>
-        </div>
-      </div>
-    </div>`;
+        <div class="challenge-card ${isSolved ? 'solved' : ''}" onclick="showSolution('${challenge.title}')">
+          <h3 class="challenge-title">${challenge.title}</h3>
+          <p class="challenge-description">${challenge.description}</p>
+          <div class="challenge-tags">${challenge.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+          <div class="difficulty ${challenge.difficulty.toLowerCase()}">${challenge.difficulty}</div>
+          <div class="challenge-actions">
+            <div class="checkbox-container" onclick="event.stopPropagation(); toggleSolved('${challenge.title}')">
+              <div class="checkbox ${isSolved ? 'checked' : ''}">${isSolved ? '✓' : ''}</div>
+              <span class="checkbox-label">Mark as solved</span>
+            </div>
+            <div>
+              <a href="${challenge.link}" target="_blank" class="solve-btn" onclick="event.stopPropagation();"><span>🚀</span> Solve</a>
+              <button class="solution-btn" onclick="event.stopPropagation(); showSolution('${challenge.title}')"><span>💡</span> Solution</button>
+            </div>
+          </div>
+        </div>`;
     }
 
     async function toggleSolved(id) {
@@ -873,28 +871,28 @@
     }
 
     function showSolution(id) {
-      const challenge = challengeMap.get(id);
+      const challenge = Object.values(challenges).flat().find(c => c.title === id);
       if (!challenge) return;
       document.getElementById('solutionTitle').textContent = challenge.title;
       document.getElementById('solutionBody').innerHTML = `
-    <div class="solution-section">
-      <h3>💭 Approach</h3>
-      <p>${challenge.solution.approach}</p>
-    </div>
-    <div class="solution-section">
-      <h3>💻 Implementation</h3>
-      <pre class="solution-code"><code>${challenge.solution.code}</code></pre>
-    </div>
-    <div class="complexity-info">
-      <div class="complexity-item">
-        <div class="complexity-label">Time Complexity</div>
-        <div class="complexity-value">${challenge.solution.timeComplexity}</div>
-      </div>
-      <div class="complexity-item">
-        <div class="complexity-label">Space Complexity</div>
-        <div class="complexity-value">${challenge.solution.spaceComplexity}</div>
-      </div>
-    </div>`;
+        <div class="solution-section">
+          <h3>💭 Approach</h3>
+          <p>${challenge.solution.approach}</p>
+        </div>
+        <div class="solution-section">
+          <h3>💻 Implementation</h3>
+          <pre class="solution-code"><code>${challenge.solution.code}</code></pre>
+        </div>
+        <div class="complexity-info">
+          <div class="complexity-item">
+            <div class="complexity-label">Time Complexity</div>
+            <div class="complexity-value">${challenge.solution.timeComplexity}</div>
+          </div>
+          <div class="complexity-item">
+            <div class="complexity-label">Space Complexity</div>
+            <div class="complexity-value">${challenge.solution.spaceComplexity}</div>
+          </div>
+        </div>`;
       document.getElementById('solutionModal').style.display = 'flex';
     }
 
@@ -1004,28 +1002,7 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeSolution();
       });
-      // Challenge card actions
-      document.getElementById('challengesGrid').addEventListener('click', (e) => {
-        const card = e.target.closest('.challenge-card');
-        if (!card) return;
-        const id = card.getAttribute('data-id');
-        // Checkbox click
-        if (e.target.closest('.checkbox-container')) {
-          e.stopPropagation();
-          toggleSolved(id);
-          return;
-        }
-        // Solution button click
-        if (e.target.closest('.solution-btn')) {
-          e.stopPropagation();
-          showSolution(id);
-          return;
-        }
-        // Card click (show solution)
-        if (e.target.classList.contains('challenge-card')) {
-          showSolution(id);
-        }
-      });
+      // ...existing code for tabs, filters, modal, etc. (remove challenge card event delegation)...
     }
 
     document.addEventListener('DOMContentLoaded', () => {
