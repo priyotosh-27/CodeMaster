@@ -781,435 +781,123 @@
   </div>
 
   <script>
-    const challenges = {
-      google: [
-        {
-          title: "Two Sum",
-          description: "Find two numbers in an array that add up to a specific target.",
-          difficulty: "Easy",
-          tags: ["Google", "Amazon"],
-          link: "https://leetcode.com/problems/two-sum/",
-          solution: {
-            approach: "Use a hash map to store numbers you've seen and their indices. For each number, check if `target - current_number` exists in the map. This allows for a single pass.",
-            code: `def twoSum(nums, target):
-    seen = {} # Dictionary: value -> index
-    for i, num in enumerate(nums):
-        complement = target - num
-        if complement in seen:
-            return [seen[complement], i]
-        seen[num] = i`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(n)"
-          }
-        },
-        {
-          title: "Number of Islands",
-          description: "Count the number of separate islands in a 2D grid of '1's (land) and '0's (water).",
-          difficulty: "Medium",
-          tags: ["Google", "Amazon", "Microsoft"],
-          link: "https://leetcode.com/problems/number-of-islands/",
-          solution: {
-            approach: "Iterate through each cell. If you find a '1' (land), increment the island count and start a Depth-First Search (DFS) from that cell. The DFS will visit all connected land parts and 'sink' them (change '1' to '0') to prevent recounting.",
-            code: `def numIslands(grid):
-    if not grid: return 0
-    rows, cols = len(grid), len(grid[0])
-    count = 0
-    
-    def dfs(r, c):
-        if r < 0 or c < 0 or r >= rows or c >= cols or grid[r][c] == '0':
-            return
-        grid[r][c] = '0' # Sink the island
-        dfs(r + 1, c)
-        dfs(r - 1, c)
-        dfs(r, c + 1)
-        dfs(r, c - 1)
-
-    for r in range(rows):
-        for c in range(cols):
-            if grid[r][c] == '1':
-                count += 1
-                dfs(r, c)
-    return count`,
-            timeComplexity: "O(m*n)",
-            spaceComplexity: "O(m*n)"
-          }
-        },
-        {
-          title: "Merge k Sorted Lists",
-          description: "Merge k sorted linked lists into one sorted linked list.",
-          difficulty: "Hard",
-          tags: ["Google", "Amazon"],
-          link: "https://leetcode.com/problems/merge-k-sorted-lists/",
-          solution: {
-            approach: "Use a Min-Heap to efficiently find the smallest node among all list heads. Push the head of each list into the heap. Repeatedly extract the minimum node from the heap, add it to your result list, and if that node has a `next` element, push it into the heap.",
-            code: `import heapq
-
-def mergeKLists(lists):
-    min_heap = []
-    for i, l in enumerate(lists):
-        if l:
-            heapq.heappush(min_heap, (l.val, i, l))
-            
-    dummy = ListNode()
-    current = dummy
-    
-    while min_heap:
-        val, i, node = heapq.heappop(min_heap)
-        current.next = node
-        current = current.next
-        if node.next:
-            heapq.heappush(min_heap, (node.next.val, i, node.next))
-            
-    return dummy.next`,
-            timeComplexity: "O(N log k)",
-            spaceComplexity: "O(k)"
-          }
+    // --- BEGIN: Normalized Challenges Array ---
+    const challenges = [
+      {
+        id: "two-sum",
+        title: "Two Sum",
+        description: "Find two numbers in an array that add up to a specific target.",
+        difficulty: "Easy",
+        companies: ["Google", "Amazon"],
+        tags: ["Array", "Hash Table"],
+        link: "https://leetcode.com/problems/two-sum/",
+        solution: {
+          approach: "Use a hash map to store numbers you've seen and their indices. For each number, check if `target - current_number` exists in the map. This allows for a single pass.",
+          code: `def twoSum(nums, target):\n    seen = {} # Dictionary: value -> index\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i`,
+          timeComplexity: "O(n)",
+          spaceComplexity: "O(n)"
         }
-      ],
-      amazon: [
-        {
-          title: "Two Sum",
-          description: "Find two numbers in an array that add up to a specific target.",
-          difficulty: "Easy",
-          tags: ["Google", "Amazon"],
-          link: "https://leetcode.com/problems/two-sum/",
-          solution: {
-            approach: "Use a hash map to store numbers you've seen and their indices. For each number, check if `target - current_number` exists in the map. This allows for a single pass.",
-            code: `def twoSum(nums, target):
-    seen = {} # Dictionary: value -> index
-    for i, num in enumerate(nums):
-        complement = target - num
-        if complement in seen:
-            return [seen[complement], i]
-        seen[num] = i`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(n)"
-          }
-        },
-        {
-          title: "Reverse Linked List",
-          description: "Reverse a singly linked list.",
-          difficulty: "Easy",
-          tags: ["Amazon", "Microsoft"],
-          link: "https://leetcode.com/problems/reverse-linked-list/",
-          solution: {
-            approach: "Iterate through the list while keeping track of `previous` and `current` nodes. In each step, reverse the `next` pointer of the `current` node to point to `previous`, and then move both pointers one step forward.",
-            code: `def reverseList(head):
-    prev, curr = None, head
-    while curr:
-        next_temp = curr.next
-        curr.next = prev
-        prev = curr
-        curr = next_temp
-    return prev`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(1)"
-          }
-        },
-        {
-          title: "Best Time to Buy and Sell Stock",
-          description: "Find the maximum profit from buying and selling a stock once.",
-          difficulty: "Easy",
-          tags: ["Amazon", "Microsoft"],
-          link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
-          solution: {
-            approach: "Iterate through the prices, keeping track of the minimum price found so far. At each step, calculate the potential profit if you were to sell on that day and update the maximum profit found.",
-            code: `def maxProfit(prices):
-    min_price = float('inf')
-    max_profit = 0
-    for price in prices:
-        min_price = min(min_price, price)
-        profit = price - min_price
-        max_profit = max(max_profit, profit)
-    return max_profit`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(1)"
-          }
+      },
+      {
+        id: "number-of-islands",
+        title: "Number of Islands",
+        description: "Count the number of separate islands in a 2D grid of '1's (land) and '0's (water).",
+        difficulty: "Medium",
+        companies: ["Google", "Amazon", "Microsoft"],
+        tags: ["DFS", "BFS", "Grid"],
+        link: "https://leetcode.com/problems/number-of-islands/",
+        solution: {
+          approach: "Iterate through each cell. If you find a '1' (land), increment the island count and start a Depth-First Search (DFS) from that cell. The DFS will visit all connected land parts and 'sink' them (change '1' to '0') to prevent recounting.",
+          code: `def numIslands(grid):\n    if not grid: return 0\n    rows, cols = len(grid), len(grid[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c >= cols or grid[r][c] == '0':\n            return\n        grid[r][c] = '0' # Sink the island\n        dfs(r + 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == '1':\n                count += 1\n                dfs(r, c)\n    return count`,
+          timeComplexity: "O(m*n)",
+          spaceComplexity: "O(m*n)"
         }
-      ],
-      microsoft: [
-        {
-          title: "Valid Parentheses",
-          description: "Check if a string of parentheses `()[]{}` is valid.",
-          difficulty: "Easy",
-          tags: ["Microsoft", "Google"],
-          link: "https://leetcode.com/problems/valid-parentheses/",
-          solution: {
-            approach: "Use a stack. When you see an opening bracket, push it onto the stack. When you see a closing bracket, check if the stack is empty or if its top element is the matching opening bracket. If so, pop. Otherwise, it's invalid. A valid string will result in an empty stack at the end.",
-            code: `def isValid(s):
-    stack = []
-    mapping = {")": "(", "}": "{", "]": "["}
-    for char in s:
-        if char in mapping:
-            if not stack or stack.pop() != mapping[char]:
-                return False
-        else:
-            stack.append(char)
-    return not stack`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(n)"
-          }
-        },
-        {
-          title: "Merge Two Sorted Lists",
-          description: "Merge two sorted linked lists into one sorted list.",
-          difficulty: "Easy",
-          tags: ["Microsoft", "Amazon"],
-          link: "https://leetcode.com/problems/merge-two-sorted-lists/",
-          solution: {
-            approach: "Create a dummy node to act as the head of the new list. Use a `tail` pointer to build the new list by comparing the nodes of the two input lists and appending the smaller one.",
-            code: `def mergeTwoLists(list1, list2):
-    dummy = ListNode()
-    tail = dummy
-    while list1 and list2:
-        if list1.val < list2.val:
-            tail.next = list1
-            list1 = list1.next
-        else:
-            tail.next = list2
-            list2 = list2.next
-        tail = tail.next
-    tail.next = list1 or list2
-    return dummy.next`,
-            timeComplexity: "O(n + m)",
-            spaceComplexity: "O(1)"
-          }
-        },
-        {
-          title: "Lowest Common Ancestor of a BST",
-          description: "Find the LCA of two given nodes in a Binary Search Tree.",
-          difficulty: "Easy",
-          tags: ["Microsoft", "Amazon"],
-          link: "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
-          solution: {
-            approach: "Use the BST property. Start at the root. If both nodes are smaller than the current node, the LCA is in the left subtree. If both are larger, it's in the right. Otherwise, the current node is the LCA.",
-            code: `def lowestCommonAncestor(root, p, q):
-    current = root
-    while current:
-        if p.val > current.val and q.val > current.val:
-            current = current.right
-        elif p.val < current.val and q.val < current.val:
-            current = current.left
-        else:
-            return current`,
-            timeComplexity: "O(h)",
-            spaceComplexity: "O(1)"
-          }
-        }
-      ],
-      tcs: [
-        {
-          title: "Reverse a String",
-          description: "Write a function that reverses a string.",
-          difficulty: "Easy",
-          tags: ["TCS", "Wipro"],
-          link: "https://leetcode.com/problems/reverse-string/",
-          solution: {
-            approach: "The simplest way in Python is to use slicing with a step of -1, which creates a reversed copy of the string. Alternatively, you can use two pointers, one at the start and one at the end, and swap characters as they move towards the center.",
-            code: `def reverseString(s_list):
-    # Python's easiest way for a list of characters
-    s_list.reverse()
-
-# For a regular string, slicing is best:
-my_string = "hello"
-reversed_string = my_string[::-1]
-# reversed_string is now "olleh"`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(1) (for in-place list reverse)"
-          }
-        },
-        {
-          title: "Check for Palindrome",
-          description: "Check if a given string is a palindrome.",
-          difficulty: "Easy",
-          tags: ["TCS", "Cognizant"],
-          link: "https://leetcode.com/problems/valid-palindrome/",
-          solution: {
-            approach: "A string is a palindrome if it reads the same forwards and backward. The most straightforward method is to compare the string with its reversed version.",
-            code: `def isPalindrome(s):
-    # First, clean the string: remove non-alphanumeric and convert to lowercase
-    cleaned_s = ''.join(filter(str.isalnum, s)).lower()
-    
-    # Compare the cleaned string with its reverse
-    return cleaned_s == cleaned_s[::-1]
-
-# Example: "A man, a plan, a canal: Panama" -> True`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(n)"
-          }
-        }
-      ],
-      wipro: [
-        {
-          title: "Fibonacci Number",
-          description: "Calculate the N-th Fibonacci number.",
-          difficulty: "Easy",
-          tags: ["Wipro", "TCS"],
-          link: "https://leetcode.com/problems/fibonacci-number/",
-          solution: {
-            approach: "The Fibonacci sequence is defined as F(n) = F(n-1) + F(n-2). We can solve this iteratively by keeping track of the two previous numbers and calculating the current one in a loop, which is more efficient than recursion.",
-            code: `def fib(n):
-    if n <= 1:
-        return n
-    
-    a, b = 0, 1
-    for _ in range(2, n + 1):
-        a, b = b, a + b
-        
-    return b`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(1)"
-          }
-        },
-        {
-          title: "Find Missing Number",
-          description: "Given an array containing n distinct numbers taken from 0, 1, ..., n, find the one that is missing.",
-          difficulty: "Easy",
-          tags: ["Wipro", "Amazon"],
-          link: "https://leetcode.com/problems/missing-number/",
-          solution: {
-            approach: "The sum of numbers from 0 to n can be calculated using the formula `n * (n + 1) / 2`. The missing number is simply this expected sum minus the actual sum of the numbers in the given array.",
-            code: `def missingNumber(nums):
-    n = len(nums)
-    expected_sum = n * (n + 1) // 2
-    actual_sum = sum(nums)
-    
-    return expected_sum - actual_sum`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(1)"
-          }
-        }
-      ],
-      cognizant: [
-        {
-          title: "FizzBuzz",
-          description: "Print numbers from 1 to n. For multiples of 3 print 'Fizz', for 5 print 'Buzz', and for both print 'FizzBuzz'.",
-          difficulty: "Easy",
-          tags: ["Cognizant", "TCS"],
-          link: "https://leetcode.com/problems/fizz-buzz/",
-          solution: {
-            approach: "Loop from 1 to n. Use the modulo operator (%) to check for divisibility. Check for divisibility by 15 first (for 'FizzBuzz'), then by 3 (for 'Fizz'), then by 5 (for 'Buzz'). If none of these conditions are met, print the number itself.",
-            code: `def fizzBuzz(n):
-    result = []
-    for i in range(1, n + 1):
-        if i % 15 == 0:
-            result.append("FizzBuzz")
-        elif i % 3 == 0:
-            result.append("Fizz")
-        elif i % 5 == 0:
-            result.append("Buzz")
-        else:
-            result.append(str(i))
-    return result`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(n)"
-          }
-        },
-        {
-          title: "Move Zeroes",
-          description: "Move all zeroes to the end of an array while maintaining the relative order of non-zero elements.",
-          difficulty: "Easy",
-          tags: ["Cognizant", "Accenture"],
-          link: "https://leetcode.com/problems/move-zeroes/",
-          solution: {
-            approach: "Use a two-pointer approach. One pointer (`write_ptr`) keeps track of the position where the next non-zero element should be placed. Iterate through the array with a second pointer. When you find a non-zero element, place it at the `write_ptr`'s position and increment `write_ptr`. After the first pass, all non-zero elements are at the beginning in order. Fill the rest of the array with zeroes.",
-            code: `def moveZeroes(nums):
-    write_ptr = 0
-    # Move all non-zero elements to the front
-    for read_ptr in range(len(nums)):
-        if nums[read_ptr] != 0:
-            nums[write_ptr] = nums[read_ptr]
-            write_ptr += 1
-            
-    # Fill the remaining space with zeroes
-    for i in range(write_ptr, len(nums)):
-        nums[i] = 0`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(1)"
-          }
-        }
-      ],
-      capgemini: [
-        {
-          title: "Majority Element",
-          description: "Find the element that appears more than n/2 times in an array.",
-          difficulty: "Easy",
-          tags: ["Capgemini", "IBM"],
-          link: "https://leetcode.com/problems/majority-element/",
-          solution: {
-            approach: "Use Boyer-Moore Voting Algorithm. Initialize a `candidate` and a `count`. Iterate through the array. If `count` is 0, set the current element as the new `candidate`. If the current element is the same as the `candidate`, increment `count`; otherwise, decrement it. The `candidate` remaining at the end will be the majority element.",
-            code: `def majorityElement(nums):
-    candidate = None
-    count = 0
-    for num in nums:
-        if count == 0:
-            candidate = num
-        count += (1 if num == candidate else -1)
-    return candidate`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(1)"
-          }
-        }
-      ],
-      ibm: [
-        {
-          title: "Climbing Stairs",
-          description: "Count the number of distinct ways to climb n stairs, taking 1 or 2 steps at a time.",
-          difficulty: "Easy",
-          tags: ["IBM", "DP"],
-          link: "https://leetcode.com/problems/climbing-stairs/",
-          solution: {
-            approach: "This is a classic dynamic programming problem that follows the Fibonacci sequence. The number of ways to reach step `n` is the sum of ways to reach `n-1` and `n-2`. We can solve it iteratively with two variables to save space.",
-            code: `def climbStairs(n):
-    if n <= 2: return n
-    one_step_before, two_steps_before = 2, 1
-    for _ in range(3, n + 1):
-        current_ways = one_step_before + two_steps_before
-        two_steps_before = one_step_before
-        one_step_before = current_ways
-    return one_step_before`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(1)"
-          }
-        }
-      ],
-      accenture: [
-        {
-          title: "Single Number",
-          description: "Find the single element in an array where every other element appears twice.",
-          difficulty: "Easy",
-          tags: ["Accenture", "Wipro"],
-          link: "https://leetcode.com/problems/single-number/",
-          solution: {
-            approach: "Use the XOR bitwise operator. The XOR of a number with itself is 0 (a ^ a = 0), and the XOR of a number with 0 is the number itself (a ^ 0 = a). If you XOR all numbers in the array, the pairs will cancel each other out, leaving only the single, unique number.",
-            code: `def singleNumber(nums):
-    result = 0
-    for num in nums:
-        result ^= num
-    return result`,
-            timeComplexity: "O(n)",
-            spaceComplexity: "O(1)"
-          }
-        }
-      ]
-    };
+      }
+      // ...add other unique challenges here...
+    ];
+    const challengeMap = new Map(challenges.map(c => [c.id, c]));
+    // --- END: Normalized Challenges Array ---
 
     // State management
-    // Firestore integration
     let solvedChallenges = new Set();
-    let currentCategory = 'all';
+    let currentCompany = 'all';
     let currentDifficulty = '';
     let searchTerm = '';
 
-    // Helper to get Firestore and user from main.js
-    function getFirestoreUser() {
-      if (window.authSystem && window.authSystem.currentUser && window.authSystem.db) {
-        return { db: window.authSystem.db, uid: window.authSystem.currentUser.uid };
+    function getFilteredChallenges() {
+      let filtered = challenges;
+      if (currentCompany !== 'all') {
+        filtered = filtered.filter(challenge => challenge.companies.includes(currentCompany.charAt(0).toUpperCase() + currentCompany.slice(1)));
       }
-      return null;
+      filtered = filtered.filter(challenge => {
+        const matchesDifficulty = !currentDifficulty || challenge.difficulty === currentDifficulty;
+        const matchesSearch = !searchTerm ||
+          challenge.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          challenge.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          challenge.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+        return matchesDifficulty && matchesSearch;
+      });
+      return filtered;
     }
 
-    // Load solved challenges from Firestore (category: 'company')
+    function createChallengeCard(challenge) {
+      const isSolved = solvedChallenges.has(challenge.id);
+      return `
+    <div class="challenge-card ${isSolved ? 'solved' : ''}" data-id="${challenge.id}">
+      <h3 class="challenge-title">${challenge.title}</h3>
+      <p class="challenge-description">${challenge.description}</p>
+      <div class="challenge-tags">${challenge.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+      <div class="difficulty ${challenge.difficulty.toLowerCase()}">${challenge.difficulty}</div>
+      <div class="challenge-actions">
+        <div class="checkbox-container" data-action="toggle">
+          <div class="checkbox ${isSolved ? 'checked' : ''}">${isSolved ? '✓' : ''}</div>
+          <span class="checkbox-label">Mark as solved</span>
+        </div>
+        <div>
+          <a href="${challenge.link}" target="_blank" class="solve-btn"><span>🚀</span> Solve</a>
+          <button class="solution-btn" data-action="solution"><span>💡</span> Solution</button>
+        </div>
+      </div>
+    </div>`;
+    }
+
+    async function toggleSolved(id) {
+      if (solvedChallenges.has(id)) {
+        solvedChallenges.delete(id);
+      } else {
+        solvedChallenges.add(id);
+      }
+      await saveSolvedChallenges();
+      updateStats();
+      renderChallenges();
+    }
+
+    function showSolution(id) {
+      const challenge = challengeMap.get(id);
+      if (!challenge) return;
+      document.getElementById('solutionTitle').textContent = challenge.title;
+      document.getElementById('solutionBody').innerHTML = `
+    <div class="solution-section">
+      <h3>💭 Approach</h3>
+      <p>${challenge.solution.approach}</p>
+    </div>
+    <div class="solution-section">
+      <h3>💻 Implementation</h3>
+      <pre class="solution-code"><code>${challenge.solution.code}</code></pre>
+    </div>
+    <div class="complexity-info">
+      <div class="complexity-item">
+        <div class="complexity-label">Time Complexity</div>
+        <div class="complexity-value">${challenge.solution.timeComplexity}</div>
+      </div>
+      <div class="complexity-item">
+        <div class="complexity-label">Space Complexity</div>
+        <div class="complexity-value">${challenge.solution.spaceComplexity}</div>
+      </div>
+    </div>`;
+      document.getElementById('solutionModal').style.display = 'flex';
+    }
+
     async function loadSolvedChallenges() {
       const info = getFirestoreUser();
       if (!info) return;
@@ -1217,19 +905,24 @@ reversed_string = my_string[::-1]
       try {
         const solved = await window.authSystem.getSolvedChallenges('company');
         solvedChallenges = new Set(solved);
-      } catch (e) { }
+      } catch (error) {
+        console.error("Failed to load progress:", error);
+        alert("Sorry, we couldn't load your progress. Please check your connection and try again.");
+      }
       updateStats();
       renderChallenges();
     }
 
-    // Save solved challenges to Firestore (category: 'company')
     async function saveSolvedChallenges() {
       const info = getFirestoreUser();
       if (!info) return;
       const { db, uid } = info;
       try {
         await window.authSystem.updateChallengeList('company', [...solvedChallenges]);
-      } catch (e) { }
+      } catch (error) {
+        console.error("Failed to save progress:", error);
+        alert("Sorry, we couldn't save your progress. Please check your connection and try again.");
+      }
     }
 
     function init() {
@@ -1252,44 +945,16 @@ reversed_string = my_string[::-1]
       const savedTheme = localStorage.getItem('theme') || 'light';
       document.body.setAttribute('data-theme', savedTheme);
       const themeIcon = document.getElementById('themeIcon');
-      if (themeIcon) themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+      if (themeIcon) { themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙'; }
     }
 
     function updateStats() {
-      const totalChallenges = Object.values(challenges).flat().length;
+      const totalChallenges = challenges.length;
       const solvedCount = solvedChallenges.size;
       const progressPercent = totalChallenges > 0 ? Math.round((solvedCount / totalChallenges) * 100) : 0;
       document.getElementById('solvedCount').textContent = solvedCount;
       document.getElementById('totalCount').textContent = totalChallenges;
       document.getElementById('progressPercent').textContent = `${progressPercent}%`;
-    }
-
-    function getFilteredChallenges() {
-      let allChallenges = (currentCategory === 'all')
-        ? Object.values(challenges).flat()
-        : challenges[currentCategory] || [];
-
-      // Remove duplicates for 'All Companies' view
-      if (currentCategory === 'all') {
-        const seenTitles = new Set();
-        allChallenges = allChallenges.filter(challenge => {
-          if (seenTitles.has(challenge.title)) {
-            return false;
-          } else {
-            seenTitles.add(challenge.title);
-            return true;
-          }
-        });
-      }
-
-      return allChallenges.filter(challenge => {
-        const matchesDifficulty = !currentDifficulty || challenge.difficulty === currentDifficulty;
-        const matchesSearch = !searchTerm ||
-          challenge.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          challenge.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          challenge.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-        return matchesDifficulty && matchesSearch;
-      });
     }
 
     function renderChallenges() {
@@ -1307,95 +972,52 @@ reversed_string = my_string[::-1]
       grid.innerHTML = filteredChallenges.map(createChallengeCard).join('');
     }
 
-    function createChallengeCard(challenge) {
-      const isSolved = solvedChallenges.has(challenge.title);
-      return `
-                <div class="challenge-card ${isSolved ? 'solved' : ''}" onclick="showSolution('${challenge.title}')">
-                    <h3 class="challenge-title">${challenge.title}</h3>
-                    <p class="challenge-description">${challenge.description}</p>
-                    <div class="challenge-tags">${challenge.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
-                    <div class="difficulty ${challenge.difficulty.toLowerCase()}">${challenge.difficulty}</div>
-                    <div class="challenge-actions">
-                        <div class="checkbox-container" onclick="event.stopPropagation(); toggleSolved('${challenge.title}')">
-                            <div class="checkbox ${isSolved ? 'checked' : ''}">${isSolved ? '✓' : ''}</div>
-                            <span class="checkbox-label">Mark as solved</span>
-                        </div>
-                        <div>
-                            <a href="${challenge.link}" target="_blank" class="solve-btn" onclick="event.stopPropagation();"><span>🚀</span> Solve</a>
-                            <button class="solution-btn" onclick="event.stopPropagation(); showSolution('${challenge.title}')"><span>💡</span> Solution</button>
-                        </div>
-                    </div>
-                </div>`;
-    }
-
-    async function toggleSolved(title) {
-      if (solvedChallenges.has(title)) {
-        solvedChallenges.delete(title);
-      } else {
-        solvedChallenges.add(title);
-      }
-      await saveSolvedChallenges();
-      updateStats();
-      renderChallenges();
-    }
-
-    function showSolution(title) {
-      const challenge = Object.values(challenges).flat().find(c => c.title === title);
-      if (!challenge) return;
-
-      document.getElementById('solutionTitle').textContent = challenge.title;
-      document.getElementById('solutionBody').innerHTML = `
-                <div class="solution-section">
-                    <h3>💭 Approach</h3>
-                    <p>${challenge.solution.approach}</p>
-                </div>
-                <div class="solution-section">
-                    <h3>💻 Implementation</h3>
-                    <pre class="solution-code"><code>${challenge.solution.code}</code></pre>
-                </div>
-                <div class="complexity-info">
-                    <div class="complexity-item">
-                        <div class="complexity-label">Time Complexity</div>
-                        <div class="complexity-value">${challenge.solution.timeComplexity}</div>
-                    </div>
-                    <div class="complexity-item">
-                        <div class="complexity-label">Space Complexity</div>
-                        <div class="complexity-value">${challenge.solution.spaceComplexity}</div>
-                    </div>
-                </div>`;
-      document.getElementById('solutionModal').style.display = 'flex';
-    }
-
-    function closeSolution() {
-      document.getElementById('solutionModal').style.display = 'none';
-    }
-
     function setupEventListeners() {
+      // Theme toggle
+      document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
+      // Close modal button
+      document.querySelector('.close-btn').addEventListener('click', closeSolution);
+      // Tabs
       document.querySelectorAll('.tab').forEach(tab => {
         tab.addEventListener('click', () => {
           document.querySelector('.tab.active').classList.remove('active');
           tab.classList.add('active');
-          currentCategory = tab.dataset.category;
+          currentCompany = tab.dataset.category;
           renderChallenges();
         });
       });
-
+      // Difficulty filter
       document.getElementById('difficultyFilter').addEventListener('change', (e) => {
         currentDifficulty = e.target.value;
         renderChallenges();
       });
-
+      // Search input
       document.getElementById('searchInput').addEventListener('input', (e) => {
         searchTerm = e.target.value;
         renderChallenges();
       });
-
+      // Solution modal background click
       document.getElementById('solutionModal').addEventListener('click', (e) => {
         if (e.target === e.currentTarget) closeSolution();
       });
-
+      // Escape key closes modal
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeSolution();
+      });
+      // Challenge card actions
+      document.getElementById('challengesGrid').addEventListener('click', (e) => {
+        const card = e.target.closest('.challenge-card');
+        if (!card) return;
+        const id = card.getAttribute('data-id');
+        if (e.target.closest('[data-action="toggle"]')) {
+          e.stopPropagation();
+          toggleSolved(id);
+        } else if (e.target.closest('[data-action="solution"]')) {
+          e.stopPropagation();
+          showSolution(id);
+        } else if (e.target.classList.contains('challenge-card')) {
+          showSolution(id);
+        }
       });
     }
 
