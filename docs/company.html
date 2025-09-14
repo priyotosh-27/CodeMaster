@@ -1,1019 +1,2826 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
+
+
 <head>
+
+   
   <meta charset="UTF-8">
+
+   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Company Coding Questions</title>
-  <style>
+
+    <title>Company Coding Questions</title>
+
+    <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+
+
     * {
+
       margin: 0;
+
       padding: 0;
+
       box-sizing: border-box;
+
     }
+
+
 
     :root {
+
       --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
       --secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+
       --accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+
       --success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+
       --warning: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
+
       --danger: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
 
+
+
       /* Light theme colors */
+
       --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
       --bg-secondary: rgba(255, 255, 255, 0.15);
+
       --text-primary: #333;
+
       --text-secondary: #6b7280;
+
       --text-white: white;
+
       --card-bg: rgba(255, 255, 255, 0.95);
+
       --border-color: rgba(255, 255, 255, 0.2);
+
       --input-bg: rgba(255, 255, 255, 0.1);
+
       --shadow-color: rgba(0, 0, 0, 0.1);
+
       --solution-bg: #f8fafc;
+
       --solution-border: #e2e8f0;
+
     }
+
+
 
     [data-theme="dark"] {
+
       --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+
       --bg-secondary: rgba(45, 55, 72, 0.3);
+
       --text-primary: #e2e8f0;
+
       --text-secondary: #a0aec0;
+
       --text-white: #f7fafc;
+
       --card-bg: rgba(45, 55, 72, 0.9);
+
       --border-color: rgba(255, 255, 255, 0.1);
+
       --input-bg: rgba(45, 55, 72, 0.5);
+
       --shadow-color: rgba(0, 0, 0, 0.3);
+
       --solution-bg: #2d3748;
+
       --solution-border: #4a5568;
+
     }
+
+
 
     body {
+
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
       line-height: 1.6;
+
       color: var(--text-primary);
+
       background: var(--bg-primary);
+
       min-height: 100vh;
+
       position: relative;
+
       overflow-x: hidden;
+
       transition: all 0.3s ease;
+
     }
 
+
+
     /* Animated background particles */
+
     body::before {
+
       content: '';
+
       position: fixed;
+
       top: 0;
+
       left: 0;
+
       width: 100%;
+
       height: 100%;
+
       background-image:
+
         radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+
         radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+
         radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+
       animation: float 20s ease-in-out infinite;
+
       z-index: -1;
+
     }
+
+
 
     @keyframes float {
 
+
+
       0%,
+
       100% {
+
         transform: translateY(0px) rotate(0deg);
+
       }
+
+
 
       33% {
+
         transform: translateY(-20px) rotate(1deg);
+
       }
+
+
 
       66% {
+
         transform: translateY(10px) rotate(-1deg);
+
       }
+
     }
+
+
 
     .container {
+
       max-width: 1200px;
+
       margin: 0 auto;
+
       padding: 20px;
+
       position: relative;
+
       z-index: 1;
+
     }
+
+
 
     .header {
+
       text-align: center;
+
       color: var(--text-white);
+
       margin-bottom: 50px;
+
       animation: fadeInUp 1s ease-out;
+
       position: relative;
+
     }
+
+
 
     .theme-toggle {
+
       position: absolute;
+
       top: 20px;
+
       right: 20px;
+
       background: var(--bg-secondary);
+
       backdrop-filter: blur(20px);
+
       border: 1px solid var(--border-color);
+
       border-radius: 50px;
+
       padding: 8px;
+
       cursor: pointer;
+
       transition: all 0.3s ease;
+
       display: flex;
+
       align-items: center;
+
       gap: 10px;
+
     }
+
+
 
     .theme-toggle:hover {
+
       transform: scale(1.05);
+
       box-shadow: 0 8px 25px var(--shadow-color);
+
     }
+
+
 
     .theme-icon {
+
       font-size: 1.2rem;
+
       padding: 8px;
+
       border-radius: 50%;
+
       background: var(--accent);
+
       color: white;
+
       transition: all 0.3s ease;
+
     }
+
+
 
     .header h1 {
+
       font-size: 4rem;
+
       margin-bottom: 15px;
+
       font-weight: 900;
+
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
       background: linear-gradient(45deg, #fff, #f0f9ff, #e0e7ff);
+
       -webkit-background-clip: text;
+
       -webkit-text-fill-color: transparent;
+
       background-clip: text;
+
       position: relative;
+
     }
+
+
 
     .header h1::after {
+
       content: '';
+
       position: absolute;
+
       bottom: -10px;
+
       left: 50%;
+
       transform: translateX(-50%);
+
       width: 100px;
+
       height: 4px;
+
       background: var(--accent);
+
       border-radius: 2px;
+
       animation: expandWidth 2s ease-out 0.5s both;
+
     }
+
+
 
     @keyframes expandWidth {
+
       from {
+
         width: 0;
+
       }
 
+
+
       to {
+
         width: 100px;
+
       }
+
     }
+
+
 
     .header p {
+
       font-size: 1.3rem;
+
       opacity: 0.9;
+
       font-weight: 400;
+
       margin-top: 20px;
+
     }
+
+
 
     .stats {
+
       background: var(--bg-secondary);
+
       backdrop-filter: blur(20px);
+
       border: 1px solid var(--border-color);
+
       border-radius: 20px;
+
       padding: 30px;
+
       margin-bottom: 40px;
+
       display: flex;
+
       justify-content: center;
+
       gap: 60px;
+
       color: var(--text-white);
+
       box-shadow: 0 8px 32px var(--shadow-color);
+
       animation: slideInUp 1s ease-out 0.3s both;
+
       position: relative;
+
       overflow: hidden;
+
     }
+
+
 
     .stat-item {
+
       text-align: center;
+
       position: relative;
+
       z-index: 2;
+
     }
+
+
 
     .stat-number {
+
       font-size: 2.5rem;
+
       font-weight: 800;
+
       display: block;
+
       background: var(--accent);
+
       -webkit-background-clip: text;
+
       -webkit-text-fill-color: transparent;
+
       background-clip: text;
+
       margin-bottom: 5px;
+
     }
+
+
 
     .stat-label {
+
       font-size: 0.95rem;
+
       opacity: 0.8;
+
       font-weight: 500;
+
       text-transform: uppercase;
+
       letter-spacing: 1px;
+
     }
+
+
 
     .filters {
+
       background: var(--bg-secondary);
+
       backdrop-filter: blur(20px);
+
       border: 1px solid var(--border-color);
+
       border-radius: 20px;
+
       padding: 25px;
+
       margin-bottom: 40px;
+
       display: flex;
+
       gap: 30px;
+
       align-items: center;
+
       flex-wrap: wrap;
+
       box-shadow: 0 8px 32px var(--shadow-color);
+
       animation: slideInUp 1s ease-out 0.6s both;
+
     }
+
+
 
     .filter-group {
+
       display: flex;
+
       flex-direction: column;
+
       gap: 8px;
+
     }
+
+
 
     .filter-label {
+
       color: var(--text-white);
+
       font-weight: 600;
+
       font-size: 0.9rem;
+
       text-transform: uppercase;
+
       letter-spacing: 0.5px;
+
     }
+
+
 
     select,
+
     input {
+
       padding: 12px 16px;
+
       border: 2px solid var(--border-color);
+
       border-radius: 12px;
+
       background: var(--input-bg);
+
       backdrop-filter: blur(10px);
+
       color: var(--text-white);
+
       font-size: 0.95rem;
+
       font-weight: 500;
+
       outline: none;
+
       transition: all 0.3s ease;
+
     }
+
+
 
     select:focus,
+
     input:focus {
+
       border-color: rgba(255, 255, 255, 0.5);
+
       background: rgba(255, 255, 255, 0.2);
+
     }
+
+
 
     select option {
+
       background: var(--card-bg);
+
       color: var(--text-primary);
+
     }
+
+
 
     .tabs {
+
       display: flex;
+
       gap: 10px;
+
       margin-bottom: 40px;
+
       flex-wrap: wrap;
+
       justify-content: center;
+
       animation: slideInUp 1s ease-out 0.9s both;
+
     }
+
+
 
     .tab {
+
       background: var(--bg-secondary);
+
       color: var(--text-white);
+
       border: 2px solid var(--border-color);
+
       padding: 10px 20px;
+
       border-radius: 30px;
+
       cursor: pointer;
+
       font-size: 0.90rem;
+
       font-weight: 600;
+
       transition: all 0.4s ease;
+
       position: relative;
+
       overflow: hidden;
+
     }
+
+
 
     .tab::before {
+
       content: '';
+
       position: absolute;
+
       top: 0;
+
       left: -100%;
+
       width: 100%;
+
       height: 100%;
+
       background: var(--accent);
+
       transition: all 0.4s ease;
+
       z-index: -1;
+
     }
+
+
 
     .tab:hover::before,
+
     .tab.active::before {
+
       left: 0;
+
     }
+
+
 
     .tab:hover,
+
     .tab.active {
+
       border-color: transparent;
+
       transform: translateY(-3px) scale(1.05);
+
       box-shadow: 0 10px 30px var(--shadow-color);
+
     }
+
+
 
     .challenges-grid {
+
       display: grid;
+
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
       gap: 25px;
+
       animation: fadeIn 1s ease-out 1.2s both;
+
     }
+
+
 
     .challenge-card {
+
       background: var(--card-bg);
+
       backdrop-filter: blur(20px);
+
       border: 1px solid var(--border-color);
+
       border-radius: 20px;
+
       padding: 30px;
+
       box-shadow: 0 10px 40px var(--shadow-color);
+
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
       cursor: pointer;
+
       position: relative;
+
       overflow: hidden;
+
       animation: cardSlideUp 0.6s ease-out both;
+
     }
+
+
 
     .challenge-card:hover {
+
       transform: translateY(-10px) scale(1.02);
+
       box-shadow: 0 20px 60px var(--shadow-color);
+
     }
+
+
 
     .challenge-card.solved {
+
       border-left: 5px solid #10b981;
+
     }
+
+
 
     .challenge-card.solved::after {
+
       content: '✓';
+
       position: absolute;
+
       top: 20px;
+
       right: 20px;
+
       width: 30px;
+
       height: 30px;
+
       background: var(--success);
+
       color: white;
+
       border-radius: 50%;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       font-weight: bold;
+
       animation: checkmarkBounce 0.6s ease-out;
+
     }
+
+
 
     @keyframes checkmarkBounce {
+
       0% {
+
         transform: scale(0);
+
       }
+
+
 
       50% {
+
         transform: scale(1.3);
+
       }
+
+
 
       100% {
+
         transform: scale(1);
+
       }
+
     }
+
+
 
     .challenge-title {
+
       font-size: 1.4rem;
+
       font-weight: 700;
+
       margin-bottom: 12px;
+
       color: var(--text-primary);
+
     }
+
+
 
     .challenge-description {
+
       color: var(--text-secondary);
+
       margin-bottom: 20px;
+
       font-size: 1rem;
+
     }
+
+
 
     .challenge-tags {
+
       display: flex;
+
       gap: 8px;
+
       margin-bottom: 20px;
+
       flex-wrap: wrap;
+
     }
+
+
 
     .tag {
+
       background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+
       color: #3730a3;
+
       padding: 6px 12px;
+
       border-radius: 15px;
+
       font-size: 0.8rem;
+
       font-weight: 600;
+
       text-transform: uppercase;
+
     }
+
+
 
     .difficulty {
+
       display: inline-block;
+
       padding: 8px 16px;
+
       border-radius: 20px;
+
       font-size: 0.85rem;
+
       font-weight: 700;
+
       text-transform: uppercase;
+
       letter-spacing: 1px;
+
       margin-bottom: 25px;
+
     }
+
+
 
     .difficulty.easy {
+
       background: var(--success);
+
       color: white;
+
     }
+
+
 
     .difficulty.medium {
+
       background: var(--warning);
+
       color: white;
+
     }
+
+
 
     .difficulty.hard {
+
       background: var(--danger);
+
       color: white;
+
     }
+
+
 
     .challenge-actions {
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       flex-wrap: wrap;
+
       gap: 15px;
+
     }
+
+
 
     .solve-btn,
-    .solution-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
 
     .solution-btn {
-      background: var(--secondary);
+
+      background: var(--primary);
+
+      color: white;
+
+      border: none;
+
+      padding: 12px 20px;
+
+      border-radius: 12px;
+
+      font-weight: 600;
+
+      font-size: 0.9rem;
+
+      cursor: pointer;
+
+      transition: all 0.3s ease;
+
+      text-decoration: none;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
     }
+
+
+
+    .solution-btn {
+
+      background: var(--secondary);
+
+    }
+
+
 
     .solve-btn:hover,
+
     .solution-btn:hover {
+
       transform: translateY(-2px);
+
       box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+
     }
+
+
 
     .checkbox-container {
+
       display: flex;
+
       align-items: center;
+
       gap: 10px;
+
       cursor: pointer;
+
     }
+
+
 
     .checkbox {
+
       width: 24px;
+
       height: 24px;
+
       border: 3px solid #d1d5db;
+
       border-radius: 6px;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       transition: all 0.3s ease;
+
       position: relative;
+
     }
+
+
 
     .checkbox.checked {
+
       border-color: #10b981;
+
       background: var(--success);
+
       color: white;
+
       font-weight: bold;
+
     }
+
+
 
     .checkbox-label {
+
       font-weight: 500;
+
       color: var(--text-secondary);
+
     }
+
+
 
     .solution-modal {
+
       position: fixed;
+
       top: 0;
+
       left: 0;
+
       width: 100%;
+
       height: 100%;
+
       background: rgba(0, 0, 0, 0.8);
+
       backdrop-filter: blur(10px);
+
       z-index: 1000;
+
       display: none;
+
       align-items: center;
+
       justify-content: center;
+
       padding: 20px;
+
     }
+
+
 
     .solution-content {
+
       background: var(--card-bg);
+
       border-radius: 20px;
+
       padding: 30px;
+
       max-width: 800px;
+
       width: 100%;
+
       max-height: 90vh;
+
       overflow-y: auto;
+
       position: relative;
+
     }
+
+
 
     .solution-header {
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       margin-bottom: 25px;
+
       border-bottom: 2px solid var(--solution-border);
+
       padding-bottom: 15px;
+
     }
+
+
 
     .solution-title {
+
       font-size: 1.5rem;
+
       font-weight: 700;
+
       color: var(--text-primary);
+
     }
+
+
 
     .close-btn {
+
       background: var(--danger);
+
       color: white;
+
       border: none;
+
       width: 35px;
+
       height: 35px;
+
       border-radius: 50%;
+
       cursor: pointer;
+
       font-size: 1.2rem;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       transition: all 0.3s ease;
+
     }
+
+
 
     .close-btn:hover {
+
       transform: rotate(90deg) scale(1.1);
+
     }
+
+
 
     .solution-section h3 {
+
       color: var(--text-primary);
+
       font-size: 1.2rem;
+
       margin-bottom: 10px;
+
     }
+
+
 
     .solution-code {
+
       background: var(--solution-bg);
+
       border: 1px solid var(--solution-border);
+
       border-radius: 10px;
+
       padding: 20px;
+
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+
       font-size: 0.9rem;
+
       color: var(--text-primary);
+
       white-space: pre-wrap;
+
       overflow-x: auto;
+
     }
+
+
 
     .complexity-info {
+
       display: grid;
+
       grid-template-columns: 1fr 1fr;
+
       gap: 15px;
+
       margin-top: 25px;
+
     }
+
+
 
     .complexity-item {
+
       background: var(--solution-bg);
+
       border: 1px solid var(--solution-border);
+
       border-radius: 10px;
+
       padding: 15px;
+
       text-align: center;
+
     }
+
+
 
     .complexity-label {
+
       font-weight: 600;
+
       color: var(--text-primary);
+
     }
+
+
 
     .complexity-value {
+
       font-family: 'Monaco', monospace;
+
       color: var(--text-secondary);
+
     }
+
+
 
     .empty-state {
+
       display: none;
+
       text-align: center;
+
       padding: 80px 20px;
+
       color: var(--text-white);
+
     }
+
+
 
     .empty-icon {
+
       font-size: 5rem;
+
       margin-bottom: 25px;
+
     }
+
+
 
     .empty-text {
+
       font-size: 1.3rem;
+
     }
+
+
 
     @keyframes cardSlideUp {
+
       from {
+
         opacity: 0;
+
         transform: translateY(50px) scale(0.9);
+
       }
 
+
+
       to {
+
         opacity: 1;
+
         transform: translateY(0) scale(1);
+
       }
+
     }
+
+
 
     @keyframes fadeInUp {
+
       from {
+
         opacity: 0;
+
         transform: translateY(30px);
+
       }
 
+
+
       to {
+
         opacity: 1;
+
         transform: translateY(0);
+
       }
+
     }
+
+
 
     @keyframes slideInUp {
+
       from {
+
         opacity: 0;
+
         transform: translateY(50px);
+
       }
 
+
+
       to {
+
         opacity: 1;
+
         transform: translateY(0);
+
       }
+
     }
+
+
 
     @keyframes fadeIn {
+
       from {
+
         opacity: 0;
+
       }
+
+
 
       to {
+
         opacity: 1;
+
       }
+
     }
+
+
 
     /* Responsive design */
+
     @media (max-width: 768px) {
+
       .theme-toggle {
+
         position: fixed;
+
         top: 15px;
+
         right: 15px;
+
         z-index: 100;
+
       }
+
+
 
       .header h1 {
+
         font-size: 2.5rem;
+
         margin-top: 60px;
+
       }
+
+
 
       .stats,
-      .filters {
-        flex-direction: column;
-        gap: 30px;
-      }
 
       .filters {
-        align-items: stretch;
+
+        flex-direction: column;
+
+        gap: 30px;
+
       }
+
+
+
+      .filters {
+
+        align-items: stretch;
+
+      }
+
+
 
       .challenges-grid {
+
         grid-template-columns: 1fr;
+
       }
+
     }
   </style>
+
 </head>
 
+
+
 <body data-theme="light">
-  <div class="floating-shapes">
-    <div class="shape"></div>
-    <div class="shape"></div>
-    <div class="shape"></div>
-  </div>
 
-  <div class="container">
-    <header class="header">
-      <div class="theme-toggle" onclick="toggleTheme()">
-        <span class="theme-icon" id="themeIcon">🌙</span>
-      </div>
-      <h1>Company Coding Questions</h1>
-      <p>Master interview problems from top tech companies</p>
-    </header>
+    <div class="floating-shapes">
 
-    <div class="stats">
-      <div class="stat-item">
-        <span class="stat-number" id="solvedCount">0</span>
-        <span class="stat-label">Solved</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" id="totalCount">0</span>
-        <span class="stat-label">Total</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" id="progressPercent">0%</span>
-        <span class="stat-label">Progress</span>
-      </div>
-    </div>
+        <div class="shape"></div>
 
-    <div class="filters">
-      <div class="filter-group">
-        <label class="filter-label">Difficulty</label>
-        <select id="difficultyFilter">
-          <option value="">All Difficulties</option>
-          <option value="Easy">Easy</option>
-          <option value="Medium">Medium</option>
-          <option value="Hard">Hard</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <label class="filter-label">Search</label>
-        <input type="text" id="searchInput" placeholder="Search questions...">
-      </div>
-    </div>
+        <div class="shape"></div>
 
-    <div class="tabs">
-      <button class="tab active" data-category="all">All Companies</button>
-      <button class="tab" data-category="google">Google</button>
-      <button class="tab" data-category="amazon">Amazon</button>
-      <button class="tab" data-category="microsoft">Microsoft</button>
-      <button class="tab" data-category="tcs">TCS</button>
-      <button class="tab" data-category="wipro">Wipro</button>
-      <button class="tab" data-category="cognizant">Cognizant</button>
-      <button class="tab" data-category="capgemini">Capgemini</button>
-      <button class="tab" data-category="ibm">IBM</button>
-      <button class="tab" data-category="accenture">Accenture</button>
-    </div>
+        <div class="shape"></div>
 
-    <div id="challengesGrid" class="challenges-grid"></div>
-    <div id="emptyState" class="empty-state">
-      <div class="empty-icon">🔍</div>
-      <div class="empty-text">No challenges found</div>
-    </div>
-  </div>
+      </div>
 
-  <div id="solutionModal" class="solution-modal">
-    <div class="solution-content">
-      <div class="solution-header">
-        <h2 class="solution-title" id="solutionTitle"></h2>
-        <button class="close-btn" onclick="closeSolution()">×</button>
-      </div>
-      <div id="solutionBody"></div>
-    </div>
-  </div>
 
+
+    <div class="container">
+
+        <header class="header">
+
+            <div class="theme-toggle" onclick="toggleTheme()">
+
+                <span class="theme-icon" id="themeIcon">🌙</span>
+
+              </div>
+
+            <h1>Company Coding Questions</h1>
+
+            <p>Master interview problems from top tech companies</p>
+
+          </header>
+
+
+
+        <div class="stats">
+
+            <div class="stat-item">
+
+                <span class="stat-number" id="solvedCount">0</span>
+
+                <span class="stat-label">Solved</span>
+
+              </div>
+
+            <div class="stat-item">
+
+                <span class="stat-number" id="totalCount">0</span>
+
+                <span class="stat-label">Total</span>
+
+              </div>
+
+            <div class="stat-item">
+
+                <span class="stat-number" id="progressPercent">0%</span>
+
+                <span class="stat-label">Progress</span>
+
+              </div>
+
+          </div>
+
+
+
+        <div class="filters">
+
+            <div class="filter-group">
+
+                <label class="filter-label">Difficulty</label>
+
+                <select id="difficultyFilter">
+
+                    <option value="">All Difficulties</option>
+
+                    <option value="Easy">Easy</option>
+
+                    <option value="Medium">Medium</option>
+
+                    <option value="Hard">Hard</option>
+
+                  </select>
+
+              </div>
+
+            <div class="filter-group">
+
+                <label class="filter-label">Search</label>
+
+                <input type="text" id="searchInput" placeholder="Search questions...">
+
+              </div>
+
+          </div>
+
+
+
+        <div class="tabs">
+
+            <button class="tab active" data-category="all">All Companies</button>
+
+            <button class="tab" data-category="google">Google</button>
+
+            <button class="tab" data-category="amazon">Amazon</button>
+
+            <button class="tab" data-category="microsoft">Microsoft</button>
+
+            <button class="tab" data-category="tcs">TCS</button>
+
+            <button class="tab" data-category="wipro">Wipro</button>
+
+            <button class="tab" data-category="cognizant">Cognizant</button>
+
+            <button class="tab" data-category="capgemini">Capgemini</button>
+
+            <button class="tab" data-category="ibm">IBM</button>
+
+            <button class="tab" data-category="accenture">Accenture</button>
+
+          </div>
+
+
+
+        <div id="challengesGrid" class="challenges-grid"></div>
+
+        <div id="emptyState" class="empty-state">
+
+            <div class="empty-icon">🔍</div>
+
+            <div class="empty-text">No challenges found</div>
+
+          </div>
+
+      </div>
+
+
+
+    <div id="solutionModal" class="solution-modal">
+
+        <div class="solution-content">
+
+            <div class="solution-header">
+
+                <h2 class="solution-title" id="solutionTitle"></h2>
+
+                <button class="close-btn" onclick="closeSolution()">×</button>
+
+              </div>
+
+            <div id="solutionBody"></div>
+
+          </div>
+
+      </div>
+
+
+
+   
   <script>
-    // --- BEGIN: Original Per-Company Challenges Object ---
+
     const challenges = {
+
       google: [
+
         {
+
           title: "Two Sum",
+
           description: "Find two numbers in an array that add up to a specific target.",
+
           difficulty: "Easy",
+
           tags: ["Google", "Amazon"],
+
           link: "https://leetcode.com/problems/two-sum/",
+
           solution: {
+
             approach: "Use a hash map to store numbers you've seen and their indices. For each number, check if `target - current_number` exists in the map. This allows for a single pass.",
-            code: `def twoSum(nums, target):\n    seen = {} # Dictionary: value -> index\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i`,
+
+            code: `def twoSum(nums, target):
+
+    seen = {} # Dictionary: value -> index
+
+    for i, num in enumerate(nums):
+
+        complement = target - num
+
+        if complement in seen:
+
+            return [seen[complement], i]
+
+        seen[num] = i`,
+
             timeComplexity: "O(n)",
+
             spaceComplexity: "O(n)"
+
           }
+
         },
-        // ...other google challenges...
+
+        {
+
+          title: "Number of Islands",
+
+          description: "Count the number of separate islands in a 2D grid of '1's (land) and '0's (water).",
+
+          difficulty: "Medium",
+
+          tags: ["Google", "Amazon", "Microsoft"],
+
+          link: "https://leetcode.com/problems/number-of-islands/",
+
+          solution: {
+
+            approach: "Iterate through each cell. If you find a '1' (land), increment the island count and start a Depth-First Search (DFS) from that cell. The DFS will visit all connected land parts and 'sink' them (change '1' to '0') to prevent recounting.",
+
+            code: `def numIslands(grid):
+
+    if not grid: return 0
+
+    rows, cols = len(grid), len(grid[0])
+
+    count = 0
+
+   
+
+    def dfs(r, c):
+
+        if r < 0 or c < 0 or r >= rows or c >= cols or grid[r][c] == '0':
+
+            return
+
+        grid[r][c] = '0' # Sink the island
+
+        dfs(r + 1, c)
+
+        dfs(r - 1, c)
+
+        dfs(r, c + 1)
+
+        dfs(r, c - 1)
+
+
+
+    for r in range(rows):
+
+        for c in range(cols):
+
+            if grid[r][c] == '1':
+
+                count += 1
+
+                dfs(r, c)
+
+    return count`,
+
+            timeComplexity: "O(m*n)",
+
+            spaceComplexity: "O(m*n)"
+
+          }
+
+        },
+
+        {
+
+          title: "Merge k Sorted Lists",
+
+          description: "Merge k sorted linked lists into one sorted linked list.",
+
+          difficulty: "Hard",
+
+          tags: ["Google", "Amazon"],
+
+          link: "https://leetcode.com/problems/merge-k-sorted-lists/",
+
+          solution: {
+
+            approach: "Use a Min-Heap to efficiently find the smallest node among all list heads. Push the head of each list into the heap. Repeatedly extract the minimum node from the heap, add it to your result list, and if that node has a `next` element, push it into the heap.",
+
+            code: `import heapq
+
+
+
+def mergeKLists(lists):
+
+    min_heap = []
+
+    for i, l in enumerate(lists):
+
+        if l:
+
+            heapq.heappush(min_heap, (l.val, i, l))
+
+           
+
+    dummy = ListNode()
+
+    current = dummy
+
+   
+
+    while min_heap:
+
+        val, i, node = heapq.heappop(min_heap)
+
+        current.next = node
+
+        current = current.next
+
+        if node.next:
+
+            heapq.heappush(min_heap, (node.next.val, i, node.next))
+
+           
+
+    return dummy.next`,
+
+            timeComplexity: "O(N log k)",
+
+            spaceComplexity: "O(k)"
+
+          }
+
+        }
+
       ],
+
       amazon: [
-        // ...other amazon challenges...
+
+        {
+
+          title: "Two Sum",
+
+          description: "Find two numbers in an array that add up to a specific target.",
+
+          difficulty: "Easy",
+
+          tags: ["Google", "Amazon"],
+
+          link: "https://leetcode.com/problems/two-sum/",
+
+          solution: {
+
+            approach: "Use a hash map to store numbers you've seen and their indices. For each number, check if `target - current_number` exists in the map. This allows for a single pass.",
+
+            code: `def twoSum(nums, target):
+
+    seen = {} # Dictionary: value -> index
+
+    for i, num in enumerate(nums):
+
+        complement = target - num
+
+        if complement in seen:
+
+            return [seen[complement], i]
+
+        seen[num] = i`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(n)"
+
+          }
+
+        },
+
+        {
+
+          title: "Reverse Linked List",
+
+          description: "Reverse a singly linked list.",
+
+          difficulty: "Easy",
+
+          tags: ["Amazon", "Microsoft"],
+
+          link: "https://leetcode.com/problems/reverse-linked-list/",
+
+          solution: {
+
+            approach: "Iterate through the list while keeping track of `previous` and `current` nodes. In each step, reverse the `next` pointer of the `current` node to point to `previous`, and then move both pointers one step forward.",
+
+            code: `def reverseList(head):
+
+    prev, curr = None, head
+
+    while curr:
+
+        next_temp = curr.next
+
+        curr.next = prev
+
+        prev = curr
+
+        curr = next_temp
+
+    return prev`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(1)"
+
+          }
+
+        },
+
+        {
+
+          title: "Best Time to Buy and Sell Stock",
+
+          description: "Find the maximum profit from buying and selling a stock once.",
+
+          difficulty: "Easy",
+
+          tags: ["Amazon", "Microsoft"],
+
+          link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+
+          solution: {
+
+            approach: "Iterate through the prices, keeping track of the minimum price found so far. At each step, calculate the potential profit if you were to sell on that day and update the maximum profit found.",
+
+            code: `def maxProfit(prices):
+
+    min_price = float('inf')
+
+    max_profit = 0
+
+    for price in prices:
+
+        min_price = min(min_price, price)
+
+        profit = price - min_price
+
+        max_profit = max(max_profit, profit)
+
+    return max_profit`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(1)"
+
+          }
+
+        }
+
       ],
-      // ...other company arrays...
+
+      microsoft: [
+
+        {
+
+          title: "Valid Parentheses",
+
+          description: "Check if a string of parentheses `()[]{}` is valid.",
+
+          difficulty: "Easy",
+
+          tags: ["Microsoft", "Google"],
+
+          link: "https://leetcode.com/problems/valid-parentheses/",
+
+          solution: {
+
+            approach: "Use a stack. When you see an opening bracket, push it onto the stack. When you see a closing bracket, check if the stack is empty or if its top element is the matching opening bracket. If so, pop. Otherwise, it's invalid. A valid string will result in an empty stack at the end.",
+
+            code: `def isValid(s):
+
+    stack = []
+
+    mapping = {")": "(", "}": "{", "]": "["}
+
+    for char in s:
+
+        if char in mapping:
+
+            if not stack or stack.pop() != mapping[char]:
+
+                return False
+
+        else:
+
+            stack.append(char)
+
+    return not stack`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(n)"
+
+          }
+
+        },
+
+        {
+
+          title: "Merge Two Sorted Lists",
+
+          description: "Merge two sorted linked lists into one sorted list.",
+
+          difficulty: "Easy",
+
+          tags: ["Microsoft", "Amazon"],
+
+          link: "https://leetcode.com/problems/merge-two-sorted-lists/",
+
+          solution: {
+
+            approach: "Create a dummy node to act as the head of the new list. Use a `tail` pointer to build the new list by comparing the nodes of the two input lists and appending the smaller one.",
+
+            code: `def mergeTwoLists(list1, list2):
+
+    dummy = ListNode()
+
+    tail = dummy
+
+    while list1 and list2:
+
+        if list1.val < list2.val:
+
+            tail.next = list1
+
+            list1 = list1.next
+
+        else:
+
+            tail.next = list2
+
+            list2 = list2.next
+
+        tail = tail.next
+
+    tail.next = list1 or list2
+
+    return dummy.next`,
+
+            timeComplexity: "O(n + m)",
+
+            spaceComplexity: "O(1)"
+
+          }
+
+        },
+
+        {
+
+          title: "Lowest Common Ancestor of a BST",
+
+          description: "Find the LCA of two given nodes in a Binary Search Tree.",
+
+          difficulty: "Easy",
+
+          tags: ["Microsoft", "Amazon"],
+
+          link: "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+
+          solution: {
+
+            approach: "Use the BST property. Start at the root. If both nodes are smaller than the current node, the LCA is in the left subtree. If both are larger, it's in the right. Otherwise, the current node is the LCA.",
+
+            code: `def lowestCommonAncestor(root, p, q):
+
+    current = root
+
+    while current:
+
+        if p.val > current.val and q.val > current.val:
+
+            current = current.right
+
+        elif p.val < current.val and q.val < current.val:
+
+            current = current.left
+
+        else:
+
+            return current`,
+
+            timeComplexity: "O(h)",
+
+            spaceComplexity: "O(1)"
+
+          }
+
+        }
+
+      ],
+
+      tcs: [
+
+        {
+
+          title: "Reverse a String",
+
+          description: "Write a function that reverses a string.",
+
+          difficulty: "Easy",
+
+          tags: ["TCS", "Wipro"],
+
+          link: "https://leetcode.com/problems/reverse-string/",
+
+          solution: {
+
+            approach: "The simplest way in Python is to use slicing with a step of -1, which creates a reversed copy of the string. Alternatively, you can use two pointers, one at the start and one at the end, and swap characters as they move towards the center.",
+
+            code: `def reverseString(s_list):
+
+    # Python's easiest way for a list of characters
+
+    s_list.reverse()
+
+
+
+# For a regular string, slicing is best:
+
+my_string = "hello"
+
+reversed_string = my_string[::-1]
+
+# reversed_string is now "olleh"`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(1) (for in-place list reverse)"
+
+          }
+
+        },
+
+        {
+
+          title: "Check for Palindrome",
+
+          description: "Check if a given string is a palindrome.",
+
+          difficulty: "Easy",
+
+          tags: ["TCS", "Cognizant"],
+
+          link: "https://leetcode.com/problems/valid-palindrome/",
+
+          solution: {
+
+            approach: "A string is a palindrome if it reads the same forwards and backward. The most straightforward method is to compare the string with its reversed version.",
+
+            code: `def isPalindrome(s):
+
+    # First, clean the string: remove non-alphanumeric and convert to lowercase
+
+    cleaned_s = ''.join(filter(str.isalnum, s)).lower()
+
+   
+
+    # Compare the cleaned string with its reverse
+
+    return cleaned_s == cleaned_s[::-1]
+
+
+
+# Example: "A man, a plan, a canal: Panama" -> True`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(n)"
+
+          }
+
+        }
+
+      ],
+
+      wipro: [
+
+        {
+
+          title: "Fibonacci Number",
+
+          description: "Calculate the N-th Fibonacci number.",
+
+          difficulty: "Easy",
+
+          tags: ["Wipro", "TCS"],
+
+          link: "https://leetcode.com/problems/fibonacci-number/",
+
+          solution: {
+
+            approach: "The Fibonacci sequence is defined as F(n) = F(n-1) + F(n-2). We can solve this iteratively by keeping track of the two previous numbers and calculating the current one in a loop, which is more efficient than recursion.",
+
+            code: `def fib(n):
+
+    if n <= 1:
+
+        return n
+
+   
+
+    a, b = 0, 1
+
+    for _ in range(2, n + 1):
+
+        a, b = b, a + b
+
+       
+
+    return b`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(1)"
+
+          }
+
+        },
+
+        {
+
+          title: "Find Missing Number",
+
+          description: "Given an array containing n distinct numbers taken from 0, 1, ..., n, find the one that is missing.",
+
+          difficulty: "Easy",
+
+          tags: ["Wipro", "Amazon"],
+
+          link: "https://leetcode.com/problems/missing-number/",
+
+          solution: {
+
+            approach: "The sum of numbers from 0 to n can be calculated using the formula `n * (n + 1) / 2`. The missing number is simply this expected sum minus the actual sum of the numbers in the given array.",
+
+            code: `def missingNumber(nums):
+
+    n = len(nums)
+
+    expected_sum = n * (n + 1) // 2
+
+    actual_sum = sum(nums)
+
+   
+
+    return expected_sum - actual_sum`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(1)"
+
+          }
+
+        }
+
+      ],
+
+      cognizant: [
+
+        {
+
+          title: "FizzBuzz",
+
+          description: "Print numbers from 1 to n. For multiples of 3 print 'Fizz', for 5 print 'Buzz', and for both print 'FizzBuzz'.",
+
+          difficulty: "Easy",
+
+          tags: ["Cognizant", "TCS"],
+
+          link: "https://leetcode.com/problems/fizz-buzz/",
+
+          solution: {
+
+            approach: "Loop from 1 to n. Use the modulo operator (%) to check for divisibility. Check for divisibility by 15 first (for 'FizzBuzz'), then by 3 (for 'Fizz'), then by 5 (for 'Buzz'). If none of these conditions are met, print the number itself.",
+
+            code: `def fizzBuzz(n):
+
+    result = []
+
+    for i in range(1, n + 1):
+
+        if i % 15 == 0:
+
+            result.append("FizzBuzz")
+
+        elif i % 3 == 0:
+
+            result.append("Fizz")
+
+        elif i % 5 == 0:
+
+            result.append("Buzz")
+
+        else:
+
+            result.append(str(i))
+
+    return result`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(n)"
+
+          }
+
+        },
+
+        {
+
+          title: "Move Zeroes",
+
+          description: "Move all zeroes to the end of an array while maintaining the relative order of non-zero elements.",
+
+          difficulty: "Easy",
+
+          tags: ["Cognizant", "Accenture"],
+
+          link: "https://leetcode.com/problems/move-zeroes/",
+
+          solution: {
+
+            approach: "Use a two-pointer approach. One pointer (`write_ptr`) keeps track of the position where the next non-zero element should be placed. Iterate through the array with a second pointer. When you find a non-zero element, place it at the `write_ptr`'s position and increment `write_ptr`. After the first pass, all non-zero elements are at the beginning in order. Fill the rest of the array with zeroes.",
+
+            code: `def moveZeroes(nums):
+
+    write_ptr = 0
+
+    # Move all non-zero elements to the front
+
+    for read_ptr in range(len(nums)):
+
+        if nums[read_ptr] != 0:
+
+            nums[write_ptr] = nums[read_ptr]
+
+            write_ptr += 1
+
+           
+
+    # Fill the remaining space with zeroes
+
+    for i in range(write_ptr, len(nums)):
+
+        nums[i] = 0`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(1)"
+
+          }
+
+        }
+
+      ],
+
+      capgemini: [
+
+        {
+
+          title: "Majority Element",
+
+          description: "Find the element that appears more than n/2 times in an array.",
+
+          difficulty: "Easy",
+
+          tags: ["Capgemini", "IBM"],
+
+          link: "https://leetcode.com/problems/majority-element/",
+
+          solution: {
+
+            approach: "Use Boyer-Moore Voting Algorithm. Initialize a `candidate` and a `count`. Iterate through the array. If `count` is 0, set the current element as the new `candidate`. If the current element is the same as the `candidate`, increment `count`; otherwise, decrement it. The `candidate` remaining at the end will be the majority element.",
+
+            code: `def majorityElement(nums):
+
+    candidate = None
+
+    count = 0
+
+    for num in nums:
+
+        if count == 0:
+
+            candidate = num
+
+        count += (1 if num == candidate else -1)
+
+    return candidate`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(1)"
+
+          }
+
+        }
+
+      ],
+
+      ibm: [
+
+        {
+
+          title: "Climbing Stairs",
+
+          description: "Count the number of distinct ways to climb n stairs, taking 1 or 2 steps at a time.",
+
+          difficulty: "Easy",
+
+          tags: ["IBM", "DP"],
+
+          link: "https://leetcode.com/problems/climbing-stairs/",
+
+          solution: {
+
+            approach: "This is a classic dynamic programming problem that follows the Fibonacci sequence. The number of ways to reach step `n` is the sum of ways to reach `n-1` and `n-2`. We can solve it iteratively with two variables to save space.",
+
+            code: `def climbStairs(n):
+
+    if n <= 2: return n
+
+    one_step_before, two_steps_before = 2, 1
+
+    for _ in range(3, n + 1):
+
+        current_ways = one_step_before + two_steps_before
+
+        two_steps_before = one_step_before
+
+        one_step_before = current_ways
+
+    return one_step_before`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(1)"
+
+          }
+
+        }
+
+      ],
+
+      accenture: [
+
+        {
+
+          title: "Single Number",
+
+          description: "Find the single element in an array where every other element appears twice.",
+
+          difficulty: "Easy",
+
+          tags: ["Accenture", "Wipro"],
+
+          link: "https://leetcode.com/problems/single-number/",
+
+          solution: {
+
+            approach: "Use the XOR bitwise operator. The XOR of a number with itself is 0 (a ^ a = 0), and the XOR of a number with 0 is the number itself (a ^ 0 = a). If you XOR all numbers in the array, the pairs will cancel each other out, leaving only the single, unique number.",
+
+            code: `def singleNumber(nums):
+
+    result = 0
+
+    for num in nums:
+
+        result ^= num
+
+    return result`,
+
+            timeComplexity: "O(n)",
+
+            spaceComplexity: "O(1)"
+
+          }
+
+        }
+
+      ]
+
     };
-    // --- END: Original Per-Company Challenges Object ---
+
+
 
     // State management
+
+    // Firestore integration
+
     let solvedChallenges = new Set();
+
     let currentCategory = 'all';
+
     let currentDifficulty = '';
+
     let searchTerm = '';
 
-    function getFilteredChallenges() {
-      let allChallenges = (currentCategory === 'all')
-        ? Object.values(challenges).flat()
-        : challenges[currentCategory] || [];
-      // Remove duplicates for 'All Companies' view
-      if (currentCategory === 'all') {
-        const seenTitles = new Set();
-        allChallenges = allChallenges.filter(challenge => {
-          if (seenTitles.has(challenge.title)) {
-            return false;
-          } else {
-            seenTitles.add(challenge.title);
-            return true;
-          }
-        });
+
+
+    // Helper to get Firestore and user from main.js
+
+    function getFirestoreUser() {
+
+      if (window.authSystem && window.authSystem.currentUser && window.authSystem.db) {
+
+        return { db: window.authSystem.db, uid: window.authSystem.currentUser.uid };
+
       }
-      return allChallenges.filter(challenge => {
-        const matchesDifficulty = !currentDifficulty || challenge.difficulty === currentDifficulty;
-        const matchesSearch = !searchTerm ||
-          challenge.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          challenge.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          challenge.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-        return matchesDifficulty && matchesSearch;
-      });
+
+      return null;
+
     }
 
-    function createChallengeCard(challenge) {
-      const isSolved = solvedChallenges.has(challenge.title);
-      return `
-        <div class="challenge-card ${isSolved ? 'solved' : ''}" onclick="showSolution('${challenge.title}')">
-          <h3 class="challenge-title">${challenge.title}</h3>
-          <p class="challenge-description">${challenge.description}</p>
-          <div class="challenge-tags">${challenge.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
-          <div class="difficulty ${challenge.difficulty.toLowerCase()}">${challenge.difficulty}</div>
-          <div class="challenge-actions">
-            <div class="checkbox-container" onclick="event.stopPropagation(); toggleSolved('${challenge.title}')">
-              <div class="checkbox ${isSolved ? 'checked' : ''}">${isSolved ? '✓' : ''}</div>
-              <span class="checkbox-label">Mark as solved</span>
-            </div>
-            <div>
-              <a href="${challenge.link}" target="_blank" class="solve-btn" onclick="event.stopPropagation();"><span>🚀</span> Solve</a>
-              <button class="solution-btn" onclick="event.stopPropagation(); showSolution('${challenge.title}')"><span>💡</span> Solution</button>
-            </div>
-          </div>
-        </div>`;
-    }
 
-    async function toggleSolved(id) {
-      if (solvedChallenges.has(id)) {
-        solvedChallenges.delete(id);
-      } else {
-        solvedChallenges.add(id);
-      }
-      await saveSolvedChallenges();
-      updateStats();
-      renderChallenges();
-    }
 
-    function showSolution(id) {
-      const challenge = Object.values(challenges).flat().find(c => c.title === id);
-      if (!challenge) return;
-      document.getElementById('solutionTitle').textContent = challenge.title;
-      document.getElementById('solutionBody').innerHTML = `
-        <div class="solution-section">
-          <h3>💭 Approach</h3>
-          <p>${challenge.solution.approach}</p>
-        </div>
-        <div class="solution-section">
-          <h3>💻 Implementation</h3>
-          <pre class="solution-code"><code>${challenge.solution.code}</code></pre>
-        </div>
-        <div class="complexity-info">
-          <div class="complexity-item">
-            <div class="complexity-label">Time Complexity</div>
-            <div class="complexity-value">${challenge.solution.timeComplexity}</div>
-          </div>
-          <div class="complexity-item">
-            <div class="complexity-label">Space Complexity</div>
-            <div class="complexity-value">${challenge.solution.spaceComplexity}</div>
-          </div>
-        </div>`;
-      document.getElementById('solutionModal').style.display = 'flex';
-    }
+    // Load solved challenges from Firestore (category: 'company')
 
     async function loadSolvedChallenges() {
+
       const info = getFirestoreUser();
+
       if (!info) return;
+
       const { db, uid } = info;
+
       try {
+
         const solved = await window.authSystem.getSolvedChallenges('company');
+
         solvedChallenges = new Set(solved);
-      } catch (error) {
-        console.error("Failed to load progress:", error);
-        alert("Sorry, we couldn't load your progress. Please check your connection and try again.");
-      }
+
+      } catch (e) { }
+
       updateStats();
+
       renderChallenges();
+
     }
+
+
+
+    // Save solved challenges to Firestore (category: 'company')
 
     async function saveSolvedChallenges() {
+
       const info = getFirestoreUser();
+
       if (!info) return;
+
       const { db, uid } = info;
+
       try {
+
         await window.authSystem.updateChallengeList('company', [...solvedChallenges]);
-      } catch (error) {
-        console.error("Failed to save progress:", error);
-        alert("Sorry, we couldn't save your progress. Please check your connection and try again.");
-      }
+
+      } catch (e) { }
+
     }
+
+
 
     function init() {
+
       updateStats();
+
       renderChallenges();
+
       setupEventListeners();
+
     }
+
+
 
     function toggleTheme() {
+
       const body = document.body;
+
       const themeIcon = document.getElementById('themeIcon');
+
       const currentTheme = body.getAttribute('data-theme');
+
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
       body.setAttribute('data-theme', newTheme);
+
       themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+
       localStorage.setItem('theme', newTheme);
+
     }
+
+
 
     function loadTheme() {
+
       const savedTheme = localStorage.getItem('theme') || 'light';
+
       document.body.setAttribute('data-theme', savedTheme);
+
       const themeIcon = document.getElementById('themeIcon');
-      if (themeIcon) { themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙'; }
+
+      if (themeIcon) themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
     }
+
+
 
     function updateStats() {
-      const totalChallenges = challenges.length;
+
+      const totalChallenges = Object.values(challenges).flat().length;
+
       const solvedCount = solvedChallenges.size;
+
       const progressPercent = totalChallenges > 0 ? Math.round((solvedCount / totalChallenges) * 100) : 0;
+
       document.getElementById('solvedCount').textContent = solvedCount;
+
       document.getElementById('totalCount').textContent = totalChallenges;
+
       document.getElementById('progressPercent').textContent = `${progressPercent}%`;
+
     }
+
+
+
+    function getFilteredChallenges() {
+
+      let allChallenges = (currentCategory === 'all')
+
+        ? Object.values(challenges).flat()
+
+        : challenges[currentCategory] || [];
+
+
+
+      // Remove duplicates for 'All Companies' view
+
+      if (currentCategory === 'all') {
+
+        const seenTitles = new Set();
+
+        allChallenges = allChallenges.filter(challenge => {
+
+          if (seenTitles.has(challenge.title)) {
+
+            return false;
+
+          } else {
+
+            seenTitles.add(challenge.title);
+
+            return true;
+
+          }
+
+        });
+
+      }
+
+
+
+      return allChallenges.filter(challenge => {
+
+        const matchesDifficulty = !currentDifficulty || challenge.difficulty === currentDifficulty;
+
+        const matchesSearch = !searchTerm ||
+
+          challenge.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+
+          challenge.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+
+          challenge.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+
+        return matchesDifficulty && matchesSearch;
+
+      });
+
+    }
+
+
 
     function renderChallenges() {
+
       const grid = document.getElementById('challengesGrid');
+
       const emptyState = document.getElementById('emptyState');
+
       const filteredChallenges = getFilteredChallenges();
 
+
+
       if (filteredChallenges.length === 0) {
+
         grid.innerHTML = '';
+
         emptyState.style.display = 'block';
+
         return;
+
       }
+
+
 
       emptyState.style.display = 'none';
+
       grid.innerHTML = filteredChallenges.map(createChallengeCard).join('');
+
     }
+
+
+
+    function createChallengeCard(challenge) {
+
+      const isSolved = solvedChallenges.has(challenge.title);
+
+      return `
+
+                <div class="challenge-card ${isSolved ? 'solved' : ''}" onclick="showSolution('${challenge.title}')">
+
+                    <h3 class="challenge-title">${challenge.title}</h3>
+
+                    <p class="challenge-description">${challenge.description}</p>
+
+                    <div class="challenge-tags">${challenge.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+
+                    <div class="difficulty ${challenge.difficulty.toLowerCase()}">${challenge.difficulty}</div>
+
+                    <div class="challenge-actions">
+
+                        <div class="checkbox-container" onclick="event.stopPropagation(); toggleSolved('${challenge.title}')">
+
+                            <div class="checkbox ${isSolved ? 'checked' : ''}">${isSolved ? '✓' : ''}</div>
+
+                            <span class="checkbox-label">Mark as solved</span>
+
+                        </div>
+
+                        <div>
+
+                            <a href="${challenge.link}" target="_blank" class="solve-btn" onclick="event.stopPropagation();"><span>🚀</span> Solve</a>
+
+                            <button class="solution-btn" onclick="event.stopPropagation(); showSolution('${challenge.title}')"><span>💡</span> Solution</button>
+
+                        </div>
+
+                    </div>
+
+                </div>`;
+
+    }
+
+
+
+    async function toggleSolved(title) {
+
+      if (solvedChallenges.has(title)) {
+
+        solvedChallenges.delete(title);
+
+      } else {
+
+        solvedChallenges.add(title);
+
+      }
+
+      await saveSolvedChallenges();
+
+      updateStats();
+
+      renderChallenges();
+
+    }
+
+
+
+    function showSolution(title) {
+
+      const challenge = Object.values(challenges).flat().find(c => c.title === title);
+
+      if (!challenge) return;
+
+
+
+      document.getElementById('solutionTitle').textContent = challenge.title;
+
+      document.getElementById('solutionBody').innerHTML = `
+
+                <div class="solution-section">
+
+                    <h3>💭 Approach</h3>
+
+                    <p>${challenge.solution.approach}</p>
+
+                </div>
+
+                <div class="solution-section">
+
+                    <h3>💻 Implementation</h3>
+
+                    <pre class="solution-code"><code>${challenge.solution.code}</code></pre>
+
+                </div>
+
+                <div class="complexity-info">
+
+                    <div class="complexity-item">
+
+                        <div class="complexity-label">Time Complexity</div>
+
+                        <div class="complexity-value">${challenge.solution.timeComplexity}</div>
+
+                    </div>
+
+                    <div class="complexity-item">
+
+                        <div class="complexity-label">Space Complexity</div>
+
+                        <div class="complexity-value">${challenge.solution.spaceComplexity}</div>
+
+                    </div>
+
+                </div>`;
+
+      document.getElementById('solutionModal').style.display = 'flex';
+
+    }
+
+
+
+    function closeSolution() {
+
+      document.getElementById('solutionModal').style.display = 'none';
+
+    }
+
+
 
     function setupEventListeners() {
-      // Theme toggle
-      document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
-      // Close modal button
-      document.querySelector('.close-btn').addEventListener('click', closeSolution);
-      // Tabs
+
       document.querySelectorAll('.tab').forEach(tab => {
+
         tab.addEventListener('click', () => {
+
           document.querySelector('.tab.active').classList.remove('active');
+
           tab.classList.add('active');
-          currentCompany = tab.dataset.category;
+
+          currentCategory = tab.dataset.category;
+
           renderChallenges();
+
         });
+
       });
-      // Difficulty filter
+
+
+
       document.getElementById('difficultyFilter').addEventListener('change', (e) => {
+
         currentDifficulty = e.target.value;
+
         renderChallenges();
+
       });
-      // Search input
+
+
+
       document.getElementById('searchInput').addEventListener('input', (e) => {
+
         searchTerm = e.target.value;
+
         renderChallenges();
+
       });
-      // Solution modal background click
+
+
+
       document.getElementById('solutionModal').addEventListener('click', (e) => {
+
         if (e.target === e.currentTarget) closeSolution();
+
       });
-      // Escape key closes modal
+
+
+
       document.addEventListener('keydown', (e) => {
+
         if (e.key === 'Escape') closeSolution();
+
       });
-      // ...existing code for tabs, filters, modal, etc. (remove challenge card event delegation)...
+
     }
 
+
+
     document.addEventListener('DOMContentLoaded', () => {
+
       loadTheme();
+
       init();
+
       // Wait for Firebase to be ready, then load solved challenges
+
       if (window.authSystem) {
+
         window.authSystem.onReady(loadSolvedChallenges);
+
       }
+
     });
+
   </script>
+
 </body>
+
+
 
 </html>
