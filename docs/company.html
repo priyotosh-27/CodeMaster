@@ -1204,51 +1204,32 @@ reversed_string = my_string[::-1]
     // Helper to get Firestore and user from main.js
     function getFirestoreUser() {
       if (window.authSystem && window.authSystem.currentUser && window.authSystem.db) {
-        return {
-          db: window.authSystem.db,
-          uid: window.authSystem.currentUser.uid
-        };
+        return { db: window.authSystem.db, uid: window.authSystem.currentUser.uid };
       }
       return null;
     }
 
-    // Load solved challenges from Firestore
+    // Load solved challenges from Firestore (category: 'company')
     async function loadSolvedChallenges() {
       const info = getFirestoreUser();
-      if (!info) {
-        // fallback to localStorage for guests
-        solvedChallenges = new Set(JSON.parse(localStorage.getItem('solvedChallenges') || '[]'));
-        updateStats();
-        renderChallenges();
-        return;
-      }
+      if (!info) return;
       const { db, uid } = info;
       try {
-        const userDoc = await window.authSystem.getUserDoc();
-        const companySolved = (userDoc.challengeProgress && userDoc.challengeProgress.company) || [];
-        solvedChallenges = new Set(companySolved);
-      } catch (e) {
-        solvedChallenges = new Set();
-      }
+        const solved = await window.authSystem.getSolvedChallenges('company');
+        solvedChallenges = new Set(solved);
+      } catch (e) { }
       updateStats();
       renderChallenges();
     }
 
-    // Save solved challenges to Firestore
+    // Save solved challenges to Firestore (category: 'company')
     async function saveSolvedChallenges() {
       const info = getFirestoreUser();
-      if (!info) {
-        localStorage.setItem('solvedChallenges', JSON.stringify([...solvedChallenges]));
-        return;
-      }
+      if (!info) return;
       const { db, uid } = info;
       try {
-        const userRef = window.authSystem.getUserRef();
-        await window.authSystem.updateCompanyChallenges([...solvedChallenges]);
-      } catch (e) {
-        // fallback to localStorage
-        localStorage.setItem('solvedChallenges', JSON.stringify([...solvedChallenges]));
-      }
+        await window.authSystem.updateChallengeList('company', [...solvedChallenges]);
+      } catch (e) { }
     }
 
     function init() {
@@ -1424,8 +1405,6 @@ reversed_string = my_string[::-1]
       // Wait for Firebase to be ready, then load solved challenges
       if (window.authSystem) {
         window.authSystem.onReady(loadSolvedChallenges);
-      } else {
-        loadSolvedChallenges();
       }
     });
   </script>

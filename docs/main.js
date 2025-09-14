@@ -600,7 +600,7 @@ class AuthSystem {
 
             });
 
-            this.showNotification(`Challenge progress saved! ✅`, "success");
+            this.showNotification(`Challenge progress saved for ${category}! ✅`, "success");
 
         } catch (error) {
 
@@ -609,6 +609,92 @@ class AuthSystem {
             this.showNotification("Could not save your progress.", "error");
 
         }
+
+    }
+
+
+
+    /**
+
+     * Updates the entire solved challenge list for a category (used for syncing from UI).
+
+     * @param {string} category - The category ('basic', 'company', etc.)
+
+     * @param {Array<string>} solvedList - Array of solved challenge IDs.
+
+     */
+
+    async updateChallengeList(category, solvedList) {
+
+        if (!this.currentUser || !category || !Array.isArray(solvedList)) return;
+
+
+
+        const ref = doc(this.db, "users", this.currentUser.uid);
+
+        try {
+
+            await updateDoc(ref, {
+
+                [`challengeProgress.${category}`]: solvedList,
+
+                updatedAt: serverTimestamp()
+
+            });
+
+            this.showNotification(`Challenge list updated for ${category}!`, "success");
+
+        } catch (error) {
+
+            console.error("Error updating challenge list:", error);
+
+            this.showNotification("Could not update your challenge list.", "error");
+
+        }
+
+    }
+
+
+
+    /**
+
+     * Returns the solved challenge list for a category.
+
+     * @param {string} category - The category ('basic', 'company', etc.)
+
+     * @returns {Promise<Array<string>>}
+
+     */
+
+    async getSolvedChallenges(category) {
+
+        if (!this.currentUser || !category) return [];
+
+
+
+        const ref = doc(this.db, "users", this.currentUser.uid);
+
+        try {
+
+            const snap = await getDoc(ref);
+
+
+
+            if (snap.exists() && snap.data().challengeProgress && Array.isArray(snap.data().challengeProgress[category])) {
+
+                return snap.data().challengeProgress[category];
+
+            }
+
+        } catch (error) {
+
+            console.error("Error fetching solved challenges:", error);
+
+        }
+
+
+
+        return [];
 
     }
 

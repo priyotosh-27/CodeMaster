@@ -1903,11 +1903,11 @@ def maxSlidingWindow(nums, k):
     
     for i in range(len(nums)):
         # Remove indices outside current window
-        while dq && dq[0] <= i - k:
+        while dq and dq[0] <= i - k:
             dq.popleft();
         
         # Remove indices with smaller values
-        while dq && nums[dq[-1]] <= nums[i]:
+        while dq and nums[dq[-1]] <= nums[i]:
             dq.pop();
         
         dq.append(i);
@@ -2291,14 +2291,14 @@ class MovingAverage:
     }
 
     // Toggle solved status
-    function toggleSolved(title) {
+    async function toggleSolved(title) {
       if (solvedChallenges.has(title)) {
         solvedChallenges.delete(title);
       } else {
         solvedChallenges.add(title);
       }
 
-      localStorage.setItem('solvedChallenges', JSON.stringify([...solvedChallenges]));
+      await saveSolvedChallenges();
       updateStats();
       renderChallenges();
     }
@@ -2312,7 +2312,7 @@ class MovingAverage:
       const modalTitle = document.getElementById('solutionTitle');
       const modalBody = document.getElementById('solutionBody');
 
-      modalTitle.textContent = challenge.title;
+      modalTitle.text
       modalBody.innerHTML = `
                 <div class="solution-section">
                     <h3>💭 Approach</h3>
