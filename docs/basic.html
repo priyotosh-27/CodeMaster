@@ -1040,67 +1040,6 @@
     </div>
   </div>
 
-  <!-- Firebase SDKs -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import { getFirestore, doc, getDoc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-    // Fetch config and initialize Firebase
-    async function initFirebase() {
-      const response = await fetch('https://codemaster-t6q4.onrender.com/config');
-      const firebaseConfig = await response.json();
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-      const db = getFirestore(app);
-      window.firebase = { auth, db };
-      setupFirestoreSync(auth, db);
-    }
-
-    // Sync solved challenges with Firestore
-    function setupFirestoreSync(auth, db) {
-      onAuthStateChanged(auth, async (user) => {
-        if (user) {
-          // Load solved challenges from Firestore
-          const ref = doc(db, 'users', user.uid);
-          const snap = await getDoc(ref);
-          if (snap.exists() && snap.data().challengeProgress?.basic) {
-            solvedChallenges = new Set(snap.data().challengeProgress.basic);
-            updateStats();
-            renderChallenges();
-          }
-        }
-      });
-    }
-
-    // Save solved challenge to Firestore
-    async function saveSolvedChallengeToFirestore(title) {
-      const { auth, db } = window.firebase || {};
-      const user = auth?.currentUser;
-      if (!user) return;
-      const ref = doc(db, 'users', user.uid);
-      await updateDoc(ref, {
-        'challengeProgress.basic': arrayUnion(title)
-      });
-    }
-
-    // Patch toggleSolved to also save to Firestore
-    window.toggleSolved = async function (title) {
-      if (solvedChallenges.has(title)) {
-        solvedChallenges.delete(title);
-      } else {
-        solvedChallenges.add(title);
-        await saveSolvedChallengeToFirestore(title);
-      }
-      localStorage.setItem('solvedChallenges', JSON.stringify([...solvedChallenges]));
-      updateStats();
-      renderChallenges();
-    };
-
-    // Start Firebase
-    initFirebase();
-  </script>
-
   <script>
     // Challenge data with solutions
     const challenges = {
@@ -1904,17 +1843,17 @@ def maxSlidingWindow(nums, k):
     for i in range(len(nums)):
         # Remove indices outside current window
         while dq and dq[0] <= i - k:
-            dq.popleft();
+            dq.popleft()
         
         # Remove indices with smaller values
         while dq and nums[dq[-1]] <= nums[i]:
-            dq.pop();
+            dq.pop()
         
-        dq.append(i);
+        dq.append(i)
         
         # Add to result when window is complete
         if i >= k - 1:
-            result.append(nums[dq[0]]);
+            result.append(nums[dq[0]])
     
     return result`,
             timeComplexity: "O(n)",
@@ -2185,15 +2124,17 @@ class MovingAverage:
     // Toggle theme
     function toggleTheme() {
       const body = document.body;
+      const themeIcon = document.querySelector('.theme-icon');
+
       if (body.getAttribute('data-theme') === 'dark') {
         body.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌙';
         localStorage.setItem('theme', 'light');
       } else {
         body.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '☀️';
         localStorage.setItem('theme', 'dark');
       }
-      // Always update icon after theme change
-      loadTheme();
     }
 
     // Load saved theme
@@ -2201,9 +2142,7 @@ class MovingAverage:
       const savedTheme = localStorage.getItem('theme') || 'light';
       document.body.setAttribute('data-theme', savedTheme);
       const themeIcon = document.querySelector('.theme-icon');
-      if (themeIcon) {
-        themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-      }
+      themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     }
 
     // Update statistics
@@ -2291,14 +2230,14 @@ class MovingAverage:
     }
 
     // Toggle solved status
-    async function toggleSolved(title) {
+    function toggleSolved(title) {
       if (solvedChallenges.has(title)) {
         solvedChallenges.delete(title);
       } else {
         solvedChallenges.add(title);
       }
 
-      await saveSolvedChallenges();
+      localStorage.setItem('solvedChallenges', JSON.stringify([...solvedChallenges]));
       updateStats();
       renderChallenges();
     }
@@ -2312,7 +2251,7 @@ class MovingAverage:
       const modalTitle = document.getElementById('solutionTitle');
       const modalBody = document.getElementById('solutionBody');
 
-      modalTitle.text
+      modalTitle.textContent = challenge.title;
       modalBody.innerHTML = `
                 <div class="solution-section">
                     <h3>💭 Approach</h3>
