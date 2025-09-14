@@ -1195,10 +1195,61 @@ reversed_string = my_string[::-1]
     };
 
     // State management
-    let solvedChallenges = new Set(JSON.parse(localStorage.getItem('solvedChallenges') || '[]'));
+    // Firestore integration
+    let solvedChallenges = new Set();
     let currentCategory = 'all';
     let currentDifficulty = '';
     let searchTerm = '';
+
+    // Helper to get Firestore and user from main.js
+    function getFirestoreUser() {
+      if (window.authSystem && window.authSystem.currentUser && window.authSystem.db) {
+        return {
+          db: window.authSystem.db,
+          uid: window.authSystem.currentUser.uid
+        };
+      }
+      return null;
+    }
+
+    // Load solved challenges from Firestore
+    async function loadSolvedChallenges() {
+      const info = getFirestoreUser();
+      if (!info) {
+        // fallback to localStorage for guests
+        solvedChallenges = new Set(JSON.parse(localStorage.getItem('solvedChallenges') || '[]'));
+        updateStats();
+        renderChallenges();
+        return;
+      }
+      const { db, uid } = info;
+      try {
+        const userDoc = await window.authSystem.getUserDoc();
+        const companySolved = (userDoc.challengeProgress && userDoc.challengeProgress.company) || [];
+        solvedChallenges = new Set(companySolved);
+      } catch (e) {
+        solvedChallenges = new Set();
+      }
+      updateStats();
+      renderChallenges();
+    }
+
+    // Save solved challenges to Firestore
+    async function saveSolvedChallenges() {
+      const info = getFirestoreUser();
+      if (!info) {
+        localStorage.setItem('solvedChallenges', JSON.stringify([...solvedChallenges]));
+        return;
+      }
+      const { db, uid } = info;
+      try {
+        const userRef = window.authSystem.getUserRef();
+        await window.authSystem.updateCompanyChallenges([...solvedChallenges]);
+      } catch (e) {
+        // fallback to localStorage
+        localStorage.setItem('solvedChallenges', JSON.stringify([...solvedChallenges]));
+      }
+    }
 
     function init() {
       updateStats();
@@ -1294,13 +1345,13 @@ reversed_string = my_string[::-1]
                 </div>`;
     }
 
-    function toggleSolved(title) {
+    async function toggleSolved(title) {
       if (solvedChallenges.has(title)) {
         solvedChallenges.delete(title);
       } else {
         solvedChallenges.add(title);
       }
-      localStorage.setItem('solvedChallenges', JSON.stringify([...solvedChallenges]));
+      await saveSolvedChallenges();
       updateStats();
       renderChallenges();
     }
@@ -1368,6 +1419,12 @@ reversed_string = my_string[::-1]
     document.addEventListener('DOMContentLoaded', () => {
       loadTheme();
       init();
+      // Wait for Firebase to be ready, then load solved challenges
+      if (window.authSystem) {
+        window.authSystem.onReady(loadSolvedChallenges);
+      } else {
+        loadSolvedChallenges();
+      }
     });
   </script>
 </body>
