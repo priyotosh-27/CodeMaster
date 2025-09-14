@@ -489,6 +489,12 @@ class AuthSystem {
             }
 
             this.updateUI();
+            // Ensure solved challenges are reloaded on login/auth change (for company.html)
+            if (typeof window !== 'undefined' && window.authSystem && window.authSystem.onReady) {
+                window.authSystem.onReady(() => {
+                    if (typeof loadSolvedChallenges === 'function') loadSolvedChallenges();
+                });
+            }
 
         });
 
