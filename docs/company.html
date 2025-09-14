@@ -713,7 +713,7 @@
   <div class="container">
     <header class="header">
       <div class="theme-toggle" onclick="toggleTheme()">
-        <div class="theme-icon">🌙</div>
+        <span class="theme-icon" id="themeIcon">🌙</span>
       </div>
       <h1>Company Coding Questions</h1>
       <p>Master interview problems from top tech companies</p>
@@ -1259,8 +1259,9 @@ reversed_string = my_string[::-1]
 
     function toggleTheme() {
       const body = document.body;
-      const themeIcon = document.querySelector('.theme-icon');
-      const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      const themeIcon = document.getElementById('themeIcon');
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       body.setAttribute('data-theme', newTheme);
       themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
       localStorage.setItem('theme', newTheme);
@@ -1269,7 +1270,8 @@ reversed_string = my_string[::-1]
     function loadTheme() {
       const savedTheme = localStorage.getItem('theme') || 'light';
       document.body.setAttribute('data-theme', savedTheme);
-      document.querySelector('.theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+      const themeIcon = document.getElementById('themeIcon');
+      if (themeIcon) themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     }
 
     function updateStats() {
