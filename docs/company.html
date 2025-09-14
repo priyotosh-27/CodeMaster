@@ -1009,13 +1009,20 @@
         const card = e.target.closest('.challenge-card');
         if (!card) return;
         const id = card.getAttribute('data-id');
-        if (e.target.closest('[data-action="toggle"]')) {
+        // Checkbox click
+        if (e.target.closest('.checkbox-container')) {
           e.stopPropagation();
           toggleSolved(id);
-        } else if (e.target.closest('[data-action="solution"]')) {
+          return;
+        }
+        // Solution button click
+        if (e.target.closest('.solution-btn')) {
           e.stopPropagation();
           showSolution(id);
-        } else if (e.target.classList.contains('challenge-card')) {
+          return;
+        }
+        // Card click (show solution)
+        if (e.target.classList.contains('challenge-card')) {
           showSolution(id);
         }
       });
