@@ -48,7 +48,7 @@ async function startApp() {
 
     try {
 
-        const response = await fetch('https://codemaster-t6q4.onrender.com/config');
+        const response = await fetch('https://codemaster-backend-adn1.onrender.com/config');
 
         const firebaseConfig = await response.json();
 
